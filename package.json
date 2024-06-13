@@ -1,5 +1,5 @@
 {
-    "name": "webcore",
+    "name": "webcoreui",
     "type": "module",
     "version": "0.0.1",
     "scripts": {
@@ -19,5 +19,6 @@
         "./astro": "./astro.js",
         "./styles": "./scss/index.scss",
         "./config": "./scss/config.scss"
-    }
+    },
+    "files": ["dist"]
 }
