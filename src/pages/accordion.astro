@@ -15,34 +15,34 @@ const accordionItems = [{
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<title>Webcore</title>
-	</head>
-	<body>
-		<div class="container">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Webcore</title>
+    </head>
+    <body>
+        <div class="container">
             <a href="/">
                 <img src="/img/logo.png" alt="Logo" />
             </a>
-			<h1>Accordion</h1>
+            <h1>Accordion</h1>
             <AstroAccordion items={accordionItems} />
-		</div>
-	</body>
+        </div>
+    </body>
 </html>
 
 <style is:global lang="scss">
     @import '../scss/index.scss';
-	@include Setup();
-
-	.container {
-		margin-top: 20px;
-	}
-
-	h1 {
-		margin: 100px 0 10px;
-		font-size: 48px;
-		text-align: center;
-	}
+    @include Setup();
+    
+    .container {
+        margin-top: 20px;
+    }
+    
+    h1 {
+        margin: 100px 0 10px;
+        font-size: 48px;
+        text-align: center;
+    }
 </style>
