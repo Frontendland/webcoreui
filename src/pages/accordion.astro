@@ -1,7 +1,16 @@
 ---
-import Button from '@components/Button/Button.astro'
-import Card from '@components/Card/Card.astro'
-import Accordion from '@components/Accordion/Accordion.astro'
+import AstroAccordion from '@components/Accordion/Accordion.astro'
+
+const accordionItems = [{
+    title: 'Do you offer support?',
+    content: 'We provide 30 days of support.'
+}, {
+    title: 'Can I request customizations?',
+    content: 'Yes!'
+}, {
+    title: 'Are there any refunds?',
+    content: 'Hopefully.'
+}]
 ---
 
 <!DOCTYPE html>
@@ -18,18 +27,7 @@ import Accordion from '@components/Accordion/Accordion.astro'
                 <img src="/img/logo.png" alt="Logo" />
             </a>
 			<h1>Accordion</h1>
-            <Accordion
-                items={[{
-                    title: 'Do you offer support?',
-                    content: 'We provide 30 days of support.'
-                }, {
-                    title: 'Can I request customizations?',
-                    content: 'Yes!'
-                }, {
-                    title: 'Are there any refunds?',
-                    content: 'Hopefully.'
-                }]}
-            />
+            <AstroAccordion items={accordionItems} />
 		</div>
 	</body>
 </html>

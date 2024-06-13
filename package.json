@@ -5,7 +5,8 @@
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
-        "build": "astro check && astro build"
+        "build": "astro check && astro build",
+        "build:package": "minify && copy components public scss package.json --outDir=dist"
     },
     "dependencies": {
         "@astrojs/check": "0.7.0",
@@ -14,5 +15,10 @@
         "sass": "1.77.5",
         "svelte": "4.2.18",
         "typescript": "5.4.5"
+    },
+    "exports": {
+        "./astro": "./astro.js",
+        "./styles": "./scss/index.scss",
+        "./config": "./scss/config.scss"
     }
 }
