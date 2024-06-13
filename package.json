@@ -22,6 +22,33 @@
         "./config": "./scss/config.scss"
     },
     "files": [
-        "dist"
-    ]
+        "dist/components",
+        "src/env.d.ts",
+        "scss",
+        "public"
+    ],
+    "license": "MIT",
+    "description": "UI component and template library for Astro, Svelte, and React apps styled with Sass.",
+    "keywords": [
+        "webcore",
+        "component",
+        "components",
+        "ui components",
+        "component library",
+        "astro components",
+        "svelte components",
+        "react components",
+        "frontend",
+        "library",
+        "sass"
+    ],
+    "homepage": "https://webcoreui.dev",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Frontendland/webcoreui"
+    },
+    "bugs": {
+        "url": "https://github.com/Frontendland/webcoreui/issues"
+    }
+
 }
