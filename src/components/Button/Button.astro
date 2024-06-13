@@ -1,0 +1,26 @@
+---
+interface Props {
+    theme?: 'secondary' | 'tertiary'
+    [key: string]: any
+}
+
+const {
+    theme,
+    href,
+    ...rest
+} = Astro.props
+---
+
+{href ? (
+    <a {...rest} href={href} class={theme || null}>
+        <slot />
+    </a>
+) : (
+    <button {...rest}>
+        <slot />
+    </button>
+)}
+
+<style lang="scss">
+    @import './button.scss';
+</style>

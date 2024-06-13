@@ -5,13 +5,14 @@
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
-        "build": "astro check && astro build",
-        "preview": "astro preview",
-        "astro": "astro"
+        "build": "astro check && astro build"
     },
     "dependencies": {
-        "astro": "4.10.2",
         "@astrojs/check": "0.7.0",
+        "@astrojs/svelte": "5.5.0",
+        "astro": "4.10.2",
+        "sass": "1.77.5",
+        "svelte": "4.2.18",
         "typescript": "5.4.5"
     }
 }

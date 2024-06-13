@@ -1,0 +1,40 @@
+---
+interface Props {
+    element?: string
+    title?: string
+    compact?: boolean
+    [key: string]: any
+}
+
+const {
+    element = 'section',
+    title,
+    titleTag = 'span',
+    compact = true,
+    ...rest
+} = Astro.props
+
+const props = {
+    class: 'card'
+}
+
+const Component = element
+const Title = titleTag
+---
+
+<Component {...props} {...rest}>
+    {title && (
+        <Title class="card-title">{title}</Title>
+    )}
+    <div class="card-body" class:list={[compact && 'compact']}>
+        {compact ? (
+            <div class="card-wrapper"><slot /></div>
+        ) : (
+            <slot />
+        )}
+    </div>
+</Component>
+
+<style lang="scss">
+    @import './card.scss';
+</style>

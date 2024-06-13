@@ -1,0 +1,23 @@
+@use 'sass:map';
+
+$config: (
+    includeResets: true,
+    includeFonts: true,
+    includeHelperClasses: true
+);
+
+@function config($key) {
+    @return map.get($config, $key);
+}
+
+@mixin Setup($customConfig: ()) {
+    $config: map.merge($config, $customConfig) !global;
+
+    @if (config('includeResets')) {
+        @include Resets();
+    }
+
+    @if (config('includeHelperClasses')) {
+        @include Utility();
+    }
+}

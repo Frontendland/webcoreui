@@ -1,0 +1,21 @@
+@import '../../scss/config.scss';
+
+a {
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #FFF;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+
+    &.secondary {
+        @include Transition(background);
+        background: #252525;
+
+        &:hover {
+            background: #333;
+        }
+    }
+}

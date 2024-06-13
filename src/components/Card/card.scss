@@ -1,0 +1,25 @@
+.card {
+    border: 1px solid #252525;
+    border-radius: 5px;
+
+    .card-title {
+        padding: 20px;
+        display: block;
+        border-bottom: 1px solid #252525;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .card-body {
+        padding: 20px;
+
+        &.compact {
+            background: #111;
+        }
+    }
+
+    .card-wrapper {
+        background: #000;
+        padding: 40px;
+    }
+}

@@ -1,0 +1,43 @@
+---
+interface Props {
+    items: {
+        title: string
+        content: string
+    }[]
+}
+
+const {
+    items
+} = Astro.props
+---
+
+<ul data-id="accordion">
+    {items.map(item => (
+        <li>
+            <div class="accordion-title">{item.title}</div>
+            <div class="accordion-wrapper">
+                <div class="accordion-content">
+                    <Fragment set:html={item.content} />
+                </div>
+            </div>
+        </li>
+    ))}
+</ul>
+
+<script>
+    const accordions = document.querySelectorAll('[data-id="accordion"]')
+
+    Array.from(accordions).forEach(element => {
+        element.addEventListener('click', event => {
+            const target = event.target as HTMLDivElement
+
+            if (target.classList.contains('accordion-title')) {
+                target.classList.toggle('open')
+            }
+        })
+    })
+</script>
+
+<style lang="scss">
+    @import './accordion.scss';
+</style>

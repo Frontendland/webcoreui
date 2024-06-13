@@ -1,0 +1,42 @@
+@import '../config';
+
+@mixin Utility() {
+    .container {
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 0 20px;
+    }
+
+    .grid {
+        display: grid;
+        gap: 20px;
+    }
+}
+
+@include Media('md') {
+    .grid.md-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid.md-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid.md-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@include Media('lg') {
+    .grid.lg-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid.lg-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid.lg-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}

@@ -1,0 +1,46 @@
+@import '../../scss/config.scss';
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    li {
+        border-bottom: 1px solid #252525;
+        padding: 10px 0;
+        font-size: 16px;
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .accordion-title {
+            cursor: pointer;
+
+            &.open + .accordion-wrapper {
+                grid-template-rows: 1fr;
+    
+                .accordion-content {
+                    padding: 10px 0;
+                }
+            }
+        }
+
+        .accordion-wrapper {
+            @include Transition(grid-template-rows);
+            display: grid;
+            grid-template-rows: 0fr;
+        }
+
+        .accordion-content {
+            @include Transition();
+            overflow: hidden;
+            color: #DDD;
+        }
+    }
+}

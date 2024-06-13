@@ -1,0 +1,46 @@
+@mixin Resets() {
+    @if (config('includeFonts')) {
+        @font-face {
+            font-family: Regular;
+            font-display: swap;
+            src: url('/fonts/Inter-Regular.woff2') format('woff2');
+        }
+        
+        @font-face {
+            font-family: Bold;
+            font-display: swap;
+            src: url('/fonts/Inter-Bold.woff2') format('woff2');
+        }
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        background: #000;
+        color: #FFF;
+        margin: 0;
+        font-size: 18px;
+
+        @if (config('includeFonts')) {
+            font-family: Regular, sans-serif;
+        }
+    }
+    
+    @if (config('includeFonts')) {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: Bold, sans-serif;
+        }
+    }
+
+    a {
+        color: #FFF;
+        text-decoration: none;
+    }
+}    
