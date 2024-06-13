@@ -4,9 +4,8 @@
     "version": "0.0.1",
     "scripts": {
         "dev": "astro dev",
-        "start": "astro dev",
         "build": "astro check && astro build",
-        "build:package": "minify && copy components public scss package.json --outDir=dist"
+        "build:package": "node scripts/build.js"
     },
     "dependencies": {
         "@astrojs/check": "0.7.0",

@@ -27,8 +27,8 @@ import Accordion from '@components/Accordion/Accordion.astro'
             </h2>
             <div class="cta">
                 <Button
-                href="https://github.com/Frontendland/webcoreui" target="_blank"
-                theme="secondary"
+                    href="https://github.com/Frontendland/webcoreui" target="_blank"
+                    theme="secondary"
                 >
                 <img src="/icons/github.svg" alt="GitHub" width={20} height={20} />
                 GitHub
@@ -37,16 +37,16 @@ import Accordion from '@components/Accordion/Accordion.astro'
         <div class="grid md-2 lg-3">
             <Card title="Accordion" element="a" href="/accordion">
                 <Accordion
-                items={[{
-                    title: 'Do you offer support?',
-                    content: 'We provide 30 days of support.'
-                }, {
-                    title: 'Can I request customizations?',
-                    content: 'Yes!'
-                }, {
-                    title: 'Are there any refunds?',
-                    content: 'Hopefully.'
-                }]}
+                    items={[{
+                        title: 'Do you offer support?',
+                        content: 'We provide 30 days of support.'
+                    }, {
+                        title: 'Can I request customizations?',
+                        content: 'Yes!'
+                    }, {
+                        title: 'Are there any refunds?',
+                        content: 'Hopefully.'
+                    }]}
                 />
             </Card>
         </div>
@@ -57,8 +57,8 @@ import Accordion from '@components/Accordion/Accordion.astro'
 <style is:global lang="scss">
     @import '../scss/index.scss';
     @include Setup((
-    fontRegular: '/fonts/Inter-Regular.woff2',
-    fontBold: '/fonts/Inter-Bold.woff2'
+        fontRegular: '/fonts/Inter-Regular.woff2',
+        fontBold: '/fonts/Inter-Bold.woff2'
     ));
     
     .container {
