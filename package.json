@@ -5,7 +5,8 @@
     "scripts": {
         "dev": "astro dev",
         "build": "astro check && astro build",
-        "build:package": "node scripts/build.js"
+        "build:package": "node scripts/build.js",
+        "test": "echo \"Error: no test specified\""
     },
     "dependencies": {
         "@astrojs/check": "0.7.0",
