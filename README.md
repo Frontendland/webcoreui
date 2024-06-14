@@ -22,6 +22,9 @@
     </a>
 </p>
 
+> [!IMPORTANT]
+> This library is still in early development. New changes can break existing functionality, and no functionality should be considered final. The library will be considered stable once it reaches v1.0.
+
 ---
 ## Table of Contents
 
@@ -32,6 +35,7 @@
     - [Installation](#installation)
     - [Setup](#setup)
     - [Using Components](#using-components)
+- [Components](#components)
 
 ## Documentation
 
@@ -124,3 +128,9 @@ import { Accordion } from 'webcoreui/react'
 
 <Accordion items={[{ ... }]} />
 ```
+
+## Components
+
+- [Accordion](https://github.com/Frontendland/webcoreui/tree/main/src/components/Accordion)
+- [Button](https://github.com/Frontendland/webcoreui/tree/main/src/components/Button)
+- [Card](https://github.com/Frontendland/webcoreui/tree/main/src/components/Card)
