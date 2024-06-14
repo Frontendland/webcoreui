@@ -7,7 +7,7 @@
     </a>
 </p>
 
-<p style="text-align:center;">
+<p align="center">
     <a href="https://github.com/Frontendland/webcoreui/releases">
         <img
             src="https://img.shields.io/npm/v/webcoreui.svg?label=Latest%20Release"
