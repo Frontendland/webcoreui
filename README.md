@@ -7,7 +7,7 @@
     </a>
 </p>
 
-<p>
+<p style="text-align:center;">
     <a href="https://github.com/Frontendland/webcoreui/releases">
         <img
             src="https://img.shields.io/npm/v/webcoreui.svg?label=Latest%20Release"
@@ -100,10 +100,10 @@ yarn add webcoreui
 The `Setup` mixin can also accept the following options:
 
 
-| Property  | Default value  | Purpose  |   |   |
-|-----------|----------------|----------|---|---|
-| `includeResets` | `true` | Include reset styles. Set to `false` if you want to use your own CSS resets. | 
-| `includeHelperClasses` | `true` | Adds global helper classes for CSS. All global helper classes are defined [here](https://github.com/Frontendland/webcoreui/tree/main/src/scss/global). |  
+| Property  | Default value | Purpose |
+|-----------|---------------|---------|
+| `includeResets` | `true` | Include reset styles. Set to `false` if you want to use your own CSS resets. |
+| `includeHelperClasses` | `true` | Adds global helper classes for CSS. All global helper classes are defined [here](https://github.com/Frontendland/webcoreui/tree/main/src/scss/global). |
 
 ### Using Components
 
