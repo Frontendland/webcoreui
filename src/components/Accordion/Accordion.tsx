@@ -21,6 +21,12 @@ export const Accordion = ({ items }: AccordionProps) => {
                         onClick={() => toggle(index)}
                     >
                         {item.title}
+                        <img
+                            src="/icons/arrow-down.svg"
+                            alt="GitHub"
+                            width={15}
+                            height={15}
+                        />
                     </div>
                     <div className="accordion-wrapper">
                         <div className="accordion-content">

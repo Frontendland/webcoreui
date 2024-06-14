@@ -20,13 +20,27 @@ ul {
         }
 
         .accordion-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             cursor: pointer;
 
-            &.open + .accordion-wrapper {
-                grid-template-rows: 1fr;
-    
-                .accordion-content {
-                    padding: 10px 0;
+            img {
+                @include Transition(transform);
+                filter: brightness(.7);
+            }
+
+            &.open {
+                img {
+                    transform: rotate(180deg);
+                }
+
+                + .accordion-wrapper {
+                    grid-template-rows: 1fr;
+        
+                    .accordion-content {
+                        padding: 10px 0;
+                    }
                 }
             }
         }
@@ -40,7 +54,7 @@ ul {
         .accordion-content {
             @include Transition();
             overflow: hidden;
-            color: #DDD;
+            color: #BBB;
         }
     }
 }

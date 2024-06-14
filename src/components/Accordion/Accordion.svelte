@@ -22,6 +22,12 @@
                 on:click={() => toggle(index)}
             >
                 {item.title}
+                <img
+                    src="/icons/arrow-down.svg"
+                    alt="GitHub"
+                    width={15}
+                    height={15}
+                />
             </div>
             <div class="accordion-wrapper">
                 <div class="accordion-content">
