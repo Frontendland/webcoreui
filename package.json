@@ -1,12 +1,11 @@
 {
     "name": "webcoreui",
     "type": "module",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "scripts": {
         "dev": "astro dev",
         "build": "astro check && astro build",
         "build:package": "node scripts/build.js",
-        "publish": "cd dist && np",
         "test": "echo \"Error: no test specified\""
     },
     "dependencies": {
@@ -28,19 +27,18 @@
         "./config": "./scss/config.scss"
     },
     "files": [
-        "public",
         "components",
+        "public",
         "scss",
         "astro.d.ts",
         "astro.js",
         "svelte.d.ts",
         "svelte.js",
         "react.d.ts",
-        "react.js"
+        "react.js",
+        "README.md",
+        "LICENSE"
     ],
-    "np": {
-		"contents": "dist"
-	},
     "license": "MIT",
     "description": "UI component and template library for Astro, Svelte, and React apps styled with Sass.",
     "keywords": [
@@ -59,7 +57,7 @@
     "homepage": "https://webcoreui.dev",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Frontendland/webcoreui"
+        "url": "git+https://github.com/Frontendland/webcoreui.git"
     },
     "bugs": {
         "url": "https://github.com/Frontendland/webcoreui/issues"
