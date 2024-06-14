@@ -6,6 +6,7 @@
         "dev": "astro dev",
         "build": "astro check && astro build",
         "build:package": "node scripts/build.js",
+        "publish": "cd dist && np",
         "test": "echo \"Error: no test specified\""
     },
     "dependencies": {
@@ -21,20 +22,25 @@
     },
     "exports": {
         "./astro": "./astro.js",
+        "./svelte": "./svelte.js",
+        "./react": "./react.js",
         "./styles": "./scss/index.scss",
         "./config": "./scss/config.scss"
     },
     "files": [
-        "dist/components",
-        "src/astro.d.ts",
-        "src/astro.js",
-        "src/svelte.d.ts",
-        "src/svelte.js",
-        "src/react.d.ts",
-        "src/react.js",
+        "public",
+        "components",
         "scss",
-        "public"
+        "astro.d.ts",
+        "astro.js",
+        "svelte.d.ts",
+        "svelte.js",
+        "react.d.ts",
+        "react.js"
     ],
+    "np": {
+		"contents": "dist"
+	},
     "license": "MIT",
     "description": "UI component and template library for Astro, Svelte, and React apps styled with Sass.",
     "keywords": [
