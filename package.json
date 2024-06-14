@@ -10,8 +10,11 @@
     },
     "dependencies": {
         "@astrojs/check": "0.7.0",
+        "@astrojs/react": "3.5.0",
         "@astrojs/svelte": "5.5.0",
         "astro": "4.10.2",
+        "react": "18.3.1",
+        "react-dom": "18.3.1",
         "sass": "1.77.5",
         "svelte": "4.2.18",
         "typescript": "5.4.5"
@@ -23,7 +26,12 @@
     },
     "files": [
         "dist/components",
-        "src/env.d.ts",
+        "src/astro.d.ts",
+        "src/astro.js",
+        "src/svelte.d.ts",
+        "src/svelte.js",
+        "src/react.d.ts",
+        "src/react.js",
         "scss",
         "public"
     ],
@@ -50,5 +58,4 @@
     "bugs": {
         "url": "https://github.com/Frontendland/webcoreui/issues"
     }
-
 }

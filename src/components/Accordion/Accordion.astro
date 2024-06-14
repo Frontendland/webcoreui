@@ -1,10 +1,7 @@
 ---
-export interface Props {
-    items: {
-        title: string
-        content: string
-    }[]
-}
+import type { AccordionProps } from './accordion'
+
+interface Props extends AccordionProps {}
 
 const {
     items

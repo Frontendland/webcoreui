@@ -1,5 +1,8 @@
 ---
+import Card from '@components/Card/Card.astro'
 import AstroAccordion from '@components/Accordion/Accordion.astro'
+import SvelteAccorion from '@components/Accordion/Accordion.svelte'
+import { Accordion as ReactAccordion } from '@components/Accordion/Accordion.tsx'
 
 const accordionItems = [{
     title: 'Do you offer support?',
@@ -27,14 +30,28 @@ const accordionItems = [{
                 <img src="/img/logo.png" alt="Logo" />
             </a>
             <h1>Accordion</h1>
-            <AstroAccordion items={accordionItems} />
+
+            <div class="grid md-2 lg-3">
+                <Card title="Astro" titleTag="strong" compact={false}>
+                    <AstroAccordion items={accordionItems} />
+                </Card>
+                <Card title="Svelte" titleTag="strong" compact={false}>
+                    <SvelteAccorion items={accordionItems} client:load />
+                </Card>
+                <Card title="React" titleTag="strong" compact={false}>
+                    <ReactAccordion items={accordionItems} client:load />
+                </Card>
+            </div>
         </div>
     </body>
 </html>
 
 <style is:global lang="scss">
     @import '../scss/index.scss';
-    @include Setup();
+    @include Setup((
+        fontRegular: '/fonts/Inter-Regular.woff2',
+        fontBold: '/fonts/Inter-Bold.woff2'
+    ));
     
     .container {
         margin-top: 20px;
