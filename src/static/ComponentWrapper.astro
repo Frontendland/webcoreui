@@ -1,0 +1,34 @@
+---
+import Card from '@components/Card/Card.astro'
+
+const {
+    type = 'Astro'
+} = Astro.props
+---
+
+<Card
+    title={type}
+    className={type.slice(0, 1).toLocaleLowerCase()}
+    titleTag="strong"
+    compact={false}
+>
+    <slot />
+</Card>
+
+<style is:global>
+    .a strong {
+        background: #B545ED;
+        background: linear-gradient(to right, #505FFF, #B545ED);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .s strong {
+        color: #FF3E00;
+    }
+    
+    .r strong {
+        color: #61DAFB;
+    }
+</style>

@@ -3,6 +3,7 @@ interface Props {
     element?: string
     title?: string
     compact?: boolean
+    className?: string
     [key: string]: any
 }
 
@@ -11,11 +12,12 @@ const {
     title,
     titleTag = 'span',
     compact = true,
+    className,
     ...rest
 } = Astro.props
 
 const props = {
-    class: 'card'
+    class: className ? `card ${className}` : 'card'
 }
 
 const Component = element

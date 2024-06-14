@@ -1,5 +1,7 @@
 ---
-import Card from '@components/Card/Card.astro'
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
 import AstroAccordion from '@components/Accordion/Accordion.astro'
 import SvelteAccorion from '@components/Accordion/Accordion.svelte'
 import { Accordion as ReactAccordion } from '@components/Accordion/Accordion.tsx'
@@ -16,50 +18,20 @@ const accordionItems = [{
 }]
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <title>Webcore</title>
-    </head>
-    <body>
-        <div class="container">
-            <a href="/">
-                <img src="/img/logo.png" alt="Logo" />
-            </a>
-            <h1>Accordion</h1>
-
-            <div class="grid md-2 lg-3">
-                <Card title="Astro" titleTag="strong" compact={false}>
-                    <AstroAccordion items={accordionItems} />
-                </Card>
-                <Card title="Svelte" titleTag="strong" compact={false}>
-                    <SvelteAccorion items={accordionItems} client:load />
-                </Card>
-                <Card title="React" titleTag="strong" compact={false}>
-                    <ReactAccordion items={accordionItems} client:load />
-                </Card>
-            </div>
-        </div>
-    </body>
-</html>
-
-<style is:global lang="scss">
-    @import '../scss/index.scss';
-    @include Setup((
-        fontRegular: '/fonts/Inter-Regular.woff2',
-        fontBold: '/fonts/Inter-Bold.woff2'
-    ));
+<Layout>
+    <h1>Accordion</h1>
     
-    .container {
-        margin-top: 20px;
-    }
-    
-    h1 {
-        margin: 100px 0 10px;
-        font-size: 48px;
-        text-align: center;
-    }
-</style>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper>
+            <AstroAccordion items={accordionItems} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteAccorion items={accordionItems} client:load />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactAccordion items={accordionItems} client:load />
+        </ComponentWrapper>
+    </div>
+</Layout>

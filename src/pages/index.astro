@@ -1,102 +1,67 @@
 ---
+import Layout from '@static/Layout.astro'
+
 import Button from '@components/Button/Button.astro'
 import Card from '@components/Card/Card.astro'
 import Accordion from '@components/Accordion/Accordion.astro'
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <title>Webcore</title>
-    </head>
-    <body>
-        <div class="container">
-            <img src="/img/logo.png" alt="Logo" />
-            <h1>
-                Component library for <br />
-                <span class="a">Astro</span>,
-                <span class="s">Svelte</span>, and
-                <span class="r">React</span>
-            </h1>
-            <h2>
-                Rocket launch your frontend projects with fully coded components. <br />
-                Configurable. Themeable. Accessible.
-            </h2>
-            <div class="cta">
-                <Button
-                    href="https://github.com/Frontendland/webcoreui" target="_blank"
-                    theme="secondary"
-                >
-                <img src="/icons/github.svg" alt="GitHub" width={20} height={20} />
-                GitHub
-            </Button>
-        </div>
-        <div class="grid md-2 lg-3">
-            <Card title="Accordion" element="a" href="/accordion">
-                <Accordion
-                    items={[{
-                        title: 'Do you offer support?',
-                        content: 'We provide 30 days of support.'
-                    }, {
-                        title: 'Can I request customizations?',
-                        content: 'Yes!'
-                    }, {
-                        title: 'Are there any refunds?',
-                        content: 'Hopefully.'
-                    }]}
-                />
-            </Card>
-        </div>
-        </div>
-    </body>
-</html>
+<Layout>
+    <h1>
+        Component library for <br />
+        <span class="a">Astro</span>,
+        <span class="s">Svelte</span>, and
+        <span class="r">React</span>
+    </h1>
+    <h2>
+        Rocket launch your frontend projects with fully coded components. <br />
+        Configurable. Themeable. Accessible.
+    </h2>
+    <div class="cta">
+        <Button
+            href="https://github.com/Frontendland/webcoreui" target="_blank"
+            theme="secondary"
+        >
+        <img src="/icons/github.svg" alt="GitHub" width={20} height={20} />
+        GitHub
+    </Button>
+    </div>
+    <div class="grid md-2 lg-3">
+        <Card title="Accordion" element="a" href="/accordion">
+            <Accordion
+                items={[{
+                    title: 'Do you offer support?',
+                    content: 'We provide 30 days of support.'
+                }, {
+                    title: 'Can I request customizations?',
+                    content: 'Yes!'
+                }, {
+                    title: 'Are there any refunds?',
+                    content: 'Hopefully.'
+                }]}
+            />
+        </Card>
+    </div>
+</Layout>
 
-<style is:global lang="scss">
-    @import '../scss/index.scss';
-    @include Setup((
-        fontRegular: '/fonts/Inter-Regular.woff2',
-        fontBold: '/fonts/Inter-Bold.woff2'
-    ));
-    
-    .container {
-        margin-top: 20px;
+<style lang="scss">
+
+    .a {
+        background: #B545ED;
+        background: linear-gradient(to right, #505FFF, #B545ED);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     
-    h1 {
-        margin: 100px 0 10px;
-        font-size: 48px;
-        text-align: center;
-        
-        .a {
-            background: #B545ED;
-            background: linear-gradient(to right, #505FFF, #B545ED);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .s {
-            color: #FF3E00;
-        }
-        
-        .r {
-            color: #61DAFB;
-        }
+    .s {
+        color: #FF3E00;
     }
     
-    h2 {
-        color: #DDD;
-        font-family: Regular;
-        font-weight: 400;
-        text-align: center;
-        line-height: 1.5;
-        font-size: 24px;
-        margin: 0 0 20px;
+    .r {
+        color: #61DAFB;
     }
-    
+
     .cta {
         text-align: center;
     }

@@ -1,0 +1,49 @@
+---
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Webcore</title>
+    </head>
+    <body>
+        <div class="container">
+            <a href="/">
+                <img src="/img/logo.png" alt="Logo" />
+            </a>
+            <slot />
+        </div>
+    </body>
+</html>
+
+<style is:global lang="scss">
+    @import '../scss/index.scss';
+    @include Setup((
+        fontRegular: '/fonts/Inter-Regular.woff2',
+        fontBold: '/fonts/Inter-Bold.woff2'
+    ));
+    
+    h1 {
+        margin: 100px 0 10px;
+        font-size: 48px;
+        text-align: center;
+    }
+
+    h2 {
+        color: #DDD;
+        font-family: Regular;
+        font-weight: 400;
+        text-align: center;
+        line-height: 1.5;
+        font-size: 24px;
+        margin: 0 0 20px;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+</style>
