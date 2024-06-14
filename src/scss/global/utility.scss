@@ -11,32 +11,32 @@
         display: grid;
         gap: 20px;
     }
-}
 
-@include Media('md') {
-    .grid.md-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    @include Media('md') {
+        .grid.md-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .grid.md-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .grid.md-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
     }
 
-    .grid.md-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+    @include Media('lg') {
+        .grid.lg-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
 
-    .grid.md-4 {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-}
+        .grid.lg-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
 
-@include Media('lg') {
-    .grid.lg-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .grid.lg-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .grid.lg-4 {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        .grid.lg-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
     }
 }

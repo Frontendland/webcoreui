@@ -1,47 +1,126 @@
-# Astro Starter Kit: Minimal
+<p>
+    <a href="https://webcoreui.dev">
+      <img
+            alt="Webcore - Frontend components for Astro, Svelte, and React"
+            src="https://raw.githubusercontent.com/Frontendland/webcoreui/main/public/img/banner.png"
+        />
+    </a>
+</p>
 
-```sh
-npm create astro@latest -- --template minimal
+<p>
+    <a href="https://github.com/Frontendland/webcoreui/releases">
+        <img
+            src="https://img.shields.io/npm/v/webcoreui.svg?label=Latest%20Release"
+            alt="Latest Release"
+        />
+    </a>
+    <a href="https://github.com/Frontendland/webcoreui/blob/main/LICENSE">
+        <img
+            src="https://img.shields.io/badge/license-MIT-blue"
+            alt="License"
+        />
+    </a>
+</p>
+
+---
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Documentation](#documentation)
+- [Getting started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Setup](#setup)
+    - [Using Components](#using-components)
+
+## Documentation
+
+Full documentation coming soon on [webcoreui.dev/docs](https://webcoreui.dev/docs).
+
+## Getting Started
+
+Webcore can be used as a standalone project, or it can be integrated into your existing Astro, Svelte, or React ecosystems.
+
+### Prerequisites
+
+> [!NOTE]
+> Before getting started, make sure you have a package manager installed, such as <a href="https://nodejs.org/en/" rel="noreferrer">Node</a>.
+
+Webcore components use Sass for styling. To use the component library, you must have the following packages installed:
+
+- [Sass](https://www.npmjs.com/package/sass) - `v1.77` and above
+- [TypeScript](https://www.npmjs.com/package/typescript) - `v5.4` and above
+
+Depending on your project setup, you'll also need the following packages:
+
+- **For Astro projects**
+    - [Astro](https://www.npmjs.com/package/astro) - `v4.10` and above
+- **For Svelte projects**
+    - [Svelte](https://www.npmjs.com/package/svelte) - `v4.2` and above
+- **For React projects**
+    - [React](https://www.npmjs.com/package/react) - `v18.3` and above
+    - [React DOM](https://www.npmjs.com/package/react-dom) -`v18.3` and above
+
+### Installation
+
+Install Webcore as a dependency by running one of the following command:
+
+```bash
+# Using NPM
+npm i webcoreui
+
+# Using Yarn
+yarn add webcoreui
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+### Setup
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+1. Add the following to your `tsconfig.json` to include TypeScript types:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```json
+{
+  "include": ["webcoreui"]
+}
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+2. Setup default styles and fonts by calling the following in your global SCSS file:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```scss
+@import 'webcoreui/styles';
+@include Setup((
+    // Define paths for your fonts
+    fontRegular: '/fonts/Inter-Regular.woff2',
+    fontBold: '/fonts/Inter-Bold.woff2'
+));
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+> [!TIP]
+> You can download the fonts Webcore uses from the [`public/fonts`](https://github.com/Frontendland/webcoreui/tree/main/public/fonts) directory.
 
-## 🧞 Commands
+The `Setup` mixin can also accept the following options:
 
-All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Property  | Default value  | Purpose  |   |   |
+|-----------|----------------|----------|---|---|
+| `includeResets` | `true` | Include reset styles. Set to `false` if you want to use your own CSS resets. | 
+| `includeHelperClasses` | `true` | Adds global helper classes for CSS. All global helper classes are defined [here](https://github.com/Frontendland/webcoreui/tree/main/src/scss/global). |  
 
-## 👀 Want to learn more?
+### Using Components
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Start using Webcore components in your code by importing them:
+
+```astro
+---
+// Import the component relevant to your project
+// How to import Astro components
+import { Accordion } from 'webcoreui/astro'
+
+// How to import Svelte components
+import { Accordion } from 'webcoreui/svelte'
+
+// How to import React components
+import { Accordion } from 'webcoreui/react'
+---
+
+<Accordion items={[{ ... }]} />
+```

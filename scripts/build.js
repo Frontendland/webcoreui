@@ -1,22 +1,36 @@
 import fs from 'fs'
 
-const destination = 'dist'
 const folders = {
-    'public': 'public',
-    'src/components': 'components',
-    'src/scss': 'scss'
+    'public': 'dist/public',
+    'src/components': 'dist/components',
+    'src/scss': 'dist/scss'
+}
+
+const files = {
+    'src/astro.d.ts': 'dist/astro.d.ts',
+    'src/astro.js': 'dist/astro.js'
 }
 
 console.log('🚀 Preparing package build')
 
-folders.forEach(folder => {
-    fs.cp(folder, destination, { recursive: true }, error => {
-        console.error('🚨 error copying assets', error)
+if (!fs.existsSync('dist')) {
+    fs.mkdirSync('dist')
+}
+
+Object.keys(folders).forEach(key => {
+    fs.cp(key, folders[key], { recursive: true }, error => {
+        if (error) {
+            console.error('🚨 error copying directory', error)
+        }
     })
 })
 
-// generate astro.d.ts and astro.js files
-// copy components, public, and scss folder
-// copy package.json
-// minify files
-// put everything into dist folder
+Object.keys(files).forEach(key => {
+    fs.copyFile(key, files[key], error => {
+        if (error) {
+            console.error('🚨 error copying file', error)
+        }
+    })
+})
+
+console.log('✅ Package built')
