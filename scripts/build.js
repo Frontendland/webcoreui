@@ -8,7 +8,13 @@ const folders = {
 
 const files = {
     'src/astro.d.ts': 'dist/astro.d.ts',
-    'src/astro.js': 'dist/astro.js'
+    'src/astro.js': 'dist/astro.js',
+    'src/svelte.d.ts': 'dist/svelte.d.ts',
+    'src/svelte.js': 'dist/svelte.js',
+    'src/react.d.ts': 'dist/react.d.ts',
+    'src/react.js': 'dist/react.js',
+    'README.md': 'dist/README.md',
+    'LICENSE': 'dist/LICENSE'
 }
 
 console.log('🚀 Preparing package build')

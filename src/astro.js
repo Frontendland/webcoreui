@@ -1,3 +1,3 @@
-import Accordion from './components/Accordion/Accordion.astro'
+import AccordionComponent from './components/Accordion/Accordion.astro'
 
-export const Accordion = Accordion
+export const Accordion = AccordionComponent

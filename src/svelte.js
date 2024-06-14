@@ -1,3 +1,3 @@
-import Accordion from './components/Accordion/Accordion.svelte'
+import { Accordion as AccordionComponent } from './components/Accordion/Accordion.svelte'
 
-export const Accordion = Accordion
+export const Accordion = AccordionComponent

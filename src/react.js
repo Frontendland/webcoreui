@@ -1,3 +1,3 @@
-import { Accordion } from './components/Accordion/Accordion.tsx'
+import { Accordion as AccordionComponent } from './components/Accordion/Accordion.tsx'
 
-export const Accordion = Accordion
+export const Accordion = AccordionComponent
