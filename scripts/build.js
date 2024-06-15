@@ -14,7 +14,8 @@ const files = {
     'src/react.d.ts': 'dist/react.d.ts',
     'src/react.js': 'dist/react.js',
     'README.md': 'dist/README.md',
-    'LICENSE': 'dist/LICENSE'
+    'LICENSE': 'dist/LICENSE',
+    'package.json': 'dist/package.json'
 }
 
 console.log('🚀 Preparing package build')
