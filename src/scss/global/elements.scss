@@ -1,0 +1,11 @@
+@import '../config';
+
+@mixin Elements() {
+    code {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 5px;
+        border: 1px solid #252525;
+        font-size: 14px;
+    }
+}

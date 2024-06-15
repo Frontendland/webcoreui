@@ -2,7 +2,8 @@
 
 $config: (
     includeResets: true,
-    includeHelperClasses: true
+    includeHelperClasses: true,
+    includeElementStyles: true
 );
 
 @function config($key) {
@@ -18,5 +19,9 @@ $config: (
 
     @if (config('includeHelperClasses')) {
         @include Utility();
+    }
+
+    @if (config('includeElementStyles')) {
+        @include Elements();
     }
 }

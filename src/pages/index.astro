@@ -1,8 +1,8 @@
 ---
 import Layout from '@static/Layout.astro'
+import CardWrapper from '@static/CardWrapper.astro'
 
 import Button from '@components/Button/Button.astro'
-import Card from '@components/Card/Card.astro'
 import Accordion from '@components/Accordion/Accordion.astro'
 ---
 
@@ -27,7 +27,7 @@ import Accordion from '@components/Accordion/Accordion.astro'
         </Button>
     </div>
     <div class="grid md-2 lg-3">
-        <Card title="Accordion" element="a" href="/accordion">
+        <CardWrapper title="Accordion" href="/accordion">
             <Accordion
                 items={[{
                     title: 'Do you offer support?',
@@ -40,11 +40,14 @@ import Accordion from '@components/Accordion/Accordion.astro'
                     content: 'Hopefully.'
                 }]}
             />
-        </Card>
-        <Card title="Button" element="a" href="/button">
+        </CardWrapper>
+        <CardWrapper title="Button" href="/button">
             <Button>Primary</Button>
             <Button theme="secondary">Secondary</Button>
-        </Card>
+        </CardWrapper>
+        <CardWrapper title="Card" href="/card">
+            <p>Paragraph inside a card</p>  
+        </CardWrapper>
     </div>
 </Layout>
 

@@ -12,7 +12,7 @@ const {
     element = 'section',
     title,
     titleTag = 'span',
-    compact = true,
+    compact,
     className,
     secondary,
     ...rest
@@ -37,7 +37,7 @@ const Title = titleTag
         <Title class="card-title">{title}</Title>
     )}
     <div class="card-body" class:list={[compact && 'compact']}>
-        {compact ? (
+        {compact && !secondary ? (
             <div class="card-wrapper"><slot /></div>
         ) : (
             <slot />

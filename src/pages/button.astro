@@ -16,13 +16,13 @@ import { Button as ReactButton } from '@components/Button/Button.tsx'
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
-            <SvelteButton theme="alert" onClick={() => console.log('👋')} client:load>
+            <SvelteButton theme="alert">
                 Button in Svelte
             </SvelteButton>
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
-            <ReactButton theme="info" onClick={() => console.log('👋')} client:load>
+            <ReactButton theme="info">
                 Button in React
             </ReactButton>
         </ComponentWrapper>

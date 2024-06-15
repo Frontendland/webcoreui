@@ -1,0 +1,12 @@
+---
+import Card from '@components/Card/Card.astro'
+
+const {
+    title,
+    href
+} = Astro.props
+---
+
+<Card title={title} element="a" href={href} compact={true}>
+    <slot />
+</Card>
