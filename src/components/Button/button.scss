@@ -1,21 +1,92 @@
 @import '../../scss/config.scss';
 
-a {
+.w-button {
+    @include Transition();
     padding: 10px 15px;
     border-radius: 5px;
-    color: #FFF;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 5px;
     font-size: 16px;
+    font-family: Regular;
+    cursor: pointer;
+    border: 0;
+    background: #FFF;
+    color: #252525;
 
+    &[disabled] {
+        cursor: no-drop;
+        background: #BBB;
+    }
+
+    &:hover {
+        background: #BBB;
+    }
+    
     &.secondary {
-        @include Transition(background);
         background: #252525;
+        color: #FFF;
 
         &:hover {
             background: #333;
         }
+    }
+
+    &.outline {
+        background: #000;
+        color: #FFF;
+        box-shadow: inset 0px 0px 0px 1px #FFF;
+
+        &:hover {
+            color: #BBB;
+            box-shadow: inset 0px 0px 0px 1px #BBB;
+        }
+    }
+
+    &.flat {
+        background: #000;
+        color: #FFF;
+
+        &:hover {
+            background: #333;
+        }
+    }
+
+    &.info {
+        background: #0abde3;
+
+        &:hover {
+            background: #48dbfb;
+        }
+    }
+
+    &.success {
+        background: #10ac84;
+
+        &:hover {
+            background: #1dd1a1;
+        }
+    }
+
+    &.warning {
+        background: #ff9f43;
+
+        &:hover {
+            background: #f7aa61;
+        }
+    }
+
+    &.alert {
+        background: #e73f40;
+        color: #fff;
+
+        &:hover {
+            background: #ee5253;
+        }
+    }
+
+    &.bold {
+        font-family: Bold;
     }
 }

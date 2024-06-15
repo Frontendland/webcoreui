@@ -1,6 +1,16 @@
 .card {
     border: 1px solid #252525;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+
+    &.secondary {
+        background: #111;
+
+        .card-title {
+            background: #000;
+        }
+    }
 
     .card-title {
         padding: 20px;
@@ -11,6 +21,7 @@
 
     .card-body {
         padding: 20px;
+        height: 100%;
 
         &.compact {
             background: #111;
@@ -20,5 +31,6 @@
     .card-wrapper {
         background: #000;
         padding: 40px;
+        height: 100%;
     }
 }

@@ -2,13 +2,14 @@
 import Card from '@components/Card/Card.astro'
 
 const {
-    type = 'Astro'
+    title,
+    type
 } = Astro.props
 ---
 
 <Card
-    title={type}
-    className={type.slice(0, 1).toLocaleLowerCase()}
+    title={title || type}
+    className={type && type.slice(0, 1).toLocaleLowerCase()}
     titleTag="strong"
     compact={false}
 >

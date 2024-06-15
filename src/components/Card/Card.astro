@@ -4,6 +4,7 @@ interface Props {
     title?: string
     compact?: boolean
     className?: string
+    secondary?: boolean
     [key: string]: any
 }
 
@@ -13,11 +14,18 @@ const {
     titleTag = 'span',
     compact = true,
     className,
+    secondary,
     ...rest
 } = Astro.props
 
+const classes = [
+    className,
+    secondary && 'secondary',
+    'card'
+].filter(Boolean).join(' ')
+
 const props = {
-    class: className ? `card ${className}` : 'card'
+    class: classes
 }
 
 const Component = element

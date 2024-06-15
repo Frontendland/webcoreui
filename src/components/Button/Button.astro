@@ -1,22 +1,28 @@
 ---
-interface Props {
-    theme?: 'secondary' | 'tertiary'
-    [key: string]: any
-}
+import type { ButtonProps } from './button'
+
+interface Props extends ButtonProps {}
 
 const {
     theme,
+    bold,
     href,
     ...rest
 } = Astro.props
+
+const classes = [
+    'w-button',
+    bold && 'bold',
+    theme
+].filter(Boolean).join(' ')
 ---
 
 {href ? (
-    <a {...rest} href={href} class={theme || null}>
+    <a {...rest} href={href} class={classes || null}>
         <slot />
     </a>
 ) : (
-    <button {...rest}>
+    <button {...rest} class={classes || null}>
         <slot />
     </button>
 )}
