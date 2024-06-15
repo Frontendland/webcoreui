@@ -1,0 +1,18 @@
+---
+const {
+    type,
+    size = 24,
+    color
+} = Astro.props
+
+const { default: innerHTML } = await import(`../../icons/${type}.js`);
+
+---
+
+<svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    color={color}
+    set:html={innerHTML}
+/>
