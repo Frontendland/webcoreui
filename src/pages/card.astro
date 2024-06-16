@@ -2,8 +2,23 @@
 import Layout from '@static/Layout.astro'
 
 import AstroCard from '@components/Card/Card.astro'
-import SvelteButton from '@components/Button/Button.svelte'
-import { Button as ReactButton } from '@components/Button/Button.tsx'
+import SvelteCard from '@components/Card/Card.svelte'
+import ReactCard from '@components/Card/Card.tsx'
+
+const sections = [
+    {
+        title: 'Astro cards',
+        component: AstroCard
+    },
+    {
+        title: 'Svelte cards',
+        component: SvelteCard
+    },
+    {
+        title: 'React cards',
+        component: ReactCard
+    }
+]
 ---
 
 <Layout>
@@ -14,38 +29,43 @@ import { Button as ReactButton } from '@components/Button/Button.tsx'
             Card component using <span class="a">Astro</span>
         </AstroCard>
 
-        <AstroCard compact={true}>
+        <SvelteCard compact={true}>
             Card component using <span class="s">Svelte</span>
-        </AstroCard>
+        </SvelteCard>
 
-        <AstroCard compact={true}>
+        <ReactCard compact={true}>
             Card component using <span class="r">React</span>
-        </AstroCard>
-
-        <AstroCard title="Titled card" compact={true}>
-            Card with title
-        </AstroCard>
-
-        <AstroCard title="Spacious">
-            Spacious card with title
-        </AstroCard>
-
-        <AstroCard>
-            Spacious card without title
-        </AstroCard>
-
-        <AstroCard title="Secondary" secondary={true}>
-            Secondary card with title
-        </AstroCard>
-
-        <AstroCard secondary={true}>
-            Secondary card without title
-        </AstroCard>
-
-        <AstroCard title="Bolded" titleTag="strong">
-            Card with bold title using <code>strong</code> tag.
-        </AstroCard>
+        </ReactCard>
     </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <section.component title="Titled card" compact={true}>
+                Card with title
+            </section.component>
+
+            <section.component title="Spacious">
+                Spacious card with title
+            </section.component>
+
+            <section.component>
+                Spacious card without title
+            </section.component>
+
+            <section.component title="Secondary" secondary={true}>
+                Secondary card with title
+            </section.component>
+
+            <section.component secondary={true}>
+                Secondary card without title
+            </section.component>
+
+            <section.component title="Bolded" titleTag="strong">
+                Card with bold title using <code>strong</code> tag.
+            </section.component>
+        </div>
+    ))}
 </Layout>
 
 <style lang="scss">

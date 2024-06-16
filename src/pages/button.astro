@@ -6,11 +6,25 @@ import Icon from '@components/Icon/Icon.astro'
 import AstroButton from '@components/Button/Button.astro'
 import SvelteButton from '@components/Button/Button.svelte'
 import ReactButton from '@components/Button/Button.tsx'
+
+const sections = [
+    {
+        title: 'Astro buttons',
+        component: AstroButton
+    },
+    {
+        title: 'Svelte buttons',
+        component: SvelteButton
+    },
+    {
+        title: 'React buttons',
+        component: ReactButton
+    }
+]
 ---
 
 <Layout>
     <h1>Button</h1>
-    
     <div class="grid md-2 lg-3">
         <ComponentWrapper type="Astro">
             <AstroButton>Button in Astro</AstroButton>
@@ -26,45 +40,66 @@ import ReactButton from '@components/Button/Button.tsx'
             <ReactButton theme="info">
                 Button in React
             </ReactButton>
-        </ComponentWrapper>
-
-        <ComponentWrapper title="Secondary">
-            <AstroButton theme="secondary">Secondary</AstroButton>
-        </ComponentWrapper>
-
-        <ComponentWrapper title="Outline">
-            <AstroButton theme="outline">Outline</AstroButton>
-        </ComponentWrapper>
-
-        <ComponentWrapper title="Flat">
-            <AstroButton theme="flat">Flat</AstroButton>
-        </ComponentWrapper>
-
-        <ComponentWrapper title="Disabled">
-            <AstroButton disabled>Disabled</AstroButton>
-        </ComponentWrapper>
-
-        <ComponentWrapper title="With Icon">
-            <AstroButton theme="secondary">
-                <Icon type="github" size={20} />
-                With Icon
-            </AstroButton>
-        </ComponentWrapper>
-
-        <ComponentWrapper title="Info">
-            <AstroButton theme="info">Info</AstroButton>
-        </ComponentWrapper>
-
-        <ComponentWrapper title="Success">
-            <AstroButton theme="success">Success</AstroButton>
-        </ComponentWrapper>
-
-        <ComponentWrapper title="Warning">
-            <AstroButton theme="warning">Warning</AstroButton>
-        </ComponentWrapper>
-
-        <ComponentWrapper title="Alert">
-            <AstroButton theme="alert">Alert</AstroButton>
-        </ComponentWrapper>
+        </ComponentWrapper> 
     </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Secondary">
+                <section.component theme="secondary">
+                    Secondary
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Outline">
+                <section.component theme="outline">
+                    Outline
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Flat">
+                <section.component theme="flat">
+                    Flat
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled">
+                <section.component disabled>
+                    Disabled
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With Icon">
+                <section.component theme="secondary">
+                    <Icon type="github" size={20} />
+                    With Icon
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Info">
+                <section.component theme="info">
+                    Info
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Success">
+                <section.component theme="success">
+                    Success
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Warning">
+                <section.component theme="warning">
+                    Warning
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alert">
+                <section.component theme="alert">
+                    Alert
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
 </Layout>

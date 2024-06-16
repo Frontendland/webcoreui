@@ -9,7 +9,7 @@ const {
 } = Astro.props
 ---
 
-<ul class="w-accordion">
+<ul class="w-accordion" data-id="w-accordion">
     {items.map((item: AccordionProps['items'][0]) => (
         <li>
             <div class="accordion-title">
@@ -26,7 +26,7 @@ const {
 </ul>
 
 <script>
-    const accordions = document.querySelectorAll('.w-accordion')
+    const accordions = document.querySelectorAll('[data-id="w-accordion"]')
 
     Array.from(accordions).forEach(element => {
         element.addEventListener('click', event => {

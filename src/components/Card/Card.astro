@@ -1,12 +1,7 @@
 ---
-interface Props {
-    element?: string
-    title?: string
-    compact?: boolean
-    className?: string
-    secondary?: boolean
-    [key: string]: any
-}
+import type { CardProps } from './card'
+
+interface Props extends CardProps {}
 
 const {
     element = 'section',
@@ -19,6 +14,7 @@ const {
 } = Astro.props
 
 const classes = [
+    'w-card',
     className,
     secondary && 'secondary',
     'card'
