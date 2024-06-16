@@ -1,4 +1,6 @@
 import fs from 'fs'
+import buildImports from './buildImports.js'
+import buildTypes from './buildTypes.js'
 
 const folders = {
     'src/icons': 'dist/icons',
@@ -7,12 +9,6 @@ const folders = {
 }
 
 const files = {
-    'src/astro.d.ts': 'dist/astro.d.ts',
-    'src/astro.js': 'dist/astro.js',
-    'src/svelte.d.ts': 'dist/svelte.d.ts',
-    'src/svelte.js': 'dist/svelte.js',
-    'src/react.d.ts': 'dist/react.d.ts',
-    'src/react.js': 'dist/react.js',
     'README.md': 'dist/README.md',
     'LICENSE': 'dist/LICENSE',
     'package.json': 'dist/package.json'
@@ -39,5 +35,13 @@ Object.keys(files).forEach(key => {
         }
     })
 })
+
+fs.writeFileSync('dist/astro.js', buildImports('astro'))
+fs.writeFileSync('dist/svelte.js', buildImports('svelte'))
+fs.writeFileSync('dist/react.js', buildImports('tsx'))
+
+fs.writeFileSync('dist/astro.d.ts', buildTypes('astro'))
+fs.writeFileSync('dist/svelte.d.ts', buildTypes('svelte'))
+fs.writeFileSync('dist/react.d.ts', buildTypes('react'))
 
 console.log('✅ Package built')

@@ -2,7 +2,7 @@ import React from 'react'
 import type { ButtonProps } from './button'
 import './button.scss'
 
-export const Button = ({
+const Button = ({
     theme,
     bold,
     href,
@@ -30,3 +30,5 @@ export const Button = ({
         </button>
     )
 }
+
+export default Button

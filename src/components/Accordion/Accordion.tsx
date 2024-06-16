@@ -3,7 +3,7 @@ import type { AccordionProps } from './accordion'
 import ArrowDown from '../../icons/arrow-down.svg?raw'
 import './accordion.scss'
 
-export const Accordion = ({ items }: AccordionProps) => {
+const Accordion = ({ items }: AccordionProps) => {
     const [state, setState] = useState(Array(items.length).fill(false))
 
     const toggle = (index: number) => {
@@ -32,3 +32,5 @@ export const Accordion = ({ items }: AccordionProps) => {
         </ul>
     )
 }
+
+export default Accordion

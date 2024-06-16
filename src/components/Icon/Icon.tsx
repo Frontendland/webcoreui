@@ -9,7 +9,7 @@ const iconMap = {
     'arrow-down': ArrowDown
 }
 
-export const Icon = ({
+const Icon = ({
     type,
     size = 24,
     color
@@ -22,3 +22,5 @@ export const Icon = ({
 
     return <div dangerouslySetInnerHTML={{ __html: icon }} />
 }
+
+export default Icon

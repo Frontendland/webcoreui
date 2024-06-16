@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import type { IconProps } from './icon'
 
     import Github from '../../icons/github.svg?raw'
