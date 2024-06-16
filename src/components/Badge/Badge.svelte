@@ -1,0 +1,20 @@
+<script lang="ts">
+    import type { BadgeProps } from './badge'
+    
+    export let theme: BadgeProps['theme'] = null
+    export let onClick: BadgeProps['onClick'] = () => {}
+    
+    const classes = [
+        'w-badge',
+        theme || null,
+        onClick && 'hover'
+    ].filter(Boolean).join(' ')
+</script>
+
+<span class={classes} on:click={onClick}>
+    <slot />
+</span>
+
+<style lang="scss">
+    @import './badge.scss';
+</style>

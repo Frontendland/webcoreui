@@ -5,6 +5,7 @@ import CardWrapper from '@static/CardWrapper.astro'
 import Button from '@components/Button/Button.astro'
 import Accordion from '@components/Accordion/Accordion.astro'
 import Icon from '@components/Icon/Icon.astro'
+import Badge from '@components/Badge/Badge.astro'
 ---
 
 <Layout>
@@ -48,6 +49,12 @@ import Icon from '@components/Icon/Icon.astro'
         </CardWrapper>
         <CardWrapper title="Card" href="/card">
             <p>Paragraph inside a card</p>  
+        </CardWrapper>
+        <CardWrapper title="Icon" href="/icon">
+            <Icon type="github" />
+        </CardWrapper>
+        <CardWrapper title="Badge" href="/badge">
+            <Badge theme="outline">Badge</Badge>
         </CardWrapper>
     </div>
 </Layout>

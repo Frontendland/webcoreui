@@ -1,0 +1,106 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import Icon from '@components/Icon/Icon.astro'
+import AstroBadge from '@components/Badge/Badge.astro'
+import SvelteBadge from '@components/Badge/Badge.svelte'
+import ReactBadge from '@components/Badge/Badge.tsx'
+
+const sections = [
+    {
+        title: 'Astro badges',
+        component: AstroBadge
+    },
+    {
+        title: 'Svelte badges (Interactive)',
+        component: SvelteBadge,
+        onClick: () => {}
+    },
+    {
+        title: 'React badges',
+        component: ReactBadge
+    }
+]
+---
+
+<Layout>
+    <h1>Badge</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroBadge>Badge in Astro</AstroBadge>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteBadge theme="alert">
+                Badge in Svelte
+            </SvelteBadge>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactBadge theme="info">
+                Badge in React
+            </ReactBadge>
+        </ComponentWrapper> 
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Primary">
+                <section.component onClick={section.onClick}>
+                    Primary
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Secondary">
+                <section.component theme="secondary" onClick={section.onClick}>
+                    Secondary
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Outline">
+                <section.component theme="outline" onClick={section.onClick}>
+                    Outline
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Flat">
+                <section.component theme="flat" onClick={section.onClick}>
+                    Flat
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With Icon">
+                <section.component theme="secondary" onClick={section.onClick}>
+                    <Icon type="github" size={14} />
+                    With Icon
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Info">
+                <section.component theme="info" onClick={section.onClick}>
+                    Info
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Success">
+                <section.component theme="success" onClick={section.onClick}>
+                    Success
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Warning">
+                <section.component theme="warning" onClick={section.onClick}>
+                    Warning
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alert">
+                <section.component theme="alert" onClick={section.onClick}>
+                    Alert
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

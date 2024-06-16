@@ -35,12 +35,12 @@
 
     &.outline {
         background: #000;
-        color: #FFF;
-        box-shadow: inset 0px 0px 0px 1px #FFF;
-
+        color: #BBB;
+        box-shadow: inset 0px 0px 0px 1px #BBB;
+        
         &:hover {
-            color: #BBB;
-            box-shadow: inset 0px 0px 0px 1px #BBB;
+            color: #FFF;
+            box-shadow: inset 0px 0px 0px 1px #FFF;
         }
     }
 

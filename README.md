@@ -132,6 +132,7 @@ import { Accordion } from 'webcoreui/react'
 ## Components
 
 - [Accordion](https://github.com/Frontendland/webcoreui/tree/main/src/components/Accordion)
+- [Badge](https://github.com/Frontendland/webcoreui/tree/main/src/components/Badge)
 - [Button](https://github.com/Frontendland/webcoreui/tree/main/src/components/Button)
 - [Card](https://github.com/Frontendland/webcoreui/tree/main/src/components/Card)
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
