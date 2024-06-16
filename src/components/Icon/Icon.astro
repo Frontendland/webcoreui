@@ -1,0 +1,20 @@
+---
+import type { IconProps } from './icon'
+
+interface Props extends IconProps {}
+
+const {
+    type,
+    size = 24,
+    color
+} = Astro.props
+
+const { default: markup } = await import(`../../icons/${type}.svg?raw`)
+const icon = markup
+    .replace('width="24"', `width=${size}`)
+    .replace('height="24"', color
+        ? `height=${size} color=${color}`
+        : `height=${size}`)
+---
+
+<Fragment set:html={icon} />

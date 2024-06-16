@@ -28,7 +28,7 @@
     },
     "files": [
         "components",
-        "public",
+        "icons",
         "scss",
         "astro.d.ts",
         "astro.js",

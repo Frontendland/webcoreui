@@ -25,13 +25,16 @@ ul {
             align-items: center;
             cursor: pointer;
 
-            img {
+            svg {
                 @include Transition(transform);
-                filter: brightness(.7);
+                color: #BBB;
+                width: 15px;
+                height: 15px;
+                pointer-events: none;
             }
 
             &.open {
-                img {
+                svg {
                     transform: rotate(180deg);
                 }
 

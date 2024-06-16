@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import type { AccordionProps } from './accordion'
+import ArrowDown from '../../icons/arrow-down.svg?raw'
 import './accordion.scss'
 
-export const Accordion = ({ items }: AccordionProps) => {
+const Accordion = ({ items }: AccordionProps) => {
     const [state, setState] = useState(Array(items.length).fill(false))
 
     const toggle = (index: number) => {
@@ -19,15 +20,8 @@ export const Accordion = ({ items }: AccordionProps) => {
                     <div
                         className={state[index] ? 'accordion-title open' : 'accordion-title'}
                         onClick={() => toggle(index)}
-                    >
-                        {item.title}
-                        <img
-                            src="/icons/arrow-down.svg"
-                            alt="GitHub"
-                            width={15}
-                            height={15}
-                        />
-                    </div>
+                        dangerouslySetInnerHTML={{ __html: `${item.title} ${ArrowDown}` }}
+                    />
                     <div className="accordion-wrapper">
                         <div className="accordion-content">
                             <div dangerouslySetInnerHTML={{ __html: item.content }} />
@@ -38,3 +32,5 @@ export const Accordion = ({ items }: AccordionProps) => {
         </ul>
     )
 }
+
+export default Accordion

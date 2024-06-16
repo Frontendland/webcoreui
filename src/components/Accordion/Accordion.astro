@@ -1,5 +1,6 @@
 ---
 import type { AccordionProps } from './accordion'
+import Icon from '../Icon/Icon.astro'
 
 interface Props extends AccordionProps {}
 
@@ -9,16 +10,11 @@ const {
 ---
 
 <ul data-id="accordion">
-    {items.map(item => (
+    {items.map((item: AccordionProps['items'][0]) => (
         <li>
             <div class="accordion-title">
                 {item.title}
-                <img
-                    src="/icons/arrow-down.svg"
-                    alt="GitHub"
-                    width={15}
-                    height={15}
-                />
+                <Icon type="arrow-down" size={15} />
             </div>
             <div class="accordion-wrapper">
                 <div class="accordion-content">

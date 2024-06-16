@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { AccordionProps } from './accordion'
+    import ArrowDown from '../../icons/arrow-down.svg?raw'
 
     export let items: AccordionProps['items']
 
@@ -22,12 +23,7 @@
                 on:click={() => toggle(index)}
             >
                 {item.title}
-                <img
-                    src="/icons/arrow-down.svg"
-                    alt="GitHub"
-                    width={15}
-                    height={15}
-                />
+                {@html ArrowDown}
             </div>
             <div class="accordion-wrapper">
                 <div class="accordion-content">
