@@ -14,7 +14,7 @@ const Accordion = ({ items }: AccordionProps) => {
     }
 
     return (
-        <ul data-id="accordion">
+        <ul className="w-accordion">
             {items.map((item, index) => (
                 <li key={index}>
                     <div

@@ -1,6 +1,6 @@
 ---
 import type { AccordionProps } from './accordion'
-import Icon from '../Icon/Icon.astro'
+import ArrowDown from '../../icons/arrow-down.svg?raw'
 
 interface Props extends AccordionProps {}
 
@@ -9,12 +9,12 @@ const {
 } = Astro.props
 ---
 
-<ul data-id="accordion">
+<ul class="w-accordion">
     {items.map((item: AccordionProps['items'][0]) => (
         <li>
             <div class="accordion-title">
                 {item.title}
-                <Icon type="arrow-down" size={15} />
+                <Fragment set:html={ArrowDown} />
             </div>
             <div class="accordion-wrapper">
                 <div class="accordion-content">
@@ -26,7 +26,7 @@ const {
 </ul>
 
 <script>
-    const accordions = document.querySelectorAll('[data-id="accordion"]')
+    const accordions = document.querySelectorAll('.w-accordion')
 
     Array.from(accordions).forEach(element => {
         element.addEventListener('click', event => {

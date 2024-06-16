@@ -14,7 +14,7 @@
     }
 </script>
 
-<ul>
+<ul class="w-accordion">
     {#each items as item, index}
         <li>
             <div
