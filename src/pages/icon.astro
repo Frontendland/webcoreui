@@ -1,0 +1,81 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroIcon from '@components/Icon/Icon.astro'
+import SvelteIcon from '@components/Icon/Icon.svelte'
+import ReactIcon from '@components/Icon/Icon.tsx'
+
+const sections = [
+    {
+        title: 'Astro icons',
+        component: AstroIcon
+    },
+    {
+        title: 'Svelte icons',
+        component: SvelteIcon
+    },
+    {
+        title: 'React icons',
+        component: ReactIcon
+    }
+]
+---
+
+<Layout>
+    <h1>Icon</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroIcon type="github" color="#505FFF" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteIcon type="github" color="#FF3E00" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactIcon type="github" color="#61DAFB" />
+        </ComponentWrapper> 
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Primary">
+                <section.component type="github" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With color">
+                <section.component type="github" color="#ad74f7" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With size and colors">
+                <section.component
+                    type="github"
+                    size={12}
+                    color="#32e3a0"
+                />
+                <section.component
+                    type="github"
+                    size={16}
+                    color="#32cae3"
+                />
+                <section.component
+                    type="github"
+                    size={20}
+                    color="#ad74f7"
+                />
+                <section.component
+                    type="github"
+                    size={24}
+                    color="#ff89aa"
+                />
+                <section.component
+                    type="github"
+                    size={30}
+                    color="#f2c262"
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

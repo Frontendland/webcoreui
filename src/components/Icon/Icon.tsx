@@ -14,13 +14,13 @@ const Icon = ({
     size = 24,
     color
 }: IconProps) => {
-    const icon = iconMap[type]
+    const icon = iconMap[type as keyof typeof iconMap]
         .replace('width="24"', `width=${size}`)
         .replace('height="24"', color
             ? `height=${size} color=${color}`
             : `height=${size}`)
 
-    return <div dangerouslySetInnerHTML={{ __html: icon }} />
+    return <span dangerouslySetInnerHTML={{ __html: icon }} />
 }
 
 export default Icon
