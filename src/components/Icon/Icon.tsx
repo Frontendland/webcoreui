@@ -1,30 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import type { IconProps } from './icon'
 
-import github from '../../icons/github'
+import Github from '../../icons/github.svg?raw'
+import ArrowDown from '../../icons/arrow-down.svg?raw'
+
+const iconMap = {
+    'github': Github,
+    'arrow-down': ArrowDown
+}
 
 export const Icon = ({
     type,
     size = 24,
     color
-}) => {
-    const [icon, setIcon] = useState('')
+}: IconProps) => {
+    const icon = iconMap[type]
+        .replace('width="24"', `width=${size}`)
+        .replace('height="24"', color
+            ? `height=${size} color=${color}`
+            : `height=${size}`)
 
-    useEffect(() => {
-        (async () => {
-            const icon = (await import(`../../icons/${type}.js`)).default;
-
-            setIcon(icon)
-        })()
-    }, [])
-
-    return (
-        <svg
-            width={size}
-            height={size}
-            viewBox="0 0 24 24"
-            color={color}
-            dangerouslySetInnerHTML={{ __html: github }}
-        />
-    )
+    return <div dangerouslySetInnerHTML={{ __html: icon }} />
 }
-

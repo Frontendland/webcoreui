@@ -1,18 +1,20 @@
 ---
+import type { IconProps } from './icon'
+
+interface Props extends IconProps {}
+
 const {
     type,
     size = 24,
     color
 } = Astro.props
 
-const { default: innerHTML } = await import(`../../icons/${type}.js`);
-
+const { default: markup } = await import(`../../icons/${type}.svg?raw`)
+const icon = markup
+    .replace('width="24"', `width=${size}`)
+    .replace('height="24"', color
+        ? `height=${size} color=${color}`
+        : `height=${size}`)
 ---
 
-<svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    color={color}
-    set:html={innerHTML}
-/>
+<Fragment set:html={icon} />

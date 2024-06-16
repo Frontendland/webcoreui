@@ -2,6 +2,7 @@
 import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
 
+import Icon from '@components/Icon/Icon.astro'
 import AstroButton from '@components/Button/Button.astro'
 import SvelteButton from '@components/Button/Button.svelte'
 import { Button as ReactButton } from '@components/Button/Button.tsx'
@@ -43,14 +44,9 @@ import { Button as ReactButton } from '@components/Button/Button.tsx'
             <AstroButton disabled>Disabled</AstroButton>
         </ComponentWrapper>
 
-        <ComponentWrapper title="Wiht Icon">
+        <ComponentWrapper title="With Icon">
             <AstroButton theme="secondary">
-                <img
-                    src="/icons/github.svg"
-                    alt="GitHub"
-                    width={20}
-                    height={20}
-                />
+                <Icon type="github" size={20} />
                 With Icon
             </AstroButton>
         </ComponentWrapper>

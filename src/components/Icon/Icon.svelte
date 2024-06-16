@@ -1,17 +1,23 @@
 <script>
-    export let type
-    export let size = 24
-    export let color
+    import type { IconProps } from './icon'
 
-    const icon = () => import(`../../icons/${type}.js`)
+    import Github from '../../icons/github.svg?raw'
+    import ArrowDown from '../../icons/arrow-down.svg?raw'
+
+    export let type: IconProps['type']
+    export let size: IconProps['size'] = 24
+    export let color: IconProps['color']
+
+    const iconMap = {
+        'github': Github,
+        'arrow-down': ArrowDown
+    }
+
+    const icon = iconMap[type]
+        .replace('width="24"', `width=${size}`)
+        .replace('height="24"', color
+            ? `height=${size} color=${color}`
+            : `height=${size}`)
 </script>
 
-{#await icon() then module}
-    <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        color={color}
-    >{@html module.default}</svg>
-{/await}
-
+{@html icon}

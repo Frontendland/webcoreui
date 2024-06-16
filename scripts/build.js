@@ -1,7 +1,7 @@
 import fs from 'fs'
 
 const folders = {
-    'public': 'dist/public',
+    'src/icons': 'dist/icons',
     'src/components': 'dist/components',
     'src/scss': 'dist/scss'
 }
