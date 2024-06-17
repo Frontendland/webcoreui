@@ -1,0 +1,64 @@
+---
+import type { AlertProps } from './alert'
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+
+import info from '../../icons/info.svg?raw'
+import success from '../../icons/check.svg?raw'
+import warning from '../../icons/warning.svg?raw'
+import alert from '../../icons/alert.svg?raw'
+
+interface Props extends AlertProps {}
+
+const iconMap = {
+    info,
+    success,
+    warning,
+    alert
+}
+
+const {
+    element = 'section',
+    title,
+    titleTag = 'strong',
+    className,
+    theme,
+    ...rest
+} = Astro.props
+
+const Component = element
+const Title = titleTag
+const hasCustomIcon = Astro.slots.has('icon')
+
+const classes = [
+    'w-alert',
+    (!hasCustomIcon && !theme) && 'col',
+    theme,
+    className
+].filter(Boolean).join(' ')
+
+const props = {
+    class: classes
+}
+---
+
+<Component {...props} {...rest}>
+    <slot name="icon" />
+
+    {!hasCustomIcon && theme && <Fragment set:html={iconMap[theme]} />}
+
+    <ConditionalWrapper condition={!!(hasCustomIcon || theme)}>
+        <div class="alert-wrapper" slot="wrapper">
+            children
+        </div>
+        {title && (
+            <Title class:list="alert-title">{title}</Title>
+        )}
+        <div class="alert-body">
+            <slot />
+        </div>
+    </ConditionalWrapper>
+</Component>
+
+<style lang="scss">
+    @import './alert.scss';
+</style>

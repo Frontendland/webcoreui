@@ -1,0 +1,52 @@
+@import '../../scss/config.scss';
+
+.w-alert {
+    border: 1px solid #252525;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+
+    &.col {
+        flex-direction: column;
+    }
+
+    &:not(.col) {
+        gap: 10px;
+    }
+
+    &.info {
+        border: 1px solid #0abde3;
+        color: #0abde3;
+    }
+
+    &.success {
+        border: 1px solid #1dd1a1;
+        color: #1dd1a1;
+    }
+
+    &.warning {
+        border: 1px solid #ff9f43;
+        color: #ff9f43;
+    }
+
+    &.alert {
+        border: 1px solid #e73f40;
+        color: #e73f40;
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        margin-top: 1px;
+    }
+
+    .alert-title {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .alert-body {
+        font-size: 16px;
+        color: #BBB;
+    }
+}

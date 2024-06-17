@@ -1,0 +1,17 @@
+---
+import type { ConditionalWrapperProps } from './conditionalwrapper'
+
+interface Props extends ConditionalWrapperProps {}
+
+const { condition } = Astro.props
+
+const wrapper = await Astro.slots.render('wrapper')
+const children = await Astro.slots.render('default')
+const wrapped = wrapper?.replace('children', children)
+
+if (!Astro.slots.has('wrapper')) {
+  console.error('Missing wrapper. Add slot="wrapper" to one of the elements.')
+}
+---
+
+<Fragment set:html={condition ? wrapped : children} />

@@ -1,0 +1,83 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Icon from '@components/Icon/Icon.astro'
+import AstroAlert from '@components/Alert/Alert.astro'
+import SvelteAlert from '@components/Alert/Alert.svelte'
+import ReactAlert from '@components/Alert/Alert.tsx'
+
+const sections = [
+    {
+        title: 'Astro alerts',
+        component: AstroAlert
+    },
+    {
+        title: 'Svelte alerts',
+        component: SvelteAlert
+    },
+    {
+        title: 'React alerts',
+        component: ReactAlert
+    }
+]
+---
+
+<Layout>
+    <h1>Alert</h1>
+    <div class="grid md-2 lg-3">
+        <AstroAlert title="Astro alert" theme="warning">
+            Alert in Astro
+        </AstroAlert>
+
+        <SvelteAlert title="Svelte alert" theme="alert">
+            Alert in Svelte
+        </SvelteAlert>
+
+        <ReactAlert title="React alert" theme="info">
+            Alert in React
+        </ReactAlert>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <section.component>
+                Alert with only text.
+            </section.component>
+
+            <section.component title="Note">
+                Alert with text and title.
+            </section.component>
+
+            <section.component title="💡 Note">
+                Alert with emoji in title
+            </section.component>
+
+            <section.component title="Information" theme="info">
+                Predefined info theme alert.
+            </section.component>
+
+            <section.component title="Congratulations!" theme="success">
+                Predefined success theme alert.
+            </section.component>
+
+            <section.component title="Important" theme="warning">
+                Predefined warning theme alert.
+            </section.component>
+
+            <section.component title="Irreversible action" theme="alert">
+                Predefined alert theme alert.
+            </section.component>
+
+            <section.component title="Custom icons">
+                <Icon type="github" slot="icon" />
+                Alert element with custom icon.
+            </section.component>
+
+            <section.component title="Custom themed icon" theme="success">
+                <Icon type="github" slot="icon" />
+                Alert element with custom theme and icon.
+            </section.component>
+        </div>
+    ))}
+</Layout>

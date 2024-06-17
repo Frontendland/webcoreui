@@ -15,8 +15,7 @@ const Card = ({
     const classes = [
         'w-card',
         className,
-        secondary && 'secondary',
-        'card'
+        secondary && 'secondary'
     ].filter(Boolean).join(' ')
 
     return (
