@@ -1,7 +1,7 @@
 {
     "name": "webcoreui",
     "type": "module",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "scripts": {
         "dev": "astro dev",
         "build": "astro check && astro build",
