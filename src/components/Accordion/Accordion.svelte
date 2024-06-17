@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { AccordionProps } from './accordion'
     import ArrowDown from '../../icons/arrow-down.svg?raw'
+    import './accordion.scss'
 
     export let items: AccordionProps['items']
 
@@ -33,7 +34,3 @@
         </li>
     {/each}
 </ul>
-
-<style lang="scss">
-    @import './accordion.scss';
-</style>
