@@ -1,0 +1,117 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroAvatar from '@components/Avatar/Avatar.astro'
+import SvelteBadge from '@components/Badge/Badge.svelte'
+import ReactBadge from '@components/Badge/Badge.tsx'
+
+const sections = [
+    {
+        title: 'Astro avatars',
+        component: AstroAvatar
+    },
+    // {
+    //     title: 'Svelte avatars',
+    //     component: SvelteBadge
+    // },
+    // {
+    //     title: 'React avatars',
+    //     component: ReactBadge
+    // }
+]
+
+const group = [
+    "/img/avatar0.png",
+    "/img/avatar1.png",
+    "/img/avatar2.png",
+    "/img/avatar3.png",
+    "/img/avatar4.png"
+]
+---
+
+<Layout>
+    <h1>Avatar</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroAvatar img="/img/avatar0.png" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteBadge theme="alert">
+                Badge in Svelte
+            </SvelteBadge>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactBadge theme="info">
+                Badge in React
+            </ReactBadge>
+        </ComponentWrapper> 
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Single avatar with custom border color">
+                <section.component
+                    img="/img/avatar0.png"
+                    borderColor="#1dd1a1"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Borderless avatar">
+                <section.component
+                    img="/img/avatar0.png"
+                    borderless={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Avatar with size">
+                <section.component
+                    img="/img/avatar0.png"
+                    size={50}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Avatar group">
+                <section.component img={group} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Borderless avatars">
+                <section.component
+                    borderless={true}
+                    img={group}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Avatars in reverse order">
+                <section.component
+                    reverse={true}
+                    img={group}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Avatars with increasing sizes">
+                <section.component
+                    size={[35, 40, 45, 50, 55]}
+                    img={group}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Avatars with decreasing sizes">
+                <section.component
+                    size={[55, 50, 45, 40, 35]}
+                    img={group}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Avatars with varying sizes">
+                <section.component
+                    size={[30, 40, 50, 40, 30]}
+                    img={group}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

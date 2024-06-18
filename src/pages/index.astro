@@ -2,11 +2,12 @@
 import Layout from '@static/Layout.astro'
 import CardWrapper from '@static/CardWrapper.astro'
 
-import Button from '@components/Button/Button.astro'
 import Accordion from '@components/Accordion/Accordion.astro'
-import Icon from '@components/Icon/Icon.astro'
-import Badge from '@components/Badge/Badge.astro'
 import Alert from '@components/Alert/Alert.astro'
+import Avatar from '@components/Avatar/Avatar.astro'
+import Badge from '@components/Badge/Badge.astro'
+import Button from '@components/Button/Button.astro'
+import Icon from '@components/Icon/Icon.astro'
 ---
 
 <Layout>
@@ -44,6 +45,15 @@ import Alert from '@components/Alert/Alert.astro'
                 }]}
             />
         </CardWrapper>
+        <CardWrapper title="Alert" href="/alert">
+            <Alert title="💡 Note">You can create alert boxes.</Alert>
+        </CardWrapper>
+        <CardWrapper title="Avatar" href="/avatar">
+            <Avatar img="/img/avatar0.png" />
+        </CardWrapper>
+        <CardWrapper title="Badge" href="/badge">
+            <Badge theme="outline">Badge</Badge>
+        </CardWrapper>
         <CardWrapper title="Button" href="/button">
             <Button>Primary</Button>
             <Button theme="secondary">Secondary</Button>
@@ -53,12 +63,6 @@ import Alert from '@components/Alert/Alert.astro'
         </CardWrapper>
         <CardWrapper title="Icon" href="/icon">
             <Icon type="github" />
-        </CardWrapper>
-        <CardWrapper title="Badge" href="/badge">
-            <Badge theme="outline">Badge</Badge>
-        </CardWrapper>
-        <CardWrapper title="Alert" href="/alert">
-            <Alert title="💡 Note">You can create alert boxes.</Alert>
         </CardWrapper>
     </div>
 </Layout>

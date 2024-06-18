@@ -6,6 +6,10 @@ $config: (
     includeElementStyles: true
 );
 
+:root {
+    --w-avatar-border: #000;
+}
+
 @function config($key) {
     @return map.get($config, $key);
 }

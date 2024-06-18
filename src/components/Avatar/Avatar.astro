@@ -1,0 +1,51 @@
+---
+import type { AvatarProps } from './avatar'
+import './avatar.scss'
+
+interface Props extends AvatarProps {}
+
+const {
+    img,
+    alt = 'Avatar',
+    size = 40,
+    lazy = true,
+    borderColor,
+    borderless,
+    reverse,
+    className,
+} = Astro.props
+
+const classes = [
+    'w-avatar',
+    borderless && 'borderless',
+    className
+]
+---
+
+{Array.isArray(img) ? (
+    <div class:list={['w-avatar-group', reverse && 'reverse']}
+        style={borderColor ? `--w-avatar-border: ${borderColor};` : null}
+    >
+        {img.map((img, index) => (
+            <img
+                src={img}
+                alt={Array.isArray(alt) ? alt[index] : alt}
+                width={Array.isArray(size) ? size[index] : size}
+                height={Array.isArray(size) ? size[index] : size}
+                loading={lazy ? 'lazy' : null}
+                class:list={classes}
+                style={Array.isArray(size) ? `--w-avatar-index: ${size[index]}` : null}
+            />
+        ))}
+    </div>
+) : (
+    <img
+        src={img}
+        alt={Array.isArray(alt) ? alt[0] : alt}
+        width={Array.isArray(size) ? size[0] : size}
+        height={Array.isArray(size) ? size[0] : size}
+        class:list={classes}
+        loading={lazy ? 'lazy' : null}
+        style={borderColor ? `--w-avatar-border: ${borderColor};` : null}
+    />
+)}
