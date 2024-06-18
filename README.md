@@ -108,6 +108,18 @@ The `Setup` mixin can also accept the following options:
 |-----------|---------------|---------|
 | `includeResets` | `true` | Include reset styles. Set to `false` if you want to use your own CSS resets. |
 | `includeHelperClasses` | `true` | Adds global helper classes for CSS. All global helper classes are defined [here](https://github.com/Frontendland/webcoreui/tree/main/src/scss/global). |
+| `includeElementStyles` | `true` | Adds styles for native HTML elements, such as `code`, `pre`, or `ul`.
+
+Default component styles can also be changed by overriding the following CSS variables:
+
+```css
+:root {
+    --w-avatar-border: #000;
+    --w-rating-color: #FFF;
+    --w-rating-empty-color: #BBB;
+    --w-rating-size: 18px;
+}
+```
 
 ### Using Components
 
@@ -133,8 +145,10 @@ import { Accordion } from 'webcoreui/react'
 
 - [Accordion](https://github.com/Frontendland/webcoreui/tree/main/src/components/Accordion)
 - [Alert](https://github.com/Frontendland/webcoreui/tree/main/src/components/Alert)
-- [ConditionalWrapper](https://github.com/Frontendland/webcoreui/tree/main/src/components/ConditionalWrapper)
+- [Avatar](https://github.com/Frontendland/webcoreui/tree/main/src/components/Avatar)
 - [Badge](https://github.com/Frontendland/webcoreui/tree/main/src/components/Badge)
 - [Button](https://github.com/Frontendland/webcoreui/tree/main/src/components/Button)
 - [Card](https://github.com/Frontendland/webcoreui/tree/main/src/components/Card)
+- [ConditionalWrapper](https://github.com/Frontendland/webcoreui/tree/main/src/components/ConditionalWrapper)
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
+- [Rating](https://github.com/Frontendland/webcoreui/tree/main/src/components/Rating)
