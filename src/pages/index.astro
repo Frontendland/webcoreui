@@ -49,7 +49,16 @@ import Icon from '@components/Icon/Icon.astro'
             <Alert title="💡 Note">You can create alert boxes.</Alert>
         </CardWrapper>
         <CardWrapper title="Avatar" href="/avatar">
-            <Avatar img="/img/avatar0.png" />
+            <Avatar
+                size={[30, 40, 50, 40, 30]}
+                img={[
+                    '/img/avatar0.png',
+                    '/img/avatar1.png',
+                    '/img/avatar2.png',
+                    '/img/avatar3.png',
+                    '/img/avatar4.png'
+                ]}
+            />
         </CardWrapper>
         <CardWrapper title="Badge" href="/badge">
             <Badge theme="outline">Badge</Badge>
@@ -62,7 +71,31 @@ import Icon from '@components/Icon/Icon.astro'
             <p>Paragraph inside a card</p>  
         </CardWrapper>
         <CardWrapper title="Icon" href="/icon">
-            <Icon type="github" />
+            <Icon
+                type="github"
+                size={12}
+                color="#32e3a0"
+            />
+            <Icon
+                type="github"
+                size={16}
+                color="#32cae3"
+            />
+            <Icon
+                type="github"
+                size={20}
+                color="#ad74f7"
+            />
+            <Icon
+                type="github"
+                size={24}
+                color="#ff89aa"
+            />
+            <Icon
+                type="github"
+                size={30}
+                color="#f2c262"
+            />
         </CardWrapper>
     </div>
 </Layout>

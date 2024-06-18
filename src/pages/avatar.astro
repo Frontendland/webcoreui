@@ -3,22 +3,22 @@ import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
 
 import AstroAvatar from '@components/Avatar/Avatar.astro'
-import SvelteBadge from '@components/Badge/Badge.svelte'
-import ReactBadge from '@components/Badge/Badge.tsx'
+import SvelteAvatar from '@components/Avatar/Avatar.svelte'
+import ReactAvatar from '@components/Avatar/Avatar.tsx'
 
 const sections = [
     {
         title: 'Astro avatars',
         component: AstroAvatar
     },
-    // {
-    //     title: 'Svelte avatars',
-    //     component: SvelteBadge
-    // },
-    // {
-    //     title: 'React avatars',
-    //     component: ReactBadge
-    // }
+    {
+        title: 'Svelte avatars',
+        component: SvelteAvatar
+    },
+    {
+        title: 'React avatars',
+        component: ReactAvatar
+    }
 ]
 
 const group = [
@@ -34,19 +34,19 @@ const group = [
     <h1>Avatar</h1>
     <div class="grid md-2 lg-3">
         <ComponentWrapper type="Astro">
-            <AstroAvatar img="/img/avatar0.png" />
+            <AstroAvatar img="/img/avatar0.png" borderColor="#FFF" />
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
-            <SvelteBadge theme="alert">
+            <SvelteAvatar img="/img/avatar1.png" borderColor="#ee5253">
                 Badge in Svelte
-            </SvelteBadge>
+            </SvelteAvatar>
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
-            <ReactBadge theme="info">
+            <ReactAvatar img="/img/avatar1.png" borderColor="#48dbfb">
                 Badge in React
-            </ReactBadge>
+            </ReactAvatar>
         </ComponentWrapper> 
     </div>
 
