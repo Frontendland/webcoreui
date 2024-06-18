@@ -8,5 +8,4 @@ export type BadgeProps = {
         | 'alert'
         | null
     onClick?: () => any
-    [key: string]: any
 }

@@ -2,7 +2,11 @@ import React from 'react'
 import type { BadgeProps } from './badge'
 import './badge.scss'
 
-const Badge = ({ theme, onClick, children }: BadgeProps) => {
+type ReactBadgeProps = {
+    children: React.ReactNode
+} & BadgeProps
+
+const Badge = ({ theme, onClick, children }: ReactBadgeProps) => {
     const classes = [
         'w-badge',
         theme || null,

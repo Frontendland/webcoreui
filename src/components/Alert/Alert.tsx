@@ -16,6 +16,13 @@ const iconMap = {
     alert
 }
 
+type ReactAlertProps = {
+    Element?: keyof JSX.IntrinsicElements
+    TitleTag?: keyof JSX.IntrinsicElements
+    children: React.ReactNode
+    icon?: string
+}
+
 const Alert = ({
     Element = 'section',
     title,
@@ -25,7 +32,7 @@ const Alert = ({
     children,
     icon,
     ...rest
-}: AlertProps & { icon?: any }) => {
+}: AlertProps & ReactAlertProps) => {
     const classes = [
         'w-alert',
         (!icon && !theme) && 'col',

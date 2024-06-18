@@ -2,6 +2,12 @@ import React from 'react'
 import type { CardProps } from './card'
 import './card.scss'
 
+type ReactCardProps = {
+    Element?: keyof JSX.IntrinsicElements
+    TitleTag?: keyof JSX.IntrinsicElements
+    children: React.ReactNode
+}
+
 const Card = ({
     Element = 'section',
     title,
@@ -11,7 +17,7 @@ const Card = ({
     secondary,
     children,
     ...rest
-}: CardProps) => {
+}: CardProps & ReactCardProps) => {
     const classes = [
         'w-card',
         className,

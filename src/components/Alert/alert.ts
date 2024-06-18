@@ -9,5 +9,4 @@ export type AlertProps = {
         | 'warning'
         | 'alert'
         | null
-    [key: string]: any
 }
