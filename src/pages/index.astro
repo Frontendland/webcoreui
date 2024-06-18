@@ -8,6 +8,7 @@ import Avatar from '@components/Avatar/Avatar.astro'
 import Badge from '@components/Badge/Badge.astro'
 import Button from '@components/Button/Button.astro'
 import Icon from '@components/Icon/Icon.astro'
+import Rating from '@components/Rating/Rating.astro'
 ---
 
 <Layout>
@@ -96,6 +97,9 @@ import Icon from '@components/Icon/Icon.astro'
                 size={30}
                 color="#f2c262"
             />
+        </CardWrapper>
+        <CardWrapper title="Rating" href="/rating">
+            <Rating score={4} />
         </CardWrapper>
     </div>
 </Layout>

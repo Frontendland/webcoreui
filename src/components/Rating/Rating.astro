@@ -1,0 +1,66 @@
+---
+import type { RatingProps } from './rating'
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+
+import './rating.scss'
+
+interface Props extends RatingProps {}
+
+const {
+    score,
+    total = 5,
+    showText,
+    text = '{0} out of {1}',
+    showEmpty = true,
+    outline = true,
+    reviewCount,
+    reviewText = '{0} reviews',
+    reviewLink,
+    reviewTarget,
+    color,
+    emptyColor,
+    size,
+    className
+} = Astro.props
+
+const classes = [
+    'w-rating',
+    outline && 'outline',
+    className
+]
+
+const styles = [
+    color && `--w-rating-color: ${color};`,
+    size && `--w-rating-size: ${size}px;`,
+    emptyColor && `--w-rating-empty-color: ${emptyColor};`
+].filter(Boolean).join(' ')
+
+const translatedText = text
+    .replace('{0}', `${score}`)
+    .replace('{1}', `${total}`)
+
+const translatedReviewText = reviewText.replace('{0}', `${reviewCount}`)
+---
+
+<span class:list={classes} style={styles || null}>
+    <span class="score">{Array(score).fill('★').join('')}</span>
+    {showEmpty && (
+        <span class:list={['empty', total === 10 && 'ten-star']}>
+            {Array(total - score).fill('★').join('')}
+        </span>
+    )}
+    {showText && (
+        <span class:list={['text', reviewCount && 'm']}>
+            {translatedText}
+        </span>
+    )}
+    {reviewCount && '•'}
+    {reviewCount && (
+        <ConditionalWrapper condition={!!reviewLink}>
+            <a href={reviewLink} target={reviewTarget} slot="wrapper">
+                children
+            </a>
+            <span class="text">{translatedReviewText}</span>
+        </ConditionalWrapper>
+    )}
+</span>

@@ -1,0 +1,37 @@
+@import '../../scss/config.scss';
+
+.w-rating {
+    display: inline-flex;
+    align-items: center;
+    color: var(--w-rating-color);
+    font-size: var(--w-rating-size);
+
+    &.outline .empty {
+        transform: scale(.88);
+        color: black;
+        text-shadow: -1px 0 var(--w-rating-color), 0 1px var(--w-rating-color), 1px 0 var(--w-rating-color), 0 -1px var(--w-rating-color);
+        letter-spacing: 2px;
+    }
+
+    .empty {
+        color: var(--w-rating-empty-color);
+
+        &.ten-star {
+            margin-left: -3px;
+        }
+    }
+
+    a {
+        text-decoration: underline;
+    }
+    
+    .text {
+        font-size: 16px;
+        color: #BBB;
+        margin-left: 5px;
+
+        &.m {
+            margin-right: 5px;
+        }
+    }
+}

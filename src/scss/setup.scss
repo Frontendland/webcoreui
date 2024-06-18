@@ -8,6 +8,9 @@ $config: (
 
 :root {
     --w-avatar-border: #000;
+    --w-rating-color: #FFF;
+    --w-rating-empty-color: #BBB;
+    --w-rating-size: 18px;
 }
 
 @function config($key) {

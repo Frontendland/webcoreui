@@ -1,0 +1,128 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroRating from '@components/Rating/Rating.astro'
+import SvelteRating from '@components/Rating/Rating.svelte'
+import ReactRating from '@components/Rating/Rating.tsx'
+
+const sections = [
+    {
+        title: 'Astro ratings',
+        component: AstroRating
+    },
+    {
+        title: 'Svelte ratings',
+        component: SvelteRating
+    },
+    {
+        title: 'React ratings',
+        component: ReactRating
+    }
+]
+---
+
+<Layout>
+    <h1>Rating</h1>
+    <div class="grid md-2 lg-3">
+        <AstroRating score={5} />
+        <SvelteRating score={4} color="#ee5253" />
+        <ReactRating score={3} color="#48dbfb" />
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default 5-star rating">
+                <section.component score={5} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="3-star rating">
+                <section.component score={3} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="5-star rating out of 10">
+                <section.component score={5} total={10} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating without outline">
+                <section.component score={3} outline={false} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating without empty stars">
+                <section.component score={3} showEmpty={false} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating with size">
+                <section.component score={4} size={24} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating with color">
+                <section.component
+                    score={3}
+                    outline={false}
+                    color="#f7aa61"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating with empty color">
+                <section.component
+                    score={3}
+                    outline={false}
+                    color="#f7aa61"
+                    emptyColor='#555'
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating with color and outline">
+                <section.component score={3} color="#f7aa61" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating with default text">
+                <section.component score={3} showText={true} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating with translated text">
+                <section.component
+                    score={3}
+                    showText={true}
+                    text="{0} from {1}"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating with review text">
+                <section.component
+                    score={3}
+                    reviewCount={123}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating with translated review text">
+                <section.component
+                    score={3}
+                    reviewCount={123}
+                    reviewText="{0} ratings"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Review text with link">
+                <section.component
+                    score={3}
+                    reviewCount={123}
+                    reviewText="{0} ratings"
+                    reviewLink="/avatar"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating with all text">
+                <section.component
+                    score={3}
+                    showText={true}
+                    reviewCount={123}
+                    reviewLink="/avatar"
+                    reviewTarget="_blank"
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

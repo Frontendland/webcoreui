@@ -30,7 +30,7 @@ const Title = titleTag
 
 <Component {...props} {...rest}>
     {title && (
-        <Title class="card-title">{title}</Title>
+        <Title class:list="card-title">{title}</Title>
     )}
     <div class="card-body" class:list={[compact && 'compact']}>
         {compact && !secondary ? (
