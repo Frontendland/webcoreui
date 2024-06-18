@@ -7,6 +7,8 @@ import success from '../../icons/check.svg?raw'
 import warning from '../../icons/warning.svg?raw'
 import alert from '../../icons/alert.svg?raw'
 
+import './alert.scss'
+
 interface Props extends AlertProps {}
 
 const iconMap = {
@@ -58,7 +60,3 @@ const props = {
         </div>
     </ConditionalWrapper>
 </Component>
-
-<style lang="scss">
-    @import './alert.scss';
-</style>

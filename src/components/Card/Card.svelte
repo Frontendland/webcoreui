@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { CardProps } from './card'
+    import './card.scss'
 
     export let element: CardProps['element'] = 'section'
     export let title: CardProps['title'] = ''
@@ -29,7 +30,3 @@
         {/if}
     </div>
 </svelte:element>
-
-<style lang="scss">
-    @import './card.scss';
-</style>

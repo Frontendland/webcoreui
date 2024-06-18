@@ -1,5 +1,6 @@
 ---
 import type { BadgeProps } from './badge'
+import './badge.scss'
 
 interface Props extends BadgeProps {
     interactive?: boolean
@@ -20,8 +21,3 @@ const classes = [
 <span class:list={classes}>
     <slot />
 </span>
-
-
-<style lang="scss">
-    @import './badge.scss';
-</style>

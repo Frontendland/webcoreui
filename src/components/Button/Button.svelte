@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { ButtonProps } from './button'
+    import './button.scss'
 
     export let theme: ButtonProps['theme'] = null
     export let bold: ButtonProps['bold'] = false
@@ -23,7 +24,3 @@
         <slot />
     </button>
 {/if}
-
-<style lang="scss">
-    @import './button.scss';
-</style>

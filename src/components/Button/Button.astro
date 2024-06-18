@@ -1,5 +1,6 @@
 ---
 import type { ButtonProps } from './button'
+import './button.scss'
 
 interface Props extends ButtonProps {}
 
@@ -26,7 +27,3 @@ const classes = [
         <slot />
     </button>
 )}
-
-<style lang="scss">
-    @import './button.scss';
-</style>

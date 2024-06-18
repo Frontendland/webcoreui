@@ -7,6 +7,8 @@
     import warning from '../../icons/warning.svg?raw'
     import alert from '../../icons/alert.svg?raw'
 
+    import './alert.scss'
+
     export let element: AlertProps['element'] = 'section'
     export let title: AlertProps['title'] = null
     export let titleTag: AlertProps['title'] = 'strong'
@@ -52,7 +54,3 @@
         </div>
     </ConditionalWrapper>
 </svelte:element>
-
-<style lang="scss">
-    @import './alert.scss';
-</style>
