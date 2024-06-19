@@ -9,6 +9,7 @@ import Badge from '@components/Badge/Badge.astro'
 import Button from '@components/Button/Button.astro'
 import Icon from '@components/Icon/Icon.astro'
 import Rating from '@components/Rating/Rating.astro'
+import Switch from '@components/Switch/Switch.astro'
 ---
 
 <Layout>
@@ -100,6 +101,10 @@ import Rating from '@components/Rating/Rating.astro'
         </CardWrapper>
         <CardWrapper title="Rating" href="/rating">
             <Rating score={4} />
+        </CardWrapper>
+
+        <CardWrapper title="Switch" href="/switch">
+            <Switch toggled={true} />
         </CardWrapper>
     </div>
 </Layout>

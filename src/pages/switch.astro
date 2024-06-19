@@ -1,0 +1,94 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroSwitch from '@components/Switch/Switch.astro'
+import SvelteSwitch from '@components/Switch/Switch.svelte'
+import ReactSwitch from '@components/Switch/Switch.tsx'
+
+const sections = [
+    {
+        title: 'Astro ratings',
+        component: AstroSwitch
+    },
+    {
+        title: 'Svelte ratings',
+        component: SvelteSwitch
+    },
+    {
+        title: 'React ratings',
+        component: ReactSwitch
+    }
+]
+---
+
+<Layout>
+    <h1>Switch</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroSwitch />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteSwitch color="#ee5253" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactSwitch color="#48dbfb" />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Toggled by default">
+                <section.component toggled={true} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With custom colors">
+                <section.component
+                    offColor="#ee5253"
+                    onColor="#1dd1a1"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label">
+                <section.component label="Toggle me" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label on left">
+                <section.component label="Toggle me" reverse={true} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Square toggle">
+                <section.component
+                    square={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Small toggle">
+                <section.component
+                    small={true}
+                    label="With label"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Small square toggle">
+                <section.component
+                    square={true}
+                    small={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled toggle">
+                <section.component
+                    disabled={true}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

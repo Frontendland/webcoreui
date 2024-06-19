@@ -1,0 +1,84 @@
+@import '../../scss/config.scss';
+
+.w-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+
+    &.disabled .toggle {
+        cursor: no-drop;
+        background: #333;
+
+        &::before {
+            background: #252525;
+        }
+    }
+
+    &.small {
+        input:checked + span::before {
+            transform: translateX(20px);
+        }
+
+        .toggle {
+            width: 40px;
+            height: 20px;
+    
+            &::before {
+                height: 14px;
+                width: 14px;
+            }
+        }
+
+        .label {
+            font-size: 14px;
+        }
+    }
+
+    &.square .toggle {
+        border-radius: 5px;
+
+        &::before {
+            border-radius: 5px;
+        }
+    }
+
+    input {
+        display: none;
+
+        &:checked + span {
+            background-color: var(--w-switch-on-color);
+    
+            &::before {
+                transform: translateX(30px);
+            }
+        }
+    }
+
+    .toggle {
+        @include Transition(background);
+        position: relative;
+        width: 60px;
+        height: 30px;
+        background: var(--w-switch-off-color);
+        border-radius: 30px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: 24px;
+            width: 24px;
+            left: 3px;
+            bottom: 3px;
+            background: #000;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+    }
+}
+  
+  
