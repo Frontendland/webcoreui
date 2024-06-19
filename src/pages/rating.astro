@@ -25,9 +25,17 @@ const sections = [
 <Layout>
     <h1>Rating</h1>
     <div class="grid md-2 lg-3">
-        <AstroRating score={5} />
-        <SvelteRating score={4} color="#ee5253" />
-        <ReactRating score={3} color="#48dbfb" />
+        <ComponentWrapper type="Astro">
+            <AstroRating score={5} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteRating score={4} color="#ee5253" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactRating score={3} color="#48dbfb" />
+        </ComponentWrapper>
     </div>
 
     {sections.map(section => (
@@ -82,7 +90,7 @@ const sections = [
                 <section.component score={3} showText={true} />
             </ComponentWrapper>
 
-            <ComponentWrapper title="Rating with translated text">
+            <ComponentWrapper title="Rating with custom text">
                 <section.component
                     score={3}
                     showText={true}
@@ -97,7 +105,7 @@ const sections = [
                 />
             </ComponentWrapper>
 
-            <ComponentWrapper title="Rating with translated review text">
+            <ComponentWrapper title="Rating with custom review text">
                 <section.component
                     score={3}
                     reviewCount={123}
