@@ -13,7 +13,7 @@
     export let boxed: CheckboxProps['boxed'] = false
     export let color: CheckboxProps['color'] = ''
     export let onClick: () => any = () => {}
-    
+
     const classes = [
         'w-checkbox',
         boxed && 'boxed',
@@ -25,13 +25,18 @@
         : null
 </script>
 
-<label class={classes} style={style} on:click={onClick}>
+<label class={classes} style={style}>
     <ConditionalWrapper
         condition={!!(label && subText)}
         element="div"
         class="checkbox-wrapper"
     >
-        <input type="checkbox" checked={checked} disabled={disabled} />
+        <input
+            type="checkbox"
+            checked={checked}
+            disabled={disabled}
+            on:click={onClick}
+        />
         <span class="check">
             {@html check}
         </span>

@@ -3,7 +3,7 @@ import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
 
 import AstroAccordion from '@components/Accordion/Accordion.astro'
-import SvelteAccorion from '@components/Accordion/Accordion.svelte'
+import SvelteAccordion from '@components/Accordion/Accordion.svelte'
 import ReactAccordion from '@components/Accordion/Accordion.tsx'
 
 const accordionItems = [{
@@ -27,7 +27,7 @@ const accordionItems = [{
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
-            <SvelteAccorion items={accordionItems} client:load />
+            <SvelteAccordion items={accordionItems} client:load />
         </ComponentWrapper>
 
         <ComponentWrapper type="React">

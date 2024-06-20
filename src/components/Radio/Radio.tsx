@@ -29,11 +29,11 @@ const Radio = ({
 
     return (
         <div className={classes} style={style}>
-            {items.map(item => (
+            {items.map((item, index) => (
                 <label className={[
                     item.subText && 'col',
                     item.disabled && 'disabled'
-                ].filter(Boolean).join(' ')}>
+                ].filter(Boolean).join(' ')} key={index}>
                     <ConditionalWrapper
                         condition={!!(item.subText)}
                         wrapper={children => (
@@ -44,7 +44,8 @@ const Radio = ({
                     >
                         <input
                             type="radio"
-                            name={name} 
+                            name={name}
+                            value={item.value}
                             checked={item.selected}
                             disabled={item.disabled}
                             onChange={onChange}

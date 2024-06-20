@@ -28,10 +28,15 @@ import Checkbox from '@components/Checkbox/Checkbox.astro'
     <div class="cta">
         <Button
             href="https://github.com/Frontendland/webcoreui" target="_blank"
-            theme="secondary"
         >
             <Icon type="github" size={20} />
             GitHub
+        </Button>
+        <Button theme="secondary" href="/svelte">
+            Svelte Playground
+        </Button>
+        <Button theme="secondary" href="/react">
+            React Playground
         </Button>
     </div>
     <div class="grid md-2 lg-3">
@@ -106,7 +111,7 @@ import Checkbox from '@components/Checkbox/Checkbox.astro'
         </CardWrapper>
         <CardWrapper title="Radio" href="/radio">
             <Radio
-                items={[{ label: 'Radio', selected: true }]}
+                items={[{ label: 'Radio', selected: true, value: '1' }]}
                 name="radio"
             />
         </CardWrapper>
@@ -139,6 +144,9 @@ import Checkbox from '@components/Checkbox/Checkbox.astro'
 
     .cta {
         text-align: center;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
     }
     
     .grid {

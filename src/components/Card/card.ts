@@ -5,4 +5,5 @@ export type CardProps = {
     compact?: boolean
     className?: string
     secondary?: boolean
+    [key: string]: any
 }

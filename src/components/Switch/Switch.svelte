@@ -28,8 +28,13 @@
     ].filter(Boolean).join(' ')
 </script>
 
-<label class={classes} style={styles || null} on:click={onClick}>
-    <input type="checkbox" checked={toggled} disabled={disabled} />
+<label class={classes} style={styles || null}>
+    <input
+        type="checkbox"
+        checked={toggled}
+        disabled={disabled}
+        on:click={onClick}
+    />
     <span class="toggle"></span>
     {#if label}
         <span class="label">{label}</span>

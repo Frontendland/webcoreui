@@ -27,14 +27,14 @@ const sections = [
     <div class="grid md-2 lg-3">
         <ComponentWrapper type="Astro">
             <AstroRadio
-                items={[{ label: 'Radio', selected: true }]}
+                items={[{ label: 'Radio', selected: true, value: '1' }]}
                 name="radio1"
             />
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
             <SvelteRadio
-                items={[{ label: 'Radio', selected: true }]}
+                items={[{ label: 'Radio', selected: true, value: '1' }]}
                 name="radio2"
                 color="#ee5253"
             />
@@ -42,7 +42,7 @@ const sections = [
 
         <ComponentWrapper type="React">
             <ReactRadio
-                items={[{ label: 'Radio', selected: true }]}
+                items={[{ label: 'Radio', selected: true, value: '1' }]}
                 name="radio3"
                 color="#48dbfb"
             />
@@ -55,9 +55,9 @@ const sections = [
             <ComponentWrapper title="Default with link">
                 <section.component
                     items={[
-                        { label: 'Small' },
-                        { label: 'Medium with <a href="/" target="_blank">link</a>' },
-                        { label: 'Large' }
+                        { label: 'Small', value: 'sm' },
+                        { label: 'Medium with <a href="/" target="_blank">link</a>', value: 'md' },
+                        { label: 'Large', value: 'lg' }
                     ]}
                     name={`radio1-${index}`}
                 />
@@ -66,9 +66,9 @@ const sections = [
             <ComponentWrapper title="Preselected option">
                 <section.component
                     items={[
-                        { label: 'Small' },
-                        { label: 'Medium', selected: true },
-                        { label: 'Large' }
+                        { label: 'Small', value: 'sm' },
+                        { label: 'Medium', selected: true, value: 'md' },
+                        { label: 'Large', value: 'lg' }
                     ]}
                     name={`radio2-${index}`}
                 />
@@ -77,9 +77,9 @@ const sections = [
             <ComponentWrapper title="Disabled option">
                 <section.component
                     items={[
-                        { label: 'Small' },
-                        { label: 'Medium', selected: true, disabled: true },
-                        { label: 'Large', disabled: true }
+                        { label: 'Small', value: 'sm' },
+                        { label: 'Medium', selected: true, disabled: true, value: 'md' },
+                        { label: 'Large', disabled: true, value: 'lg' }
                     ]}
                     name={`radio3-${index}`}
                 />
@@ -88,9 +88,9 @@ const sections = [
             <ComponentWrapper title="Options with subtext and link">
                 <section.component
                     items={[
-                        { label: 'Starter', subText: 'For getting started' },
-                        { label: 'Standard', subText: 'For existing small <a href="/" target="_blank">businesses</a>' },
-                        { label: 'Premium', subText: 'For enterprise solutions' }
+                        { label: 'Starter', subText: 'For getting started', value: 'starter' },
+                        { label: 'Standard', subText: 'For existing small <a href="/" target="_blank">businesses</a>', value: 'standard' },
+                        { label: 'Premium', subText: 'For enterprise solutions', value: 'premium' }
                     ]}
                     name={`radio4-${index}`}
                 />
@@ -99,9 +99,9 @@ const sections = [
             <ComponentWrapper title="With custom color">
                 <section.component
                     items={[
-                        { label: 'Small' },
-                        { label: 'Medium' },
-                        { label: 'Large' }
+                        { label: 'Small', value: 'sm' },
+                        { label: 'Medium', value: 'md' },
+                        { label: 'Large', value: 'lg' }
                     ]}
                     color="#1dd1a1"
                     name={`radio5-${index}`}
@@ -111,9 +111,9 @@ const sections = [
             <ComponentWrapper title="With inline display">
                 <section.component
                     items={[
-                        { label: 'Small' },
-                        { label: 'Medium' },
-                        { label: 'Large' }
+                        { label: 'Small', value: 'sm' },
+                        { label: 'Medium', value: 'md' },
+                        { label: 'Large', value: 'lg' }
                     ]}
                     inline={true}
                     name={`radio6-${index}`}

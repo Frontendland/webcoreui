@@ -35,7 +35,8 @@
             >
                 <input
                     type="radio"
-                    name={name} 
+                    name={name}
+                    value={item.value}
                     checked={item.selected}
                     disabled={item.disabled}
                     on:change={onChange}

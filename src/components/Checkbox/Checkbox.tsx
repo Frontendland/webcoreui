@@ -30,7 +30,7 @@ const Checkbox = ({
         : undefined
 
     return (
-        <label className={classes} style={style} onClick={onClick}>
+        <label className={classes} style={style}>
             <ConditionalWrapper
                 condition={!!(label && subText)}
                 wrapper={children => (
@@ -43,6 +43,7 @@ const Checkbox = ({
                     type="checkbox"
                     checked={checked}
                     disabled={disabled}
+                    onClick={onClick}
                 />
                 <span
                     className="check"

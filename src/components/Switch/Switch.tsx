@@ -33,8 +33,13 @@ const Switch = ({
     } as React.CSSProperties
 
     return (
-        <label className={classes} style={styles || null} onClick={onClick}>
-            <input type="checkbox" checked={toggled} disabled={disabled} />
+        <label className={classes} style={styles || null}>
+            <input
+                type="checkbox"
+                checked={toggled}
+                disabled={disabled}
+                onClick={onClick}
+            />
             <span className="toggle"></span>
             {label && <span className="label">{label}</span>}
         </label>
