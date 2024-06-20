@@ -1,0 +1,124 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroRadio from '@components/Radio/Radio.astro'
+import SvelteRadio from '@components/Radio/Radio.svelte'
+import ReactRadio from '@components/Radio/Radio.tsx'
+
+const sections = [
+    {
+        title: 'Astro radios',
+        component: AstroRadio
+    },
+    {
+        title: 'Svelte radios',
+        component: SvelteRadio
+    },
+    {
+        title: 'React radios',
+        component: ReactRadio
+    }
+]
+---
+
+<Layout>
+    <h1>Radio</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroRadio
+                items={[{ label: 'Radio', selected: true }]}
+                name="radio1"
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteRadio
+                items={[{ label: 'Radio', selected: true }]}
+                name="radio2"
+                color="#ee5253"
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactRadio
+                items={[{ label: 'Radio', selected: true }]}
+                name="radio3"
+                color="#48dbfb"
+            />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map((section, index) => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default with link">
+                <section.component
+                    items={[
+                        { label: 'Small' },
+                        { label: 'Medium with <a href="/" target="_blank">link</a>' },
+                        { label: 'Large' }
+                    ]}
+                    name={`radio1-${index}`}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Preselected option">
+                <section.component
+                    items={[
+                        { label: 'Small' },
+                        { label: 'Medium', selected: true },
+                        { label: 'Large' }
+                    ]}
+                    name={`radio2-${index}`}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled option">
+                <section.component
+                    items={[
+                        { label: 'Small' },
+                        { label: 'Medium', selected: true, disabled: true },
+                        { label: 'Large', disabled: true }
+                    ]}
+                    name={`radio3-${index}`}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Options with subtext and link">
+                <section.component
+                    items={[
+                        { label: 'Starter', subText: 'For getting started' },
+                        { label: 'Standard', subText: 'For existing small <a href="/" target="_blank">businesses</a>' },
+                        { label: 'Premium', subText: 'For enterprise solutions' }
+                    ]}
+                    name={`radio4-${index}`}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With custom color">
+                <section.component
+                    items={[
+                        { label: 'Small' },
+                        { label: 'Medium' },
+                        { label: 'Large' }
+                    ]}
+                    color="#1dd1a1"
+                    name={`radio5-${index}`}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With inline display">
+                <section.component
+                    items={[
+                        { label: 'Small' },
+                        { label: 'Medium' },
+                        { label: 'Large' }
+                    ]}
+                    inline={true}
+                    name={`radio6-${index}`}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

@@ -8,6 +8,7 @@ import Avatar from '@components/Avatar/Avatar.astro'
 import Badge from '@components/Badge/Badge.astro'
 import Button from '@components/Button/Button.astro'
 import Icon from '@components/Icon/Icon.astro'
+import Radio from '@components/Radio/Radio.astro'
 import Rating from '@components/Rating/Rating.astro'
 import Switch from '@components/Switch/Switch.astro'
 import Checkbox from '@components/Checkbox/Checkbox.astro'
@@ -74,7 +75,7 @@ import Checkbox from '@components/Checkbox/Checkbox.astro'
             <p>Paragraph inside a card</p>  
         </CardWrapper>
         <CardWrapper title="Checkbox" href="/checkbox">
-            <Checkbox checked={true} />
+            <Checkbox checked={true} label="Accept terms and conditions" />
         </CardWrapper>
         <CardWrapper title="Icon" href="/icon">
             <Icon
@@ -103,10 +104,15 @@ import Checkbox from '@components/Checkbox/Checkbox.astro'
                 color="#f2c262"
             />
         </CardWrapper>
+        <CardWrapper title="Radio" href="/radio">
+            <Radio
+                items={[{ label: 'Radio', selected: true }]}
+                name="radio"
+            />
+        </CardWrapper>
         <CardWrapper title="Rating" href="/rating">
             <Rating score={4} />
         </CardWrapper>
-
         <CardWrapper title="Switch" href="/switch">
             <Switch toggled={true} />
         </CardWrapper>
