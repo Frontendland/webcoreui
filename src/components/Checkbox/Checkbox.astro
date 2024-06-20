@@ -43,5 +43,9 @@ const style = color
             </span>
         )}
     </ConditionalWrapper>
-    {label && subText && <span class="sub-text">{subText}</span>}
+    {label && subText && (
+        <span class="sub-text">
+            <Fragment set:html={subText} />
+        </span>
+    )}
 </label>

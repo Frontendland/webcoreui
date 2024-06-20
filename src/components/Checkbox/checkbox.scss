@@ -5,6 +5,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    font-size: 16px;
 
     &.col {
         flex-direction: column;
@@ -58,7 +59,7 @@
         display: inline-block;
         width: 15px;
         height: 15px;
-        border: 1px solid var(--w-checkbox-color);;
+        border: 1px solid var(--w-checkbox-color);
         border-radius: 2px;
         position: relative;
 
@@ -69,7 +70,16 @@
 
     .sub-text {
         margin-left: 25px;
-        font-size: 16px;
+        font-size: 14px;
         color: #BBB;
+
+        a {
+            @include Transition(color);
+            color: #BBB;
+
+            &:hover {
+                color: #FFF;
+            }
+        }
     }
 }

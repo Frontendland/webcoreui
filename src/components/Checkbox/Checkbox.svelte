@@ -42,6 +42,6 @@
         {/if}
     </ConditionalWrapper>
     {#if label && subText}
-        <span class="sub-text">{subText}</span>
+        <span class="sub-text">{@html subText}</span>
     {/if}
 </label>

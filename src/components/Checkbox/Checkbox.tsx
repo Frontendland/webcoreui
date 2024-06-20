@@ -56,7 +56,10 @@ const Checkbox = ({
                 )}
             </ConditionalWrapper>
             {label && subText && (
-                <span className="sub-text">{subText}</span>
+                <span
+                    className="sub-text"
+                    dangerouslySetInnerHTML={{ __html: subText }}
+                />
             )}
         </label>
     )
