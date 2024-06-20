@@ -41,7 +41,7 @@ const Checkbox = ({
             >
                 <input
                     type="checkbox"
-                    checked={checked}
+                    defaultChecked={checked}
                     disabled={disabled}
                     onClick={onClick}
                 />

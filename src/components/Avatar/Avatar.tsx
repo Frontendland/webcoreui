@@ -33,6 +33,7 @@ const Avatar = ({
         >
             {img.map((img, index) => (
                 <img
+                    key={index}
                     src={img}
                     alt={Array.isArray(alt) ? alt[index] : alt}
                     width={Array.isArray(size) ? size[index] : size}

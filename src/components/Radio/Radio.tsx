@@ -46,7 +46,7 @@ const Radio = ({
                             type="radio"
                             name={name}
                             value={item.value}
-                            checked={item.selected}
+                            defaultChecked={item.selected}
                             disabled={item.disabled}
                             onChange={onChange}
                         />

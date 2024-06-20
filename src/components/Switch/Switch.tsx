@@ -36,7 +36,7 @@ const Switch = ({
         <label className={classes} style={styles || null}>
             <input
                 type="checkbox"
-                checked={toggled}
+                defaultChecked={toggled}
                 disabled={disabled}
                 onClick={onClick}
             />
