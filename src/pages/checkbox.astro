@@ -1,0 +1,88 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroCheckbox from '@components/Checkbox/Checkbox.astro'
+import SvelteCheckbox from '@components/Checkbox/Checkbox.svelte'
+import ReactCheckbox from '@components/Checkbox/Checkbox.tsx'
+
+const sections = [
+    {
+        title: 'Astro checkboxes',
+        component: AstroCheckbox
+    },
+    {
+        title: 'Svelte checkboxes',
+        component: SvelteCheckbox
+    },
+    {
+        title: 'React checkboxes',
+        component: ReactCheckbox
+    }
+]
+---
+
+<Layout>
+    <h1>Checkbox</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroCheckbox checked={true} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteCheckbox color="#ee5253" checked={true} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactCheckbox color="#48dbfb" checked={true} />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Checked">
+                <section.component checked={true} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With custom color">
+                <section.component checked={true} color="#1dd1a1" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label">
+                <section.component label="Accept terms and conditions" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With link in label">
+                <section.component label="Accept the <a href='/' target='_blank'>terms</a>." />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label and subtitle">
+                <section.component
+                    label="Accept terms and conditions"
+                    subText="You must accept our terms to continue."
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled">
+                <section.component disabled={true} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Checked and disabled">
+                <section.component disabled={true} checked={true} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Boxed">
+                <section.component
+                    label="Accept terms and conditions"
+                    subText="You must accept our terms to continue."
+                    boxed={true}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

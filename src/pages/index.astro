@@ -10,6 +10,7 @@ import Button from '@components/Button/Button.astro'
 import Icon from '@components/Icon/Icon.astro'
 import Rating from '@components/Rating/Rating.astro'
 import Switch from '@components/Switch/Switch.astro'
+import Checkbox from '@components/Checkbox/Checkbox.astro'
 ---
 
 <Layout>
@@ -71,6 +72,9 @@ import Switch from '@components/Switch/Switch.astro'
         </CardWrapper>
         <CardWrapper title="Card" href="/card">
             <p>Paragraph inside a card</p>  
+        </CardWrapper>
+        <CardWrapper title="Checkbox" href="/checkbox">
+            <Checkbox checked={true} />
         </CardWrapper>
         <CardWrapper title="Icon" href="/icon">
             <Icon

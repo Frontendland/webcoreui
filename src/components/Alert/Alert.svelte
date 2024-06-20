@@ -3,7 +3,7 @@
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
     import info from '../../icons/info.svg?raw'
-    import success from '../../icons/check.svg?raw'
+    import success from '../../icons/circle-check.svg?raw'
     import warning from '../../icons/warning.svg?raw'
     import alert from '../../icons/alert.svg?raw'
 

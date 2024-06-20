@@ -1,0 +1,75 @@
+@import '../../scss/config.scss';
+
+.w-checkbox {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    &.col {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 5px;
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+
+    &.boxed {
+        border: 1px solid #252525;
+        border-radius: 5px;
+        padding: 20px;
+    }
+
+    input {
+        display: none;
+
+        &:checked + span {
+            background-color: var(--w-checkbox-color);
+
+            svg {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: block;
+                color: #252525;
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        &:disabled + span {
+            background-color: #333;
+            border-color: #333;
+            cursor: no-drop;
+        }
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    .check {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border: 1px solid var(--w-checkbox-color);;
+        border-radius: 2px;
+        position: relative;
+
+        svg {
+            display: none;
+        }
+    }
+
+    .sub-text {
+        margin-left: 25px;
+        font-size: 16px;
+        color: #BBB;
+    }
+}

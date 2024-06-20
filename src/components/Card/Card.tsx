@@ -6,7 +6,7 @@ type ReactCardProps = {
     Element?: keyof JSX.IntrinsicElements
     TitleTag?: keyof JSX.IntrinsicElements
     children: React.ReactNode
-}
+} & CardProps
 
 const Card = ({
     Element = 'section',
@@ -17,7 +17,7 @@ const Card = ({
     secondary,
     children,
     ...rest
-}: CardProps & ReactCardProps) => {
+}: ReactCardProps) => {
     const classes = [
         'w-card',
         className,

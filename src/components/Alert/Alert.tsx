@@ -3,7 +3,7 @@ import type { AlertProps } from './alert'
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
 import info from '../../icons/info.svg?raw'
-import success from '../../icons/check.svg?raw'
+import success from '../../icons/circle-check.svg?raw'
 import warning from '../../icons/warning.svg?raw'
 import alert from '../../icons/alert.svg?raw'
 
@@ -21,7 +21,7 @@ type ReactAlertProps = {
     TitleTag?: keyof JSX.IntrinsicElements
     children: React.ReactNode
     icon?: string
-}
+} & AlertProps
 
 const Alert = ({
     Element = 'section',
@@ -32,7 +32,7 @@ const Alert = ({
     children,
     icon,
     ...rest
-}: AlertProps & ReactAlertProps) => {
+}: ReactAlertProps) => {
     const classes = [
         'w-alert',
         (!icon && !theme) && 'col',

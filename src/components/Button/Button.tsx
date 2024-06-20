@@ -4,7 +4,7 @@ import './button.scss'
 
 type ReactButtonProps = {
     children: React.ReactNode
-}
+} & ButtonProps
 
 const Button = ({
     theme,
@@ -13,7 +13,7 @@ const Button = ({
     children,
     onClick,
     ...rest
-}: ButtonProps & ReactButtonProps) => {
+}: ReactButtonProps) => {
     const classes = [
         'w-button',
         bold && 'bold',

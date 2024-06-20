@@ -1,0 +1,47 @@
+---
+import type { CheckboxProps } from './checkbox'
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+
+import check from '../../icons/check.svg?raw'
+
+import './checkbox.scss'
+
+interface Props extends CheckboxProps {}
+
+const {
+    checked,
+    label,
+    subText,
+    disabled,
+    boxed,
+    color
+} = Astro.props
+
+const classes = [
+    'w-checkbox',
+    boxed && 'boxed',
+    label && subText && 'col'
+]
+
+const style = color
+    ? `--w-checkbox-color: ${color};`
+    : null
+---
+
+<label class:list={classes} style={style}>
+    <ConditionalWrapper condition={!!(label && subText)}>
+        <div class="checkbox-wrapper" slot="wrapper">
+            children
+        </div>
+        <input type="checkbox" checked={checked} disabled={disabled} />
+        <span class="check">
+            <Fragment set:html={check} />
+        </span>
+        {label && (
+            <span class="label">
+                <Fragment set:html={label} />
+            </span>
+        )}
+    </ConditionalWrapper>
+    {label && subText && <span class="sub-text">{subText}</span>}
+</label>
