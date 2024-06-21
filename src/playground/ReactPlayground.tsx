@@ -9,17 +9,7 @@ import Radio from '@components/Radio/Radio.tsx'
 import Switch from '@components/Switch/Switch.tsx'
 import Tabs from '@components/Tabs/Tabs.tsx'
 
-const tabItems = [{
-    label: 'Introduction',
-    value: 'intro',
-    active: true
-}, {
-    label: 'Setup',
-    value: 'setup'
-}, {
-    label: 'Conclusion',
-    value: 'conclusion'
-}]
+import { tabItems } from '@data'
 
 const ReactPlayground = () => {
     return (

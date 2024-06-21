@@ -10,6 +10,14 @@ import infoIcon from '../icons/info.svg?raw'
 import gitHubIcon from '../icons/github.svg?raw'
 import successIcon from '../icons/circle-check.svg?raw'
 
+import {
+    tabItems,
+    tabsWithIcons,
+    inactiveTabs,
+    disabledTabs,
+    overflowTabs
+} from '@data'
+
 const sections = [
     {
         title: 'Astro tabs',
@@ -26,45 +34,13 @@ const sections = [
         component: ReactTabs
     }
 ]
-
-const items = [{
-    label: 'Introduction',
-    value: 'intro',
-    active: true
-}, {
-    label: 'Setup',
-    value: 'setup'
-}, {
-    label: 'Conclusion',
-    value: 'conclusion'
-}]
-
-const tabsWithIcons = [
-    {...items[0], label: `${infoIcon} Introduction` },
-    {...items[1], label: `${gitHubIcon} Setup` },
-    {...items[2], label: `${successIcon} Conclusion`, disabled: true }
-]
-const inactiveTabs = items.map(item => ({...item, active: false}))
-const disabledTabs = [
-    {...items[0]},
-    {...items[1]},
-    {...items[2], disabled: true }
-]
-
-const overflowTabs = Array(10).fill({
-    label: '',
-    value: 0,
-}).map((_, index) => ({
-    label: `Tab ${index + 1}`,
-    value: `tab-${index + 1}`
-}))
 ---
 
 <Layout>
     <h1>Tabs</h1>
     <div class="grid md-2 lg-3">
         <ComponentWrapper type="Astro">
-            <AstroTabs items={items}>
+            <AstroTabs items={tabItems}>
                 <div data-tab="intro" data-active="true">Intro tab</div>
                 <div data-tab="setup">Setup tab</div>
                 <div data-tab="conclusion">Conclusion tab</div>
@@ -72,7 +48,7 @@ const overflowTabs = Array(10).fill({
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
-            <SvelteTabs items={items} client:visible>
+            <SvelteTabs items={tabItems} client:visible>
                 <div data-tab="intro" data-active="true">Intro tab</div>
                 <div data-tab="setup">Setup tab</div>
                 <div data-tab="conclusion">Conclusion tab</div>
@@ -80,7 +56,7 @@ const overflowTabs = Array(10).fill({
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
-            <ReactTabs items={items} client:visible>
+            <ReactTabs items={tabItems} client:visible>
                 <div data-tab="intro" data-active="true">Intro tab</div>
                 <div data-tab="setup">Setup tab</div>
                 <div data-tab="conclusion">Conclusion tab</div>
@@ -95,7 +71,7 @@ const overflowTabs = Array(10).fill({
         </Fragment>
         <div class="grid md-2">
             <ComponentWrapper title="Default">
-                <section.component items={items}>
+                <section.component items={tabItems}>
                     <div data-tab="intro" data-active="true">Intro tab</div>
                     <div data-tab="setup">Setup tab</div>
                     <div data-tab="conclusion">Conclusion tab</div>
@@ -127,7 +103,7 @@ const overflowTabs = Array(10).fill({
             </ComponentWrapper>
 
             <ComponentWrapper title="Boxed tabs">
-                <section.component items={items} theme="boxed">
+                <section.component items={tabItems} theme="boxed">
                     <div data-tab="intro" data-active="true">Intro tab</div>
                     <div data-tab="setup">Setup tab</div>
                     <div data-tab="conclusion">Conclusion tab</div>
@@ -143,7 +119,7 @@ const overflowTabs = Array(10).fill({
             </ComponentWrapper>
 
             <ComponentWrapper title="Outline tabs">
-                <section.component items={items} theme="outline">
+                <section.component items={tabItems} theme="outline">
                     <div data-tab="intro" data-active="true">Intro tab</div>
                     <div data-tab="setup">Setup tab</div>
                     <div data-tab="conclusion">Conclusion tab</div>
@@ -159,7 +135,7 @@ const overflowTabs = Array(10).fill({
             </ComponentWrapper>
 
             <ComponentWrapper title="Vertical tabs">
-                <section.component items={items} vertical={true}>
+                <section.component items={tabItems} vertical={true}>
                     <div data-tab="intro" data-active="true">Intro tab</div>
                     <div data-tab="setup">Setup tab</div>
                     <div data-tab="conclusion">Conclusion tab</div>

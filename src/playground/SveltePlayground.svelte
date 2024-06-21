@@ -9,17 +9,7 @@
     import Switch from '@components/Switch/Switch.svelte'
     import Tabs from '@components/Tabs/Tabs.svelte'
 
-    const tabItems = [{
-        label: 'Introduction',
-        value: 'intro',
-        active: true
-    }, {
-        label: 'Setup',
-        value: 'setup'
-    }, {
-        label: 'Conclusion',
-        value: 'conclusion'
-    }]
+    import { tabItems } from '@data'
 </script>
 
 <div class="grid md-2 lg-3">

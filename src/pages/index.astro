@@ -17,6 +17,8 @@ import Tabs from '@components/Tabs/Tabs.astro'
 import infoIcon from '../icons/info.svg?raw'
 import gitHubIcon from '../icons/github.svg?raw'
 
+import { accordionItems, avatarGroup } from '@data'
+
 const tabItems = [{
     label: `${infoIcon} Intro`,
     value: 'intro',
@@ -54,18 +56,7 @@ const tabItems = [{
     </div>
     <div class="grid md-2 lg-3">
         <CardWrapper title="Accordion" href="/accordion">
-            <Accordion
-                items={[{
-                    title: 'Do you offer support?',
-                    content: 'We provide 30 days of support.'
-                }, {
-                    title: 'Can I request changes?',
-                    content: 'Yes!'
-                }, {
-                    title: 'Are there any refunds?',
-                    content: 'Hopefully.'
-                }]}
-            />
+            <Accordion items={accordionItems} />
         </CardWrapper>
         <CardWrapper title="Alert" href="/alert">
             <Alert title="💡 Note">You can create alert boxes.</Alert>
@@ -73,13 +64,7 @@ const tabItems = [{
         <CardWrapper title="Avatar" href="/avatar">
             <Avatar
                 size={[30, 40, 50, 40, 30]}
-                img={[
-                    '/img/avatar0.png',
-                    '/img/avatar1.png',
-                    '/img/avatar2.png',
-                    '/img/avatar3.png',
-                    '/img/avatar4.png'
-                ]}
+                img={avatarGroup}
             />
         </CardWrapper>
         <CardWrapper title="Badge" href="/badge">

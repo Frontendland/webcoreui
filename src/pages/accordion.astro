@@ -6,16 +6,7 @@ import AstroAccordion from '@components/Accordion/Accordion.astro'
 import SvelteAccordion from '@components/Accordion/Accordion.svelte'
 import ReactAccordion from '@components/Accordion/Accordion.tsx'
 
-const accordionItems = [{
-    title: 'Do you offer support?',
-    content: 'We provide 30 days of support.'
-}, {
-    title: 'Can I request customizations?',
-    content: 'Yes!'
-}, {
-    title: 'Are there any refunds?',
-    content: 'Hopefully.'
-}]
+import { accordionItems } from '@data'
 ---
 
 <Layout>

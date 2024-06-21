@@ -6,7 +6,8 @@
         "paths": {
             "@components/*": ["src/components/*"],
             "@static/*": ["src/static/*"],
-            "@playground/*": ["src/playground/*"]
+            "@playground/*": ["src/playground/*"],
+            "@data": ["src/data.js"]
         }
     }
 }

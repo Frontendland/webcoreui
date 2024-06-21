@@ -6,6 +6,8 @@ import AstroAvatar from '@components/Avatar/Avatar.astro'
 import SvelteAvatar from '@components/Avatar/Avatar.svelte'
 import ReactAvatar from '@components/Avatar/Avatar.tsx'
 
+import { avatarGroup } from '@data'
+
 const sections = [
     {
         title: 'Astro avatars',
@@ -19,14 +21,6 @@ const sections = [
         title: 'React avatars',
         component: ReactAvatar
     }
-]
-
-const group = [
-    "/img/avatar0.png",
-    "/img/avatar1.png",
-    "/img/avatar2.png",
-    "/img/avatar3.png",
-    "/img/avatar4.png"
 ]
 ---
 
@@ -75,41 +69,41 @@ const group = [
             </ComponentWrapper>
 
             <ComponentWrapper title="Avatar group">
-                <section.component img={group} />
+                <section.component img={avatarGroup} />
             </ComponentWrapper>
 
             <ComponentWrapper title="Borderless avatars">
                 <section.component
                     borderless={true}
-                    img={group}
+                    img={avatarGroup}
                 />
             </ComponentWrapper>
 
             <ComponentWrapper title="Avatars in reverse order">
                 <section.component
                     reverse={true}
-                    img={group}
+                    img={avatarGroup}
                 />
             </ComponentWrapper>
 
             <ComponentWrapper title="Avatars with increasing sizes">
                 <section.component
                     size={[35, 40, 45, 50, 55]}
-                    img={group}
+                    img={avatarGroup}
                 />
             </ComponentWrapper>
 
             <ComponentWrapper title="Avatars with decreasing sizes">
                 <section.component
                     size={[55, 50, 45, 40, 35]}
-                    img={group}
+                    img={avatarGroup}
                 />
             </ComponentWrapper>
 
             <ComponentWrapper title="Avatars with varying sizes">
                 <section.component
                     size={[30, 40, 50, 40, 30]}
-                    img={group}
+                    img={avatarGroup}
                 />
             </ComponentWrapper>
         </div>
