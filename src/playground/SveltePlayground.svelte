@@ -7,6 +7,19 @@
     import Checkbox from '@components/Checkbox/Checkbox.svelte'
     import Radio from '@components/Radio/Radio.svelte'
     import Switch from '@components/Switch/Switch.svelte'
+    import Tabs from '@components/Tabs/Tabs.svelte'
+
+    const tabItems = [{
+        label: 'Introduction',
+        value: 'intro',
+        active: true
+    }, {
+        label: 'Setup',
+        value: 'setup'
+    }, {
+        label: 'Conclusion',
+        value: 'conclusion'
+    }]
 </script>
 
 <div class="grid md-2 lg-3">
@@ -53,5 +66,21 @@
         <Switch
             onClick={e => console.log(`switched: ${e.target.checked}`)}
         />
+    </Card>
+
+    <Card title="Tabs">
+        <Tabs items={tabItems}>
+            <div data-tab="intro" data-active="true">Intro tab</div>
+            <div data-tab="setup">Setup tab</div>
+            <div data-tab="conclusion">Conclusion tab</div>
+        </Tabs>
+    </Card>
+
+    <Card title="Tabs - boxed">
+        <Tabs items={tabItems} theme="boxed" even={true}>
+            <div data-tab="intro" data-active="true">Intro tab</div>
+            <div data-tab="setup">Setup tab</div>
+            <div data-tab="conclusion">Conclusion tab</div>
+        </Tabs>
     </Card>
 </div>

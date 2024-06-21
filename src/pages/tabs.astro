@@ -17,10 +17,12 @@ const sections = [
     },
     {
         title: 'Svelte tabs',
+        subTitle: 'For interactive examples, visit <a href="/svelte">Svelte Playground</a>',
         component: SvelteTabs
     },
     {
         title: 'React tabs',
+        subTitle: 'For interactive examples, visit <a href="/react">React Playground</a>',
         component: ReactTabs
     }
 ]
@@ -70,7 +72,7 @@ const overflowTabs = Array(10).fill({
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
-            <SvelteTabs items={items}>
+            <SvelteTabs items={items} client:visible>
                 <div data-tab="intro" data-active="true">Intro tab</div>
                 <div data-tab="setup">Setup tab</div>
                 <div data-tab="conclusion">Conclusion tab</div>
@@ -78,7 +80,7 @@ const overflowTabs = Array(10).fill({
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
-            <ReactTabs items={items}>
+            <ReactTabs items={items} client:visible>
                 <div data-tab="intro" data-active="true">Intro tab</div>
                 <div data-tab="setup">Setup tab</div>
                 <div data-tab="conclusion">Conclusion tab</div>
@@ -88,6 +90,9 @@ const overflowTabs = Array(10).fill({
 
     {sections.map(section => (
         <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
         <div class="grid md-2">
             <ComponentWrapper title="Default">
                 <section.component items={items}>

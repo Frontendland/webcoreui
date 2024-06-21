@@ -7,6 +7,19 @@ import Button from '@components/Button/Button.tsx'
 import Checkbox from '@components/Checkbox/Checkbox.tsx'
 import Radio from '@components/Radio/Radio.tsx'
 import Switch from '@components/Switch/Switch.tsx'
+import Tabs from '@components/Tabs/Tabs.tsx'
+
+const tabItems = [{
+    label: 'Introduction',
+    value: 'intro',
+    active: true
+}, {
+    label: 'Setup',
+    value: 'setup'
+}, {
+    label: 'Conclusion',
+    value: 'conclusion'
+}]
 
 const ReactPlayground = () => {
     return (
@@ -54,6 +67,22 @@ const ReactPlayground = () => {
                 <Switch
                     onClick={e => console.log(`switched: ${e.target.checked}`)}
                 />
+            </Card>
+
+            <Card title="Tabs">
+                <Tabs items={tabItems}>
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </Tabs>
+            </Card>
+
+            <Card title="Tabs - boxed">
+                <Tabs items={tabItems} theme="boxed" even={true}>
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </Tabs>
             </Card>
         </div>
     )

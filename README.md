@@ -155,3 +155,4 @@ import { Accordion } from 'webcoreui/react'
 - [Radio](https://github.com/Frontendland/webcoreui/tree/main/src/components/Radio)
 - [Rating](https://github.com/Frontendland/webcoreui/tree/main/src/components/Rating)
 - [Switch](https://github.com/Frontendland/webcoreui/tree/main/src/components/Switch)
+- [Tabs](https://github.com/Frontendland/webcoreui/tree/main/src/components/Tabs)
