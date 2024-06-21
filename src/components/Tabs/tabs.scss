@@ -1,0 +1,120 @@
+@import '../../scss/config.scss';
+
+.w-tabs {
+
+    &.boxed .tabs,
+    &.outline .tabs {
+        background: #252525;
+        border-radius: 5px;
+        padding: 5px;
+        width: fit-content;
+
+        button {
+            @include Transition();
+            border-radius: 5px;
+            padding: 10px;
+
+            &.active {
+                border: 0;
+                background: #000;
+                padding-bottom: 10px;
+            }
+        }
+    }
+
+    &.outline .tabs {
+        background: transparent;
+        border: 1px solid #252525;
+
+        button {
+            margin-bottom: 0;
+
+            &.active {
+                background: #252525;
+            }
+        }
+    }
+
+    &.even .tabs {
+        width: auto;
+
+        button {
+            flex: 1;
+            justify-content: center;
+        }
+    }
+
+    &.vertical {
+        display: flex;
+        gap: 20px;
+
+        &.boxed .tabs button,
+        &.outline .tabs button {
+            border-bottom: 0;
+        }
+        
+        .tabs {
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 0;
+            
+            button {
+                padding: 10px;
+                border-bottom: 2px solid #252525;
+
+                &.active {
+                    padding-bottom: 10px;
+                }
+            }
+        }
+    }
+
+    .tabs {
+        border-bottom: 2px solid #252525;
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+
+        button {
+            @include Transition(color);
+            background: transparent;
+            cursor: pointer;
+            color: #FFF;
+            border: 0;
+            font-size: 16px;
+            padding: 0;
+            margin-bottom: -2px;
+            padding: 15px 15px;
+            color: #BBB;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            svg {
+                pointer-events: none;
+                width: 20px;
+                height: 20px;
+            }
+
+            &[disabled] {
+                color: #555;
+                cursor: no-drop;
+            }
+            
+            &.active {
+                color: #FFF;
+                border-bottom: 2px solid #FFF;
+                padding-bottom: 13px;
+            }
+        }
+    }
+
+    [data-tab] {
+        display: none;
+
+        &[data-active="true"] {
+            display: block;
+        }
+    }
+}

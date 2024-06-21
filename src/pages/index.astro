@@ -7,11 +7,24 @@ import Alert from '@components/Alert/Alert.astro'
 import Avatar from '@components/Avatar/Avatar.astro'
 import Badge from '@components/Badge/Badge.astro'
 import Button from '@components/Button/Button.astro'
+import Checkbox from '@components/Checkbox/Checkbox.astro'
 import Icon from '@components/Icon/Icon.astro'
 import Radio from '@components/Radio/Radio.astro'
 import Rating from '@components/Rating/Rating.astro'
 import Switch from '@components/Switch/Switch.astro'
-import Checkbox from '@components/Checkbox/Checkbox.astro'
+import Tabs from '@components/Tabs/Tabs.astro'
+
+import infoIcon from '../icons/info.svg?raw'
+import gitHubIcon from '../icons/github.svg?raw'
+
+const tabItems = [{
+    label: `${infoIcon} Intro`,
+    value: 'intro',
+    active: true
+}, {
+    label: `${gitHubIcon} Setup`,
+    value: 'setup'
+}]
 ---
 
 <Layout>
@@ -120,6 +133,9 @@ import Checkbox from '@components/Checkbox/Checkbox.astro'
         </CardWrapper>
         <CardWrapper title="Switch" href="/switch">
             <Switch toggled={true} />
+        </CardWrapper>
+        <CardWrapper title="Tabs" href="/tabs">
+            <Tabs items={tabItems} theme="boxed" />
         </CardWrapper>
     </div>
 </Layout>

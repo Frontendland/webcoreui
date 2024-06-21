@@ -1,0 +1,72 @@
+---
+import type { TabsProps } from './tabs'
+import './tabs.scss'
+
+interface Props extends TabsProps {}
+
+const {
+    items,
+    theme,
+    vertical,
+    even,
+    className
+} = Astro.props
+
+const classes = [
+    'w-tabs',
+    theme && theme,
+    vertical && 'vertical',
+    even && 'even',
+    className
+]
+---
+
+<section class:list={classes} data-id="w-tabs">
+    <div class="tabs">
+        {items.map(item => (
+            <button
+                data-value={item.value}
+                class:list={[item.active && 'active']}
+                disabled={item.disabled}
+            >
+                <Fragment set:html={item.label} />
+            </button>
+        ))}
+    </div>
+    <div class="tab-content">
+        <slot />
+    </div>
+</section>
+
+<script>
+    const tabs = document.querySelectorAll('[data-id="w-tabs"]')
+
+    Array.from(tabs).forEach(element => {
+        element.addEventListener('click', event => {
+            const target = event.target as HTMLDivElement
+
+            if (target.dataset.value) {
+                const tabContent = target.parentElement?.nextElementSibling as HTMLDivElement
+
+                Array.from(tabContent.children)
+                    .forEach((element: any) => {
+                        if (element.dataset.tab === target.dataset.value) {
+                            element.dataset.active = true
+                        } else {
+                            element.dataset.active = false
+                        }
+                })
+
+                const tabs = target.parentElement?.querySelectorAll('button') as NodeListOf<HTMLButtonElement>
+
+                Array.from(tabs).forEach((tab: any) => {
+                    tab.classList.remove('active')
+
+                    if (tab.dataset.value === target.dataset.value) {
+                        tab.classList.add('active')
+                    }
+                })
+            }
+        })
+    })
+</script>

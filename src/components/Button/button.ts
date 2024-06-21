@@ -10,5 +10,6 @@ export type ButtonProps = {
     bold?: boolean
     href?: string
     target?: string
+    disabled?: boolean
     onClick?: () => any
 }

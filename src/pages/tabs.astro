@@ -1,0 +1,185 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroTabs from '@components/Tabs/Tabs.astro'
+import SvelteTabs from '@components/Tabs/Tabs.svelte'
+import ReactTabs from '@components/Tabs/Tabs.tsx'
+
+import infoIcon from '../icons/info.svg?raw'
+import gitHubIcon from '../icons/github.svg?raw'
+import successIcon from '../icons/circle-check.svg?raw'
+
+const sections = [
+    {
+        title: 'Astro tabs',
+        component: AstroTabs
+    },
+    {
+        title: 'Svelte tabs',
+        component: SvelteTabs
+    },
+    {
+        title: 'React tabs',
+        component: ReactTabs
+    }
+]
+
+const items = [{
+    label: 'Introduction',
+    value: 'intro',
+    active: true
+}, {
+    label: 'Setup',
+    value: 'setup'
+}, {
+    label: 'Conclusion',
+    value: 'conclusion'
+}]
+
+const tabsWithIcons = [
+    {...items[0], label: `${infoIcon} Introduction` },
+    {...items[1], label: `${gitHubIcon} Setup` },
+    {...items[2], label: `${successIcon} Conclusion`, disabled: true }
+]
+const inactiveTabs = items.map(item => ({...item, active: false}))
+const disabledTabs = [
+    {...items[0]},
+    {...items[1]},
+    {...items[2], disabled: true }
+]
+
+const overflowTabs = Array(10).fill({
+    label: '',
+    value: 0,
+}).map((_, index) => ({
+    label: `Tab ${index + 1}`,
+    value: `tab-${index + 1}`
+}))
+---
+
+<Layout>
+    <h1>Tabs</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroTabs items={items}>
+                <div data-tab="intro" data-active="true">Intro tab</div>
+                <div data-tab="setup">Setup tab</div>
+                <div data-tab="conclusion">Conclusion tab</div>
+            </AstroTabs>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteTabs items={items}>
+                <div data-tab="intro" data-active="true">Intro tab</div>
+                <div data-tab="setup">Setup tab</div>
+                <div data-tab="conclusion">Conclusion tab</div>
+            </SvelteTabs>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactTabs items={items}>
+                <div data-tab="intro" data-active="true">Intro tab</div>
+                <div data-tab="setup">Setup tab</div>
+                <div data-tab="conclusion">Conclusion tab</div>
+            </ReactTabs>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2">
+            <ComponentWrapper title="Default">
+                <section.component items={items}>
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Inactive tabs">
+                <section.component items={inactiveTabs}>
+                    <div data-tab="intro">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled tab">
+                <section.component items={disabledTabs}>
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Tabs with icons">
+                <section.component items={tabsWithIcons}>
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Boxed tabs">
+                <section.component items={items} theme="boxed">
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Boxed evenly with icons">
+                <section.component items={tabsWithIcons} theme="boxed" even={true}>
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Outline tabs">
+                <section.component items={items} theme="outline">
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Outline evenly with icons">
+                <section.component items={tabsWithIcons} theme="outline" even={true}>
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Vertical tabs">
+                <section.component items={items} vertical={true}>
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Vertical boxed with icons">
+                <section.component items={tabsWithIcons} vertical={true} theme="boxed">
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Vertical outline with icons">
+                <section.component items={tabsWithIcons} vertical={true} theme="outline">
+                    <div data-tab="intro" data-active="true">Intro tab</div>
+                    <div data-tab="setup">Setup tab</div>
+                    <div data-tab="conclusion">Conclusion tab</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Overflown tabs">
+                <section.component items={overflowTabs} />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
