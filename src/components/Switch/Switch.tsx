@@ -3,7 +3,7 @@ import type { SwitchProps } from './switch'
 import './switch.scss'
 
 type ReactSwitchProps = {
-    onClick?: () => any
+    onClick?: (key: any) => any
 } & SwitchProps
 
 const Switch = ({

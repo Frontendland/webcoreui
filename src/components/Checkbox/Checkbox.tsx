@@ -7,7 +7,7 @@ import check from '../../icons/check.svg?raw'
 import './checkbox.scss'
 
 type ReactCheckboxProps = {
-    onClick?: () => any
+    onClick?: (key: any) => any
 } & CheckboxProps
 
 const Checkbox = ({

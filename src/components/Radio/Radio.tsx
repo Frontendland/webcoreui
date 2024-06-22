@@ -6,7 +6,7 @@ import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 import './radio.scss'
 
 type ReactRadioProps = {
-    onChange?: () => any
+    onChange?: (key: any) => any
 } & RadioProps
 
 const Radio = ({
