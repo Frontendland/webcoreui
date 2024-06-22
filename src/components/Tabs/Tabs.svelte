@@ -35,16 +35,18 @@
 </script>
 
 <section class={classes}>
-    <div class="tabs">
-        {#each items as item}
-            <button
-                class:active={active ? active === item.value : item.active}
-                disabled={item.disabled}
-                on:click={() => setTab(item.value)}
-            >
-                {@html item.label}
-            </button>
-        {/each}
+    <div class="tabs-wrapper">
+        <div class="tabs">
+            {#each items as item}
+                <button
+                    class:active={active ? active === item.value : item.active}
+                    disabled={item.disabled}
+                    on:click={() => setTab(item.value)}
+                >
+                    {@html item.label}
+                </button>
+            {/each}
+        </div>
     </div>
     <div class="tab-content" bind:this={tabContainer}>
         <slot />

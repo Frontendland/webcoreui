@@ -22,16 +22,18 @@ const classes = [
 ---
 
 <section class:list={classes} data-id="w-tabs">
-    <div class="tabs">
-        {items.map(item => (
-            <button
-                data-value={item.value}
-                class:list={[item.active && 'active']}
-                disabled={item.disabled}
-            >
-                <Fragment set:html={item.label} />
-            </button>
-        ))}
+    <div class="tabs-wrapper">
+        <div class="tabs">
+            {items.map(item => (
+                <button
+                    data-value={item.value}
+                    class:list={[item.active && 'active']}
+                    disabled={item.disabled}
+                >
+                    <Fragment set:html={item.label} />
+                </button>
+            ))}
+        </div>
     </div>
     <div class="tab-content">
         <slot />
@@ -46,7 +48,9 @@ const classes = [
             const target = event.target as HTMLDivElement
 
             if (target.dataset.value) {
-                const tabContent = target.parentElement?.nextElementSibling as HTMLDivElement
+                const tabContent = target.parentElement
+                    ?.parentElement
+                    ?.nextElementSibling as HTMLDivElement
 
                 Array.from(tabContent.children)
                     .forEach((element: any) => {

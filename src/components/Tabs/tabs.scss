@@ -35,13 +35,9 @@
         }
     }
 
-    &.even .tabs {
-        width: auto;
-
-        button {
-            flex: 1;
-            justify-content: center;
-        }
+    &.even .tabs button {
+        flex: 1;
+        justify-content: center;
     }
 
     &.vertical {
@@ -56,7 +52,6 @@
         .tabs {
             flex-direction: column;
             gap: 5px;
-            margin-bottom: 0;
             
             button {
                 padding: 10px;
@@ -67,14 +62,20 @@
                 }
             }
         }
+
+        .tab-content {
+            margin-top: 0;
+        }
+    }
+
+    .tabs-wrapper {
+        overflow: auto;
     }
 
     .tabs {
         border-bottom: 2px solid #252525;
-        margin-bottom: 20px;
         display: flex;
         gap: 10px;
-        flex-wrap: wrap;
 
         button {
             @include Transition(color);
@@ -90,6 +91,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-shrink: 0;
 
             svg {
                 pointer-events: none;
@@ -110,11 +112,23 @@
         }
     }
 
+    .tab-content {
+        margin-top: 20px;
+    }
+
     [data-tab] {
         display: none;
 
         &[data-active="true"] {
             display: block;
+        }
+    }
+}
+
+@include Media('xs') {
+    .w-tabs {
+        &.even .tabs {
+            width: auto;
         }
     }
 }

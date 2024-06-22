@@ -159,7 +159,11 @@ const sections = [
             </ComponentWrapper>
 
             <ComponentWrapper title="Overflown tabs">
-                <section.component items={overflowTabs} />
+                <section.component items={overflowTabs}>
+                    <div data-tab="tab-1" data-active="true">Intro tab</div>
+                    <div data-tab="tab-2">Tab 2</div>
+                    <div data-tab="tab-3">Tab 3</div>
+                </section.component>
             </ComponentWrapper>
         </div>
     ))}

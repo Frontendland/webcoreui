@@ -50,16 +50,18 @@ const Tabs = ({
 
     return (
         <section className={classes}>
-            <div className="tabs">
-                {items.map((item, index) => (
-                    <button
-                        key={index}
-                        disabled={item.disabled}
-                        dangerouslySetInnerHTML={{ __html: item.label }}
-                        onClick={() => setTab(item.value)}
-                        className={isActive(item)}
-                    />
-                ))}
+            <div className="tabs-wrapper">
+                <div className="tabs">
+                    {items.map((item, index) => (
+                        <button
+                            key={index}
+                            disabled={item.disabled}
+                            dangerouslySetInnerHTML={{ __html: item.label }}
+                            onClick={() => setTab(item.value)}
+                            className={isActive(item)}
+                        />
+                    ))}
+                </div>
             </div>
             <div className="tab-content" ref={tabContainer}>
                 {children}
