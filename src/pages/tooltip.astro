@@ -1,0 +1,50 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import Button from '@components/Button/Button.astro'
+
+const tooltipStyle = [
+    '--w-tooltip-background: #10ac84',
+    '--w-tooltip-color:#000'
+].join(';')
+---
+
+<Layout>
+    <h1>Tooltip</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper title="Default">
+            <p data-tooltip="Tooltip content">Default tooltip</p>
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Custom color">
+            <p data-tooltip="Tooltip content" style={tooltipStyle}>
+                Colored tooltip
+            </p>
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Tooltip on button">
+            <Button data-tooltip="Tooltip content">
+                Hover me
+            </Button>
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Bottom position">
+            <p data-tooltip="Tooltip content" data-position="bottom">
+                Bottom tooltip
+            </p>
+        </ComponentWrapper>
+        
+        <ComponentWrapper title="Left position">
+            <p data-tooltip="Tooltip content" data-position="left">
+                Left tooltip
+            </p>
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Right position">
+            <p data-tooltip="Tooltip content" data-position="right">
+                Right tooltip
+            </p>
+        </ComponentWrapper>
+    </div>
+</Layout>

@@ -3,7 +3,8 @@
 $config: (
     includeResets: true,
     includeHelperClasses: true,
-    includeElementStyles: true
+    includeElementStyles: true,
+    includeTooltip: true
 );
 
 :root {
@@ -20,6 +21,8 @@ $config: (
     --w-spinner-speed: 2s;
     --w-spinner-size: 30px;
     --w-spinner-dash: 8;
+    --w-tooltip-background: #FFF;
+    --w-tooltip-color: #000;
 }
 
 @function config($key) {
@@ -39,5 +42,9 @@ $config: (
 
     @if (config('includeElementStyles')) {
         @include Elements();
+    }
+
+    @if (config('includeTooltip')) {
+        @include Tooltip();
     }
 }

@@ -1,0 +1,133 @@
+@import '../config';
+
+@mixin Tooltip() {
+    [data-tooltip] {
+        display: inline-block;
+        position: relative;
+
+        &::before,
+        &::after {
+            @include Transition();
+            opacity: 0;
+            left: 50%;
+            transform: translate(-50%, 5px);
+        }
+
+        &::before {
+            content: attr(data-tooltip);
+            border-radius: 5px;
+            font-size: 14px;
+            position: absolute;
+            background: var(--w-tooltip-background);
+            color: var(--w-tooltip-color);
+            padding: 0 5px;
+            top: -30px;
+            width: max-content;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0; 
+            height: 0; 
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid var(--w-tooltip-background);
+            top: -5px;
+        }
+
+        &:hover::before,
+        &:hover::after {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        &[data-position="bottom"] {
+            &::before,
+            &::after {
+                transform: translate(-50%, -5px);
+            }
+
+            &::before {
+                top: auto;
+                bottom: -30px;
+            }
+
+            &::after {
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid var(--w-tooltip-background);
+                top: auto;
+                bottom: -5px;
+            }
+
+            &:hover::before,
+            &:hover::after {
+                transform: translate(-50%, 0);
+            }
+        }
+
+        &[data-position="left"] {
+            &::before,
+            &::after {
+                transform: translate(0, 0);
+                left: auto;
+                right: 105%;
+            }
+
+            &::before {
+                top: auto;
+            }
+
+            &::after {
+                border-left: 5px solid var(--w-tooltip-background);
+                border-right: 5px solid transparent;
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+                top: 50%;
+                transform: translate(10px, -40%);
+            }
+
+            &:hover::before {
+                transform: translate(-5px, 0);
+            }
+
+            &:hover::after {
+                transform: translate(5px, -40%);
+            }
+        }
+
+        &[data-position="right"] {
+            &::before,
+            &::after {
+                transform: translate(0, 0);
+                left: 105%;
+            }
+
+            &::before {
+                top: auto;
+            }
+
+            &::after {
+                border-left: 5px solid transparent;
+                border-right: 5px solid var(--w-tooltip-background);
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+                top: 50%;
+                transform: translate(-10px, -40%);
+            }
+
+            &:hover::before {
+                transform: translate(5px, 0);
+            }
+
+            &:hover::after {
+                transform: translate(-5px, -40%);
+            }
+        }
+    }
+}
+
