@@ -1,0 +1,41 @@
+@import '../../scss/config.scss';
+
+.w-spinner {
+    margin: 0px auto;
+    width: var(--w-spinner-size);
+    height: var(--w-spinner-size);
+    animation: rotate var(--w-spinner-speed) linear infinite;
+
+    &.dashed .spinner-path {
+        stroke-dasharray: var(--w-spinner-dash);
+        animation: none;
+    }
+
+    .spinner-path {
+        stroke: var(--w-spinner-color);
+        stroke-width: var(--w-spinner-width);
+        animation: dash 1.5s ease-in-out infinite;
+        stroke-linecap: round;
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124;
+    }
+}

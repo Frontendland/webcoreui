@@ -15,6 +15,11 @@ $config: (
     --w-switch-on-color: #FFF;
     --w-checkbox-color: #FFF;
     --w-radio-color: #FFF;
+    --w-spinner-color: #FFF;
+    --w-spinner-width: 2px;
+    --w-spinner-speed: 2s;
+    --w-spinner-size: 30px;
+    --w-spinner-dash: 8;
 }
 
 @function config($key) {

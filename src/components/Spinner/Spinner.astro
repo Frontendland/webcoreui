@@ -1,0 +1,42 @@
+---
+import type { SpinnerProps } from './spinner'
+import './spinner.scss'
+
+interface Props extends SpinnerProps {}
+
+const {
+    color,
+    width,
+    speed,
+    size,
+    dashArray,
+} = Astro.props
+
+const classes = [
+    'w-spinner',
+    dashArray && 'dashed'
+]
+
+const styles = [
+    color && `--w-spinner-color: ${color};`,
+    width && `--w-spinner-width: ${width}px;`,
+    speed && `--w-spinner-speed: ${speed}s;`,
+    size && `--w-spinner-size: ${size}px;`,
+    dashArray && `--w-spinner-dash: ${dashArray}`,
+].filter(Boolean).join(' ')
+---
+
+<svg
+    class:list={classes}
+    viewBox="25 25 50 50"
+    role="status"
+    style={styles}
+>
+    <circle
+        class="spinner-path"
+        cx="50"
+        cy="50"
+        r="20"
+        fill="none"
+    />
+</svg>

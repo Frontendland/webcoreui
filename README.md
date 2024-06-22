@@ -43,7 +43,7 @@ Full documentation coming soon on [webcoreui.dev/docs](https://webcoreui.dev/doc
 
 ## Getting Started
 
-Webcore can be used as a standalone project, or it can be integrated into your existing Astro, Svelte, or React ecosystems.
+Webcore can be used as a standalone project, or it can be integrated into your existing Astro, Svelte, or React ecosystems. The easiest way to get started is to clone the repository and run `npm run dev` to start building your pages with the components available.
 
 ### Prerequisites
 
@@ -154,5 +154,6 @@ import { Accordion } from 'webcoreui/react'
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
 - [Radio](https://github.com/Frontendland/webcoreui/tree/main/src/components/Radio)
 - [Rating](https://github.com/Frontendland/webcoreui/tree/main/src/components/Rating)
+- [Spinner](https://github.com/Frontendland/webcoreui/tree/main/src/components/Spinner)
 - [Switch](https://github.com/Frontendland/webcoreui/tree/main/src/components/Switch)
 - [Tabs](https://github.com/Frontendland/webcoreui/tree/main/src/components/Tabs)

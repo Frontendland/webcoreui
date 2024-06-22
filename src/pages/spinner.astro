@@ -1,0 +1,83 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroSpinner from '@components/Spinner/Spinner.astro'
+import SvelteSpinner from '@components/Spinner/Spinner.svelte'
+import ReactSpinner from '@components/Spinner/Spinner.tsx'
+
+const sections = [
+    {
+        title: 'Astro spinners',
+        component: AstroSpinner
+    },
+    {
+        title: 'Svelte spinners',
+        component: SvelteSpinner
+    },
+    {
+        title: 'React spinners',
+        component: ReactSpinner
+    }
+]
+---
+
+<Layout>
+    <h1>Spinner</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroSpinner />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteSpinner color="#ee5253" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactSpinner color="#48dbfb" />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Colored spinner">
+                <section.component color="#48dbfb" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Spinner width">
+                <section.component width={5} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom speed in seconds">
+                <section.component speed={5} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom size">
+                <section.component size={15} />
+                <section.component size={20} />
+                <section.component size={25} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Dashed spinner">
+                <section.component dashArray={8} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Small dashes">
+                <section.component dashArray={4} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Four dashes">
+                <section.component dashArray={15} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Three dashes">
+                <section.component dashArray={20} />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
