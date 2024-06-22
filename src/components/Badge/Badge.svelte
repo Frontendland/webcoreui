@@ -12,6 +12,6 @@
     ].filter(Boolean).join(' ')
 </script>
 
-<span class={classes} on:click={onClick}>
+<span class={classes} on:click={onClick} {...$$restProps}>
     <slot />
 </span>

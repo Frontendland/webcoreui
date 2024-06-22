@@ -8,7 +8,8 @@ interface Props extends BadgeProps {
 
 const {
     theme,
-    interactive
+    interactive,
+    ...rest
 } = Astro.props
 
 const classes = [
@@ -18,6 +19,6 @@ const classes = [
 ]
 ---
 
-<span class:list={classes}>
+<span class:list={classes} {...rest}>
     <slot />
 </span>

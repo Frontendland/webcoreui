@@ -6,7 +6,7 @@ type ReactBadgeProps = {
     children: React.ReactNode
 } & BadgeProps
 
-const Badge = ({ theme, onClick, children }: ReactBadgeProps) => {
+const Badge = ({ theme, onClick, children, ...rest }: ReactBadgeProps) => {
     const classes = [
         'w-badge',
         theme || null,
@@ -14,7 +14,7 @@ const Badge = ({ theme, onClick, children }: ReactBadgeProps) => {
     ].filter(Boolean).join(' ')
 
     return (
-        <span className={classes} onClick={onClick}>
+        <span className={classes} onClick={onClick} {...rest}>
             {children}
         </span>
     )
