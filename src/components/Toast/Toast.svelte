@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { ToastProps } from './toast'
+    import Alert from '../Alert/Alert.svelte'
     import './toast.scss'
 
     export let className: ToastProps['className'] = ''
@@ -9,3 +10,10 @@
         className
     ].filter(Boolean).join(' ')
 </script>
+
+<Alert {...$$restProps} className={classes}>
+    {#if $$slots.icon}
+        <slot name="icon" />
+    {/if}
+    <slot />
+</Alert>

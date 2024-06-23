@@ -149,4 +149,5 @@ import { Accordion } from 'webcoreui/react'
 - [Spinner](https://github.com/Frontendland/webcoreui/tree/main/src/components/Spinner)
 - [Switch](https://github.com/Frontendland/webcoreui/tree/main/src/components/Switch)
 - [Tabs](https://github.com/Frontendland/webcoreui/tree/main/src/components/Tabs)
+- [Toast](https://github.com/Frontendland/webcoreui/tree/main/src/components/Toast)
 - [Tooltip](https://github.com/Frontendland/webcoreui/blob/main/src/pages/tooltip.astro)
