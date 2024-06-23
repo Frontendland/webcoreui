@@ -1,0 +1,28 @@
+---
+import type { ToastProps } from './toast'
+import Alert from '../Alert/Alert.astro'
+
+import './toast.scss'
+
+interface Props extends ToastProps {}
+
+const {
+    className
+} = Astro.props
+
+const classes = [
+    'w-toast',
+    className
+].filter(Boolean).join(' ')
+---
+
+{Astro.slots.has('icon') ? (
+    <Alert {...Astro.props} className={classes}>
+        <slot slot="icon" name="icon" />
+        <slot />
+    </Alert>
+) : (
+    <Alert {...Astro.props} className={classes}>
+        <slot />
+    </Alert>
+)}

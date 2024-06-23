@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-const buildImports = extension => {
+export const buildImports = extension => {
     const components = fs.readdirSync('src/components')
 
     return components.map(component => {
@@ -10,4 +10,8 @@ const buildImports = extension => {
         + components.map(component => `export const ${component} = ${component}Component`).join('\n')
 }
 
-export default buildImports
+export const buildUtilImports = () => {
+    const utils = fs.readdirSync('src/utils')
+
+    return utils.map(util => `export * from './utils/${util}'`).join('\n')
+}

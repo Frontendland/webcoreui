@@ -1,0 +1,14 @@
+@import '../../scss/config.scss';
+
+.w-toast {
+    @include Transition(transform);
+    background: #000;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    transform: translateY(calc(100% + 25px));
+
+    &.show {
+        transform: translateY(0);
+    }
+}

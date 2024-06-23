@@ -1,0 +1,263 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import Icon from '@components/Icon/Icon.astro'
+import Button from '@components/Button/Button.astro'
+import AstroToast from '@components/Toast/Toast.astro'
+import SvelteToast from '@components/Toast/Toast.svelte'
+import ReactToast from '@components/Toast/Toast.tsx'
+
+const sections = [
+    {
+        title: 'Astro toasts',
+        component: AstroToast
+    },
+    {
+        title: 'Svelte toasts',
+        component: SvelteToast
+    },
+    {
+        title: 'React toasts',
+        component: ReactToast
+    }
+]
+---
+
+<Layout>
+    <h1>Toast</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <Button theme="secondary" id="toast-btn-astro">
+                Toast in Astro
+            </Button>
+
+            <AstroToast title="Astro toast" id="toast-astro">
+                Toast in Astro
+            </AstroToast>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <Button theme="alert" id="toast-btn-svelte">
+                Toast in Svelte
+            </Button>
+
+            <SvelteToast title="Svelte toast" theme="alert" id="toast-svelte">
+                Toast in Svelte
+            </SvelteToast>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <Button theme="info" id="toast-btn-react">
+                Toast in React
+            </Button>
+
+            <ReactToast title="React toast" theme="info" id="toast-react">
+                Toast in React
+            </ReactToast>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map((section, index) => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Toast with text only">
+                <Button theme="secondary" id={`toast-btn-0${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component id={`toast-0${index}`}>
+                    Toast with only text.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Toast with text and title">
+                <Button theme="secondary" id={`toast-btn-1${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Note" id={`toast-1${index}`}>
+                    Toast with text and title.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Toast with emoji in title">
+                <Button theme="secondary" id={`toast-btn-2${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="💡 Note" id={`toast-2${index}`}>
+                    Toast with emoji in title
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Informational toast">
+                <Button theme="secondary" id={`toast-btn-3${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Information" theme="info" id={`toast-3${index}`}>
+                    Toast with info theme.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Success toast">
+                <Button theme="secondary" id={`toast-btn-4${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Congratulations!" theme="success" id={`toast-4${index}`}>
+                    Toast with success theme.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Warning toast">
+                <Button theme="secondary" id={`toast-btn-5${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Important" theme="warning" id={`toast-5${index}`}>
+                    Toast with warning theme.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alert toast">
+                <Button theme="secondary" id={`toast-btn-6${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Irreversible action" theme="alert" id={`toast-6${index}`}>
+                    Toast with alert theme.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Toast with custom icon">
+                <Button theme="secondary" id={`toast-btn-7${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Custom icons" id={`toast-7${index}`}>
+                    <Icon type="github" slot="icon" />
+                    Toast with custom icon.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Themed toast with icon">
+                <Button theme="secondary" id={`toast-btn-8${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Themed toast with icon" theme="success" id={`toast-8${index}`}>
+                    <Icon type="github" slot="icon" />
+                    Toast with theme and icon.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Dismissable toast with long timeout">
+                <Button theme="secondary" id={`dismissable-show-${index}`}>
+                    Show Toast
+                </Button>
+
+                <Button theme="secondary" id={`dismissable-hide-${index}`}>
+                    Hide Toast
+                </Button>
+
+                <section.component title="Dismissable toast" id={`dismissable-toast-${index}`}>
+                    Toast shown for 10 seconds.<br />
+                    Trigger dismiss with "Hide Toast".
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Programmatically setting copy">
+                <Button theme="secondary" id={`programmatic-btn-${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Original title" id={`programmatic-toast-${index}`}>
+                    Original content
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Programmatically setting theme">
+                <Button theme="secondary" id={`themed-btn-${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Original title" id={`themed-toast-${index}`}>
+                    Original content
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<script>
+    import {
+        toast,
+        hideToast,
+        setDefaultTimeout
+    } from '@utils/toast'
+
+    setDefaultTimeout(3000)
+
+    const on = (element: string, callback: () => any) => {
+        document
+            .querySelector(element)
+            ?.addEventListener('click', callback)
+    }
+
+    const ids = Array(8).fill(10).map((x, index) => x * (index + 1))
+    const buttons = [
+        'astro',
+        'svelte',
+        'react',
+        '00',
+        '01',
+        '02',
+        ...ids,
+        ...ids.map(x => x + 1),
+        ...ids.map(x => x + 2)
+    ]
+
+    // Show toast functionaly
+    buttons.forEach(id => {
+        on(`#toast-btn-${id}`, () => toast(`#toast-${id}`))
+    });
+
+    // Dismissable functionality with long timeout
+    [0, 1, 2].forEach(x => {
+        on(`#dismissable-show-${x}`, () => {
+            toast({
+                element: `#dismissable-toast-${x}`,
+                timeout: 10_000
+            })
+        })
+
+        on(`#dismissable-hide-${x}`, () => {
+            hideToast(`#dismissable-toast-${x}`)
+        })
+    });
+
+    // Programmatically setting title & content
+    [0, 1, 2].forEach(x => {
+        on(`#programmatic-btn-${x}`, () => {
+            toast({
+                element: `#programmatic-toast-${x}`,
+                title: 'Title set through JS',
+                content: 'Content created in JS with <strong>HTML</strong>'
+            })
+        })
+    });
+
+    // Programmatically setting theme
+    [0, 1, 2].forEach(x => {
+        on(`#themed-btn-${x}`, () => {
+            toast({
+                element: `#themed-toast-${x}`,
+                title: 'Title set through JS',
+                content: 'Theme set to "success"',
+                theme: 'success'
+            })
+        })
+    })
+</script>
