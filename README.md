@@ -79,15 +79,7 @@ yarn add webcoreui
 
 ### Setup
 
-1. Add the following to your `tsconfig.json` to include TypeScript types:
-
-```json
-{
-  "include": ["webcoreui"]
-}
-```
-
-2. Setup default styles and fonts by calling the following in your global SCSS file:
+Setup default styles and fonts by calling the following in your global SCSS file:
 
 ```scss
 @import 'webcoreui/styles';
