@@ -60,131 +60,62 @@ const sections = [
 
     {sections.map((section, index) => (
         <h1>{section.title}</h1>
-        <div class="grid md-2 lg-3">
-            <ComponentWrapper title="Toast with text only">
-                <Button theme="secondary" id={`toast-btn-0${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component id={`toast-0${index}`}>
-                    Toast with only text.
-                </section.component>
-            </ComponentWrapper>
-
-            <ComponentWrapper title="Toast with text and title">
-                <Button theme="secondary" id={`toast-btn-1${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component title="Note" id={`toast-1${index}`}>
-                    Toast with text and title.
-                </section.component>
-            </ComponentWrapper>
-
-            <ComponentWrapper title="Toast with emoji in title">
-                <Button theme="secondary" id={`toast-btn-2${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component title="💡 Note" id={`toast-2${index}`}>
-                    Toast with emoji in title
-                </section.component>
-            </ComponentWrapper>
-
-            <ComponentWrapper title="Informational toast">
-                <Button theme="secondary" id={`toast-btn-3${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component title="Information" theme="info" id={`toast-3${index}`}>
-                    Toast with info theme.
-                </section.component>
-            </ComponentWrapper>
-
-            <ComponentWrapper title="Success toast">
-                <Button theme="secondary" id={`toast-btn-4${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component title="Congratulations!" theme="success" id={`toast-4${index}`}>
-                    Toast with success theme.
-                </section.component>
-            </ComponentWrapper>
-
-            <ComponentWrapper title="Warning toast">
-                <Button theme="secondary" id={`toast-btn-5${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component title="Important" theme="warning" id={`toast-5${index}`}>
-                    Toast with warning theme.
-                </section.component>
-            </ComponentWrapper>
-
-            <ComponentWrapper title="Alert toast">
-                <Button theme="secondary" id={`toast-btn-6${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component title="Irreversible action" theme="alert" id={`toast-6${index}`}>
-                    Toast with alert theme.
-                </section.component>
-            </ComponentWrapper>
-
-            <ComponentWrapper title="Toast with custom icon">
-                <Button theme="secondary" id={`toast-btn-7${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component title="Custom icons" id={`toast-7${index}`}>
-                    <Icon type="github" slot="icon" />
-                    Toast with custom icon.
-                </section.component>
-            </ComponentWrapper>
-
-            <ComponentWrapper title="Themed toast with icon">
-                <Button theme="secondary" id={`toast-btn-8${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component title="Themed toast with icon" theme="success" id={`toast-8${index}`}>
-                    <Icon type="github" slot="icon" />
-                    Toast with theme and icon.
-                </section.component>
-            </ComponentWrapper>
-
-            <ComponentWrapper title="Toast in bottom left">
-                <Button theme="secondary" id={`toast-btn-9${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component title="Bottom left" id={`toast-9${index}`} position="bottom-left">
-                    Toast in bottom left corner
-                </section.component>
-            </ComponentWrapper>
-
-            <ComponentWrapper title="Toast in top left">
-                <Button theme="secondary" id={`toast-btn-10${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component title="Top left" id={`toast-10${index}`} position="top-left">
-                    Toast in top left corner
-                </section.component>
-            </ComponentWrapper>
-
-            <ComponentWrapper title="Toast in top right">
-                <Button theme="secondary" id={`toast-btn-11${index}`}>
-                    Show Toast
-                </Button>
-
-                <section.component title="Top right" id={`toast-11${index}`} position="top-right">
-                    Toast in top right corner
-                </section.component>
-            </ComponentWrapper>
+        <div class="flex wrap">
+            <Button theme="secondary" id={`toast-btn-0${index}`} theme="outline">Toast with text only</Button>
+            <Button theme="secondary" id={`toast-btn-1${index}`}>Toast with text and title</Button>
+            <Button theme="secondary" id={`toast-btn-2${index}`}>💡 Toast with emoji in title</Button>
+            <Button theme="secondary" id={`toast-btn-3${index}`} theme="info">Informational toast</Button>
+            <Button theme="secondary" id={`toast-btn-4${index}`} theme="success">Success toast</Button>
+            <Button theme="secondary" id={`toast-btn-5${index}`} theme="warning">Warning toast</Button>
+            <Button theme="secondary" id={`toast-btn-6${index}`} theme="alert">Alert toast</Button>
+            <Button theme="secondary" id={`toast-btn-7${index}`}>🎨 Toast with custom icon</Button>
+            <Button theme="secondary" id={`toast-btn-8${index}`}>🎨 Themed toast with icon</Button>
+            <Button theme="secondary" id={`toast-btn-9${index}`}>↙️Toast in bottom left</Button>
+            <Button theme="secondary" id={`toast-btn-10${index}`}>↖️ Toast in top left</Button>
+            <Button theme="secondary" id={`toast-btn-11${index}`}>↗️Toast in top right</Button>
+        </div>
+        <div class="grid md-2 my">
+            <section.component id={`toast-0${index}`}>
+                Toast with only text.
+            </section.component>
+            <section.component title="Note" id={`toast-1${index}`}>
+                Toast with text and title.
+            </section.component>
+            <section.component title="💡 Note" id={`toast-2${index}`}>
+                Toast with emoji in title
+            </section.component>
+            <section.component title="Information" theme="info" id={`toast-3${index}`}>
+                Toast with info theme.
+            </section.component>
+            <section.component title="Congratulations!" theme="success" id={`toast-4${index}`}>
+                Toast with success theme.
+            </section.component>
+            <section.component title="Important" theme="warning" id={`toast-5${index}`}>
+                Toast with warning theme.
+            </section.component>
+            <section.component title="Irreversible action" theme="alert" id={`toast-6${index}`}>
+                Toast with alert theme.
+            </section.component>
+            <section.component title="Custom icons" id={`toast-7${index}`}>
+                <Icon type="github" slot="icon" />
+                Toast with custom icon.
+            </section.component>
+            <section.component title="Themed toast with icon" theme="success" id={`toast-8${index}`}>
+                <Icon type="github" slot="icon" />
+                Toast with theme and icon.
+            </section.component>
+            <section.component title="Bottom left" id={`toast-9${index}`} position="bottom-left">
+                Toast in bottom left corner
+            </section.component>
+            <section.component title="Top left" id={`toast-10${index}`} position="top-left">
+                Toast in top left corner
+            </section.component>
+            <section.component title="Top right" id={`toast-11${index}`} position="top-right">
+                Toast in top right corner
+            </section.component>
 
             <ComponentWrapper title="Dismissable toast with long timeout">
-                <Button theme="secondary" id={`dismissable-show-${index}`}>
+                <Button id={`dismissable-show-${index}`}>
                     Show Toast
                 </Button>
 
@@ -198,17 +129,15 @@ const sections = [
                 </section.component>
             </ComponentWrapper>
 
-            <ComponentWrapper title="Programmatically setting copy">
+            <ComponentWrapper title="Programmatically setting copy, theme & pos">
                 <Button theme="secondary" id={`programmatic-btn-${index}`}>
-                    Show Toast
+                    Programmatically setting copy
                 </Button>
 
                 <section.component title="Original title" id={`programmatic-toast-${index}`}>
                     Original content
                 </section.component>
-            </ComponentWrapper>
 
-            <ComponentWrapper title="Programmatically setting theme & pos">
                 <Button theme="secondary" id={`themed-btn-${index}`}>
                     Show Toast in top-left corner
                 </Button>

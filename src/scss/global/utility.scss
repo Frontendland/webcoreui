@@ -12,6 +12,19 @@
         gap: 20px;
     }
 
+    .flex {
+        display: flex;
+        gap: 20px;
+
+        &.wrap {
+            flex-wrap: wrap;
+        }
+    }
+
+    .my {
+        margin: 20px auto;
+    }
+
     @include Media('md') {
         .grid.md-2 {
             grid-template-columns: repeat(2, minmax(0, 1fr));
