@@ -153,6 +153,36 @@ const sections = [
                 </section.component>
             </ComponentWrapper>
 
+            <ComponentWrapper title="Toast in bottom left">
+                <Button theme="secondary" id={`toast-btn-9${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Bottom left" id={`toast-9${index}`} position="bottom-left">
+                    Toast in bottom left corner
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Toast in top left">
+                <Button theme="secondary" id={`toast-btn-10${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Top left" id={`toast-10${index}`} position="top-left">
+                    Toast in top left corner
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Toast in top right">
+                <Button theme="secondary" id={`toast-btn-11${index}`}>
+                    Show Toast
+                </Button>
+
+                <section.component title="Top right" id={`toast-11${index}`} position="top-right">
+                    Toast in top right corner
+                </section.component>
+            </ComponentWrapper>
+
             <ComponentWrapper title="Dismissable toast with long timeout">
                 <Button theme="secondary" id={`dismissable-show-${index}`}>
                     Show Toast
@@ -178,9 +208,9 @@ const sections = [
                 </section.component>
             </ComponentWrapper>
 
-            <ComponentWrapper title="Programmatically setting theme">
+            <ComponentWrapper title="Programmatically setting theme & pos">
                 <Button theme="secondary" id={`themed-btn-${index}`}>
-                    Show Toast
+                    Show Toast in top-left corner
                 </Button>
 
                 <section.component title="Original title" id={`themed-toast-${index}`}>
@@ -206,7 +236,7 @@ const sections = [
             ?.addEventListener('click', callback)
     }
 
-    const ids = Array(8).fill(10).map((x, index) => x * (index + 1))
+    const ids = Array(11).fill(10).map((x, index) => x * (index + 1))
     const buttons = [
         'astro',
         'svelte',
@@ -256,7 +286,8 @@ const sections = [
                 element: `#themed-toast-${x}`,
                 title: 'Title set through JS',
                 content: 'Theme set to "success"',
-                theme: 'success'
+                theme: 'success',
+                position: 'top-left'
             })
         })
     })

@@ -3,10 +3,12 @@
     import Alert from '../Alert/Alert.svelte'
     import './toast.scss'
 
+    export let position: ToastProps['position'] = ''
     export let className: ToastProps['className'] = ''
 
     const classes = [
         'w-toast',
+        position,
         className
     ].filter(Boolean).join(' ')
 </script>

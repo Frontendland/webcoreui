@@ -6,6 +6,7 @@ type Toast = {
     title?: AlertProps['title']
     content?: string
     theme?: AlertProps['theme']
+    position?: string
 }
 
 let defaultTimeout = 5000
@@ -21,16 +22,19 @@ export const toast = (config: Toast | string) => {
         timeout,
         title,
         content,
-        theme
+        theme,
+        position
     } = (typeof config === 'string' ? {} : config) as Toast
 
     const htmlElement = document.querySelector(element)
 
     if (htmlElement) {
-        htmlElement.classList.add('show')
-
         if (theme) {
             htmlElement.classList.add(theme)
+        }
+        
+        if (position) {
+            htmlElement.classList.add(position, 'no-anim')
         }
 
         if (title) {
@@ -44,6 +48,11 @@ export const toast = (config: Toast | string) => {
 
             contentElement ? contentElement.innerHTML = content : null
         }
+
+        setTimeout(() => {
+            htmlElement.classList.remove('no-anim')
+            htmlElement.classList.add('show')
+        }, 0)
 
         setTimeout(() => {
             htmlElement.classList.remove('show')

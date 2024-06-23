@@ -7,11 +7,13 @@ import './toast.scss'
 interface Props extends ToastProps {}
 
 const {
+    position,
     className
 } = Astro.props
 
 const classes = [
     'w-toast',
+    position,
     className
 ].filter(Boolean).join(' ')
 ---

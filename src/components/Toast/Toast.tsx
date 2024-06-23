@@ -11,12 +11,14 @@ type ReactToastProps = {
 
 const Toast = ({
     icon,
+    position,
     className,
     children,
     ...rest
 }: ReactToastProps) => {
     const classes = [
         'w-toast',
+        position,
         className
     ].filter(Boolean).join(' ')
 
