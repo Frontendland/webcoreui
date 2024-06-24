@@ -14,6 +14,8 @@ import Rating from '@components/Rating/Rating.astro'
 import Spinner from '@components/Spinner/Spinner.astro'
 import Switch from '@components/Switch/Switch.astro'
 import Tabs from '@components/Tabs/Tabs.astro'
+import Timeline from '@components/Timeline/Timeline.astro'
+import TimelineItem from '@components/TimelineItem/TimelineItem.astro'
 
 import infoIcon from '../icons/info.svg?raw'
 import gitHubIcon from '../icons/github.svg?raw'
@@ -125,6 +127,12 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Tabs" href="/tabs">
             <Tabs items={tabItems} theme="boxed" />
+        </CardWrapper>
+        <CardWrapper title="Timeline" href="/timeline">
+            <Timeline>
+                <TimelineItem>Getting Started</TimelineItem>
+                <TimelineItem>Setup</TimelineItem>
+            </Timeline>
         </CardWrapper>
         <CardWrapper title="Toast" href="/toast">
             <Alert theme="success">Post saved</Alert>

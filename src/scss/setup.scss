@@ -23,6 +23,9 @@ $config: (
     --w-spinner-dash: 8;
     --w-tooltip-background: #FFF;
     --w-tooltip-color: #000;
+    --w-timeline-color: #252525;
+    --w-timeline-text-color: #FFF;
+    --w-timeline-counter: decimal;
 }
 
 @function config($key) {

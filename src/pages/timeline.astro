@@ -1,0 +1,143 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import Button from '@components/Button/Button.astro'
+import AstroTimeline from '@components/Timeline/Timeline.astro'
+import SvelteTimeline from '@components/Timeline/Timeline.svelte'
+import ReactTimeline from '@components/Timeline/Timeline.tsx'
+
+import AstroTimelineItem from '@components/TimelineItem/TimelineItem.astro'
+import SvelteTimelineItem from '@components/TimelineItem/TimelineItem.svelte'
+import ReactTimelineItem from '@components/TimelineItem/TimelineItem.tsx'
+
+const sections = [
+    {
+        title: 'Astro timelines',
+        component: AstroTimeline,
+        item: AstroTimelineItem
+    },
+    {
+        title: 'Svelte timelines',
+        component: SvelteTimeline,
+        item: SvelteTimelineItem
+    },
+    {
+        title: 'React timelines',
+        component: ReactTimeline,
+        item: ReactTimelineItem
+    }
+]
+---
+
+<Layout>
+    <h1>Timeline</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroTimeline>
+                <AstroTimelineItem>Getting started</AstroTimelineItem>
+                <AstroTimelineItem>Setup</AstroTimelineItem>
+                <AstroTimelineItem>Conclusion</AstroTimelineItem>
+            </AstroTimeline>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteTimeline color="#e73f40" theme="stroke">
+                <SvelteTimelineItem>Getting started</SvelteTimelineItem>
+                <SvelteTimelineItem>Setup</SvelteTimelineItem>
+                <SvelteTimelineItem>Conclusion</SvelteTimelineItem>
+            </SvelteTimeline>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactTimeline color="#48dbfb" theme="stroke">
+                <ReactTimelineItem>Getting started</ReactTimelineItem>
+                <ReactTimelineItem>Setup</ReactTimelineItem>
+                <ReactTimelineItem>Conclusion</ReactTimelineItem>
+            </ReactTimeline>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default with components">
+                <section.component>
+                    <section.item>Getting started</section.item>
+                    <section.item>Setup</section.item>
+                    <section.item>
+                        <ComponentWrapper title="Conclusion">
+                            <Button>Finish</Button>
+                        </ComponentWrapper>
+                    </section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With titles">
+                <section.component>
+                    <section.item title="Start here">Getting started</section.item>
+                    <section.item title="Prerequisites">Setup</section.item>
+                    <section.item title="Wrapping Up">Conclusion</section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Fill only">
+                <section.component theme="fill">
+                    <section.item>Getting started</section.item>
+                    <section.item>Setup</section.item>
+                    <section.item>Conclusion</section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Stroke">
+                <section.component theme="stroke">
+                    <section.item>Getting started</section.item>
+                    <section.item>Setup</section.item>
+                    <section.item>Conclusion</section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Stroke only">
+                <section.component theme="stroke fill">
+                    <section.item>Getting started</section.item>
+                    <section.item>Setup</section.item>
+                    <section.item>Conclusion</section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom counter">
+                <section.component counter="upper-alpha">
+                    <section.item>Getting started</section.item>
+                    <section.item>Setup</section.item>
+                    <section.item>Conclusion</section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom color">
+                <section.component color="#1dd1a1" textColor="#000">
+                    <section.item>Getting started</section.item>
+                    <section.item>Setup</section.item>
+                    <section.item>Conclusion</section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alternate">
+                <section.component alternate={true}>
+                    <section.item>Getting started</section.item>
+                    <section.item>Setup</section.item>
+                    <section.item>Conclusion</section.item>
+                    <section.item>Resources</section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alternate centered">
+                <section.component alternate={true} centered={true}>
+                    <section.item>Getting started</section.item>
+                    <section.item>Setup</section.item>
+                    <section.item>Conclusion</section.item>
+                    <section.item>Resources</section.item>
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

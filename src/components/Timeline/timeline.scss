@@ -1,0 +1,71 @@
+@import '../../scss/config.scss';
+
+// (circle width + border * 2) / 2 - line width
+$leftOffset: calc(((25px + 4px) / 2) - 1px);
+$rightOffset: calc((((25px + 4px) / 2) - 1px) * -1);
+
+.w-timeline {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    padding: 0 0 0 40px;
+    margin: 0;
+    list-style-type: none;
+    counter-reset: item;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 1px;
+        background: var(--w-timeline-color);
+        height: 100%;
+        left: $leftOffset
+    }
+
+    &.fill li::before {
+        content: '';
+    }
+
+    &.stroke li::before {
+        background: #000;
+        border: 2px solid var(--w-timeline-color);
+    }
+}
+
+@include Media('xs') {
+    .w-timeline {
+        &.alternate {
+            padding: 0;
+    
+            &::before {
+                left: calc(50% - 1px);
+            }
+    
+            li {
+                width: 50%;
+    
+                &:nth-child(odd) {
+                    padding-right: 40px;
+                }
+    
+                &:nth-child(even) {
+                    align-self: flex-end;
+                    padding-left: 40px;
+    
+                    &::before {
+                        left: 25px;
+                    }
+                }
+    
+                &::before {
+                    right: $rightOffset;
+                }
+            }
+        }
+    
+        &.centered li:nth-child(odd) {
+            text-align: right;
+        }
+    }
+}

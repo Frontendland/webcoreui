@@ -1,0 +1,31 @@
+@import '../../scss/config.scss';
+
+.w-timeline-item {
+    position: relative;
+    font-size: 16px;
+
+    &::before {
+        content: counter(item, var(--w-timeline-counter));
+        counter-increment: item;
+        position: absolute;
+        top: -5px;
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+        background: var(--w-timeline-color);
+        color: var(--w-timeline-text-color);
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #000;
+        margin-left: -40px;
+    }
+
+    .timeline-title {
+        display: block;
+        margin-bottom: 10px;
+        font-family: Bold;
+        font-size: 18px;
+    }
+}
