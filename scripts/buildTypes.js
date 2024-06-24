@@ -34,15 +34,30 @@ const buildTypes = type => {
     }
 
     if (type === 'react') {
+        const getTypeName = component => {
+            const componentsWithoutReactSpecificTypes = [
+                'Accordion',
+                'Avatar',
+                'Icon',
+                'Rating',
+                'Spinner',
+                'TimelineItem'
+            ]
+    
+            return componentsWithoutReactSpecificTypes.includes(component)
+                ? `${component}Props`
+                : `React${component}Props`
+        }
+
         return format(`
             import { FC } from 'react'
             ${components.map(component => {
-                return `import type { ${component}Props } from './components/${component}/${component.toLowerCase()}'`
+                return `import type { ${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
 
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
-                    return `export const ${component}: FC<${component}Props>`
+                    return `export const ${component}: FC<${getTypeName(component)}>`
                 }).join('\n\t')}
             }
         `)

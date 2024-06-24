@@ -1,10 +1,5 @@
 import React from 'react'
-import type { ConditionalWrapperProps } from './conditionalwrapper'
-
-type ReactConditionalWrapperProps = {
-  wrapper: (_: React.ReactNode) => any
-  children: React.ReactNode
-} & ConditionalWrapperProps
+import type { ReactConditionalWrapperProps } from './conditionalwrapper'
 
 const ConditionalWrapper = ({ condition, wrapper, children }: ReactConditionalWrapperProps) =>
   condition ? wrapper(children) : children
