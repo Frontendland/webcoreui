@@ -1,0 +1,66 @@
+@import '../../scss/config.scss';
+
+.w-progress {
+    width: 100%;
+    height: 10px;
+    background: var(--w-progress-background);
+    border-radius: 20px;
+    overflow: hidden;
+    color: var(--w-progress-background);
+    font-family: Bold;
+    font-size: 10px;
+    
+    &.medium {
+        height: 15px;
+        font-size: 12px;
+    }
+
+    &.large {
+        height: 20px;
+        font-size: 14px;
+    }
+
+    &.square {
+        border-radius: 2px;
+
+        .progress {
+            border-radius: 2px;
+        }
+    }
+
+    &.striped {
+
+        .progress {
+            background-size: 10px 10px;
+            background-image: linear-gradient(
+                -45deg,
+                var(--w-progress-stripe-light) 25%,
+                var(--w-progress-stripe-dark) 25%,
+                var(--w-progress-stripe-dark) 50%,
+                var(--w-progress-stripe-light) 50%,
+                var(--w-progress-stripe-light) 75%,
+                var(--w-progress-stripe-dark) 75%,
+                var(--w-progress-stripe-dark)
+            );
+        }
+
+        &.medium .progress {
+            background-size: 15px 15px;
+        }
+
+        &.large .progress {
+            background-size: 20px 20px;
+        }
+    }
+
+    .progress {
+        @include Transition(width);
+        width: var(--w-progress-width);
+        height: 100%;
+        background: var(--w-progress-color);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

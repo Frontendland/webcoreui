@@ -5,14 +5,24 @@
     import Badge from '@components/Badge/Badge.svelte'
     import Button from '@components/Button/Button.svelte'
     import Checkbox from '@components/Checkbox/Checkbox.svelte'
+    import Progress from '@components/Progress/Progress.svelte'
     import Radio from '@components/Radio/Radio.svelte'
     import Switch from '@components/Switch/Switch.svelte'
     import Tabs from '@components/Tabs/Tabs.svelte'
+    import Toast from '@components/Toast/Toast.svelte'
 
     import { tabItems } from '@data'
+    import { toast } from '@utils/toast'
+    
+    import styles from './playground.module.scss'
+
+    let progress = 33
+    let checkbox = false
+    let radio = ''
+    let toggle = false
 </script>
 
-<div class="grid md-2 lg-3">
+<div class="playground grid md-2 lg-3">
     <Card title="Accordion">
         <Accordion items={[{
             title: 'Do you offer support?',
@@ -24,11 +34,11 @@
     </Card>
 
     <Card title="Badge">
-        <Badge onClick={() => console.log('👋')}>Click me</Badge>
+        <Badge onClick={() => toast('#badgeToast')}>Click me</Badge>
     </Card>
 
     <Card title="Button">
-        <Button onClick={() => console.log('👋')} theme="alert">
+        <Button onClick={() => toast('#buttonToast')} theme="alert">
             Click me
         </Button>
     </Card>
@@ -36,8 +46,22 @@
     <Card title="Checkbox">
         <Checkbox
             label="Accept"
-            onClick={e => console.log(`checked: ${e.target.checked}`)}
+            onClick={e => checkbox = e.target.checked}
         />
+
+        <span class={styles.span}>{checkbox}</span>
+    </Card>
+
+    <Card title="Progress">
+        <Progress value={progress} />
+
+        <div class="flex xs my">
+            <Button onClick={() => progress = 0}>0%</Button>
+            <Button onClick={() => progress = 25}>25%</Button>
+            <Button onClick={() => progress = 50}>50%</Button>
+            <Button onClick={() => progress = 75}>75%</Button>
+            <Button onClick={() => progress = 100}>100%</Button>
+        </div>
     </Card>
 
     <Card title="Radio">
@@ -48,14 +72,18 @@
                 { label: 'Large', value: 'lg' }
             ]}
             name="radio"
-            onChange={e => console.log('changed to:', e.target.value)}
+            onChange={e => radio =  e.target.value}
         />
+
+        <span class={styles.span}>{radio}</span>
     </Card>
 
     <Card title="Switch">
         <Switch
-            onClick={e => console.log(`switched: ${e.target.checked}`)}
+            onClick={e => toggle = e.target.checked}
         />
+
+        <span class={styles.span}>{toggle}</span>
     </Card>
 
     <Card title="Tabs">
@@ -74,3 +102,11 @@
         </Tabs>
     </Card>
 </div>
+
+<Toast title="Badge toast" id="badgeToast">
+    👋 Clicked on badge toast
+</Toast>
+
+<Toast title="Button toast" id="buttonToast" theme="alert">
+    👋 Clicked on button toast
+</Toast>

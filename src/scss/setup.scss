@@ -26,6 +26,10 @@ $config: (
     --w-timeline-color: #252525;
     --w-timeline-text-color: #FFF;
     --w-timeline-counter: decimal;
+    --w-progress-color: #FFF;
+    --w-progress-background: #252525;
+    --w-progress-stripe-light: #FFF;
+    --w-progress-stripe-dark: #DDD;
 }
 
 @function config($key) {

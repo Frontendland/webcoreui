@@ -1,0 +1,206 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroProgress from '@components/Progress/Progress.astro'
+import SvelteProgress from '@components/Progress/Progress.svelte'
+import ReactProgress from '@components/Progress/Progress.tsx'
+
+const sections = [
+    {
+        title: 'Astro progress',
+        component: AstroProgress,
+    },
+    {
+        title: 'Svelte progress',
+        component: SvelteProgress,
+        subTitle: 'For interactive examples, visit <a href="/svelte">Svelte Playground</a>',
+    },
+    {
+        title: 'React progress',
+        component: ReactProgress,
+        subTitle: 'For interactive examples, visit <a href="/react">React Playground</a>',
+    }
+]
+---
+
+<Layout>
+    <h1>Progress</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroProgress value={25} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteProgress value={50} color="#ee5253" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactProgress value={75} color="#48dbfb" />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component value={33} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Different sizes">
+                <section.component value={25} /><br />
+                <section.component value={50} size="medium" /><br />
+                <section.component value={75} size="large" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Square">
+                <section.component value={25} square={true} /><br />
+                <section.component
+                    value={50}
+                    size="medium"
+                    square={true}
+                /><br />
+                <section.component
+                    value={75}
+                    size="large"
+                    square={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom color">
+                <section.component
+                    value={33}
+                    color="#1dd1a1"
+                    background="#333"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Striped">
+                <section.component value={25} striped={true} /><br />
+                <section.component
+                    value={50}
+                    striped={true}
+                    size="medium"
+                /><br />
+                <section.component
+                    value={75}
+                    striped={true}
+                    size="large"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom striped colors">
+                <section.component
+                    value={25}
+                    striped={true}
+                    stripeLight="#92CE72"
+                    stripeDark="#70C542"
+                /><br />
+                <section.component
+                    value={50}
+                    striped={true}
+                    stripeLight="#92CE72"
+                    stripeDark="#70C542"
+                    size="medium"
+                /><br />
+                <section.component
+                    value={75}
+                    striped={true}
+                    stripeLight="#92CE72"
+                    stripeDark="#70C542"
+                    size="large"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Striped square">
+                <section.component
+                    value={25}
+                    striped={true}
+                    square={true}
+                /><br />
+                <section.component
+                    value={50}
+                    striped={true}
+                    size="medium"
+                    square={true}
+                /><br />
+                <section.component
+                    value={75}
+                    striped={true}
+                    size="large"
+                    square={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label inside">
+                <section.component value={25} label={true} /><br />
+                <section.component
+                    value={50}
+                    label={true}
+                    size="medium"
+                /><br />
+                <section.component
+                    value={75}
+                    label={true}
+                    size="large"
+                    striped={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label outside">
+                <p>
+                    <span>Progress</span>
+                    <span>{33}%</span>
+                </p>
+                <section.component value={33} />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<style lang="scss">
+    p {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 5px 0;
+        font-size: 14px;
+        color: #BBB;
+    }
+</style>
+
+<script>
+    const animate = false
+
+    const simulateProgress = (progress: number): any => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(progress + 1)
+            }, 50)
+        }).then(res => res)
+    }
+
+    if (animate) {
+        Array.from(document.querySelectorAll('.progress'))
+            .forEach(async progress => {
+                let percent = Number((progress as HTMLElement).style
+                    .getPropertyValue('--w-progress-width')
+                    .split('%')[0])
+    
+                while (true) {
+                    percent = await simulateProgress(percent);
+    
+                    (progress as HTMLElement)
+                        .style
+                        .setProperty('--w-progress-width', `${percent}%`)
+                    
+                            
+                    if (percent === 100) {
+                        percent = 0
+                    }
+                }
+            })
+    }
+</script>

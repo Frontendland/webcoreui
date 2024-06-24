@@ -1,17 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Card from '@components/Card/Card.tsx'
+
 import Accordion from '@components/Accordion/Accordion.tsx'
 import Badge from '@components/Badge/Badge.tsx'
 import Button from '@components/Button/Button.tsx'
 import Checkbox from '@components/Checkbox/Checkbox.tsx'
+import Progress from '@components/Progress/Progress.tsx'
 import Radio from '@components/Radio/Radio.tsx'
 import Switch from '@components/Switch/Switch.tsx'
 import Tabs from '@components/Tabs/Tabs.tsx'
+import Toast from '@components/Toast/Toast.tsx'
 
 import { tabItems } from '@data'
+import { toast } from '@utils/toast'
+
+import styles from './playground.module.scss'
+
+console.log(styles)
 
 const ReactPlayground = () => {
+    const [progress, setProgress] = useState(33)
+    const [checkbox, setCheckbox] = useState(false)
+    const [radio, setRadio] = useState('')
+    const [toggle, setToggle] = useState(false)
+
     return (
         <div className="grid md-2 lg-3">
             <Card title="Accordion">
@@ -25,11 +38,11 @@ const ReactPlayground = () => {
             </Card>
 
             <Card title="Badge">
-                <Badge onClick={() => console.log('👋')}>Click me</Badge>
+                <Badge onClick={() => toast('#badgeToast')}>Click me</Badge>
             </Card>
 
             <Card title="Button">
-                <Button onClick={() => console.log('👋')} theme="alert">
+                <Button onClick={() => toast('#buttonToast')} theme="alert">
                     Click me
                 </Button>
             </Card>
@@ -37,8 +50,22 @@ const ReactPlayground = () => {
             <Card title="Checkbox">
                 <Checkbox
                     label="Accept"
-                    onClick={e => console.log(`checked: ${e.target.checked}`)}
+                    onClick={e => setCheckbox(e.target.checked)}
                 />
+
+                <span className={styles.span}>{`${checkbox}`}</span>
+            </Card>
+
+            <Card title="Progress">
+                <Progress value={progress} />
+
+                <div className="flex xs my">
+                    <Button onClick={() => setProgress(0)}>0%</Button>
+                    <Button onClick={() => setProgress(25)}>25%</Button>
+                    <Button onClick={() => setProgress(50)}>50%</Button>
+                    <Button onClick={() => setProgress(75)}>75%</Button>
+                    <Button onClick={() => setProgress(100)}>100%</Button>
+                </div>
             </Card>
 
             <Card title="Radio">
@@ -49,14 +76,18 @@ const ReactPlayground = () => {
                         { label: 'Large', value: 'lg' }
                     ]}
                     name="radio"
-                    onChange={e => console.log('changed to:', e.target.value)}
+                    onChange={e => setRadio(e.target.value)}
                 />
+
+                <span className={styles.span}>{radio}</span>
             </Card>
 
             <Card title="Switch">
                 <Switch
-                    onClick={e => console.log(`switched: ${e.target.checked}`)}
+                    onClick={e => setToggle(e.target.checked)}
                 />
+
+                <span className={styles.span}>{`${toggle}`}</span>
             </Card>
 
             <Card title="Tabs">
@@ -74,6 +105,14 @@ const ReactPlayground = () => {
                     <div data-tab="conclusion">Conclusion tab</div>
                 </Tabs>
             </Card>
+
+            <Toast title="Badge toast" id="badgeToast">
+                👋 Clicked on badge toast
+            </Toast>
+
+            <Toast title="Button toast" id="buttonToast" theme="alert">
+                👋 Clicked on button toast
+            </Toast>
         </div>
     )
     

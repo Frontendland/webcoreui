@@ -16,6 +16,10 @@
         display: flex;
         gap: 20px;
 
+        &.xs {
+            gap: 5px;
+        }
+
         &.wrap {
             flex-wrap: wrap;
         }

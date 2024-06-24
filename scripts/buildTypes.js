@@ -41,7 +41,8 @@ const buildTypes = type => {
                 'Icon',
                 'Rating',
                 'Spinner',
-                'TimelineItem'
+                'TimelineItem',
+                'Progress'
             ]
     
             return componentsWithoutReactSpecificTypes.includes(component)
