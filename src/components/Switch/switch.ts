@@ -9,3 +9,7 @@ export type SwitchProps = {
     disabled?: boolean
     className?: string
 }
+
+export type ReactSwitchProps = {
+    onClick?: (key: any) => any
+} & SwitchProps

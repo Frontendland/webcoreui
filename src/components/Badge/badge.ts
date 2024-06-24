@@ -9,3 +9,7 @@ export type BadgeProps = {
         | null
     onClick?: () => any
 }
+
+export type ReactBadgeProps = {
+    children: React.ReactNode
+} & BadgeProps

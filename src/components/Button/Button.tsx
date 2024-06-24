@@ -1,10 +1,6 @@
 import React from 'react'
-import type { ButtonProps } from './button'
+import type { ReactButtonProps } from './button'
 import './button.scss'
-
-type ReactButtonProps = {
-    children: React.ReactNode
-} & ButtonProps
 
 const Button = ({
     theme,

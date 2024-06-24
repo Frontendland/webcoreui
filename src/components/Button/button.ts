@@ -12,3 +12,7 @@ export type ButtonProps = {
     onClick?: () => any
     [key: string]: any
 }
+
+export type ReactButtonProps = {
+    children: React.ReactNode
+} & ButtonProps

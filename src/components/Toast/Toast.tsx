@@ -1,13 +1,8 @@
 import React from 'react'
-import type { ToastProps } from './toast'
+import type { ReactToastProps } from './toast'
 import Alert from '../Alert/Alert.tsx'
 
 import './toast.scss'
-
-type ReactToastProps = {
-    children: React.ReactNode
-    icon?: string
-} & ToastProps
 
 const Toast = ({
     icon,

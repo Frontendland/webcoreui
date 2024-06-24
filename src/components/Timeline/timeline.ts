@@ -55,3 +55,7 @@ export type TimelineProps = {
     | 'upper-roman'
     | null
 }
+
+export type ReactTimelineProps = {
+    children: React.ReactNode
+} & TimelineProps

@@ -1,10 +1,6 @@
 import React from 'react'
-import type { SwitchProps } from './switch'
+import type { ReactSwitchProps } from './switch'
 import './switch.scss'
-
-type ReactSwitchProps = {
-    onClick?: (key: any) => any
-} & SwitchProps
 
 const Switch = ({
     label,

@@ -1,11 +1,7 @@
 import React, { useState, useRef } from 'react'
-import type { TabsProps } from './tabs'
+import type { ReactTabsProps } from './tabs'
 
 import './tabs.scss'
-
-type ReactTabsProps = {
-    children: React.ReactNode
-} & TabsProps
 
 const Tabs = ({
     items,
@@ -40,7 +36,7 @@ const Tabs = ({
         setActive(tab)
     }
 
-    const isActive = (item: TabsProps['items'][0]) => {
+    const isActive = (item: ReactTabsProps['items'][0]) => {
         if (!active) {
             return item.active ? 'active' : undefined
         }

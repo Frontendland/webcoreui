@@ -1,12 +1,6 @@
 import React from 'react'
-import type { CardProps } from './card'
+import type { ReactCardProps } from './card'
 import './card.scss'
-
-type ReactCardProps = {
-    Element?: keyof JSX.IntrinsicElements
-    TitleTag?: keyof JSX.IntrinsicElements
-    children: React.ReactNode
-} & CardProps
 
 const Card = ({
     Element = 'section',

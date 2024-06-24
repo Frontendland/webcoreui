@@ -7,3 +7,9 @@ export type CardProps = {
     secondary?: boolean
     [key: string]: any
 }
+
+export type ReactCardProps = {
+    Element?: keyof JSX.IntrinsicElements
+    TitleTag?: keyof JSX.IntrinsicElements
+    children: React.ReactNode
+} & Omit<CardProps, 'titleTag' | 'element'>

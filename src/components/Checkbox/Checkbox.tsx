@@ -1,14 +1,10 @@
 import React from 'react'
-import type { CheckboxProps } from './checkbox'
+import type { ReactCheckboxProps } from './checkbox'
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
 import check from '../../icons/check.svg?raw'
 
 import './checkbox.scss'
-
-type ReactCheckboxProps = {
-    onClick?: (key: any) => any
-} & CheckboxProps
 
 const Checkbox = ({
     checked,

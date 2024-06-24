@@ -11,3 +11,7 @@ export type RadioProps = {
     inline?: boolean
     className?: string
 }
+
+export type ReactRadioProps = {
+    onChange?: (key: any) => any
+} & RadioProps

@@ -6,3 +6,7 @@ export type CheckboxProps = {
     boxed?: boolean
     color?: string
 }
+
+export type ReactCheckboxProps = {
+    onClick?: (key: any) => any
+} & CheckboxProps

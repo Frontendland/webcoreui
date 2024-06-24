@@ -10,3 +10,7 @@ export type TabsProps = {
     even?: boolean
     className?: string
 }
+
+export type ReactTabsProps = {
+    children: React.ReactNode
+} & TabsProps
