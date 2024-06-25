@@ -1,0 +1,83 @@
+@import '../../scss/config.scss';
+
+.w-input {
+    border-radius: 2px;
+    padding: 5px 10px;
+    border: 1px solid #252525;
+    background: transparent;
+    font-family: Regular;
+    color: #FFF;
+    line-height: 20px;
+    width: 100%;
+    color-scheme: dark;
+
+    &[disabled] {
+        cursor: no-drop;
+        color: #555;
+    }
+
+    &::file-selector-button {
+        background: transparent;
+        border: 0;
+        color: #FFF;
+    }
+
+    &[type="color"] {
+        padding: 0;
+    }
+
+    &.info {
+        border-color: #48dbfb;
+    }
+
+    &.success {
+        border-color: #1dd1a1;
+    }
+
+    &.warning {
+        border-color: #f7aa61;
+    }
+
+    &.alert {
+        border-color: #ee5253;
+    }
+
+    &.fill {
+        background: #252525;
+    }
+}
+
+.w-input-label {
+    display: flex;
+    flex-direction: column;
+
+    .label {
+        font-size: 16px;
+        color: #BBB;
+        margin-bottom: 5px;
+    }
+
+    .input-wrapper {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        position: relative;
+
+        input {
+            padding-left: 40px;
+        }
+
+        svg {
+            position: absolute;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .subtext {
+        font-size: 14px;
+        color: #555;
+        margin-top: 5px;
+    }
+}

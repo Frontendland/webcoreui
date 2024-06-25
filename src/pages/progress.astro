@@ -6,22 +6,13 @@ import AstroProgress from '@components/Progress/Progress.astro'
 import SvelteProgress from '@components/Progress/Progress.svelte'
 import ReactProgress from '@components/Progress/Progress.tsx'
 
-const sections = [
-    {
-        title: 'Astro progress',
-        component: AstroProgress,
-    },
-    {
-        title: 'Svelte progress',
-        component: SvelteProgress,
-        subTitle: 'For interactive examples, visit <a href="/svelte">Svelte Playground</a>',
-    },
-    {
-        title: 'React progress',
-        component: ReactProgress,
-        subTitle: 'For interactive examples, visit <a href="/react">React Playground</a>',
-    }
-]
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'progress',
+    components: [AstroProgress, SvelteProgress, ReactProgress],
+    showSubTitle: true
+})
 ---
 
 <Layout>

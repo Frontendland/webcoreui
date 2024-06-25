@@ -1,0 +1,168 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import Icon from '@components/Icon/Icon.astro'
+import AstroInput from '@components/Input/Input.astro'
+import SvelteInput from '@components/Input/Input.svelte'
+import ReactInput from '@components/Input/Input.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'inputs',
+    components: [AstroInput, SvelteInput, ReactInput],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>Input</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroInput value="Astro input" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteInput value="Svelte input" theme="alert" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactInput value="React input" theme="info" />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default with character limit">
+                <section.component maxLength={5} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Email input with placeholder">
+                <section.component
+                    type="email"
+                    placeholder="Please enter your email"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Password input">
+                <section.component type="password" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Number input with min, max, and step">
+                <section.component
+                    type="number"
+                    value={3}
+                    min={1}
+                    max={10}
+                    step={2}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Search input with icon">
+                <section.component type="search">
+                    <Icon type="github" slot="icon" />
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="File input">
+                <section.component type="file" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Date input with value">
+                <section.component type="date" value="2024-01-01" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Date time input">
+                <section.component type="datetime-local" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Month input">
+                <section.component type="month" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Week input">
+                <section.component type="week" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Time input">
+                <section.component type="time" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Color input">
+                <section.component type="color" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Input with label">
+                <section.component label="Name" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Label and sub text">
+                <section.component
+                    label="Name"
+                    subText="Please provide your full name."
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Label, sub text, and icon">
+                <section.component
+                    label="Name"
+                    subText="Please provide your username."
+                >
+                    <Icon type="github" slot="icon" />
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled input">
+                <section.component
+                    value="This input is disabled"
+                    disabled={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Info themed input">
+                <section.component
+                    label="Name"
+                    subText="Please provide your full name."
+                    theme="info"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Success themed input">
+                <section.component
+                    label="Name"
+                    subText="Please provide your full name."
+                    theme="success"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Warning themed input">
+                <section.component
+                    label="Name"
+                    subText="Please provide your full name."
+                    theme="warning"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alert themed input">
+                <section.component
+                    label="Name"
+                    subText="Please provide your full name."
+                    theme="alert"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Input with fill style">
+                <section.component
+                    label="Name"
+                    subText="Please provide your full name."
+                    fill={true}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

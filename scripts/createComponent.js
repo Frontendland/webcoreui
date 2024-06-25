@@ -91,20 +91,12 @@ const templates = {
         import Svelte${component} from '@components/${component}/${component}.svelte'
         import React${component} from '@components/${component}/${component}.tsx'
 
-        const sections = [
-            {
-                title: 'Astro ${lowerCaseComponent}s',
-                component: Astro${component}
-            },
-            {
-                title: 'Svelte ${lowerCaseComponent}s',
-                component: Svelte${component}
-            },
-            {
-                title: 'React ${lowerCaseComponent}s',
-                component: React${component}
-            }
-        ]
+        import { getSections } from '@helpers'
+
+        const sections = getSections({
+            title: '${lowerCaseComponent}s',
+            components: [Astro${component}, Svelte${component}, React${component}]
+        })
         ---
 
         <Layout>

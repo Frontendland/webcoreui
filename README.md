@@ -144,6 +144,7 @@ import { Accordion } from 'webcoreui/react'
 - [Checkbox](https://github.com/Frontendland/webcoreui/tree/main/src/components/Checkbox)
 - [ConditionalWrapper](https://github.com/Frontendland/webcoreui/tree/main/src/components/ConditionalWrapper)
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
+- [Input](https://github.com/Frontendland/webcoreui/tree/main/src/components/Input)
 - [Progress](https://github.com/Frontendland/webcoreui/tree/main/src/components/Progress)
 - [Radio](https://github.com/Frontendland/webcoreui/tree/main/src/components/Radio)
 - [Rating](https://github.com/Frontendland/webcoreui/tree/main/src/components/Rating)

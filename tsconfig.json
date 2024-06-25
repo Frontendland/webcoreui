@@ -8,7 +8,8 @@
             "@static/*": ["src/static/*"],
             "@playground/*": ["src/playground/*"],
             "@utils/*": ["src/utils/*"],
-            "@data": ["src/data.js"]
+            "@data": ["src/data.js"],
+            "@helpers": ["src/helpers.js"]
         }
     }
 }

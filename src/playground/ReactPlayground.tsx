@@ -6,6 +6,7 @@ import Accordion from '@components/Accordion/Accordion.tsx'
 import Badge from '@components/Badge/Badge.tsx'
 import Button from '@components/Button/Button.tsx'
 import Checkbox from '@components/Checkbox/Checkbox.tsx'
+import Input from '@components/Input/Input.tsx'
 import Progress from '@components/Progress/Progress.tsx'
 import Radio from '@components/Radio/Radio.tsx'
 import Switch from '@components/Switch/Switch.tsx'
@@ -24,6 +25,7 @@ const ReactPlayground = () => {
     const [checkbox, setCheckbox] = useState(false)
     const [radio, setRadio] = useState('')
     const [toggle, setToggle] = useState(false)
+    const [input, setInput] = useState('')
 
     return (
         <div className="grid md-2 lg-3">
@@ -54,6 +56,21 @@ const ReactPlayground = () => {
                 />
 
                 <span className={styles.span}>{`${checkbox}`}</span>
+            </Card>
+
+            <Card title="Input">
+                <Input
+                    label="Enter a value"
+                    placeholder="Or change the color below"
+                    onKeyUp={(e: any) => setInput(e.target.value)}
+                />
+
+                <Input
+                    type="color"
+                    onChange={(e: any) => setInput(e.target.value)}
+                />
+
+                <span className={styles.span}>{input}</span>
             </Card>
 
             <Card title="Progress">

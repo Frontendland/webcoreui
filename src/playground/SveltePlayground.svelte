@@ -5,6 +5,7 @@
     import Badge from '@components/Badge/Badge.svelte'
     import Button from '@components/Button/Button.svelte'
     import Checkbox from '@components/Checkbox/Checkbox.svelte'
+    import Input from '@components/Input/Input.svelte'
     import Progress from '@components/Progress/Progress.svelte'
     import Radio from '@components/Radio/Radio.svelte'
     import Switch from '@components/Switch/Switch.svelte'
@@ -20,6 +21,7 @@
     let checkbox = false
     let radio = ''
     let toggle = false
+    let input = ''
 </script>
 
 <div class="playground grid md-2 lg-3">
@@ -50,6 +52,21 @@
         />
 
         <span class={styles.span}>{checkbox}</span>
+    </Card>
+
+    <Card title="Input">
+        <Input
+            label="Enter a value"
+            placeholder="Or change the color below"
+            onKeyUp={e => input = e.target.value}
+        />
+
+        <Input
+            type="color"
+            onChange={e => input = e.target.value}
+        />
+
+        <span class={styles.span}>{input}</span>
     </Card>
 
     <Card title="Progress">

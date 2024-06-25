@@ -9,6 +9,7 @@ import Badge from '@components/Badge/Badge.astro'
 import Button from '@components/Button/Button.astro'
 import Checkbox from '@components/Checkbox/Checkbox.astro'
 import Icon from '@components/Icon/Icon.astro'
+import Input from '@components/Input/Input.astro'
 import Progress from '@components/Progress/Progress.astro'
 import Radio from '@components/Radio/Radio.astro'
 import Rating from '@components/Rating/Rating.astro'
@@ -110,6 +111,9 @@ const tabItems = [{
                 size={30}
                 color="#f2c262"
             />
+        </CardWrapper>
+        <CardWrapper title="Input" href="/input">
+            <Input placeholder="Please enter your email." />
         </CardWrapper>
         <CardWrapper title="Progress" href="/progress">
             <Progress value={33} />
