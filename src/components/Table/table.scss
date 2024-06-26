@@ -1,0 +1,65 @@
+@import '../../scss/config.scss';
+
+.w-table {
+    overflow-x: auto;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    thead,
+    tfoot {
+        font-family: Bold;
+    }
+
+    th,
+    td {
+        padding: 5px 10px;
+        white-space: nowrap;
+    }
+
+    thead,
+    tr {
+        border-bottom: 1px solid #252525;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    tfoot,
+    &.hover tr:hover,
+    &.striped-rows tbody tr:nth-child(odd),
+    &.striped-rows.offset tbody tr:nth-child(even),
+    &.striped-columns td:nth-child(odd),
+    &.striped-columns.offset td:nth-child(even) {
+        background: #111;
+    }
+
+    &.striped-rows tr,
+    &.striped-rows thead,
+    &.striped-columns tr,
+    &.striped-columns thead {
+        border-bottom: 0;
+    }
+
+    &.striped-rows.offset tbody tr:nth-child(odd),
+    &.striped-rows.offset tfoot,
+    &.striped-columns.offset td:nth-child(odd),
+    &.striped-columns tfoot {
+        background: transparent;
+    }
+
+    &.compact {
+        th, td {
+            padding: 3px 10px;
+        }
+    }
+}

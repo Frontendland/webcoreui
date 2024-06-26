@@ -1,0 +1,161 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroTable from '@components/Table/Table.astro'
+import SvelteTable from '@components/Table/Table.svelte'
+import ReactTable from '@components/Table/Table.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'tables',
+    components: [AstroTable, SvelteTable, ReactTable]
+})
+
+const tableData = [
+    ['1', 'John Doe'],
+    ['2', 'Jane Smith'],
+    ['3', 'Emily Davis'],
+    ['4', 'Frank Williams']
+]
+
+const tableWithHeading = {
+    headings: ['ID', 'Name'],
+    data: tableData
+}
+
+const tableWithHeadingAndFooter = {
+    headings: ['ID', 'Name'],
+    data: tableData,
+    footer: ['Total', '4']
+}
+
+const tableWithMultipleColumns = {
+    headings: ['ID', 'Name', 'Active'],
+    data: tableData.map(data => [...data, '✅']),
+    footer: ['Total', '', '4']
+}
+
+const overflowTable = {
+    headings: ['ID', 'Name', 'Email', 'Active'],
+    footer: ['Total', '', '', '4'],
+    data: tableData.map(data => [
+        ...data,
+        `<a href="mailto:">${data[1]}@example.com</a>`,
+        '✅'
+    ]),
+}
+---
+
+<Layout>
+    <h1>Table</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroTable {...tableWithHeading} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteTable {...tableWithHeading} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactTable {...tableWithHeading} />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component data={tableData} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Table with heading">
+                <section.component {...tableWithHeading} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Table with heading and footer">
+                <section.component {...tableWithHeadingAndFooter} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Striped rows">
+                <section.component
+                    {...tableWithHeadingAndFooter}
+                    striped="row"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Striped columns">
+                <section.component
+                    {...tableWithMultipleColumns}
+                    striped="column"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Highlight on hover">
+                <section.component
+                    {...tableWithHeadingAndFooter}
+                    hover={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Striped rows with offset">
+                <section.component
+                    {...tableWithHeadingAndFooter}
+                    striped="row"
+                    offsetStripe={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Striped columns with offset">
+                <section.component
+                    {...tableWithMultipleColumns}
+                    striped="column"
+                    offsetStripe={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Compact table">
+                <section.component
+                    {...tableWithHeadingAndFooter}
+                    compact={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Center aligned">
+                <section.component
+                    {...tableWithMultipleColumns}
+                    striped="column"
+                    className="center"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Right aligned">
+                <section.component
+                    {...tableWithMultipleColumns}
+                    striped="column"
+                    className="right"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Overflown with HTML">
+                <section.component
+                    {...overflowTable}
+                    offsetStripe={true}
+                    striped="column"
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<style lang="scss" is:global>
+    .center table {
+        text-align: center;
+    }
+
+    .right table {
+        text-align: right;
+    }
+</style>

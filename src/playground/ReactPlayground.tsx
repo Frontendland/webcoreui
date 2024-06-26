@@ -18,8 +18,6 @@ import { toast } from '@utils/toast'
 
 import styles from './playground.module.scss'
 
-console.log(styles)
-
 const ReactPlayground = () => {
     const [progress, setProgress] = useState(33)
     const [checkbox, setCheckbox] = useState(false)

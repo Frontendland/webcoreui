@@ -150,6 +150,7 @@ import { Accordion } from 'webcoreui/react'
 - [Rating](https://github.com/Frontendland/webcoreui/tree/main/src/components/Rating)
 - [Spinner](https://github.com/Frontendland/webcoreui/tree/main/src/components/Spinner)
 - [Switch](https://github.com/Frontendland/webcoreui/tree/main/src/components/Switch)
+- [Table](https://github.com/Frontendland/webcoreui/tree/main/src/components/Table)
 - [Tabs](https://github.com/Frontendland/webcoreui/tree/main/src/components/Tabs)
 - [Timeline](https://github.com/Frontendland/webcoreui/blob/main/src/pages/timeline.astro)
 - [Toast](https://github.com/Frontendland/webcoreui/tree/main/src/components/Toast)

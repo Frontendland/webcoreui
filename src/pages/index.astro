@@ -15,6 +15,7 @@ import Radio from '@components/Radio/Radio.astro'
 import Rating from '@components/Rating/Rating.astro'
 import Spinner from '@components/Spinner/Spinner.astro'
 import Switch from '@components/Switch/Switch.astro'
+import Table from '@components/Table/Table.astro'
 import Tabs from '@components/Tabs/Tabs.astro'
 import Timeline from '@components/Timeline/Timeline.astro'
 import TimelineItem from '@components/TimelineItem/TimelineItem.astro'
@@ -132,6 +133,12 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Switch" href="/switch">
             <Switch toggled={true} />
+        </CardWrapper>
+        <CardWrapper title="Table" href="/table">
+            <Table
+                headings={['ID', 'Name']}
+                data={[['1', 'John Doe']]}
+            />
         </CardWrapper>
         <CardWrapper title="Tabs" href="/tabs">
             <Tabs items={tabItems} theme="boxed" />
