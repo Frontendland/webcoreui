@@ -12,6 +12,10 @@ export type RadioProps = {
     className?: string
 }
 
+export type SvelteRadioProps = {
+    onChange?: (key: any) => any
+} & RadioProps
+
 export type ReactRadioProps = {
     onChange?: (key: any) => any
 } & RadioProps

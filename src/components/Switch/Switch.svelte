@@ -1,19 +1,19 @@
 <script lang="ts">
-    import type { SwitchProps } from './switch'
+    import type { SvelteSwitchProps } from './switch'
 
     import styles from './switch.module.scss'
     import { classNames } from '../../utils/classNames'
     
-    export let label: SwitchProps['label'] = ''
-    export let toggled: SwitchProps['toggled'] = false
-    export let offColor: SwitchProps['offColor'] = ''
-    export let onColor: SwitchProps['onColor'] = ''
-    export let reverse: SwitchProps['reverse'] = false
-    export let small: SwitchProps['small'] = false
-    export let square: SwitchProps['square'] = false
-    export let disabled: SwitchProps['disabled'] = false
-    export let className: SwitchProps['className'] = ''
-    export let onClick: () => any = () => {}
+    export let label: SvelteSwitchProps['label'] = ''
+    export let toggled: SvelteSwitchProps['toggled'] = false
+    export let offColor: SvelteSwitchProps['offColor'] = ''
+    export let onColor: SvelteSwitchProps['onColor'] = ''
+    export let reverse: SvelteSwitchProps['reverse'] = false
+    export let small: SvelteSwitchProps['small'] = false
+    export let square: SvelteSwitchProps['square'] = false
+    export let disabled: SvelteSwitchProps['disabled'] = false
+    export let className: SvelteSwitchProps['className'] = ''
+    export let onClick: SvelteSwitchProps['onClick'] = () => {}
     
     const classes = classNames([
         styles.switch,

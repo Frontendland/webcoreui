@@ -38,7 +38,14 @@ export type InputProps = {
     [key: string]: any
 }
 
+export type SvelteInputProps = {
+    onChange?: (e: any) => any
+    onKeyUp?: (e: any) => any
+} & InputProps
+
 export type ReactInputProps = {
+    onChange?: (e: any) => any
+    onKeyUp?: (e: any) => any
     icon?: string
     children?: React.ReactNode
 } & InputProps

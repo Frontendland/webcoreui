@@ -7,6 +7,10 @@ export type CheckboxProps = {
     color?: string
 }
 
+export type SvelteCheckboxProps = {
+    onClick?: (key: any) => any
+} & CheckboxProps
+
 export type ReactCheckboxProps = {
     onClick?: (key: any) => any
 } & CheckboxProps

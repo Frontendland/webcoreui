@@ -10,6 +10,10 @@ export type SwitchProps = {
     className?: string
 }
 
+export type SvelteSwitchProps = {
+    onClick?: (key: any) => any
+} & SwitchProps
+
 export type ReactSwitchProps = {
     onClick?: (key: any) => any
 } & SwitchProps

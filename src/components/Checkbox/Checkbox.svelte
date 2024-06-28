@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { CheckboxProps } from './checkbox'
+    import type { SvelteCheckboxProps } from './checkbox'
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
     
     import check from '../../icons/check.svg?raw'
@@ -7,13 +7,13 @@
     import styles from './checkbox.module.scss'
     import { classNames } from '../../utils/classNames'
     
-    export let checked: CheckboxProps['checked'] = false
-    export let label: CheckboxProps['label'] = ''
-    export let subText: CheckboxProps['subText'] = ''
-    export let disabled: CheckboxProps['disabled'] = false
-    export let boxed: CheckboxProps['boxed'] = false
-    export let color: CheckboxProps['color'] = ''
-    export let onClick: () => any = () => {}
+    export let checked: SvelteCheckboxProps['checked'] = false
+    export let label: SvelteCheckboxProps['label'] = ''
+    export let subText: SvelteCheckboxProps['subText'] = ''
+    export let disabled: SvelteCheckboxProps['disabled'] = false
+    export let boxed: SvelteCheckboxProps['boxed'] = false
+    export let color: SvelteCheckboxProps['color'] = ''
+    export let onClick: SvelteCheckboxProps['onClick'] = () => {}
 
     const classes = classNames([
         styles.checkbox,

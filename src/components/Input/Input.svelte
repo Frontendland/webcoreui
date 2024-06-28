@@ -1,18 +1,18 @@
 <script lang="ts">
-    import type { InputProps } from './input'
+    import type { SvelteInputProps } from './input'
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
     import styles from './input.module.scss'
     import { classNames } from '../../utils/classNames'
 
-    export let type: InputProps['type'] = 'text'
-    export let theme: InputProps['theme'] = null
-    export let label: InputProps['label'] = ''
-    export let subText: InputProps['subText'] = ''
-    export let fill: InputProps['fill'] = false
-    export let className: InputProps['className'] = ''
-    export let onChange: (e: any) => any = () => {}
-    export let onKeyUp: (e: any) => any = () => {}
+    export let type: SvelteInputProps['type'] = 'text'
+    export let theme: SvelteInputProps['theme'] = null
+    export let label: SvelteInputProps['label'] = ''
+    export let subText: SvelteInputProps['subText'] = ''
+    export let fill: SvelteInputProps['fill'] = false
+    export let className: SvelteInputProps['className'] = ''
+    export let onChange: SvelteInputProps['onChange'] = () => {}
+    export let onKeyUp: SvelteInputProps['onKeyUp'] = () => {}
 
     const classes = classNames([
         styles.input,
