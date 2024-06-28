@@ -6,20 +6,12 @@ import AstroRadio from '@components/Radio/Radio.astro'
 import SvelteRadio from '@components/Radio/Radio.svelte'
 import ReactRadio from '@components/Radio/Radio.tsx'
 
-const sections = [
-    {
-        title: 'Astro radios',
-        component: AstroRadio
-    },
-    {
-        title: 'Svelte radios',
-        component: SvelteRadio
-    },
-    {
-        title: 'React radios',
-        component: ReactRadio
-    }
-]
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'radios',
+    components: [AstroRadio, SvelteRadio, ReactRadio]
+})
 ---
 
 <Layout>

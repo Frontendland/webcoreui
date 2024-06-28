@@ -1,6 +1,8 @@
 ---
 import type { SpinnerProps } from './spinner'
-import './spinner.scss'
+
+import styles from './spinner.module.scss'
+import { classNames } from '../../utils/classNames'
 
 interface Props extends SpinnerProps {}
 
@@ -13,27 +15,27 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-spinner',
-    dashArray && 'dashed'
+    styles.spinner,
+    dashArray && styles.dashed
 ]
 
-const styles = [
+const styleVariables = classNames([
     color && `--w-spinner-color: ${color};`,
     width && `--w-spinner-width: ${width}px;`,
     speed && `--w-spinner-speed: ${speed}s;`,
     size && `--w-spinner-size: ${size}px;`,
     dashArray && `--w-spinner-dash: ${dashArray}`,
-].filter(Boolean).join(' ')
+])
 ---
 
 <svg
     class:list={classes}
     viewBox="25 25 50 50"
     role="status"
-    style={styles}
+    style={styleVariables}
 >
     <circle
-        class="spinner-path"
+        class={styles.path}
         cx="50"
         cy="50"
         r="20"

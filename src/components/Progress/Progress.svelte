@@ -1,6 +1,8 @@
 <script lang="ts">
     import type { ProgressProps } from './progress'
-    import './progress.scss'
+
+    import styles from './progress.module.scss'
+    import { classNames } from '../../utils/classNames'
 
     export let value: ProgressProps['value'] = 0
     export let size: ProgressProps['size'] = null
@@ -13,24 +15,24 @@
     export let stripeDark: ProgressProps['stripeDark'] = ''
     export let className: ProgressProps['className'] = ''
 
-    const classes = [
-        'w-progress',
-        size,
-        striped && 'striped',
-        square && 'square',
+    const classes = classNames([
+        styles['w-progress'],
+        size && styles[size],
+        striped && styles.striped,
+        square && styles.square,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
-    const styles = [
+    const styleVariables = classNames([
         color && `--w-progress-color: ${color};`,
         background && `--w-progress-background: ${background};`,
         stripeLight && `--w-progress-stripe-light: ${stripeLight};`,
         stripeDark && `--w-progress-stripe-dark: ${stripeDark};`
-    ].filter(Boolean).join('')
+    ])
 </script>
 
-<div class={classes} style={styles}>
-    <div class="progress" style={`--w-progress-width: ${value}%;`}>
+<div class={classes} style={styleVariables || null}>
+    <div class={styles.progress} style={`--w-progress-width: ${value}%;`}>
         {#if label}
             {`${value}%`}
         {/if}

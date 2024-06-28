@@ -6,6 +6,7 @@ import AstroTabs from '@components/Tabs/Tabs.astro'
 import SvelteTabs from '@components/Tabs/Tabs.svelte'
 import ReactTabs from '@components/Tabs/Tabs.tsx'
 
+import { getSections } from '@helpers'
 import {
     tabItems,
     tabsWithIcons,
@@ -14,22 +15,11 @@ import {
     overflowTabs
 } from '@data'
 
-const sections = [
-    {
-        title: 'Astro tabs',
-        component: AstroTabs
-    },
-    {
-        title: 'Svelte tabs',
-        subTitle: 'For interactive examples, visit <a href="/svelte">Svelte Playground</a>',
-        component: SvelteTabs
-    },
-    {
-        title: 'React tabs',
-        subTitle: 'For interactive examples, visit <a href="/react">React Playground</a>',
-        component: ReactTabs
-    }
-]
+const sections = getSections({
+    title: 'tabs',
+    components: [AstroTabs, SvelteTabs, ReactTabs],
+    showSubTitle: true
+})
 ---
 
 <Layout>

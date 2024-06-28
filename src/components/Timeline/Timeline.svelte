@@ -1,6 +1,8 @@
 <script lang="ts">
     import type { TimelineProps } from './timeline'
-    import './timeline.scss'
+
+    import styles from './timeline.module.scss'
+    import { classNames } from '../../utils/classNames'
 
     export let theme: TimelineProps['theme'] = null
     export let counter: TimelineProps['counter'] = null
@@ -10,21 +12,21 @@
     export let textColor: TimelineProps['textColor'] = ''
     export let className: TimelineProps['className'] = ''
 
-    const classes = [
-        'w-timeline',
-        theme,
-        alternate && 'alternate',
-        centered && 'centered',
+    const classes = classNames([
+        styles.timeline,
+        theme && theme.split(' ').map(style => styles[style]),
+        alternate && styles.alternate,
+        centered && styles.centered,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
-    const styles = [
+    const styleVariables = classNames([
         color && `--w-timeline-color: ${color};`,
         textColor && `--w-timeline-text-color: ${textColor};`,
         counter && `--w-timeline-counter: ${counter};`,
-    ].join('')
+    ])
 </script>
 
-<ul class={classes} style={styles}>
+<ul class={classes} style={styleVariables || null}>
     <slot />
 </ul>

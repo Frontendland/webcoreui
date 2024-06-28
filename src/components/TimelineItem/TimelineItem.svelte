@@ -1,20 +1,22 @@
 <script lang="ts">
     import type { TimelineItemProps } from './timelineitem'
-    import './timelineitem.scss'
+
+    import styles from './timelineitem.module.scss'
+    import { classNames } from '../../utils/classNames'
 
     export let title: TimelineItemProps['title'] = ''
     export let titleTag: TimelineItemProps['titleTag'] = 'span'
     export let className: TimelineItemProps['className'] = ''
 
-    const classes = [
-        'w-timeline-item',
+    const classes = classNames([
+        styles.item,
         className
-    ].filter(Boolean).join(' ')
+    ])
 </script>
 
 <li class={classes}>
     {#if title}
-        <svelte:element this={titleTag} class="timeline-title">
+        <svelte:element this={titleTag} class={styles.title}>
             {title}
         </svelte:element>
     {/if}

@@ -1,9 +1,8 @@
 @import '../../scss/config.scss';
 
-.w-tabs {
-
-    &.boxed .tabs,
-    &.outline .tabs {
+.tabs {
+    &.boxed .items,
+    &.outline .items {
         background: #252525;
         border-radius: 5px;
         padding: 5px;
@@ -14,7 +13,7 @@
             border-radius: 5px;
             padding: 10px;
 
-            &.active {
+            &[data-active="true"] {
                 border: 0;
                 background: #000;
                 padding-bottom: 10px;
@@ -22,20 +21,20 @@
         }
     }
 
-    &.outline .tabs {
+    &.outline .items {
         background: transparent;
         border: 1px solid #252525;
 
         button {
             margin-bottom: 0;
 
-            &.active {
+            &[data-active="true"] {
                 background: #252525;
             }
         }
     }
 
-    &.even .tabs button {
+    &.even .items button {
         flex: 1;
         justify-content: center;
     }
@@ -44,12 +43,12 @@
         display: flex;
         gap: 20px;
 
-        &.boxed .tabs button,
-        &.outline .tabs button {
+        &.boxed .items button,
+        &.outline .items button {
             border-bottom: 0;
         }
         
-        .tabs {
+        .items {
             flex-direction: column;
             gap: 5px;
             
@@ -57,22 +56,22 @@
                 padding: 10px;
                 border-bottom: 2px solid #252525;
 
-                &.active {
+                &[data-active="true"] {
                     padding-bottom: 10px;
                 }
             }
         }
 
-        .tab-content {
+        .content {
             margin-top: 0;
         }
     }
 
-    .tabs-wrapper {
+    .wrapper {
         overflow: auto;
     }
 
-    .tabs {
+    .items {
         border-bottom: 2px solid #252525;
         display: flex;
         gap: 10px;
@@ -104,7 +103,7 @@
                 cursor: no-drop;
             }
             
-            &.active {
+            &[data-active="true"] {
                 color: #FFF;
                 border-bottom: 2px solid #FFF;
                 padding-bottom: 13px;
@@ -112,7 +111,7 @@
         }
     }
 
-    .tab-content {
+    .content {
         margin-top: 20px;
     }
 
@@ -126,8 +125,8 @@
 }
 
 @include Media('xs') {
-    .w-tabs {
-        &.even .tabs {
+    .tabs {
+        &.even .items {
             width: auto;
         }
     }

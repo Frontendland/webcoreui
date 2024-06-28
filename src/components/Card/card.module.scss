@@ -1,4 +1,4 @@
-.w-card {
+.card {
     border: 1px solid #252525;
     border-radius: 5px;
     display: flex;
@@ -7,19 +7,19 @@
     &.secondary {
         background: #111;
 
-        .card-title {
+        .title {
             background: #000;
         }
     }
 
-    .card-title {
+    .title {
         padding: 20px;
         display: block;
         border-bottom: 1px solid #252525;
         font-size: 16px;
     }
 
-    .card-body {
+    .body {
         padding: 20px;
         height: 100%;
         position: relative;
@@ -29,7 +29,7 @@
         }
     }
 
-    .card-wrapper {
+    .wrapper {
         background: #000;
         padding: 40px;
         height: 100%;

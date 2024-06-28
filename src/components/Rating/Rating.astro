@@ -2,7 +2,8 @@
 import type { RatingProps } from './rating'
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
 
-import './rating.scss'
+import styles from './rating.module.scss'
+import { classNames } from '../../utils/classNames'
 
 interface Props extends RatingProps {}
 
@@ -24,16 +25,16 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-rating',
-    outline && 'outline',
+    styles.rating,
+    outline && styles.outline,
     className
 ]
 
-const styles = [
+const styleVariables = classNames([
     color && `--w-rating-color: ${color};`,
     size && `--w-rating-size: ${size}px;`,
     emptyColor && `--w-rating-empty-color: ${emptyColor};`
-].filter(Boolean).join(' ')
+])
 
 const translatedText = text
     .replace('{0}', `${score}`)
@@ -42,15 +43,18 @@ const translatedText = text
 const translatedReviewText = reviewText.replace('{0}', `${reviewCount}`)
 ---
 
-<span class:list={classes} style={styles || null}>
-    <span class="score">{Array(score).fill('★').join('')}</span>
+<span class:list={classes} style={styleVariables}>
+    <span class={styles.score}>{Array(score).fill('★').join('')}</span>
     {showEmpty && (
-        <span class:list={['empty', total === 10 && 'ten-star']}>
+        <span class:list={[
+            styles.empty,
+            total === 10 && styles['ten-star']
+        ]}>
             {Array(total - score).fill('★').join('')}
         </span>
     )}
     {showText && (
-        <span class:list={['text', reviewCount && 'm']}>
+        <span class:list={[styles.text, reviewCount && styles.m]}>
             {translatedText}
         </span>
     )}
@@ -60,7 +64,7 @@ const translatedReviewText = reviewText.replace('{0}', `${reviewCount}`)
             <a href={reviewLink} target={reviewTarget} slot="wrapper">
                 children
             </a>
-            <span class="text">{translatedReviewText}</span>
+            <span class={styles.text}>{translatedReviewText}</span>
         </ConditionalWrapper>
     )}
 </span>

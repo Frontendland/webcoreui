@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { AccordionProps } from './accordion'
     import ArrowDown from '../../icons/arrow-down.svg?raw'
-    import './accordion.scss'
+    import styles from './accordion.module.scss'
 
     export let items: AccordionProps['items']
 
@@ -15,19 +15,19 @@
     }
 </script>
 
-<ul class="w-accordion">
+<ul class={styles.accordion}>
     {#each items as item, index}
         <li>
             <div
-                class="accordion-title"
-                class:open={state[index]}
+                class={styles.title}
+                data-open={state[index]}
                 on:click={() => toggle(index)}
             >
                 {item.title}
                 {@html ArrowDown}
             </div>
-            <div class="accordion-wrapper">
-                <div class="accordion-content">
+            <div class={styles.wrapper}>
+                <div class={styles.content}>
                     {@html item.content}
                 </div>
             </div>

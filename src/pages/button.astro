@@ -6,21 +6,12 @@ import Icon from '@components/Icon/Icon.astro'
 import AstroButton from '@components/Button/Button.astro'
 import SvelteButton from '@components/Button/Button.svelte'
 import ReactButton from '@components/Button/Button.tsx'
+import { getSections } from '@helpers'
 
-const sections = [
-    {
-        title: 'Astro buttons',
-        component: AstroButton
-    },
-    {
-        title: 'Svelte buttons',
-        component: SvelteButton
-    },
-    {
-        title: 'React buttons',
-        component: ReactButton
-    }
-]
+const sections = getSections({
+    title: 'buttons',
+    components: [AstroButton, SvelteButton, ReactButton]
+})
 ---
 
 <Layout>

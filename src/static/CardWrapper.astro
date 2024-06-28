@@ -7,6 +7,12 @@ const {
 } = Astro.props
 ---
 
-<Card title={title} element="a" href={href} compact={true}>
+<Card
+    title={title}
+    element="a"
+    href={href}
+    compact={true}
+    class="card-wrapper"
+>
     <slot />
 </Card>

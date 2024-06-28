@@ -1,7 +1,8 @@
 import React from 'react'
 import type { TimelineItemProps } from './timelineitem'
 
-import './timelineitem.scss'
+import styles from './timelineitem.module.scss'
+import { classNames } from '../../utils/classNames'
 
 type ReactTimelineItemProps = {
     TitleTag?: keyof JSX.IntrinsicElements
@@ -14,15 +15,15 @@ const TimelineItem = ({
     className,
     children
 }: ReactTimelineItemProps) => {
-    const classes = [
-        'w-timeline-item',
+    const classes = classNames([
+        styles.item,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
     return (
         <li className={classes}>
             {title && (
-                <TitleTag className="timeline-title">{title}</TitleTag>
+                <TitleTag className={styles.title}>{title}</TitleTag>
             )}
             {children}
         </li>

@@ -1,6 +1,8 @@
 import React from 'react'
 import type { ReactSwitchProps } from './switch'
-import './switch.scss'
+
+import styles from './switch.module.scss'
+import { classNames } from '../../utils/classNames'
 
 const Switch = ({
     label,
@@ -14,30 +16,30 @@ const Switch = ({
     className,
     onClick
 }: ReactSwitchProps) => {
-    const classes = [
-        'w-switch',
-        reverse && 'reverse',
-        small && 'small',
-        square && 'square',
-        disabled && 'disabled',
+    const classes = classNames([
+        styles.switch,
+        reverse && styles.reverse,
+        small && styles.small,
+        square && styles.square,
+        disabled && styles.disabled,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
-    const styles = {
+    const styleVariables = {
         ...(offColor && { '--w-switch-off-color': offColor }),
         ...(onColor && { '--w-switch-on-color': onColor })
     } as React.CSSProperties
 
     return (
-        <label className={classes} style={styles || null}>
+        <label className={classes} style={styleVariables || null}>
             <input
                 type="checkbox"
                 defaultChecked={toggled}
                 disabled={disabled}
                 onClick={onClick}
             />
-            <span className="toggle"></span>
-            {label && <span className="label">{label}</span>}
+            <span className={styles.toggle}></span>
+            {label && <span className={styles.label}>{label}</span>}
         </label>
     )
     

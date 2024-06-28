@@ -1,43 +1,44 @@
 @import '../../scss/config.scss';
 
-.w-toast {
+.toast {
     background: #000;
     position: fixed;
     right: 20px;
     bottom: 20px;
     transform: translateY(calc(100% + 25px));
+    z-index: 99;
 
-    &:not(.no-anim) {
+    &[data-show] {
         @include Transition(transform);
     }
 
-    &.show {
+    &[data-show="true"] {
         transform: translateY(0);
     }
 
-    &.bottom-left,
-    &.top-left {
+    &[data-position="bottom-left"],
+    &[data-position="top-left"] {
         right: auto;
         left: 20px;
     }
 
-    &.top-left,
-    &.top-right,
-    &.top-full {
+    &[data-position="top-left"],
+    &[data-position="top-right"],
+    &[data-position="top-full"] {
         bottom: auto;
         top: 20px;
         transform: translateY(calc(-100% - 25px));
 
-        &.show {
+        &[data-show="true"] {
             transform: translateY(0);
         }
     }
 
-    &.bottom-full {
+    &[data-position="bottom-full"] {
         left: 20px;
     }
 
-    &.top-full {
+    &[data-position="top-full"] {
         left: 20px;
     }
 }

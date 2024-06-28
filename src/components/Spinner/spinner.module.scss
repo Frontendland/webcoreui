@@ -1,17 +1,17 @@
 @import '../../scss/config.scss';
 
-.w-spinner {
+.spinner {
     margin: 0px auto;
     width: var(--w-spinner-size);
     height: var(--w-spinner-size);
     animation: rotate var(--w-spinner-speed) linear infinite;
 
-    &.dashed .spinner-path {
+    &.dashed .path {
         stroke-dasharray: var(--w-spinner-dash);
         animation: none;
     }
 
-    .spinner-path {
+    .path {
         stroke: var(--w-spinner-color);
         stroke-width: var(--w-spinner-width);
         animation: dash 1.5s ease-in-out infinite;

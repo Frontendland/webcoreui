@@ -1,6 +1,6 @@
 ---
 import type { AvatarProps } from './avatar'
-import './avatar.scss'
+import styles from './avatar.module.scss'
 
 interface Props extends AvatarProps {}
 
@@ -16,14 +16,14 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-avatar',
-    borderless && 'borderless',
+    styles.avatar,
+    borderless && styles.borderless,
     className
 ]
 ---
 
 {Array.isArray(img) ? (
-    <div class:list={['w-avatar-group', reverse && 'reverse']}
+    <div class:list={[styles.group, reverse && styles.reverse]}
         style={borderColor ? `--w-avatar-border: ${borderColor};` : null}
     >
         {img.map((img, index) => (

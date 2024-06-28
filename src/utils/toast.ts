@@ -26,40 +26,43 @@ export const toast = (config: Toast | string) => {
         position
     } = (typeof config === 'string' ? {} : config) as Toast
 
-    const htmlElement = document.querySelector(element)
+    const htmlElement = document.querySelector(element) as HTMLElement
 
     if (htmlElement) {
         if (theme) {
-            htmlElement.classList.add(theme)
+            htmlElement.dataset.theme = theme
         }
         
         if (position) {
-            htmlElement.classList.add(position, 'no-anim')
+            htmlElement.dataset.position = position
         }
 
         if (title) {
-            const titleElement = htmlElement.querySelector('.alert-title')
+            const titleElement = htmlElement.querySelector('[data-id="title"]')
 
             titleElement ? titleElement.innerHTML = title : null
         }
 
         if (content) {
-            const contentElement = htmlElement.querySelector('.alert-body')
+            const contentElement = htmlElement.querySelector('[data-id="body"]')
 
             contentElement ? contentElement.innerHTML = content : null
         }
 
         setTimeout(() => {
-            htmlElement.classList.remove('no-anim')
-            htmlElement.classList.add('show')
+            htmlElement.dataset.show = 'true'
         }, 0)
 
         setTimeout(() => {
-            htmlElement.classList.remove('show')
+            htmlElement.dataset.show = ''
         }, timeout || defaultTimeout)
     }
 }
 
 export const hideToast = (element: string) => {
-    document.querySelector(element)?.classList.remove('show')
+    const htmlElement = document.querySelector(element) as HTMLElement
+
+    if (htmlElement) {
+        htmlElement.dataset.show = ''
+    }
 }

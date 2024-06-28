@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { AvatarProps } from './avatar'
-    import './avatar.scss'
+    import styles from './avatar.module.scss'
 
     export let img: AvatarProps['img'] = ''
     export let alt: AvatarProps['alt'] = 'Avatar'
@@ -12,15 +12,19 @@
     export let className: AvatarProps['className'] = ''
 
     const classes = [
-        'w-avatar',
-        borderless && 'borderless',
+        styles.avatar,
+        borderless && styles.borderless,
         className
+    ].filter(Boolean).join(' ')
+
+    const groupStyles = [
+        styles.group,
+        reverse && styles.reverse
     ].filter(Boolean).join(' ')
 </script>
 
 {#if Array.isArray(img)}
-    <div class="w-avatar-group"
-        class:reverse
+    <div class={groupStyles}
         style={borderColor ? `--w-avatar-border: ${borderColor};` : null}
     >
         {#each img as img, index}

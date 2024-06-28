@@ -1,6 +1,6 @@
 @import '../../scss/config.scss';
 
-.w-avatar {
+.avatar {
     border-radius: 100%;
 
     &:not(.borderless) {
@@ -8,7 +8,7 @@
     }
 }
 
-.w-avatar-group {
+.group {
     display: inline-flex;
     align-items: center;
 

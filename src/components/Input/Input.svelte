@@ -1,7 +1,8 @@
 <script lang="ts">
     import type { InputProps } from './input'
     import ConditionalWrapper from '@components/ConditionalWrapper/ConditionalWrapper.svelte'
-    import './input.scss'
+
+    import styles from './input.module.scss'
 
     export let type: InputProps['type'] = 'text'
     export let theme: InputProps['theme'] = null
@@ -13,9 +14,9 @@
     export let onKeyUp: (e: any) => any = () => {}
 
     const classes = [
-        'w-input',
-        theme,
-        fill && 'fill',
+        styles.input,
+        theme && styles[theme],
+        fill && styles.fill,
         className
     ].filter(Boolean).join(' ')
 
@@ -25,15 +26,15 @@
 <ConditionalWrapper
     condition={useLabel}
     element="label"
-    class="w-input-label"
+    class={styles['input-label']}
 >
     {#if label}
-        <div class="label">{label}</div>
+        <div class={styles.label}>{label}</div>
     {/if}
     <ConditionalWrapper
         condition={$$slots.icon}
         element="div"
-        class="input-wrapper"
+        class={styles.wrapper}
     >
         <slot name="icon" />
         <input
@@ -45,7 +46,7 @@
         />
     </ConditionalWrapper>
     {#if label}
-        <div class="subtext">
+        <div class={styles.subtext}>
             {@html subText}
         </div>
     {/if}

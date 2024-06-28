@@ -1,25 +1,20 @@
 ---
+import fs from 'fs'
 import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
 
 import AstroIcon from '@components/Icon/Icon.astro'
 import SvelteIcon from '@components/Icon/Icon.svelte'
 import ReactIcon from '@components/Icon/Icon.tsx'
+import { getSections } from '@helpers'
 
-const sections = [
-    {
-        title: 'Astro icons',
-        component: AstroIcon
-    },
-    {
-        title: 'Svelte icons',
-        component: SvelteIcon
-    },
-    {
-        title: 'React icons',
-        component: ReactIcon
-    }
-]
+const sections = getSections({
+    title: 'icons',
+    components: [AstroIcon, SvelteIcon, ReactIcon]
+})
+
+const iconTypes = fs.readdirSync('src/icons')
+    .map((icon: string) => icon.split('.')[0])
 ---
 
 <Layout>
@@ -77,5 +72,17 @@ const sections = [
                 />
             </ComponentWrapper>
         </div>
+        <p>All icons rendered by {section.title.split(' ')[0]}</p>
+        <div class="flex wrap sm">
+            {iconTypes.map((type: string) => (
+                <section.component type={type} />
+            ))}
+        </div>
     ))}
 </Layout>
+
+<style lang="scss">
+    p {
+        color: #BBB;
+    }
+</style>

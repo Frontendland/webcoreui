@@ -1,12 +1,12 @@
 import React from 'react'
 import type { ReactBadgeProps } from './badge'
-import './badge.scss'
+import styles from './badge.module.scss'
 
 const Badge = ({ theme, onClick, children, ...rest }: ReactBadgeProps) => {
     const classes = [
-        'w-badge',
-        theme || null,
-        onClick && 'hover'
+        styles.badge,
+        theme && styles[theme],
+        onClick && styles.hover
     ].filter(Boolean).join(' ')
 
     return (

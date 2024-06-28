@@ -7,7 +7,7 @@ import success from '../../icons/circle-check.svg?raw'
 import warning from '../../icons/warning.svg?raw'
 import alert from '../../icons/alert.svg?raw'
 
-import './alert.scss'
+import styles from './alert.module.scss'
 
 interface Props extends AlertProps {}
 
@@ -22,6 +22,8 @@ const {
     element = 'section',
     title,
     titleTag = 'strong',
+    titleProps,
+    bodyProps,
     className,
     theme,
     ...rest
@@ -32,9 +34,9 @@ const Title = titleTag
 const hasCustomIcon = Astro.slots.has('icon')
 
 const classes = [
-    'w-alert',
-    (!hasCustomIcon && !theme) && 'col',
-    theme,
+    styles['w-alert'],
+    (!hasCustomIcon && !theme) && styles.col,
+    theme && styles[theme],
     className
 ].filter(Boolean).join(' ')
 
@@ -49,13 +51,15 @@ const props = {
     {!hasCustomIcon && theme && <Fragment set:html={iconMap[theme]} />}
 
     <ConditionalWrapper condition={!!(hasCustomIcon || theme)}>
-        <div class="alert-wrapper" slot="wrapper">
+        <div class={styles.wrapper} slot="wrapper">
             children
         </div>
         {title && (
-            <Title class:list="alert-title">{title}</Title>
+            <Title class:list={styles.title} {...titleProps}>
+                {title}
+            </Title>
         )}
-        <div class="alert-body">
+        <div class={styles.body} {...bodyProps}>
             <slot />
         </div>
     </ConditionalWrapper>

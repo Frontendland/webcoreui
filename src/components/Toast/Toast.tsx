@@ -2,7 +2,8 @@ import React from 'react'
 import type { ReactToastProps } from './toast'
 import Alert from '../Alert/Alert.tsx'
 
-import './toast.scss'
+import styles from './toast.module.scss'
+import { classNames } from '../../utils/classNames'
 
 const Toast = ({
     icon,
@@ -11,14 +12,23 @@ const Toast = ({
     children,
     ...rest
 }: ReactToastProps) => {
-    const classes = [
-        'w-toast',
-        position,
+    const classes = classNames([
+        styles.toast,
         className
-    ].filter(Boolean).join(' ')
+    ])
+
+    const additionalProps = {
+        ...(position && { 'data-position': position }),
+        titleProps: {
+            'data-id': 'title'
+        },
+        bodyProps: {
+            'data-id': 'body'
+        }
+    }
 
     return (
-        <Alert {...rest} className={classes} icon={icon}>
+        <Alert {...rest} className={classes} icon={icon} {...additionalProps}>
             {children}
         </Alert>
 

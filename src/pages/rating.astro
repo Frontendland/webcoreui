@@ -5,21 +5,12 @@ import ComponentWrapper from '@static/ComponentWrapper.astro'
 import AstroRating from '@components/Rating/Rating.astro'
 import SvelteRating from '@components/Rating/Rating.svelte'
 import ReactRating from '@components/Rating/Rating.tsx'
+import { getSections } from '@helpers'
 
-const sections = [
-    {
-        title: 'Astro ratings',
-        component: AstroRating
-    },
-    {
-        title: 'Svelte ratings',
-        component: SvelteRating
-    },
-    {
-        title: 'React ratings',
-        component: ReactRating
-    }
-]
+const sections = getSections({
+    title: 'ratings',
+    components: [AstroRating, SvelteRating, ReactRating]
+})
 ---
 
 <Layout>

@@ -1,6 +1,6 @@
 @import '../../scss/config.scss';
 
-.w-checkbox {
+.checkbox {
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -13,7 +13,7 @@
         justify-content: flex-start;
         gap: 5px;
 
-        .checkbox-wrapper {
+        .wrapper {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -68,7 +68,7 @@
         }
     }
 
-    .sub-text {
+    .text {
         margin-left: 25px;
         font-size: 14px;
         color: #BBB;

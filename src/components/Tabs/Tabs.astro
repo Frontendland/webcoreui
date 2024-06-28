@@ -1,6 +1,6 @@
 ---
 import type { TabsProps } from './tabs'
-import './tabs.scss'
+import styles from './tabs.module.scss'
 
 interface Props extends TabsProps {}
 
@@ -13,21 +13,21 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-tabs',
-    theme && theme,
-    vertical && 'vertical',
-    even && 'even',
+    styles.tabs,
+    theme && styles[theme],
+    vertical && styles.vertical,
+    even && styles.even,
     className
 ]
 ---
 
 <section class:list={classes} data-id="w-tabs">
-    <div class="tabs-wrapper">
-        <div class="tabs">
+    <div class={styles.wrapper}>
+        <div class={styles.items}>
             {items.map(item => (
                 <button
                     data-value={item.value}
-                    class:list={[item.active && 'active']}
+                    data-active={item.active ? 'true' : null}
                     disabled={item.disabled}
                 >
                     <Fragment set:html={item.label} />
@@ -35,7 +35,7 @@ const classes = [
             ))}
         </div>
     </div>
-    <div class="tab-content">
+    <div class={styles.content}>
         <slot />
     </div>
 </section>
@@ -63,11 +63,12 @@ const classes = [
 
                 const tabs = target.parentElement?.querySelectorAll('button') as NodeListOf<HTMLButtonElement>
 
+                // TODO - update logic
                 Array.from(tabs).forEach((tab: any) => {
-                    tab.classList.remove('active')
+                    tab.dataset.active = 'false'
 
                     if (tab.dataset.value === target.dataset.value) {
-                        tab.classList.add('active')
+                        tab.dataset.active = 'true'
                     }
                 })
             }

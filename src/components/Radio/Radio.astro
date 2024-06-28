@@ -2,7 +2,7 @@
 import type { RadioProps } from './radio'
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
 
-import './radio.scss'
+import styles from './radio.module.scss'
 
 interface Props extends RadioProps {}
 
@@ -15,8 +15,8 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-radio',
-    inline && 'inline',
+    styles.radio,
+    inline && styles.inline,
     className
 ]
 
@@ -28,11 +28,11 @@ const style = color
 <div class:list={classes} style={style}>
     {items.map(item => (
         <label class:list={[
-            item.subText && 'col',
-            item.disabled && 'disabled'
+            item.subText && styles.col,
+            item.disabled && styles.disabled
         ]}>
             <ConditionalWrapper condition={!!(item.subText)}>
-                <div class="radio-wrapper" slot="wrapper">
+                <div class={styles.wrapper} slot="wrapper">
                     children
                 </div>
                 <input
@@ -42,13 +42,13 @@ const style = color
                     checked={item.selected}
                     disabled={item.disabled}
                 />
-                <span class="radio" />
-                <span class="label">
+                <span class={styles.icon} />
+                <span class={styles.label}>
                     <Fragment set:html={item.label} />
                 </span>
             </ConditionalWrapper>
             {item.subText && (
-                <span class="sub-text">
+                <span class={styles.subtext}>
                     <Fragment set:html={item.subText} />
                 </span>
             )}

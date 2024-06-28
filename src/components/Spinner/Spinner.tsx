@@ -1,7 +1,8 @@
 import React from 'react'
 import type { SpinnerProps } from './spinner'
 
-import './spinner.scss'
+import styles from './spinner.module.scss'
+import { classNames } from '../../utils/classNames'
 
 const Spinner = ({
     color,
@@ -10,12 +11,12 @@ const Spinner = ({
     size,
     dashArray
 }: SpinnerProps) => {
-    const classes = [
-        'w-spinner',
-        dashArray && 'dashed'
-    ].filter(Boolean).join(' ')
+    const classes = classNames([
+        styles.spinner,
+        dashArray && styles.dashed
+    ])
     
-    const styles = {
+    const stylesVariable = {
         ...(color && { '--w-spinner-color': color }),
         ...(width && { '--w-spinner-width': `${width}px;` }),
         ...(speed && { '--w-spinner-speed': `${speed}s;` }),
@@ -28,10 +29,10 @@ const Spinner = ({
             className={classes}
             viewBox="25 25 50 50"
             role="status"
-            style={styles}
+            style={stylesVariable}
         >
             <circle
-                className="spinner-path"
+                className={styles.path}
                 cx="50"
                 cy="50"
                 r="20"

@@ -2,29 +2,40 @@
 import type { ToastProps } from './toast'
 import Alert from '../Alert/Alert.astro'
 
-import './toast.scss'
+import styles from './toast.module.scss'
+import { classNames } from '../../utils/classNames'
 
 interface Props extends ToastProps {}
 
 const {
     position,
-    className
+    className,
+    ...rest
 } = Astro.props
 
-const classes = [
-    'w-toast',
-    position,
+const classes = classNames([
+    styles.toast,
     className
-].filter(Boolean).join(' ')
+])
+
+const additionalProps = {
+    ...(position && { 'data-position': position }),
+    titleProps: {
+        'data-id': 'title'
+    },
+    bodyProps: {
+        'data-id': 'body'
+    }
+}
 ---
 
 {Astro.slots.has('icon') ? (
-    <Alert {...Astro.props} className={classes}>
+    <Alert {...rest} className={classes} {...additionalProps}>
         <slot slot="icon" name="icon" />
         <slot />
     </Alert>
 ) : (
-    <Alert {...Astro.props} className={classes}>
+    <Alert {...rest} className={classes} {...additionalProps}>
         <slot />
     </Alert>
 )}

@@ -1,6 +1,8 @@
 <script lang="ts">
     import type { TabsProps } from './tabs'
-    import './tabs.scss'
+
+    import styles from './tabs.module.scss'
+    import { classNames } from '../../utils/classNames'
 
     export let items: TabsProps['items'] = []
     export let theme: TabsProps['theme'] = null
@@ -11,13 +13,13 @@
     let active = ''
     let tabContainer: HTMLDivElement
 
-    const classes = [
-        'w-tabs',
-        theme && theme,
-        vertical && 'vertical',
-        even && 'even',
+    const classes = classNames([
+        styles.tabs,
+        theme && styles[theme],
+        vertical && styles.vertical,
+        even && styles.even,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
     const setTab = (tab: string) => {
         const tabs = tabContainer.querySelectorAll('[data-tab]')
@@ -35,11 +37,11 @@
 </script>
 
 <section class={classes}>
-    <div class="tabs-wrapper">
-        <div class="tabs">
+    <div class={styles.wrapper}>
+        <div class={styles.items}>
             {#each items as item}
                 <button
-                    class:active={active ? active === item.value : item.active}
+                    data-active={active ? active === item.value : item.active}
                     disabled={item.disabled}
                     on:click={() => setTab(item.value)}
                 >
@@ -48,7 +50,7 @@
             {/each}
         </div>
     </div>
-    <div class="tab-content" bind:this={tabContainer}>
+    <div class={styles.content} bind:this={tabContainer}>
         <slot />
     </div>
 </section>

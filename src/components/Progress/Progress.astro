@@ -1,6 +1,8 @@
 ---
 import type { ProgressProps } from './progress'
-import './progress.scss'
+
+import styles from './progress.module.scss'
+import { classNames } from '../../utils/classNames'
 
 interface Props extends ProgressProps {}
 
@@ -18,23 +20,23 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-progress',
-    size,
-    striped && 'striped',
-    square && 'square',
+    styles['w-progress'],
+    size && styles[size],
+    striped && styles.striped,
+    square && styles.square,
     className
 ]
 
-const styles = [
+const styleVariables = classNames([
     color && `--w-progress-color: ${color};`,
     background && `--w-progress-background: ${background};`,
     stripeLight && `--w-progress-stripe-light: ${stripeLight};`,
     stripeDark && `--w-progress-stripe-dark: ${stripeDark};`
-].filter(Boolean).join('')
+])
 ---
 
-<div class:list={classes} style={styles}>
-    <div class="progress" style={`--w-progress-width: ${value}%;`}>
+<div class:list={classes} style={styleVariables}>
+    <div class={styles.progress} style={`--w-progress-width: ${value}%;`}>
         {label && `${value}%`}
     </div>
 </div>

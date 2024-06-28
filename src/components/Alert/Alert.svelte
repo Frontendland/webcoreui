@@ -7,11 +7,13 @@
     import warning from '../../icons/warning.svg?raw'
     import alert from '../../icons/alert.svg?raw'
 
-    import './alert.scss'
+    import styles from './alert.module.scss'
 
     export let element: AlertProps['element'] = 'section'
     export let title: AlertProps['title'] = null
     export let titleTag: AlertProps['title'] = 'strong'
+    export let titleProps: AlertProps['titleProps'] = null
+    export let bodyProps: AlertProps['bodyProps'] = null
     export let className: AlertProps['className'] = null
     export let theme: AlertProps['theme'] = null
 
@@ -25,9 +27,9 @@
     const hasCustomIcon = $$slots.icon
 
     const classes = [
-        'w-alert',
-        (!hasCustomIcon && !theme) && 'col',
-        theme,
+        styles['w-alert'],
+        (!hasCustomIcon && !theme) && styles.col,
+        theme && styles[theme],
         className
     ].filter(Boolean).join(' ')
 </script>
@@ -42,14 +44,14 @@
     <ConditionalWrapper
         condition={!!(hasCustomIcon || theme)}
         element="div"
-        class="alert-wrapper"
+        class={styles.wrapper}
     >
         {#if title}
-            <svelte:element this={titleTag} class="alert-title">
+            <svelte:element this={titleTag} class={styles.title} {...titleProps}>
                 {title}
             </svelte:element>
         {/if}
-        <div class="alert-body">
+        <div class={styles.body} {...bodyProps}>
             <slot />
         </div>
     </ConditionalWrapper>

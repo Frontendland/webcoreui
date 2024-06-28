@@ -2,7 +2,7 @@
     import type { RadioProps } from './radio'
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
-    import './radio.scss'
+    import styles from './radio.module.scss'
 
     export let name: RadioProps['name'] = ''
     export let items: RadioProps['items'] = []
@@ -12,8 +12,8 @@
     export let onChange: () => any = () => {}
 
     const classes = [
-        'w-radio',
-        inline && 'inline',
+        styles.radio,
+        inline && styles.inline,
         className
     ].filter(Boolean).join(' ')
 
@@ -24,14 +24,15 @@
 
 <div class={classes} style={style}>
     {#each items as item}
-        <label
-            class:col={item.subText}
-            class:disabled={item.disabled}
+        <label class={[
+            item.subText && styles.col,
+            item.disabled && styles.disabled
+        ].filter(Boolean).join(' ')}
         >
             <ConditionalWrapper
                 condition={!!(item.subText)}
                 element="div"
-                class="radio-wrapper"
+                class={styles.wrapper}
             >
                 <input
                     type="radio"
@@ -41,13 +42,13 @@
                     disabled={item.disabled}
                     on:change={onChange}
                 />
-                <span class="radio" />
-                <span class="label">
+                <span class={styles.icon} />
+                <span class={styles.label}>
                     {@html item.label}
                 </span>
             </ConditionalWrapper>
             {#if item.subText}
-                <span class="sub-text">
+                <span class={styles.subtext}>
                     {@html item.subText}
                 </span>
             {/if}

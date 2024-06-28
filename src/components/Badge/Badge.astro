@@ -1,6 +1,6 @@
 ---
 import type { BadgeProps } from './badge'
-import './badge.scss'
+import styles from './badge.module.scss'
 
 interface Props extends BadgeProps {
     interactive?: boolean
@@ -13,9 +13,9 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-badge',
-    theme || null,
-    interactive && 'hover'
+    styles.badge,
+    theme && styles[theme],
+    interactive && styles.hover
 ]
 ---
 

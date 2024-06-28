@@ -4,21 +4,12 @@ import Layout from '@static/Layout.astro'
 import AstroCard from '@components/Card/Card.astro'
 import SvelteCard from '@components/Card/Card.svelte'
 import ReactCard from '@components/Card/Card.tsx'
+import { getSections } from '@helpers'
 
-const sections = [
-    {
-        title: 'Astro cards',
-        component: AstroCard
-    },
-    {
-        title: 'Svelte cards',
-        component: SvelteCard
-    },
-    {
-        title: 'React cards',
-        component: ReactCard
-    }
-]
+const sections = getSections({
+    title: 'cards',
+    components: [AstroCard, SvelteCard, ReactCard]
+})
 ---
 
 <Layout>

@@ -1,13 +1,6 @@
 import React from 'react'
 import type { IconProps } from './icon'
-
-import Github from '../../icons/github.svg?raw'
-import ArrowDown from '../../icons/arrow-down.svg?raw'
-
-const iconMap = {
-    'github': Github,
-    'arrow-down': ArrowDown
-}
+import iconMap from './map'
 
 const Icon = ({
     type,

@@ -2,6 +2,8 @@ export type AlertProps = {
     element?: string
     title?: string | null
     titleTag?: string
+    titleProps?: any
+    bodyProps?: any
     icon?: string | null
     className?: string | null
     theme?: 'info'

@@ -1,6 +1,8 @@
 ---
 import type { TimelineProps } from './timeline'
-import './timeline.scss'
+
+import styles from './timeline.module.scss'
+import { classNames } from '../../utils/classNames'
 
 interface Props extends TimelineProps {}
 
@@ -15,20 +17,20 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-timeline',
-    theme,
-    alternate && 'alternate',
-    centered && 'centered',
+    styles.timeline,
+    theme && theme.split(' ').map(style => styles[style]),
+    alternate && styles.alternate,
+    centered && styles.centered,
     className
 ]
 
-const styles = [
+const styleVariables = classNames([
     color && `--w-timeline-color: ${color};`,
     textColor && `--w-timeline-text-color: ${textColor};`,
     counter && `--w-timeline-counter: ${counter};`,
-].join('')
+])
 ---
 
-<ul class:list={classes} style={styles}>
+<ul class:list={classes} style={styleVariables}>
     <slot />
 </ul>
