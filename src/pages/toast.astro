@@ -8,20 +8,12 @@ import AstroToast from '@components/Toast/Toast.astro'
 import SvelteToast from '@components/Toast/Toast.svelte'
 import ReactToast from '@components/Toast/Toast.tsx'
 
-const sections = [
-    {
-        title: 'Astro toasts',
-        component: AstroToast
-    },
-    {
-        title: 'Svelte toasts',
-        component: SvelteToast
-    },
-    {
-        title: 'React toasts',
-        component: ReactToast
-    }
-]
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'toasts',
+    components: [AstroToast, SvelteToast, ReactToast]
+})
 ---
 
 <Layout>

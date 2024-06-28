@@ -1,6 +1,6 @@
 @import '../../scss/config.scss';
 
-.w-input {
+.input {
     border-radius: 2px;
     padding: 5px 10px;
     border: 1px solid #252525;
@@ -47,7 +47,7 @@
     }
 }
 
-.w-input-label {
+.input-label {
     display: flex;
     flex-direction: column;
 
@@ -57,7 +57,7 @@
         margin-bottom: 5px;
     }
 
-    .input-wrapper {
+    .wrapper {
         display: flex;
         gap: 10px;
         align-items: center;

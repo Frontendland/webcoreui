@@ -4,7 +4,7 @@
 $leftOffset: calc(((25px + 4px) / 2) - 1px);
 $rightOffset: calc((((25px + 4px) / 2) - 1px) * -1);
 
-.w-timeline {
+.timeline {
     display: flex;
     gap: 20px;
     flex-direction: column;
@@ -34,7 +34,7 @@ $rightOffset: calc((((25px + 4px) / 2) - 1px) * -1);
 }
 
 @include Media('xs') {
-    .w-timeline {
+    .timeline {
         &.alternate {
             padding: 0;
     

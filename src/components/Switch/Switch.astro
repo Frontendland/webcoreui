@@ -1,6 +1,8 @@
 ---
 import type { SwitchProps } from './switch'
-import './switch.scss'
+
+import styles from './switch.module.scss'
+import { classNames } from '../../utils/classNames'
 
 interface Props extends SwitchProps {}
 
@@ -17,22 +19,22 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-switch',
-    reverse && 'reverse',
-    small && 'small',
-    square && 'square',
-    disabled && 'disabled',
+    styles.switch,
+    reverse && styles.reverse,
+    small && styles.small,
+    square && styles.square,
+    disabled && styles.disabled,
     className
 ]
 
-const styles = [
+const styleVariables = classNames([
     offColor && `--w-switch-off-color: ${offColor};`,
     onColor && `--w-switch-on-color: ${onColor};`
-].filter(Boolean).join(' ')
+])
 ---
 
-<label class:list={classes} style={styles || null}>
+<label class:list={classes} style={styleVariables}>
     <input type="checkbox" checked={toggled} disabled={disabled} />
-    <span class="toggle"></span>
-    {label && <span class="label">{label}</span>}
+    <span class={styles.toggle}></span>
+    {label && <span class={styles.label}>{label}</span>}
 </label>

@@ -6,22 +6,13 @@ import AstroAvatar from '@components/Avatar/Avatar.astro'
 import SvelteAvatar from '@components/Avatar/Avatar.svelte'
 import ReactAvatar from '@components/Avatar/Avatar.tsx'
 
+import { getSections } from '@helpers'
 import { avatarGroup } from '@data'
 
-const sections = [
-    {
-        title: 'Astro avatars',
-        component: AstroAvatar
-    },
-    {
-        title: 'Svelte avatars',
-        component: SvelteAvatar
-    },
-    {
-        title: 'React avatars',
-        component: ReactAvatar
-    }
-]
+const sections = getSections({
+    title: 'avatars',
+    components: [AstroAvatar, SvelteAvatar, ReactAvatar]
+})
 ---
 
 <Layout>
@@ -38,7 +29,7 @@ const sections = [
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
-            <ReactAvatar img="/img/avatar1.png" borderColor="#48dbfb">
+            <ReactAvatar img="/img/avatar2.png" borderColor="#48dbfb">
                 Badge in React
             </ReactAvatar>
         </ComponentWrapper> 

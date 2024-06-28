@@ -7,21 +7,15 @@ import AstroBadge from '@components/Badge/Badge.astro'
 import SvelteBadge from '@components/Badge/Badge.svelte'
 import ReactBadge from '@components/Badge/Badge.tsx'
 
-const sections = [
-    {
-        title: 'Astro badges',
-        component: AstroBadge
-    },
-    {
-        title: 'Svelte badges (Interactive)',
-        component: SvelteBadge,
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'badges',
+    components: [AstroBadge, SvelteBadge, ReactBadge],
+    props: {
         onClick: () => {}
-    },
-    {
-        title: 'React badges',
-        component: ReactBadge
     }
-]
+})
 ---
 
 <Layout>
@@ -44,7 +38,7 @@ const sections = [
         </ComponentWrapper> 
     </div>
 
-    {sections.map(section => (
+    {sections.map((section: any) => (
         <h1>{section.title}</h1>
         <div class="grid md-2 lg-3">
             <ComponentWrapper title="Primary">

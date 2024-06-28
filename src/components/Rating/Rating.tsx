@@ -1,7 +1,9 @@
 import React from 'react'
 import type { RatingProps } from './rating'
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
-import './rating.scss'
+
+import styles from './rating.module.scss'
+import { classNames } from '../../utils/classNames'
 
 const Rating = ({
     score,
@@ -19,13 +21,13 @@ const Rating = ({
     size,
     className
 }: RatingProps) => {
-    const classes = [
-        'w-rating',
-        outline && 'outline',
+    const classes = classNames([
+        styles.rating,
+        outline && styles.outline,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
-    const styles = {
+    const styleVariables = {
         ...(color && { '--w-rating-color': color }),
         ...(size && { '--w-rating-size': `${size}px` }),
         ...(emptyColor && { '--w-rating-empty-color': emptyColor })
@@ -38,15 +40,21 @@ const Rating = ({
     const translatedReviewText = reviewText.replace('{0}', `${reviewCount}`)
 
     return (
-        <span className={classes} style={styles}>
-            <span className="score">{Array(score).fill('★').join('')}</span>
+        <span className={classes} style={styleVariables}>
+            <span className={styles.score}>{Array(score).fill('★').join('')}</span>
             {showEmpty && (
-                <span className={total === 10 ? 'empty ten-star' : 'empty'}>
+                <span className={classNames([
+                    styles.empty,
+                    total === 10 && styles['ten-star']
+                ])}>
                     {Array(total - score).fill('★').join('')}
                 </span>
             )}
             {showText && (
-                <span className={reviewCount ? 'text m' : 'text'}>
+                <span className={classNames([
+                    styles.text,
+                    reviewCount && styles.m
+                ])}>
                     {translatedText}
                 </span>
             )}
@@ -57,7 +65,9 @@ const Rating = ({
                         {children}
                     </a>
                 )}>
-                    <span className="text">{translatedReviewText}</span>
+                    <span className={styles.text}>
+                        {translatedReviewText}
+                    </span>
                 </ConditionalWrapper>
             )}
         </span>

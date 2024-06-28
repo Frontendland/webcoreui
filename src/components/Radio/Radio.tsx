@@ -3,7 +3,7 @@ import type { ReactRadioProps } from './radio'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
-import './radio.scss'
+import styles from './radio.module.scss'
 
 const Radio = ({
     name,
@@ -14,8 +14,8 @@ const Radio = ({
     onChange
 }: ReactRadioProps) => {
     const classes = [
-        'w-radio',
-        inline && 'inline',
+        styles.radio,
+        inline && styles.inline,
         className
     ].filter(Boolean).join(' ')
     
@@ -27,13 +27,13 @@ const Radio = ({
         <div className={classes} style={style}>
             {items.map((item, index) => (
                 <label className={[
-                    item.subText && 'col',
-                    item.disabled && 'disabled'
+                    item.subText && styles.col,
+                    item.disabled && styles.disabled
                 ].filter(Boolean).join(' ')} key={index}>
                     <ConditionalWrapper
                         condition={!!(item.subText)}
                         wrapper={children => (
-                            <div className="radio-wrapper">
+                            <div className={styles.wrapper}>
                                 {children}
                             </div>
                         )}
@@ -46,15 +46,15 @@ const Radio = ({
                             disabled={item.disabled}
                             onChange={onChange}
                         />
-                        <span className="radio" />
+                        <span className={styles.icon} />
                         <span
-                            className="label"
+                            className={styles.label}
                             dangerouslySetInnerHTML={{ __html: item.label }}
                         />
                     </ConditionalWrapper>
                     {item.subText && (
                         <span
-                            className="sub-text"
+                            className={styles.subtext}
                             dangerouslySetInnerHTML={{ __html: item.subText }}
                         />
                     )}

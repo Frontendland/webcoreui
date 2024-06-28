@@ -1,6 +1,6 @@
 @import '../../scss/config.scss';
 
-.w-badge {
+.badge {
     @include Transition();
     padding: 5px 10px;
     border-radius: 5px;
@@ -10,6 +10,7 @@
     font-size: 12px;
     background: #FFF;
     color: #252525;
+    border: 0;
 
     &.hover {
         cursor: pointer;

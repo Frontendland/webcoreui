@@ -1,6 +1,6 @@
 @import '../../scss/config.scss';
 
-.w-radio {
+.radio {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -60,13 +60,13 @@
         text-decoration: underline;
     }
 
-    .radio-wrapper {
+    .wrapper {
         display: flex;
         align-items: center;
         gap: 10px;
     }
 
-    .radio {
+    .icon {
         display: inline-block;
         width: 16px;
         height: 16px;
@@ -75,7 +75,7 @@
         position: relative;
     }
 
-    .sub-text {
+    .subtext {
         margin-left: 25px;
         font-size: 14px;
         color: #BBB;

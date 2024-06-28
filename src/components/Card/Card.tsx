@@ -1,6 +1,6 @@
 import React from 'react'
 import type { ReactCardProps } from './card'
-import './card.scss'
+import styles from './card.module.scss'
 
 const Card = ({
     Element = 'section',
@@ -13,19 +13,24 @@ const Card = ({
     ...rest
 }: ReactCardProps) => {
     const classes = [
-        'w-card',
+        styles.card,
         className,
-        secondary && 'secondary'
+        secondary && styles.secondary
+    ].filter(Boolean).join(' ')
+
+    const bodyClasses = [
+        styles.body,
+        compact && styles.compact
     ].filter(Boolean).join(' ')
 
     return (
         <Element className={classes} {...rest}>
             {title && (
-                <TitleTag className="card-title">{title}</TitleTag>
+                <TitleTag className={styles.title}>{title}</TitleTag>
             )}
-            <div className={compact ? 'card-body compact' : 'card-body'}>
+            <div className={bodyClasses}>
                 {compact && !secondary
-                    ? <div className="card-wrapper">{children}</div>
+                    ? <div className={styles.wrapper}>{children}</div>
                     : children
                 }
             </div>

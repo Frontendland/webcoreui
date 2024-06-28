@@ -7,7 +7,7 @@ import success from '../../icons/circle-check.svg?raw'
 import warning from '../../icons/warning.svg?raw'
 import alert from '../../icons/alert.svg?raw'
 
-import './alert.scss'
+import styles from './alert.module.scss'
 
 const iconMap = {
     info,
@@ -20,6 +20,8 @@ const Alert = ({
     Element = 'section',
     title,
     TitleTag = 'strong',
+    titleProps,
+    bodyProps,
     className,
     theme,
     children,
@@ -27,9 +29,9 @@ const Alert = ({
     ...rest
 }: ReactAlertProps) => {
     const classes = [
-        'w-alert',
-        (!icon && !theme) && 'col',
-        theme,
+        styles['w-alert'],
+        (!icon && !theme) && styles.col,
+        theme && styles[theme],
         className
     ].filter(Boolean).join(' ')
 
@@ -39,14 +41,16 @@ const Alert = ({
             {!icon && theme && <div dangerouslySetInnerHTML={{ __html: iconMap[theme] }} />}
 
             <ConditionalWrapper condition={!!(icon || theme)} wrapper={children => (
-                <div className="alert-wrapper">
+                <div className={styles.wrapper}>
                     {children}
                 </div>
             )}>
                 {title && (
-                    <TitleTag className="alert-title">{title}</TitleTag>
+                    <TitleTag className={styles.title} {...titleProps}>
+                        {title}
+                    </TitleTag>
                 )}
-                <div className="alert-body">
+                <div className={styles.body} {...bodyProps}>
                     {children}
                 </div>
             </ConditionalWrapper>

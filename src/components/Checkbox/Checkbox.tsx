@@ -4,7 +4,7 @@ import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
 import check from '../../icons/check.svg?raw'
 
-import './checkbox.scss'
+import styles from './checkbox.module.scss'
 
 const Checkbox = ({
     checked,
@@ -16,9 +16,9 @@ const Checkbox = ({
     onClick
 }: ReactCheckboxProps) => {
     const classes = [
-        'w-checkbox',
-        boxed && 'boxed',
-        label && subText && 'col'
+        styles.checkbox,
+        boxed && styles.boxed,
+        label && subText && styles.col
     ].filter(Boolean).join(' ')
     
     const style = color
@@ -30,7 +30,7 @@ const Checkbox = ({
             <ConditionalWrapper
                 condition={!!(label && subText)}
                 wrapper={children => (
-                    <div className="checkbox-wrapper">
+                    <div className={styles.wrapper}>
                         {children}
                     </div>
                 )}
@@ -42,19 +42,19 @@ const Checkbox = ({
                     onClick={onClick}
                 />
                 <span
-                    className="check"
+                    className={styles.check}
                     dangerouslySetInnerHTML={{ __html: check }}
                 />
                 {label && (
                     <span
-                        className="label"
+                        className={styles.label}
                         dangerouslySetInnerHTML={{ __html: label }}
                     />
                 )}
             </ConditionalWrapper>
             {label && subText && (
                 <span
-                    className="sub-text"
+                    className={styles.text}
                     dangerouslySetInnerHTML={{ __html: subText }}
                 />
             )}

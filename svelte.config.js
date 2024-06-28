@@ -5,12 +5,7 @@ export default {
 	onwarn: (warning, handler) => {
 		// Suppress false positive warnings in terminal
 		// Edit .vscode/settings.json to also suppress warnings in VSCode
-		const ignoreWarnings = [
-			'a11y-click-events-have-key-events',
-            'a11y-no-static-element-interactions',
-			'a11y-no-noninteractive-element-interactions',
-			'.accordion-title'
-		]
+		const ignoreWarnings = []
 
 		const warningText = [
 			warning.code,

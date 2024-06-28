@@ -1,8 +1,8 @@
 ---
 import type { InputProps } from './input'
-import ConditionalWrapper from '@components/ConditionalWrapper/ConditionalWrapper.astro'
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
 
-import './input.scss'
+import styles from './input.module.scss'
 
 interface Props extends InputProps {}
 
@@ -17,9 +17,9 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-input',
-    theme,
-    fill && 'fill',
+    styles.input,
+    theme && styles[theme],
+    fill && styles.fill,
     className
 ]
 
@@ -27,19 +27,19 @@ const useLabel = !!(label || subText || Astro.slots.has('icon'))
 ---
 
 <ConditionalWrapper condition={useLabel}>
-    <label slot="wrapper" class="w-input-label">
+    <label slot="wrapper" class={styles['input-label']}>
         {label && (
-            <div class="label">{label}</div>
+            <div class={styles.label}>{label}</div>
         )}
         <ConditionalWrapper condition={Astro.slots.has('icon')}>
-            <div class="input-wrapper" slot="wrapper">
+            <div class={styles.wrapper} slot="wrapper">
                 children
             </div>
             <slot name="icon" />
             children
         </ConditionalWrapper>
         {subText && (
-            <div class="subtext">
+            <div class={styles.subtext}>
                 <Fragment set:html={subText} />
             </div>
         )}

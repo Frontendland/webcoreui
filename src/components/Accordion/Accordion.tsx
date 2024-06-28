@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import type { AccordionProps } from './accordion'
 import ArrowDown from '../../icons/arrow-down.svg?raw'
-import './accordion.scss'
+import styles from './accordion.module.scss'
 
 const Accordion = ({ items }: AccordionProps) => {
     const [state, setState] = useState(Array(items.length).fill(false))
@@ -14,16 +14,17 @@ const Accordion = ({ items }: AccordionProps) => {
     }
 
     return (
-        <ul className="w-accordion">
+        <ul className={styles.accordion}>
             {items.map((item, index) => (
                 <li key={index}>
-                    <div
-                        className={state[index] ? 'accordion-title open' : 'accordion-title'}
+                    <button
+                        className={styles.title}
+                        data-open={state[index]}
                         onClick={() => toggle(index)}
                         dangerouslySetInnerHTML={{ __html: `${item.title} ${ArrowDown}` }}
                     />
-                    <div className="accordion-wrapper">
-                        <div className="accordion-content">
+                    <div className={styles.wrapper}>
+                        <div className={styles.content}>
                             <div dangerouslySetInnerHTML={{ __html: item.content }} />
                         </div>
                     </div>

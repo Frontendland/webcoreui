@@ -1,7 +1,8 @@
 import React from 'react'
 import type { ProgressProps } from './progress'
 
-import './progress.scss'
+import styles from './progress.module.scss'
+import { classNames } from '../../utils/classNames'
 
 const Progress = ({
     value,
@@ -15,15 +16,15 @@ const Progress = ({
     stripeDark,
     className
 }: ProgressProps) => {
-    const classes = [
-        'w-progress',
-        size,
-        striped && 'striped',
-        square && 'square',
+    const classes = classNames([
+        styles['w-progress'],
+        size && styles[size],
+        striped && styles.striped,
+        square && styles.square,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
-    const styles = {
+    const styleVariables = {
         ...(color && { '--w-progress-color': color }),
         ...(background && { '--w-progress-background': background }),
         ...(stripeLight && { '--w-progress-stripe-light': stripeLight }),
@@ -35,8 +36,8 @@ const Progress = ({
     } as React.CSSProperties
 
     return (
-        <div className={classes} style={styles}>
-            <div className="progress" style={percent}>
+        <div className={classes} style={styleVariables}>
+            <div className={styles.progress} style={percent}>
                 {label && `${value}%`}
             </div>
         </div>

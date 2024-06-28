@@ -1,6 +1,8 @@
 <script lang="ts">
     import type { TableProps } from './table'
-    import './table.scss'
+
+    import styles from './table.module.scss'
+    import { classNames } from '../../utils/classNames'
 
     export let headings: TableProps['headings'] = []
     export let footer: TableProps['footer'] = []
@@ -11,14 +13,14 @@
     export let compact: TableProps['compact'] = false
     export let className: TableProps['className'] = ''
 
-    const classes = [
-        'w-table',
-        hover && 'hover',
-        striped && `striped-${striped}s`,
-        offsetStripe && 'offset',
-        compact && 'compact',
+    const classes = classNames([
+        styles.table,
+        hover && styles.hover,
+        striped && styles[`striped-${striped}s`],
+        offsetStripe && styles.offset,
+        compact && styles.compact,
         className
-    ].filter(Boolean).join(' ')
+    ])
 </script>
 
 <div class={classes}>

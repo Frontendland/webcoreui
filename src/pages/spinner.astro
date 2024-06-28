@@ -6,20 +6,12 @@ import AstroSpinner from '@components/Spinner/Spinner.astro'
 import SvelteSpinner from '@components/Spinner/Spinner.svelte'
 import ReactSpinner from '@components/Spinner/Spinner.tsx'
 
-const sections = [
-    {
-        title: 'Astro spinners',
-        component: AstroSpinner
-    },
-    {
-        title: 'Svelte spinners',
-        component: SvelteSpinner
-    },
-    {
-        title: 'React spinners',
-        component: ReactSpinner
-    }
-]
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'spinners',
+    components: [AstroSpinner, SvelteSpinner, ReactSpinner]
+})
 ---
 
 <Layout>

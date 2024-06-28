@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { CardProps } from './card'
-    import './card.scss'
+    import styles from './card.module.scss'
 
     export let element: CardProps['element'] = 'section'
     export let title: CardProps['title'] = ''
@@ -10,21 +10,26 @@
     export let secondary: CardProps['secondary'] = false
 
     const classes = [
-        'w-card',
-        className,
-        secondary && 'secondary'
+        styles.card,
+        secondary && styles.secondary,
+        className
+    ].filter(Boolean).join(' ')
+
+    const bodyClasses = [
+        styles.body,
+        compact && styles.compact
     ].filter(Boolean).join(' ')
 </script>
 
 <svelte:element this={element} class={classes} {...$$restProps}>
     {#if title}
-        <svelte:element this={titleTag} class="card-title">
+        <svelte:element this={titleTag} class={styles.title}>
             {title}
         </svelte:element>
     {/if}
-    <div class="card-body" class:compact>
+    <div class={bodyClasses}>
         {#if compact && !secondary}
-            <div class="card-wrapper"><slot /></div>
+            <div class={styles.wrapper}><slot /></div>
         {:else}
             <slot />
         {/if}

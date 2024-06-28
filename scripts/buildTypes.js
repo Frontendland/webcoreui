@@ -20,14 +20,24 @@ const buildTypes = type => {
     }
 
     if (type === 'svelte') {
+        const getTypeName = component => {
+            const componentsWithSvelteSpecificTypes = [
+                'Badge'
+            ]
+    
+            return componentsWithSvelteSpecificTypes.includes(component)
+                ? `Svelte${component}Props`
+                : `${component}Props`
+        }
+
         return format(`
             ${components.map(component => {
-                return `import type { ${component}Props } from './components/${component}/${component.toLowerCase()}'`
+                return `import type { ${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
     
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
-                    return `export function ${component}(_props: ${component}Props): any`
+                    return `export function ${component}(_props: ${getTypeName(component)}): any`
                 }).join('\n\t')}
             }
         `)

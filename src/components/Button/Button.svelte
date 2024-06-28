@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ButtonProps } from './button'
-    import './button.scss'
+    import styles from './button.module.scss'
 
     export let theme: ButtonProps['theme'] = null
     export let bold: ButtonProps['bold'] = false
@@ -8,9 +8,9 @@
     export let onClick: ButtonProps['onClick'] = () => {}
 
     const classes = [
-        'w-button',
-        bold && 'bold',
-        theme
+        styles.button,
+        bold && styles.bold,
+        theme && styles[theme]
     ].filter(Boolean).join(' ')
 </script>
 

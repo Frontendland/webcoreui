@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react'
 import type { ReactTabsProps } from './tabs'
 
-import './tabs.scss'
+import styles from './tabs.module.scss'
+import { classNames } from '../../utils/classNames'
 
 const Tabs = ({
     items,
@@ -14,13 +15,13 @@ const Tabs = ({
     const tabContainer = useRef<HTMLDivElement>(null)
     const [active, setActive] = useState('')
 
-    const classes = [
-        'w-tabs',
-        theme && theme,
-        vertical && 'vertical',
-        even && 'even',
+    const classes = classNames([
+        styles.tabs,
+        theme && styles[theme],
+        vertical && styles.vertical,
+        even && styles.even,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
     const setTab = (tab: string) => {
         const tabs = tabContainer.current!.querySelectorAll('[data-tab]')
@@ -38,28 +39,28 @@ const Tabs = ({
 
     const isActive = (item: ReactTabsProps['items'][0]) => {
         if (!active) {
-            return item.active ? 'active' : undefined
+            return item.active ? 'true' : undefined
         }
 
-        return active === item.value ? 'active' : undefined
+        return active === item.value ? 'true' : undefined
     }
 
     return (
         <section className={classes}>
-            <div className="tabs-wrapper">
-                <div className="tabs">
+            <div className={styles.wrapper}>
+                <div className={styles.items}>
                     {items.map((item, index) => (
                         <button
                             key={index}
                             disabled={item.disabled}
                             dangerouslySetInnerHTML={{ __html: item.label }}
                             onClick={() => setTab(item.value)}
-                            className={isActive(item)}
+                            data-active={isActive(item)}
                         />
                     ))}
                 </div>
             </div>
-            <div className="tab-content" ref={tabContainer}>
+            <div className={styles.content} ref={tabContainer}>
                 {children}
             </div>
         </section>

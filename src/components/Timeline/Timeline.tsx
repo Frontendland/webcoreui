@@ -1,7 +1,8 @@
 import React from 'react'
 import type { ReactTimelineProps } from './timeline'
 
-import './timeline.scss'
+import styles from './timeline.module.scss'
+import { classNames } from '../../utils/classNames'
 
 const Timeline = ({
     theme,
@@ -13,22 +14,22 @@ const Timeline = ({
     className,
     children
 }: ReactTimelineProps) => {
-    const classes = [
-        'w-timeline',
-        theme,
-        alternate && 'alternate',
-        centered && 'centered',
+    const classes = classNames([
+        styles.timeline,
+        theme && theme.split(' ').map(style => styles[style]),
+        alternate && styles.alternate,
+        centered && styles.centered,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
-    const styles = {
+    const styleVariables = {
         ...(color && { '--w-timeline-color': color }),
         ...(textColor && { '--w-timeline-text-color': textColor }),
         ...(counter && { '--w-timeline-counter': counter }),
     } as React.CSSProperties
 
     return (
-        <ul className={classes} style={styles}>
+        <ul className={classes} style={styleVariables}>
             {children}
         </ul>
     )

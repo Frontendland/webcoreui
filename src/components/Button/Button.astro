@@ -1,6 +1,6 @@
 ---
 import type { ButtonProps } from './button'
-import './button.scss'
+import styles from './button.module.scss'
 
 interface Props extends ButtonProps {}
 
@@ -12,9 +12,9 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-button',
-    bold && 'bold',
-    theme
+    styles.button,
+    bold && styles.bold,
+    theme && styles[theme]
 ].filter(Boolean).join(' ')
 ---
 

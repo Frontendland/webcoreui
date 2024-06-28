@@ -1,7 +1,7 @@
 ---
 import type { AccordionProps } from './accordion'
 import ArrowDown from '../../icons/arrow-down.svg?raw'
-import './accordion.scss'
+import styles from './accordion.module.scss'
 
 interface Props extends AccordionProps {}
 
@@ -10,15 +10,15 @@ const {
 } = Astro.props
 ---
 
-<ul class="w-accordion" data-id="w-accordion">
+<ul class={styles.accordion} data-id="w-accordion">
     {items.map((item: AccordionProps['items'][0]) => (
         <li>
-            <div class="accordion-title">
+            <button class={styles.title} data-toggle="true">
                 {item.title}
                 <Fragment set:html={ArrowDown} />
-            </div>
-            <div class="accordion-wrapper">
-                <div class="accordion-content">
+            </button>
+            <div class={styles.wrapper}>
+                <div class={styles.content}>
                     <Fragment set:html={item.content} />
                 </div>
             </div>
@@ -33,8 +33,10 @@ const {
         element.addEventListener('click', event => {
             const target = event.target as HTMLDivElement
 
-            if (target.classList.contains('accordion-title')) {
-                target.classList.toggle('open')
+            if (target.dataset.toggle) {
+                target.dataset.open = target.dataset.open === 'true'
+                    ? 'false'
+                    : 'true'
             }
         })
     })

@@ -1,6 +1,8 @@
 <script lang="ts">
     import type { SwitchProps } from './switch'
-    import './switch.scss'
+
+    import styles from './switch.module.scss'
+    import { classNames } from '../../utils/classNames'
     
     export let label: SwitchProps['label'] = ''
     export let toggled: SwitchProps['toggled'] = false
@@ -13,30 +15,30 @@
     export let className: SwitchProps['className'] = ''
     export let onClick: () => any = () => {}
     
-    const classes = [
-        'w-switch',
-        reverse && 'reverse',
-        small && 'small',
-        square && 'square',
-        disabled && 'disabled',
+    const classes = classNames([
+        styles.switch,
+        reverse && styles.reverse,
+        small && styles.small,
+        square && styles.square,
+        disabled && styles.disabled,
         className
-    ].filter(Boolean).join(' ')
+    ])
     
-    const styles = [
+    const styleVariables = classNames([
         offColor && `--w-switch-off-color: ${offColor};`,
         onColor && `--w-switch-on-color: ${onColor};`
-    ].filter(Boolean).join(' ')
+    ])
 </script>
 
-<label class={classes} style={styles || null}>
+<label class={classes} style={styleVariables || null}>
     <input
         type="checkbox"
         checked={toggled}
         disabled={disabled}
         on:click={onClick}
     />
-    <span class="toggle"></span>
+    <span class={styles.toggle}></span>
     {#if label}
-        <span class="label">{label}</span>
+        <span class={styles.label}>{label}</span>
     {/if}
 </label>

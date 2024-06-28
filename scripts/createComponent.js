@@ -24,7 +24,7 @@ const templates = {
     astro: `
         ---
         import type { ${component}Props } from './${lowerCaseComponent}'
-        import './${lowerCaseComponent}.scss'
+        import styles from './${lowerCaseComponent}.module.scss'
 
         interface Props extends ${component}Props {}
 
@@ -33,7 +33,7 @@ const templates = {
         } = Astro.props
 
         const classes = [
-            'w-${lowerCaseComponent}',
+            styles.${lowerCaseComponent},
             className
         ]
         ---
@@ -41,12 +41,12 @@ const templates = {
     svelte: `
         <script lang="ts">
             import type { ${component}Props } from './${lowerCaseComponent}'
-            import './${lowerCaseComponent}.scss'
+            import styles from './${lowerCaseComponent}.module.scss'
 
             export let className: ${component}Props['className'] = ''
 
             const classes = [
-                'w-${lowerCaseComponent}',
+                styles.${lowerCaseComponent},
                 className
             ].filter(Boolean).join(' ')
         </script>
@@ -55,13 +55,13 @@ const templates = {
         import React from 'react'
         import type { ${component}Props } from './${lowerCaseComponent}'
 
-        import './${lowerCaseComponent}.scss'
+        import styles from './${lowerCaseComponent}.module.scss'
         
         const ${component} = ({
             className
         }: ${component}Props) => {
             const classes = [
-                'w-${lowerCaseComponent}',
+                styles.${lowerCaseComponent},
                 className
             ].filter(Boolean).join(' ')
 
@@ -78,7 +78,7 @@ const templates = {
     styles: `
         @import '../../scss/config.scss';
 
-        .w-${lowerCaseComponent} {
+        .${lowerCaseComponent} {
 
         }
     `,
@@ -133,7 +133,7 @@ fs.writeFileSync(`${rootPath}/${component}/${component}.astro`, format(templates
 fs.writeFileSync(`${rootPath}/${component}/${component}.svelte`, format(templates.svelte))
 fs.writeFileSync(`${rootPath}/${component}/${component}.tsx`, format(templates.react))
 fs.writeFileSync(`${rootPath}/${component}/${lowerCaseComponent}.ts`, format(templates.types))
-fs.writeFileSync(`${rootPath}/${component}/${lowerCaseComponent}.scss`, format(templates.styles))
+fs.writeFileSync(`${rootPath}/${component}/${lowerCaseComponent}.module.scss`, format(templates.styles))
 fs.writeFileSync(`src/pages/${lowerCaseComponent}.astro`, format(templates.page))
 
 console.log(`✅ Component ${component} created at ${rootPath}/${component}.`)

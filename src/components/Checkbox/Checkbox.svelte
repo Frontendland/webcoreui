@@ -4,7 +4,7 @@
     
     import check from '../../icons/check.svg?raw'
     
-    import './checkbox.scss'
+    import styles from './checkbox.module.scss'
     
     export let checked: CheckboxProps['checked'] = false
     export let label: CheckboxProps['label'] = ''
@@ -15,9 +15,9 @@
     export let onClick: () => any = () => {}
 
     const classes = [
-        'w-checkbox',
-        boxed && 'boxed',
-        label && subText && 'col'
+        styles.checkbox,
+        boxed && styles.boxed,
+        label && subText && styles.col
     ].filter(Boolean).join(' ')
     
     const style = color
@@ -29,7 +29,7 @@
     <ConditionalWrapper
         condition={!!(label && subText)}
         element="div"
-        class="checkbox-wrapper"
+        class={styles.wrapper}
     >
         <input
             type="checkbox"
@@ -37,16 +37,16 @@
             disabled={disabled}
             on:click={onClick}
         />
-        <span class="check">
+        <span class={styles.check}>
             {@html check}
         </span>
         {#if label}
-            <span class="label">
+            <span class={styles.label}>
                 {@html label}
             </span>
         {/if}
     </ConditionalWrapper>
     {#if label && subText}
-        <span class="sub-text">{@html subText}</span>
+        <span class={styles.text}>{@html subText}</span>
     {/if}
 </label>

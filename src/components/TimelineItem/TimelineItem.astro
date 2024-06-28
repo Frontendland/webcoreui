@@ -1,6 +1,7 @@
 ---
 import type { TimelineItemProps } from './timelineitem'
-import './timelineitem.scss'
+
+import styles from './timelineitem.module.scss'
 
 interface Props extends TimelineItemProps {}
 
@@ -11,7 +12,7 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-timeline-item',
+    styles.item,
     className
 ]
 
@@ -20,7 +21,7 @@ const Title = titleTag
 
 <li class:list={classes}>
     {title && (
-        <Title class:list="timeline-title">{title}</Title>
+        <Title class:list={styles.title}>{title}</Title>
     )}
     <slot />
 </li>

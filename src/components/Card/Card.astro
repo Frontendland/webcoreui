@@ -1,6 +1,6 @@
 ---
 import type { CardProps } from './card'
-import './card.scss'
+import styles from './card.module.scss'
 
 interface Props extends CardProps {}
 
@@ -15,26 +15,22 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-card',
+    styles.card,
+    secondary && styles.secondary,
     className,
-    secondary && 'secondary',
 ].filter(Boolean).join(' ')
-
-const props = {
-    class: classes
-}
 
 const Component = element
 const Title = titleTag
 ---
 
-<Component {...props} {...rest}>
+<Component class:list={classes} {...rest}>
     {title && (
-        <Title class:list="card-title">{title}</Title>
+        <Title class:list={styles.title}>{title}</Title>
     )}
-    <div class="card-body" class:list={[compact && 'compact']}>
+    <div class:list={[styles.body, compact && styles.compact]}>
         {compact && !secondary ? (
-            <div class="card-wrapper"><slot /></div>
+            <div class={styles.wrapper}><slot /></div>
         ) : (
             <slot />
         )}

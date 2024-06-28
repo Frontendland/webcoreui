@@ -4,7 +4,7 @@ import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
 
 import check from '../../icons/check.svg?raw'
 
-import './checkbox.scss'
+import styles from './checkbox.module.scss'
 
 interface Props extends CheckboxProps {}
 
@@ -18,9 +18,9 @@ const {
 } = Astro.props
 
 const classes = [
-    'w-checkbox',
-    boxed && 'boxed',
-    label && subText && 'col'
+    styles.checkbox,
+    boxed && styles.boxed,
+    label && subText && styles.col
 ]
 
 const style = color
@@ -30,21 +30,21 @@ const style = color
 
 <label class:list={classes} style={style}>
     <ConditionalWrapper condition={!!(label && subText)}>
-        <div class="checkbox-wrapper" slot="wrapper">
+        <div class={styles.wrapper} slot="wrapper">
             children
         </div>
         <input type="checkbox" checked={checked} disabled={disabled} />
-        <span class="check">
+        <span class={styles.check}>
             <Fragment set:html={check} />
         </span>
         {label && (
-            <span class="label">
+            <span class={styles.label}>
                 <Fragment set:html={label} />
             </span>
         )}
     </ConditionalWrapper>
     {label && subText && (
-        <span class="sub-text">
+        <span class={styles.text}>
             <Fragment set:html={subText} />
         </span>
     )}

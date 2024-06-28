@@ -6,20 +6,12 @@ import AstroSwitch from '@components/Switch/Switch.astro'
 import SvelteSwitch from '@components/Switch/Switch.svelte'
 import ReactSwitch from '@components/Switch/Switch.tsx'
 
-const sections = [
-    {
-        title: 'Astro ratings',
-        component: AstroSwitch
-    },
-    {
-        title: 'Svelte ratings',
-        component: SvelteSwitch
-    },
-    {
-        title: 'React ratings',
-        component: ReactSwitch
-    }
-]
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'ratings',
+    components: [AstroSwitch, SvelteSwitch, ReactSwitch]
+})
 ---
 
 <Layout>
