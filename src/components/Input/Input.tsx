@@ -1,6 +1,6 @@
 import React from 'react'
 import type { ReactInputProps } from './input'
-import ConditionalWrapper from '@components/ConditionalWrapper/ConditionalWrapper.tsx'
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
 import styles from './input.module.scss'
 

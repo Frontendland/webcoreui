@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { InputProps } from './input'
-    import ConditionalWrapper from '@components/ConditionalWrapper/ConditionalWrapper.svelte'
+    import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
     import styles from './input.module.scss'
 
