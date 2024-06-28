@@ -17,7 +17,7 @@ $rightOffset: calc((((25px + 4px) / 2) - 1px) * -1);
     &::before {
         position: absolute;
         content: '';
-        width: 1px;
+        width: 2px;
         background: var(--w-timeline-color);
         height: 100%;
         left: $leftOffset

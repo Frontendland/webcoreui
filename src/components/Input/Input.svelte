@@ -3,6 +3,7 @@
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
     import styles from './input.module.scss'
+    import { classNames } from '../../utils/classNames'
 
     export let type: InputProps['type'] = 'text'
     export let theme: InputProps['theme'] = null
@@ -13,12 +14,12 @@
     export let onChange: (e: any) => any = () => {}
     export let onKeyUp: (e: any) => any = () => {}
 
-    const classes = [
+    const classes = classNames([
         styles.input,
         theme && styles[theme],
         fill && styles.fill,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
     const useLabel = !!(label || subText || $$slots.icon)
 </script>

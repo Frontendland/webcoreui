@@ -5,6 +5,7 @@
     import check from '../../icons/check.svg?raw'
     
     import styles from './checkbox.module.scss'
+    import { classNames } from '../../utils/classNames'
     
     export let checked: CheckboxProps['checked'] = false
     export let label: CheckboxProps['label'] = ''
@@ -14,11 +15,11 @@
     export let color: CheckboxProps['color'] = ''
     export let onClick: () => any = () => {}
 
-    const classes = [
+    const classes = classNames([
         styles.checkbox,
         boxed && styles.boxed,
         label && subText && styles.col
-    ].filter(Boolean).join(' ')
+    ])
     
     const style = color
         ? `--w-checkbox-color: ${color};`

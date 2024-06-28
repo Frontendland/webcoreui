@@ -22,7 +22,8 @@ const buildTypes = type => {
     if (type === 'svelte') {
         const getTypeName = component => {
             const componentsWithSvelteSpecificTypes = [
-                'Badge'
+                'Badge',
+                'Button'
             ]
     
             return componentsWithSvelteSpecificTypes.includes(component)

@@ -1,6 +1,8 @@
 <script lang="ts">
     import type { CardProps } from './card'
+
     import styles from './card.module.scss'
+    import { classNames } from '../../utils/classNames'
 
     export let element: CardProps['element'] = 'section'
     export let title: CardProps['title'] = ''
@@ -9,16 +11,16 @@
     export let className: CardProps['className'] = ''
     export let secondary: CardProps['secondary'] = false
 
-    const classes = [
+    const classes = classNames([
         styles.card,
         secondary && styles.secondary,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
-    const bodyClasses = [
+    const bodyClasses = classNames([
         styles.body,
         compact && styles.compact
-    ].filter(Boolean).join(' ')
+    ])
 </script>
 
 <svelte:element this={element} class={classes} {...$$restProps}>

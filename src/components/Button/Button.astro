@@ -1,6 +1,8 @@
 ---
 import type { ButtonProps } from './button'
+
 import styles from './button.module.scss'
+import { classNames } from '../../utils/classNames'
 
 interface Props extends ButtonProps {}
 
@@ -11,11 +13,11 @@ const {
     ...rest
 } = Astro.props
 
-const classes = [
+const classes = classNames([
     styles.button,
     bold && styles.bold,
     theme && styles[theme]
-].filter(Boolean).join(' ')
+])
 ---
 
 {href ? (

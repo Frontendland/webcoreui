@@ -9,10 +9,14 @@ export type ButtonProps = {
         | null
     bold?: boolean
     href?: string
-    onClick?: () => any
     [key: string]: any
 }
 
+export type SvelteButtonProps = {
+    onClick?: () => any
+} & ButtonProps
+
 export type ReactButtonProps = {
+    onClick?: () => any
     children: React.ReactNode
 } & ButtonProps

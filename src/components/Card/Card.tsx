@@ -1,6 +1,8 @@
 import React from 'react'
 import type { ReactCardProps } from './card'
+
 import styles from './card.module.scss'
+import { classNames } from '../../utils/classNames'
 
 const Card = ({
     Element = 'section',
@@ -12,16 +14,16 @@ const Card = ({
     children,
     ...rest
 }: ReactCardProps) => {
-    const classes = [
+    const classes = classNames([
         styles.card,
         className,
         secondary && styles.secondary
-    ].filter(Boolean).join(' ')
+    ])
 
-    const bodyClasses = [
+    const bodyClasses = classNames([
         styles.body,
         compact && styles.compact
-    ].filter(Boolean).join(' ')
+    ])
 
     return (
         <Element className={classes} {...rest}>

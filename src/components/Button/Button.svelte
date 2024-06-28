@@ -1,17 +1,19 @@
 <script lang="ts">
-    import type { ButtonProps } from './button'
+    import type { SvelteButtonProps } from './button'
+
     import styles from './button.module.scss'
+    import { classNames } from '../../utils/classNames'
 
-    export let theme: ButtonProps['theme'] = null
-    export let bold: ButtonProps['bold'] = false
-    export let href: ButtonProps['href'] = ''
-    export let onClick: ButtonProps['onClick'] = () => {}
+    export let theme: SvelteButtonProps['theme'] = null
+    export let bold: SvelteButtonProps['bold'] = false
+    export let href: SvelteButtonProps['href'] = ''
+    export let onClick: SvelteButtonProps['onClick'] = () => {}
 
-    const classes = [
+    const classes = classNames([
         styles.button,
         bold && styles.bold,
         theme && styles[theme]
-    ].filter(Boolean).join(' ')
+    ])
 </script>
 
 

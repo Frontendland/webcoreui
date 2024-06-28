@@ -1,6 +1,8 @@
 import React from 'react'
 import type { ReactButtonProps } from './button'
+
 import styles from './button.module.scss'
+import { classNames } from '../../utils/classNames'
 
 const Button = ({
     theme,
@@ -10,11 +12,11 @@ const Button = ({
     onClick,
     ...rest
 }: ReactButtonProps) => {
-    const classes = [
+    const classes = classNames([
         styles.button,
         bold && styles.bold,
         theme && styles[theme]
-    ].filter(Boolean).join(' ')
+    ])
 
     if (href) {
         return (

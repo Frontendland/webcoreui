@@ -1,6 +1,8 @@
 import React from 'react'
 import type { AvatarProps } from './avatar'
+
 import styles from './avatar.module.scss'
+import { classNames } from '../../utils/classNames'
 
 const Avatar = ({
     img,
@@ -12,16 +14,16 @@ const Avatar = ({
     reverse,
     className,
 }: AvatarProps) => {
-    const classes = [
+    const classes = classNames([
         styles.avatar,
         borderless && styles.borderless,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
-    const groupStyles = [
+    const groupStyles = classNames([
         styles.group,
         reverse && styles.reverse
-    ].filter(Boolean).join(' ')
+    ])
 
     const borderColorStyle = borderColor
         ? { '--w-avatar-border': borderColor } as React.CSSProperties

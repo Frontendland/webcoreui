@@ -3,6 +3,7 @@ import type { ReactInputProps } from './input'
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
 import styles from './input.module.scss'
+import { classNames } from '../../utils/classNames'
 
 const Input = ({
     type = 'text',
@@ -15,12 +16,12 @@ const Input = ({
     className,
     ...rest
 }: ReactInputProps) => {
-    const classes = [
+    const classes = classNames([
         styles.input,
         theme && styles[theme],
         fill && styles.fill,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
     const useLabel = !!(label || subText || icon)
 

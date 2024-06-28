@@ -1,6 +1,8 @@
 <script lang="ts">
     import type { AvatarProps } from './avatar'
+
     import styles from './avatar.module.scss'
+    import { classNames } from '../../utils/classNames'
 
     export let img: AvatarProps['img'] = ''
     export let alt: AvatarProps['alt'] = 'Avatar'
@@ -11,16 +13,16 @@
     export let reverse: AvatarProps['reverse'] = false
     export let className: AvatarProps['className'] = ''
 
-    const classes = [
+    const classes = classNames([
         styles.avatar,
         borderless && styles.borderless,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
-    const groupStyles = [
+    const groupStyles = classNames([
         styles.group,
         reverse && styles.reverse
-    ].filter(Boolean).join(' ')
+    ])
 </script>
 
 {#if Array.isArray(img)}

@@ -3,6 +3,7 @@
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
     import styles from './radio.module.scss'
+    import { classNames } from '../../utils/classNames'
 
     export let name: RadioProps['name'] = ''
     export let items: RadioProps['items'] = []
@@ -11,11 +12,11 @@
     export let className: RadioProps['className'] = ''
     export let onChange: () => any = () => {}
 
-    const classes = [
+    const classes = classNames([
         styles.radio,
         inline && styles.inline,
         className
-    ].filter(Boolean).join(' ')
+    ])
 
     const style = color
         ? `--w-radio-color: ${color};`
