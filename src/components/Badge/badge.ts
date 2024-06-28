@@ -7,9 +7,14 @@ export type BadgeProps = {
         | 'warning'
         | 'alert'
         | null
-    onClick?: () => any
+    hover?: boolean
 }
 
+export type SvelteBadgeProps = {
+    onClick?: (() => any) | null
+} & BadgeProps
+
 export type ReactBadgeProps = {
+    onClick?: (() => any) | null
     children: React.ReactNode
 } & BadgeProps

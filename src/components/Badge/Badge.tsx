@@ -1,16 +1,32 @@
 import React from 'react'
 import type { ReactBadgeProps } from './badge'
-import styles from './badge.module.scss'
 
-const Badge = ({ theme, onClick, children, ...rest }: ReactBadgeProps) => {
-    const classes = [
+import styles from './badge.module.scss'
+import { classNames } from '../../utils/classNames'
+
+const Badge = ({
+    theme,
+    onClick,
+    hover,
+    children,
+    ...rest
+}: ReactBadgeProps) => {
+    const classes = classNames([
         styles.badge,
         theme && styles[theme],
-        onClick && styles.hover
-    ].filter(Boolean).join(' ')
+        (onClick || hover) && styles.hover
+    ])
+
+    if (onClick) {
+        return (
+            <button className={classes} onClick={onClick} {...rest}>
+                {children}
+            </button>
+        )
+    }
 
     return (
-        <span className={classes} onClick={onClick} {...rest}>
+        <span className={classes} {...rest}>
             {children}
         </span>
     )

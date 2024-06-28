@@ -13,10 +13,10 @@ const {
 <ul class={styles.accordion} data-id="w-accordion">
     {items.map((item: AccordionProps['items'][0]) => (
         <li>
-            <div class={styles.title} data-toggle="true">
+            <button class={styles.title} data-toggle="true">
                 {item.title}
                 <Fragment set:html={ArrowDown} />
-            </div>
+            </button>
             <div class={styles.wrapper}>
                 <div class={styles.content}>
                     <Fragment set:html={item.content} />

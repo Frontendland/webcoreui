@@ -18,14 +18,14 @@
 <ul class={styles.accordion}>
     {#each items as item, index}
         <li>
-            <div
+            <button
                 class={styles.title}
                 data-open={state[index]}
                 on:click={() => toggle(index)}
             >
                 {item.title}
                 {@html ArrowDown}
-            </div>
+            </button>
             <div class={styles.wrapper}>
                 <div class={styles.content}>
                     {@html item.content}

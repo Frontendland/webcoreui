@@ -1,17 +1,27 @@
 <script lang="ts">
-    import type { BadgeProps } from './badge'
-    import styles from './badge.module.scss'
-    
-    export let theme: BadgeProps['theme'] = null
-    export let onClick: BadgeProps['onClick'] = null
+    import type { SvelteBadgeProps } from './badge'
 
-    const classes = [
+    import styles from './badge.module.scss'
+    import { classNames } from '../../utils/classNames'
+    
+    export let theme: SvelteBadgeProps['theme'] = null
+    export let onClick: SvelteBadgeProps['onClick'] = null
+    export let hover: SvelteBadgeProps['hover'] = false
+
+    const classes = classNames([
         styles.badge,
         theme && styles[theme],
-        onClick && styles.hover
-    ].filter(Boolean).join(' ')
+        (onClick || hover) && styles.hover
+    ])
 </script>
 
-<span class={classes} on:click={onClick} {...$$restProps}>
-    <slot />
-</span>
+{#if onClick}
+    <button class={classes} on:click={onClick} {...$$restProps}>
+        <slot />
+    </button>
+{:else}
+    <span class={classes} {...$$restProps}>
+        <slot />
+    </span>
+{/if}
+

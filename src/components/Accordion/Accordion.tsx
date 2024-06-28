@@ -17,7 +17,7 @@ const Accordion = ({ items }: AccordionProps) => {
         <ul className={styles.accordion}>
             {items.map((item, index) => (
                 <li key={index}>
-                    <div
+                    <button
                         className={styles.title}
                         data-open={state[index]}
                         onClick={() => toggle(index)}

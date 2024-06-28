@@ -2,20 +2,18 @@
 import type { BadgeProps } from './badge'
 import styles from './badge.module.scss'
 
-interface Props extends BadgeProps {
-    interactive?: boolean
-}
+interface Props extends BadgeProps {}
 
 const {
     theme,
-    interactive,
+    hover,
     ...rest
 } = Astro.props
 
 const classes = [
     styles.badge,
     theme && styles[theme],
-    interactive && styles.hover
+    hover && styles.hover
 ]
 ---
 
