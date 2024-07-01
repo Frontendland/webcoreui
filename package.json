@@ -26,6 +26,7 @@
         "./svelte": "./svelte.js",
         "./react": "./react.js",
         "./styles": "./scss/index.scss",
+        "./icons": "./icons.js",
         "./config": "./scss/config.scss"
     },
     "files": [

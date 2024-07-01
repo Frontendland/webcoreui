@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { buildImports, buildUtilImports } from './buildImports.js'
+import { buildImports, buildUtilImports, buildIconImports } from './buildImports.js'
 import buildTypes from './buildTypes.js'
 
 const folders = {
@@ -41,10 +41,13 @@ fs.writeFileSync('dist/astro.js', buildImports('astro'))
 fs.writeFileSync('dist/svelte.js', buildImports('svelte'))
 fs.writeFileSync('dist/react.js', buildImports('tsx'))
 
+fs.writeFileSync('dist/index.js', buildUtilImports())
+fs.writeFileSync('dist/icons.js', buildIconImports())
+
 fs.writeFileSync('dist/astro.d.ts', buildTypes('astro'))
 fs.writeFileSync('dist/svelte.d.ts', buildTypes('svelte'))
 fs.writeFileSync('dist/react.d.ts', buildTypes('react'))
+fs.writeFileSync('dist/icons.d.ts', buildTypes('icons'))
 
-fs.writeFileSync('dist/index.js', buildUtilImports())
 
 console.log('✅ Package built')
