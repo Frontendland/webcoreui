@@ -52,3 +52,13 @@ export const overflowTabs = Array(10).fill({
     label: `Tab ${index + 1}`,
     value: `tab-${index + 1}`
 }))
+
+export const menu = [
+    { name: 'Home', url: '/' },
+    { name: 'Docs', url: '/docs'}
+]
+
+export const menuLogo = {
+    url: '/img/logo.png',
+    width: 100
+}

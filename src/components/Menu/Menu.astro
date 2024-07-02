@@ -1,0 +1,85 @@
+---
+import type { MenuProps } from './menu'
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+
+import styles from './menu.module.scss'
+
+interface Props extends MenuProps {}
+
+const {
+    items,
+    logo,
+    centerLogo,
+    className
+} = Astro.props
+
+const classes = [
+    styles.menu,
+    className
+]
+
+const wrapMenu = logo?.url && items?.length && Astro.slots.has('default')
+---
+
+<header class:list={classes}>
+    <ConditionalWrapper condition={wrapMenu}>
+        <div slot="wrapper">
+            children
+        </div>
+        {logo?.url && !centerLogo &&  (
+            <a href="/">
+                <img
+                    src={logo.url}
+                    alt={logo.alt || 'Logo'}
+                    width={logo.width}
+                    height={logo.height}
+                />
+            </a>
+        )}
+
+        {items?.length && (
+            <ul>
+                {items.map(item => (
+                    <li>
+                        <a href={item.url} target={item.target}>
+                            {item.name}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        )}
+    </ConditionalWrapper>
+
+    <button class={styles.hamburger} data-id="hamburger">
+        <span class={styles.meat}></span>
+        <span class={styles.meat}></span>
+        <span class={styles.meat}></span>
+        <span class={styles.meat}></span>
+    </button>
+
+    {logo?.url && centerLogo && (
+        <a href="/">
+            <img
+                src={logo.url}
+                alt={logo.alt || 'Logo'}
+                width={logo.width}
+                height={logo.height}
+            />
+        </a>
+    )}
+
+    <slot />
+</header>
+
+<script>
+    document
+        .querySelector('[data-id="hamburger"]')
+        ?.addEventListener('click', event => {
+            const hamburger = event.currentTarget as HTMLDivElement
+            const header = hamburger.parentElement as HTMLHeadElement
+
+            header.dataset.active = header.dataset.active === 'true'
+                ? 'false'
+                : 'true'
+    })
+</script>

@@ -3,6 +3,7 @@ import Card from '@components/Card/Card.astro'
 
 const {
     title,
+    secondary,
     type
 } = Astro.props
 ---
@@ -11,6 +12,7 @@ const {
     title={title || type}
     className={type && type.slice(0, 1).toLocaleLowerCase()}
     titleTag="strong"
+    secondary={secondary}
 >
     <slot />
 </Card>

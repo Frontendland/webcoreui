@@ -1,0 +1,219 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Button from '@components/Button/Button.astro'
+import Icon from '@components/Icon/Icon.astro'
+
+import AstroMenu from '@components/Menu/Menu.astro'
+import SvelteMenu from '@components/Menu/Menu.svelte'
+import ReactMenu from '@components/Menu/Menu.tsx'
+
+import { getSections } from '@helpers'
+import { menu, menuLogo } from '@data'
+
+const sections = getSections({
+    title: 'menus',
+    components: [AstroMenu, SvelteMenu, ReactMenu]
+})
+---
+
+<Layout>
+    <h1>Menu</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroMenu
+                items={menu}
+                logo={menuLogo}
+                className="backdrop"
+            />
+            {Array(3).fill(0).map(x => (
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                </p>
+            ))}
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteMenu
+                items={menu}
+                logo={menuLogo}
+                className="backdrop"
+                client:load
+            />
+            {Array(3).fill(0).map(x => (
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                </p>
+            ))}
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactMenu
+                items={menu}
+                logo={menuLogo}
+                className="backdrop"
+                client:load
+            />
+            {Array(3).fill(0).map(x => (
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                </p>
+            ))}
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            <h2>For mobile toggle, see the first example above</h2>
+        </Fragment>
+        <div class="grid md-2">
+            <ComponentWrapper title="Default" secondary={true}>
+                <section.component items={menu} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With logo" secondary={true}>
+                <section.component items={menu} logo={menuLogo} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Logo with left alignment" secondary={true}>
+                <section.component
+                    items={menu}
+                    logo={menuLogo}
+                    className="left-aligned"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Logo only" secondary={true}>
+                <section.component logo={menuLogo} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Centered" secondary={true}>
+                <section.component items={menu} className="centered" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Centered with logo" secondary={true}>
+                <section.component
+                    items={menu}
+                    logo={menuLogo}
+                    className="centered"
+                    centerLogo={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With backdrop" secondary={true}>
+                <section.component items={menu} className="backdrop" />
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                </p>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With children" secondary={true}>
+                <section.component items={menu}>
+                    <div class="flex xs">
+                        <Button theme="flat">
+                            <Icon type="github" size={20} />
+                        </Button>
+                        <Button>Sign Up</Button>
+                    </div>
+                </section.component>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                </p>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With logo and children" secondary={true}>
+                <section.component items={menu} logo={menuLogo}>
+                    <div class="flex xs">
+                        <Button theme="flat">
+                            <Icon type="github" size={20} />
+                        </Button>
+                        <Button>Sign Up</Button>
+                    </div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With logo in center" secondary={true}>
+                <section.component
+                    items={menu}
+                    logo={menuLogo}
+                    centerLogo={true}
+                >
+                    <div class="flex xs">
+                        <Button theme="flat">
+                            <Icon type="github" size={20} />
+                        </Button>
+                        <Button>Sign Up</Button>
+                    </div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Centered with backdrop" secondary={true}>
+                <section.component
+                    items={menu}
+                    logo={menuLogo}
+                    className="centered backdrop"
+                >
+                    <div class="flex xs">
+                        <Button theme="flat">
+                            <Icon type="github" size={20} />
+                        </Button>
+                        <Button>Sign Up</Button>
+                    </div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Secondary">
+                <section.component
+                    items={menu}
+                    logo={menuLogo}
+                    className="secondary"
+                >
+                    <div class="flex xs">
+                        <Button theme="flat" href="#">
+                            <Icon type="github" size={20} />
+                        </Button>
+                        <Button>Sign Up</Button>
+                    </div>
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<style is:global lang="scss">
+    @import '../scss/config.scss';
+
+    p {
+        text-align: justify;
+        line-height: 1.5;
+    }
+
+    .left-aligned {
+        justify-content: flex-start;
+    }
+
+    .centered {
+        justify-content: center;
+    }
+
+    .secondary {
+        background: #111;
+        border-bottom: 1px solid #000;
+    }
+
+    .backdrop {
+        backdrop-filter: blur(5px);
+        background: rgb(0 0 0 / 70%);
+
+        ul {
+            padding-top: 40px;
+        }
+    }
+
+    @include Media('sm') {
+        .backdrop ul {
+            padding-top: 0;
+        }
+    }
+</style>

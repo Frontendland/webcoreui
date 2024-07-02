@@ -33,7 +33,7 @@
     }
 
     &.outline {
-        background: #000;
+        background: transparent;
         color: #BBB;
         box-shadow: inset 0px 0px 0px 1px #BBB;
         
@@ -44,7 +44,7 @@
     }
 
     &.flat {
-        background: #000;
+        background: transparent;
         color: #FFF;
 
         &:hover {

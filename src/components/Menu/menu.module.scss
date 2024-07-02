@@ -1,0 +1,137 @@
+@import '../../scss/config.scss';
+
+.menu {
+    background: #000;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    font-size: 16px;
+    border-bottom: 1px solid #252525;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    flex-wrap: wrap;
+
+    &[data-active="true"] {
+        .hamburger {
+            box-shadow: 0 0 0 1000px #000;
+
+            .meat:first-child,
+            .meat:last-child {
+                opacity: 0;
+            }
+
+            .meat:first-child {
+                transform: translateY(20px) scale(0);
+            }
+
+            .meat:last-child {
+                transform: translateY(-20px) scale(0);
+            }
+
+            .meat:nth-child(2) {
+                transform: rotate(45deg);
+            }
+
+            .meat:nth-child(3) {
+                transform: rotate(-45deg);
+            }
+        }
+
+        ul {
+            @include Transition(opacity);
+            opacity: 1;
+            z-index: 99;
+            pointer-events: all;
+        }
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    img {
+        display: block;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        flex-direction: column;
+        opacity: 0;
+        pointer-events: none;
+
+        a {
+            @include Transition(color);
+            color: #BBB;
+    
+            &:hover {
+                color: #FFF;
+            }
+        }
+    }
+
+
+    .hamburger {
+        @include Transition(box-shadow);
+        position: relative;
+        width: 30px;
+        height: 20px;
+        box-shadow: 0 0 0 0 #000;
+        border-radius: 50%;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+
+        .meat {
+            @include Transition();
+            width: 100%;
+            position: absolute;
+            height: 2px;
+            background: #FFF;
+            display: block;
+            border-radius: 5px;
+
+            &:first-child {
+                top: 0;
+            }
+
+            &:nth-child(2),
+            &:nth-child(3) {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &:last-child {
+                bottom: 0;
+            }
+        }
+    }
+}
+
+@include Media('sm') {
+    .menu {
+        .hamburger {
+            display: none;
+        }
+
+        ul {
+            position: static;
+            opacity: 1;
+            flex-direction: row;
+            pointer-events: all;
+            transform: none;
+        }
+    }
+}

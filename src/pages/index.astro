@@ -10,6 +10,7 @@ import Button from '@components/Button/Button.astro'
 import Checkbox from '@components/Checkbox/Checkbox.astro'
 import Icon from '@components/Icon/Icon.astro'
 import Input from '@components/Input/Input.astro'
+import Menu from '@components/Menu/Menu.astro'
 import Progress from '@components/Progress/Progress.astro'
 import Radio from '@components/Radio/Radio.astro'
 import Rating from '@components/Rating/Rating.astro'
@@ -115,6 +116,11 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Input" href="/input">
             <Input placeholder="Please enter your email." />
+        </CardWrapper>
+        <CardWrapper title="Menu" href="/menu">
+            <Menu>
+                <img src="/img/logo.png" width={100} />
+            </Menu>
         </CardWrapper>
         <CardWrapper title="Progress" href="/progress">
             <Progress value={33} />

@@ -41,14 +41,16 @@ const templates = {
     svelte: `
         <script lang="ts">
             import type { ${component}Props } from './${lowerCaseComponent}'
+
             import styles from './${lowerCaseComponent}.module.scss'
+            import { classNames } from '../../utils/classNames'
 
             export let className: ${component}Props['className'] = ''
 
-            const classes = [
+            const classes = classNames([
                 styles.${lowerCaseComponent},
                 className
-            ].filter(Boolean).join(' ')
+            ])
         </script>
     `,
     react: `
@@ -56,14 +58,15 @@ const templates = {
         import type { ${component}Props } from './${lowerCaseComponent}'
 
         import styles from './${lowerCaseComponent}.module.scss'
+        import { classNames } from '../../utils/classNames'
         
         const ${component} = ({
             className
         }: ${component}Props) => {
-            const classes = [
+            const classes = classNames([
                 styles.${lowerCaseComponent},
                 className
-            ].filter(Boolean).join(' ')
+            ])
 
             return <div>${component}</div>
         }
