@@ -4,7 +4,8 @@ $config: (
     includeResets: true,
     includeHelperClasses: true,
     includeElementStyles: true,
-    includeTooltip: true
+    includeTooltip: true,
+    includeScrollbarStyles: true
 );
 
 :root {
@@ -49,6 +50,10 @@ $config: (
 
     @if (config('includeElementStyles')) {
         @include Elements();
+    }
+
+    @if (config('includeScrollbarStyles')) {
+        @include Scrollbar();
     }
 
     @if (config('includeTooltip')) {

@@ -1,0 +1,21 @@
+@import '../config';
+
+@mixin Scrollbar() {
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background-color: #111;
+        cursor: pointer;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #252525;
+        cursor: pointer;
+    }
+}
+

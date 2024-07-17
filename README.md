@@ -23,7 +23,7 @@
 </p>
 
 > [!IMPORTANT]
-> This library is still in early development. New changes can break existing functionality, and no functionality should be considered final. The library will be considered stable once it reaches v1.0.
+> This library is still in early development. New changes can break existing functionality, and no functionality should be considered final at this stage. The library will be considered stable once it reaches v1.0.
 
 ---
 ## Table of Contents
@@ -39,7 +39,7 @@
 
 ## Documentation
 
-Full documentation coming soon on [webcoreui.dev/docs](https://webcoreui.dev/docs).
+Full documentation available on [webcoreui.dev](https://webcoreui.dev).
 
 ## Getting Started
 
@@ -101,15 +101,35 @@ The `Setup` mixin can also accept the following options:
 | `includeResets` | `true` | Include reset styles. Set to `false` if you want to use your own CSS resets. |
 | `includeHelperClasses` | `true` | Adds global helper classes for CSS. All global helper classes are defined [here](https://github.com/Frontendland/webcoreui/tree/main/src/scss/global). |
 | `includeElementStyles` | `true` | Adds styles for native HTML elements, such as `code`, `pre`, or `ul`.
+| `includeTooltip` | `true` | Adds styles for using tooltips.
+| `includeScrollbarStyles` | `true` | Adds styles for scrollbars.
 
-Default component styles can also be changed by overriding the following CSS variables:
+Default component styles can be changed by overriding the following CSS variables:
 
 ```css
 :root {
     --w-avatar-border: #000;
+    --w-checkbox-color: #FFF;
+    --w-progress-color: #FFF;
+    --w-progress-background: #252525;
+    --w-progress-stripe-light: #FFF;
+    --w-progress-stripe-dark: #DDD;
+    --w-radio-color: #FFF;
     --w-rating-color: #FFF;
     --w-rating-empty-color: #BBB;
     --w-rating-size: 18px;
+    --w-spinner-color: #FFF;
+    --w-spinner-width: 2px;
+    --w-spinner-speed: 2s;
+    --w-spinner-size: 30px;
+    --w-spinner-dash: 8;
+    --w-switch-off-color: #252525;
+    --w-switch-on-color: #FFF;
+    --w-timeline-color: #252525;
+    --w-timeline-text-color: #FFF;
+    --w-timeline-counter: decimal;
+    --w-tooltip-background: #FFF;
+    --w-tooltip-color: #000;
 }
 ```
 
