@@ -2,17 +2,12 @@
 
 .menu {
     background: #000;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
+    padding: 15px;
     font-size: 16px;
     border-bottom: 1px solid #252525;
-    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 99;
-    flex-wrap: wrap;
 
     &[data-active="true"] {
         .hamburger {
@@ -48,7 +43,7 @@
         }
     }
 
-    div {
+    .wrapper {
         display: flex;
         align-items: center;
         gap: 20px;
@@ -80,7 +75,6 @@
             }
         }
     }
-
 
     .hamburger {
         @include Transition(box-shadow);
@@ -118,6 +112,17 @@
             }
         }
     }
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 @include Media('sm') {

@@ -1,11 +1,7 @@
-import type { AlertProps } from '../Alert/alert'
+import type { AlertProps, ReactAlertProps } from '../Alert/alert'
 
 export type ToastProps = {
-    position?: string
-    [key: string]: any
+    position?: 'bottom-left' | 'top-left' | 'top-right' | null
 } & AlertProps
 
-export type ReactToastProps = {
-    children: React.ReactNode
-    icon?: string
-} & ToastProps
+export type ReactToastProps = ToastProps & ReactAlertProps

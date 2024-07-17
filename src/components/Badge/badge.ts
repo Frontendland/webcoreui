@@ -8,6 +8,8 @@ export type BadgeProps = {
         | 'alert'
         | null
     hover?: boolean
+    className?: string
+    [key: string]: any
 }
 
 export type SvelteBadgeProps = {

@@ -17,7 +17,7 @@ const sections = getSections({
 })
 ---
 
-<Layout>
+<Layout nonStickyMenu={true}>
     <h1>Menu</h1>
     <div class="grid md-2 lg-3">
         <ComponentWrapper type="Astro">
@@ -80,7 +80,7 @@ const sections = getSections({
                 <section.component
                     items={menu}
                     logo={menuLogo}
-                    className="left-aligned"
+                    wrapperClassName="left-aligned"
                 />
             </ComponentWrapper>
 
@@ -89,14 +89,14 @@ const sections = getSections({
             </ComponentWrapper>
 
             <ComponentWrapper title="Centered" secondary={true}>
-                <section.component items={menu} className="centered" />
+                <section.component items={menu} wrapperClassName="centered" />
             </ComponentWrapper>
 
             <ComponentWrapper title="Centered with logo" secondary={true}>
                 <section.component
                     items={menu}
                     logo={menuLogo}
-                    className="centered"
+                    wrapperClassName="centered"
                     centerLogo={true}
                 />
             </ComponentWrapper>
@@ -152,7 +152,8 @@ const sections = getSections({
                 <section.component
                     items={menu}
                     logo={menuLogo}
-                    className="centered backdrop"
+                    className="backdrop"
+                    wrapperClassName="centered"
                 >
                     <div class="flex xs">
                         <Button theme="flat">

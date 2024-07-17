@@ -2,7 +2,7 @@
     import type { ConditionalWrapperProps } from './conditionalwrapper'
 
     export let condition: ConditionalWrapperProps['condition']
-    export let element: string
+    export let element: string = 'div'
 </script>
 
 {#if condition}

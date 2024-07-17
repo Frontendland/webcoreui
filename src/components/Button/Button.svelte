@@ -7,12 +7,14 @@
     export let theme: SvelteButtonProps['theme'] = null
     export let bold: SvelteButtonProps['bold'] = false
     export let href: SvelteButtonProps['href'] = ''
+    export let className: SvelteButtonProps['className'] = ''
     export let onClick: SvelteButtonProps['onClick'] = () => {}
 
     const classes = classNames([
         styles.button,
         bold && styles.bold,
-        theme && styles[theme]
+        theme && styles[theme],
+        className
     ])
 </script>
 

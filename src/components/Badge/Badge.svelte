@@ -7,11 +7,13 @@
     export let theme: SvelteBadgeProps['theme'] = null
     export let onClick: SvelteBadgeProps['onClick'] = null
     export let hover: SvelteBadgeProps['hover'] = false
+    export let className: SvelteBadgeProps['className'] = ''
 
     const classes = classNames([
         styles.badge,
         theme && styles[theme],
-        (onClick || hover) && styles.hover
+        (onClick || hover) && styles.hover,
+        className
     ])
 </script>
 

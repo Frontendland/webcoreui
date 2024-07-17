@@ -3,8 +3,8 @@ export type CheckboxProps = {
     label?: string
     subText?: string
     disabled?: boolean
-    boxed?: boolean
     color?: string
+    className?: string
 }
 
 export type SvelteCheckboxProps = {

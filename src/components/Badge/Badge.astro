@@ -7,13 +7,15 @@ interface Props extends BadgeProps {}
 const {
     theme,
     hover,
+    className,
     ...rest
 } = Astro.props
 
 const classes = [
     styles.badge,
     theme && styles[theme],
-    hover && styles.hover
+    hover && styles.hover,
+    className
 ]
 ---
 

@@ -9,7 +9,6 @@
     export let theme: SvelteInputProps['theme'] = null
     export let label: SvelteInputProps['label'] = ''
     export let subText: SvelteInputProps['subText'] = ''
-    export let fill: SvelteInputProps['fill'] = false
     export let className: SvelteInputProps['className'] = ''
     export let onChange: SvelteInputProps['onChange'] = () => {}
     export let onKeyUp: SvelteInputProps['onKeyUp'] = () => {}
@@ -17,11 +16,10 @@
     const classes = classNames([
         styles.input,
         theme && styles[theme],
-        fill && styles.fill,
         className
     ])
 
-    const useLabel = !!(label || subText || $$slots.icon)
+    const useLabel = !!(label || subText || $$slots.default)
 </script>
 
 <ConditionalWrapper
@@ -33,11 +31,11 @@
         <div class={styles.label}>{label}</div>
     {/if}
     <ConditionalWrapper
-        condition={$$slots.icon}
+        condition={$$slots.default}
         element="div"
         class={styles.wrapper}
     >
-        <slot name="icon" />
+        <slot />
         <input
             type={type}
             class={classes}

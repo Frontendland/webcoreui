@@ -17,6 +17,7 @@ export type InputProps = {
         | 'success'
         | 'warning'
         | 'alert'
+        | 'fill'
         | null
     value?: string | number
     name?: string
@@ -24,7 +25,6 @@ export type InputProps = {
     label?: string
     disabled?: boolean
     subText?: string
-    fill?: boolean
     maxLength?: number
     min?: number
     max?: number
@@ -46,6 +46,5 @@ export type SvelteInputProps = {
 export type ReactInputProps = {
     onChange?: (e: any) => any
     onKeyUp?: (e: any) => any
-    icon?: string
     children?: React.ReactNode
 } & InputProps

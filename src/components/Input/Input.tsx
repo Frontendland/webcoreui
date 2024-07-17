@@ -10,20 +10,19 @@ const Input = ({
     theme,
     label,
     subText,
-    fill,
     icon,
     value,
     className,
+    children,
     ...rest
 }: ReactInputProps) => {
     const classes = classNames([
         styles.input,
         theme && styles[theme],
-        fill && styles.fill,
         className
     ])
 
-    const useLabel = !!(label || subText || icon)
+    const useLabel = !!(label || subText || children)
 
     return (
         <ConditionalWrapper condition={useLabel} wrapper={children => (
@@ -34,12 +33,12 @@ const Input = ({
             {label && (
                 <div className={styles.label}>{label}</div>
             )}
-            <ConditionalWrapper condition={!!icon} wrapper={children => (
+            <ConditionalWrapper condition={!!children} wrapper={children => (
                 <div className={styles.wrapper}>
                     {children}
                 </div>
             )}>
-                {icon && icon}
+                {children}
                 <input
                     type={type}
                     className={classes}

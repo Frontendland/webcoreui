@@ -1,12 +1,12 @@
 export type SwitchProps = {
     label?: string
-    toggled?: boolean
-    offColor?: string
-    onColor?: string
     reverse?: boolean
+    toggled?: boolean
+    disabled?: boolean
     small?: boolean
     square?: boolean
-    disabled?: boolean
+    onColor?: string
+    offColor?: string
     className?: string
 }
 

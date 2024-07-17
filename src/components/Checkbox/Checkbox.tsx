@@ -12,14 +12,14 @@ const Checkbox = ({
     label,
     subText,
     disabled,
-    boxed,
     color,
+    className,
     onClick
 }: ReactCheckboxProps) => {
     const classes = classNames([
         styles.checkbox,
-        boxed && styles.boxed,
-        label && subText && styles.col
+        label && subText && styles.col,
+        className
     ])
     
     const style = color

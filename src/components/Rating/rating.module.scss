@@ -7,18 +7,19 @@
     font-size: var(--w-rating-size);
 
     &.outline .empty {
-        transform: scale(.88);
+        transform: scale(.9);
+        transform-origin: left;
         color: black;
-        text-shadow: -1px 0 var(--w-rating-color), 0 1px var(--w-rating-color), 1px 0 var(--w-rating-color), 0 -1px var(--w-rating-color);
         letter-spacing: 2px;
+        text-shadow:
+            -1px 0 var(--w-rating-empty-color),
+            0 1px var(--w-rating-empty-color),
+            1px 0 var(--w-rating-empty-color),
+            0 -1px var(--w-rating-empty-color);
     }
 
     .empty {
         color: var(--w-rating-empty-color);
-
-        &.ten-star {
-            margin-left: -3px;
-        }
     }
 
     a {

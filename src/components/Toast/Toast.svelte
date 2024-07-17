@@ -5,7 +5,7 @@
     import styles from './toast.module.scss'
     import { classNames } from '../../utils/classNames'
 
-    export let position: ToastProps['position'] = ''
+    export let position: ToastProps['position'] = null
     export let className: ToastProps['className'] = ''
 
     const classes = classNames([

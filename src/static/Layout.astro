@@ -1,5 +1,17 @@
 ---
+import Menu from '@components/Menu/Menu.astro'
 
+const { nonStickyMenu } = Astro.props
+
+const logo = {
+    url: '/img/logo.png',
+    width: 100
+}
+
+const menuClasses = [
+    'menu',
+    nonStickyMenu && 'fixed'
+].filter(Boolean).join(' ')
 ---
 
 <!DOCTYPE html>
@@ -11,15 +23,8 @@
         <title>Webcore</title>
     </head>
     <body>
+        <Menu logo={logo} className={menuClasses} />
         <div class="container">
-            <a href="/">
-                <img
-                    src="/img/logo.png"
-                    alt="Logo"
-                    width="164"
-                    height="43"
-                />
-            </a>
             <slot />
         </div>
     </body>
@@ -53,6 +58,14 @@
 
         a {
             text-decoration: underline;
+        }
+    }
+
+    .menu {
+        z-index: 100;
+
+        &.fixed {
+            position: relative;
         }
     }
 

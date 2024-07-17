@@ -11,6 +11,8 @@
             opacity: 0;
             left: 50%;
             transform: translate(-50%, 5px);
+            pointer-events: none;
+            z-index: 99;
         }
 
         &::before {
@@ -21,7 +23,7 @@
             background: var(--w-tooltip-background);
             color: var(--w-tooltip-color);
             padding: 0 5px;
-            top: -30px;
+            bottom: calc(100% + 5px);
             width: max-content;
             line-height: 1.8;
             max-width: 300px;
@@ -41,6 +43,7 @@
         &:hover::before,
         &:hover::after {
             opacity: 1;
+            pointer-events: all;
             transform: translate(-50%, 0);
         }
 
@@ -51,8 +54,8 @@
             }
 
             &::before {
-                top: auto;
-                bottom: -30px;
+                top: calc(100% + 5px);
+                bottom: auto;
             }
 
             &::after {
@@ -79,7 +82,7 @@
             }
 
             &::before {
-                top: auto;
+                bottom: auto;
             }
 
             &::after {
@@ -108,7 +111,7 @@
             }
 
             &::before {
-                top: auto;
+                bottom: auto;
             }
 
             &::after {

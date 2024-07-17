@@ -30,10 +30,6 @@
         </svelte:element>
     {/if}
     <div class={bodyClasses}>
-        {#if compact && !secondary}
-            <div class={styles.wrapper}><slot /></div>
-        {:else}
-            <slot />
-        {/if}
+        <slot />
     </div>
 </svelte:element>

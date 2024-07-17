@@ -10,7 +10,8 @@ const {
     items,
     logo,
     centerLogo,
-    className
+    className,
+    wrapperClassName
 } = Astro.props
 
 const classes = [
@@ -18,15 +19,54 @@ const classes = [
     className
 ]
 
+const containerClasses = [
+    styles.container,
+    wrapperClassName
+]
+
 const wrapMenu = logo?.url && items?.length && Astro.slots.has('default')
 ---
 
 <header class:list={classes}>
-    <ConditionalWrapper condition={wrapMenu}>
-        <div slot="wrapper">
-            children
-        </div>
-        {logo?.url && !centerLogo &&  (
+    <div class:list={containerClasses}>
+        <ConditionalWrapper condition={!!wrapMenu}>
+            <div slot="wrapper" class={styles.wrapper}>
+                children
+            </div>
+            {logo?.url && !centerLogo &&  (
+                <a href="/">
+                    <img
+                        src={logo.url}
+                        alt={logo.alt || 'Logo'}
+                        width={logo.width}
+                        height={logo.height}
+                    />
+                </a>
+            )}
+
+            {items?.length && (
+                <ul>
+                    {items.map(item => (
+                        <li>
+                            <a href={item.url} target={item.target}>
+                                {item.name}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </ConditionalWrapper>
+
+        {items?.length && (
+            <button class={styles.hamburger} data-id="hamburger">
+                <span class={styles.meat}></span>
+                <span class={styles.meat}></span>
+                <span class={styles.meat}></span>
+                <span class={styles.meat}></span>
+            </button>
+        )}
+
+        {logo?.url && centerLogo && (
             <a href="/">
                 <img
                     src={logo.url}
@@ -37,38 +77,8 @@ const wrapMenu = logo?.url && items?.length && Astro.slots.has('default')
             </a>
         )}
 
-        {items?.length && (
-            <ul>
-                {items.map(item => (
-                    <li>
-                        <a href={item.url} target={item.target}>
-                            {item.name}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        )}
-    </ConditionalWrapper>
-
-    <button class={styles.hamburger} data-id="hamburger">
-        <span class={styles.meat}></span>
-        <span class={styles.meat}></span>
-        <span class={styles.meat}></span>
-        <span class={styles.meat}></span>
-    </button>
-
-    {logo?.url && centerLogo && (
-        <a href="/">
-            <img
-                src={logo.url}
-                alt={logo.alt || 'Logo'}
-                width={logo.width}
-                height={logo.height}
-            />
-        </a>
-    )}
-
-    <slot />
+        <slot />
+    </div>
 </header>
 
 <script>

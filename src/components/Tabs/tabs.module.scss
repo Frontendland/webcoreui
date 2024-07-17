@@ -6,7 +6,7 @@
         background: #252525;
         border-radius: 5px;
         padding: 5px;
-        width: fit-content;
+        width: max-content;
 
         button {
             @include Transition();

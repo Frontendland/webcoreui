@@ -10,11 +10,19 @@
     .grid {
         display: grid;
         gap: 20px;
+
+        &.col-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
     }
 
     .flex {
         display: flex;
         gap: 20px;
+
+        &.column {
+            flex-direction: column;
+        }
 
         &.xs {
             gap: 5px;
@@ -26,6 +34,19 @@
 
         &.wrap {
             flex-wrap: wrap;
+        }
+
+        &.center {
+            justify-content: center;
+            align-items: center;
+        }
+
+        &.justify-center {
+            justify-content: center;
+        }
+
+        &.items-start {
+            align-items: flex-start;
         }
     }
 

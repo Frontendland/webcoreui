@@ -12,8 +12,9 @@ export type MenuProps = {
     } | null
     centerLogo?: boolean
     className?: string
+    wrapperClassName?: string
 }
 
 export type ReactMenuProps = {
-    children: React.ReactNode
+    children?: React.ReactNode
 } & MenuProps

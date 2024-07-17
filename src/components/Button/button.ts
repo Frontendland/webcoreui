@@ -9,6 +9,7 @@ export type ButtonProps = {
         | null
     bold?: boolean
     href?: string
+    className?: string
     [key: string]: any
 }
 

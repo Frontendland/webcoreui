@@ -29,10 +29,6 @@ const Title = titleTag
         <Title class:list={styles.title}>{title}</Title>
     )}
     <div class:list={[styles.body, compact && styles.compact]}>
-        {compact && !secondary ? (
-            <div class={styles.wrapper}><slot /></div>
-        ) : (
-            <slot />
-        )}
+        <slot />
     </div>
 </Component>

@@ -25,13 +25,9 @@
         position: relative;
 
         &.compact {
-            background: #111;
+            border: 20px solid #111;
+            background: #000;
+            padding: 40px;
         }
-    }
-
-    .wrapper {
-        background: #000;
-        padding: 40px;
-        height: 100%;
     }
 }

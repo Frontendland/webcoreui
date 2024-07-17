@@ -41,12 +41,11 @@
 
 
 <span class={classes} style={styleVariables}>
-    <span class={styles.score}>{Array(score).fill('★').join('')}</span>
+    {#if score}
+        <span class={styles.score}>{Array(score).fill('★').join('')}</span>
+    {/if}
     {#if showEmpty}
-        <span class={classNames([
-            styles.empty,
-            total === 10 && styles['ten-star']
-        ])}>
+    <span class={styles.empty}>
             {Array((total || 5) - score).fill('★').join('')}
         </span>
     {/if}

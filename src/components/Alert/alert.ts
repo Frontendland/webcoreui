@@ -4,7 +4,6 @@ export type AlertProps = {
     titleTag?: string
     titleProps?: any
     bodyProps?: any
-    icon?: string | null
     className?: string | null
     theme?: 'info'
         | 'success'
@@ -16,5 +15,6 @@ export type AlertProps = {
 export type ReactAlertProps = {
     Element?: keyof JSX.IntrinsicElements
     TitleTag?: keyof JSX.IntrinsicElements
+    icon?: React.ReactNode
     children: React.ReactNode
 } & Omit<AlertProps, 'titleTag' | 'element'>

@@ -41,12 +41,13 @@ const Rating = ({
 
     return (
         <span className={classes} style={styleVariables}>
-            <span className={styles.score}>{Array(score).fill('★').join('')}</span>
+            {score > 0 && (
+                <span className={styles.score}>
+                    {Array(score).fill('★').join('')}
+                </span>
+            )}
             {showEmpty && (
-                <span className={classNames([
-                    styles.empty,
-                    total === 10 && styles['ten-star']
-                ])}>
+                <span className={styles.empty}>
                     {Array(total - score).fill('★').join('')}
                 </span>
             )}

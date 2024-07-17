@@ -2,6 +2,7 @@
 import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
 
+import Card from '@components/Card/Card.astro'
 import AstroCheckbox from '@components/Checkbox/Checkbox.astro'
 import SvelteCheckbox from '@components/Checkbox/Checkbox.svelte'
 import ReactCheckbox from '@components/Checkbox/Checkbox.tsx'
@@ -77,10 +78,18 @@ const sections = [
             </ComponentWrapper>
 
             <ComponentWrapper title="Boxed">
+                <Card>
+                    <section.component
+                        label="Accept terms and conditions"
+                        subText="You must accept our terms to continue."
+                    />
+                </Card>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Multiline">
                 <section.component
-                    label="Accept terms and conditions"
-                    subText="You must accept our terms to continue."
-                    boxed={true}
+                    label="Please accept our terms and conditions before continuing"
+                    subText="You must accept our terms and conditions before you can continue with the setup."
                 />
             </ComponentWrapper>
         </div>

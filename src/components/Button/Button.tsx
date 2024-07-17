@@ -8,14 +8,16 @@ const Button = ({
     theme,
     bold,
     href,
-    children,
+    className,
     onClick,
+    children,
     ...rest
 }: ReactButtonProps) => {
     const classes = classNames([
         styles.button,
         bold && styles.bold,
-        theme && styles[theme]
+        theme && styles[theme],
+        className
     ])
 
     if (href) {

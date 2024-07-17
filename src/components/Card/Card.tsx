@@ -31,10 +31,7 @@ const Card = ({
                 <TitleTag className={styles.title}>{title}</TitleTag>
             )}
             <div className={bodyClasses}>
-                {compact && !secondary
-                    ? <div className={styles.wrapper}>{children}</div>
-                    : children
-                }
+                {children}
             </div>
         </Element>
     )

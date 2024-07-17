@@ -11,7 +11,6 @@ const {
     theme,
     label,
     subText,
-    fill,
     className,
     ...rest
 } = Astro.props
@@ -19,11 +18,10 @@ const {
 const classes = [
     styles.input,
     theme && styles[theme],
-    fill && styles.fill,
     className
 ]
 
-const useLabel = !!(label || subText || Astro.slots.has('icon'))
+const useLabel = !!(label || subText || Astro.slots.has('default'))
 ---
 
 <ConditionalWrapper condition={useLabel}>
@@ -31,11 +29,11 @@ const useLabel = !!(label || subText || Astro.slots.has('icon'))
         {label && (
             <div class={styles.label}>{label}</div>
         )}
-        <ConditionalWrapper condition={Astro.slots.has('icon')}>
+        <ConditionalWrapper condition={Astro.slots.has('default')}>
             <div class={styles.wrapper} slot="wrapper">
                 children
             </div>
-            <slot name="icon" />
+            <slot />
             children
         </ConditionalWrapper>
         {subText && (

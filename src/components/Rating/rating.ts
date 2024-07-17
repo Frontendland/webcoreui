@@ -1,8 +1,8 @@
 export type RatingProps = {
     score: number
     total?: number
-    showText?: boolean
     text?: string
+    showText?: boolean
     showEmpty?: boolean
     outline?: boolean
     reviewCount?: number

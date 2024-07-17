@@ -18,7 +18,6 @@
     th,
     td {
         padding: 5px 10px;
-        white-space: nowrap;
     }
 
     thead,
@@ -39,12 +38,12 @@
     &.striped-rows tbody tr:nth-child(odd),
     &.striped-rows.offset tbody tr:nth-child(even),
     &.striped-columns td:nth-child(odd),
-    &.striped-columns.offset td:nth-child(even) {
+    &.striped-columns.offset td:nth-child(even),
+    &.hover.striped-rows.offset tbody tr:nth-child(odd):hover {
         background: #111;
     }
 
     &.striped-rows tr,
-    &.striped-rows thead,
     &.striped-columns tr,
     &.striped-columns thead {
         border-bottom: 0;

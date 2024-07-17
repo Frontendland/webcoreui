@@ -89,7 +89,7 @@
                 { label: 'Large', value: 'lg' }
             ]}
             name="radio"
-            onChange={e => radio =  e.target.value}
+            onChange={e => radio = e.target.value}
         />
 
         <span class={styles.span}>{radio}</span>

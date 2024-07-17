@@ -11,14 +11,14 @@
     export let label: SvelteCheckboxProps['label'] = ''
     export let subText: SvelteCheckboxProps['subText'] = ''
     export let disabled: SvelteCheckboxProps['disabled'] = false
-    export let boxed: SvelteCheckboxProps['boxed'] = false
     export let color: SvelteCheckboxProps['color'] = ''
+    export let className: SvelteCheckboxProps['className'] = ''
     export let onClick: SvelteCheckboxProps['onClick'] = () => {}
 
     const classes = classNames([
         styles.checkbox,
-        boxed && styles.boxed,
-        label && subText && styles.col
+        label && subText && styles.col,
+        className
     ])
     
     const style = color

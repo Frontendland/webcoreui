@@ -10,13 +10,15 @@ const {
     theme,
     bold,
     href,
+    className,
     ...rest
 } = Astro.props
 
 const classes = classNames([
     styles.button,
     bold && styles.bold,
-    theme && styles[theme]
+    theme && styles[theme],
+    className
 ])
 ---
 

@@ -9,27 +9,27 @@ $config: (
 
 :root {
     --w-avatar-border: #000;
+    --w-checkbox-color: #FFF;
+    --w-progress-color: #FFF;
+    --w-progress-background: #252525;
+    --w-progress-stripe-light: #FFF;
+    --w-progress-stripe-dark: #DDD;
+    --w-radio-color: #FFF;
     --w-rating-color: #FFF;
     --w-rating-empty-color: #BBB;
     --w-rating-size: 18px;
-    --w-switch-off-color: #252525;
-    --w-switch-on-color: #FFF;
-    --w-checkbox-color: #FFF;
-    --w-radio-color: #FFF;
     --w-spinner-color: #FFF;
     --w-spinner-width: 2px;
     --w-spinner-speed: 2s;
     --w-spinner-size: 30px;
     --w-spinner-dash: 8;
-    --w-tooltip-background: #FFF;
-    --w-tooltip-color: #000;
+    --w-switch-off-color: #252525;
+    --w-switch-on-color: #FFF;
     --w-timeline-color: #252525;
     --w-timeline-text-color: #FFF;
     --w-timeline-counter: decimal;
-    --w-progress-color: #FFF;
-    --w-progress-background: #252525;
-    --w-progress-stripe-light: #FFF;
-    --w-progress-stripe-dark: #DDD;
+    --w-tooltip-background: #FFF;
+    --w-tooltip-color: #000;
 }
 
 @function config($key) {

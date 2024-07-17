@@ -44,12 +44,11 @@ const translatedReviewText = reviewText.replace('{0}', `${reviewCount}`)
 ---
 
 <span class:list={classes} style={styleVariables}>
-    <span class={styles.score}>{Array(score).fill('★').join('')}</span>
+    {score > 0 && (
+        <span class={styles.score}>{Array(score).fill('★').join('')}</span>
+    )}
     {showEmpty && (
-        <span class:list={[
-            styles.empty,
-            total === 10 && styles['ten-star']
-        ]}>
+        <span class={styles.empty}>
             {Array(total - score).fill('★').join('')}
         </span>
     )}

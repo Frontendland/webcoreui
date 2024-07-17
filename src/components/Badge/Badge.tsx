@@ -8,13 +8,15 @@ const Badge = ({
     theme,
     onClick,
     hover,
+    className,
     children,
     ...rest
 }: ReactBadgeProps) => {
     const classes = classNames([
         styles.badge,
         theme && styles[theme],
-        (onClick || hover) && styles.hover
+        (onClick || hover) && styles.hover,
+        className
     ])
 
     if (onClick) {
