@@ -1,7 +1,7 @@
 @import '../../scss/config.scss';
 
 .toast {
-    background: #000;
+    background: var(--w-color-primary-70);
     position: fixed;
     right: 20px;
     bottom: 20px;

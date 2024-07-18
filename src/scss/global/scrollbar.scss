@@ -8,13 +8,13 @@
     
     ::-webkit-scrollbar-track {
         border-radius: 5px;
-        background-color: #111;
+        background-color: var(--w-color-primary-60);
         cursor: pointer;
     }
     
     ::-webkit-scrollbar-thumb {
         border-radius: 5px;
-        background-color: #252525;
+        background-color: var(--w-color-primary-50);
         cursor: pointer;
     }
 }

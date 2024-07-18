@@ -9,28 +9,28 @@ $config: (
 );
 
 :root {
-    --w-avatar-border: #000;
-    --w-checkbox-color: #FFF;
-    --w-progress-color: #FFF;
-    --w-progress-background: #252525;
-    --w-progress-stripe-light: #FFF;
-    --w-progress-stripe-dark: #DDD;
-    --w-radio-color: #FFF;
-    --w-rating-color: #FFF;
-    --w-rating-empty-color: #BBB;
+    --w-avatar-border: var(--w-color-primary-70);
+    --w-checkbox-color: var(--w-color-primary);
+    --w-progress-color: var(--w-color-primary);
+    --w-progress-background: var(--w-color-primary-50);
+    --w-progress-stripe-light: var(--w-color-primary);
+    --w-progress-stripe-dark: var(--w-color-primary-10);
+    --w-radio-color: var(--w-color-primary);
+    --w-rating-color: var(--w-color-primary);
+    --w-rating-empty-color: var(--w-color-primary-20);
     --w-rating-size: 18px;
-    --w-spinner-color: #FFF;
+    --w-spinner-color: var(--w-color-primary);
     --w-spinner-width: 2px;
     --w-spinner-speed: 2s;
     --w-spinner-size: 30px;
     --w-spinner-dash: 8;
-    --w-switch-off-color: #252525;
-    --w-switch-on-color: #FFF;
-    --w-timeline-color: #252525;
-    --w-timeline-text-color: #FFF;
+    --w-switch-off-color: var(--w-color-primary-50);
+    --w-switch-on-color: var(--w-color-primary);
+    --w-timeline-color: var(--w-color-primary-50);
+    --w-timeline-text-color: var(--w-color-primary);
     --w-timeline-counter: decimal;
-    --w-tooltip-background: #FFF;
-    --w-tooltip-color: #000;
+    --w-tooltip-background: var(--w-color-primary);
+    --w-tooltip-color: var(--w-color-primary-70);
 }
 
 @function config($key) {
@@ -58,5 +58,13 @@ $config: (
 
     @if (config('includeTooltip')) {
         @include Tooltip();
+    }
+
+    @if (config('themes')) {
+        @each $theme, $selector in config(themes) {
+            @include Theme($theme, $selector);
+        }
+    } @else {
+        @include Theme('dark');
     }
 }

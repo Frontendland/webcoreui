@@ -36,15 +36,15 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
                 display: block;
-                color: #252525;
+                color: var(--w-color-primary-50);
                 width: 10px;
                 height: 10px;
             }
         }
 
         &:disabled + span {
-            background-color: #333;
-            border-color: #333;
+            background-color: var(--w-color-primary-40);
+            border-color: var(--w-color-primary-40);
             cursor: no-drop;
         }
     }
@@ -70,14 +70,14 @@
     .text {
         margin-left: 25px;
         font-size: 14px;
-        color: #BBB;
+        color: var(--w-color-primary-20);
 
         a {
             @include Transition(color);
-            color: #BBB;
+            color: var(--w-color-primary-20);
 
             &:hover {
-                color: #FFF;
+                color: var(--w-color-primary);
             }
         }
     }

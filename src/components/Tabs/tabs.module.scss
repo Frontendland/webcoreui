@@ -3,7 +3,7 @@
 .tabs {
     &.boxed .items,
     &.outline .items {
-        background: #252525;
+        background: var(--w-color-primary-50);
         border-radius: 5px;
         padding: 5px;
         width: max-content;
@@ -15,7 +15,7 @@
 
             &[data-active="true"] {
                 border: 0;
-                background: #000;
+                background: var(--w-color-primary-70);
                 padding-bottom: 10px;
             }
         }
@@ -23,13 +23,13 @@
 
     &.outline .items {
         background: transparent;
-        border: 1px solid #252525;
+        border: 1px solid var(--w-color-primary-50);
 
         button {
             margin-bottom: 0;
 
             &[data-active="true"] {
-                background: #252525;
+                background: var(--w-color-primary-50);
             }
         }
     }
@@ -54,7 +54,7 @@
             
             button {
                 padding: 10px;
-                border-bottom: 2px solid #252525;
+                border-bottom: 2px solid var(--w-color-primary-50);
 
                 &[data-active="true"] {
                     padding-bottom: 10px;
@@ -72,7 +72,7 @@
     }
 
     .items {
-        border-bottom: 2px solid #252525;
+        border-bottom: 2px solid var(--w-color-primary-50);
         display: flex;
         gap: 10px;
 
@@ -80,13 +80,13 @@
             @include Transition(color);
             background: transparent;
             cursor: pointer;
-            color: #FFF;
+            color: var(--w-color-primary);
             border: 0;
             font-size: 16px;
             padding: 0;
             margin-bottom: -2px;
             padding: 15px 15px;
-            color: #BBB;
+            color: var(--w-color-primary-20);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -99,13 +99,13 @@
             }
 
             &[disabled] {
-                color: #555;
+                color: var(--w-color-primary-30);
                 cursor: no-drop;
             }
             
             &[data-active="true"] {
-                color: #FFF;
-                border-bottom: 2px solid #FFF;
+                color: var(--w-color-primary);
+                border-bottom: 2px solid var(--w-color-primary);
                 padding-bottom: 13px;
             }
         }

@@ -3,23 +3,23 @@
 .input {
     border-radius: 2px;
     padding: 5px 10px;
-    border: 1px solid #252525;
+    border: 1px solid var(--w-color-primary-50);
     background: transparent;
     font-family: Regular;
-    color: #FFF;
+    color: var(--w-color-primary);
     line-height: 20px;
     width: 100%;
     color-scheme: dark;
 
     &[disabled] {
         cursor: no-drop;
-        color: #555;
+        color: var(--w-color-primary-30);
     }
 
     &::file-selector-button {
         background: transparent;
         border: 0;
-        color: #FFF;
+        color: var(--w-color-primary);
     }
 
     &[type="color"] {
@@ -43,7 +43,7 @@
     }
 
     &.fill {
-        background: #252525;
+        background: var(--w-color-primary-50);
     }
 }
 
@@ -53,7 +53,7 @@
 
     .label {
         font-size: 16px;
-        color: #BBB;
+        color: var(--w-color-primary-20);
         margin-bottom: 5px;
     }
 
@@ -77,7 +77,7 @@
 
     .subtext {
         font-size: 14px;
-        color: #555;
+        color: var(--w-color-primary-30);
         margin-top: 5px;
     }
 }

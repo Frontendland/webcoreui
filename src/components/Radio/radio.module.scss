@@ -20,7 +20,7 @@
             cursor: no-drop;
 
             input + span::after {
-                background: #BBB;
+                background: var(--w-color-primary-20);
             }
         }
 
@@ -51,8 +51,8 @@
         }
 
         &:disabled + span {
-            background-color: #333;
-            border-color: #333;
+            background-color: var(--w-color-primary-40);
+            border-color: var(--w-color-primary-40);
         }
     }
 
@@ -78,14 +78,14 @@
     .subtext {
         margin-left: 25px;
         font-size: 14px;
-        color: #BBB;
+        color: var(--w-color-primary-20);
 
         a {
             @include Transition(color);
-            color: #BBB;
+            color: var(--w-color-primary-20);
 
             &:hover {
-                color: #FFF;
+                color: var(--w-color-primary);
             }
         }
     }

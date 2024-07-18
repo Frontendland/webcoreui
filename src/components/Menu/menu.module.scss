@@ -1,17 +1,17 @@
 @import '../../scss/config.scss';
 
 .menu {
-    background: #000;
+    background: var(--w-color-primary-70);
     padding: 15px;
     font-size: 16px;
-    border-bottom: 1px solid #252525;
+    border-bottom: 1px solid var(--w-color-primary-50);
     position: sticky;
     top: 0;
     z-index: 99;
 
     &[data-active="true"] {
         .hamburger {
-            box-shadow: 0 0 0 1000px #000;
+            box-shadow: 0 0 0 1000px var(--w-color-primary-70);
 
             .meat:first-child,
             .meat:last-child {
@@ -68,10 +68,10 @@
 
         a {
             @include Transition(color);
-            color: #BBB;
+            color: var(--w-color-primary-20);
     
             &:hover {
-                color: #FFF;
+                color: var(--w-color-primary);
             }
         }
     }
@@ -81,7 +81,7 @@
         position: relative;
         width: 30px;
         height: 20px;
-        box-shadow: 0 0 0 0 #000;
+        box-shadow: 0 0 0 0 var(--w-color-primary-70);
         border-radius: 50%;
         padding: 0;
         border: 0;
@@ -93,7 +93,7 @@
             width: 100%;
             position: absolute;
             height: 2px;
-            background: #FFF;
+            background: var(--w-color-primary);
             display: block;
             border-radius: 5px;
 

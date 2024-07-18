@@ -12,10 +12,10 @@
 
     &.disabled .toggle {
         cursor: no-drop;
-        background: #333;
+        background: var(--w-color-primary-40);
 
         &::before {
-            background: #252525;
+            background: var(--w-color-primary-50);
         }
     }
 
@@ -74,7 +74,7 @@
             width: 24px;
             left: 3px;
             bottom: 3px;
-            background: #000;
+            background: var(--w-color-primary-70);
             border-radius: 50%;
             transition: 0.3s;
         }

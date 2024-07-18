@@ -11,44 +11,44 @@
     font-size: 16px;
     cursor: pointer;
     border: 0;
-    background: #FFF;
-    color: #252525;
+    background: var(--w-color-primary);
+    color: var(--w-color-primary-50);
 
     &[disabled] {
         cursor: no-drop;
-        background: #BBB;
+        background: var(--w-color-primary-20);
     }
 
     &:hover {
-        background: #BBB;
+        background: var(--w-color-primary-20);
     }
     
     &.secondary {
-        background: #252525;
-        color: #FFF;
+        background: var(--w-color-primary-50);
+        color: var(--w-color-primary);
 
         &:hover {
-            background: #333;
+            background: var(--w-color-primary-40);
         }
     }
 
     &.outline {
         background: transparent;
-        color: #BBB;
-        box-shadow: inset 0px 0px 0px 1px #BBB;
+        color: var(--w-color-primary-20);
+        box-shadow: inset 0px 0px 0px 1px var(--w-color-primary-20);
         
         &:hover {
-            color: #FFF;
-            box-shadow: inset 0px 0px 0px 1px #FFF;
+            color: var(--w-color-primary);
+            box-shadow: inset 0px 0px 0px 1px var(--w-color-primary);
         }
     }
 
     &.flat {
         background: transparent;
-        color: #FFF;
+        color: var(--w-color-primary);
 
         &:hover {
-            background: #333;
+            background: var(--w-color-primary-40);
         }
     }
 
@@ -78,7 +78,7 @@
 
     &.alert {
         background: #e73f40;
-        color: #fff;
+        color: var(--w-color-primary);
 
         &:hover {
             background: #ee5253;

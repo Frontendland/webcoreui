@@ -6,7 +6,7 @@
     list-style-type: none;
 
     li {
-        border-bottom: 1px solid #252525;
+        border-bottom: 1px solid var(--w-color-primary-50);
         padding: 10px 0;
         font-size: 16px;
 
@@ -27,7 +27,7 @@
             width: 100%;
             background: transparent;
             border: 0;
-            color: #FFF;
+            color: var(--w-color-primary);
             font-size: 16px;
             padding: 0;
             cursor: pointer;
@@ -35,7 +35,7 @@
 
             svg {
                 @include Transition(transform);
-                color: #BBB;
+                color: var(--w-color-primary-20);
                 width: 15px;
                 height: 15px;
                 pointer-events: none;
@@ -65,7 +65,7 @@
         .content {
             @include Transition();
             overflow: hidden;
-            color: #BBB;
+            color: var(--w-color-primary-20);
         }
     }
 }

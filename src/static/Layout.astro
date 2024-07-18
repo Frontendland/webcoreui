@@ -22,7 +22,7 @@ const menuClasses = [
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>Webcore</title>
     </head>
-    <body>
+    <body class="theme-dark">
         <Menu logo={logo} className={menuClasses} />
         <div class="container">
             <slot />
@@ -34,7 +34,11 @@ const menuClasses = [
     @import '../scss/index.scss';
     @include Setup((
         fontRegular: '/fonts/Inter-Regular.woff2',
-        fontBold: '/fonts/Inter-Bold.woff2'
+        fontBold: '/fonts/Inter-Bold.woff2',
+        themes: (
+            dark: '.theme-dark',
+            light: '.theme-light'
+        )
     ));
 
     body {
@@ -48,7 +52,7 @@ const menuClasses = [
     }
 
     h2 {
-        color: #DDD;
+        color: var(--w-color-primary-10);
         font-family: Regular;
         font-weight: 400;
         text-align: center;

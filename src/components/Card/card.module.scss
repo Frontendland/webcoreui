@@ -1,21 +1,21 @@
 .card {
-    border: 1px solid #252525;
+    border: 1px solid var(--w-color-primary-50);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
 
     &.secondary {
-        background: #111;
+        background: var(--w-color-primary-60);
 
         .title {
-            background: #000;
+            background: var(--w-color-primary-70);
         }
     }
 
     .title {
         padding: 20px;
         display: block;
-        border-bottom: 1px solid #252525;
+        border-bottom: 1px solid var(--w-color-primary-50);
         font-size: 16px;
     }
 
@@ -25,8 +25,8 @@
         position: relative;
 
         &.compact {
-            border: 20px solid #111;
-            background: #000;
+            border: 20px solid var(--w-color-primary-60);
+            background: var(--w-color-primary-70);
             padding: 40px;
         }
     }

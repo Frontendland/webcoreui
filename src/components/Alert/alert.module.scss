@@ -1,7 +1,7 @@
 @import '../../scss/config.scss';
 
 .w-alert {
-    border: 1px solid #252525;
+    border: 1px solid var(--w-color-primary-50);
     border-radius: 5px;
     padding: 15px;
     display: flex;
@@ -48,7 +48,7 @@
 
     .body {
         font-size: 16px;
-        color: #BBB;
+        color: var(--w-color-primary-20);
         line-height: 1.5;
     }
 }

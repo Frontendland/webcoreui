@@ -28,7 +28,7 @@ $rightOffset: calc((((25px + 4px) / 2) - 1px) * -1);
     }
 
     &.stroke li::before {
-        background: #000;
+        background: var(--w-color-primary-70);
         border: 2px solid var(--w-timeline-color);
     }
 }
