@@ -107,29 +107,33 @@ The `Setup` mixin can also accept the following options:
 Default component styles can be changed by overriding the following CSS variables:
 
 ```css
-:root {
-    --w-avatar-border: #000;
-    --w-checkbox-color: #FFF;
-    --w-progress-color: #FFF;
-    --w-progress-background: #252525;
-    --w-progress-stripe-light: #FFF;
-    --w-progress-stripe-dark: #DDD;
-    --w-radio-color: #FFF;
-    --w-rating-color: #FFF;
-    --w-rating-empty-color: #BBB;
+body {
+    --w-avatar-border: var(--w-color-primary-70);
+    --w-checkbox-color: var(--w-color-primary);
+    --w-progress-color: var(--w-color-primary);
+    --w-progress-background: var(--w-color-primary-50);
+    --w-progress-stripe-light: var(--w-color-primary);
+    --w-progress-stripe-dark: var(--w-color-primary-10);
+    --w-radio-color: var(--w-color-primary);
+    --w-rating-color: var(--w-color-primary);
+    --w-rating-empty-color: var(--w-color-primary);
+    --w-rating-empty-background: var(--w-color-primary-70);
     --w-rating-size: 18px;
-    --w-spinner-color: #FFF;
+    --w-scrollbar-bg: var(--w-color-primary-60);
+    --w-scrollbar-fg: var(--w-color-primary-50);
+    --w-spinner-color: var(--w-color-primary);
     --w-spinner-width: 2px;
     --w-spinner-speed: 2s;
     --w-spinner-size: 30px;
     --w-spinner-dash: 8;
-    --w-switch-off-color: #252525;
-    --w-switch-on-color: #FFF;
-    --w-timeline-color: #252525;
-    --w-timeline-text-color: #FFF;
+    --w-switch-off-color: var(--w-color-primary-50);
+    --w-switch-on-color: var(--w-color-primary);
+    --w-theme-switcher-size: 20px;
+    --w-timeline-color: var(--w-color-primary-50);
+    --w-timeline-text-color: var(--w-color-primary);
     --w-timeline-counter: decimal;
-    --w-tooltip-background: #FFF;
-    --w-tooltip-color: #000;
+    --w-tooltip-background: var(--w-color-primary);
+    --w-tooltip-color: var(--w-color-primary-70);
 }
 ```
 
@@ -173,6 +177,7 @@ import { Accordion } from 'webcoreui/react'
 - [Switch](https://github.com/Frontendland/webcoreui/tree/main/src/components/Switch)
 - [Table](https://github.com/Frontendland/webcoreui/tree/main/src/components/Table)
 - [Tabs](https://github.com/Frontendland/webcoreui/tree/main/src/components/Tabs)
+- [ThemeSwitcher](https://github.com/Frontendland/webcoreui/tree/main/src/components/ThemeSwitcher)
 - [Timeline](https://github.com/Frontendland/webcoreui/blob/main/src/pages/timeline.astro)
 - [Toast](https://github.com/Frontendland/webcoreui/tree/main/src/components/Toast)
 - [Tooltip](https://github.com/Frontendland/webcoreui/blob/main/src/pages/tooltip.astro)
