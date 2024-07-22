@@ -34,19 +34,19 @@
         }
 
         &.info:hover {
-            background: #48dbfb;
+            background: var(--w-color-info-accent);
         }
 
         &.success:hover {
-            background: #1dd1a1;
+            background: var(--w-color-success-accent);
         }
 
         &.warning:hover {
-            background: #f7aa61;
+            background: var(--w-color-warning-accent);
         }
 
         &.alert:hover {
-            background: #ee5253;
+            background: var(--w-color-alert-accent);
         }
     }
 
@@ -63,24 +63,27 @@
     }
 
     &.flat {
-        background: var(--w-color-primary-70);;
+        background: var(--w-color-primary-70);
         color: var(--w-color-primary);
     }
 
     &.info {
-        background: #0abde3;
+        background: var(--w-color-info);
+        color: var(--w-color-info-fg);
     }
 
     &.success {
-        background: #10ac84;
+        background: var(--w-color-success);
+        color: var(--w-color-success-fg);
     }
 
     &.warning {
-        background: #ff9f43;
+        background: var(--w-color-warning);
+        color: var(--w-color-warning-fg);
     }
 
     &.alert {
-        background: #e73f40;
-        color: var(--w-color-primary);
+        background: var(--w-color-alert);
+        color: var(--w-color-alert-fg);
     }
 }

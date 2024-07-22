@@ -1,17 +1,15 @@
 ---
 import Menu from '@components/Menu/Menu.astro'
+import logo from '../../public/img/logo.svg?raw'
 
 const { nonStickyMenu } = Astro.props
-
-const logo = {
-    url: '/img/logo.png',
-    width: 100
-}
 
 const menuClasses = [
     'menu',
     nonStickyMenu && 'fixed'
 ].filter(Boolean).join(' ')
+
+const theme = (Astro.cookies.get('w-theme')?.value || 'theme-dark') as string
 ---
 
 <!DOCTYPE html>
@@ -22,8 +20,8 @@ const menuClasses = [
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>Webcore</title>
     </head>
-    <body class="theme-dark">
-        <Menu logo={logo} className={menuClasses} />
+    <body class={theme}>
+        <Menu logo={{ html: logo }} className={menuClasses} />
         <div class="container">
             <slot />
         </div>
@@ -37,7 +35,10 @@ const menuClasses = [
         fontBold: '/fonts/Inter-Bold.woff2',
         themes: (
             dark: '.theme-dark',
-            light: '.theme-light'
+            light: '.theme-light',
+            midnight: '.theme-blue',
+            green: '.theme-green',
+            beige: '.theme-beige'
         )
     ));
 
@@ -66,8 +67,6 @@ const menuClasses = [
     }
 
     .menu {
-        z-index: 100;
-
         &.fixed {
             position: relative;
         }

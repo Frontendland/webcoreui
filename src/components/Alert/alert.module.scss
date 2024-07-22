@@ -15,23 +15,23 @@
     }
 
     &.info {
-        border: 1px solid #0abde3;
-        color: #0abde3;
+        border: 1px solid var(--w-color-info);
+        color: var(--w-color-info);
     }
 
     &.success {
-        border: 1px solid #1dd1a1;
-        color: #1dd1a1;
+        border: 1px solid var(--w-color-success);
+        color: var(--w-color-success);
     }
 
     &.warning {
-        border: 1px solid #ff9f43;
-        color: #ff9f43;
+        border: 1px solid var(--w-color-warning);
+        color: var(--w-color-warning);
     }
 
     &.alert {
-        border: 1px solid #e73f40;
-        color: #e73f40;
+        border: 1px solid var(--w-color-alert);
+        color: var(--w-color-alert);
     }
 
     svg {

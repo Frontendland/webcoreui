@@ -6,6 +6,7 @@ import react from '@astrojs/react'
 export default defineConfig({
     outDir: 'build',
     trailingSlash: 'never',
+    output: 'server',
     integrations: [
         svelte(),
         react()

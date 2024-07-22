@@ -9,7 +9,7 @@
     color: var(--w-color-primary);
     line-height: 20px;
     width: 100%;
-    color-scheme: dark;
+    color-scheme: var(--w-color-scheme);
 
     &[disabled] {
         cursor: no-drop;
@@ -20,6 +20,10 @@
         background: transparent;
         border: 0;
         color: var(--w-color-primary);
+    }
+
+    &::placeholder {
+        color: var(--w-color-primary-30);
     }
 
     &[type="color"] {

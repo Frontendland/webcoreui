@@ -25,7 +25,7 @@ const Menu = ({
         wrapperClassName
     ])
 
-    const wrapMenu = logo?.url && items?.length && children
+    const wrapMenu = (logo?.url || logo?.html) && items?.length && children
 
     const toggleMenu = () => setActive(!active)
 
@@ -51,6 +51,13 @@ const Menu = ({
                         </a>
                     )}
 
+                    {!centerLogo && logo?.html && (
+                        <a
+                            href="/"
+                            dangerouslySetInnerHTML={{ __html: logo.html }}
+                        />
+                    )}
+
                     {!!items?.length && (
                         <ul>
                             {items.map((item, index) => (
@@ -71,6 +78,13 @@ const Menu = ({
                         <span className={styles.meat}></span>
                         <span className={styles.meat}></span>
                     </button>
+                )}
+
+                {centerLogo && logo?.html && (
+                    <a
+                        href="/"
+                        dangerouslySetInnerHTML={{ __html: logo.html }}
+                    />
                 )}
 
                 {logo?.url && centerLogo && (

@@ -5,10 +5,11 @@ export type MenuProps = {
         target?: string
     }[]
     logo?: {
-        url: string
+        url?: string
         alt?: string
         width?: number
         height?: number
+        html?: string
     } | null
     centerLogo?: boolean
     className?: string

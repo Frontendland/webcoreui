@@ -5,14 +5,16 @@
     import Badge from '@components/Badge/Badge.svelte'
     import Button from '@components/Button/Button.svelte'
     import Checkbox from '@components/Checkbox/Checkbox.svelte'
+    import Icon from '@components/Icon/Icon.svelte'
     import Input from '@components/Input/Input.svelte'
     import Progress from '@components/Progress/Progress.svelte'
     import Radio from '@components/Radio/Radio.svelte'
     import Switch from '@components/Switch/Switch.svelte'
     import Tabs from '@components/Tabs/Tabs.svelte'
+    import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.svelte'
     import Toast from '@components/Toast/Toast.svelte'
 
-    import { tabItems } from '@data'
+    import { tabItems, themes } from '@data'
     import { toast } from '@utils/toast'
     
     import styles from './playground.module.scss'
@@ -117,6 +119,17 @@
             <div data-tab="setup">Setup tab</div>
             <div data-tab="conclusion">Conclusion tab</div>
         </Tabs>
+    </Card>
+
+    <Card title="ThemeSwitcher">
+        <ThemeSwitcher themes={themes} />
+    </Card>
+
+    <Card title="ThemeSwitcher - toggle with icons">
+        <ThemeSwitcher themes={themes} toggle={true}>
+            <Icon type="moon" slot="primaryIcon" />
+            <Icon type="sun" slot="secondaryIcon" />
+        </ThemeSwitcher>
     </Card>
 </div>
 

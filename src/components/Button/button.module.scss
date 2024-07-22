@@ -53,35 +53,38 @@
     }
 
     &.info {
-        background: #0abde3;
+        background: var(--w-color-info);
+        color: var(--w-color-info-fg);
 
         &:hover {
-            background: #48dbfb;
+            background: var(--w-color-info-accent);
         }
     }
 
     &.success {
-        background: #10ac84;
+        background: var(--w-color-success);
+        color: var(--w-color-success-fg);
 
         &:hover {
-            background: #1dd1a1;
+            background: var(--w-color-success-accent);
         }
     }
 
     &.warning {
-        background: #ff9f43;
+        background: var(--w-color-warning);
+        color: var(--w-color-warning-fg);
 
         &:hover {
-            background: #f7aa61;
+            background: var(--w-color-warning-accent);
         }
     }
 
     &.alert {
-        background: #e73f40;
-        color: var(--w-color-primary);
+        background: var(--w-color-alert);
+        color: var(--w-color-alert-fg);
 
         &:hover {
-            background: #ee5253;
+            background: var(--w-color-alert-accent);
         }
     }
 

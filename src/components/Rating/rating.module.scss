@@ -9,7 +9,7 @@
     &.outline .empty {
         transform: scale(.9);
         transform-origin: left;
-        color: black;
+        color: var(--w-rating-empty-background);
         letter-spacing: 2px;
         text-shadow:
             -1px 0 var(--w-rating-empty-color),

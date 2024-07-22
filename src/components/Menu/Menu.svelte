@@ -21,7 +21,7 @@
         wrapperClassName
     ])
 
-    const wrapMenu = logo?.url && items?.length && $$slots.default
+    const wrapMenu = (logo?.url || logo?.html) && items?.length && $$slots.default
 
     let active = false
 
@@ -40,6 +40,10 @@
                         height={logo.height}
                     />
                 </a>
+            {/if}
+
+            {#if !centerLogo && logo?.html}
+                <a href="/">{@html logo.html}</a>
             {/if}
         
             {#if items?.length}
@@ -63,7 +67,11 @@
                 <span class={styles.meat}></span>
             </button>
         {/if}
-    
+            
+        {#if centerLogo && logo?.html}
+            <a href="/">{@html logo.html}</a>
+        {/if}
+
         {#if logo?.url && centerLogo}
             <a href="/">
                 <img

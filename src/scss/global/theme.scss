@@ -3,6 +3,7 @@
 @mixin Theme($theme: 'dark', $selector: ':root') {
     @if $theme == 'dark' {
         #{$selector} {
+            --w-color-scheme: dark;
             --w-color-primary: #FFF;
             --w-color-primary-10: #DDD;
             --w-color-primary-20: #BBB;
@@ -11,37 +12,127 @@
             --w-color-primary-50: #252525;
             --w-color-primary-60: #111;
             --w-color-primary-70: #000;
-        
+
             --w-color-info: #0ABDE3;
             --w-color-info-accent: #48DBFB;
+            --w-color-info-fg: #000;
             --w-color-success: #10AC84;
             --w-color-success-accent: #1DD1A1;
+            --w-color-success-fg: #000;
             --w-color-warning: #FF9F43;
             --w-color-warning-accent: #f7AA61;
+            --w-color-warning-fg: #000;
             --w-color-alert: #E73F40;
             --w-color-alert-accent: #EE5253;
+            --w-color-alert-fg: #FFF;
         }
     }
 
     @if $theme == 'light' {
         #{$selector} {
+            --w-color-scheme: light;
             --w-color-primary: #000;
             --w-color-primary-10: #111;
-            --w-color-primary-20: #252525;
-            --w-color-primary-30: #333;
-            --w-color-primary-40: #DDD;
-            --w-color-primary-50: #EEE;
+            --w-color-primary-20: #333;
+            --w-color-primary-30: #555;
+            --w-color-primary-40: #EEE;
+            --w-color-primary-50: #DDD;
             --w-color-primary-60: #FAFAFA;
             --w-color-primary-70: #FFF;
         
             --w-color-info: #0ABDE3;
             --w-color-info-accent: #48DBFB;
+            --w-color-info-fg: #000;
             --w-color-success: #10AC84;
             --w-color-success-accent: #1DD1A1;
+            --w-color-success-fg: #000;
             --w-color-warning: #FF9F43;
             --w-color-warning-accent: #f7AA61;
+            --w-color-warning-fg: #000;
             --w-color-alert: #E73F40;
             --w-color-alert-accent: #EE5253;
+            --w-color-alert-fg: #FFF;
+        }
+    }
+
+    @if $theme == 'midnight' {
+        #{$selector} {
+            --w-color-scheme: dark;
+            --w-color-primary: #FFF;
+            --w-color-primary-10: #EEE;
+            --w-color-primary-20: #a5b7cf;
+            --w-color-primary-30: #516580;
+            --w-color-primary-40: #2d4463;
+            --w-color-primary-50: #20344e;
+            --w-color-primary-60: #101a2d;
+            --w-color-primary-70: #061321;
+
+            --w-color-info: #1058b6;
+            --w-color-info-accent: #176ee0;
+            --w-color-info-fg: #FFF;
+            --w-color-success: #10ac95;
+            --w-color-success-accent: #1DD1A1;
+            --w-color-success-fg: #000;
+            --w-color-warning: #FF9F43;
+            --w-color-warning-accent: #f7AA61;
+            --w-color-warning-fg: #000;
+            --w-color-alert: #E73F40;
+            --w-color-alert-accent: #EE5253;
+            --w-color-alert-fg: #FFF;
+        }
+    }
+
+    @if $theme == green {
+        #{$selector} {
+            --w-color-scheme: dark;
+            --w-color-primary: #FFF;
+            --w-color-primary-10: #EEE;
+            --w-color-primary-20: #b7ffe4;
+            --w-color-primary-30: #dad7cd;
+            --w-color-primary-40: #10AC84;
+            --w-color-primary-50: #4d6e4c;
+            --w-color-primary-60: #315037;
+            --w-color-primary-70: #22392d;
+
+            --w-color-info: #0ABDE3;
+            --w-color-info-accent: #48DBFB;
+            --w-color-info-fg: #000;
+            --w-color-success: #10AC84;
+            --w-color-success-accent: #1DD1A1;
+            --w-color-success-fg: #000;
+            --w-color-warning: #FF9F43;
+            --w-color-warning-accent: #f7AA61;
+            --w-color-warning-fg: #000;
+            --w-color-alert: #E73F40;
+            --w-color-alert-accent: #EE5253;
+            --w-color-alert-fg: #FFF;
+        }
+    }
+
+    @if $theme == beige {
+        #{$selector} {
+            --w-color-scheme: dark;
+            --w-color-primary: #000;
+            --w-color-primary-10: #111;
+            --w-color-primary-20: #97725c;
+            --w-color-primary-30: #d6ccc2;
+            --w-color-primary-40: #e3d5ca;
+            --w-color-primary-50: #ecddcd;
+            --w-color-primary-60: #f1e6da;
+            --w-color-primary-70: #f5ebe0;
+
+            --w-color-info: #0ABDE3;
+            --w-color-info-accent: #48DBFB;
+            --w-color-info-fg: #000;
+            --w-color-success: #10AC84;
+            --w-color-success-accent: #1DD1A1;
+            --w-color-success-fg: #000;
+            --w-color-warning: #FF9F43;
+            --w-color-warning-accent: #f7AA61;
+            --w-color-warning-fg: #000;
+            --w-color-alert: #E73F40;
+            --w-color-alert-accent: #EE5253;
+            --w-color-alert-fg: #FFF;
         }
     }
 }

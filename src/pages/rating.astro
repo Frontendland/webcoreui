@@ -21,11 +21,11 @@ const sections = getSections({
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
-            <SvelteRating score={4} color="#ee5253" />
+            <SvelteRating score={4} color="#ee5253" emptyColor="#ee5253" />
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
-            <ReactRating score={3} color="#48dbfb" />
+            <ReactRating score={3} color="#48dbfb" emptyColor="#48dbfb" />
         </ComponentWrapper>
     </div>
 
@@ -74,7 +74,11 @@ const sections = getSections({
             </ComponentWrapper>
 
             <ComponentWrapper title="Rating with color and outline">
-                <section.component score={3} color="#f7aa61" />
+                <section.component
+                    score={3}
+                    color="#f7aa61"
+                    emptyColor="#f7aa61"
+                />
             </ComponentWrapper>
 
             <ComponentWrapper title="Rating with default text">

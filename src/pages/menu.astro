@@ -11,6 +11,8 @@ import ReactMenu from '@components/Menu/Menu.tsx'
 import { getSections } from '@helpers'
 import { menu, menuLogo } from '@data'
 
+import logo from '../../public/img/logo.svg?raw'
+
 const sections = getSections({
     title: 'menus',
     components: [AstroMenu, SvelteMenu, ReactMenu]
@@ -23,7 +25,7 @@ const sections = getSections({
         <ComponentWrapper type="Astro">
             <AstroMenu
                 items={menu}
-                logo={menuLogo}
+                logo={{ html: logo }}
                 className="backdrop"
             />
             {Array(3).fill(0).map(x => (
@@ -36,9 +38,8 @@ const sections = getSections({
         <ComponentWrapper type="Svelte">
             <SvelteMenu
                 items={menu}
-                logo={menuLogo}
+                logo={{ html: logo }}
                 className="backdrop"
-                client:load
             />
             {Array(3).fill(0).map(x => (
                 <p>
@@ -50,9 +51,8 @@ const sections = getSections({
         <ComponentWrapper type="React">
             <ReactMenu
                 items={menu}
-                logo={menuLogo}
+                logo={{ html: logo }}
                 className="backdrop"
-                client:load
             />
             {Array(3).fill(0).map(x => (
                 <p>
@@ -205,8 +205,8 @@ const sections = getSections({
 
     .backdrop {
         backdrop-filter: blur(5px);
-        background: rgb(0 0 0 / 70%);
-
+        background: rgba(255, 255, 255, 0.1);
+        
         ul {
             padding-top: 40px;
         }

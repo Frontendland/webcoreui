@@ -60,5 +60,19 @@ export const menu = [
 
 export const menuLogo = {
     url: '/img/logo.png',
-    width: 100
+    width: 25,
+    height: 25
+}
+
+export const themes = {
+    '#252525': 'theme-dark',
+    '#DDD': 'theme-light',
+    '#415a77': 'theme-blue',
+    '#d5bdaf': 'theme-beige',
+    '#588157': 'theme-green'
+}
+
+export const toggleThemes = {
+    '#252525': 'theme-dark',
+    '#DDD': 'theme-light'
 }

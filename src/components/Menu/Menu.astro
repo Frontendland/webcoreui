@@ -24,7 +24,7 @@ const containerClasses = [
     wrapperClassName
 ]
 
-const wrapMenu = logo?.url && items?.length && Astro.slots.has('default')
+const wrapMenu = (logo?.url || logo?.html) && items?.length && Astro.slots.has('default')
 ---
 
 <header class:list={classes}>
@@ -33,7 +33,7 @@ const wrapMenu = logo?.url && items?.length && Astro.slots.has('default')
             <div slot="wrapper" class={styles.wrapper}>
                 children
             </div>
-            {logo?.url && !centerLogo &&  (
+            {logo?.url && !centerLogo && (
                 <a href="/">
                     <img
                         src={logo.url}
@@ -41,6 +41,12 @@ const wrapMenu = logo?.url && items?.length && Astro.slots.has('default')
                         width={logo.width}
                         height={logo.height}
                     />
+                </a>
+            )}
+
+            {!centerLogo && logo?.html && (
+                <a href="/">
+                    <Fragment set:html={logo.html} />
                 </a>
             )}
 
@@ -66,6 +72,12 @@ const wrapMenu = logo?.url && items?.length && Astro.slots.has('default')
             </button>
         )}
 
+        {centerLogo && logo?.html && (
+            <a href="/">
+                <Fragment set:html={logo.html} />
+            </a>
+        )}
+
         {logo?.url && centerLogo && (
             <a href="/">
                 <img
@@ -86,7 +98,7 @@ const wrapMenu = logo?.url && items?.length && Astro.slots.has('default')
         .querySelector('[data-id="hamburger"]')
         ?.addEventListener('click', event => {
             const hamburger = event.currentTarget as HTMLDivElement
-            const header = hamburger.parentElement as HTMLHeadElement
+            const header = hamburger.parentElement?.parentElement as HTMLHeadElement
 
             header.dataset.active = header.dataset.active === 'true'
                 ? 'false'

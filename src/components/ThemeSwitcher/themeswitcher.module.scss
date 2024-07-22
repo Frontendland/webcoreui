@@ -1,0 +1,74 @@
+@import '../../scss/config.scss';
+
+.switcher {
+    display: flex;
+    gap: 10px;
+
+    &.toggle {
+        position: relative;
+        width: var(--w-theme-switcher-size);
+        height: var(--w-theme-switcher-size);
+
+        .switch {
+            position: absolute;
+
+            &:first-child {
+                z-index: 2;
+            }
+
+            &:nth-child(2) {
+                z-index: 1;
+            }
+
+            &[data-active="true"] {
+                z-index: 3;
+            }
+        }
+    }
+}
+
+.switch {
+    width: var(--w-theme-switcher-size);
+    height: var(--w-theme-switcher-size);
+    border-radius: 100%;
+    cursor: pointer;
+    position: relative;
+    border: 0;
+
+    &.icons {
+        @include Transition(opacity);
+        color: var(--w-color-primary);
+        background: transparent;
+        padding: 0;
+        opacity: 0;
+
+        &[data-active="true"] {
+            opacity: 1;
+        }
+
+        svg, img {
+            pointer-events: none;
+            width: var(--w-theme-switcher-size);
+            height: var(--w-theme-switcher-size);
+        }
+    }
+
+    &:not(.icons)::after {
+        @include Transition();
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid var(--w-color-primary);
+        border-radius: 100%;
+        width: 0;
+        height: 0;
+        z-index: -1;
+    }
+
+    &[data-active="true"]::after {
+        width: calc(var(--w-theme-switcher-size) + 5px);
+        height: calc(var(--w-theme-switcher-size) + 5px);
+    }
+}

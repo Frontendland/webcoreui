@@ -1,0 +1,199 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.astro'
+import SvelteThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.svelte'
+import ReactThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.tsx'
+import Icon from '@components/Icon/Icon.astro'
+
+import { themes, toggleThemes } from '@data'
+---
+
+<Layout>
+    <h1>ThemeSwitcher</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroThemeSwitcher themes={themes} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteThemeSwitcher themes={themes} client:visible />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactThemeSwitcher themes={themes} client:visible />
+        </ComponentWrapper>
+    </div>
+
+    <h1>Astro theme switchers</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper title="Default">
+            <AstroThemeSwitcher themes={themes} />
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Vertical">
+            <AstroThemeSwitcher themes={themes} className="vertical" />
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle">
+            <AstroThemeSwitcher themes={toggleThemes} toggle={true} />
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle with icons">
+            <AstroThemeSwitcher
+                themes={toggleThemes}
+                toggle={true}
+            >
+                <Icon type="moon" slot="primaryIcon" />
+                <Icon type="sun" slot="secondaryIcon" />
+            </AstroThemeSwitcher>
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle icon size">
+            <AstroThemeSwitcher
+                themes={toggleThemes}
+                toggle={true}
+                size={30}
+            >
+                <Icon type="moon" slot="primaryIcon" />
+                <Icon type="sun" slot="secondaryIcon" />
+            </AstroThemeSwitcher>
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle with your own images">
+            <AstroThemeSwitcher
+                themes={toggleThemes}
+                toggle={true}
+                size={30}
+            >
+                <img src="/img/logo.png" slot="primaryIcon" />
+                <img src="/img/logo-light.png" slot="secondaryIcon" />
+            </AstroThemeSwitcher>
+        </ComponentWrapper>
+    </div>
+
+    <h1>Svelte theme switchers</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper title="Default">
+            <SvelteThemeSwitcher themes={themes} client:visible />
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Vertical">
+            <SvelteThemeSwitcher
+                themes={themes}
+                className="vertical"
+                client:visible
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle">
+            <SvelteThemeSwitcher
+                themes={toggleThemes}
+                toggle={true}
+                client:visible
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle with icons">
+            <SvelteThemeSwitcher
+                themes={toggleThemes}
+                toggle={true}
+                client:visible
+            >
+                <Icon type="moon" slot="primaryIcon" />
+                <Icon type="sun" slot="secondaryIcon" />
+            </SvelteThemeSwitcher>
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle icon size">
+            <SvelteThemeSwitcher
+                themes={toggleThemes}
+                toggle={true}
+                size={30}
+                client:visible
+            >
+                <Icon type="moon" slot="primaryIcon" />
+                <Icon type="sun" slot="secondaryIcon" />
+            </SvelteThemeSwitcher>
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle with your own images">
+            <SvelteThemeSwitcher
+                themes={toggleThemes}
+                toggle={true}
+                size={30}
+                client:visible
+            >
+                <img src="/img/logo.png" slot="primaryIcon" />
+                <img src="/img/logo-light.png" slot="secondaryIcon" />
+            </SvelteThemeSwitcher>
+        </ComponentWrapper>
+    </div>
+
+    <h1>React theme switchers</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper title="Default">
+            <ReactThemeSwitcher themes={themes} client:visible />
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Vertical">
+            <ReactThemeSwitcher
+                themes={themes}
+                className="vertical"
+                client:visible
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle">
+            <ReactThemeSwitcher
+                themes={toggleThemes}
+                toggle={true}
+                client:visible
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle with icons">
+            <ReactThemeSwitcher
+                themes={toggleThemes}
+                toggle={true}
+                client:visible
+            >
+                <Icon type="moon" slot="primaryIcon" />
+                <Icon type="sun" slot="secondaryIcon" />
+            </ReactThemeSwitcher>
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle icon size">
+            <ReactThemeSwitcher
+                themes={toggleThemes}
+                toggle={true}
+                size={30}
+                client:visible
+            >
+                <Icon type="moon" slot="primaryIcon" />
+                <Icon type="sun" slot="secondaryIcon" />
+            </ReactThemeSwitcher>
+        </ComponentWrapper>
+
+        <ComponentWrapper title="Toggle with your own images">
+            <ReactThemeSwitcher
+                themes={toggleThemes}
+                toggle={true}
+                size={30}
+                client:visible
+            >
+                <img src="/img/logo.png" slot="primaryIcon" />
+                <img src="/img/logo-light.png" slot="secondaryIcon" />
+            </ReactThemeSwitcher>
+        </ComponentWrapper>
+    </div>
+</Layout>
+
+<style is:global lang="scss">
+    @import '../scss/config.scss';
+
+    .vertical {
+        flex-direction: column;
+    }
+</style>

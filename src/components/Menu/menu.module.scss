@@ -49,7 +49,8 @@
         gap: 20px;
     }
 
-    img {
+    img,
+    svg {
         display: block;
     }
 
@@ -86,6 +87,7 @@
         padding: 0;
         border: 0;
         background: transparent;
+        z-index: 98;
         cursor: pointer;
 
         .meat {

@@ -6,14 +6,16 @@ import Accordion from '@components/Accordion/Accordion.tsx'
 import Badge from '@components/Badge/Badge.tsx'
 import Button from '@components/Button/Button.tsx'
 import Checkbox from '@components/Checkbox/Checkbox.tsx'
+import Icon from '@components/Icon/Icon.tsx'
 import Input from '@components/Input/Input.tsx'
 import Progress from '@components/Progress/Progress.tsx'
 import Radio from '@components/Radio/Radio.tsx'
 import Switch from '@components/Switch/Switch.tsx'
 import Tabs from '@components/Tabs/Tabs.tsx'
+import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.tsx'
 import Toast from '@components/Toast/Toast.tsx'
 
-import { tabItems } from '@data'
+import { tabItems, themes } from '@data'
 import { toast } from '@utils/toast'
 
 import styles from './playground.module.scss'
@@ -119,6 +121,19 @@ const ReactPlayground = () => {
                     <div data-tab="setup">Setup tab</div>
                     <div data-tab="conclusion">Conclusion tab</div>
                 </Tabs>
+            </Card>
+
+            <Card title="ThemeSwitcher">
+                <ThemeSwitcher themes={themes} />
+            </Card>
+
+            <Card title="ThemeSwitcher - toggle with icons">
+                <ThemeSwitcher
+                    themes={themes}
+                    toggle={true}
+                    primaryIcon={<Icon type="moon" />}
+                    secondaryIcon={<Icon type="sun" />}
+                />
             </Card>
 
             <Toast title="Badge toast" id="badgeToast">

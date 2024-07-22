@@ -18,13 +18,16 @@ import Spinner from '@components/Spinner/Spinner.astro'
 import Switch from '@components/Switch/Switch.astro'
 import Table from '@components/Table/Table.astro'
 import Tabs from '@components/Tabs/Tabs.astro'
+import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.astro'
 import Timeline from '@components/Timeline/Timeline.astro'
 import TimelineItem from '@components/TimelineItem/TimelineItem.astro'
 
 import infoIcon from '../icons/info.svg?raw'
 import gitHubIcon from '../icons/github.svg?raw'
 
-import { accordionItems, avatarGroup } from '@data'
+import { themes, accordionItems, avatarGroup } from '@data'
+
+import logo from '../../public/img/logo.svg?raw'
 
 const tabItems = [{
     label: `${infoIcon} Intro`,
@@ -61,6 +64,9 @@ const tabItems = [{
             React Playground
         </Button>
     </div>
+
+    <ThemeSwitcher themes={themes} className="switcher" />
+
     <div class="grid md-2 lg-3">
         <CardWrapper title="Accordion" href="/accordion">
             <Accordion items={accordionItems} />
@@ -118,8 +124,8 @@ const tabItems = [{
             <Input placeholder="Please enter your email." />
         </CardWrapper>
         <CardWrapper title="Menu" href="/menu">
-            <Menu>
-                <img src="/img/logo.png" width={100} />
+            <Menu className="menu-example">
+                <Fragment set:html={logo} />
             </Menu>
         </CardWrapper>
         <CardWrapper title="Progress" href="/progress">
@@ -148,6 +154,9 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Tabs" href="/tabs">
             <Tabs items={tabItems} theme="boxed" />
+        </CardWrapper>
+        <CardWrapper title="ThemeSwitcher" href="/theme-switcher">
+            <ThemeSwitcher themes={themes} />
         </CardWrapper>
         <CardWrapper title="Timeline" href="/timeline">
             <Timeline>
@@ -199,5 +208,14 @@ const tabItems = [{
             justify-content: center;
             gap: 10px;
         }
+    }
+
+    .menu-example {
+        z-index: 0;
+    }
+
+    .switcher {
+        margin: 20px 0;
+        justify-content: center;
     }
 </style>
