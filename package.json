@@ -27,6 +27,7 @@
         "./react": "./react.js",
         "./styles": "./scss/index.scss",
         "./icons": "./icons.js",
+        "./icons-raw": "./icons-raw.js",
         "./config": "./scss/config.scss"
     },
     "files": [

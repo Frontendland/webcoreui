@@ -16,9 +16,14 @@ export const buildUtilImports = () => {
     return utils.map(util => `export * from './utils/${util}'`).join('\n')
 }
 
-export const buildIconImports = () => {
+export const buildIconImports = (raw = false) => {
     const icons = fs.readdirSync('src/icons')
     const camelize = string => string.replace(/-./g, x => x[1].toUpperCase()).split('.')[0]
+    const capitalize = str => str?.replace(/\b\w/g, substr => substr.toUpperCase())
 
-    return icons.map(icon => `export { default as ${camelize(icon)} } from './icons/${icon}?raw'`).join('\n')
+    return icons.map(icon => {
+        const exportName = raw ? camelize(icon) : capitalize(camelize(icon))
+
+        return `export { default as ${exportName} } from './icons/${icon}${raw ? '?raw' : ''}'`
+    }).join('\n')
 }

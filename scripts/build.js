@@ -43,11 +43,13 @@ fs.writeFileSync('dist/react.js', buildImports('tsx'))
 
 fs.writeFileSync('dist/index.js', buildUtilImports())
 fs.writeFileSync('dist/icons.js', buildIconImports())
+fs.writeFileSync('dist/icons-raw.js', buildIconImports(true))
 
 fs.writeFileSync('dist/astro.d.ts', buildTypes('astro'))
 fs.writeFileSync('dist/svelte.d.ts', buildTypes('svelte'))
 fs.writeFileSync('dist/react.d.ts', buildTypes('react'))
 fs.writeFileSync('dist/icons.d.ts', buildTypes('icons'))
+fs.writeFileSync('dist/icons-raw.d.ts', buildTypes('icons-raw'))
 
 
 console.log('✅ Package built')

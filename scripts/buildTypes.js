@@ -80,14 +80,19 @@ const buildTypes = type => {
         `)
     }
 
-    if (type === 'icons') {
+    if (type === 'icons' || type === 'icons-raw') {
         const icons = fs.readdirSync('src/icons')
         const camelize = string => string.replace(/-./g, x => x[1].toUpperCase()).split('.')[0]
+        const capitalize = str => str?.replace(/\b\w/g, substr => substr.toUpperCase())
 
         return format(`
             declare module 'webcoreui/${type}' {
                 ${icons.map(icon => {
-                    return `export const ${camelize(icon)}: string`
+                    if (type === 'icons-raw') {
+                        return `export const ${camelize(icon)}: string`
+                    }
+
+                    return `export const ${capitalize(camelize(icon))}`
                 }).join('\n\t')}
             }
         `)
