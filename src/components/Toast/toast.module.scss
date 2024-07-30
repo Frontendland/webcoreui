@@ -1,15 +1,14 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .toast {
-    background: var(--w-color-primary-70);
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
+    @include background(primary-70);
+    @include position(fixed, r20px, b20px);
+    @include layer(header);
+
     transform: translateY(calc(100% + 25px));
-    z-index: 99;
 
     &[data-show] {
-        @include Transition(transform);
+        @include transition(transform);
     }
 
     &[data-show="true"] {
@@ -18,15 +17,15 @@
 
     &[data-position="bottom-left"],
     &[data-position="top-left"] {
+        @include position(l20px);
         right: auto;
-        left: 20px;
     }
 
     &[data-position="top-left"],
     &[data-position="top-right"],
     &[data-position="top-full"] {
+        @include position(t20px);
         bottom: auto;
-        top: 20px;
         transform: translateY(calc(-100% - 25px));
 
         &[data-show="true"] {
@@ -34,11 +33,8 @@
         }
     }
 
-    &[data-position="bottom-full"] {
-        left: 20px;
-    }
-
+    &[data-position="bottom-full"],
     &[data-position="top-full"] {
-        left: 20px;
+        @include position(l20px);
     }
 }

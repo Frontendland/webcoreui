@@ -1,0 +1,51 @@
+---
+import Layout from '@static/Layout.astro'
+import Card from '@components/Card/Card.astro'
+---
+
+<Layout>
+    <h1>Reset styles</h1>
+
+    <Card>
+        <blockquote>
+            This page is for demonstarting the styles applied by the <code>resets</code> mixin, if <code>includeResets</code> is set to <code>true</code> when the <code>setup</code> mixin is invoked.
+        </blockquote>
+        <p>
+            <a href="#">Webcore</a> is an open-source, customizable UI component library for Astro, Svelte, and React projects, styled with Sass. It includes all the commonly used elements that you’d need in any project, such as <code>Button</code>, <code>Alert</code>, or <code>Card</code> components, but it also comes with more advanced elements, to enable you crafting fully functioning new pages by calling component only.
+        </p>
+        <ul>
+            <li>
+                <b>Multiple framework support</b>: <a href="#">Webcore</a> supports Astro, Svelte and React out of the box. This makes it a perfect choice for projects where different tech stack are in use, but the visuals needs to be consistent.
+            </li>
+            <li>
+                <b>Configurable</b>: All component are created with configurability in mind to help you use Webcore in a wide variety of use cases.
+            </li>
+            <li>
+                <b>Themeable</b>: CSS is also easily configurable to let you create different themes. Individual components can be themed via CSS variables.
+            </li>
+        </ul>
+        <p>To get started:</p>
+        <ol>
+            <li>Install <a href="#">Webcore</a> as a dependency by running <code>npm i webcoreui</code>.</li>
+            <li>Create an empty <code>webcore.config.scss</code> file at the root of your directory.</li>
+            <li>Call the <code>setup</code> mixin in your global SCSS file.</li>
+        </ol>
+
+        <p>Start your dev server with:</p>
+        <pre>npm run dev</pre>
+
+        <div class="flex justify-center">
+            <figure>
+                <img
+                    src="/img/logo.png"
+                    alt="Webcore"
+                    width="50"
+                    height="50"
+                />
+                <figcaption>
+                    <a href="#">Webcore</a> is ready
+                </figcaption>
+            </figure>
+        </div>
+    </Card>
+</Layout>

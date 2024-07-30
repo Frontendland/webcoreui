@@ -1,35 +1,40 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-progress-color: var(--w-color-primary);
+    --w-progress-background: var(--w-color-primary-50);
+    --w-progress-stripe-light: var(--w-color-primary);
+    --w-progress-stripe-dark: var(--w-color-primary-10);
+}
 
 .w-progress {
-    width: 100%;
-    height: 10px;
-    background: var(--w-progress-background);
-    border-radius: 20px;
-    overflow: hidden;
+    @include size('w100%', h10px);
+    @include border-radius(xl);
+    @include visibility(hidden);
+    @include typography(bold, xxs);
+    @include background(var(--w-progress-background));
+
     color: var(--w-progress-background);
-    font-family: Bold;
-    font-size: 10px;
     
     &.medium {
-        height: 15px;
-        font-size: 12px;
+        @include size(h15px);
+        @include typography(xs);
     }
 
     &.large {
-        height: 20px;
-        font-size: 14px;
+        @include size(h20px);
+        @include typography(sm);
     }
 
     &.square {
-        border-radius: 2px;
+        @include border-radius(sm);
 
         .progress {
-            border-radius: 2px;
+            @include border-radius(sm);
         }
     }
 
     &.striped {
-
         .progress {
             background-size: 10px 10px;
             background-image: linear-gradient(
@@ -54,13 +59,12 @@
     }
 
     .progress {
-        @include Transition(width);
+        @include transition(width);
+        @include size('h100%');
+        @include border-radius(xl);
+        @include layout(flex, center);
+        @include background(var(--w-progress-color));
+
         width: var(--w-progress-width);
-        height: 100%;
-        background: var(--w-progress-color);
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 }

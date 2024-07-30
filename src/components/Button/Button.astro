@@ -8,7 +8,6 @@ interface Props extends ButtonProps {}
 
 const {
     theme,
-    bold,
     href,
     className,
     ...rest
@@ -16,7 +15,6 @@ const {
 
 const classes = classNames([
     styles.button,
-    bold && styles.bold,
     theme && styles[theme],
     className
 ])

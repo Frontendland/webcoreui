@@ -1,11 +1,14 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-theme-switcher-size: 20px;
+}
 
 .switcher {
-    display: flex;
-    gap: 10px;
+    @include layout(flex, sm);
 
     &.toggle {
-        position: relative;
+        @include position(relative);
         width: var(--w-theme-switcher-size);
         height: var(--w-theme-switcher-size);
 
@@ -13,37 +16,38 @@
             position: absolute;
 
             &:first-child {
-                z-index: 2;
+                @include layer(overlay);
             }
 
             &:nth-child(2) {
-                z-index: 1;
+                @include layer(fg);
             }
 
             &[data-active="true"] {
-                z-index: 3;
+                @include layer(popup);
             }
         }
     }
 }
 
 .switch {
+    @include border(0);
+    @include border-radius(max);
+    @include position(relative);
+
     width: var(--w-theme-switcher-size);
     height: var(--w-theme-switcher-size);
-    border-radius: 100%;
     cursor: pointer;
-    position: relative;
-    border: 0;
 
     &.icons {
-        @include Transition(opacity);
-        color: var(--w-color-primary);
-        background: transparent;
-        padding: 0;
-        opacity: 0;
+        @include transition(opacity);
+        @include typography(primary);
+        @include background(transparent);
+        @include spacing(p0);
+        @include visibility(0);
 
         &[data-active="true"] {
-            opacity: 1;
+            @include visibility(1);
         }
 
         svg, img {
@@ -54,20 +58,18 @@
     }
 
     &:not(.icons)::after {
-        @include Transition();
+        @include position(absolute, center);
+        @include border(primary);
+        @include border-radius(max);
+        @include layer(bg);
+        @include transition();
+        @include size(0);
+
         content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border: 1px solid var(--w-color-primary);
-        border-radius: 100%;
-        width: 0;
-        height: 0;
-        z-index: -1;
     }
 
     &[data-active="true"]::after {
+        @include layer(default);
         width: calc(var(--w-theme-switcher-size) + 5px);
         height: calc(var(--w-theme-switcher-size) + 5px);
     }

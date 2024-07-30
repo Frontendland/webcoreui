@@ -1,25 +1,30 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 // (circle width + border * 2) / 2 - line width
 $leftOffset: calc(((25px + 4px) / 2) - 1px);
 $rightOffset: calc((((25px + 4px) / 2) - 1px) * -1);
 
+body {
+    --w-timeline-color: var(--w-color-primary-50);
+    --w-timeline-text-color: var(--w-color-primary);
+    --w-timeline-counter: decimal;
+}
+
 .timeline {
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-    padding: 0 0 0 40px;
-    margin: 0;
+    @include layout(flex, default, column);
+    @include spacing(pl-3xl, m0);
+    @include position(relative);
+    @include typography(normal);
+
     list-style-type: none;
     counter-reset: item;
-    position: relative;
 
     &::before {
-        position: absolute;
+        @include position(absolute);
+        @include size(w2px, 'h100%');
+        @include background(var(--w-timeline-color));
+
         content: '';
-        width: 2px;
-        background: var(--w-timeline-color);
-        height: 100%;
         left: $leftOffset
     }
 
@@ -28,33 +33,33 @@ $rightOffset: calc((((25px + 4px) / 2) - 1px) * -1);
     }
 
     &.stroke li::before {
-        background: var(--w-color-primary-70);
+        @include background(primary-70);
         border: 2px solid var(--w-timeline-color);
     }
 }
 
-@include Media('xs') {
+@include media('xs') {
     .timeline {
         &.alternate {
-            padding: 0;
+            @include spacing(p0);
     
             &::before {
                 left: calc(50% - 1px);
             }
     
             li {
-                width: 50%;
+                @include size('w50%');
     
                 &:nth-child(odd) {
-                    padding-right: 40px;
+                    @include spacing(pr-3xl);
                 }
     
                 &:nth-child(even) {
+                    @include spacing(pl-3xl);
                     align-self: flex-end;
-                    padding-left: 40px;
     
                     &::before {
-                        left: 25px;
+                        @include position(l25px);
                     }
                 }
     
@@ -65,7 +70,7 @@ $rightOffset: calc((((25px + 4px) / 2) - 1px) * -1);
         }
     
         &.centered li:nth-child(odd) {
-            text-align: right;
+            @include typography(right);
         }
     }
 }

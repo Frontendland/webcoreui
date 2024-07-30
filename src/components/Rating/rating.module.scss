@@ -1,8 +1,15 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-rating-color: var(--w-color-primary);
+    --w-rating-empty-color: var(--w-color-primary);
+    --w-rating-empty-background: var(--w-color-primary-70);
+    --w-rating-size: 18px;
+}
 
 .rating {
-    display: inline-flex;
-    align-items: center;
+    @include layout(inline-flex, v-center);
+
     color: var(--w-rating-color);
     font-size: var(--w-rating-size);
 
@@ -22,14 +29,14 @@
         color: var(--w-rating-empty-color);
     }
 
-    a {
-        text-decoration: underline;
+    a:hover .text {
+        @include typography(primary);
     }
     
     .text {
-        font-size: 16px;
-        color: var(--w-color-primary-20);
-        margin-left: 5px;
+        @include transition(color);
+        @include typography(md, primary-20);
+        @include spacing(ml-xs);
 
         &.m {
             margin-right: 5px;

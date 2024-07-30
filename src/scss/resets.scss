@@ -1,4 +1,6 @@
-@mixin Resets() {
+@use './config.scss' as *;
+
+@mixin resets() {
     @if (config('fontRegular')) {
         @font-face {
             font-family: Regular;
@@ -18,12 +20,12 @@
     * {
         box-sizing: border-box;
     }
-    
+
     body {
-        background: var(--w-color-primary-70);
-        color: var(--w-color-primary);
-        margin: 0;
-        font-size: 18px;
+        @include background(primary-70);
+        @include typography(primary, default);
+        @include spacing(m0);
+
         font-family: Regular, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
 
@@ -33,16 +35,67 @@
     h4,
     h5,
     h6,
-    strong {
+    strong,
+    b {
         font-family: Bold, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
 
     a {
-        color: var(--w-color-primary);
-        text-decoration: none;
+        @include transition(color);
+        @include typography(primary);
     }
 
     button {
         font-family: Regular;
+    }
+
+    code,
+    pre {
+        @include border(primary-50);
+        @include border-radius(md);
+        @include typography(sm);
+    }
+
+    code {
+        @include spacing(py-xxs, px-sm, my-xxs);
+        display: inline-block;
+    }
+
+    pre {
+        @include background(primary-60);
+        @include spacing(p-sm, my-default);
+
+    }
+
+    figure {
+        @include spacing(my-default);
+        @include layout(inline-flex, column, v-center, xs);
+    }
+
+    figcaption {
+        @include typography(sm, primary-20);  
+        
+        a {
+            @include typography(primary-20);
+
+            &:hover {
+                @include typography(primary); 
+            }
+        }
+    }
+
+    p, ul, ol {
+        @include typography(md, hlg);
+        @include spacing(my-default);
+    }
+
+    li {
+        @include spacing(mb-sm);
+    }
+
+    blockquote {
+        @include typography(md);
+        @include spacing(my-default, mx-none, pl-default);
+        @include border(2px, left, primary-30);
     }
 }    

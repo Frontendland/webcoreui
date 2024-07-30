@@ -1,36 +1,32 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .table {
-    overflow-x: auto;
+    @include visibility(auto);
 
     table {
-        width: 100%;
+        @include size('w100%');
+        @include typography(md, left);
+
         border-collapse: collapse;
-        text-align: left;
-        font-size: 16px;
     }
 
     thead,
     tfoot {
-        font-family: Bold;
+        @include typography(bold);
     }
 
     th,
     td {
-        padding: 5px 10px;
+        @include spacing(py-xs, px-sm);
     }
 
     thead,
     tr {
-        border-bottom: 1px solid var(--w-color-primary-50);
+        @include border(bottom, primary-50);
 
         &:last-child {
-            border-bottom: 0;
+            @include border(bottom, 0);
         }
-    }
-
-    a {
-        text-decoration: underline;
     }
 
     tfoot,
@@ -40,25 +36,25 @@
     &.striped-columns td:nth-child(odd),
     &.striped-columns.offset td:nth-child(even),
     &.hover.striped-rows.offset tbody tr:nth-child(odd):hover {
-        background: var(--w-color-primary-60);
+        @include background(primary-60);
     }
 
     &.striped-rows tr,
     &.striped-columns tr,
     &.striped-columns thead {
-        border-bottom: 0;
+        @include border(bottom, 0);
     }
 
     &.striped-rows.offset tbody tr:nth-child(odd),
     &.striped-rows.offset tfoot,
     &.striped-columns.offset td:nth-child(odd),
     &.striped-columns tfoot {
-        background: transparent;
+        @include background(transparent);
     }
 
     &.compact {
         th, td {
-            padding: 3px 10px;
+            @include spacing(py-xxs, px-sm);
         }
     }
 }

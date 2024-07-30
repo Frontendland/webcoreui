@@ -1,54 +1,51 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .w-alert {
-    border: 1px solid var(--w-color-primary-50);
-    border-radius: 5px;
-    padding: 15px;
-    display: flex;
+    @include border(primary-50);
+    @include border-radius(md);
+    @include spacing(p-md);
+    @include layout(flex);
 
     &.col {
-        flex-direction: column;
+        @include layout(column);
     }
 
     &:not(.col) {
-        gap: 10px;
+        @include layout(sm);
     }
 
     &.info {
-        border: 1px solid var(--w-color-info);
-        color: var(--w-color-info);
+        @include border(info);
+        @include typography(info);
     }
 
     &.success {
-        border: 1px solid var(--w-color-success);
-        color: var(--w-color-success);
+        @include border(success);
+        @include typography(success);
     }
 
     &.warning {
-        border: 1px solid var(--w-color-warning);
-        color: var(--w-color-warning);
+        @include border(warning);
+        @include typography(warning);
     }
 
     &.alert {
-        border: 1px solid var(--w-color-alert);
-        color: var(--w-color-alert);
+        @include border(alert);
+        @include typography(alert);
     }
 
     svg {
-        width: 20px;
-        height: 20px;
+        @include size(20px);
         min-width: 20px;
         margin-top: 1px;
     }
 
     .title {
+        @include spacing(mb-xs);
         display: block;
-        margin-bottom: 5px;
     }
 
     .body {
-        font-size: 16px;
-        color: var(--w-color-primary-20);
-        line-height: 1.5;
+        @include typography(primary-20, md, hmd);
     }
 }

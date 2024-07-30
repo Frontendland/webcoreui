@@ -111,6 +111,28 @@ const sections = getSections({
                     name={`radio6-${index}`}
                 />
             </ComponentWrapper>
+
+            <ComponentWrapper title="Multiline">
+                <section.component
+                    items={[
+                        { label: 'Starter - Quickest way to get started as a new business owner', value: 'sm' },
+                        { label: 'Standard - If you\'re an existing business owner with customers', value: 'md' },
+                        { label: 'Premium - Contact sales for a unique pricing option', value: 'lg' }
+                    ]}
+                    name={`radio7-${index}`}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Multiline with subtext">
+                <section.component
+                    items={[
+                        { label: 'Starter - Quickest way to get started as a new business owner', subText: 'Get up and running as quickly as possible with our starter plan', value: 'sm' },
+                        { label: 'Standard - If you\'re an existing business owner with customers', subText: 'Customize the way your business operates with the standard plan.', value: 'md' },
+                        { label: 'Premium - Contact sales for a unique pricing option', subText: 'Get the most out of your business. Get priority support and a customized roadmap.', value: 'lg' }
+                    ]}
+                    name={`radio7-${index}`}
+                />
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>

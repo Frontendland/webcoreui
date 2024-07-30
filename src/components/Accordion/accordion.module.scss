@@ -1,43 +1,37 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .accordion {
-    margin: 0;
-    padding: 0;
+    @include spacing(0);
     list-style-type: none;
 
     li {
-        border-bottom: 1px solid var(--w-color-primary-50);
-        padding: 10px 0;
-        font-size: 16px;
+        @include border(primary-50, bottom);
+        @include spacing(py-sm, px-none, m0);
+        @include typography(md);
 
         &:first-child {
             padding-top: 0;
         }
 
         &:last-child {
-            border-bottom: 0;
+            @include border(bottom, 0);
             padding-bottom: 0;
         }
 
         .title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
+            @include layout(flex, h-between, v-center, sm);
+            @include typography(md, primary, left);
+            @include size('w100%');
+            @include spacing(p0);
+            @include border(0);
+
             background: transparent;
-            border: 0;
-            color: var(--w-color-primary);
-            font-size: 16px;
-            padding: 0;
             cursor: pointer;
-            text-align: left;
 
             svg {
-                @include Transition(transform);
-                color: var(--w-color-primary-20);
-                width: 15px;
-                height: 15px;
+                @include transition(transform);
+                @include size(15px);
+                @include typography(primary-20);
                 pointer-events: none;
             }
 
@@ -50,22 +44,22 @@
                     grid-template-rows: 1fr;
         
                     .content {
-                        padding: 10px 0;
+                        @include spacing(py-sm, px-none);
                     }
                 }
             }
         }
 
         .wrapper {
-            @include Transition(grid-template-rows);
-            display: grid;
+            @include transition(grid-template-rows);
+            @include layout(grid);
             grid-template-rows: 0fr;
         }
 
         .content {
-            @include Transition();
-            overflow: hidden;
-            color: var(--w-color-primary-20);
+            @include transition();
+            @include visibility(hidden);
+            @include typography(primary-20);
         }
     }
 }

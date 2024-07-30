@@ -1,89 +1,86 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .badge {
-    @include Transition();
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    background: var(--w-color-primary);
-    color: var(--w-color-primary-50);
-    border: 0;
+    @include transition();
+    @include spacing(py-xs, px-sm);
+    @include border-radius(xs);
+    @include layout(inline-flex, v-center, xs);
+    @include typography(xs, primary-50);
+    @include border(0);
+    @include background(primary);
 
     &.hover {
         cursor: pointer;
 
         &:hover {
-            background: var(--w-color-primary-20);
+            @include background(primary-20);
         }
 
         &.secondary:hover {
-            background: var(--w-color-primary-40);
+            @include background(primary-40);
         }
 
         &.outline:hover {
-            color: var(--w-color-primary);
-            background: transparent;
+            @include typography(primary);
+            @include background(transparent);
             box-shadow: inset 0px 0px 0px 1px var(--w-color-primary);
         }
 
         &.flat:hover {
-            background: var(--w-color-primary-40);
+            @include background(primary-40);
         }
 
         &.info:hover {
-            background: var(--w-color-info-accent);
+            @include background(info-accent);
         }
 
         &.success:hover {
-            background: var(--w-color-success-accent);
+            @include background(success-accent);
         }
 
         &.warning:hover {
-            background: var(--w-color-warning-accent);
+            @include background(warning-accent);
         }
 
         &.alert:hover {
-            background: var(--w-color-alert-accent);
+            @include background(alert-accent);
         }
     }
 
     
     &.secondary {
-        background: var(--w-color-primary-50);
-        color: var(--w-color-primary);
+        @include typography(primary);
+        @include background(primary-50);
     }
 
     &.outline {
-        background: var(--w-color-primary-70);
-        color: var(--w-color-primary-20);
+        @include typography(primary-20);
+        @include background(primary-70);
         box-shadow: inset 0px 0px 0px 1px var(--w-color-primary-20);
     }
 
     &.flat {
-        background: var(--w-color-primary-70);
-        color: var(--w-color-primary);
+        @include typography(primary);
+        @include background(primary-70);
     }
 
     &.info {
-        background: var(--w-color-info);
-        color: var(--w-color-info-fg);
+        @include typography(info-fg);
+        @include background(info);
     }
 
     &.success {
-        background: var(--w-color-success);
-        color: var(--w-color-success-fg);
+        @include typography(success-fg);
+        @include background(success);
     }
 
     &.warning {
-        background: var(--w-color-warning);
-        color: var(--w-color-warning-fg);
+        @include typography(warning-fg);
+        @include background(warning);
     }
 
     &.alert {
-        background: var(--w-color-alert);
-        color: var(--w-color-alert-fg);
+        @include typography(alert-fg);
+        @include background(alert);
     }
 }

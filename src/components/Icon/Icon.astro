@@ -1,5 +1,6 @@
 ---
 import type { IconProps } from './icon'
+import iconMap from './map'
 
 interface Props extends IconProps {}
 
@@ -9,8 +10,7 @@ const {
     color
 } = Astro.props
 
-const { default: markup } = await import(`../../icons/${type}.svg?raw`)
-const icon = markup
+const icon = iconMap[type as keyof typeof iconMap]
     .replace('width="24"', `width=${size}`)
     .replace('height="24"', color
         ? `height=${size} color=${color}`

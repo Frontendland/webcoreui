@@ -1,31 +1,29 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .item {
-    position: relative;
-    font-size: 16px;
+    @include position(relative);
+    @include typography(md);
+    @include spacing(m0);
 
     &::before {
+        @include position(absolute, t-5px);
+        @include size(25px);
+        @include border-radius(max);
+        @include background(var(--w-timeline-color));
+        @include typography(sm);
+        @include layout(inline-flex, center);
+        @include border(2px, primary-70);
+
         content: counter(item, var(--w-timeline-counter));
         counter-increment: item;
-        position: absolute;
-        top: -5px;
-        width: 25px;
-        height: 25px;
-        border-radius: 100%;
-        background: var(--w-timeline-color);
         color: var(--w-timeline-text-color);
-        font-size: 14px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid var(--w-color-primary-70);
         margin-left: -40px;
     }
 
     .title {
+        @include typography(bold, default);
+        @include spacing(mb-sm);
+
         display: block;
-        margin-bottom: 10px;
-        font-family: Bold;
-        font-size: 18px;
     }
 }

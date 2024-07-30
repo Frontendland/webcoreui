@@ -1,94 +1,87 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .button {
-    @include Transition();
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 16px;
+    @include layout(inline-flex, v-center, xs);
+    @include typography(md, primary-50, none);
+    @include spacing(py-sm, px-md);
+    @include border-radius(xs);
+    @include border(0);
+    @include transition();
+    @include background(primary);
+
     cursor: pointer;
-    border: 0;
-    background: var(--w-color-primary);
-    color: var(--w-color-primary-50);
 
     &[disabled] {
         cursor: no-drop;
-        background: var(--w-color-primary-20);
+        @include background(primary-20);
     }
 
     &:hover {
-        background: var(--w-color-primary-20);
+        @include background(primary-20);
     }
     
     &.secondary {
-        background: var(--w-color-primary-50);
-        color: var(--w-color-primary);
+        @include typography(primary);
+        @include background(primary-50);
 
         &:hover {
-            background: var(--w-color-primary-40);
+            @include background(primary-40);
         }
     }
 
     &.outline {
-        background: transparent;
-        color: var(--w-color-primary-20);
+        @include typography(primary-20);
+        @include background(transparent);
         box-shadow: inset 0px 0px 0px 1px var(--w-color-primary-20);
         
         &:hover {
-            color: var(--w-color-primary);
+            @include typography(primary);
             box-shadow: inset 0px 0px 0px 1px var(--w-color-primary);
         }
     }
 
     &.flat {
-        background: transparent;
-        color: var(--w-color-primary);
+        @include typography(primary);
+        @include background(transparent);
 
         &:hover {
-            background: var(--w-color-primary-40);
+            @include background(primary-40);
         }
     }
 
     &.info {
-        background: var(--w-color-info);
-        color: var(--w-color-info-fg);
+        @include typography(info-fg);
+        @include background(info);
 
         &:hover {
-            background: var(--w-color-info-accent);
+            @include background(info-accent);
         }
     }
 
     &.success {
-        background: var(--w-color-success);
-        color: var(--w-color-success-fg);
+        @include typography(success-fg);
+        @include background(success);
 
         &:hover {
-            background: var(--w-color-success-accent);
+            @include background(success-accent);
         }
     }
 
     &.warning {
-        background: var(--w-color-warning);
-        color: var(--w-color-warning-fg);
+        @include typography(warning-fg);
+        @include background(warning);
 
         &:hover {
-            background: var(--w-color-warning-accent);
+            @include background(warning-accent);
         }
     }
 
     &.alert {
-        background: var(--w-color-alert);
-        color: var(--w-color-alert-fg);
+        @include typography(alert-fg);
+        @include background(alert);
 
         &:hover {
-            background: var(--w-color-alert-accent);
+            @include background(alert-accent);
         }
-    }
-
-    &.bold {
-        font-family: Bold;
     }
 }

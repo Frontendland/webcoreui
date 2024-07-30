@@ -1,60 +1,58 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .tabs {
     &.boxed .items,
     &.outline .items {
-        background: var(--w-color-primary-50);
-        border-radius: 5px;
-        padding: 5px;
-        width: max-content;
+        @include background(primary-50);
+        @include border-radius(md);
+        @include spacing(p-xs);
+        @include size(wmax-content);
 
         button {
-            @include Transition();
-            border-radius: 5px;
-            padding: 10px;
+            @include transition();
+            @include border-radius(md);
+            @include spacing(p-sm);
 
             &[data-active="true"] {
-                border: 0;
-                background: var(--w-color-primary-70);
+                @include border(0);
+                @include background(primary-70);
                 padding-bottom: 10px;
             }
         }
     }
 
     &.outline .items {
-        background: transparent;
-        border: 1px solid var(--w-color-primary-50);
+        @include background(transparent);
+        @include border(primary-50);
 
         button {
             margin-bottom: 0;
 
             &[data-active="true"] {
-                background: var(--w-color-primary-50);
+                @include background(primary-50);
             }
         }
     }
 
     &.even .items button {
+        @include layout(h-center);
         flex: 1;
-        justify-content: center;
     }
 
     &.vertical {
-        display: flex;
-        gap: 20px;
+        @include layout(flex, default);
 
         &.boxed .items button,
         &.outline .items button {
-            border-bottom: 0;
+            @include border(bottom, 0);
         }
         
         .items {
-            flex-direction: column;
-            gap: 5px;
+            @include layout(column, xs);
             
             button {
-                padding: 10px;
-                border-bottom: 2px solid var(--w-color-primary-50);
+                @include spacing(p-sm);
+                @include border(2px, bottom, primary-50);
 
                 &[data-active="true"] {
                     padding-bottom: 10px;
@@ -63,71 +61,65 @@
         }
 
         .content {
-            margin-top: 0;
+            @include spacing(m0);
         }
     }
 
     .wrapper {
-        overflow: auto;
+        @include visibility(auto);
     }
 
     .items {
-        border-bottom: 2px solid var(--w-color-primary-50);
-        display: flex;
-        gap: 10px;
+        @include border(2px, bottom, primary-50);
+        @include layout(flex, sm);
 
         button {
-            @include Transition(color);
-            background: transparent;
+            @include transition(color);
+            @include background(transparent);
+            @include typography(md, primary-20);
+            @include border(0);
+            @include spacing(p-md);
+            @include layout(flex, v-center, sm);
+
             cursor: pointer;
-            color: var(--w-color-primary);
-            border: 0;
-            font-size: 16px;
-            padding: 0;
-            margin-bottom: -2px;
-            padding: 15px 15px;
-            color: var(--w-color-primary-20);
-            display: flex;
-            align-items: center;
-            gap: 10px;
             flex-shrink: 0;
 
             svg {
+                @include size(20px);
                 pointer-events: none;
-                width: 20px;
-                height: 20px;
             }
 
             &[disabled] {
-                color: var(--w-color-primary-30);
+                @include typography(primary-30);
                 cursor: no-drop;
             }
             
             &[data-active="true"] {
-                color: var(--w-color-primary);
-                border-bottom: 2px solid var(--w-color-primary);
+                @include typography(primary);
+                @include border(2px, bottom, primary);
+
                 padding-bottom: 13px;
             }
         }
     }
 
     .content {
-        margin-top: 20px;
+        @include spacing(mt-default);
     }
 
     [data-tab] {
-        display: none;
+        @include visibility(none);
 
         &[data-active="true"] {
-            display: block;
+            @include visibility(block);
         }
     }
 }
 
-@include Media('xs') {
+@include media('xs') {
     .tabs {
         &.even .items {
-            width: auto;
+            @include size(wauto);
         }
     }
 }

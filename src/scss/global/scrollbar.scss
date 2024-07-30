@@ -1,21 +1,24 @@
-@import '../config';
+@use '../config' as *;
 
-@mixin Scrollbar() {
+@mixin scrollbar() {
+    body {
+        --w-scrollbar-bg: var(--w-color-primary-60);
+        --w-scrollbar-fg: var(--w-color-primary-50);
+    }
+
     ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
+        @include size(10px);
     }
     
     ::-webkit-scrollbar-track {
-        border-radius: 5px;
-        background: var(--w-scrollbar-bg);
+        @include border-radius(md);
+        @include background(var(--w-scrollbar-bg));
         cursor: pointer;
     }
     
     ::-webkit-scrollbar-thumb {
-        border-radius: 5px;
-        background: var(--w-scrollbar-fg);
+        @include border-radius(md);
+        @include background(var(--w-scrollbar-fg));
         cursor: pointer;
     }
 }
-

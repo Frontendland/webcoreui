@@ -1,4 +1,5 @@
 import type { AlertProps } from '../components/Alert/alert'
+import type { ToastProps } from '../components/Toast/toast'
 
 type Toast = {
     element: string
@@ -6,12 +7,12 @@ type Toast = {
     title?: AlertProps['title']
     content?: string
     theme?: AlertProps['theme']
-    position?: string
+    position?: ToastProps['position']
 }
 
 let defaultTimeout = 5000
 
-export let setDefaultTimeout = (time: number) => defaultTimeout = time
+export const setDefaultTimeout = (time: number) => defaultTimeout = time
 
 export const toast = (config: Toast | string) => {
     const element = typeof config === 'string'

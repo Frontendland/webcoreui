@@ -1,7 +1,11 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-avatar-border: var(--w-color-primary-70);
+}
 
 .avatar {
-    border-radius: 100%;
+    @include border-radius(max);
 
     &:not(.borderless) {
         border: 3px solid var(--w-avatar-border);
@@ -9,14 +13,13 @@
 }
 
 .group {
-    display: inline-flex;
-    align-items: center;
+    @include layout(inline-flex, v-center);
 
     &.reverse {
-        flex-direction: row-reverse;
+        @include layout(row-reverse);
 
         img {
-            z-index: 1;
+            @include layer(fg);
         }
 
         img:not(:first-child) {

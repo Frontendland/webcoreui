@@ -1,1 +1,6 @@
-@import './config/mixins.scss';
+@import '../../webcore.config.scss';
+@import './config/color-palette';
+@import './config/css-values';
+@import './config/typography';
+@import './config/layout';
+@import './config/mixins';

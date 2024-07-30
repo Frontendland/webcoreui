@@ -1,0 +1,44 @@
+$overflowValues: auto,
+    hidden,
+    overlay,
+    scroll,
+    visible !default;
+
+$displayValues: inline,
+    block,
+    contents,
+    flex,
+    flow,
+    flow-root,
+    grid,
+    inline-block,
+    inline-flex,
+    inline-grid,
+    inline-table,
+    list-item,
+    run-in,
+    table,
+    table-caption,
+    table-column-group,
+    table-header-group,
+    table-footer-group,
+    table-row-group,
+    table-cell,
+    table-column,
+    table-row,
+    none !default;
+
+$positionValues: absolute,
+    fixed,
+    relative,
+    static,
+    sticky !default;
+
+$flexDirectionValues: row
+    column
+    row-reverse
+    column-reverse !default;
+
+$flexWrapValues: wrap
+    nowrap
+    wrap-reverse !default;

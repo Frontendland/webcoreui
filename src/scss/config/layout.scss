@@ -1,0 +1,41 @@
+$breakpoints: (
+    'xs': 600px,
+    'sm': 800px,
+    'md': 1024px,
+    'lg': 1200px
+) !default;
+
+$layers: (
+    'bg': -1,
+    'default': 0,
+    'fg': 1,
+    'overlay': 2,
+    'popup': 3,
+    'top':  98,
+    'header': 99,
+    'modal': 100
+) !default;
+
+$radius: (
+    'none': 0,
+    'sm': var(--w-sm-radius),
+    'md': var(--w-md-radius),
+    'lg': var(--w-lg-radius),
+    'xl': var(--w-xl-radius),
+    'max': 100%
+) !default;
+
+$spacing: (
+    'none':    0,
+    'xxs':     2px,
+    'xs':      5px,
+    'sm':      10px,
+    'md':      15px,
+    'default': 20px,
+    'lg':      25px,
+    'xl':      30px,
+    '2xl':     35px,
+    '3xl':     40px,
+    '4xl':     45px,
+    '5xl':     50px
+) !default;

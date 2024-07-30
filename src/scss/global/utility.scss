@@ -1,6 +1,6 @@
-@import '../config';
+@use '../config' as *;
 
-@mixin Utility() {
+@mixin utility() {
     .container {
         margin: 0 auto;
         max-width: 1200px;
@@ -58,7 +58,7 @@
         margin: 20px auto;
     }
 
-    @include Media('md') {
+    @include media('md') {
         .grid.md-2 {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -72,7 +72,7 @@
         }
     }
 
-    @include Media('lg') {
+    @include media('lg') {
         .grid.lg-2 {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }

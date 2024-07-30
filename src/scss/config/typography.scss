@@ -1,0 +1,66 @@
+$fontTypes: (
+    'regular':  (Regular, sans-serif),
+    'bold':     (Bold, sans-serif)
+) !default;
+
+$fontSizes: (
+    'xxs':      10px,
+    'xs':       12px,
+    'sm':       14px,
+    'md':       16px,
+    'default':  18px,
+    'lg':       21px,
+    'xl':       24px,
+    '2xl':      28px,
+    '3xl':      32px
+) !default;
+
+$lineHeights: (
+    'normal': normal,
+    'hmd': 1.5,
+    'hlg': 1.7
+) !default;
+
+$decorations: (
+    'none': none,
+    'underline': underline,
+    'overline': overline,
+    'line-through': line-through,
+    'dotted': underline dotted,
+    'dashed': underline dashed,
+    'double': underline double,
+    'wavy': underline wavy,
+    'overline-dotted': overline dotted,
+    'overline-dashed': overline dashed,
+    'overline-double': overline double,
+    'overline-wavy': overline wavy,
+    'line-through-dotted': line-through dotted,
+    'line-through-dashed': line-through dashed,
+    'line-through-double': line-through double,
+    'line-through-wavy': line-through wavy,
+    'line-through-underline': underline line-through,
+    'line-through-overline': overline line-through,
+    'overunder': underline overline,
+    'overunder-dotted': underline overline dotted,
+    'overunder-dashed': underline overline dashed,
+    'overunder-double': underline overline double,
+    'overunder-wavy': underline overline wavy,
+    'overunder-line-through': underline overline line-through,
+) !default;
+
+$textAlignValues: left,
+    right,
+    center,
+    justify !default;
+
+$fontWeights: 100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+    bolder,
+    lighter !default;

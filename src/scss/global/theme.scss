@@ -1,6 +1,6 @@
-@import '../config';
+@use '../config' as *;
 
-@mixin Theme($theme: 'dark', $selector: ':root') {
+@mixin theme($theme: 'dark', $selector: ':root') {
     @if $theme == 'dark' {
         #{$selector} {
             --w-color-scheme: dark;

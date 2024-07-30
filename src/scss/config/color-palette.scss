@@ -1,0 +1,23 @@
+$colorPalette: (
+    'primary': var(--w-color-primary),
+    'primary-10': var(--w-color-primary-10),
+    'primary-20': var(--w-color-primary-20),
+    'primary-30': var(--w-color-primary-30),
+    'primary-40': var(--w-color-primary-40),
+    'primary-50': var(--w-color-primary-50),
+    'primary-60': var(--w-color-primary-60),
+    'primary-70': var(--w-color-primary-70),
+
+    'info': var(--w-color-info),
+    'info-accent': var(--w-color-info-accent),
+    'info-fg': var(--w-color-info-fg),
+    'success': var(--w-color-success),
+    'success-accent': var(--w-color-success-accent),
+    'success-fg': var(--w-color-success-fg),
+    'warning': var(--w-color-warning),
+    'warning-accent': var(--w-color-warning-accent),
+    'warning-fg': var(--w-color-warning-fg),
+    'alert': var(--w-color-alert),
+    'alert-accent': var(--w-color-alert-accent),
+    'alert-fg': var(--w-color-alert-fg),
+) !default;

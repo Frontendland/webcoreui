@@ -65,6 +65,8 @@ const sections = getSections({
             <Button theme="secondary" id={`toast-btn-9${index}`}>↙️Toast in bottom left</Button>
             <Button theme="secondary" id={`toast-btn-10${index}`}>↖️ Toast in top left</Button>
             <Button theme="secondary" id={`toast-btn-11${index}`}>↗️Toast in top right</Button>
+            <Button theme="secondary" id={`toast-btn-12${index}`}>⬇️ Bottom full ⬇️</Button>
+            <Button theme="secondary" id={`toast-btn-13${index}`}>⬆️ Top full ⬆️</Button>
         </div>
         <div class="grid md-2 my">
             <section.component id={`toast-0${index}`}>
@@ -104,6 +106,12 @@ const sections = getSections({
             </section.component>
             <section.component title="Top right" id={`toast-11${index}`} position="top-right">
                 Toast in top right corner
+            </section.component>
+            <section.component title="Bottom full" id={`toast-12${index}`} position="bottom-full">
+                Toast in bottom with full width
+            </section.component>
+            <section.component title="Top full" id={`toast-13${index}`} position="top-full">
+                Toast in top with full width
             </section.component>
 
             <ComponentWrapper title="Dismissable toast with long timeout">
@@ -157,7 +165,7 @@ const sections = getSections({
             ?.addEventListener('click', callback)
     }
 
-    const ids = Array(11).fill(10).map((x, index) => x * (index + 1))
+    const ids = Array(13).fill(10).map((x, index) => x * (index + 1))
     const buttons = [
         'astro',
         'svelte',

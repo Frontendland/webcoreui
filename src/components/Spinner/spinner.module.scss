@@ -1,7 +1,16 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-spinner-color: var(--w-color-primary);
+    --w-spinner-width: 2px;
+    --w-spinner-speed: 2s;
+    --w-spinner-size: 30px;
+    --w-spinner-dash: 8;
+}
 
 .spinner {
-    margin: 0px auto;
+    @include spacing(auto-none);
+
     width: var(--w-spinner-size);
     height: var(--w-spinner-size);
     animation: rotate var(--w-spinner-speed) linear infinite;

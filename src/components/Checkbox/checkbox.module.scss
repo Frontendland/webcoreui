@@ -1,26 +1,20 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-checkbox-color: var(--w-color-primary);
+}
 
 .checkbox {
+    @include layout(inline-flex, sm);
+    @include typography(md, hmd);
+
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 16px;
-    line-height: 1.5;
 
     &.col {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 0;
+        @include layout(column, h-start, v-start, none);
 
         .wrapper {
-            display: flex;
-            gap: 10px;
-
-            .check {
-                margin-top: 5px;
-            }
+            @include layout(flex, sm);
         }
     }
 
@@ -28,56 +22,48 @@
         display: none;
 
         &:checked + span {
-            background-color: var(--w-checkbox-color);
+            @include background(var(--w-checkbox-color));
 
             svg {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                @include position(absolute, center);
+                @include typography(primary-50);
+                @include size(10px);
+
                 display: block;
-                color: var(--w-color-primary-50);
-                width: 10px;
-                height: 10px;
             }
         }
 
         &:disabled + span {
-            background-color: var(--w-color-primary-40);
-            border-color: var(--w-color-primary-40);
+            @include background(primary-40);
+            @include border(primary-40);
             cursor: no-drop;
         }
     }
 
-    a {
-        text-decoration: underline;
-    }
-
     .check {
+        @include size(15px);
+        @include position(relative);
+        @include border-radius(sm);
+        @include spacing(mt-xs);
+
         display: inline-block;
-        width: 15px;
-        height: 15px;
         min-width: 15px;
         border: 1px solid var(--w-checkbox-color);
-        border-radius: 2px;
-        position: relative;
 
         svg {
-            display: none;
+            @include visibility(none);
         }
     }
 
     .text {
-        margin-left: 25px;
-        font-size: 14px;
-        color: var(--w-color-primary-20);
+        @include spacing(ml-lg);
+        @include typography(sm, primary-20);
 
         a {
-            @include Transition(color);
-            color: var(--w-color-primary-20);
+            @include typography(primary-20);
 
             &:hover {
-                color: var(--w-color-primary);
+                @include typography(primary);
             }
         }
     }

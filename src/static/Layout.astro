@@ -10,6 +10,32 @@ const menuClasses = [
 ].filter(Boolean).join(' ')
 
 const theme = (Astro.cookies.get('w-theme')?.value || 'theme-dark') as string
+
+const menu = {
+    logo: {
+        html: logo
+    },
+    items: [
+        { url: '/resets', name: 'Resets' },
+        { url: '/svelte', name: 'Svelte' },
+        { url: '/react', name: 'React' }
+    ]
+}
+
+const externalLinks = [
+    {
+        url: 'https://github.com/Frontendland/webcoreui',
+        name: 'github'
+    },
+    {
+        url: 'https://www.npmjs.com/package/webcoreui',
+        name: 'npm'
+    },
+    {
+        url: 'https://webcoreui.dev',
+        name: 'docs'
+    },
+]
 ---
 
 <!DOCTYPE html>
@@ -21,7 +47,19 @@ const theme = (Astro.cookies.get('w-theme')?.value || 'theme-dark') as string
         <title>Webcore</title>
     </head>
     <body class={theme}>
-        <Menu logo={{ html: logo }} className={menuClasses} />
+        <Menu
+            logo={menu.logo}
+            items={menu.items}
+            className={menuClasses}
+        >
+            <div class="items">
+                {externalLinks.map(link => (
+                    <a href={link.url} target="_blank">
+                        {link.name}
+                    </a>
+                ))}
+            </div>
+        </Menu>
         <div class="container">
             <slot />
         </div>
@@ -30,7 +68,9 @@ const theme = (Astro.cookies.get('w-theme')?.value || 'theme-dark') as string
 
 <style is:global lang="scss">
     @import '../scss/index.scss';
-    @include Setup((
+    @import '../scss/config.scss';
+
+    @include setup((
         fontRegular: '/fonts/Inter-Regular.woff2',
         fontBold: '/fonts/Inter-Bold.woff2',
         themes: (
@@ -45,7 +85,7 @@ const theme = (Astro.cookies.get('w-theme')?.value || 'theme-dark') as string
     body {
         margin-bottom: 100px;
     }
-    
+
     h1 {
         margin: 100px 0 10px;
         font-size: 48px;
@@ -69,6 +109,18 @@ const theme = (Astro.cookies.get('w-theme')?.value || 'theme-dark') as string
     .menu {
         &.fixed {
             position: relative;
+        }
+
+        .items {
+            @include layout(flex, sm);
+
+            a {
+                @include typography(primary-20);
+
+                &:hover {
+                    @include typography(primary);
+                }
+            }
         }
     }
 

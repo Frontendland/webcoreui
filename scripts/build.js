@@ -15,6 +15,8 @@ const files = {
     'package.json': 'dist/package.json'
 }
 
+const sassConfig = 'dist/scss/config.scss'
+
 console.log('🚀 Preparing package build')
 
 if (!fs.existsSync('dist')) {
@@ -25,6 +27,12 @@ Object.keys(folders).forEach(key => {
     fs.cp(key, folders[key], { recursive: true }, error => {
         if (error) {
             console.error('🚨 error copying directory', error)
+        }
+
+        if (key.includes('scss')) {
+            const configFile = fs.readFileSync(sassConfig, 'utf-8')
+
+            fs.writeFileSync(sassConfig, configFile.replace('../../webcore', '../webcore'))
         }
     })
 })
@@ -48,6 +56,5 @@ fs.writeFileSync('dist/astro.d.ts', buildTypes('astro'))
 fs.writeFileSync('dist/svelte.d.ts', buildTypes('svelte'))
 fs.writeFileSync('dist/react.d.ts', buildTypes('react'))
 fs.writeFileSync('dist/icons.d.ts', buildTypes('icons'))
-
 
 console.log('✅ Package built')

@@ -79,11 +79,11 @@ yarn add webcoreui
 
 ### Setup
 
-Setup default styles and fonts by calling the following in your global SCSS file:
+Create an empty `webcore.config.scss` file at the root of your project to setup CSS configurations. Setup default styles and fonts by calling the following in your global SCSS file:
 
 ```scss
 @import 'webcoreui/styles';
-@include Setup((
+@include setup((
     // Define paths for your fonts
     fontRegular: '/fonts/Inter-Regular.woff2',
     fontBold: '/fonts/Inter-Bold.woff2'
@@ -100,14 +100,13 @@ The `Setup` mixin can also accept the following options:
 |-----------|---------------|---------|
 | `includeResets` | `true` | Include reset styles. Set to `false` if you want to use your own CSS resets. |
 | `includeHelperClasses` | `true` | Adds global helper classes for CSS. All global helper classes are defined [here](https://github.com/Frontendland/webcoreui/tree/main/src/scss/global). |
-| `includeElementStyles` | `true` | Adds styles for native HTML elements, such as `code`, `pre`, or `ul`.
 | `includeTooltip` | `true` | Adds styles for using tooltips.
 | `includeScrollbarStyles` | `true` | Adds styles for scrollbars.
 
 Default component styles can be changed by overriding the following CSS variables:
 
-```css
-body {
+```scss
+html body {
     --w-avatar-border: var(--w-color-primary-70);
     --w-checkbox-color: var(--w-color-primary);
     --w-progress-color: var(--w-color-primary);
@@ -134,6 +133,12 @@ body {
     --w-timeline-counter: decimal;
     --w-tooltip-background: var(--w-color-primary);
     --w-tooltip-color: var(--w-color-primary-70);
+
+    // Override border-radius
+    --w-sm-radius: 2px;
+    --w-md-radius: 5px;
+    --w-lg-radius: 10px;
+    --w-xl-radius: 15px;
 }
 ```
 

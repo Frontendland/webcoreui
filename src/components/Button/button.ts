@@ -7,7 +7,6 @@ export type ButtonProps = {
         | 'warning'
         | 'alert'
         | null
-    bold?: boolean
     href?: string
     className?: string
     [key: string]: any

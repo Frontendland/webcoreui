@@ -1,13 +1,12 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .menu {
-    background: var(--w-color-primary-70);
-    padding: 15px;
-    font-size: 16px;
-    border-bottom: 1px solid var(--w-color-primary-50);
-    position: sticky;
-    top: 0;
-    z-index: 99;
+    @include background(primary-70);
+    @include spacing(p-md);
+    @include typography(md);
+    @include border(bottom, primary-50);
+    @include position(sticky, t0);
+    @include layer(header);
 
     &[data-active="true"] {
         .hamburger {
@@ -15,7 +14,7 @@
 
             .meat:first-child,
             .meat:last-child {
-                opacity: 0;
+                @include visibility(0);
             }
 
             .meat:first-child {
@@ -36,17 +35,19 @@
         }
 
         ul {
-            @include Transition(opacity);
-            opacity: 1;
-            z-index: 99;
+            @include transition(opacity);
+            @include visibility(1);
+            @include layer(header);
             pointer-events: all;
         }
     }
 
     .wrapper {
-        display: flex;
-        align-items: center;
-        gap: 20px;
+        @include layout(flex, v-center, default);
+    }
+
+    a {
+        @include typography(none);
     }
 
     img,
@@ -55,88 +56,84 @@
     }
 
     ul {
-        margin: 0;
-        padding: 0;
+        @include spacing(0);
+        @include layout(flex, default, column);
+        @include position(fixed, t20px, l20px);
+        @include visibility(0);
+        @include typography(normal);
+
         list-style-type: none;
-        display: flex;
-        gap: 20px;
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        flex-direction: column;
-        opacity: 0;
         pointer-events: none;
 
+        li {
+            @include spacing(m0);
+        }
+
         a {
-            @include Transition(color);
-            color: var(--w-color-primary-20);
+            @include typography(primary-20);
     
             &:hover {
-                color: var(--w-color-primary);
+                @include typography(primary);
             }
         }
     }
 
     .hamburger {
-        @include Transition(box-shadow);
-        position: relative;
-        width: 30px;
-        height: 20px;
+        @include transition(box-shadow);
+        @include position(relative);
+        @include size(w30px, h20px);
+        @include border-radius(max);
+        @include spacing(p0);
+        @include border(0);
+        @include background(transparent);
+        @include layer(top);
+
         box-shadow: 0 0 0 0 var(--w-color-primary-70);
-        border-radius: 50%;
-        padding: 0;
-        border: 0;
-        background: transparent;
-        z-index: 98;
         cursor: pointer;
 
         .meat {
-            @include Transition();
-            width: 100%;
-            position: absolute;
-            height: 2px;
-            background: var(--w-color-primary);
+            @include transition();
+            @include size('w100%', h2px);
+            @include position(absolute);
+            @include background(primary);
+            @include border-radius(md);
+
             display: block;
-            border-radius: 5px;
 
             &:first-child {
-                top: 0;
+                @include position(t0);
             }
 
             &:nth-child(2),
             &:nth-child(3) {
-                top: 50%;
-                transform: translateY(-50%);
+                @include position(v-center);
             }
 
             &:last-child {
-                bottom: 0;
+                @include position(b0);
             }
         }
     }
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    @include layout(flex, v-center, default, h-between, wrap);
+    @include spacing(auto-none, px-default);
+
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
 }
 
-@include Media('sm') {
+@include media('sm') {
     .menu {
         .hamburger {
-            display: none;
+            @include visibility(none);
         }
 
         ul {
-            position: static;
-            opacity: 1;
-            flex-direction: row;
+            @include position(static);
+            @include visibility(1);
+            @include layout(row);
+
             pointer-events: all;
             transform: none;
         }

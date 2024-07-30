@@ -1,87 +1,79 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .input {
-    border-radius: 2px;
-    padding: 5px 10px;
-    border: 1px solid var(--w-color-primary-50);
-    background: transparent;
-    font-family: Regular;
-    color: var(--w-color-primary);
-    line-height: 20px;
-    width: 100%;
+    @include border-radius(sm);
+    @include spacing(py-xs, px-sm);
+    @include border(primary-50);
+    @include background(transparent);    
+    @include typography(regular, primary, hlg);
+    @include size('w100%');
+
     color-scheme: var(--w-color-scheme);
 
     &[disabled] {
+        @include typography(primary-30);
         cursor: no-drop;
-        color: var(--w-color-primary-30);
     }
 
     &::file-selector-button {
-        background: transparent;
-        border: 0;
-        color: var(--w-color-primary);
+        @include background(transparent);
+        @include border(0);
+        @include typography(primary);
     }
 
     &::placeholder {
-        color: var(--w-color-primary-30);
+        @include typography(primary-30);
     }
 
     &[type="color"] {
-        padding: 0;
+        @include spacing(p0);
     }
 
     &.info {
-        border-color: #48dbfb;
+        @include border(info);
     }
 
     &.success {
-        border-color: #1dd1a1;
+        @include border(success);
     }
 
     &.warning {
-        border-color: #f7aa61;
+        @include border(warning);
     }
 
     &.alert {
-        border-color: #ee5253;
+        @include border(alert);
     }
 
     &.fill {
-        background: var(--w-color-primary-50);
+        @include background(primary-50);
     }
 }
 
 .input-label {
-    display: flex;
-    flex-direction: column;
+    @include layout(flex, column);
 
     .label {
-        font-size: 16px;
-        color: var(--w-color-primary-20);
-        margin-bottom: 5px;
+        @include typography(md, primary-20);
+        @include spacing(mb-xs);
     }
 
     .wrapper {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        position: relative;
+        @include layout(flex, v-center, sm);
+        @include position(relative);
 
         input {
             padding-left: 40px;
         }
 
         svg {
-            position: absolute;
-            left: 10px;
-            width: 20px;
-            height: 20px;
+            @include position(absolute, l10px);
+            @include size(20px);
         }
     }
 
     .subtext {
-        font-size: 14px;
-        color: var(--w-color-primary-30);
-        margin-top: 5px;
+        @include typography(sm, primary-30);
+        @include spacing(mt-xs);
     }
 }

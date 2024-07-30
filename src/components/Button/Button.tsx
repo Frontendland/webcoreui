@@ -6,7 +6,6 @@ import { classNames } from '../../utils/classNames'
 
 const Button = ({
     theme,
-    bold,
     href,
     className,
     onClick,
@@ -15,7 +14,6 @@ const Button = ({
 }: ReactButtonProps) => {
     const classes = classNames([
         styles.button,
-        bold && styles.bold,
         theme && styles[theme],
         className
     ])

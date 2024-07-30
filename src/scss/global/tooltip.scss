@@ -1,48 +1,54 @@
-@import '../config';
+@use '../config' as *;
 
-@mixin Tooltip() {
+@mixin tooltip() {
+    body {
+        --w-tooltip-background: var(--w-color-primary);
+        --w-tooltip-color: var(--w-color-primary-70);
+    }
+
     [data-tooltip] {
+        @include position(relative);
         display: inline-block;
-        position: relative;
 
         &::before,
         &::after {
-            @include Transition();
-            opacity: 0;
+            @include transition();
+            @include visibility(0);
+            @include layer(header);
+
             left: 50%;
             transform: translate(-50%, 5px);
             pointer-events: none;
-            z-index: 99;
         }
 
         &::before {
+            @include border-radius(md);
+            @include position(absolute);
+            @include typography(sm, hlg);
+            @include background(var(--w-tooltip-background));
+            @include size(wmax-content);
+            @include spacing(px-xs);
+
             content: attr(data-tooltip);
-            border-radius: 5px;
-            font-size: 14px;
-            position: absolute;
-            background: var(--w-tooltip-background);
             color: var(--w-tooltip-color);
-            padding: 0 5px;
             bottom: calc(100% + 5px);
-            width: max-content;
-            line-height: 1.8;
             max-width: 300px;
         }
 
         &::after {
+            @include position(absolute, t-5px);
+            @include size(0);
+            @include border(5px, left, transparent);
+            @include border(5px, right, transparent);
+
             content: '';
-            position: absolute;
-            width: 0; 
-            height: 0; 
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
             border-top: 5px solid var(--w-tooltip-background);
-            top: -5px;
         }
 
         &:hover::before,
         &:hover::after {
-            opacity: 1;
+            @include visibility(1);
+
             pointer-events: all;
             transform: translate(-50%, 0);
         }
@@ -59,9 +65,8 @@
             }
 
             &::after {
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 5px solid transparent;
+                @include border(5px, top, transparent);
+
                 border-bottom: 5px solid var(--w-tooltip-background);
                 top: auto;
                 bottom: -5px;
@@ -86,12 +91,12 @@
             }
 
             &::after {
+                @include border(5px, top, transparent);
+                @include border(5px, bottom, transparent);
+
+                top: calc(50% - 2.5px);
                 border-left: 5px solid var(--w-tooltip-background);
-                border-right: 5px solid transparent;
-                border-top: 5px solid transparent;
-                border-bottom: 5px solid transparent;
-                top: 50%;
-                transform: translate(10px, -40%);
+                transform: translate(10px, -50%);
             }
 
             &:hover::before {
@@ -99,7 +104,7 @@
             }
 
             &:hover::after {
-                transform: translate(5px, -40%);
+                transform: translate(5px, -50%);
             }
         }
 
@@ -115,12 +120,12 @@
             }
 
             &::after {
-                border-left: 5px solid transparent;
+                @include border(5px, top, transparent);
+                @include border(5px, bottom, transparent);
+
+                top: calc(50% - 2.5px);
                 border-right: 5px solid var(--w-tooltip-background);
-                border-top: 5px solid transparent;
-                border-bottom: 5px solid transparent;
-                top: 50%;
-                transform: translate(-10px, -40%);
+                transform: translate(-10px, -50%);
             }
 
             &:hover::before {
@@ -128,7 +133,7 @@
             }
 
             &:hover::after {
-                transform: translate(-5px, -40%);
+                transform: translate(-5px, -50%);
             }
         }
     }

@@ -1,21 +1,24 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-switch-off-color: var(--w-color-primary-50);
+    --w-switch-on-color: var(--w-color-primary);
+}
 
 .switch {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+    @include layout(inline-flex, v-center, sm);
     cursor: pointer;
 
     &.reverse {
-        flex-direction: row-reverse;
+        @include layout(row-reverse);
     }
 
     &.disabled .toggle {
+        @include background(primary-40);
         cursor: no-drop;
-        background: var(--w-color-primary-40);
 
         &::before {
-            background: var(--w-color-primary-50);
+            @include background(primary-50);
         }
     }
 
@@ -25,33 +28,31 @@
         }
 
         .toggle {
-            width: 40px;
-            height: 20px;
+            @include size(w40px, h20px);
     
             &::before {
-                height: 14px;
-                width: 14px;
+                @include size(14px);
             }
         }
 
         .label {
-            font-size: 14px;
+            @include typography(sm);
         }
     }
 
     &.square .toggle {
-        border-radius: 5px;
+        @include border-radius(md);
 
         &::before {
-            border-radius: 5px;
+            @include border-radius(md);
         }
     }
 
     input {
-        display: none;
+        @include visibility(none);
 
         &:checked + span {
-            background-color: var(--w-switch-on-color);
+            @include background(var(--w-switch-on-color));
     
             &::before {
                 transform: translateX(30px);
@@ -60,22 +61,19 @@
     }
 
     .toggle {
-        @include Transition(background);
-        position: relative;
-        width: 60px;
-        height: 30px;
-        background: var(--w-switch-off-color);
-        border-radius: 30px;
+        @include transition(background);
+        @include position(relative);
+        @include size(w60px, h30px);
+        @include border-radius(xl);
+        @include background(var(--w-switch-off-color));
 
         &::before {
-            content: "";
-            position: absolute;
-            height: 24px;
-            width: 24px;
-            left: 3px;
-            bottom: 3px;
-            background: var(--w-color-primary-70);
-            border-radius: 50%;
+            @include position(absolute, l3px, b3px);
+            @include size(24px);
+            @include border-radius(max);
+            @include background(primary-70);
+
+            content: '';
             transition: 0.3s;
         }
     }

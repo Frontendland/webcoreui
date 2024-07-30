@@ -36,6 +36,8 @@
         "utils",
         "astro.d.ts",
         "astro.js",
+        "icons.d.ts",
+        "icons.js",
         "svelte.d.ts",
         "svelte.js",
         "react.d.ts",
