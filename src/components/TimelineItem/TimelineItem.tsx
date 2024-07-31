@@ -1,13 +1,8 @@
 import React from 'react'
-import type { TimelineItemProps } from './timelineitem'
+import type { ReactTimelineItemProps } from './timelineitem'
 
 import styles from './timelineitem.module.scss'
 import { classNames } from '../../utils/classNames'
-
-type ReactTimelineItemProps = {
-    TitleTag?: keyof JSX.IntrinsicElements
-    children: React.ReactNode
-} & Omit<TimelineItemProps, 'titleTag'>
 
 const TimelineItem = ({
     title,

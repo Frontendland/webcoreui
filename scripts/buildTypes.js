@@ -57,7 +57,6 @@ const buildTypes = type => {
                 'Rating',
                 'Spinner',
                 'Table',
-                'TimelineItem',
                 'Progress'
             ]
     
