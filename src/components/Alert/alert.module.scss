@@ -37,11 +37,11 @@
     svg {
         @include size(20px);
         min-width: 20px;
-        margin-top: 1px;
+        margin-top: 2.5px;
     }
 
     .title {
-        @include spacing(mb-xs);
+        @include typography(hmd);
         display: block;
     }
 
