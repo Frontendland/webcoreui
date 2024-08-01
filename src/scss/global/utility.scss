@@ -1,88 +1,106 @@
+@use 'sass:string';
+@use 'sass:meta';
+@use 'sass:list';
+@use 'sass:map';
 @use '../config' as *;
+
+$breakpointMap: (
+    'xs': 3,
+    'sm': 4,
+    'md': 6,
+    'lg': 8
+);
+
+$alignments: (
+    'items-center': center,
+    'items-start': flex-start,
+    'items-end': flex-end,
+    'items-baseline': baseline,
+    'items-stretch': stretch,
+
+    'justify-center': center,
+    'justify-start': flex-start,
+    'justify-end': flex-end,
+    'justify-between': space-between,
+    'justify-around': space-around,
+    'justify-evenly': space-evenly,
+    'justify-stretch': stretch  
+);
 
 @mixin utility() {
     .container {
-        margin: 0 auto;
+        @include spacing(auto-none, px-default);
         max-width: 1200px;
-        padding: 0 20px;
+    }
+
+    // Gaps
+    .flex, .grid {
+        @each $key, $value in $spacing {
+            $numberList: ('2', '3', '4', '5');
+            $firstLetter: string.slice($key, 1, 1);
+            $class: $key;
+            
+            @if (list.index($numberList, $firstLetter)) {
+              $class: string.slice($key, 2, -1) + $firstLetter;
+            }
+
+            &.#{$class} { gap: $value; }        
+        }
+    }
+
+    // Alignments
+    @each $key, $value in $alignments {
+        .#{$key} {
+            @if (string.index($key, 'items')) {
+                align-items: $value;
+            } @else {
+                justify-content: $value;
+            } 
+        }
+    }
+
+    .flex.center,
+    .grid.center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flex {
+        @include layout(flex, default);
+
+        @each $direction in $flexDirectionValues {
+            &.#{$direction} {
+                flex-direction: $direction;
+            }
+        }
+
+        @each $wrap in $flexWrapValues {
+            &.#{$wrap} {
+                flex-wrap: $wrap;
+            }
+        }
     }
 
     .grid {
-        display: grid;
-        gap: 20px;
+        @include layout(grid, default);
 
         &.col-2 {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
-    }
 
-    .flex {
-        display: flex;
-        gap: 20px;
-
-        &.column {
-            flex-direction: column;
-        }
-
-        &.xs {
-            gap: 5px;
-        }
-
-        &.sm {
-            gap: 10px;
-        }
-
-        &.wrap {
-            flex-wrap: wrap;
-        }
-
-        &.center {
-            justify-content: center;
-            align-items: center;
-        }
-
-        &.justify-center {
-            justify-content: center;
-        }
-
-        &.items-center {
-            align-items: center;
-        }
-
-        &.items-start {
-            align-items: flex-start;
-        }
-    }
-
-    .my {
-        margin: 20px auto;
-    }
-
-    @include media('md') {
-        .grid.md-2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .grid.md-3 {
+        &.col-3 {
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
-
-        .grid.md-4 {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
     }
 
-    @include media('lg') {
-        .grid.lg-2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .grid.lg-3 {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
-        .grid.lg-4 {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+    // Grid columns
+    @each $key, $value in $breakpoints {
+        @include media($key) {
+            @for $i from 2 to map.get($breakpointMap, $key) + 1 {
+                .grid.#{$key}-#{$i} {
+                    grid-template-columns: repeat($i, minmax(0, 1fr));
+                }
+            }
         }
     }
 }

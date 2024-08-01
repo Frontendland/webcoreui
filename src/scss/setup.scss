@@ -2,7 +2,7 @@
 
 $config: (
     includeResets: true,
-    includeHelperClasses: true,
+    includeUtilities: true,
     includeTooltip: true,
     includeScrollbarStyles: true
 );
@@ -25,7 +25,7 @@ body {
         @include resets();
     }
 
-    @if (config('includeHelperClasses')) {
+    @if (config('includeUtilities')) {
         @include utility();
     }
 

@@ -99,7 +99,7 @@ The `Setup` mixin can also accept the following options:
 | Property  | Default value | Purpose |
 |-----------|---------------|---------|
 | `includeResets` | `true` | Include reset styles. Set to `false` if you want to use your own CSS resets. |
-| `includeHelperClasses` | `true` | Adds global helper classes for CSS. All global helper classes are defined [here](https://github.com/Frontendland/webcoreui/tree/main/src/scss/global). |
+| `includeUtilities` | `true` | Adds utility classes for CSS. Read more about the available utility classes [here](https://webcoreui.dev/docs/layout). |
 | `includeTooltip` | `true` | Adds styles for using tooltips.
 | `includeScrollbarStyles` | `true` | Adds styles for scrollbars.
 
