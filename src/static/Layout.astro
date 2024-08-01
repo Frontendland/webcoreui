@@ -10,15 +10,17 @@ const menuClasses = [
 ].filter(Boolean).join(' ')
 
 const theme = (Astro.cookies.get('w-theme')?.value || 'theme-dark') as string
+const isPath = (path: string) => Astro.url.pathname.includes(path)
 
 const menu = {
     logo: {
         html: logo
     },
     items: [
-        { url: '/resets', name: 'Resets' },
-        { url: '/svelte', name: 'Svelte' },
-        { url: '/react', name: 'React' }
+        { url: '/svelte', name: 'Svelte', active: isPath('svelte') },
+        { url: '/react', name: 'React', active: isPath('react') },
+        { url: '/resets', name: 'Resets', active: isPath('resets') },
+        { url: '/utilities', name: 'Utilities', active: isPath('utilities') }
     ]
 }
 
@@ -60,7 +62,7 @@ const externalLinks = [
                 ))}
             </div>
         </Menu>
-        <div class="container">
+        <div class="container my">
             <slot />
         </div>
     </body>
@@ -124,7 +126,11 @@ const externalLinks = [
         }
     }
 
-    .container {
-        margin-top: 20px;
+    .my {
+        @include spacing(auto-default);
+    }
+
+    .mb {
+        @include spacing(mb-default);
     }
 </style>

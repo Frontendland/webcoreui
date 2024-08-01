@@ -50,7 +50,11 @@
                 <ul>
                     {#each items as item}
                         <li>
-                            <a href={item.url} target={item.target}>
+                            <a
+                                href={item.url}
+                                target={item.target}
+                                class={item.active ? styles.active : null}
+                            >
                                 {item.name}
                             </a>
                         </li>

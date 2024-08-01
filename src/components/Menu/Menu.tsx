@@ -62,7 +62,11 @@ const Menu = ({
                         <ul>
                             {items.map((item, index) => (
                                 <li key={index}>
-                                    <a href={item.url} target={item.target}>
+                                    <a
+                                        href={item.url}
+                                        target={item.target}
+                                        className={item.active ? styles.active : undefined}
+                                    >
                                         {item.name}
                                     </a>
                                 </li>

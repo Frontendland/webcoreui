@@ -75,6 +75,10 @@
             &:hover {
                 @include typography(primary);
             }
+
+            &.active {
+                @include typography(primary);
+            }
         }
     }
 

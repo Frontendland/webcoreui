@@ -54,7 +54,11 @@ const wrapMenu = (logo?.url || logo?.html) && items?.length && Astro.slots.has('
                 <ul>
                     {items.map(item => (
                         <li>
-                            <a href={item.url} target={item.target}>
+                            <a
+                                href={item.url}
+                                target={item.target}
+                                class:list={[item.active && styles.active]}
+                            >
                                 {item.name}
                             </a>
                         </li>

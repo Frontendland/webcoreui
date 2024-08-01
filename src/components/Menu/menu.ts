@@ -3,6 +3,7 @@ export type MenuProps = {
         url: string
         name: string
         target?: string
+        active?: boolean
     }[]
     logo?: {
         url?: string
