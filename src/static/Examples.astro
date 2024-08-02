@@ -1,0 +1,268 @@
+---
+import Card from '@components/Card/Card.astro'
+import Input from '@components/Input/Input.astro'
+import Badge from '@components/Badge/Badge.astro'
+import Button from '@components/Button/Button.astro'
+import Checkbox from '@components/Checkbox/Checkbox.astro'
+import Radio from '@components/Radio/Radio.astro'
+import Switch from '@components/Switch/Switch.astro'
+import Avatar from '@components/Avatar/Avatar.astro'
+import Tabs from '@components/Tabs/Tabs.astro'
+import Table from '@components/Table/Table.astro'
+import Timeline from '@components/Timeline/Timeline.astro'
+import Progress from '@components/Progress/Progress.astro'
+import Rating from '@components/Rating/Rating.astro'
+import Spinner from '@components/Spinner/Spinner.astro'
+import TimelineItem from '@components/TimelineItem/TimelineItem.astro'
+
+import { avatarGroup } from '@data'
+
+const tabItems = [{
+    label: 'Profile',
+    value: 'profile',
+    active: true
+}, {
+    label: 'Contact',
+    value: 'contact'
+}]
+
+const radioItems = [
+    { label: 'All messages', value: '1' },
+    { label: 'Direct messages only', value: '2', selected: true },
+    { label: 'No notifications', value: '3'},
+]
+
+const tasks = [
+    { theme: null, label: 'IP', ticket: 'W4567 - Home redesign' },
+    { theme: 'alert', label: 'P1', ticket: 'W2345 - Payment gateway warnings' },
+    { theme: 'warning', label: 'P3', ticket: 'W6789 - Investigate user auth issues' },
+    { theme: 'info', label: 'TODO', ticket: 'W1357 - Mobile redesign' }
+]
+---
+
+<div class="examples flex">
+    <div class="example-column flex column">
+        <Card title="Sign up">
+            <div class="flex column">
+                <Input label="Email" placeholder="Enter your email" />
+                <Input
+                    type="password"
+                    label="Password"
+                    placeholder="Enter your password"
+                    subText="Generate a unique password <a href='#'>here</a>"
+                />
+                <div>
+                    <Button theme="success">Create an account</Button>
+                    <Button theme="secondary">Sign in</Button>
+                </div>
+            </div>
+        </Card>
+        <Card>
+            <Timeline theme="fill">
+                <TimelineItem title="2020">
+                    <strong>Founded</strong>
+                    <br />
+                    <span class="muted">
+                        Launched our mission to transform online shopping with a handpicked selection of goods and a commitment to unparalleled customer care.
+                    </span>
+                </TimelineItem>
+                <TimelineItem title="2021">
+                    <strong>Expanded Offerings</strong>
+                    <br />
+                    <span class="muted">
+                        Introduced over 500 unique, locally-sourced products, enriching our collection and supporting small businesses.
+                    </span>
+                </TimelineItem>
+                <TimelineItem title="2022">
+                    <strong>⭐ Achieved Milestone</strong>
+                    <br />
+                    <span class="muted">
+                        Proudly served 100,000 happy customers, marked by launching same-day delivery in major cities and exclusive membership perks.
+                    </span>
+                </TimelineItem>
+            </Timeline>
+        </Card>
+    </div>
+    
+    <div class="example-column flex column">
+        <Card title="Settings">
+            <div class="flex column">
+                <Checkbox
+                    label="Enable all notifications"
+                    subText="Enable or disable all of your notification with one click. Previous settings will be overwritten."
+                />
+                <Switch label="Security emails" toggled={true} />
+                <Switch label="Marketing emails" />
+                <hr />
+                <strong class="slack">Slack notifications</strong>
+                <Radio
+                    items={radioItems}
+                    name="radio-example"
+                />
+            </div>
+        </Card>
+        <Card title="SEO Overview">
+            <span>Keep track of the SEO performance of your posts.</span>
+    
+            <div class="my flex column md">
+                <div>
+                    <div class="flex justify-between muted progress-label">
+                        <span>Underperforming</span>
+                        <span>50%</span>
+                    </div>
+                    <Progress value={50} color="var(--w-color-alert)" />
+                </div>
+                <div>
+                    <div class="flex justify-between muted progress-label">
+                        <span>OK</span>
+                        <span>30%</span>
+                    </div>
+                    <Progress value={30} color="var(--w-color-warning)" />
+                </div>
+                <div>
+                    <div class="flex justify-between muted progress-label">
+                        <span>SEO-friendly</span>
+                        <span>20%</span>
+                    </div>
+                    <Progress value={20} color="var(--w-color-success)" />
+                </div>
+            </div>
+        </Card>
+    </div>
+
+    <div class="example-column flex column">
+        <Card>
+            <Tabs items={tabItems} theme="boxed" even={true}>
+                <div data-tab="profile" data-active="true">
+                    <div class="flex sm items-center">
+                        <Avatar
+                            img="/img/avatar2.png" 
+                            size={50}
+                        />
+                        <div class="flex column xs">
+                            <span>Emily</span>
+                            <span class="muted">QA Engineer</span>
+                        </div>
+                    </div>
+    
+                    <strong class="tasks">Tasks</strong>
+                    <hr />
+                    <div class="flex column xs">
+                        {tasks.map(task => (
+                            <div>
+                                <Badge theme={task.theme as any}>
+                                    {task.label}
+                                </Badge>
+                                <a href="#" class="muted task">
+                                    {task.ticket}
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div data-tab="contact">
+                    <Table
+                        data={[
+                            ['Phone', '+1 234 5678'],
+                            ['Email', '<a href="#">emily@example.com</a>'],
+                            ['Slack', '@emily09'],
+                            ['Address', 'Mars, Pennsylvania']
+                        ]}
+                    />
+                </div>
+            </Tabs>
+        </Card>
+
+        <Card>
+            <div class="flex sm items-center">
+                <Avatar
+                    img="/img/avatar0.png" 
+                    size={50}
+                />
+                <div class="flex column xs">
+                    <span>Marcus</span>
+                    <span class="muted" data-tooltip="In Art & Collectibles">
+                        Top rated seller
+                    </span>
+                </div>
+            </div>
+            <hr />
+            <Rating
+                score={4.8}
+                showText={true}
+                reviewCount={123}
+                reviewLink="#"
+                reviewTarget="_blank"
+            />
+            <div class="flex center sm loading">
+                <Spinner />
+                <span class="muted">
+                    Loading reviews...
+                </span>
+            </div>
+            <hr />
+            <div class="sellers">
+                <strong>Explore other sellers</strong>
+                <a href="#">
+                    <Avatar
+                        size={[30, 40, 50, 40, 30]}
+                        img={avatarGroup}
+                    />
+                </a>
+            </div>
+        </Card>
+    </div>
+</div>
+
+<style is:global lang="scss">
+    @import '../scss/config.scss';
+
+    .examples {
+        margin-top: 100px;
+        overflow-x: scroll;
+        scrollbar-width: none;
+    }
+
+    .example-column {
+        min-width: 370px;
+        width: 370px;
+    }
+
+    .slack {
+        margin-top: -5px;
+    }
+
+    .tasks {
+        @include spacing(mt-sm);
+        display: block;
+    }
+
+    .task {
+        @include typography(none);
+
+        &:hover {
+            @include typography(primary);
+        }
+    }
+
+    .progress-label {
+        @include spacing(mb-xs);
+    }
+
+    .loading {
+        @include spacing(mt-default);
+
+        svg {
+            @include spacing(m0);
+        }
+    }
+
+    .sellers {
+        @include typography(center);
+
+        strong {
+            @include spacing(my-xs);
+            display: block;
+        }
+    }
+</style>

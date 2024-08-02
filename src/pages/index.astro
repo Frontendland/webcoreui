@@ -1,5 +1,6 @@
 ---
 import Layout from '@static/Layout.astro'
+import Examples from '@static/Examples.astro'
 import CardWrapper from '@static/CardWrapper.astro'
 
 import Accordion from '@components/Accordion/Accordion.astro'
@@ -66,7 +67,9 @@ const tabItems = [{
     </div>
 
     <ThemeSwitcher themes={themes} className="switcher" />
+    <Examples />
 
+    <h2 class="my">Components</h2>
     <div class="grid md-2 lg-3">
         <CardWrapper title="Accordion" href="/accordion">
             <Accordion items={accordionItems} />
@@ -174,6 +177,9 @@ const tabItems = [{
 </Layout>
 
 <style is:global lang="scss">
+    h2.my {
+       margin-top: 100px;
+    }
 
     .a {
         background: #B545ED;
@@ -182,11 +188,11 @@ const tabItems = [{
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-    
+
     .s {
         color: #FF3E00;
     }
-    
+
     .r {
         color: #61DAFB;
     }
@@ -197,17 +203,13 @@ const tabItems = [{
         justify-content: center;
         gap: 10px;
     }
-    
-    .grid {
-        margin-top: 100px;
-        
-        .card-wrapper > div {
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+
+    .card-wrapper > div {
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
     }
 
     .menu-example {
