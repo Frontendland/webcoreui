@@ -16,7 +16,6 @@
     .title {
         @include spacing(p-default);
         @include border(primary-50, bottom);
-        @include typography(md);
         display: block;
     }
 

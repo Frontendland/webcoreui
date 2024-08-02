@@ -5,7 +5,7 @@
 
     table {
         @include size('w100%');
-        @include typography(md, left);
+        @include typography(left);
 
         border-collapse: collapse;
     }

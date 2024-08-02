@@ -6,7 +6,7 @@ body {
 
 .checkbox {
     @include layout(inline-flex, sm);
-    @include typography(md, hmd);
+    @include typography(hmd);
 
     cursor: pointer;
 
@@ -57,7 +57,7 @@ body {
 
     .text {
         @include spacing(ml-lg);
-        @include typography(sm, primary-20);
+        @include typography(md, primary-20);
 
         a {
             @include typography(primary-20);

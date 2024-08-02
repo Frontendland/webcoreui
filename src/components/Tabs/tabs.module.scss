@@ -76,7 +76,7 @@
         button {
             @include transition(color);
             @include background(transparent);
-            @include typography(md, primary-20);
+            @include typography(default, primary-20);
             @include border(0);
             @include spacing(p-md);
             @include layout(flex, v-center, sm);

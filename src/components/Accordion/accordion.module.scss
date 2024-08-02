@@ -7,7 +7,6 @@
     li {
         @include border(primary-50, bottom);
         @include spacing(py-sm, px-none, m0);
-        @include typography(md);
 
         &:first-child {
             padding-top: 0;
@@ -20,7 +19,7 @@
 
         .title {
             @include layout(flex, h-between, v-center, sm);
-            @include typography(md, primary, left);
+            @include typography(default, primary, left);
             @include size('w100%');
             @include spacing(p0);
             @include border(0);

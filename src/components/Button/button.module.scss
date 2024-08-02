@@ -2,7 +2,7 @@
 
 .button {
     @include layout(inline-flex, v-center, xs);
-    @include typography(md, primary-50, none);
+    @include typography(default, primary-50, none);
     @include spacing(py-sm, px-md);
     @include border-radius(xs);
     @include border(0);

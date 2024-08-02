@@ -54,7 +54,7 @@
     @include layout(flex, column);
 
     .label {
-        @include typography(md, primary-20);
+        @include typography(primary-20);
         @include spacing(mb-xs);
     }
 
@@ -73,7 +73,7 @@
     }
 
     .subtext {
-        @include typography(sm, primary-30);
+        @include typography(md, primary-30);
         @include spacing(mt-xs);
     }
 }

@@ -53,7 +53,7 @@
     pre {
         @include border(primary-50);
         @include border-radius(md);
-        @include typography(sm);
+        @include typography(md);
     }
 
     code {
@@ -73,7 +73,7 @@
     }
 
     figcaption {
-        @include typography(sm, primary-20);  
+        @include typography(md, primary-20);  
         
         a {
             @include typography(primary-20);
@@ -85,7 +85,7 @@
     }
 
     p, ul, ol {
-        @include typography(md, hlg);
+        @include typography(hlg);
         @include spacing(my-default);
     }
 
@@ -94,8 +94,13 @@
     }
 
     blockquote {
-        @include typography(md);
         @include spacing(my-default, mx-none, pl-default);
         @include border(2px, left, primary-30);
+    }
+
+    hr {
+        @include size('w100%', h1px);
+        @include border(0);
+        @include background(primary-50);
     }
 }    

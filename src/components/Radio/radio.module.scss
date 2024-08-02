@@ -13,7 +13,6 @@ body {
 
     label {
         @include layout(flex, xs);
-        @include typography(md);
 
         cursor: pointer;
 
@@ -71,7 +70,7 @@ body {
 
     .subtext {
         @include spacing(ml-lg);
-        @include typography(sm, primary-20);
+        @include typography(md, primary-20);
 
         a {
             @include typography(primary-20);

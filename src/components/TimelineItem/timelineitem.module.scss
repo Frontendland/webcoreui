@@ -2,7 +2,6 @@
 
 .item {
     @include position(relative);
-    @include typography(md);
     @include spacing(m0);
 
     &::before {
@@ -10,7 +9,7 @@
         @include size(25px);
         @include border-radius(max);
         @include background(var(--w-timeline-color));
-        @include typography(sm);
+        @include typography(md);
         @include layout(inline-flex, center);
         @include border(2px, primary-70);
 
@@ -21,7 +20,7 @@
     }
 
     .title {
-        @include typography(bold, default);
+        @include typography(bold, lg);
         @include spacing(mb-sm);
 
         display: block;

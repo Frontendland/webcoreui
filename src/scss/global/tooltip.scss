@@ -24,7 +24,7 @@
         &::before {
             @include border-radius(md);
             @include position(absolute);
-            @include typography(sm, hlg);
+            @include typography(md, hlg);
             @include background(var(--w-tooltip-background));
             @include size(wmax-content);
             @include spacing(px-xs);

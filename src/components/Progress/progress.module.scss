@@ -11,19 +11,19 @@ body {
     @include size('w100%', h10px);
     @include border-radius(xl);
     @include visibility(hidden);
-    @include typography(bold, xxs);
+    @include typography(bold, xs);
     @include background(var(--w-progress-background));
 
     color: var(--w-progress-background);
     
     &.medium {
         @include size(h15px);
-        @include typography(xs);
+        @include typography(sm);
     }
 
     &.large {
         @include size(h20px);
-        @include typography(sm);
+        @include typography(md);
     }
 
     &.square {

@@ -41,11 +41,11 @@
     }
 
     .title {
-        @include typography(hmd);
+        @include typography(lg, hmd);
         display: block;
     }
 
     .body {
-        @include typography(primary-20, md, hmd);
+        @include typography(primary-20, hmd);
     }
 }

@@ -35,7 +35,7 @@ body {
     
     .text {
         @include transition(color);
-        @include typography(md, primary-20);
+        @include typography(default, primary-20);
         @include spacing(ml-xs);
 
         &.m {

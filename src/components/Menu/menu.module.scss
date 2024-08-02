@@ -3,7 +3,6 @@
 .menu {
     @include background(primary-70);
     @include spacing(p-md);
-    @include typography(md);
     @include border(bottom, primary-50);
     @include position(sticky, t0);
     @include layer(header);

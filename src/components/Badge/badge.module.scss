@@ -5,7 +5,7 @@
     @include spacing(py-xs, px-sm);
     @include border-radius(xs);
     @include layout(inline-flex, v-center, xs);
-    @include typography(xs, primary-50);
+    @include typography(sm, primary-50);
     @include border(0);
     @include background(primary);
 
