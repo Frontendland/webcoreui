@@ -148,6 +148,16 @@ const sections = getSections({
                     <section.component score={5} total={10} />
                 </div>
             </ComponentWrapper>
+
+            <ComponentWrapper title="Decimal rating">
+                <section.component
+                    score={4.8}
+                    showText={true}
+                    reviewCount={123}
+                    reviewLink="/avatar"
+                    reviewTarget="_blank"
+                />
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>

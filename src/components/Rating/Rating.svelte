@@ -42,11 +42,11 @@
 
 <span class={classes} style={styleVariables}>
     {#if score}
-        <span class={styles.score}>{Array(score).fill('★').join('')}</span>
+        <span class={styles.score}>{Array(Math.round(score)).fill('★').join('')}</span>
     {/if}
     {#if showEmpty}
     <span class={styles.empty}>
-            {Array((total || 5) - score).fill('★').join('')}
+            {Array((total || 5) - Math.round(score)).fill('★').join('')}
         </span>
     {/if}
 

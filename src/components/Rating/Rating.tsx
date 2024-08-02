@@ -43,12 +43,12 @@ const Rating = ({
         <span className={classes} style={styleVariables}>
             {score > 0 && (
                 <span className={styles.score}>
-                    {Array(score).fill('★').join('')}
+                    {Array(Math.round(score)).fill('★').join('')}
                 </span>
             )}
             {showEmpty && (
                 <span className={styles.empty}>
-                    {Array(total - score).fill('★').join('')}
+                    {Array(total - Math.round(score)).fill('★').join('')}
                 </span>
             )}
             {showText && (
