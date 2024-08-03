@@ -43,7 +43,9 @@
             {/if}
 
             {#if !centerLogo && logo?.html}
-                <a href="/">{@html logo.html}</a>
+                <a href="/" aria-label={logo.alt || 'Logo'}>
+                    {@html logo.html}
+                </a>
             {/if}
         
             {#if items?.length}
@@ -73,7 +75,9 @@
         {/if}
             
         {#if centerLogo && logo?.html}
-            <a href="/">{@html logo.html}</a>
+            <a href="/" aria-label={logo.alt || 'Logo'}>
+                {@html logo.html}
+            </a>
         {/if}
 
         {#if logo?.url && centerLogo}

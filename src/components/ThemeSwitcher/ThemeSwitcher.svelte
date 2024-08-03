@@ -61,9 +61,10 @@
 >
     {#each Object.keys(themes) as theme, index}
         <button
+            on:click={() => setTheme(toggle ? index : themes[theme])}
             style={!useIcons ? `background:${theme};` : undefined}
             data-active={currentTheme === themes[theme]}
-            on:click={() => setTheme(toggle ? index : themes[theme])}
+            aria-label={themes[theme]}
             class={classNames([
                 styles.switch,
                 useIcons && styles.icons

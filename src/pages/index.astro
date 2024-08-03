@@ -26,7 +26,12 @@ import TimelineItem from '@components/TimelineItem/TimelineItem.astro'
 import infoIcon from '../icons/info.svg?raw'
 import gitHubIcon from '../icons/github.svg?raw'
 
-import { themes, accordionItems, avatarGroup } from '@data'
+import {
+    themes,
+    accordionItems,
+    avatarGroup,
+    avatarGroupAlt2
+} from '@data'
 
 import logo from '../../public/img/logo.svg?raw'
 
@@ -81,6 +86,7 @@ const tabItems = [{
             <Avatar
                 size={[30, 40, 50, 40, 30]}
                 img={avatarGroup}
+                alt={avatarGroupAlt2}
             />
         </CardWrapper>
         <CardWrapper title="Badge" href="/badge">
@@ -195,6 +201,10 @@ const tabItems = [{
 
     .r {
         color: #61DAFB;
+    }
+
+    .theme-light .r {
+        color: #00a0cc;
     }
 
     .cta {

@@ -70,8 +70,9 @@ const ThemeSwitcher = ({
             {Object.keys(themes as {}).map((theme, index) => (
                 <button
                     key={index}
-                    data-active={currentTheme === themes[theme]}
                     onClick={() => setTheme(toggle ? index : themes[theme])}
+                    data-active={currentTheme === themes[theme]}
+                    aria-label={themes[theme]}
                     style={!useIcons ? { background: theme } : undefined}
                     className={classNames([
                         styles.switch,

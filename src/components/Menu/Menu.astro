@@ -45,7 +45,7 @@ const wrapMenu = (logo?.url || logo?.html) && items?.length && Astro.slots.has('
             )}
 
             {!centerLogo && logo?.html && (
-                <a href="/">
+                <a href="/" aria-label={logo.alt || 'Logo'}>
                     <Fragment set:html={logo.html} />
                 </a>
             )}
@@ -77,7 +77,7 @@ const wrapMenu = (logo?.url || logo?.html) && items?.length && Astro.slots.has('
         )}
 
         {centerLogo && logo?.html && (
-            <a href="/">
+            <a href="/" aria-label={logo.alt || 'Logo'}>
                 <Fragment set:html={logo.html} />
             </a>
         )}

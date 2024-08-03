@@ -55,6 +55,7 @@ const Menu = ({
                         <a
                             href="/"
                             dangerouslySetInnerHTML={{ __html: logo.html }}
+                            aria-label={logo.alt || 'Logo'}
                         />
                     )}
 
@@ -88,6 +89,7 @@ const Menu = ({
                     <a
                         href="/"
                         dangerouslySetInnerHTML={{ __html: logo.html }}
+                        aria-label={logo.alt || 'Logo'}
                     />
                 )}
 

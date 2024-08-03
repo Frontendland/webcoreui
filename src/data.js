@@ -14,11 +14,27 @@ export const accordionItems = [{
 }]
 
 export const avatarGroup = [
-    "/img/avatar0.png",
-    "/img/avatar1.png",
-    "/img/avatar2.png",
-    "/img/avatar3.png",
-    "/img/avatar4.png"
+    '/img/avatar0.png',
+    '/img/avatar1.png',
+    '/img/avatar2.png',
+    '/img/avatar3.png',
+    '/img/avatar4.png'
+]
+
+export const avatarGroupAlt1 = [
+    'avatar0',
+    'avatar1',
+    'avatar2',
+    'avatar3',
+    'avatar4'
+]
+
+export const avatarGroupAlt2 = [
+    'Marcus',
+    'Giuseppe',
+    'Emily',
+    'Frank',
+    'Jonathan'
 ]
 
 export const tabItems = [{

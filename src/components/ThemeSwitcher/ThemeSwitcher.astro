@@ -38,6 +38,7 @@ const buttonClasses = [
         <button
             style={!useIcons ? `background:${theme};` : undefined}
             data-theme={themes[theme]}
+            aria-label={themes[theme]}
             class:list={buttonClasses}
         >
             {index === 0 && <slot name="primaryIcon" />}

@@ -1,6 +1,8 @@
 ---
+import Alert from '@components/Alert/Alert.astro'
 import Card from '@components/Card/Card.astro'
 import Input from '@components/Input/Input.astro'
+import Icon from '@components/Icon/Icon.astro'
 import Badge from '@components/Badge/Badge.astro'
 import Button from '@components/Button/Button.astro'
 import Checkbox from '@components/Checkbox/Checkbox.astro'
@@ -15,7 +17,7 @@ import Rating from '@components/Rating/Rating.astro'
 import Spinner from '@components/Spinner/Spinner.astro'
 import TimelineItem from '@components/TimelineItem/TimelineItem.astro'
 
-import { avatarGroup } from '@data'
+import { avatarGroup, avatarGroupAlt2 } from '@data'
 
 const tabItems = [{
     label: 'Profile',
@@ -207,10 +209,17 @@ const tasks = [
                     <Avatar
                         size={[30, 40, 50, 40, 30]}
                         img={avatarGroup}
+                        alt={avatarGroupAlt2}
                     />
                 </a>
             </div>
         </Card>
+
+        <Alert title="Deployments">
+            <Icon type="github" slot="icon" />
+            <span>Connect your project to GitHub to start running automatic deployments.</span>
+            <Button className="connect">Connect</Button>
+        </Alert>
     </div>
 </div>
 
@@ -264,5 +273,10 @@ const tasks = [
             @include spacing(my-xs);
             display: block;
         }
+    }
+
+    .connect {
+        @include spacing(mt-sm);
+        @include typography(md);
     }
 </style>
