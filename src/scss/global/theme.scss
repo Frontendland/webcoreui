@@ -67,70 +67,97 @@
             --w-color-primary-60: #101a2d;
             --w-color-primary-70: #061321;
 
-            --w-color-info: #1058b6;
-            --w-color-info-accent: #176ee0;
-            --w-color-info-fg: #FFF;
-            --w-color-success: #10ac95;
-            --w-color-success-accent: #1DD1A1;
-            --w-color-success-fg: #000;
-            --w-color-warning: #FF9F43;
-            --w-color-warning-accent: #f7AA61;
-            --w-color-warning-fg: #000;
-            --w-color-alert: #de3233;
-            --w-color-alert-accent: #EE5253;
-            --w-color-alert-fg: #FFF;
-        }
-    }
-
-    @if $theme == green {
-        #{$selector} {
-            --w-color-scheme: dark;
-            --w-color-primary: #FFF;
-            --w-color-primary-10: #EEE;
-            --w-color-primary-20: #b7ffe4;
-            --w-color-primary-30: #dad7cd;
-            --w-color-primary-40: #10AC84;
-            --w-color-primary-50: #4d6e4c;
-            --w-color-primary-60: #315037;
-            --w-color-primary-70: #22392d;
-
-            --w-color-info: #0ABDE3;
-            --w-color-info-accent: #48DBFB;
+            --w-color-info: #57a0ff;
+            --w-color-info-accent: #71afff;
             --w-color-info-fg: #000;
-            --w-color-success: #10AC84;
+            --w-color-success: #10b59c;
             --w-color-success-accent: #1DD1A1;
             --w-color-success-fg: #000;
             --w-color-warning: #FF9F43;
-            --w-color-warning-accent: #f7AA61;
+            --w-color-warning-accent: #feb570;
             --w-color-warning-fg: #000;
-            --w-color-alert: #de3233;
-            --w-color-alert-accent: #EE5253;
+            --w-color-alert: #ed3b3c;
+            --w-color-alert-accent: #fb6161;
             --w-color-alert-fg: #FFF;
         }
     }
 
-    @if $theme == beige {
+    @if $theme == 'vintage' {
         #{$selector} {
             --w-color-scheme: dark;
             --w-color-primary: #000;
             --w-color-primary-10: #111;
-            --w-color-primary-20: #97725c;
+            --w-color-primary-20: #6b4430;
             --w-color-primary-30: #d6ccc2;
-            --w-color-primary-40: #e3d5ca;
-            --w-color-primary-50: #ecddcd;
-            --w-color-primary-60: #f1e6da;
+            --w-color-primary-40: #cbb39a;
+            --w-color-primary-50: #e8d0b7;
+            --w-color-primary-60: #f5e6d5;
             --w-color-primary-70: #f5ebe0;
 
-            --w-color-info: #0ABDE3;
+            --w-color-info: #6d95d1;
             --w-color-info-accent: #48DBFB;
             --w-color-info-fg: #000;
-            --w-color-success: #10AC84;
+            --w-color-success: #85c8ba;
             --w-color-success-accent: #1DD1A1;
             --w-color-success-fg: #000;
-            --w-color-warning: #FF9F43;
+            --w-color-warning: #e79d6b;
             --w-color-warning-accent: #f7AA61;
             --w-color-warning-fg: #000;
-            --w-color-alert: #de3233;
+            --w-color-alert: #bf6170;
+            --w-color-alert-accent: #EE5253;
+            --w-color-alert-fg: #FFF;
+        }
+    }
+
+    @if $theme == 'amber' {
+        #{$selector} {
+            --w-color-scheme: dark;
+            --w-color-primary: #FFF;
+            --w-color-primary-10: #DDD;
+            --w-color-primary-20: #FFF3DB;
+            --w-color-primary-30: #757575;
+            --w-color-primary-40: #232323;
+            --w-color-primary-50: #312e31;
+            --w-color-primary-60: #222;
+            --w-color-primary-70: #111;
+
+            --w-color-info: #78dcdc;
+            --w-color-info-accent: #48DBFB;
+            --w-color-info-fg: #000;
+            --w-color-success: #a9dc62;
+            --w-color-success-accent: #97da3b;
+            --w-color-success-fg: #000;
+            --w-color-warning: #FCBA28;
+            --w-color-warning-accent: #f7AA61;
+            --w-color-warning-fg: #000;
+            --w-color-alert: #ff6188;
+            --w-color-alert-accent: #EE5253;
+            --w-color-alert-fg: #000;
+        }
+    }
+
+    @if $theme == 'synthwave' {
+        #{$selector} {
+            --w-color-scheme: dark;
+            --w-color-primary: #FFF;
+            --w-color-primary-10: #EEE;
+            --w-color-primary-20: #fad1ba;
+            --w-color-primary-30: #a8b6de;
+            --w-color-primary-40: #8212ba;
+            --w-color-primary-50: #9D2BD6;
+            --w-color-primary-60: #0f1b33;
+            --w-color-primary-70: #030d1e;
+
+            --w-color-info: #1c98ff;
+            --w-color-info-accent: #6be4ff;
+            --w-color-info-fg: #000;
+            --w-color-success: #83e300;
+            --w-color-success-accent: #b7ff51;
+            --w-color-success-fg: #000;
+            --w-color-warning: #FF9F43;
+            --w-color-warning-accent: #ffb672;
+            --w-color-warning-fg: #000;
+            --w-color-alert: #ff3333;
             --w-color-alert-accent: #EE5253;
             --w-color-alert-fg: #FFF;
         }

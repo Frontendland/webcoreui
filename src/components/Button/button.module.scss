@@ -1,7 +1,7 @@
 @use '../../scss/config.scss' as *;
 
 .button {
-    @include layout(inline-flex, v-center, xs);
+    @include layout(inline-flex, center, xs);
     @include typography(default, primary-50, none);
     @include spacing(py-sm, px-md);
     @include border-radius(xs);

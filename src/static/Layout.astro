@@ -9,7 +9,7 @@ const menuClasses = [
     nonStickyMenu && 'fixed'
 ].filter(Boolean).join(' ')
 
-const theme = (Astro.cookies.get('w-theme')?.value || 'theme-dark') as string
+const theme = (Astro.cookies.get('w-theme')?.value || 'dark') as string
 const isPath = (path: string) => Astro.url.pathname.includes(path)
 
 const menu = {
@@ -19,6 +19,7 @@ const menu = {
     items: [
         { url: '/svelte', name: 'Svelte', active: isPath('svelte') },
         { url: '/react', name: 'React', active: isPath('react') },
+        { url: '/themes', name: 'Themes', active: isPath('themes') },
         { url: '/resets', name: 'Resets', active: isPath('resets') },
         { url: '/utilities', name: 'Utilities', active: isPath('utilities') }
     ]
@@ -76,11 +77,12 @@ const externalLinks = [
         fontRegular: '/fonts/Inter-Regular.woff2',
         fontBold: '/fonts/Inter-Bold.woff2',
         themes: (
-            dark: '.theme-dark',
-            light: '.theme-light',
-            midnight: '.theme-blue',
-            green: '.theme-green',
-            beige: '.theme-beige'
+            dark: '.dark',
+            light: '.light',
+            midnight: '.midnight',
+            vintage: '.vintage',
+            amber: '.amber',
+            synthwave: '.synthwave',
         )
     ));
 

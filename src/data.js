@@ -81,14 +81,15 @@ export const menuLogo = {
 }
 
 export const themes = {
-    '#252525': 'theme-dark',
-    '#DDD': 'theme-light',
-    '#415a77': 'theme-blue',
-    '#d5bdaf': 'theme-beige',
-    '#588157': 'theme-green'
+    '#252525': 'dark',
+    '#DDD': 'light',
+    '#415a77': 'midnight',
+    '#d5bdaf': 'vintage',
+    '#fCBA28': 'amber',
+    '#9D2BD6': 'synthwave',
 }
 
 export const toggleThemes = {
-    '#252525': 'theme-dark',
-    '#DDD': 'theme-light'
+    '#252525': 'dark',
+    '#DDD': 'light'
 }
