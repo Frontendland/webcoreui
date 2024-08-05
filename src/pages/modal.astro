@@ -1,0 +1,197 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import Button from '@components/Button/Button.astro'
+import AstroModal from '@components/Modal/Modal.astro'
+import SvelteModal from '@components/Modal/Modal.svelte'
+import ReactModal from '@components/Modal/Modal.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'modals',
+    components: [AstroModal, SvelteModal, ReactModal]
+})
+---
+
+<Layout>
+    <h1>Modal</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <Button theme="secondary" id="modal-btn-astro">
+                Trigger modal in Astro
+            </Button>
+
+            <AstroModal
+                title="Astro Modal"
+                subTitle="With a subtitle"
+                id="modal-astro"
+            >
+                <p>
+                    Click on the close icon, close button, overlay, or hit <code>esc</code> to close this modal.
+                </p>
+
+                <Button id="modal-close-btn-astro">
+                    Close Modal
+                </Button>
+            </AstroModal>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <Button theme="alert" id="modal-btn-svelte">
+                Trigger modal in Svelte
+            </Button>
+
+            <SvelteModal
+                title="Svelte Modal"
+                subTitle="With a subtitle"
+                id="modal-svelte"
+            >
+                <p>
+                    Click on the close icon, close button, overlay, or hit <code>esc</code> to close this modal.
+                </p>
+
+                <Button id="modal-close-btn-svelte">
+                    Close Modal
+                </Button>
+            </SvelteModal>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <Button theme="info" id="modal-btn-react">
+                Trigger modal in React
+            </Button>
+
+            <ReactModal
+                title="React Modal"
+                subTitle="With a subtitle"
+                id="modal-react"
+            >
+                <p>
+                    Click on the close icon, close button, overlay, or hit <code>esc</code> to close this modal.
+                </p>
+
+                <Button id="modal-close-btn-react">
+                    Close Modal
+                </Button>
+            </ReactModal>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map((section, index) => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default modal with content">
+                <Button theme="secondary" id={`modal-btn-0${index}`}>
+                    Trigger
+                </Button>
+                <section.component id={`modal-0${index}`}>
+                    Modal with content only
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Modal with title">
+                <Button theme="secondary" id={`modal-btn-1${index}`}>
+                    Trigger
+                </Button>
+                <section.component
+                    id={`modal-1${index}`}
+                    title="Information"
+                >
+                    Modal with a title
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Modal with title & sub title">
+                <Button theme="secondary" id={`modal-btn-2${index}`}>
+                    Trigger
+                </Button>
+                <section.component
+                    id={`modal-2${index}`}
+                    title="Information"
+                    subTitle="Before continuing, please read carefully"
+                >
+                    Modal with title and sub title
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="No close on Esc">
+                <Button theme="secondary" id={`modal-btn-3${index}`}>
+                    Trigger
+                </Button>
+                <section.component
+                    id={`modal-3${index}`}
+                    title="Modal"
+                    subTitle="No close on Esc"
+                    closeOnEsc={false}
+                >
+                    This modal cannot be closed by clicking the <code>esc</code> button.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="No close on overlay">
+                <Button theme="secondary" id={`modal-btn-4${index}`}>
+                    Trigger
+                </Button>
+                <section.component
+                    id={`modal-4${index}`}
+                    title="Modal"
+                    subTitle="No close on overlay"
+                    closeOnOverlay={false}
+                >
+                    This modal cannot be closed by clicking the overlay.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="No close button">
+                <Button theme="secondary" id={`modal-btn-5${index}`}>
+                    Trigger
+                </Button>
+                <section.component
+                    id={`modal-5${index}`}
+                    title="Modal"
+                    subTitle="No close button"
+                    showCloseIcon={false}
+                >
+                    This modal doesn't have a close button. It can only be closed by clicking on the overlay or using the <code>esc</code> button.
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<script>
+    import { modal, closeModal } from '@utils/modal'
+
+    const on = (element: string, callback: () => any) => {
+        document
+            .querySelector(element)
+            ?.addEventListener('click', callback)
+    }
+
+    const selectors = [
+        'astro',
+        'svelte',
+        'react'
+    ]
+
+    const ids = Array(5).fill(10).map((x, index) => x * (index + 1))
+    const variants = [
+        '00',
+        '01',
+        '02',
+        ...ids,
+        ...ids.map(x => x + 1),
+        ...ids.map(x => x + 2)
+    ]
+
+    selectors.forEach(selector => {
+        on(`#modal-btn-${selector}`, () => modal(`#modal-${selector}`))
+        on(`#modal-close-btn-${selector}`, () => closeModal(`#modal-${selector}`))
+    });
+
+    variants.forEach(variant => {
+        on(`#modal-btn-${variant}`, () => modal(`#modal-${variant}`))
+    })
+</script>

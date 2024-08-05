@@ -1,0 +1,67 @@
+@import '../../scss/config.scss';
+
+.modal {
+    @include transition();
+    @include position(fixed, 't50%', 'l50%');
+    @include spacing(0, p-default);
+    @include layer(modal);
+    @include visibility(block, 0);
+    @include border(primary-50);
+    @include background(primary-70);
+    @include typography(primary);
+    @include border-radius(md);
+    @include size('w90%');
+
+    transform: translate(-50%, calc(-50% + 15px));
+    max-width: 500px;
+    pointer-events: none;
+
+    &[data-show="true"] {
+        @include visibility(1);
+
+        transform: translate(-50%, -50%);
+        pointer-events: all;
+
+        + .overlay {
+            @include visibility(1);
+            pointer-events: all;
+        }
+    }
+
+    .close {
+        @include position(absolute, t10px, r10px);
+        @include spacing(p-xs);
+
+        svg {
+            @include size(10px);
+        }
+    }
+
+    .title {
+        @include typography(lg);
+        @include spacing(mb-xs);
+        display: block;
+    }
+
+    .subTitle {
+        @include typography(primary-20);
+        @include spacing(mb-xs);
+    }
+}
+
+.overlay {
+    @include transition(opacity);
+    @include position(fixed);
+    @include background(overlay);
+    @include layer(header);
+    @include visibility(0);
+
+    inset: 0;
+    pointer-events: none;
+}
+
+@include media(xs) {
+    .modal {
+        @include size('wauto');
+    }
+}

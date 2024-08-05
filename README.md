@@ -107,30 +107,51 @@ Default component styles can be changed by overriding the following CSS variable
 
 ```scss
 html body {
+    // Avatar component
     --w-avatar-border: var(--w-color-primary-70);
+
+    // Checkbox component
     --w-checkbox-color: var(--w-color-primary);
+
+    // Progress component
     --w-progress-color: var(--w-color-primary);
     --w-progress-background: var(--w-color-primary-50);
     --w-progress-stripe-light: var(--w-color-primary);
     --w-progress-stripe-dark: var(--w-color-primary-10);
+
+    // Radio component
     --w-radio-color: var(--w-color-primary);
+
+    // Rating component
     --w-rating-color: var(--w-color-primary);
     --w-rating-empty-color: var(--w-color-primary);
     --w-rating-empty-background: var(--w-color-primary-70);
     --w-rating-size: 18px;
+
+    // Scrollbars
     --w-scrollbar-bg: var(--w-color-primary-60);
     --w-scrollbar-fg: var(--w-color-primary-50);
+
+    // Spinner component
     --w-spinner-color: var(--w-color-primary);
     --w-spinner-width: 2px;
     --w-spinner-speed: 2s;
     --w-spinner-size: 30px;
     --w-spinner-dash: 8;
+
+    // Switch component
     --w-switch-off-color: var(--w-color-primary-50);
     --w-switch-on-color: var(--w-color-primary);
+
+    // ThemeSwitcher component
     --w-theme-switcher-size: 20px;
+
+    // Timeline component
     --w-timeline-color: var(--w-color-primary-50);
     --w-timeline-text-color: var(--w-color-primary);
     --w-timeline-counter: decimal;
+
+    // Tooltips
     --w-tooltip-background: var(--w-color-primary);
     --w-tooltip-color: var(--w-color-primary-70);
 
@@ -175,6 +196,7 @@ import { Accordion } from 'webcoreui/react'
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
 - [Input](https://github.com/Frontendland/webcoreui/tree/main/src/components/Input)
 - [Menu](https://github.com/Frontendland/webcoreui/tree/main/src/components/Menu)
+- [Modal](https://github.com/Frontendland/webcoreui/tree/main/src/components/Modal)
 - [Progress](https://github.com/Frontendland/webcoreui/tree/main/src/components/Progress)
 - [Radio](https://github.com/Frontendland/webcoreui/tree/main/src/components/Radio)
 - [Rating](https://github.com/Frontendland/webcoreui/tree/main/src/components/Rating)

@@ -1,0 +1,50 @@
+---
+import type { ModalProps } from './modal'
+import styles from './modal.module.scss'
+
+import Button from '../Button/Button.astro'
+import closeIcon from '../../icons/close.svg?raw'
+
+interface Props extends ModalProps {}
+
+const {
+    title,
+    subTitle,
+    showCloseIcon = true,
+    closeOnEsc = true,
+    closeOnOverlay = true,
+    id,
+    className
+} = Astro.props
+
+const close = [
+    showCloseIcon && 'icon',
+    closeOnEsc && 'esc',
+    closeOnOverlay && 'overlay'
+].filter(Boolean).join(',')
+
+const classes = [
+    styles.modal,
+    className
+]
+---
+
+<dialog
+    class:list={classes}
+    id={id}
+    data-close={close.length ? close : undefined}
+>
+    {showCloseIcon && (
+        <Button
+            theme="flat"
+            className={styles.close}
+            data-id="close"
+        >
+            <Fragment set:html={closeIcon} />
+        </Button>
+    )}
+    {title && <strong class={styles.title}>{title}</strong>}
+    {subTitle && <div class={styles.subTitle}>{subTitle}</div>}
+    <slot />
+</dialog>
+<div class={styles.overlay} />
