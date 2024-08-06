@@ -1,0 +1,42 @@
+---
+import type { SliderProps } from './slider'
+
+import styles from './slider.module.scss'
+import { classNames } from '../../utils/classNames'
+
+interface Props extends SliderProps {}
+
+const {
+    min,
+    max,
+    value,
+    step,
+    color,
+    background,
+    thumb,
+    id,
+    className
+} = Astro.props
+
+const classes = [
+    styles.slider,
+    className
+]
+
+const styleVariables = classNames([
+    color && `--w-slider-color: ${color};`,
+    background && `--w-slider-background: ${background};`,
+    thumb && `--w-slider-thumb: ${thumb};`
+])
+---
+
+<input
+    type="range"
+    min={min}
+    max={max}
+    value={value || min}
+    step={step}
+    class:list={classes}
+    id={id}
+    style={styleVariables}
+/>

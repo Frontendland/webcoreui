@@ -27,7 +27,8 @@ const buildTypes = type => {
                 'Checkbox',
                 'Input',
                 'Radio',
-                'Switch'
+                'Switch',
+                'Slider'
             ]
     
             return componentsWithSvelteSpecificTypes.includes(component)

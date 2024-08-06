@@ -15,6 +15,7 @@ import Menu from '@components/Menu/Menu.astro'
 import Progress from '@components/Progress/Progress.astro'
 import Radio from '@components/Radio/Radio.astro'
 import Rating from '@components/Rating/Rating.astro'
+import Slider from '@components/Slider/Slider.astro'
 import Spinner from '@components/Spinner/Spinner.astro'
 import Switch from '@components/Switch/Switch.astro'
 import Table from '@components/Table/Table.astro'
@@ -151,6 +152,9 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Rating" href="/rating">
             <Rating score={4} />
+        </CardWrapper>
+        <CardWrapper title="Slider" href="/slider">
+            <Slider min={0} max={100} value={50} />
         </CardWrapper>
         <CardWrapper title="Spinner" href="/spinner">
             <Spinner />

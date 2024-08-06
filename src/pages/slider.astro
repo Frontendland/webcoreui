@@ -1,0 +1,105 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroSlider from '@components/Slider/Slider.astro'
+import SvelteSlider from '@components/Slider/Slider.svelte'
+import ReactSlider from '@components/Slider/Slider.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'sliders',
+    components: [AstroSlider, SvelteSlider, ReactSlider],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>Slider</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroSlider min={0} max={100} value={50} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteSlider min={0} max={100} value={50} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactSlider min={0} max={100} value={50}  />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default with no value">
+                <section.component min={0} max={100}  />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With default value">
+                <section.component min={0} max={100} value={33}  />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With steps">
+                <section.component
+                    min={0}
+                    max={100}
+                    step={20}
+                    value={20} 
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With custom colors">
+                <section.component
+                    min={0}
+                    max={100}
+                    value={50}
+                    color="var(--w-color-success)"
+                    background="var(--w-color-primary-60)"
+                    thumb="var(--w-color-primary)"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label">
+                <div class="flex items-center xs">
+                    <section.component
+                        min={0}
+                        max={100}
+                        value={20}
+                        className="labelled"
+                    />
+                    <span class="muted">20</span>
+                </div>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label on top">
+                <span class="muted">40</span>
+                <section.component
+                    min={0}
+                    max={100}
+                    value={40}
+                    className="labelled1"
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<script>
+    const slider1 = document.querySelector('.labelled')
+    const slider2 = document.querySelector('.labelled1');
+
+    slider1?.addEventListener('change', (e: any) => {
+        e.target.nextElementSibling.innerText = e.target.value
+    })
+
+    slider2?.addEventListener('change', (e: any) => {
+        e.target.previousElementSibling.innerText = e.target.value
+    })
+
+</script>

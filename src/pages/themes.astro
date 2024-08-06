@@ -4,6 +4,7 @@ import Examples from '@static/Examples.astro'
 import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.astro'
 import Button from '@components/Button/Button.astro'
 import Toast from '@components/Toast/Toast.astro'
+import Slider from '@components/Slider/Slider.astro'
 
 import { themes } from '@data'
 ---
@@ -15,9 +16,8 @@ import { themes } from '@data'
 
     <div class="flex sm justify-center my column">
         <label class="flex column none">
-            <span class="muted">Radius</span>
-            <input
-                type="range"
+            <div class="muted">Radius</div>
+            <Slider
                 min={0}
                 max={100}
                 value={50}
@@ -85,8 +85,10 @@ import { themes } from '@data'
 </script>
 
 <style lang="scss">
-    input {
-        margin: 0;
+    @import '../scss/config.scss';
+
+    .muted {
+        @include spacing(mb-xs);
     }
 
     .flex {

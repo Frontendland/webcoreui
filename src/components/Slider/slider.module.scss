@@ -1,0 +1,48 @@
+@import '../../scss/config.scss';
+
+body {
+    --w-slider-background: var(--w-color-primary-50);
+    --w-slider-color: var(--w-color-primary);
+    --w-slider-thumb: var(--w-color-primary-50);
+}
+
+.slider {
+    @include border-radius(xl);
+    @include size('w100%');
+    @include visibility(hidden);
+    @include size(h10px);
+    @include spacing(m0);
+
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+    @include background(var(--w-slider-background));
+}
+
+.slider::-moz-range-track {
+    @include background(var(--w-slider-background));
+    @include size(h10px);
+}
+
+.slider::-webkit-slider-thumb {
+    @include background(var(--w-slider-thumb));
+    @include size(10px);
+    @include border-radius(max);
+    @include border(var(--w-slider-color));
+
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: -405px 0 0 400px var(--w-slider-color);
+}
+
+.slider::-moz-range-thumb {
+    @include background(var(--w-slider-thumb));
+    @include size(9px);
+    @include border-radius(max);
+    @include border(var(--w-slider-color));
+
+    box-shadow: -405px 0 0 400px var(--w-slider-color);
+}

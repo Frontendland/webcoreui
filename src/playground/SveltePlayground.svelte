@@ -9,6 +9,7 @@
     import Input from '@components/Input/Input.svelte'
     import Progress from '@components/Progress/Progress.svelte'
     import Radio from '@components/Radio/Radio.svelte'
+    import Slider from '@components/Slider/Slider.svelte'
     import Switch from '@components/Switch/Switch.svelte'
     import Tabs from '@components/Tabs/Tabs.svelte'
     import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.svelte'
@@ -24,6 +25,7 @@
     let radio = ''
     let toggle = false
     let input = ''
+    let slider = 50
 </script>
 
 <div class="playground grid md-2 lg-3">
@@ -130,6 +132,17 @@
             <Icon type="moon" slot="primaryIcon" />
             <Icon type="sun" slot="secondaryIcon" />
         </ThemeSwitcher>
+    </Card>
+
+    <Card title="Slider">
+        <Slider
+            min={0}
+            max={100}
+            value={slider}
+            onChange={e => slider = e.target.value}
+            className={styles.mt}
+        />
+        <span class={styles.span}>{slider}</span>
     </Card>
 </div>
 

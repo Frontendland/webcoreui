@@ -10,6 +10,7 @@ import Icon from '@components/Icon/Icon.tsx'
 import Input from '@components/Input/Input.tsx'
 import Progress from '@components/Progress/Progress.tsx'
 import Radio from '@components/Radio/Radio.tsx'
+import Slider from '@components/Slider/Slider.tsx'
 import Switch from '@components/Switch/Switch.tsx'
 import Tabs from '@components/Tabs/Tabs.tsx'
 import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.tsx'
@@ -26,6 +27,7 @@ const ReactPlayground = () => {
     const [radio, setRadio] = useState('')
     const [toggle, setToggle] = useState(false)
     const [input, setInput] = useState('')
+    const [slider, setSlider] = useState(50)
 
     return (
         <div className="grid md-2 lg-3">
@@ -134,6 +136,17 @@ const ReactPlayground = () => {
                     primaryIcon={<Icon type="moon" />}
                     secondaryIcon={<Icon type="sun" />}
                 />
+            </Card>
+
+            <Card title="Slider">
+                <Slider
+                    min={0}
+                    max={100}
+                    value={slider}
+                    onChange={e => setSlider(e.target.value)}
+                    className={styles.mt}
+                />
+                <span className={styles.span}>{slider}</span>
             </Card>
 
             <Toast title="Badge toast" id="badgeToast">
