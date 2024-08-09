@@ -34,8 +34,8 @@ body {
         }
 
         &:disabled + span {
-            @include background(primary-40);
-            @include border(primary-40);
+            @include background(primary-30);
+            @include border(primary-30);
             cursor: no-drop;
         }
     }

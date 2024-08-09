@@ -3,27 +3,6 @@
 @use 'sass:list';
 @use 'sass:string';
 
-@mixin transition($args...) {
-    $property: all;
-    $speed: .3s;
-
-    @each $arg in $args {
-        @if (meta.type-of($arg) == 'number') {
-            $speed: $arg;
-        } @else {
-            $property: $arg;
-        }
-    }
-
-    transition: $property $speed cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-@mixin media($breakpoint: 'xs') {
-    @media (min-width: #{map.get($breakpoints, $breakpoint)}) {
-        @content;
-    }
-}
-
 @mixin background($arg) {
     background: map.get($colorPalette, '#{$arg}') or $arg;
 }
@@ -71,122 +50,95 @@
 @mixin border-radius($args...) {
     $borderRadius: map.get($radius, 'md');
     $position: null;
-    $side: (
-        top: ('top-left', 'top-right'),
-        bottom: ('bottom-left', 'bottom-right'),
-        left: ('top-left', 'bottom-left'),
-        right: ('top-right', 'bottom-right')
-    );
-
+  
     @each $arg in $args {
-        @if (map.get($radius, $arg)) {
-            $borderRadius: map.get($radius, $arg);
-        }
-
-        @if (map.get($side, $arg)) {
-            $position: map.get($side, $arg);
-        }
+      @if (map.get($radius, $arg)) {
+        $borderRadius: map.get($radius, $arg);
+      }
+  
+      $side: (
+        top: $borderRadius $borderRadius 0 0,
+        bottom: 0 0 $borderRadius $borderRadius,
+        left: $borderRadius 0 0 $borderRadius,
+        right: 0 $borderRadius $borderRadius 0,
+        diagonal: $borderRadius 0,
+        reverse-diagonal: 0 $borderRadius
+      );
+  
+      @if (map.get($side, $arg)) {
+        $position: map.get($side, $arg);
+      }
     }
-
-    @if ($position) {
-        @each $key in $position {
-            border-#{$key}-radius: $borderRadius;
-        }
-    } @else {
-        border-radius: $borderRadius;
-    }
-}
-
-@mixin visibility($args...) {        
-    @each $arg in $args {
-        @if list.index($displayValues, $arg) {
-            display: $arg;
-        }
-
-        @if list.index($overflowValues, $arg) {
-            overflow: $arg;
-        }
-
-        @if (meta.type-of($arg) == 'number') {
-            opacity: $arg;
-        }
-    }
-}
+  
+    border-radius: $position or $borderRadius;
+  }
 
 @mixin layer($stack: 'default') {
     z-index: #{map.get($layers, $stack)};
 }
 
-@mixin size($args...) {
-    $singlePrefix: string.slice(list.nth(#{$args}, 1), 1, 1);
-    $isSingle: list.length($args) == 1
-        and $singlePrefix != 'w'
-        and $singlePrefix != 'h';
+@mixin layout($args...) {
+    $layouts: (flex, inline-flex, grid, inline-grid);
+    $alignments: (
+        vertical: (
+            'v-center': center,
+            'v-start': flex-start,
+            'v-end': flex-end,
+            'v-baseline': baseline,
+            'v-stretch': stretch
+        ),
+        horizontal: (
+            'h-center': center,
+            'h-start': flex-start,
+            'h-end': flex-end,
+            'h-between': space-between,
+            'h-around': space-around,
+            'h-evenly': space-evenly,
+            'h-stretch': stretch
+        )
+    );
 
-    @if ($isSingle) {
-        width: $args;
-        height: $args;
-    } @else {
-        @each $arg in $args {
-            @if (meta.type-of($arg) == string) {
-                $prefix: string.slice($arg, 1, 1);
-                $value: string.slice($arg, 2, -1);
+    @each $arg in $args {
+        @if (list.index($layouts, $arg)) {
+            display: $arg;
+        }
 
-                @if ($prefix == 'w') {
-                    width: string.unquote($value);
-                }
+        @if (map.get($spacing, $arg)) {
+            gap: map.get($spacing, $arg);
+        }
 
-                @if ($prefix == 'h') {
-                    height: string.unquote($value);
-                }
-            } @else {
-                @if (index($args, $arg) == 1) {
-                    width: $arg;
-                }
-    
-                @if (index($args, $arg) == 2) {
-                    height: $arg;
-                }
+        @if (meta.type-of($arg) == 'string') {
+            @if (string.index($arg, 'v-')) {
+                align-items: map.get(map.get($alignments, vertical), $arg)
             }
+    
+            @if (string.index($arg, 'h-')) {
+                justify-content: map.get(map.get($alignments, horizontal), $arg)
+            }
+        }
+
+        @if ($arg == 'center') {
+            align-items: center;
+            justify-content: center;
+        }
+
+        @if (list.index($flexDirectionValues, $arg)) {
+            flex-direction: $arg;
+        }
+
+        @if (meta.type-of($arg) == 'number') {
+            grid-template-columns: repeat($arg, minmax(0, 1fr));
+        }
+
+        @if (list.index($flexWrapValues, $arg)) {
+            flex-wrap: $arg;
         }
     }
 }
 
-@mixin typography($args...) {
-    @each $arg in $args {
-        $color: map.get($colorPalette, '#{$arg}');
-        $type: map.get($fontTypes, '#{$arg}');
-        $size: map.get($fontSizes, '#{$arg}');
-        $height: map.get($lineHeights, '#{$arg}');
-        $decoration: map.get($decorations, '#{$arg}');
-
-        @if ($color) {
-            color: $color;
-        }
-
-        @if ($type) {
-            font-family: $type;
-        }
-
-        @if ($size) {
-            font-size: $size;
-        }
-
-        @if list.index($fontWeights, $arg) {
-            font-weight: $arg;
-        }
-
-        @if list.index($textAlignValues, $arg) {
-            text-align: $arg;
-        }
-
-        @if ($decoration) {
-            text-decoration: $decoration;
-        }
-
-        @if ($height or (meta.type-of($arg) == 'number' and $arg < 100)) {
-            line-height: $height or $arg;
-        }
+@mixin media($breakpoint: 'xs') {
+    @media (min-width: #{map.get($breakpoints, $breakpoint)}) {
+        @content;
     }
 }
 
@@ -226,6 +178,41 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+        }
+    }
+}
+
+@mixin size($args...) {
+    $singlePrefix: string.slice(list.nth(#{$args}, 1), 1, 1);
+    $isSingle: list.length($args) == 1
+        and $singlePrefix != 'w'
+        and $singlePrefix != 'h';
+
+    @if ($isSingle) {
+        width: $args;
+        height: $args;
+    } @else {
+        @each $arg in $args {
+            @if (meta.type-of($arg) == string) {
+                $prefix: string.slice($arg, 1, 1);
+                $value: string.slice($arg, 2, -1);
+
+                @if ($prefix == 'w') {
+                    width: string.unquote($value);
+                }
+
+                @if ($prefix == 'h') {
+                    height: string.unquote($value);
+                }
+            } @else {
+                @if (index($args, $arg) == 1) {
+                    width: $arg;
+                }
+    
+                @if (index($args, $arg) == 2) {
+                    height: $arg;
+                }
+            }
         }
     }
 }
@@ -342,61 +329,71 @@
     }
 }
 
-@mixin layout($args...) {
-    $layouts: (flex, inline-flex, grid, inline-grid);
-    $alignments: (
-        vertical: (
-            'v-center': center,
-            'v-start': flex-start,
-            'v-end': flex-end,
-            'v-baseline': baseline,
-            'v-stretch': stretch
-        ),
-        horizontal: (
-            'h-center': center,
-            'h-start': flex-start,
-            'h-end': flex-end,
-            'h-between': space-between,
-            'h-around': space-around,
-            'h-evenly': space-evenly,
-            'h-stretch': stretch
-        )
-    );
+@mixin transition($args...) {
+    $property: all;
+    $speed: .3s;
 
     @each $arg in $args {
-        @if (list.index($layouts, $arg)) {
+        @if (meta.type-of($arg) == 'number') {
+            $speed: $arg;
+        } @else {
+            $property: $arg;
+        }
+    }
+
+    transition: $property $speed cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+@mixin typography($args...) {
+    @each $arg in $args {
+        $color: map.get($colorPalette, '#{$arg}');
+        $type: map.get($fontTypes, '#{$arg}');
+        $size: map.get($fontSizes, '#{$arg}');
+        $height: map.get($lineHeights, '#{$arg}');
+        $decoration: map.get($decorations, '#{$arg}');
+
+        @if ($color) {
+            color: $color;
+        }
+
+        @if ($type) {
+            font-family: $type;
+        }
+
+        @if ($size) {
+            font-size: $size;
+        }
+
+        @if list.index($fontWeights, $arg) {
+            font-weight: $arg;
+        }
+
+        @if list.index($textAlignValues, $arg) {
+            text-align: $arg;
+        }
+
+        @if ($decoration) {
+            text-decoration: $decoration;
+        }
+
+        @if ($height or (meta.type-of($arg) == 'number' and $arg < 100)) {
+            line-height: $height or $arg;
+        }
+    }
+}
+
+@mixin visibility($args...) {        
+    @each $arg in $args {
+        @if list.index($displayValues, $arg) {
             display: $arg;
         }
 
-        @if (map.get($spacing, $arg)) {
-            gap: map.get($spacing, $arg);
-        }
-
-        @if (meta.type-of($arg) == 'string') {
-            @if (string.index($arg, 'v-')) {
-                align-items: map.get(map.get($alignments, vertical), $arg)
-            }
-    
-            @if (string.index($arg, 'h-')) {
-                justify-content: map.get(map.get($alignments, horizontal), $arg)
-            }
-        }
-
-        @if ($arg == 'center') {
-            align-items: center;
-            justify-content: center;
-        }
-
-        @if (list.index($flexDirectionValues, $arg)) {
-            flex-direction: $arg;
+        @if list.index($overflowValues, $arg) {
+            overflow: $arg;
         }
 
         @if (meta.type-of($arg) == 'number') {
-            grid-template-columns: repeat($arg, minmax(0, 1fr));
-        }
-
-        @if (list.index($flexWrapValues, $arg)) {
-            flex-wrap: $arg;
+            opacity: $arg;
         }
     }
 }
