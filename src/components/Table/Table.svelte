@@ -11,6 +11,7 @@
     export let striped: TableProps['striped'] = null
     export let offsetStripe: TableProps['offsetStripe'] = false
     export let compact: TableProps['compact'] = false
+    export let maxHeight: TableProps['maxHeight'] = 0
     export let className: TableProps['className'] = ''
 
     const classes = classNames([
@@ -19,11 +20,12 @@
         striped && styles[`striped-${striped}s`],
         offsetStripe && styles.offset,
         compact && styles.compact,
+        maxHeight && styles.scroll,
         className
     ])
 </script>
 
-<div class={classes}>
+<div class={classes} style={maxHeight ? `max-height:${maxHeight}` : null}>
     <table>
         {#if headings?.length}
             <thead>

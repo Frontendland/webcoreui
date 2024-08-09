@@ -12,6 +12,7 @@ const Table = ({
     striped,
     offsetStripe,
     compact,
+    maxHeight,
     className
 }: TableProps) => {
     const classes = classNames([
@@ -20,11 +21,16 @@ const Table = ({
         striped && styles[`striped-${striped}s`],
         offsetStripe && styles.offset,
         compact && styles.compact,
+        maxHeight && styles.scroll,
         className
     ])
 
+    const styleVariables = {
+        ...(maxHeight && { 'max-height': maxHeight })
+    } as React.CSSProperties
+
     return (
-        <div className={classes}>
+        <div className={classes} style={styleVariables}>
             <table>
                 {headings?.length && (
                     <thead>

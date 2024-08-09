@@ -12,6 +12,7 @@ const {
     striped,
     offsetStripe,
     compact,
+    maxHeight,
     className
 } = Astro.props
 
@@ -21,11 +22,15 @@ const classes = [
     striped && styles[`striped-${striped}s`],
     offsetStripe && styles.offset,
     compact && styles.compact,
+    maxHeight && styles.scroll,
     className
 ]
 ---
 
-<div class:list={classes}>
+<div
+    class:list={classes}
+    style={maxHeight ? `max-height:${maxHeight}` : undefined}
+>
     <table>
         {headings?.length && (
             <thead>

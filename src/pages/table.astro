@@ -46,6 +46,29 @@ const overflowTable = {
         '✅'
     ]),
 }
+
+const scrollTable = {
+    headings: ['Keyword', 'CSS'],
+    data: [
+        ['none', '0'],
+        ['xxs', '2px'],
+        ['xs', '5px'],
+        ['sm', '10px'],
+        ['md', '15px'],
+        ['default', '20px'],
+        ['lg', '25px'],
+        ['xl', '30px'],
+        ['2xl', '35px'],
+        ['3xl', '40px'],
+        ['4xl', '45px'],
+        ['5xl', '50px'],
+        ['6xl', '55px'],
+        ['7xl', '60px'],
+        ['8xl', '65px'],
+        ['9xl', '70px'],
+        ['10xl', '75px']
+    ]
+}
 ---
 
 <Layout>
@@ -145,6 +168,14 @@ const overflowTable = {
                 <section.component
                     {...overflowTable}
                     offsetStripe={true}
+                    striped="column"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Scroll table">
+                <section.component
+                    {...scrollTable}
+                    maxHeight="250px"
                     striped="column"
                 />
             </ComponentWrapper>
