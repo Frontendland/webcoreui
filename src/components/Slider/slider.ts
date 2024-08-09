@@ -3,10 +3,11 @@ export type SliderProps = {
     max: number
     value?: number
     step?: number
-    id?: string
+    disabled?: boolean
     color?: string
     background?: string
     thumb?: string
+    id?: string
     className?: string
 }
 

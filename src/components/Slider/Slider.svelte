@@ -8,6 +8,7 @@
     export let max: SvelteSliderProps['max'] = 100
     export let value: SvelteSliderProps['value'] = 0
     export let step: SvelteSliderProps['step'] = 1
+    export let disabled: SvelteSliderProps['disabled'] = false
     export let color: SvelteSliderProps['color'] = ''
     export let background: SvelteSliderProps['background'] = ''
     export let thumb: SvelteSliderProps['thumb'] = ''
@@ -33,8 +34,9 @@
     max={max}
     value={value || min}
     step={step}
+    disabled={disabled}
     class={classes}
-    id={id}
-    style={styleVariables}
+    id={id || null}
+    style={styleVariables || null}
     on:change={onChange}
 />

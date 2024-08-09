@@ -132,6 +132,11 @@ html body {
     --w-scrollbar-bg: var(--w-color-primary-60);
     --w-scrollbar-fg: var(--w-color-primary-50);
 
+    // Slider component
+    --w-slider-background: var(--w-color-primary-50);
+    --w-slider-color: var(--w-color-primary);
+    --w-slider-thumb: var(--w-color-primary-50);
+
     // Spinner component
     --w-spinner-color: var(--w-color-primary);
     --w-spinner-width: 2px;

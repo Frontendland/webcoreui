@@ -9,6 +9,7 @@ const Slider = ({
     max,
     value,
     step,
+    disabled,
     color,
     background,
     thumb,
@@ -34,6 +35,7 @@ const Slider = ({
             max={max}
             defaultValue={value || min}
             step={step}
+            disabled={disabled}
             className={classes}
             id={id}
             style={styleVariables}
