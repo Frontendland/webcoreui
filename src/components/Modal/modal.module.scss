@@ -40,12 +40,48 @@
     .title {
         @include typography(lg);
         @include spacing(mb-xs);
-        display: block;
+        @include layout(flex, v-center, xs);
+
+        svg {
+            @include size(20px);
+        }
     }
 
     .subTitle {
         @include typography(primary-20);
         @include spacing(mb-xs);
+    }
+
+    &.info {
+        @include border(info);
+
+        .title {
+            @include typography(info);
+        }
+    }
+
+    &.success {
+        @include border(success);
+
+        .title {
+            @include typography(success);
+        }
+    }
+
+    &.warning {
+        @include border(warning);
+
+        .title {
+            @include typography(warning);
+        }
+    }
+
+    &.alert {
+        @include border(alert);
+
+        .title {
+            @include typography(alert);
+        }
     }
 }
 

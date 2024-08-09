@@ -6,6 +6,11 @@ export type ModalProps = {
     closeOnOverlay?: boolean
     id?: string
     className?: string
+    theme?: 'info'
+        | 'success'
+        | 'warning'
+        | 'alert'
+        | null
 }
 
 export type ReactModalProps = {

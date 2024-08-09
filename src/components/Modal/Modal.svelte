@@ -5,6 +5,11 @@
     import { classNames } from '../../utils/classNames'
 
     import Button from '../Button/Button.svelte'
+
+    import info from '../../icons/info.svg?raw'
+    import success from '../../icons/circle-check.svg?raw'
+    import warning from '../../icons/warning.svg?raw'
+    import alert from '../../icons/alert.svg?raw'
     import closeIcon from '../../icons/close.svg?raw'
 
     export let title: ModalProps['title'] = ''
@@ -12,11 +17,20 @@
     export let showCloseIcon: ModalProps['showCloseIcon'] = true
     export let closeOnEsc: ModalProps['closeOnEsc'] = true
     export let closeOnOverlay: ModalProps['closeOnOverlay'] = true
+    export let theme: ModalProps['theme'] = null
     export let id : ModalProps['className'] = ''
     export let className: ModalProps['className'] = ''
 
+    const iconMap = {
+        info,
+        success,
+        warning,
+        alert
+    }
+
     const classes = classNames([
         styles.modal,
+        theme && styles[theme],
         className
     ])
 
@@ -42,7 +56,12 @@
         </Button>
     {/if}
     {#if title}
-        <strong class={styles.title}>{title}</strong>
+        <strong class={styles.title}>
+            {#if theme}
+                {@html iconMap[theme]}
+            {/if}
+            {title}
+        </strong>
     {/if}
     {#if subTitle}
         <div class={styles.subTitle}>{subTitle}</div>

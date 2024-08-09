@@ -5,7 +5,19 @@ import styles from './modal.module.scss'
 import { classNames } from '../../utils/classNames'
 
 import Button from '../Button/Button.tsx'
+
+import info from '../../icons/info.svg?raw'
+import success from '../../icons/circle-check.svg?raw'
+import warning from '../../icons/warning.svg?raw'
+import alert from '../../icons/alert.svg?raw'
 import closeIcon from '../../icons/close.svg?raw'
+
+const iconMap = {
+    info,
+    success,
+    warning,
+    alert
+}
 
 const Modal = ({
     title,
@@ -13,12 +25,14 @@ const Modal = ({
     showCloseIcon = true,
     closeOnEsc = true,
     closeOnOverlay = true,
+    theme,
     id,
     className,
     children
 }: ReactModalProps) => {
     const classes = classNames([
         styles.modal,
+        theme && styles[theme],
         className
     ])
 
@@ -43,7 +57,14 @@ const Modal = ({
                         dangerouslySetInnerHTML={{ __html: closeIcon }}
                     />
                 )}
-                {title && <strong className={styles.title}>{title}</strong>}
+                {title && (
+                    <strong
+                        className={styles.title}
+                        dangerouslySetInnerHTML={{
+                            __html: theme ? iconMap[theme] + title : title
+                        }}
+                    />
+                )}
                 {subTitle && <div className={styles.subTitle}>{subTitle}</div>}
                 {children}
             </dialog>

@@ -47,6 +47,7 @@ const sections = getSections({
                 title="Svelte Modal"
                 subTitle="With a subtitle"
                 id="modal-svelte"
+                theme="alert"
             >
                 <p>
                     Click on the close icon, close button, overlay, or hit <code>esc</code> to close this modal.
@@ -67,6 +68,7 @@ const sections = getSections({
                 title="React Modal"
                 subTitle="With a subtitle"
                 id="modal-react"
+                theme="info"
             >
                 <p>
                     Click on the close icon, close button, overlay, or hit <code>esc</code> to close this modal.
@@ -157,6 +159,62 @@ const sections = getSections({
                     This modal doesn't have a close button. It can only be closed by clicking on the overlay or using the <code>esc</code> button.
                 </section.component>
             </ComponentWrapper>
+
+            <ComponentWrapper title="Info modal">
+                <Button theme="info" id={`modal-btn-6${index}`}>
+                    Trigger
+                </Button>
+                <section.component
+                    id={`modal-6${index}`}
+                    title="Information"
+                    subTitle="Before continuing, please read carefully"
+                    theme="info"
+                >
+                    This modal was created using the info theme
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Success modal">
+                <Button theme="success" id={`modal-btn-7${index}`}>
+                    Trigger
+                </Button>
+                <section.component
+                    id={`modal-7${index}`}
+                    title="Success"
+                    subTitle="Before continuing, please read carefully"
+                    theme="success"
+                >
+                    This modal was created using the success theme
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Info modal">
+                <Button theme="warning" id={`modal-btn-8${index}`}>
+                    Trigger
+                </Button>
+                <section.component
+                    id={`modal-8${index}`}
+                    title="Warning"
+                    subTitle="Before continuing, please read carefully"
+                    theme="warning"
+                >
+                    This modal was created using the warning theme
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Info modal">
+                <Button theme="alert" id={`modal-btn-9${index}`}>
+                    Trigger
+                </Button>
+                <section.component
+                    id={`modal-9${index}`}
+                    title="Alert"
+                    subTitle="Before continuing, please read carefully"
+                    theme="alert"
+                >
+                    This modal was created using the alert theme
+                </section.component>
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>
@@ -176,7 +234,7 @@ const sections = getSections({
         'react'
     ]
 
-    const ids = Array(5).fill(10).map((x, index) => x * (index + 1))
+    const ids = Array(9).fill(10).map((x, index) => x * (index + 1))
     const variants = [
         '00',
         '01',
