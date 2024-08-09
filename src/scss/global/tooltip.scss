@@ -8,6 +8,8 @@
 
     [data-tooltip] {
         @include position(relative);
+        @include typography(normal);
+
         display: inline-block;
 
         &::before,
@@ -94,7 +96,7 @@
                 @include border(5px, top, transparent);
                 @include border(5px, bottom, transparent);
 
-                top: calc(50% - 2.5px);
+                top: calc(50%);
                 border-left: 5px solid var(--w-tooltip-background);
                 transform: translate(10px, -50%);
             }
@@ -123,7 +125,7 @@
                 @include border(5px, top, transparent);
                 @include border(5px, bottom, transparent);
 
-                top: calc(50% - 2.5px);
+                top: calc(50%);
                 border-right: 5px solid var(--w-tooltip-background);
                 transform: translate(-10px, -50%);
             }

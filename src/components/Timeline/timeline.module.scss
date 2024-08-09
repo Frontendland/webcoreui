@@ -28,11 +28,11 @@ body {
         left: $leftOffset
     }
 
-    &.fill li::before {
+    &.fill > li::before {
         content: '';
     }
 
-    &.stroke li::before {
+    &.stroke > li::before {
         @include background(primary-70);
         border: 2px solid var(--w-timeline-color);
     }
@@ -47,7 +47,7 @@ body {
                 left: calc(50% - 1px);
             }
     
-            li {
+            > li {
                 @include size('w50%');
     
                 &:nth-child(odd) {
@@ -69,7 +69,7 @@ body {
             }
         }
     
-        &.centered li:nth-child(odd) {
+        &.centered > li:nth-child(odd) {
             @include typography(right);
         }
     }

@@ -14,13 +14,13 @@ const tooltipStyle = [
     <h1>Tooltip</h1>
     <div class="grid md-2 lg-3">
         <ComponentWrapper title="Default">
-            <p data-tooltip="Tooltip content">Default tooltip</p>
+            <span data-tooltip="Tooltip content">Default tooltip</span>
         </ComponentWrapper>
 
         <ComponentWrapper title="Custom color">
-            <p data-tooltip="Tooltip content" style={tooltipStyle}>
+            <span data-tooltip="Tooltip content" style={tooltipStyle}>
                 Colored tooltip
-            </p>
+            </span>
         </ComponentWrapper>
 
         <ComponentWrapper title="Tooltip on button">
@@ -30,21 +30,21 @@ const tooltipStyle = [
         </ComponentWrapper>
 
         <ComponentWrapper title="Bottom position">
-            <p data-tooltip="Tooltip content" data-position="bottom">
+            <span data-tooltip="Tooltip content" data-position="bottom">
                 Bottom tooltip
-            </p>
+            </span>
         </ComponentWrapper>
         
         <ComponentWrapper title="Left position">
-            <p data-tooltip="Tooltip content" data-position="left">
+            <span data-tooltip="Tooltip content" data-position="left">
                 Left tooltip
-            </p>
+            </span>
         </ComponentWrapper>
 
         <ComponentWrapper title="Right position">
-            <p data-tooltip="Tooltip content" data-position="right">
+            <span data-tooltip="Tooltip content" data-position="right">
                 Right tooltip
-            </p>
+            </span>
         </ComponentWrapper>
     </div>
 </Layout>
