@@ -50,7 +50,6 @@ export const modal = (element: string) => {
     }
 }
 
-
 export const closeModal = (element: string) => {
     const htmlElement = document.querySelector(element) as HTMLElement
 
