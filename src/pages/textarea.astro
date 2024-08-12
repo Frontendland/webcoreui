@@ -1,0 +1,89 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroTextarea from '@components/Textarea/Textarea.astro'
+import SvelteTextarea from '@components/Textarea/Textarea.svelte'
+import ReactTextarea from '@components/Textarea/Textarea.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'textareas',
+    components: [AstroTextarea, SvelteTextarea, ReactTextarea],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>Textarea</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroTextarea value="Textarea in Astro" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteTextarea value="Textarea in Svelte" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactTextarea value="Textarea in React" />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With placeholder">
+                <section.component placeholder="Enter your message here" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label">
+                <section.component
+                    label="Get in touch"
+                    placeholder="Enter your message here"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label & subtext">
+                <section.component
+                    label="Get in touch"
+                    placeholder="Enter your message here"
+                    subText="For business inquiries, please reach out to <a href='#'>sales</a>."
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled">
+                <section.component
+                    label="Get in touch"
+                    placeholder="Enter your message here"
+                    subText="For business inquiries, please reach out to <a href='#'>sales</a>."
+                    disabled={true}
+                    value="Disabled textarea with predefined value"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="No resize">
+                <section.component
+                    label="Get in touch"
+                    placeholder="Enter your message here"
+                    subText="For business inquiries, please reach out to <a href='#'>sales</a>."
+                    className="no-resize"
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<style is:global>
+    .no-resize {
+        resize: none;
+    }
+</style>

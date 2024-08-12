@@ -1,0 +1,36 @@
+@import '../../scss/config.scss';
+
+.textarea {
+    @include size('w100%');
+    @include background(transparent);
+    @include border-radius(sm);
+    @include border(primary-50);
+    @include spacing(p-sm);
+    @include typography(regular, primary, hlg);
+
+    min-height: 50px;
+    resize: vertical;
+
+    &[disabled] {
+        @include typography(primary-30);
+        cursor: no-drop;
+    }
+
+    &::placeholder {
+        @include typography(primary-30);
+    }
+}
+
+.label-wrapper {
+    @include layout(flex, column);
+
+    .label {
+        @include typography(primary-20);
+        @include spacing(mb-xs);
+    }
+
+    .subtext {
+        @include typography(md, primary-30);
+        @include spacing(mt-xs);
+    }
+}

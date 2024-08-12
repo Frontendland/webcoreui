@@ -1,0 +1,44 @@
+---
+import type { TextareaProps } from './textarea'
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+
+import styles from './textarea.module.scss'
+
+interface Props extends TextareaProps {}
+
+const {
+    label,
+    placeholder,
+    subText,
+    value = '',
+    disabled,
+    className
+} = Astro.props
+
+const classes = [
+    styles.textarea,
+    className
+]
+
+const useLabel = !!(label || subText)
+---
+
+<ConditionalWrapper condition={useLabel}>
+    <label slot="wrapper" class={styles['label-wrapper']}>
+        {label && (
+            <div class={styles.label}>{label}</div>
+        )}
+        children
+        {subText && (
+            <div class={styles.subtext}>
+                <Fragment set:html={subText} />
+            </div>
+        )}
+    </label>
+
+    <textarea
+        placeholder={placeholder}
+        disabled={disabled}
+        class:list={classes}
+    >{value}</textarea>
+</ConditionalWrapper>

@@ -210,6 +210,7 @@ import { Accordion } from 'webcoreui/react'
 - [Switch](https://github.com/Frontendland/webcoreui/tree/main/src/components/Switch)
 - [Table](https://github.com/Frontendland/webcoreui/tree/main/src/components/Table)
 - [Tabs](https://github.com/Frontendland/webcoreui/tree/main/src/components/Tabs)
+- [Textarea](https://github.com/Frontendland/webcoreui/tree/main/src/components/Textarea)
 - [ThemeSwitcher](https://github.com/Frontendland/webcoreui/tree/main/src/components/ThemeSwitcher)
 - [Timeline](https://github.com/Frontendland/webcoreui/blob/main/src/pages/timeline.astro)
 - [Toast](https://github.com/Frontendland/webcoreui/tree/main/src/components/Toast)

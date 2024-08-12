@@ -12,6 +12,7 @@
     import Slider from '@components/Slider/Slider.svelte'
     import Switch from '@components/Switch/Switch.svelte'
     import Tabs from '@components/Tabs/Tabs.svelte'
+    import Textarea from '@components/Textarea/Textarea.svelte'
     import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.svelte'
     import Toast from '@components/Toast/Toast.svelte'
 
@@ -26,6 +27,7 @@
     let toggle = false
     let input = ''
     let slider = 50
+    let wordCount = 0
 </script>
 
 <div class="playground grid md-2 lg-3">
@@ -99,6 +101,17 @@
         <span class={styles.span}>{radio}</span>
     </Card>
 
+    <Card title="Slider">
+        <Slider
+            min={0}
+            max={100}
+            value={slider}
+            onChange={e => slider = e.target.value}
+            className={styles.mt}
+        />
+        <span class={styles.span}>{slider}</span>
+    </Card>
+
     <Card title="Switch">
         <Switch
             onClick={e => toggle = e.target.checked}
@@ -123,6 +136,18 @@
         </Tabs>
     </Card>
 
+    <Card title="Textarea">
+        <Textarea
+            placeholder="Type here to see the word count updated"
+            onKeyUp={e => {
+                wordCount = e.target.value
+                    ? e.target.value.trim().split(/\s+/).length
+                    : 0
+            }}
+        />
+        <span class="muted">{wordCount} words</span>
+    </Card>
+
     <Card title="ThemeSwitcher">
         <ThemeSwitcher themes={themes} />
     </Card>
@@ -132,17 +157,6 @@
             <Icon type="moon" slot="primaryIcon" />
             <Icon type="sun" slot="secondaryIcon" />
         </ThemeSwitcher>
-    </Card>
-
-    <Card title="Slider">
-        <Slider
-            min={0}
-            max={100}
-            value={slider}
-            onChange={e => slider = e.target.value}
-            className={styles.mt}
-        />
-        <span class={styles.span}>{slider}</span>
     </Card>
 </div>
 

@@ -120,6 +120,9 @@ const templates = {
 
             {sections.map(section => (
                 <h1>{section.title}</h1>
+                <Fragment>
+                    {section.subTitle && <h2 set:html={section.subTitle} />}
+                </Fragment>
                 <div class="grid md-2 lg-3">
                     <ComponentWrapper title="Default">
                         <section.component />
