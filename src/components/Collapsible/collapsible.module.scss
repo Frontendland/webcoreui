@@ -1,0 +1,29 @@
+@import '../../scss/config.scss';
+
+body {
+    --w-collapsible-initial-height: 0;
+    --w-collapsible-max-height: 100%;
+}
+
+.collapsible {
+    @include layout(flex, column, xs);
+
+    &:not([data-toggled="true"]) [data-toggle-off],
+    &[data-toggled="true"] [data-toggle-on] {
+        @include visibility(none);
+    }
+
+    &[data-toggled="true"] .wrapper {
+        max-height: var(--w-collapsible-max-height);
+    }
+
+    &.animated .wrapper {
+        @include transition(max-height, .5s);
+    }
+
+    .wrapper {
+        @include visibility(hidden);
+
+        max-height: var(--w-collapsible-initial-height);
+    }
+}

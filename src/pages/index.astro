@@ -9,6 +9,7 @@ import Avatar from '@components/Avatar/Avatar.astro'
 import Badge from '@components/Badge/Badge.astro'
 import Button from '@components/Button/Button.astro'
 import Checkbox from '@components/Checkbox/Checkbox.astro'
+import Collapsible from '@components/Collapsible/Collapsible.astro'
 import Icon from '@components/Icon/Icon.astro'
 import Input from '@components/Input/Input.astro'
 import Menu from '@components/Menu/Menu.astro'
@@ -103,6 +104,12 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Checkbox" href="/checkbox">
             <Checkbox checked={true} label="Accept terms and conditions" />
+        </CardWrapper>
+        <CardWrapper title="Collapsible" href="/collapsible">
+            <Collapsible initialHeight="20px">
+                <span>This book has been rated for...</span>
+                <Badge slot="on">Expand</Badge>
+            </Collapsible>
         </CardWrapper>
         <CardWrapper title="Icon" href="/icon">
             <Icon

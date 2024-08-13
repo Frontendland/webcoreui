@@ -1,0 +1,19 @@
+---
+import Table from '@components/Table/Table.astro'
+
+const scrollTable = {
+    headings: ['Keyword', 'CSS'],
+    data: [
+        ['none', '0'],
+        ['xxs', '2px'],
+        ['xs', '5px'],
+        ['sm', '10px'],
+        ['md', '15px'],
+        ['default', '20px'],
+        ['lg', '25px'],
+        ['xl', '30px']
+    ]
+}
+---
+
+<Table {...scrollTable} />

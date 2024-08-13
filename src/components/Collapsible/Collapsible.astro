@@ -1,0 +1,63 @@
+---
+import type { CollapsibleProps } from './collapsible'
+
+import styles from './collapsible.module.scss'
+import { classNames } from '../../utils/classNames'
+
+interface Props extends CollapsibleProps {}
+
+const {
+    initialHeight,
+    maxHeight,
+    toggled,
+    className,
+    togglesClassName
+} = Astro.props
+
+const classes = [
+    styles.collapsible,
+    maxHeight && styles.animated,
+    className
+]
+
+const styleVariables = classNames([
+    initialHeight && `--w-collapsible-initial-height: ${initialHeight};`,
+    maxHeight && `--w-collapsible-max-height: ${maxHeight};`
+])
+---
+
+<div
+    class:list={classes}
+    data-toggled={toggled ? 'true' : undefined}
+    data-id="w-collapsible"
+>
+    <div
+        class={styles.wrapper}
+        style={styleVariables}
+    >
+        <slot />
+    </div>
+    <div class:list={togglesClassName}>
+        <div data-toggle-on="true"><slot name="on" /></div>
+        <div data-toggle-off="true"><slot name="off" /></div>
+    </div>
+</div>
+
+<script>
+    const collapsibles = document.querySelectorAll('[data-id="w-collapsible"]')
+
+    Array.from(collapsibles).forEach(element => {
+        element.addEventListener('click', event => {
+            const collapsible = event.currentTarget as HTMLDivElement
+            const target = event.target as HTMLDivElement
+
+            if (target.parentElement?.dataset.toggleOn) {
+                collapsible.dataset.toggled = 'true'
+            }
+
+            if (target.parentElement?.dataset.toggleOff) {
+                collapsible.dataset.toggled = 'false'
+            }
+        })
+    })
+</script>

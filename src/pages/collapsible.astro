@@ -1,0 +1,134 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import CollapsibleTable from '@static/CollapsibleTable.astro'
+
+import AstroCollapsible from '@components/Collapsible/Collapsible.astro'
+import SvelteCollapsible from '@components/Collapsible/Collapsible.svelte'
+import ReactCollapsible from '@components/Collapsible/Collapsible.tsx'
+
+import Button from '@components/Button/Button.astro'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'collapsibles',
+    components: [AstroCollapsible, SvelteCollapsible, ReactCollapsible],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>Collapsible</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroCollapsible maxHeight="330px">
+                <CollapsibleTable />
+
+                <Button slot="on">Expand</Button>
+                <Button slot="off">Collapse</Button>
+            </AstroCollapsible>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteCollapsible maxHeight="330px" client:idle>
+                <CollapsibleTable />
+
+                <Button slot="on">Expand</Button>
+                <Button slot="off">Collapse</Button>
+            </SvelteCollapsible>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactCollapsible
+                on=""
+                off=""
+                maxHeight="330px"
+                client:idle
+            >
+                <CollapsibleTable />
+
+                <Button slot="on">Expand</Button>
+                <Button slot="off">Collapse</Button>
+            </ReactCollapsible>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component>
+                    <CollapsibleTable />
+
+                    <Button slot="on">Expand</Button>
+                    <Button slot="off">Collapse</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Toggled by default">
+                <section.component toggled={true}>
+                    <CollapsibleTable />
+
+                    <Button slot="on">Expand</Button>
+                    <Button slot="off">Collapse</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Toggle with same button">
+                <section.component>
+                    <CollapsibleTable />
+
+                    <Button slot="on">Toggle</Button>
+                    <Button slot="off">Toggle</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Animated">
+                <section.component maxHeight="330px">
+                    <CollapsibleTable />
+
+                    <Button slot="on">Expand</Button>
+                    <Button slot="off">Collapse</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Animated with partial visibility">
+                <section.component
+                    initialHeight="100px"
+                    maxHeight="330px"
+                >
+                    <CollapsibleTable />
+
+                    <Button slot="on">Expand</Button>
+                    <Button slot="off">Collapse</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Toggle with custom layout">
+                <section.component
+                    className="collapsible-table"
+                    togglesClassName="center"
+                >
+                    <CollapsibleTable />
+
+                    <Button slot="on">Expand</Button>
+                    <Button slot="off">Collapse</Button>
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<style is:global>
+    .collapsible-table {
+        gap: 20px;
+    }
+
+    .center {
+        align-self: center;
+    }
+</style>

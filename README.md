@@ -113,6 +113,10 @@ html body {
     // Checkbox component
     --w-checkbox-color: var(--w-color-primary);
 
+    // Collapsible
+    --w-collapsible-initial-height: 0;
+    --w-collapsible-max-height: 100%;
+
     // Progress component
     --w-progress-color: var(--w-color-primary);
     --w-progress-background: var(--w-color-primary-50);
@@ -197,6 +201,7 @@ import { Accordion } from 'webcoreui/react'
 - [Button](https://github.com/Frontendland/webcoreui/tree/main/src/components/Button)
 - [Card](https://github.com/Frontendland/webcoreui/tree/main/src/components/Card)
 - [Checkbox](https://github.com/Frontendland/webcoreui/tree/main/src/components/Checkbox)
+- [Collapsible](https://github.com/Frontendland/webcoreui/tree/main/src/components/Collapsible)
 - [ConditionalWrapper](https://github.com/Frontendland/webcoreui/tree/main/src/components/ConditionalWrapper)
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
 - [Input](https://github.com/Frontendland/webcoreui/tree/main/src/components/Input)

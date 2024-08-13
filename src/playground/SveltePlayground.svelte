@@ -5,6 +5,7 @@
     import Badge from '@components/Badge/Badge.svelte'
     import Button from '@components/Button/Button.svelte'
     import Checkbox from '@components/Checkbox/Checkbox.svelte'
+    import Collapsible from '@components/Collapsible/Collapsible.svelte'
     import Icon from '@components/Icon/Icon.svelte'
     import Input from '@components/Input/Input.svelte'
     import Progress from '@components/Progress/Progress.svelte'
@@ -58,6 +59,14 @@
         />
 
         <span class={styles.span}>{checkbox}</span>
+    </Card>
+
+    <Card title="Collapsible">
+        <Collapsible maxHeight="50px">
+            <span>This paragraph can be toggled on and off.</span>
+            <Button slot="on">Show</Button>
+            <Button slot="off">Hide</Button>
+        </Collapsible>
     </Card>
 
     <Card title="Input">

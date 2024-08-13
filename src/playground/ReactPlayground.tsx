@@ -6,6 +6,7 @@ import Accordion from '@components/Accordion/Accordion.tsx'
 import Badge from '@components/Badge/Badge.tsx'
 import Button from '@components/Button/Button.tsx'
 import Checkbox from '@components/Checkbox/Checkbox.tsx'
+import Collapsible from '@components/Collapsible/Collapsible.tsx'
 import Icon from '@components/Icon/Icon.tsx'
 import Input from '@components/Input/Input.tsx'
 import Progress from '@components/Progress/Progress.tsx'
@@ -60,6 +61,16 @@ const ReactPlayground = () => {
                 />
 
                 <span className={styles.span}>{`${checkbox}`}</span>
+            </Card>
+
+            <Card title="Collapsible">
+                <Collapsible
+                    on={<Button>Show</Button>}
+                    off={<Button>Hide</Button>}
+                    maxHeight="50px"
+                >
+                    <span>This paragraph can be toggled on and off.</span>
+                </Collapsible>
             </Card>
 
             <Card title="Input">
