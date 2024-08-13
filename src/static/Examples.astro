@@ -1,21 +1,23 @@
 ---
 import Alert from '@components/Alert/Alert.astro'
-import Card from '@components/Card/Card.astro'
-import Input from '@components/Input/Input.astro'
-import Icon from '@components/Icon/Icon.astro'
+import Avatar from '@components/Avatar/Avatar.astro'
 import Badge from '@components/Badge/Badge.astro'
 import Button from '@components/Button/Button.astro'
+import Card from '@components/Card/Card.astro'
 import Checkbox from '@components/Checkbox/Checkbox.astro'
+import Input from '@components/Input/Input.astro'
+import Icon from '@components/Icon/Icon.astro'
+import Modal from '@components/Modal/Modal.astro'
+import Progress from '@components/Progress/Progress.astro'
 import Radio from '@components/Radio/Radio.astro'
+import Rating from '@components/Rating/Rating.astro'
+import Spinner from '@components/Spinner/Spinner.astro'
 import Switch from '@components/Switch/Switch.astro'
-import Avatar from '@components/Avatar/Avatar.astro'
 import Tabs from '@components/Tabs/Tabs.astro'
 import Table from '@components/Table/Table.astro'
 import Timeline from '@components/Timeline/Timeline.astro'
-import Progress from '@components/Progress/Progress.astro'
-import Rating from '@components/Rating/Rating.astro'
-import Spinner from '@components/Spinner/Spinner.astro'
 import TimelineItem from '@components/TimelineItem/TimelineItem.astro'
+import Toast from '@components/Toast/Toast.astro'
 
 import { avatarGroup, avatarGroupAlt2 } from '@data'
 
@@ -94,7 +96,7 @@ const tasks = [
                     subText="Enable or disable all of your notification with one click. Previous settings will be overwritten."
                 />
                 <Switch label="Security emails" toggled={true} />
-                <Switch label="Marketing emails" />
+                <Switch label="Marketing emails" className="marketing" />
                 <hr />
                 <strong class="slack">Slack notifications</strong>
                 <Radio
@@ -220,6 +222,16 @@ const tasks = [
             <span>Connect your project to GitHub to start running automatic deployments.</span>
             <Button className="connect">Connect</Button>
         </Alert>
+
+        <Toast theme="success" className="marketing-toast">
+            Marketing emails enabled
+        </Toast>
+
+        <Modal title="Are you sure?" subTitle="Confirm update" className="modal">
+            <p>Automatic deployments will be enabled for your project.</p>
+            <Button className="close-modal">Confirm</Button>
+            <Button theme="secondary" className="close-modal">Cancel</Button>
+        </Modal>
     </div>
 </div>
 
@@ -280,3 +292,29 @@ const tasks = [
         @include typography(md);
     }
 </style>
+
+<script>
+    import { toast } from '@utils/toast'
+    import { modal, closeModal } from '@utils/modal'
+
+    const marketing = document.querySelector('.marketing input')
+    const connect = document.querySelector('.connect')
+    const closeButton = document.querySelectorAll('.close-modal')
+
+    marketing?.addEventListener('change', (e: any) => {
+        toast({
+            element: '.marketing-toast',
+            content: e.target.checked
+                ? 'Marketing emails enabled'
+                : 'Marketing emails disabled'
+        })
+    })
+
+    connect?.addEventListener('click', () => {
+        modal('.modal')
+    })
+
+    Array.from(closeButton).forEach(button => {
+        button?.addEventListener('click', () => closeModal('.modal'))
+    })
+</script>
