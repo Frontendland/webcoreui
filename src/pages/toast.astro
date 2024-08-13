@@ -129,7 +129,7 @@ const sections = getSections({
                 </section.component>
             </ComponentWrapper>
 
-            <ComponentWrapper title="Programmatically setting copy, theme & pos">
+            <ComponentWrapper title="Programmatically setting copy & pos">
                 <Button theme="secondary" id={`programmatic-btn-${index}`}>
                     Programmatically setting copy
                 </Button>
@@ -138,11 +138,11 @@ const sections = getSections({
                     Original content
                 </section.component>
 
-                <Button theme="secondary" id={`themed-btn-${index}`}>
+                <Button theme="secondary" id={`pos-btn-${index}`}>
                     Show Toast in top-left corner
                 </Button>
 
-                <section.component title="Original title" id={`themed-toast-${index}`}>
+                <section.component title="Original title" id={`pos-toast-${index}`}>
                     Original content
                 </section.component>
             </ComponentWrapper>
@@ -208,14 +208,12 @@ const sections = getSections({
         })
     });
 
-    // Programmatically setting theme
+    // Programmatically setting position
     [0, 1, 2].forEach(x => {
-        on(`#themed-btn-${x}`, () => {
+        on(`#pos-btn-${x}`, () => {
             toast({
-                element: `#themed-toast-${x}`,
+                element: `#pos-toast-${x}`,
                 title: 'Title set through JS',
-                content: 'Theme set to "success"',
-                theme: 'success',
                 position: 'top-left'
             })
         })

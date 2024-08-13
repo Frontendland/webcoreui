@@ -24,9 +24,14 @@
     }
 </script>
 
-<Alert {...$$restProps} className={classes} {...additionalProps}>
-    {#if $$slots.icon}
-        <slot name="icon" />
-    {/if}
-    <slot />
-</Alert>
+{#if $$slots.icon}
+    <Alert {...$$restProps} className={classes} {...additionalProps}>
+        <slot slot="icon" name="icon" />
+        <slot />
+    </Alert>
+{:else}
+    <Alert {...$$restProps} className={classes} {...additionalProps}>
+        <slot />
+    </Alert>
+{/if}
+

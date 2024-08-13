@@ -6,7 +6,6 @@ type Toast = {
     timeout?: number
     title?: AlertProps['title']
     content?: string
-    theme?: AlertProps['theme']
     position?: ToastProps['position']
 }
 
@@ -23,17 +22,12 @@ export const toast = (config: Toast | string) => {
         timeout,
         title,
         content,
-        theme,
         position
     } = (typeof config === 'string' ? {} : config) as Toast
 
     const htmlElement = document.querySelector(element) as HTMLElement
 
     if (htmlElement) {
-        if (theme) {
-            htmlElement.dataset.theme = theme
-        }
-        
         if (position) {
             htmlElement.dataset.position = position
         }
