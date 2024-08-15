@@ -38,7 +38,10 @@ const Alert = ({
     return (
         <Element className={classes} {...rest}>
             {icon && icon}
-            {!icon && theme && <div dangerouslySetInnerHTML={{ __html: iconMap[theme] }} />}
+            {!icon && theme && <div
+                dangerouslySetInnerHTML={{ __html: iconMap[theme] }}
+                style={{ height: '20px' }}
+            />}
 
             <ConditionalWrapper condition={!!(icon || theme)} wrapper={children => (
                 <div className={styles.wrapper}>

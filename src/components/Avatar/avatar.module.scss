@@ -7,6 +7,8 @@ body {
 .avatar {
     @include border-radius(max);
 
+    object-fit: cover;
+
     &:not(.borderless) {
         border: 3px solid var(--w-avatar-border);
     }
