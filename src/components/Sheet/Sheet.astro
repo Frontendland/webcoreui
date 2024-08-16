@@ -1,0 +1,29 @@
+---
+import type { SheetProps } from './sheet'
+
+import Modal from '../Modal/Modal.astro'
+
+import styles from './sheet.module.scss'
+import { classNames } from '../../utils/classNames'
+
+interface Props extends SheetProps {}
+
+const {
+    position,
+    className,
+    ...rest
+} = Astro.props
+
+const classes = classNames([
+    styles.sheet,
+    position && styles[position],
+    className
+])
+---
+
+<Modal
+    className={classes}
+    {...rest}
+>
+    <slot />
+</Modal>

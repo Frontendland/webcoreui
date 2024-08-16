@@ -1,0 +1,239 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import Button from '@components/Button/Button.astro'
+import AstroSheet from '@components/Sheet/Sheet.astro'
+import SvelteSheet from '@components/Sheet/Sheet.svelte'
+import ReactSheet from '@components/Sheet/Sheet.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'sheets',
+    components: [AstroSheet, SvelteSheet, ReactSheet]
+})
+---
+
+<Layout>
+    <h1>Sheet</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <Button theme="secondary" id="sheet-btn-astro">
+                Open Astro Sheet
+            </Button>
+
+            <AstroSheet
+                title="Astro Sheet"
+                subTitle="With a subtitle"
+                id="sheet-astro"
+            >
+                <p>
+                    Click on the close icon, close button, overlay, or hit <code>esc</code> to close this sheet.
+                </p>
+
+                <Button id="sheet-close-btn-astro">
+                    Close Sheet
+                </Button>
+            </AstroSheet>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <Button theme="alert" id="sheet-btn-svelte">
+                Open Svelte Sheet
+            </Button>
+
+            <SvelteSheet
+                title="Svelte Sheet"
+                subTitle="With a subtitle"
+                id="sheet-svelte"
+            >
+                <p>
+                    Click on the close icon, close button, overlay, or hit <code>esc</code> to close this sheet.
+                </p>
+
+                <Button id="sheet-close-btn-svelte">
+                    Close Sheet
+                </Button>
+            </SvelteSheet>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <Button theme="info" id="sheet-btn-react">
+                Open React Sheet
+            </Button>
+
+            <ReactSheet
+                title="React Sheet"
+                subTitle="With a subtitle"
+                id="sheet-react"
+            >
+                <p>
+                    Click on the close icon, close button, overlay, or hit <code>esc</code> to close this sheet.
+                </p>
+
+                <Button id="sheet-close-btn-react">
+                    Close Sheet
+                </Button>
+            </ReactSheet>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map((section, index) => (
+        <h1>{section.title}</h1>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default sheet with content">
+                <Button theme="secondary" id={`sheet-btn-0${index}`}>
+                    Open
+                </Button>
+                <section.component id={`sheet-0${index}`}>
+                    Sheet with content only
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Sheet with title">
+                <Button theme="secondary" id={`sheet-btn-1${index}`}>
+                    Open
+                </Button>
+                <section.component
+                    id={`sheet-1${index}`}
+                    title="Information"
+                >
+                    Sheet with a title
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Sheet with title & sub title">
+                <Button theme="secondary" id={`sheet-btn-2${index}`}>
+                    Open
+                </Button>
+                <section.component
+                    id={`sheet-2${index}`}
+                    title="Information"
+                    subTitle="Before continuing, please read carefully"
+                >
+                    Sheet with title and sub title
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="No close on Esc">
+                <Button theme="secondary" id={`sheet-btn-3${index}`}>
+                    Open
+                </Button>
+                <section.component
+                    id={`sheet-3${index}`}
+                    title="Sheet"
+                    subTitle="No close on Esc"
+                    closeOnEsc={false}
+                >
+                    This sheet cannot be closed by clicking the <code>esc</code> button.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="No close on overlay">
+                <Button theme="secondary" id={`sheet-btn-4${index}`}>
+                    Open
+                </Button>
+                <section.component
+                    id={`sheet-4${index}`}
+                    title="Sheet"
+                    subTitle="No close on overlay"
+                    closeOnOverlay={false}
+                >
+                    This sheet cannot be closed by clicking the overlay.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="No close button">
+                <Button theme="secondary" id={`sheet-btn-5${index}`}>
+                    Open
+                </Button>
+                <section.component
+                    id={`sheet-5${index}`}
+                    title="Sheet"
+                    subTitle="No close button"
+                    showCloseIcon={false}
+                >
+                    This sheet doesn't have a close button. It can only be closed by clicking on the overlay or using the <code>esc</code> button.
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Left sheet">
+                <Button theme="secondary" id={`sheet-btn-6${index}`}>
+                    Open
+                </Button>
+                <section.component
+                    id={`sheet-6${index}`}
+                    title="Left sheet"
+                    subTitle="Before continuing, please read carefully"
+                    position="left"
+                >
+                    This sheet was created using the left position
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Top sheet">
+                <Button theme="secondary" id={`sheet-btn-7${index}`}>
+                    Open
+                </Button>
+                <section.component
+                    id={`sheet-7${index}`}
+                    title="Top sheet"
+                    subTitle="Before continuing, please read carefully"
+                    position="top"
+                >
+                    This sheet was created using the top position
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Bottom sheet">
+                <Button theme="secondary" id={`sheet-btn-8${index}`}>
+                    Open
+                </Button>
+                <section.component
+                    id={`sheet-8${index}`}
+                    title="Bottom sheet"
+                    subTitle="Before continuing, please read carefully"
+                    position="bottom"
+                >
+                    This sheet was created using the bottom position
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<script>
+    import { modal, closeModal } from '@utils/modal'
+
+    const on = (element: string, callback: () => any) => {
+        document
+            .querySelector(element)
+            ?.addEventListener('click', callback)
+    }
+
+    const selectors = [
+        'astro',
+        'svelte',
+        'react'
+    ]
+
+    const ids = Array(9).fill(10).map((x, index) => x * (index + 1))
+    const variants = [
+        '00',
+        '01',
+        '02',
+        ...ids,
+        ...ids.map(x => x + 1),
+        ...ids.map(x => x + 2)
+    ]
+
+    selectors.forEach(selector => {
+        on(`#sheet-btn-${selector}`, () => modal(`#sheet-${selector}`))
+        on(`#sheet-close-btn-${selector}`, () => closeModal(`#sheet-${selector}`))
+    });
+
+    variants.forEach(variant => {
+        on(`#sheet-btn-${variant}`, () => modal(`#sheet-${variant}`))
+    })
+</script>

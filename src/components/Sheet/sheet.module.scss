@@ -1,0 +1,68 @@
+@import '../../scss/config.scss';
+
+.sheet {
+    @include position(t0, 'r-100%', lauto);
+    @include visibility(1);
+    @include border-radius(none);
+    @include size(100%);
+    @include border(0);
+    @include border(left, primary-50);
+
+    transform: none;
+
+    &[data-show="true"] {
+        @include position(r0);
+
+        transform: none;
+    }
+
+    &.left {
+        @include position('l-100%', rauto);
+        @include border(0);
+        @include border(right, primary-50);
+
+        &[data-show="true"] {
+            @include position(l0);
+        }
+    }
+
+    &.top {
+        @include position(t0, l0);
+        @include size(hauto);
+        @include border(0);
+        @include border(bottom, primary-50);
+
+        transform: translateY(-100%);
+        min-width: 100%;
+
+        &[data-show="true"] {
+            transform: translateY(0);
+        }
+    }
+
+    &.bottom {
+        @include position(b0, l0);
+        @include size(hauto);
+        @include border(0);
+        @include border(top, primary-50);
+
+        transform: translateY(100%);
+        top: auto;
+        min-width: 100%;
+
+        &[data-show="true"] {
+            transform: translateY(0);
+        }
+    }
+}
+
+@include media(xs) {
+    .sheet {
+        @include position(r-500px);
+        @include size(w500px);
+
+        &.left {
+            @include position(l-500px);
+        }
+    }
+}
