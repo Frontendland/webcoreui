@@ -1,0 +1,51 @@
+@import '../../scss/config.scss';
+
+.popover {
+    @include spacing(m0, p-default);
+    @include layer(modal);
+    @include visibility(block, 0);
+    @include border(primary-50);
+    @include background(primary-70);
+    @include typography(primary);
+    @include border-radius(md);
+    @include size(w300px);
+
+    transform: translateY(-5px);
+    pointer-events: none;
+
+    &[data-show] {
+        @include transition();
+    }
+
+    &[data-show="true"] {
+        @include visibility(1);
+
+        transform: translateY(0);
+        pointer-events: all;
+    }
+
+    &[data-position="top"] {
+        transform: translateY(5px);
+
+        &[data-show="true"] {
+            transform: translate(0);
+        }
+    }
+
+    &[data-position="left"] {
+        transform: translateY(0) translateX(5px);
+
+        &[data-show="true"] {
+            transform: translate(0);
+        }
+    }
+
+
+    &[data-position="right"] {
+        transform: translateY(0) translateX(-5px);
+
+        &[data-show="true"] {
+            transform: translate(0);
+        }
+    }
+}

@@ -3,7 +3,7 @@
 .modal {
     @include transition();
     @include position(fixed, 't50%', 'l50%');
-    @include spacing(0, p-default);
+    @include spacing(m0, p-default);
     @include layer(modal);
     @include visibility(block, 0);
     @include border(primary-50);

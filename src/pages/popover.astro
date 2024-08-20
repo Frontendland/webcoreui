@@ -1,0 +1,262 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import Button from '@components/Button/Button.astro'
+import AstroPopover from '@components/Popover/Popover.astro'
+import SveltePopover from '@components/Popover/Popover.svelte'
+import ReactPopover from '@components/Popover/Popover.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'popovers',
+    components: [AstroPopover, SveltePopover, ReactPopover]
+})
+---
+
+<Layout>
+    <h1>Popover</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <Button theme="secondary" id="popover-btn-astro">
+                Open Astro Popover
+            </Button>
+
+            <AstroPopover id="popover-astro">
+                <span class="a">This is a popover created with an <strong>Astro</strong> component.</span>
+            </AstroPopover>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <Button theme="alert" id="popover-btn-svelte">Open Svelte Popover</Button>
+            <SveltePopover id="popover-svelte">
+                <span class="s">This is a popover created with a <strong>Svelte</strong> component.</span>
+            </SveltePopover>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <Button theme="info" id="popover-btn-react">Open React Popover</Button>
+            <ReactPopover id="popover-react">
+                <span class="r">This is a popover created with a <strong>React</strong> component.</span>
+            </ReactPopover>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map((section, index) => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <Button theme="secondary" id={`popover-btn-0${index}`}>
+                    Open Popover
+                </Button>
+                <section.component id={`popover-0${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover with components">
+                <Button theme="secondary" id={`popover-btn-1${index}`}>
+                    Open Popover
+                </Button>
+                <section.component id={`popover-1${index}`}>
+                    popover with component
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Close popover with JS">
+                <Button theme="secondary" id={`popover-btn-2${index}`} data-no-close="true">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-2${index}`}>
+                    <p>
+                        This popover cannot be closed by clicking outside.
+                        Using the button below will close the popover and remove the event listener, so the popover cannot be opened again.
+                    </p>
+                    <Button theme="secondary">
+                        Remove
+                    </Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on top-start">
+                <Button theme="secondary" id={`popover-btn-3${index}`} data-pos="top-start">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-3${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on top">
+                <Button theme="secondary" id={`popover-btn-4${index}`} data-pos="top">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-4${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on top-end">
+                <Button theme="secondary" id={`popover-btn-5${index}`} data-pos="top-end">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-5${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on left-start">
+                <Button theme="secondary" id={`popover-btn-6${index}`} data-pos="left-start">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-6${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on left">
+                <Button theme="secondary" id={`popover-btn-7${index}`} data-pos="left">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-7${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on left-end">
+                <Button theme="secondary" id={`popover-btn-8${index}`} data-pos="left-end">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-8${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on right-start">
+                <Button theme="secondary" id={`popover-btn-9${index}`} data-pos="right-start">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-9${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on right">
+                <Button theme="secondary" id={`popover-btn-10${index}`} data-pos="right">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-10${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on right-end">
+                <Button theme="secondary" id={`popover-btn-11${index}`} data-pos="right-end">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-11${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on bottom-start">
+                <Button theme="secondary" id={`popover-btn-12${index}`} data-pos="bottom-start">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-12${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on bottom">
+                <Button theme="secondary" id={`popover-btn-13${index}`} data-pos="bottom">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-13${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Popover on bottom-end">
+                <Button theme="secondary" id={`popover-btn-14${index}`} data-pos="bottom-end">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-14${index}`}>
+                    <strong>This is a popover</strong>
+                    <div class="muted">With rich content</div>
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<script>
+    import { popover, closePopover } from '@utils/popover'
+
+    const selectors = [
+        'astro',
+        'svelte',
+        'react'
+    ]
+
+    const ids = Array(14).fill(10).map((x, index) => x * (index + 1))
+    const variants = [
+        '00',
+        '01',
+        '02',
+        ...ids,
+        ...ids.map(x => x + 1),
+        ...ids.map(x => x + 2)
+    ]
+
+    selectors.forEach(selector => {
+        const event = popover({
+            trigger: `#popover-btn-${selector}`,
+            popover: `#popover-${selector}`,
+        })
+
+        document.querySelector('#popover-remove')?.addEventListener('click', () => {
+            closePopover(`#popover-${selector}`)
+            event?.remove()
+        })
+    })
+
+    variants.forEach(variant => {
+        const button = document.querySelector(`#popover-btn-${variant}`) as HTMLButtonElement
+        const removeButton = document.querySelector(`#popover-${variant} button`)
+
+        const popoverInstance = popover({
+            trigger: `#popover-btn-${variant}`,
+            popover: `#popover-${variant}`,
+            position: button?.dataset.pos as any || 'bottom',
+            closeOnBlur: button?.dataset.noClose ? false : true
+        })
+
+        if (removeButton) {
+            removeButton.addEventListener('click', () => {
+                closePopover(`#popover-${variant}`)
+                popoverInstance?.remove()
+
+                button.disabled = true
+                button.classList.remove(button.classList.item(1) as string)
+                button.innerText = 'Popover disabled'
+            })
+        }
+    })
+</script>

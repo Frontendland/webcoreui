@@ -1,0 +1,23 @@
+---
+import type { PopoverProps } from './popover'
+import styles from './popover.module.scss'
+
+interface Props extends PopoverProps {}
+
+const {
+    id,
+    className
+} = Astro.props
+
+const classes = [
+    styles.popover,
+    className
+]
+---
+
+<dialog
+    class:list={classes}
+    id={id}
+>
+    <slot />
+</dialog>
