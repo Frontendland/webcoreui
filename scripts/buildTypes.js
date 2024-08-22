@@ -93,6 +93,80 @@ const buildTypes = type => {
             }
         `)
     }
+
+    if (type === 'utils') {
+        return format(`
+            type PopoverPosition = 'top'
+                | 'top-start'
+                | 'top-end'
+                | 'left'
+                | 'left-start'
+                | 'left-end'
+                | 'right'
+                | 'right-start'
+                | 'right-end'
+                | 'bottom'
+                | 'bottom-start'
+                | 'bottom-end'
+
+            type Popover = {
+                trigger: string
+                popover: string
+                position?: PopoverPosition
+                offset?: number
+                closeOnBlur?: boolean
+            }
+
+            type Toast = {
+                element: string
+                timeout?: number
+                title?: string
+                content?: string
+                theme?: 'info' | 'success' | 'warning' | 'alert' | null
+                position?: 'bottom-left'
+                    | 'top-left'
+                    | 'top-right'
+                    | 'bottom-full'
+                    | 'top-full'
+            }
+
+            declare module 'webcoreui' {
+                export const classNames = (classes: any[]) => string
+                
+                export const setCookie = (name: string, value: string, days: number) => {}
+                export const getCookie = (name: string) => string | null
+                export const removeCookie = (name: string) => {}
+
+                export const debounce = (fn: any, waitFor: number) => any
+
+                export const dispatch = (event: string, detail: any) => {}
+                export const listen = (event: string, callback: (e: any) => any) => {
+                    remove()
+                }
+
+                export const clamp = (num: number, min: number, max: number) => number
+                export const lerp = (start: number, end: number, value: number) => number
+                export const invlerp = (start: number, end: number, value: number) => number
+                export const interpolate = (
+                    value: number,
+                    input: [start: number, end: number],
+                    output: [start: number, end: number],
+                ) => number
+
+                export const modal = (selector: string) => {}
+                export const closeModal = (selector: string) => {}
+
+                export const popover = (config: Popover) => {
+                    remove()
+                }
+                export const closePopover = (selector: string) => {}
+
+                export const setDefaultTimeout = (time: number) => number
+                export const toast = (config: Toast | string) => {}
+                export const hideToast = (element: string) => {}
+            }
+        `)
+    }
 }
 
 export default buildTypes

@@ -56,5 +56,6 @@ fs.writeFileSync('dist/astro.d.ts', buildTypes('astro'))
 fs.writeFileSync('dist/svelte.d.ts', buildTypes('svelte'))
 fs.writeFileSync('dist/react.d.ts', buildTypes('react'))
 fs.writeFileSync('dist/icons.d.ts', buildTypes('icons'))
+fs.writeFileSync('dist/index.d.ts', buildTypes('utils'))
 
 console.log('✅ Package built')

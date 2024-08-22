@@ -43,6 +43,7 @@
         "react.d.ts",
         "react.js",
         "index.js",
+        "index.d.ts",
         "README.md",
         "LICENSE"
     ],
