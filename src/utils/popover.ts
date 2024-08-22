@@ -1,4 +1,5 @@
 import { closeModal } from './modal'
+import { debounce } from './debounce'
 
 type PopoverPosition = 'top'
     | 'top-start'
@@ -161,7 +162,24 @@ export const popover = ({
             }, 300)
         }
 
+        const removeOnResize = debounce(() => {
+            popoverDOM.dataset.show = ''
+
+            setTimeout(() => {
+                if (!popoverDOM.dataset.show) {
+                    popoverDOM.removeAttribute('data-show')
+                }
+            }, 300)
+        })
+
+        const observer = new ResizeObserver(() => {
+            if (popoverDOM.dataset.show) {
+                removeOnResize()
+            }
+        })
+
         triggerDOM.addEventListener('click', handleOpen)
+        observer.observe(document.body)
 
         if (closeOnBlur) {
             document.addEventListener('click', handleClose)
@@ -169,7 +187,8 @@ export const popover = ({
 
         return {
             remove() {
-                triggerDOM.removeEventListener('click', handleOpen)
+                triggerDOM.removeEventListener('click', handleOpen);
+                observer.disconnect()
 
                 if (closeOnBlur) {
                     document.removeEventListener('click', handleClose)
