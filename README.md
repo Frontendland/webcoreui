@@ -205,6 +205,7 @@ import { Accordion } from 'webcoreui/react'
 - [ConditionalWrapper](https://github.com/Frontendland/webcoreui/tree/main/src/components/ConditionalWrapper)
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
 - [Input](https://github.com/Frontendland/webcoreui/tree/main/src/components/Input)
+- [List](https://github.com/Frontendland/webcoreui/tree/main/src/components/List)
 - [Menu](https://github.com/Frontendland/webcoreui/tree/main/src/components/Menu)
 - [Modal](https://github.com/Frontendland/webcoreui/tree/main/src/components/Modal)
 - [Popover](https://github.com/Frontendland/webcoreui/tree/main/src/components/Popover)

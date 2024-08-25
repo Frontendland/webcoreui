@@ -1,6 +1,7 @@
 import infoIcon from './icons/info.svg?raw'
 import gitHubIcon from './icons/github.svg?raw'
 import successIcon from './icons/circle-check.svg?raw'
+import moonIcon from './icons/moon.svg?raw'
 
 export const accordionItems = [{
     title: 'Do you offer support?',
@@ -93,3 +94,91 @@ export const toggleThemes = {
     '#252525': 'dark',
     '#DDD': 'light'
 }
+
+export const listPreview = [{
+    items: [
+        { name: 'Switch theme', value: 'theme', icon: moonIcon }
+    ]
+}]
+
+export const list = [{
+    items: [
+        { name: 'Create issue', value: 'new' },
+        { name: 'Knowledge base', href: '#' },
+        { name: 'Switch theme', value: 'theme' }
+    ]
+}]
+
+export const listWithIcons = [{
+    items: [
+        { name: 'Create issue', value: 'new', icon: gitHubIcon },
+        { name: 'Knowledge base', href: '#', icon: infoIcon },
+        { name: 'Switch theme', value: 'theme', icon: moonIcon }
+    ]
+}]
+
+export const listWithSubText = [{
+    items: [
+        {
+            name: 'Create issue',
+            value: 'new',
+            icon: gitHubIcon,
+            subText: '(GitHub)'
+        },
+        {
+            name: 'Knowledge base',
+            href: '#',
+            icon: infoIcon,
+            subText: 'Learn more'
+        },
+        { name: 'Switch theme', value: 'theme', icon: moonIcon }
+    ]
+}]
+
+export const listWithGroups = [
+    {
+        title: 'Suggestions',
+        items: [
+            {
+                name: 'Create issue',
+                value: 'new',
+                icon: gitHubIcon,
+                subText: '(GitHub)'
+            },
+            {
+                name: 'Knowledge base',
+                href: '#',
+                icon: infoIcon,
+                subText: 'Learn more'
+            },
+            { name: 'Switch theme', value: 'theme', icon: moonIcon }
+        ]
+    },
+    {
+        title: 'Settings',
+        items: [
+            { name: 'Profile', href: '#' },
+            { name: 'Preferences', href: '#' },
+            { name: 'Sign out', value: 'sign-out' }
+        ]
+    }
+]
+
+export const listWithStates = [
+    {
+        title: listWithGroups[0].title,
+        items: [
+            {
+                ...listWithGroups[0].items[0],
+                subText: 'Issue creation disabled',
+                disabled: true 
+            },
+            {
+                ...listWithGroups[0].items[1],
+                selected: true
+            },
+            listWithGroups[0].items[2]
+        ]
+    },
+    listWithGroups[1]
+]

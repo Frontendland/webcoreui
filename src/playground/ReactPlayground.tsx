@@ -9,6 +9,7 @@ import Checkbox from '@components/Checkbox/Checkbox.tsx'
 import Collapsible from '@components/Collapsible/Collapsible.tsx'
 import Icon from '@components/Icon/Icon.tsx'
 import Input from '@components/Input/Input.tsx'
+import List from '@components/List/List.tsx'
 import Progress from '@components/Progress/Progress.tsx'
 import Radio from '@components/Radio/Radio.tsx'
 import Slider from '@components/Slider/Slider.tsx'
@@ -18,7 +19,7 @@ import Textarea from '@components/Textarea/Textarea.tsx'
 import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.tsx'
 import Toast from '@components/Toast/Toast.tsx'
 
-import { tabItems, themes } from '@data'
+import { tabItems, themes, listWithStates } from '@data'
 import { toast } from '@utils/toast'
 
 import styles from './playground.module.scss'
@@ -86,6 +87,17 @@ const ReactPlayground = () => {
                 />
 
                 <span className={styles.span}>{input}</span>
+            </Card>
+
+            <Card title="List">
+                <List
+                    itemGroups={listWithStates}
+                    showSearchBar={true}
+                    showSearchBarIcon={true}
+                    searchBarPlaceholder="Search the app..."
+                    noResultsLabel="Nothing found..."
+                    onSelect={event => console.log(event)}
+                />
             </Card>
 
             <Card title="Progress">

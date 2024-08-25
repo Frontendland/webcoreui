@@ -1,0 +1,128 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroList from '@components/List/List.astro'
+import SvelteList from '@components/List/List.svelte'
+import ReactList from '@components/List/List.tsx'
+
+import { getSections } from '@helpers'
+
+import {
+    list,
+    listWithIcons,
+    listWithSubText,
+    listWithGroups,
+    listWithStates
+} from '@data'
+
+const sections = getSections({
+    title: 'lists',
+    components: [AstroList, SvelteList, ReactList],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>List</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroList
+                itemGroups={listWithGroups}
+                showSearchBar={true}
+                showSearchBarIcon={true}
+                searchBarPlaceholder="Search the app..."
+                noResultsLabel="Nothing found..."
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteList
+                itemGroups={listWithGroups}
+                showSearchBar={true}
+                showSearchBarIcon={true}
+                searchBarPlaceholder="Search the app..."
+                noResultsLabel="Nothing found..."
+                client:idle
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactList
+                itemGroups={listWithGroups}
+                showSearchBar={true}
+                showSearchBarIcon={true}
+                searchBarPlaceholder="Search the app..."
+                noResultsLabel="Nothing found..."
+                client:idle
+            />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component itemGroups={list} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Item with icons">
+                <section.component itemGroups={listWithIcons} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Item with icons & subText">
+                <section.component itemGroups={listWithSubText} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Grouped item">
+                <section.component itemGroups={listWithGroups} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled & selected items">
+                <section.component itemGroups={listWithStates} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="List with scroll">
+                <section.component
+                    itemGroups={listWithGroups}
+                    maxHeight="160px"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="List with search bar">
+                <section.component
+                    itemGroups={listWithGroups}
+                    showSearchBar={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Search bar with placeholder">
+                <section.component
+                    itemGroups={listWithGroups}
+                    showSearchBar={true}
+                    searchBarPlaceholder="Search the app..."
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Search bar with icon & placeholder">
+                <section.component
+                    itemGroups={listWithGroups}
+                    showSearchBar={true}
+                    showSearchBarIcon={true}
+                    searchBarPlaceholder="Search the app..."
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<script>
+    import { listen } from '@utils/event'
+
+    listen('listOnSelect', payload => {
+        console.log(payload)
+    })
+</script>

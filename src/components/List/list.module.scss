@@ -1,0 +1,91 @@
+@import '../../scss/config.scss';
+
+.list {
+    @include spacing(0);
+
+    overflow-y: auto;
+    list-style-type: none;
+
+    &:hover li[data-selected] {
+        @include background(transparent);
+    }
+
+    li {
+        @include transition(background);
+        @include spacing(px-sm, py-xs, m-xs);
+        @include layout(flex, sm, v-center);
+        @include border-radius(md);
+
+        &:not(.title, [data-disabled]) {
+            cursor: pointer;
+        }
+
+        &:not(.title, [data-disabled]):hover,
+        &[data-selected] {
+            @include background(primary-40);
+        }
+
+        &[data-disabled],
+        &[data-disabled] span {
+            @include typography(primary-30);
+
+            cursor: default;
+        }
+
+        &[data-hidden] {
+            @include visibility(none);
+        }
+
+        &[data-id="w-no-results"] {
+            @include layout(h-center);
+            cursor: default;
+
+            &:hover {
+                @include background(transparent);
+            }
+        }
+
+        &.title {
+            @include typography(md, primary-20);
+            @include spacing(m0);
+            
+            padding-bottom: 0;
+            
+            &:not(:first-child) {
+                @include border(top, primary-50);
+            }
+        }
+
+        svg {
+            @include size(18px);
+            pointer-events: none;
+        }
+
+        a,
+        div {
+            @include layout(flex, sm, v-center);
+            @include typography(none);
+            flex: 1;
+        }
+
+        div {
+            pointer-events: none;
+        }
+
+        span {
+            @include typography(md, primary-20);
+            pointer-events: none;
+        }
+    }
+}
+
+.container {
+    @include border-radius(md);
+    @include border(primary-50);
+
+    input {
+        @include border(top, 0);
+        @include border(left, 0);
+        @include border(right, 0);
+    }
+}

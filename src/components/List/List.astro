@@ -1,0 +1,167 @@
+---
+import type { ListProps } from './list'
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+import Input from '../Input/Input.astro'
+
+import searchIcon from '../../icons/search.svg?raw'
+import styles from './list.module.scss'
+
+interface Props extends ListProps {}
+
+const {
+    showSearchBar,
+    showSearchBarIcon,
+    searchBarPlaceholder,
+    noResultsLabel = 'No results.',
+    maxHeight,
+    id,
+    className,
+    wrapperClassName,
+    itemGroups
+} = Astro.props
+
+const classes = [
+    styles.list,
+    !showSearchBar && styles.container,
+    className
+]
+
+const wrapperClasses = [
+    styles.container,
+    wrapperClassName
+]
+---
+
+<ConditionalWrapper condition={!!showSearchBar}>
+    <div slot="wrapper" class:list={wrapperClasses} data-id="w-list-wrapper">
+        <Input
+            type="search"
+            placeholder={searchBarPlaceholder}
+            data-id="w-list-search"
+        >
+            <Fragment
+                set:html={searchIcon}
+                slot={showSearchBarIcon ? 'default' : null}
+            />
+        </Input>
+        children
+    </div>
+    <ul class:list={classes} id={id} data-id="w-list" style={maxHeight && `max-height: ${maxHeight}`}>
+        {itemGroups.map((group: ListProps['itemGroups'][0]) => (
+            <Fragment>
+                {group.title && (
+                    <li class={styles.title} data-id="w-list-title">
+                        {group.title}
+                    </li>
+                )}
+                {group.items.map(item => (
+                    <li
+                        tabindex={item.href || item.disabled ? undefined : 0}
+                        data-value={item.value}
+                        data-name={item.name}
+                        data-disabled={item.disabled}
+                        data-selected={item.selected}
+                    >
+                        <ConditionalWrapper condition={!!item.href}>
+                            <a
+                                slot="wrapper"
+                                href={item.href}
+                                target={item.target}
+                            >
+                                children
+                            </a>
+
+                            <ConditionalWrapper condition={!!(item.icon && item.subText)}>
+                                <div slot="wrapper">children</div>
+                                {item.icon && <Fragment set:html={item.icon} />}
+                                {item.name}
+                            </ConditionalWrapper>
+                            {item.subText && <span>{item.subText}</span>}
+                        </ConditionalWrapper>
+                    </li>
+                ))}
+            </Fragment>
+        ))}
+        {showSearchBar && (
+            <li data-id="w-no-results" data-hidden>{noResultsLabel}</li>
+        )}
+    </ul>
+</ConditionalWrapper>
+
+<script>
+    import { dispatch } from '../../utils/event'
+
+    const lists = document.querySelectorAll('[data-id="w-list"]')
+    const searchInputs = document.querySelectorAll('[data-id="w-list-search"]')
+
+    const handleClick = (list: Element, items: Element[], event: Event) => {
+        const target = event.target as HTMLElement
+
+        if (target.dataset.value) {
+            dispatch('listOnSelect', {
+                value: target.dataset.value,
+                name: target.dataset.name,
+                list,
+            })
+
+            items.forEach(item => item.removeAttribute('data-selected'))
+            target.dataset.selected = 'true'
+        }
+    }
+
+    Array.from(lists).forEach(list => {
+        const items = Array.from(list.children)
+
+        list.addEventListener('click', event => handleClick(list, items, event))
+        list.addEventListener('keyup', event => {
+            if ((event as KeyboardEvent).key === 'Enter') {
+                handleClick(list, items, event)
+            }
+        })
+    })
+
+    Array.from(searchInputs).forEach(element => {
+        element.addEventListener('input', event => {
+            const target = event.target as HTMLInputElement
+            const ul = target.closest('[data-id="w-list-wrapper"]')
+                ?.querySelector('ul') as HTMLUListElement
+
+            const noResults = ul.querySelector('[data-id="w-no-results"]')
+            const items = Array.from(ul.children)
+            const value = target.value.toLowerCase()
+
+            items.forEach(item => {
+                const li = item as HTMLLIElement
+                const hideItem = (!li.dataset.value?.toLowerCase().includes(value)
+                    && !li.innerText.toLowerCase().includes(value))
+                    || li.dataset.id === 'w-list-title'
+                    || li.dataset.id === 'w-no-results'
+
+                if (hideItem) {
+                    li.dataset.hidden = 'true'
+                } else if (li.dataset.id !== 'w-no-results') {
+                    li.removeAttribute('data-hidden')
+                }
+            })
+
+            const numberOfResults = items.filter(item => {
+                const li = item as HTMLLIElement
+                return li.dataset.name && !li.dataset.hidden
+            }).length
+
+            if (!numberOfResults) {
+                noResults?.removeAttribute('data-hidden')
+            }
+
+            if (!value) {
+                items.forEach(item => {
+                    const li = item as HTMLLIElement
+
+                    li.dataset.id === 'w-no-results'
+                        ? li.dataset.hidden = 'true'
+                        : li.removeAttribute('data-hidden')
+                })
+            }
+        })
+    })
+</script>

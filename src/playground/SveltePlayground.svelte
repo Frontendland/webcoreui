@@ -8,6 +8,7 @@
     import Collapsible from '@components/Collapsible/Collapsible.svelte'
     import Icon from '@components/Icon/Icon.svelte'
     import Input from '@components/Input/Input.svelte'
+    import List from '@components/List/List.svelte'
     import Progress from '@components/Progress/Progress.svelte'
     import Radio from '@components/Radio/Radio.svelte'
     import Slider from '@components/Slider/Slider.svelte'
@@ -17,7 +18,7 @@
     import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.svelte'
     import Toast from '@components/Toast/Toast.svelte'
 
-    import { tabItems, themes } from '@data'
+    import { tabItems, themes, listWithStates } from '@data'
     import { toast } from '@utils/toast'
     
     import styles from './playground.module.scss'
@@ -82,6 +83,17 @@
         />
 
         <span class={styles.span}>{input}</span>
+    </Card>
+
+    <Card title="List">
+        <List
+            itemGroups={listWithStates}
+            showSearchBar={true}
+            showSearchBarIcon={true}
+            searchBarPlaceholder="Search the app..."
+            noResultsLabel="Nothing found..."
+            onSelect={event => console.log(event)}
+        />
     </Card>
 
     <Card title="Progress">

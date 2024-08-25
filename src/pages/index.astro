@@ -12,6 +12,7 @@ import Checkbox from '@components/Checkbox/Checkbox.astro'
 import Collapsible from '@components/Collapsible/Collapsible.astro'
 import Icon from '@components/Icon/Icon.astro'
 import Input from '@components/Input/Input.astro'
+import List from '@components/List/List.astro'
 import Menu from '@components/Menu/Menu.astro'
 import Progress from '@components/Progress/Progress.astro'
 import Radio from '@components/Radio/Radio.astro'
@@ -30,6 +31,7 @@ import infoIcon from '../icons/info.svg?raw'
 import gitHubIcon from '../icons/github.svg?raw'
 
 import {
+    listPreview,
     themes,
     accordionItems,
     avatarGroup,
@@ -140,6 +142,14 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Input" href="/input">
             <Input placeholder="Please enter your email." />
+        </CardWrapper>
+        <CardWrapper title="List" href="/list">
+            <List
+                itemGroups={listPreview}
+                showSearchBar={true}
+                showSearchBarIcon={true}
+                searchBarPlaceholder="Search items..."
+            />
         </CardWrapper>
         <CardWrapper title="Menu" href="/menu">
             <Menu className="menu-example">
