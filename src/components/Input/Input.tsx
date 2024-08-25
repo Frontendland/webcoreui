@@ -10,7 +10,6 @@ const Input = ({
     theme,
     label,
     subText,
-    icon,
     value,
     className,
     children,

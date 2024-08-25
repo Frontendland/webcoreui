@@ -12,6 +12,7 @@
     export let className: SvelteInputProps['className'] = ''
     export let onChange: SvelteInputProps['onChange'] = () => {}
     export let onKeyUp: SvelteInputProps['onKeyUp'] = () => {}
+    export let onInput: SvelteInputProps['onInput'] = () => {}
 
     const classes = classNames([
         styles.input,
@@ -41,10 +42,11 @@
             class={classes}
             on:change={onChange}
             on:keyup={onKeyUp}
+            on:input={onInput}
             {...$$restProps}
         />
     </ConditionalWrapper>
-    {#if label}
+    {#if subText}
         <div class={styles.subtext}>
             {@html subText}
         </div>

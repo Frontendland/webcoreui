@@ -68,7 +68,8 @@
 
         svg {
             @include position(absolute, l10px);
-            @include size(20px);
+            @include size(18px);
+            @include typography(primary-30);
         }
     }
 
