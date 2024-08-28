@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { SvelteListProps } from './list'
+    import type { SvelteListProps, ListEventType } from './list'
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
     import Input from '../Input/Input.svelte'
 
@@ -32,7 +32,7 @@
         wrapperClassName
     ])
 
-    const search = (event: KeyboardEvent) => {
+    const search = (event: InputEvent) => {
         searchValue = (event.target as HTMLInputElement).value
 
         numberOfResults = itemGroups
@@ -61,7 +61,7 @@
         onSelect?.({
             ...li.dataset,
             list: li.parentElement
-        })
+        } as ListEventType)
     }
 
     const selectByKey = (event: KeyboardEvent) => {

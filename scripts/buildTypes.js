@@ -28,8 +28,9 @@ const buildTypes = type => {
                 'Input',
                 'List',
                 'Radio',
-                'Switch',
+                'Select',
                 'Slider',
+                'Switch',
                 'Textarea'
             ]
     

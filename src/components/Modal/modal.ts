@@ -11,6 +11,7 @@ export type ModalProps = {
         | 'warning'
         | 'alert'
         | null
+    [key: string]: any
 }
 
 export type ReactModalProps = {

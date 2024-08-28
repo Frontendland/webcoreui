@@ -11,6 +11,7 @@
     import List from '@components/List/List.svelte'
     import Progress from '@components/Progress/Progress.svelte'
     import Radio from '@components/Radio/Radio.svelte'
+    import Select from '@components/Select/Select.svelte'
     import Slider from '@components/Slider/Slider.svelte'
     import Switch from '@components/Switch/Switch.svelte'
     import Tabs from '@components/Tabs/Tabs.svelte'
@@ -18,7 +19,7 @@
     import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.svelte'
     import Toast from '@components/Toast/Toast.svelte'
 
-    import { tabItems, themes, listWithStates } from '@data'
+    import { tabItems, themes, listWithStates, listWithGroups } from '@data'
     import { toast } from '@utils/toast'
     
     import styles from './playground.module.scss'
@@ -30,6 +31,7 @@
     let input = ''
     let slider = 50
     let wordCount = 0
+    let select = ''
 </script>
 
 <div class="playground grid md-2 lg-3">
@@ -120,6 +122,20 @@
         />
 
         <span class={styles.span}>{radio}</span>
+    </Card>
+
+    <Card title="Select">
+        <Select
+            name="select"
+            itemGroups={listWithGroups}
+            showSearchBar={true}
+            showSearchBarIcon={true}
+            searchBarPlaceholder="Filter options"
+            className={styles.mt}
+            onChange={payload => select = `${payload.name} (${payload.value})`}
+        />
+
+        <span class={styles.span}>Selected: {select}</span>
     </Card>
 
     <Card title="Slider">

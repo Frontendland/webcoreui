@@ -1,0 +1,25 @@
+@import '../../scss/config.scss';
+
+.select {
+    svg {
+        @include position(r10px);
+
+        left: auto !important;
+        cursor: pointer;
+    }
+
+    input {
+        cursor: pointer;
+        padding-left: 10px !important;
+        padding-right: 40px;
+    }
+
+    &.disabled svg {
+        cursor: no-drop;
+    }
+}
+
+.popover {
+    padding: 0 !important;
+    border: 0 !important;
+}

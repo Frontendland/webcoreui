@@ -1,7 +1,7 @@
 import { closeModal } from './modal'
 import { debounce } from './debounce'
 
-type PopoverPosition = 'top'
+export type PopoverPosition = 'top'
     | 'top-start'
     | 'top-end'
     | 'left'
@@ -32,7 +32,7 @@ export const popover = ({
     const triggerDOM = document.querySelector(trigger) as HTMLElement
     const popoverDOM = document.querySelector(popover) as HTMLElement
 
-    if (triggerDOM && popover) {
+    if (triggerDOM && popoverDOM) {
         document.body.appendChild(popoverDOM)
 
         if (position) {

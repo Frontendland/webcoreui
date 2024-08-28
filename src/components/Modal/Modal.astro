@@ -28,7 +28,8 @@ const {
     closeOnOverlay = true,
     theme,
     id,
-    className
+    className,
+    ...rest
 } = Astro.props
 
 const close = [
@@ -48,6 +49,7 @@ const classes = [
     class:list={classes}
     id={id}
     data-close={close.length ? close : undefined}
+    {...rest}
 >
     {showCloseIcon && (
         <Button

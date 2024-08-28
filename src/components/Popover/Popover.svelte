@@ -15,7 +15,8 @@
 
 <dialog
     class={classes}
-    id={id}
+    id={id || null}
+    {...$$restProps}
 >
     <slot />
 </dialog>

@@ -1,0 +1,112 @@
+---
+import type { SelectProps } from './select'
+
+import Input from '../Input/Input.astro'
+import Popover from '../Popover/Popover.astro'
+import List from '../List/List.astro'
+import Modal from '../Modal/Modal.astro'
+
+import ArrowDown from '../../icons/arrow-down.svg?raw'
+import { classNames } from '../../utils/classNames'
+import styles from './select.module.scss'
+
+interface Props extends SelectProps {}
+
+const {
+    name,
+    value,
+    placeholder,
+    label,
+    subText,
+    disabled,
+    className,
+    position,
+    ...rest
+} = Astro.props
+
+const classes = classNames([
+    styles.select,
+    disabled && styles.disabled,
+    className
+])
+---
+
+<Input
+    type="text"
+    value={value}
+    readonly={true}
+    disabled={disabled}
+    placeholder={placeholder}
+    label={label}
+    subText={subText}
+    data-id={`w-select-${name}`}
+    data-position={position}
+    labelClassName={classes}
+>
+    <Fragment set:html={ArrowDown} />
+</Input>
+{position === 'modal'
+    ? (
+        <Modal
+            className={styles.popover}
+            data-id={`w-options-${name}`}
+            showCloseIcon={false}
+        >
+            <List {...rest} />
+        </Modal>
+    ) : (
+        <Popover className={styles.popover} data-id={`w-options-${name}`}>
+            <List {...rest} />
+        </Popover>
+    )
+}
+
+<script>
+    import type { PopoverPosition } from '../../utils/popover'
+    import { popover, closePopover } from '../../utils/popover'
+    import { modal } from '../../utils/modal'
+    import { listen, dispatch } from '../../utils/event'
+
+    const selects = document.querySelectorAll('[data-id^="w-select"]')
+
+    Array.from(selects).forEach(select => {
+        const selectElement = select as HTMLElement
+        const name = selectElement.dataset.id!.split('w-select-')[1]
+        const position = selectElement.dataset.position
+
+        if (position === 'modal') {
+            select.addEventListener('click', () => {
+                modal(`[data-id="w-options-${name}"]`)
+            })
+        } else {
+            const { width } = selectElement.getBoundingClientRect()
+            const dialogElement = document.querySelector(`[data-id="w-options-${name}"]`) as HTMLDialogElement
+    
+            dialogElement.style.width = `${width}px`
+    
+            popover({
+                trigger: `[data-id="${selectElement.dataset.id}"]`,
+                popover: `[data-id="w-options-${name}"]`,
+                position: position as PopoverPosition || 'bottom'
+            })
+        }
+    })
+
+    listen('listOnSelect', payload => {
+        const { name, list } = payload
+        const dialog = list.closest('dialog')
+        const popoverId = dialog.dataset.id
+        const selectName = popoverId.split('w-options-')[1]
+        const selectId = `[data-id="w-select-${selectName}"]`
+        const selectElement = document.querySelector(selectId) as HTMLInputElement
+
+        closePopover(`[data-id="${popoverId}"]`)
+
+        selectElement.value = name
+
+        dispatch('selectOnChange', {
+            select: selectName,
+            ...payload
+        })
+    })
+</script>

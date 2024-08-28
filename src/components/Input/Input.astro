@@ -12,6 +12,7 @@ const {
     label,
     subText,
     className,
+    labelClassName,
     ...rest
 } = Astro.props
 
@@ -21,11 +22,16 @@ const classes = [
     className
 ]
 
+const labelClasses = [
+    styles['input-label'],
+    labelClassName
+]
+
 const useLabel = !!(label || subText || Astro.slots.has('default'))
 ---
 
 <ConditionalWrapper condition={useLabel}>
-    <label slot="wrapper" class={styles['input-label']}>
+    <label slot="wrapper" class:list={labelClasses}>
         {label && (
             <div class={styles.label}>{label}</div>
         )}

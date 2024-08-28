@@ -12,6 +12,7 @@ import Input from '@components/Input/Input.tsx'
 import List from '@components/List/List.tsx'
 import Progress from '@components/Progress/Progress.tsx'
 import Radio from '@components/Radio/Radio.tsx'
+import Select from '@components/Select/Select.tsx'
 import Slider from '@components/Slider/Slider.tsx'
 import Switch from '@components/Switch/Switch.tsx'
 import Tabs from '@components/Tabs/Tabs.tsx'
@@ -19,7 +20,7 @@ import Textarea from '@components/Textarea/Textarea.tsx'
 import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.tsx'
 import Toast from '@components/Toast/Toast.tsx'
 
-import { tabItems, themes, listWithStates } from '@data'
+import { tabItems, themes, listWithStates, listWithGroups } from '@data'
 import { toast } from '@utils/toast'
 
 import styles from './playground.module.scss'
@@ -32,6 +33,7 @@ const ReactPlayground = () => {
     const [input, setInput] = useState('')
     const [slider, setSlider] = useState(50)
     const [wordCount, setWordCount] = useState(0)
+    const [select, setSelect] = useState('')
 
     return (
         <div className="grid md-2 lg-3">
@@ -124,6 +126,20 @@ const ReactPlayground = () => {
                 />
 
                 <span className={styles.span}>{radio}</span>
+            </Card>
+
+            <Card title="Select">
+                <Select
+                    name="select"
+                    itemGroups={listWithGroups}
+                    showSearchBar={true}
+                    showSearchBarIcon={true}
+                    searchBarPlaceholder="Filter options"
+                    className={styles.mt}
+                    onChange={payload => setSelect(`${payload.name} (${payload.value})`)}
+                />
+
+                <span className={styles.span}>Selected: {select}</span>
             </Card>
 
             <Card title="Slider">

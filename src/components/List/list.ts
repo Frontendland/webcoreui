@@ -1,3 +1,9 @@
+export type ListEventType = {
+    value: string
+    name: string
+    list: HTMLUListElement
+}
+
 export type ListProps = {
     showSearchBar?: boolean
     showSearchBarIcon?: boolean
@@ -23,9 +29,9 @@ export type ListProps = {
 }
 
 export type SvelteListProps = {
-    onSelect?: (key: any) => any
+    onSelect?: (event: ListEventType) => void
 } & ListProps
 
 export type ReactListProps = {
-    onSelect?: (key: any) => any
+    onSelect?: (event: ListEventType) => void
 } & ListProps

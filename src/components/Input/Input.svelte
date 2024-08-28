@@ -10,14 +10,21 @@
     export let label: SvelteInputProps['label'] = ''
     export let subText: SvelteInputProps['subText'] = ''
     export let className: SvelteInputProps['className'] = ''
+    export let labelClassName: SvelteInputProps['labelClassName'] = ''
     export let onChange: SvelteInputProps['onChange'] = () => {}
     export let onKeyUp: SvelteInputProps['onKeyUp'] = () => {}
     export let onInput: SvelteInputProps['onInput'] = () => {}
+    export let onClick: SvelteInputProps['onClick'] = () => {}
 
     const classes = classNames([
         styles.input,
         theme && styles[theme],
         className
+    ])
+
+    const labelClasses = classNames([
+        styles['input-label'],
+        labelClassName
     ])
 
     const useLabel = !!(label || subText || $$slots.default)
@@ -26,7 +33,7 @@
 <ConditionalWrapper
     condition={useLabel}
     element="label"
-    class={styles['input-label']}
+    class={labelClasses}
 >
     {#if label}
         <div class={styles.label}>{label}</div>
@@ -43,6 +50,7 @@
             on:change={onChange}
             on:keyup={onKeyUp}
             on:input={onInput}
+            on:click={onClick}
             {...$$restProps}
         />
     </ConditionalWrapper>

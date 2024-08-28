@@ -12,6 +12,7 @@ const Input = ({
     subText,
     value,
     className,
+    labelClassName,
     children,
     ...rest
 }: ReactInputProps) => {
@@ -21,11 +22,16 @@ const Input = ({
         className
     ])
 
+    const labelClasses = classNames([
+        styles['input-label'],
+        labelClassName
+    ])
+
     const useLabel = !!(label || subText || children)
 
     return (
         <ConditionalWrapper condition={useLabel} wrapper={children => (
-            <label className={styles['input-label']}>
+            <label className={labelClasses}>
                 {children}
             </label>
         )}>

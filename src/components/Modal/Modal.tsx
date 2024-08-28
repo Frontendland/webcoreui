@@ -28,7 +28,8 @@ const Modal = ({
     theme,
     id,
     className,
-    children
+    children,
+    ...rest
 }: ReactModalProps) => {
     const classes = classNames([
         styles.modal,
@@ -48,6 +49,7 @@ const Modal = ({
                 className={classes}
                 id={id}
                 data-close={close.length ? close : undefined}
+                {...rest}
             >
                 {showCloseIcon && (
                     <Button

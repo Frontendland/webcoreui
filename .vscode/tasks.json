@@ -1,0 +1,29 @@
+// Tasks - https://code.visualstudio.com/docs/editor/tasks#vscode
+// Vars  - https://code.visualstudio.com/docs/editor/variables-reference
+{
+    "version": "2.0.0",
+    "type": "shell",
+    "tasks": [
+        {
+            "label": "🔍 Develop",
+            "command": "npm run develop",
+        },
+        {
+            "label": "🛠️ Build",
+            "command": "npm run build:package"
+        },
+        {
+            "label": "📥 Git fetch && pull",
+            "command": "git fetch && git pull"
+        },
+        {
+            "label": "✔️ Check TypeScript Errors",
+            "command": "tsc",
+        },
+        {
+            "label": "✔️🎯 Check TypeScript for Current",
+            "command": "tsc ${relativeFile}",
+        }
+    ]
+  }
+  

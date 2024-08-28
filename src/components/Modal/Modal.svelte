@@ -45,6 +45,7 @@
     class={classes}
     id={id}
     data-close={close.length ? close : undefined}
+    {...$$restProps}
 >
     {#if showCloseIcon}
         <Button

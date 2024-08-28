@@ -17,6 +17,7 @@ import Menu from '@components/Menu/Menu.astro'
 import Progress from '@components/Progress/Progress.astro'
 import Radio from '@components/Radio/Radio.astro'
 import Rating from '@components/Rating/Rating.astro'
+import Select from '@components/Select/Select.astro'
 import Slider from '@components/Slider/Slider.astro'
 import Spinner from '@components/Spinner/Spinner.astro'
 import Switch from '@components/Switch/Switch.astro'
@@ -173,6 +174,13 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Rating" href="/rating">
             <Rating score={4} />
+        </CardWrapper>
+        <CardWrapper title="Select" href="/select">
+            <Select
+                name="select-preview"
+                placeholder="Search the documentation"
+                itemGroups={[]}
+            />
         </CardWrapper>
         <CardWrapper title="Sheet" href="/sheet">
             <Button theme="outline">Open Sheet</Button>

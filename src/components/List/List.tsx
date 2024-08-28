@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import type { ReactListProps } from './list'
+import type { ReactListProps, ListEventType } from './list'
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 import Input from '../Input/Input.tsx'
 
@@ -21,6 +21,7 @@ const List = ({
 }: ReactListProps) => {
     const [searchValue, setSearchValue] = useState('')
     const [numberOfResults, setNumberOfResults] = useState(1)
+    const [itemGroupsWithActive, setItemGroups] = useState(itemGroups)
 
     const classes = classNames([
         styles.list,
@@ -37,7 +38,7 @@ const List = ({
         ? { maxHeight } as React.CSSProperties
         : undefined
 
-    const search = (event: KeyboardEvent) => {
+    const search = (event: React.FormEvent<HTMLInputElement>) => {
         const value = (event.target as HTMLInputElement).value
 
         setSearchValue(value)
@@ -58,20 +59,29 @@ const List = ({
     const select = (event: any) => {
         const li = event.target as HTMLLIElement
 
-        itemGroups = itemGroups.map(group => {
-            group.items = group.items.map(item => {
-                item.selected = li.dataset.name === item.name
-
-                return item
+        setItemGroups(
+            itemGroupsWithActive.map(group => {
+                return {
+                    ...group,
+                    items: group.items.map(item => {    
+                        return {
+                            ...item,
+                            selected: li.dataset.name === item.name
+                        }
+                    })
+                }
             })
+        )
 
-            return group
+        console.log({
+            ...li.dataset,
+            list: li.parentElement
         })
 
         onSelect?.({
             ...li.dataset,
             list: li.parentElement
-        })
+        } as ListEventType)
     }
 
     const selectByKey = (event: any) => {
@@ -98,8 +108,8 @@ const List = ({
                 {children}
             </div>
         )}>
-            <ul className={classes} id={id} data-id="w-list" style={style}>
-                {itemGroups.map((group: ReactListProps['itemGroups'][0], index) => (
+            <ul className={classes} id={id} style={style}>
+                {itemGroupsWithActive.map((group: ReactListProps['itemGroups'][0], index) => (
                     <React.Fragment key={index}>
                         {group.title && (
                             <li className={styles.title}
@@ -136,7 +146,12 @@ const List = ({
                                     <ConditionalWrapper condition={!!(item.icon && item.subText)} wrapper={children => (
                                         <div>{children}</div>
                                     )}>
-                                        {item.icon && <span dangerouslySetInnerHTML={{ __html: item.icon }} />}
+                                        {item.icon && (
+                                            <span
+                                                dangerouslySetInnerHTML={{ __html: item.icon }}
+                                                style={{ height: '18px' }}
+                                            />
+                                        )}
                                         {item.name}
                                     </ConditionalWrapper>
                                     {item.subText && <span>{item.subText}</span>}

@@ -1,0 +1,141 @@
+---
+import Layout from '@static/Layout.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+
+import AstroSelect from '@components/Select/Select.astro'
+import SvelteSelect from '@components/Select/Select.svelte'
+import ReactSelect from '@components/Select/Select.tsx'
+
+import { getSections } from '@helpers'
+
+import {
+    list,
+    listWithIcons,
+    listWithSubText,
+    listWithGroups,
+    listWithStates
+} from '@data'
+
+const sections = getSections({
+    title: 'selects',
+    components: [AstroSelect, SvelteSelect, ReactSelect],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>Select</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroSelect
+                name="astro-preview"
+                itemGroups={listWithGroups}
+                showSearchBar={true}
+                showSearchBarIcon={true}
+                searchBarPlaceholder="Filter options"
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteSelect
+                name="svelte-preview"
+                itemGroups={listWithGroups}
+                showSearchBar={true}
+                showSearchBarIcon={true}
+                searchBarPlaceholder="Filter options"
+                client:idle
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactSelect
+                name="react-preview"
+                itemGroups={listWithGroups}
+                showSearchBar={true}
+                showSearchBarIcon={true}
+                searchBarPlaceholder="Filter options"
+                client:idle
+            />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component
+                    name="default"
+                    itemGroups={listWithGroups}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With placeholder">
+                <section.component
+                    name="with-placeholder"
+                    placeholder="Search the app"
+                    itemGroups={listWithGroups}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With default value">
+                <section.component
+                    name="with-value"
+                    value="Knowledge Base"
+                    itemGroups={listWithStates}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled">
+                <section.component
+                    name="disabled"
+                    disabled={true}
+                    itemGroups={listWithGroups}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label">
+                <section.component
+                    name="with-label"
+                    label="Select action"
+                    itemGroups={listWithGroups}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With label & subText">
+                <section.component
+                    name="with-label-and-subtext"
+                    label="Select action"
+                    subText="Or jump to a page"
+                    itemGroups={listWithGroups}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Modal">
+                <section.component
+                    name="modal"
+                    position="modal"
+                    itemGroups={listWithGroups}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<script>
+    import { listen } from '@utils/event'
+
+    listen('selectOnChange', payload => {
+        console.log(payload)
+    })
+
+    // name: string
+    // value?: string
+    // placeholder?: string
+    // label?: string
+    // subText?: string
+    // disabled?: boolean
+    // position?: PopoverPosition | 'modal'
+</script>

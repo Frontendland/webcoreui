@@ -11,5 +11,6 @@
             "@data": ["src/data.js"],
             "@helpers": ["src/helpers.js"]
         }
-    }
+    },
+    "include": ["./src/**/*"]
 }

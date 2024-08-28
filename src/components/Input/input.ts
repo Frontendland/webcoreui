@@ -35,18 +35,21 @@ export type InputProps = {
     autofocus?: boolean
     autocomplete?: 'on' | 'off'
     className?: string
+    labelClassName?: string
     [key: string]: any
 }
 
 export type SvelteInputProps = {
-    onChange?: (e: any) => any
-    onKeyUp?: (e: any) => any
-    onInput?: (e: any) => any
+    onChange?: (event: Event & { currentTarget: HTMLInputElement }) => void
+    onKeyUp?: (event: KeyboardEvent & { currentTarget: HTMLInputElement }) => void
+    onInput?: (event: any) => void
+    onClick?: (event: MouseEvent & { currentTarget: HTMLInputElement }) => void
 } & InputProps
 
 export type ReactInputProps = {
-    onChange?: (e: any) => any
-    onKeyUp?: (e: any) => any
-    onInput?: (e: any) => any
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+    onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void
+    onInput?: (event: React.FormEvent<HTMLInputElement>) => void
+    onClick?: (event: React.MouseEvent<HTMLInputElement>) => void
     children?: React.ReactNode
 } & InputProps
