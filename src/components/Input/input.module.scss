@@ -70,6 +70,8 @@
             @include position(absolute, l10px);
             @include size(18px);
             @include typography(primary-30);
+
+            pointer-events: none;
         }
     }
 

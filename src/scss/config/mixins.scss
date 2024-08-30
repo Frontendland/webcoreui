@@ -330,18 +330,20 @@
 }
 
 @mixin transition($args...) {
-    $property: all;
-    $speed: .3s;
-
-    @each $arg in $args {
-        @if (meta.type-of($arg) == 'number') {
-            $speed: $arg;
-        } @else {
-            $property: $arg;
+    @if ($animations) {
+        $property: all;
+        $speed: .3s;
+    
+        @each $arg in $args {
+            @if (meta.type-of($arg) == 'number') {
+                $speed: $arg;
+            } @else {
+                $property: $arg;
+            }
         }
+    
+        transition: $property $speed cubic-bezier(0.4, 0.0, 0.2, 1);
     }
-
-    transition: $property $speed cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 @mixin typography($args...) {

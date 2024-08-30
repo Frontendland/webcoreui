@@ -79,7 +79,7 @@ yarn add webcoreui
 
 ### Setup
 
-Create an empty `webcore.config.scss` file at the root of your project to setup CSS configurations. Setup default styles and fonts by calling the following in your global SCSS file:
+Create an empty [`webcore.config.scss`](https://webcoreui.dev/docs/css-configuration#webcoreconfigscss) file at the root of your project to setup CSS configurations. Setup default styles and fonts by calling the following in your global SCSS file:
 
 ```scss
 @import 'webcoreui/styles';
@@ -113,7 +113,7 @@ html body {
     // Checkbox component
     --w-checkbox-color: var(--w-color-primary);
 
-    // Collapsible
+    // Collapsible component
     --w-collapsible-initial-height: 0;
     --w-collapsible-max-height: 100%;
 

@@ -68,13 +68,13 @@ body {
         @include background(var(--w-switch-off-color));
 
         &::before {
+            @include transition(transform);
             @include position(absolute, l3px, b3px);
             @include size(24px);
             @include border-radius(max);
             @include background(primary-70);
 
             content: '';
-            transition: 0.3s;
         }
     }
 }
