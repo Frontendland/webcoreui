@@ -86,6 +86,6 @@
         "url": "https://github.com/Frontendland/webcoreui/issues"
     },
     "lint-staged": {
-        "*.{js,ts,jsx,tsx,svelte,astro}": "eslint src/**/* --fix"
+        "*.{js,ts,jsx,tsx,svelte,astro}": "eslint src/**/*"
     }
 }
