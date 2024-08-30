@@ -1,7 +1,6 @@
-import { defineConfig } from 'astro/config'
-
-import svelte from '@astrojs/svelte'
 import react from '@astrojs/react'
+import svelte from '@astrojs/svelte'
+import { defineConfig } from 'astro/config'
 
 export default defineConfig({
     outDir: 'build',

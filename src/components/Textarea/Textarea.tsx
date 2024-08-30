@@ -1,9 +1,11 @@
 import React from 'react'
 import type { ReactTextareaProps } from './textarea'
+
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
-import styles from './textarea.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './textarea.module.scss'
 
 const Textarea = ({
     label,

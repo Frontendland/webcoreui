@@ -1,9 +1,11 @@
 <script lang="ts">
     import type { SvelteInputProps } from './input'
+
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
-    import styles from './input.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './input.module.scss'
 
     export let type: SvelteInputProps['type'] = 'text'
     export let theme: SvelteInputProps['theme'] = null

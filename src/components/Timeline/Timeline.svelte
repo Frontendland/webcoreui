@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { TimelineProps } from './timeline'
 
-    import styles from './timeline.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './timeline.module.scss'
 
     export let theme: TimelineProps['theme'] = null
     export let counter: TimelineProps['counter'] = null
@@ -23,7 +24,7 @@
     const styleVariables = classNames([
         color && `--w-timeline-color: ${color};`,
         textColor && `--w-timeline-text-color: ${textColor};`,
-        counter && `--w-timeline-counter: ${counter};`,
+        counter && `--w-timeline-counter: ${counter};`
     ])
 </script>
 

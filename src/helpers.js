@@ -14,7 +14,7 @@ export const getSections = ({
             title: `Svelte ${title}`,
             component: components[1],
             ...(showSubTitle && {
-                subTitle: 'For interactive examples, visit <a href="/svelte">Svelte Playground</a>',
+                subTitle: 'For interactive examples, visit <a href="/svelte">Svelte Playground</a>'
             }),
             ...(props && props)
         }] : []),
@@ -22,7 +22,7 @@ export const getSections = ({
             title: `React ${title}`,
             component: components[2],
             ...(showSubTitle && {
-                subTitle: 'For interactive examples, visit <a href="/react">React Playground</a>',
+                subTitle: 'For interactive examples, visit <a href="/react">React Playground</a>'
             }),
             ...(props && props)
         }] : [])

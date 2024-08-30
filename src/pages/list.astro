@@ -1,19 +1,18 @@
 ---
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
 import AstroList from '@components/List/List.astro'
 import SvelteList from '@components/List/List.svelte'
 import ReactList from '@components/List/List.tsx'
 
 import { getSections } from '@helpers'
-
 import {
     list,
-    listWithIcons,
-    listWithSubText,
     listWithGroups,
-    listWithStates
+    listWithIcons,
+    listWithStates,
+    listWithSubText
 } from '@data'
 
 const sections = getSections({
@@ -123,6 +122,7 @@ const sections = getSections({
     import { listen } from '@utils/event'
 
     listen('listOnSelect', payload => {
+        // eslint-disable-next-line no-console
         console.log(payload)
     })
 </script>

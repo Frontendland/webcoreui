@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { TableProps } from './table'
 
-    import styles from './table.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './table.module.scss'
 
     export let headings: TableProps['headings'] = []
     export let footer: TableProps['footer'] = []

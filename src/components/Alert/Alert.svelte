@@ -1,11 +1,12 @@
 <script lang="ts">
     import type { AlertProps } from './alert'
+
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
-    import info from '../../icons/info.svg?raw'
-    import success from '../../icons/circle-check.svg?raw'
-    import warning from '../../icons/warning.svg?raw'
     import alert from '../../icons/alert.svg?raw'
+    import success from '../../icons/circle-check.svg?raw'
+    import info from '../../icons/info.svg?raw'
+    import warning from '../../icons/warning.svg?raw'
 
     import styles from './alert.module.scss'
 
@@ -40,7 +41,7 @@
     {#if !hasCustomIcon && theme}
         {@html iconMap[theme]}
     {/if}
-    
+
     <ConditionalWrapper
         condition={!!(hasCustomIcon || theme)}
         element="div"

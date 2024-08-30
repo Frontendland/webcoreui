@@ -14,7 +14,7 @@ export const modal = (element: string) => {
 
                 close?.addEventListener('click', listener)
             },
-    
+
             esc: () => {
                 const listener = (event: KeyboardEvent) => {
                     if (event.key === 'Escape') {
@@ -26,7 +26,7 @@ export const modal = (element: string) => {
 
                 document.addEventListener('keydown', listener)
             },
-    
+
             overlay: () => {
                 const close = htmlElement.nextElementSibling
 

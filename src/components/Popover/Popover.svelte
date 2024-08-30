@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { PopoverProps } from './popover'
 
-    import styles from './popover.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './popover.module.scss'
 
     export let id: PopoverProps['id'] = ''
     export let className: PopoverProps['className'] = ''

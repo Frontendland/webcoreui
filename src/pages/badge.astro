@@ -1,11 +1,11 @@
 ---
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
-import Icon from '@components/Icon/Icon.astro'
 import AstroBadge from '@components/Badge/Badge.astro'
 import SvelteBadge from '@components/Badge/Badge.svelte'
 import ReactBadge from '@components/Badge/Badge.tsx'
+import Icon from '@components/Icon/Icon.astro'
 
 import { getSections } from '@helpers'
 
@@ -35,7 +35,7 @@ const sections = getSections({
             <ReactBadge theme="info">
                 Badge in React
             </ReactBadge>
-        </ComponentWrapper> 
+        </ComponentWrapper>
     </div>
 
     {sections.map((section: any) => (

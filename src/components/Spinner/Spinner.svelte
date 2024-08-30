@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { SpinnerProps } from './spinner'
 
-    import styles from './spinner.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './spinner.module.scss'
 
     export let color: SpinnerProps['color'] = ''
     export let width: SpinnerProps['width'] = 0
@@ -20,7 +21,7 @@
         width && `--w-spinner-width: ${width}px;`,
         speed && `--w-spinner-speed: ${speed}s;`,
         size && `--w-spinner-size: ${size}px;`,
-        dashArray && `--w-spinner-dash: ${dashArray}`,
+        dashArray && `--w-spinner-dash: ${dashArray}`
     ])
 </script>
 

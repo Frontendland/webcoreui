@@ -3,8 +3,9 @@ import type { ReactRadioProps } from './radio'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
-import styles from './radio.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './radio.module.scss'
 
 const Radio = ({
     name,
@@ -19,7 +20,7 @@ const Radio = ({
         inline && styles.inline,
         className
     ])
-    
+
     const style = color
         ? { '--w-radio-color': color } as React.CSSProperties
         : undefined

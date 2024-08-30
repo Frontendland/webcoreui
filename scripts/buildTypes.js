@@ -33,7 +33,7 @@ const buildTypes = type => {
                 'Switch',
                 'Textarea'
             ]
-    
+
             return componentsWithSvelteSpecificTypes.includes(component)
                 ? `Svelte${component}Props`
                 : `${component}Props`
@@ -43,7 +43,7 @@ const buildTypes = type => {
             ${components.map(component => {
                 return `import type { ${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
-    
+
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
                     return `export function ${component}(_props: ${getTypeName(component)}): any`
@@ -63,7 +63,7 @@ const buildTypes = type => {
                 'Table',
                 'Progress'
             ]
-    
+
             return componentsWithoutReactSpecificTypes.includes(component)
                 ? `${component}Props`
                 : `React${component}Props`

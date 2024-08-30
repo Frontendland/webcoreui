@@ -1,5 +1,6 @@
 ---
 import type { CardProps } from './card'
+
 import styles from './card.module.scss'
 
 interface Props extends CardProps {}
@@ -17,7 +18,7 @@ const {
 const classes = [
     styles.card,
     secondary && styles.secondary,
-    className,
+    className
 ].filter(Boolean).join(' ')
 
 const Component = element

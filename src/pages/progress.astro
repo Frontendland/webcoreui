@@ -1,6 +1,6 @@
 ---
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
 import AstroProgress from '@components/Progress/Progress.astro'
 import SvelteProgress from '@components/Progress/Progress.svelte'
@@ -166,7 +166,7 @@ const sections = getSections({
     const animate = false
 
     const simulateProgress = (progress: number): any => {
-        return new Promise((resolve, reject) => {
+        return new Promise(resolve => {
             setTimeout(() => {
                 resolve(progress + 1)
             }, 50)
@@ -179,15 +179,14 @@ const sections = getSections({
                 let percent = Number((progress as HTMLElement).style
                     .getPropertyValue('--w-progress-width')
                     .split('%')[0])
-    
+
                 while (true) {
                     percent = await simulateProgress(percent);
-    
+
                     (progress as HTMLElement)
                         .style
                         .setProperty('--w-progress-width', `${percent}%`)
-                    
-                            
+
                     if (percent === 100) {
                         percent = 0
                     }

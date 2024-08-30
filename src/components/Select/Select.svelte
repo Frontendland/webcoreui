@@ -3,17 +3,17 @@
     import type { SvelteSelectProps } from './select'
 
     import Input from '../Input/Input.svelte'
-    import Popover from '../Popover/Popover.svelte'
     import List from '../List/List.svelte'
     import Modal from '../Modal/Modal.svelte'
+    import Popover from '../Popover/Popover.svelte'
+
+    import { classNames } from '../../utils/classNames'
+    import { modal } from '../../utils/modal'
+    import { closePopover, popover, type PopoverPosition } from '../../utils/popover'
 
     import ArrowDown from '../../icons/arrow-down.svg?raw'
-    import { classNames } from '../../utils/classNames'
-    import styles from './select.module.scss'
 
-    import type { PopoverPosition } from '../../utils/popover'
-    import { popover, closePopover } from '../../utils/popover'
-    import { modal } from '../../utils/modal'
+    import styles from './select.module.scss'
 
     export let name: SvelteSelectProps['name'] = ''
     export let value: SvelteSelectProps['value'] = ''
@@ -61,10 +61,10 @@
         if (position !== 'modal') {
             if (!widthSet) {
                 const selectElement = document.querySelector(`.w-select-${name}`) as HTMLInputElement
-        
+
                 const { width } = selectElement.getBoundingClientRect()
                 const dialogElement = document.querySelector(`.w-options-${name}`) as HTMLDialogElement
-        
+
                 dialogElement.style.width = `${width}px`
 
                 widthSet = true

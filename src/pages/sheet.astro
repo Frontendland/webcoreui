@@ -1,6 +1,6 @@
 ---
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
 import Button from '@components/Button/Button.astro'
 import AstroSheet from '@components/Sheet/Sheet.astro'
@@ -204,7 +204,7 @@ const sections = getSections({
 </Layout>
 
 <script>
-    import { modal, closeModal } from '@utils/modal'
+    import { closeModal, modal } from '@utils/modal'
 
     const on = (element: string, callback: () => any) => {
         document
@@ -231,7 +231,7 @@ const sections = getSections({
     selectors.forEach(selector => {
         on(`#sheet-btn-${selector}`, () => modal(`#sheet-${selector}`))
         on(`#sheet-close-btn-${selector}`, () => closeModal(`#sheet-${selector}`))
-    });
+    })
 
     variants.forEach(variant => {
         on(`#sheet-btn-${variant}`, () => modal(`#sheet-${variant}`))

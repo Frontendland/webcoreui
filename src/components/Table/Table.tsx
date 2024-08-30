@@ -1,8 +1,9 @@
 import React from 'react'
 import type { TableProps } from './table'
 
-import styles from './table.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './table.module.scss'
 
 const Table = ({
     headings,

@@ -1,8 +1,9 @@
 import React from 'react'
 import type { ReactSliderProps } from './slider'
 
-import styles from './slider.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './slider.module.scss'
 
 const Slider = ({
     min,

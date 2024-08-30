@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { TabsProps } from './tabs'
 
-    import styles from './tabs.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './tabs.module.scss'
 
     export let items: TabsProps['items'] = []
     export let theme: TabsProps['theme'] = null

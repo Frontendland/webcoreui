@@ -3,8 +3,9 @@ import type { ReactSheetProps } from './sheet'
 
 import Modal from '../Modal/Modal.tsx'
 
-import styles from './sheet.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './sheet.module.scss'
 
 const Sheet = ({
     position,

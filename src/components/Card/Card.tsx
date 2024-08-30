@@ -1,8 +1,9 @@
 import React from 'react'
 import type { ReactCardProps } from './card'
 
-import styles from './card.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './card.module.scss'
 
 const Card = ({
     Element = 'section',

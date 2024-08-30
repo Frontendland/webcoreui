@@ -10,7 +10,8 @@ const children = await Astro.slots.render('default')
 const wrapped = wrapper?.replace('children', children)
 
 if (!Astro.slots.has('wrapper')) {
-  console.error('Missing wrapper. Add slot="wrapper" to one of the elements.')
+    // eslint-disable-next-line no-console
+    console.error('Missing wrapper. Add slot="wrapper" to one of the elements.')
 }
 ---
 

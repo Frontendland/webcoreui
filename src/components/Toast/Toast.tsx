@@ -1,9 +1,11 @@
 import React from 'react'
 import type { ReactToastProps } from './toast'
+
 import Alert from '../Alert/Alert.tsx'
 
-import styles from './toast.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './toast.module.scss'
 
 const Toast = ({
     icon,

@@ -1,8 +1,9 @@
 import React from 'react'
 import type { ReactBadgeProps } from './badge'
 
-import styles from './badge.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './badge.module.scss'
 
 const Badge = ({
     theme,

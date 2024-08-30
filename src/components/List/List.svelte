@@ -1,11 +1,14 @@
 <script lang="ts">
-    import type { SvelteListProps, ListEventType } from './list'
+    import type { ListEventType,SvelteListProps } from './list'
+
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
     import Input from '../Input/Input.svelte'
 
-    import searchIcon from '../../icons/search.svg?raw'
-    import styles from './list.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import searchIcon from '../../icons/search.svg?raw'
+
+    import styles from './list.module.scss'
 
     export let showSearchBar: SvelteListProps['showSearchBar'] = false
     export let showSearchBarIcon: SvelteListProps['showSearchBarIcon'] = false

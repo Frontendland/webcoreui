@@ -1,8 +1,9 @@
 import React from 'react'
 import type { ProgressProps } from './progress'
 
-import styles from './progress.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './progress.module.scss'
 
 const Progress = ({
     value,
@@ -28,7 +29,7 @@ const Progress = ({
         ...(color && { '--w-progress-color': color }),
         ...(background && { '--w-progress-background': background }),
         ...(stripeLight && { '--w-progress-stripe-light': stripeLight }),
-        ...(stripeDark && { '--w-progress-stripe-dark': stripeDark }),
+        ...(stripeDark && { '--w-progress-stripe-dark': stripeDark })
     } as React.CSSProperties
 
     const percent = {

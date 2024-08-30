@@ -1,5 +1,6 @@
 ---
 import type { AvatarProps } from './avatar'
+
 import styles from './avatar.module.scss'
 
 interface Props extends AvatarProps {}
@@ -12,7 +13,7 @@ const {
     borderColor,
     borderless,
     reverse,
-    className,
+    className
 } = Astro.props
 
 const classes = [

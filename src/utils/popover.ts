@@ -1,5 +1,5 @@
-import { closeModal } from './modal'
 import { debounce } from './debounce'
+import { closeModal } from './modal'
 
 export type PopoverPosition = 'top'
     | 'top-start'
@@ -48,7 +48,7 @@ export const popover = ({
                 - popoverPosition.height
                 - offset
 
-            const bottomSide = triggerPosition.top 
+            const bottomSide = triggerPosition.top
                 + window.scrollY
                 + triggerPosition.height
                 + offset
@@ -128,10 +128,10 @@ export const popover = ({
             }
 
             const { top, left } = positions[position as keyof typeof positions] || positions.bottom
-    
+
             popoverDOM.style.top = `${top}px`
             popoverDOM.style.left = `${left}px`
-            
+
             setTimeout(() => {
                 popoverDOM.dataset.show = popoverDOM.dataset.show === 'true'
                     ? ''
@@ -187,7 +187,7 @@ export const popover = ({
 
         return {
             remove() {
-                triggerDOM.removeEventListener('click', handleOpen);
+                triggerDOM.removeEventListener('click', handleOpen)
                 observer.disconnect()
 
                 if (closeOnBlur) {

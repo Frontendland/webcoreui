@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { CollapsibleProps } from './collapsible'
 
-    import styles from './collapsible.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './collapsible.module.scss'
 
     export let initialHeight: CollapsibleProps['initialHeight'] = ''
     export let maxHeight: CollapsibleProps['maxHeight'] = ''

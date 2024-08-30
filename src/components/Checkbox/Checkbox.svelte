@@ -1,12 +1,14 @@
 <script lang="ts">
     import type { SvelteCheckboxProps } from './checkbox'
+
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
-    
-    import check from '../../icons/check.svg?raw'
-    
-    import styles from './checkbox.module.scss'
+
     import { classNames } from '../../utils/classNames'
-    
+
+    import check from '../../icons/check.svg?raw'
+
+    import styles from './checkbox.module.scss'
+
     export let checked: SvelteCheckboxProps['checked'] = false
     export let label: SvelteCheckboxProps['label'] = ''
     export let subText: SvelteCheckboxProps['subText'] = ''
@@ -20,7 +22,7 @@
         label && subText && styles.col,
         className
     ])
-    
+
     const style = color
         ? `--w-checkbox-color: ${color};`
         : null

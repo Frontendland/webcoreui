@@ -1,10 +1,11 @@
 ---
-import Layout from '@static/Layout.astro'
 import Examples from '@static/Examples.astro'
-import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.astro'
+import Layout from '@static/Layout.astro'
+
 import Button from '@components/Button/Button.astro'
-import Toast from '@components/Toast/Toast.astro'
 import Slider from '@components/Slider/Slider.astro'
+import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.astro'
+import Toast from '@components/Toast/Toast.astro'
 
 import { themes } from '@data'
 ---
@@ -36,8 +37,8 @@ import { themes } from '@data'
 </Layout>
 
 <script>
-    import { toast } from '@utils/toast'
     import { interpolate } from '@utils/interpolate'
+    import { toast } from '@utils/toast'
 
     const input = document.querySelector('#radius') as HTMLElement
     const copy = document.querySelector('#copy') as HTMLElement
@@ -58,7 +59,7 @@ import { themes } from '@data'
 
     copy.addEventListener('click', () => {
         const bodyStyles = document.body.style
-        
+
         const sm = bodyStyles.getPropertyValue('--w-sm-radius') || '2px'
         const md = bodyStyles.getPropertyValue('--w-md-radius') || '5px'
         const lg = bodyStyles.getPropertyValue('--w-lg-radius') || '10px'

@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef,useState } from 'react'
 import type { ReactTabsProps } from './tabs'
 
-import styles from './tabs.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './tabs.module.scss'
 
 const Tabs = ({
     items,
@@ -33,7 +34,7 @@ const Tabs = ({
                 item.dataset.active = true
             }
         })
-    
+
         setActive(tab)
     }
 

@@ -1,6 +1,6 @@
 ---
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
 import Button from '@components/Button/Button.astro'
 import AstroPopover from '@components/Popover/Popover.astro'
@@ -207,7 +207,7 @@ const sections = getSections({
 </Layout>
 
 <script>
-    import { popover, closePopover } from '@utils/popover'
+    import { closePopover, popover } from '@utils/popover'
 
     const selectors = [
         'astro',
@@ -228,7 +228,7 @@ const sections = getSections({
     selectors.forEach(selector => {
         const event = popover({
             trigger: `#popover-btn-${selector}`,
-            popover: `#popover-${selector}`,
+            popover: `#popover-${selector}`
         })
 
         document.querySelector('#popover-remove')?.addEventListener('click', () => {
@@ -245,7 +245,7 @@ const sections = getSections({
             trigger: `#popover-btn-${variant}`,
             popover: `#popover-${variant}`,
             position: button?.dataset.pos as any || 'bottom',
-            closeOnBlur: button?.dataset.noClose ? false : true
+            closeOnBlur: !button?.dataset.noClose
         })
 
         if (removeButton) {

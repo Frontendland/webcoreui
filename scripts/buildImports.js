@@ -6,7 +6,7 @@ export const buildImports = extension => {
     return components.map(component => {
         return `import ${component}Component from './components/${component}/${component}.${extension}'`
     }).join('\n')
-        + `\n\n`
+        + '\n\n'
         + components.map(component => `export const ${component} = ${component}Component`).join('\n')
 }
 

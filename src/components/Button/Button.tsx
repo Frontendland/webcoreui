@@ -1,8 +1,9 @@
 import React from 'react'
 import type { ReactButtonProps } from './button'
 
-import styles from './button.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './button.module.scss'
 
 const Button = ({
     theme,

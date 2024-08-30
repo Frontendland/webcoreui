@@ -35,13 +35,17 @@ export const toast = (config: Toast | string) => {
         if (title) {
             const titleElement = htmlElement.querySelector('[data-id="title"]')
 
-            titleElement ? titleElement.innerHTML = title : null
+            if (titleElement) {
+                titleElement.innerHTML = title
+            }
         }
 
         if (content) {
             const contentElement = htmlElement.querySelector('[data-id="body"]')
 
-            contentElement ? contentElement.innerHTML = content : null
+            if (contentElement) {
+                contentElement.innerHTML = content
+            }
         }
 
         setTimeout(() => {

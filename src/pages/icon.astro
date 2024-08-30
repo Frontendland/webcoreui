@@ -1,12 +1,14 @@
 ---
-import fs from 'fs'
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
 import AstroIcon from '@components/Icon/Icon.astro'
 import SvelteIcon from '@components/Icon/Icon.svelte'
 import ReactIcon from '@components/Icon/Icon.tsx'
+
 import { getSections } from '@helpers'
+
+import fs from 'fs'
 
 const sections = getSections({
     title: 'icons',
@@ -30,7 +32,7 @@ const iconTypes = fs.readdirSync('src/icons')
 
         <ComponentWrapper type="React">
             <ReactIcon type="github" color="#61DAFB" />
-        </ComponentWrapper> 
+        </ComponentWrapper>
     </div>
 
     {sections.map(section => (

@@ -1,5 +1,6 @@
 ---
 import type { MenuProps } from './menu'
+
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
 
 import styles from './menu.module.scss'
@@ -107,5 +108,5 @@ const wrapMenu = (logo?.url || logo?.html) && items?.length && Astro.slots.has('
             header.dataset.active = header.dataset.active === 'true'
                 ? 'false'
                 : 'true'
-    })
+        })
 </script>

@@ -1,8 +1,9 @@
 import React from 'react'
 import type { ReactTimelineProps } from './timeline'
 
-import styles from './timeline.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './timeline.module.scss'
 
 const Timeline = ({
     theme,
@@ -25,7 +26,7 @@ const Timeline = ({
     const styleVariables = {
         ...(color && { '--w-timeline-color': color }),
         ...(textColor && { '--w-timeline-text-color': textColor }),
-        ...(counter && { '--w-timeline-counter': counter }),
+        ...(counter && { '--w-timeline-counter': counter })
     } as React.CSSProperties
 
     return (

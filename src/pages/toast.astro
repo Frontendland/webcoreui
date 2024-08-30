@@ -1,9 +1,9 @@
 ---
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
-import Icon from '@components/Icon/Icon.astro'
 import Button from '@components/Button/Button.astro'
+import Icon from '@components/Icon/Icon.astro'
 import AstroToast from '@components/Toast/Toast.astro'
 import SvelteToast from '@components/Toast/Toast.svelte'
 import ReactToast from '@components/Toast/Toast.tsx'
@@ -53,13 +53,13 @@ const sections = getSections({
     {sections.map((section, index) => (
         <h1>{section.title}</h1>
         <div class="flex wrap">
-            <Button theme="secondary" id={`toast-btn-0${index}`} theme="outline">Toast with text only</Button>
+            <Button theme="outline" id={`toast-btn-0${index}`}>Toast with text only</Button>
             <Button theme="secondary" id={`toast-btn-1${index}`}>Toast with text and title</Button>
             <Button theme="secondary" id={`toast-btn-2${index}`}>💡 Toast with emoji in title</Button>
-            <Button theme="secondary" id={`toast-btn-3${index}`} theme="info">Informational toast</Button>
-            <Button theme="secondary" id={`toast-btn-4${index}`} theme="success">Success toast</Button>
-            <Button theme="secondary" id={`toast-btn-5${index}`} theme="warning">Warning toast</Button>
-            <Button theme="secondary" id={`toast-btn-6${index}`} theme="alert">Alert toast</Button>
+            <Button theme="info" id={`toast-btn-3${index}`}>Informational toast</Button>
+            <Button theme="success" id={`toast-btn-4${index}`}>Success toast</Button>
+            <Button theme="warning" id={`toast-btn-5${index}`}>Warning toast</Button>
+            <Button theme="alert" id={`toast-btn-6${index}`}>Alert toast</Button>
             <Button theme="secondary" id={`toast-btn-7${index}`}>🎨 Toast with custom icon</Button>
             <Button theme="secondary" id={`toast-btn-8${index}`}>🎨 Themed toast with icon</Button>
             <Button theme="secondary" id={`toast-btn-9${index}`}>↙️Toast in bottom left</Button>
@@ -152,9 +152,9 @@ const sections = getSections({
 
 <script>
     import {
-        toast,
         hideToast,
-        setDefaultTimeout
+        setDefaultTimeout,
+        toast
     } from '@utils/toast'
 
     setDefaultTimeout(3000)

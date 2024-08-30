@@ -1,9 +1,10 @@
 <script lang="ts">
     import type { SvelteBadgeProps } from './badge'
 
-    import styles from './badge.module.scss'
     import { classNames } from '../../utils/classNames'
-    
+
+    import styles from './badge.module.scss'
+
     export let theme: SvelteBadgeProps['theme'] = null
     export let onClick: SvelteBadgeProps['onClick'] = null
     export let hover: SvelteBadgeProps['hover'] = false

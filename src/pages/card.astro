@@ -4,6 +4,7 @@ import Layout from '@static/Layout.astro'
 import AstroCard from '@components/Card/Card.astro'
 import SvelteCard from '@components/Card/Card.svelte'
 import ReactCard from '@components/Card/Card.tsx'
+
 import { getSections } from '@helpers'
 
 const sections = getSections({
@@ -14,7 +15,7 @@ const sections = getSections({
 
 <Layout>
     <h1>Card</h1>
-    
+
     <div class="grid md-2 lg-3">
         <AstroCard compact={true}>
             Card component using <span class="a">Astro</span>
@@ -71,11 +72,11 @@ const sections = getSections({
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-    
+
     .s {
         color: #FF3E00;
     }
-    
+
     .r {
         color: #61DAFB;
     }

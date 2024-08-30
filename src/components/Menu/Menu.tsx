@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import type { ReactMenuProps } from './menu'
+
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
-import styles from './menu.module.scss'
 import { classNames } from '../../utils/classNames'
 
+import styles from './menu.module.scss'
+
+// eslint-disable-next-line complexity
 const Menu = ({
     items,
     logo,
@@ -40,7 +43,7 @@ const Menu = ({
                         </div>
                     )}
                 >
-                    {logo?.url && !centerLogo &&  (
+                    {logo?.url && !centerLogo && (
                         <a href="/">
                             <img
                                 src={logo.url}
@@ -75,7 +78,7 @@ const Menu = ({
                         </ul>
                     )}
                 </ConditionalWrapper>
-                
+
                 {!!items?.length && (
                     <button className={styles.hamburger} onClick={toggleMenu}>
                         <span className={styles.meat}></span>

@@ -1,6 +1,7 @@
-import fs from 'fs'
-import { buildImports, buildUtilImports, buildIconImports } from './buildImports.js'
+import { buildIconImports,buildImports, buildUtilImports } from './buildImports.js'
 import buildTypes from './buildTypes.js'
+
+import fs from 'fs'
 
 const folders = {
     'src/icons': 'dist/icons',

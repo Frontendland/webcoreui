@@ -1,8 +1,9 @@
 import React from 'react'
 import type { ReactSwitchProps } from './switch'
 
-import styles from './switch.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './switch.module.scss'
 
 const Switch = ({
     label,
@@ -42,7 +43,6 @@ const Switch = ({
             {label && <span className={styles.label}>{label}</span>}
         </label>
     )
-    
 }
 
 export default Switch

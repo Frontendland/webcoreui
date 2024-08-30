@@ -1,9 +1,11 @@
 <script lang="ts">
     import type { SvelteTextareaProps } from './textarea'
+
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
-    import styles from './textarea.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './textarea.module.scss'
 
     export let label: SvelteTextareaProps['label'] = ''
     export let placeholder: SvelteTextareaProps['placeholder'] = ''

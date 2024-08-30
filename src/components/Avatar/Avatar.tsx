@@ -1,8 +1,9 @@
 import React from 'react'
 import type { AvatarProps } from './avatar'
 
-import styles from './avatar.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './avatar.module.scss'
 
 const Avatar = ({
     img,
@@ -12,7 +13,7 @@ const Avatar = ({
     borderColor,
     borderless,
     reverse,
-    className,
+    className
 }: AvatarProps) => {
     const classes = classNames([
         styles.avatar,
@@ -60,7 +61,6 @@ const Avatar = ({
             style={borderColorStyle}
         />
     )
-    
 }
 
 export default Avatar

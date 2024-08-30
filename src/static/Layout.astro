@@ -1,5 +1,6 @@
 ---
 import Menu from '@components/Menu/Menu.astro'
+
 import logo from '../../public/img/logo.svg?raw'
 
 const { nonStickyMenu } = Astro.props
@@ -37,7 +38,7 @@ const externalLinks = [
     {
         url: 'https://webcoreui.dev',
         name: 'docs'
-    },
+    }
 ]
 ---
 
@@ -57,7 +58,7 @@ const externalLinks = [
         >
             <div class="items">
                 {externalLinks.map(link => (
-                    <a href={link.url} target="_blank">
+                    <a href={link.url} target="_blank" rel="noreferrer">
                         {link.name}
                     </a>
                 ))}

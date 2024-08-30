@@ -1,9 +1,11 @@
 import React from 'react'
 import type { ReactInputProps } from './input'
+
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
-import styles from './input.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './input.module.scss'
 
 const Input = ({
     type = 'text',

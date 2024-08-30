@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { SvelteSliderProps } from './slider'
 
-    import styles from './slider.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './slider.module.scss'
 
     export let min: SvelteSliderProps['min'] = 0
     export let max: SvelteSliderProps['max'] = 100

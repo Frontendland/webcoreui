@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { ProgressProps } from './progress'
 
-    import styles from './progress.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './progress.module.scss'
 
     export let value: ProgressProps['value'] = 0
     export let size: ProgressProps['size'] = null

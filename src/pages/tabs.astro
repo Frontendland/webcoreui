@@ -1,6 +1,6 @@
 ---
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
 import AstroTabs from '@components/Tabs/Tabs.astro'
 import SvelteTabs from '@components/Tabs/Tabs.svelte'
@@ -8,11 +8,11 @@ import ReactTabs from '@components/Tabs/Tabs.tsx'
 
 import { getSections } from '@helpers'
 import {
-    tabItems,
-    tabsWithIcons,
-    inactiveTabs,
     disabledTabs,
-    overflowTabs
+    inactiveTabs,
+    overflowTabs,
+    tabItems,
+    tabsWithIcons
 } from '@data'
 
 const sections = getSections({

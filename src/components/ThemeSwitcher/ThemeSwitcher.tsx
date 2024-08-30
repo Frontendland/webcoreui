@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import type { ReactThemeSwitcherProps } from './themeswitcher'
 
-import { setCookie, getCookie } from '../../utils/cookies'
-import { listen, dispatch } from '../../utils/event'
 import { classNames } from '../../utils/classNames'
+import { getCookie, setCookie } from '../../utils/cookies'
+import { dispatch, listen } from '../../utils/event'
 
 import styles from './themeswitcher.module.scss'
 
@@ -30,10 +30,11 @@ const ThemeSwitcher = ({
 
     const primaryTheme = themes[Object.keys(themes)[0]]
     const secondaryTheme = themes[Object.keys(themes)[1]]
-    const useIcons = primaryIcon && secondaryIcon 
+    const useIcons = primaryIcon && secondaryIcon
 
     const setTheme = (theme: string | number) => {
         if (typeof theme === 'number') {
+            // eslint-disable-next-line no-param-reassign
             theme = toggled ? primaryTheme : secondaryTheme
         }
 
@@ -67,7 +68,7 @@ const ThemeSwitcher = ({
             className={classes}
             style={sizeStyles}
         >
-            {Object.keys(themes as {}).map((theme, index) => (
+            {Object.keys(themes).map((theme, index) => (
                 <button
                     key={index}
                     onClick={() => setTheme(toggle ? index : themes[theme])}

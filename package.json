@@ -3,22 +3,37 @@
     "type": "module",
     "version": "0.3.0",
     "scripts": {
+        "prepare": "husky",
+        "pre-commit": "lint-staged",
         "dev": "astro dev",
         "build": "astro check && astro build",
         "build:package": "node scripts/build.js",
         "test": "echo \"Error: no test specified\"",
-        "create-component": "node scripts/createComponent.js"
+        "create-component": "node scripts/createComponent.js",
+        "lint": "eslint src/**/* --fix"
     },
-    "dependencies": {
+    "devDependencies": {
         "@astrojs/check": "0.7.0",
         "@astrojs/react": "3.5.0",
         "@astrojs/svelte": "5.5.0",
+        "@eslint/js": "9.9.1",
+        "@typescript-eslint/parser": "^8.3.0",
         "astro": "4.10.2",
+        "astro-eslint-parser": "1.0.2",
+        "eslint": "9.9.1",
+        "eslint-plugin-astro": "1.2.3",
+        "eslint-plugin-react": "7.35.0",
+        "eslint-plugin-simple-import-sort": "12.1.1",
+        "eslint-plugin-svelte": "2.43.0",
+        "husky": "9.1.5",
+        "lint-staged": "15.2.9",
         "react": "18.3.1",
         "react-dom": "18.3.1",
         "sass": "1.77.5",
         "svelte": "4.2.18",
-        "typescript": "5.4.5"
+        "svelte-eslint-parser": "0.41.0",
+        "typescript": "5.4.5",
+        "typescript-eslint": "8.3.0"
     },
     "exports": {
         ".": "./index.js",
@@ -69,5 +84,8 @@
     },
     "bugs": {
         "url": "https://github.com/Frontendland/webcoreui/issues"
+    },
+    "lint-staged": {
+        "*.{js,ts,jsx,tsx,svelte,astro}": "eslint src/**/* --fix"
     }
 }

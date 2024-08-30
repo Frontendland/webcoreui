@@ -1,7 +1,7 @@
 ---
-import Layout from '@static/Layout.astro'
-import Examples from '@static/Examples.astro'
 import CardWrapper from '@static/CardWrapper.astro'
+import Examples from '@static/Examples.astro'
+import Layout from '@static/Layout.astro'
 
 import Accordion from '@components/Accordion/Accordion.astro'
 import Alert from '@components/Alert/Alert.astro'
@@ -28,18 +28,17 @@ import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.astro'
 import Timeline from '@components/Timeline/Timeline.astro'
 import TimelineItem from '@components/TimelineItem/TimelineItem.astro'
 
-import infoIcon from '../icons/info.svg?raw'
+import logo from '../../public/img/logo.svg?raw'
 import gitHubIcon from '../icons/github.svg?raw'
+import infoIcon from '../icons/info.svg?raw'
 
 import {
-    listPreview,
-    themes,
     accordionItems,
     avatarGroup,
-    avatarGroupAlt2
+    avatarGroupAlt2,
+    listPreview,
+    themes
 } from '@data'
-
-import logo from '../../public/img/logo.svg?raw'
 
 const tabItems = [{
     label: `${infoIcon} Intro`,
@@ -103,7 +102,7 @@ const tabItems = [{
             <Button theme="secondary">Secondary</Button>
         </CardWrapper>
         <CardWrapper title="Card" href="/card">
-            <p>Paragraph inside a card</p>  
+            <p>Paragraph inside a card</p>
         </CardWrapper>
         <CardWrapper title="Checkbox" href="/checkbox">
             <Checkbox checked={true} label="Accept terms and conditions" />

@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { CardProps } from './card'
 
-    import styles from './card.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './card.module.scss'
 
     export let element: CardProps['element'] = 'section'
     export let title: CardProps['title'] = ''

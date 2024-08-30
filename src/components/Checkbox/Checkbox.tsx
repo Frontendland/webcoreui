@@ -1,11 +1,13 @@
 import React from 'react'
 import type { ReactCheckboxProps } from './checkbox'
+
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
+
+import { classNames } from '../../utils/classNames'
 
 import check from '../../icons/check.svg?raw'
 
 import styles from './checkbox.module.scss'
-import { classNames } from '../../utils/classNames'
 
 const Checkbox = ({
     checked,
@@ -21,7 +23,7 @@ const Checkbox = ({
         label && subText && styles.col,
         className
     ])
-    
+
     const style = color
         ? { '--w-checkbox-color': color } as React.CSSProperties
         : undefined

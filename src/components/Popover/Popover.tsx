@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { createPortal } from 'react-dom'
-
 import type { ReactPopoverProps } from './popover'
 
-import styles from './popover.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './popover.module.scss'
 
 const Popover = ({
     id,

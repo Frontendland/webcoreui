@@ -1,11 +1,12 @@
 ---
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
-import Icon from '@components/Icon/Icon.astro'
 import AstroButton from '@components/Button/Button.astro'
 import SvelteButton from '@components/Button/Button.svelte'
 import ReactButton from '@components/Button/Button.tsx'
+import Icon from '@components/Icon/Icon.astro'
+
 import { getSections } from '@helpers'
 
 const sections = getSections({
@@ -31,7 +32,7 @@ const sections = getSections({
             <ReactButton theme="info">
                 Button in React
             </ReactButton>
-        </ComponentWrapper> 
+        </ComponentWrapper>
     </div>
 
     {sections.map(section => (

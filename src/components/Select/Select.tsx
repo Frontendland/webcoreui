@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import type { ReactSelectProps } from './select'
 
 import Input from '../Input/Input.tsx'
-import Popover from '../Popover/Popover.tsx'
 import List from '../List/List.tsx'
 import Modal from '../Modal/Modal.tsx'
+import Popover from '../Popover/Popover.tsx'
+
+import { classNames } from '../../utils/classNames'
+import { modal } from '../../utils/modal'
+import { closePopover, popover, type PopoverPosition } from '../../utils/popover'
 
 import ArrowDown from '../../icons/arrow-down.svg?raw'
-import styles from './select.module.scss'
-import { classNames } from '../../utils/classNames'
 
-import type { PopoverPosition } from '../../utils/popover'
-import { popover, closePopover } from '../../utils/popover'
-import { modal } from '../../utils/modal'
+import styles from './select.module.scss'
 
 const Select = ({
     name,
@@ -64,12 +64,12 @@ const Select = ({
             setTimeout(() => {
                 if (!widthSet) {
                     const selectElement = document.querySelector(`.w-select-${name}`) as HTMLInputElement
-        
+
                     const { width } = selectElement.getBoundingClientRect()
                     const dialogElement = document.querySelector(`.w-options-${name}`) as HTMLDialogElement
-            
+
                     dialogElement.style.width = `${width}px`
-    
+
                     setWidthSet(true)
                 }
 

@@ -2,7 +2,6 @@
 import type { ButtonProps } from './button'
 
 import styles from './button.module.scss'
-import { classNames } from '../../utils/classNames'
 
 interface Props extends ButtonProps {}
 
@@ -13,19 +12,19 @@ const {
     ...rest
 } = Astro.props
 
-const classes = classNames([
+const classes = [
     styles.button,
     theme && styles[theme],
     className
-])
+]
 ---
 
 {href ? (
-    <a {...rest} href={href} class={classes || null}>
+    <a {...rest} href={href} class:list={classes}>
         <slot />
     </a>
 ) : (
-    <button {...rest} class={classes || null}>
+    <button {...rest} class:list={classes}>
         <slot />
     </button>
 )}

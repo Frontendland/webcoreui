@@ -1,9 +1,11 @@
 ---
 import type { ListProps } from './list'
+
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
 import Input from '../Input/Input.astro'
 
 import searchIcon from '../../icons/search.svg?raw'
+
 import styles from './list.module.scss'
 
 interface Props extends ListProps {}
@@ -101,7 +103,7 @@ const wrapperClasses = [
             dispatch('listOnSelect', {
                 value: target.dataset.value,
                 name: target.dataset.name,
-                list,
+                list
             })
 
             items.forEach(item => item.removeAttribute('data-selected'))

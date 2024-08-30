@@ -1,5 +1,6 @@
 ---
 import type { ThemeSwitcherProps } from './themeswitcher'
+
 import styles from './themeswitcher.module.scss'
 
 interface Props extends ThemeSwitcherProps {}
@@ -19,7 +20,7 @@ const classes = [
 
 const primaryTheme = themes[Object.keys(themes)[0]]
 const secondaryTheme = themes[Object.keys(themes)[1]]
-const useIcons = Astro.slots.has('primaryIcon') && Astro.slots.has('secondaryIcon') 
+const useIcons = Astro.slots.has('primaryIcon') && Astro.slots.has('secondaryIcon')
 
 const buttonClasses = [
     styles.switch,
@@ -34,7 +35,7 @@ const buttonClasses = [
     data-primary-theme={primaryTheme}
     data-secondary-theme={toggle ? secondaryTheme : undefined}
 >
-    {Object.keys(themes as {}).map((theme, index) => (
+    {Object.keys(themes).map((theme, index) => (
         <button
             style={!useIcons ? `background:${theme};` : undefined}
             data-theme={themes[theme]}
@@ -48,11 +49,11 @@ const buttonClasses = [
 </div>
 
 <script>
-    import { setCookie, getCookie } from '../../utils/cookies'
-    import { listen, dispatch } from '../../utils/event'
+    import { getCookie, setCookie } from '../../utils/cookies'
+    import { dispatch, listen } from '../../utils/event'
 
     const switchers = document.querySelectorAll('[data-id="w-theme-switcher"]')
-    
+
     let currentTheme = localStorage.getItem('w-theme')
         || getCookie('w-theme')
         || (switchers[0] as HTMLDivElement).dataset.primaryTheme

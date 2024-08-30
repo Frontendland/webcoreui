@@ -23,6 +23,10 @@
         {
             "label": "✔️🎯 Check TypeScript for Current",
             "command": "tsc ${relativeFile}",
+        },
+        {
+            "label": "🇪🇸 Lint Project",
+            "command": "npm run lint",
         }
     ]
   }

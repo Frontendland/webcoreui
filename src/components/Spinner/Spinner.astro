@@ -1,8 +1,9 @@
 ---
 import type { SpinnerProps } from './spinner'
 
-import styles from './spinner.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './spinner.module.scss'
 
 interface Props extends SpinnerProps {}
 
@@ -11,7 +12,7 @@ const {
     width,
     speed,
     size,
-    dashArray,
+    dashArray
 } = Astro.props
 
 const classes = [
@@ -24,7 +25,7 @@ const styleVariables = classNames([
     width && `--w-spinner-width: ${width}px;`,
     speed && `--w-spinner-speed: ${speed}s;`,
     size && `--w-spinner-size: ${size}px;`,
-    dashArray && `--w-spinner-dash: ${dashArray}`,
+    dashArray && `--w-spinner-dash: ${dashArray}`
 ])
 ---
 

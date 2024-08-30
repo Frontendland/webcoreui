@@ -1,9 +1,11 @@
 import React from 'react'
 import type { RatingProps } from './rating'
+
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
-import styles from './rating.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './rating.module.scss'
 
 const Rating = ({
     score,
@@ -32,7 +34,7 @@ const Rating = ({
         ...(size && { '--w-rating-size': `${size}px` }),
         ...(emptyColor && { '--w-rating-empty-color': emptyColor })
     } as React.CSSProperties
- 
+
     const translatedText = text
         .replace('{0}', `${score}`)
         .replace('{1}', `${total}`)

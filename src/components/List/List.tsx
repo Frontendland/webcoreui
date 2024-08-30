@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import type { ReactListProps, ListEventType } from './list'
+import type { ListEventType, ReactListProps } from './list'
+
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 import Input from '../Input/Input.tsx'
 
-import searchIcon from '../../icons/search.svg?raw'
-import styles from './list.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import searchIcon from '../../icons/search.svg?raw'
+
+import styles from './list.module.scss'
 
 const List = ({
     showSearchBar,
@@ -52,8 +55,6 @@ const List = ({
                         || item.name.toLowerCase().includes(value)
                 }).length
         )
-
-        console.log(numberOfResults)
     }
 
     const select = (event: any) => {
@@ -63,7 +64,7 @@ const List = ({
             itemGroupsWithActive.map(group => {
                 return {
                     ...group,
-                    items: group.items.map(item => {    
+                    items: group.items.map(item => {
                         return {
                             ...item,
                             selected: li.dataset.name === item.name
@@ -72,11 +73,6 @@ const List = ({
                 }
             })
         )
-
-        console.log({
-            ...li.dataset,
-            list: li.parentElement
-        })
 
         onSelect?.({
             ...li.dataset,
@@ -102,7 +98,7 @@ const List = ({
                         <span
                             dangerouslySetInnerHTML={{ __html: searchIcon }}
                             style={{ height: '18px', position: 'absolute' }}
-                        />    
+                        />
                     )}
                 </Input>
                 {children}

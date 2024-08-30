@@ -1,13 +1,15 @@
 <script lang="ts">
     import type { SvelteRadioProps } from './radio'
+
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
-    import styles from './radio.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './radio.module.scss'
 
     export let name: SvelteRadioProps['name'] = ''
     export let items: SvelteRadioProps['items'] = []
-    export let color: SvelteRadioProps['color'] =  ''
+    export let color: SvelteRadioProps['color'] = ''
     export let inline: SvelteRadioProps['inline'] = false
     export let className: SvelteRadioProps['className'] = ''
     export let onChange: SvelteRadioProps['onChange'] = () => {}

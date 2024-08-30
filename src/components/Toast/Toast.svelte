@@ -1,9 +1,11 @@
 <script lang="ts">
     import type { ToastProps } from './toast'
+
     import Alert from '../Alert/Alert.svelte'
 
-    import styles from './toast.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './toast.module.scss'
 
     export let position: ToastProps['position'] = null
     export let className: ToastProps['className'] = ''

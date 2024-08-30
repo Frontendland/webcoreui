@@ -1,6 +1,6 @@
 ---
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
 import AstroSlider from '@components/Slider/Slider.astro'
 import SvelteSlider from '@components/Slider/Slider.svelte'
@@ -27,7 +27,7 @@ const sections = getSections({
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
-            <ReactSlider min={0} max={100} value={50}  />
+            <ReactSlider min={0} max={100} value={50} />
         </ComponentWrapper>
     </div>
 
@@ -38,11 +38,11 @@ const sections = getSections({
         </Fragment>
         <div class="grid md-2 lg-3">
             <ComponentWrapper title="Default with no value">
-                <section.component min={0} max={100}  />
+                <section.component min={0} max={100} />
             </ComponentWrapper>
 
             <ComponentWrapper title="With default value">
-                <section.component min={0} max={100} value={33}  />
+                <section.component min={0} max={100} value={33} />
             </ComponentWrapper>
 
             <ComponentWrapper title="With steps">
@@ -50,7 +50,7 @@ const sections = getSections({
                     min={0}
                     max={100}
                     step={20}
-                    value={20} 
+                    value={20}
                 />
             </ComponentWrapper>
 
@@ -101,7 +101,7 @@ const sections = getSections({
 
 <script>
     const slider1 = document.querySelector('.labelled')
-    const slider2 = document.querySelector('.labelled1');
+    const slider2 = document.querySelector('.labelled1')
 
     slider1?.addEventListener('change', (e: any) => {
         e.target.nextElementSibling.innerText = e.target.value

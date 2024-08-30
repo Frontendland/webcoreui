@@ -1,8 +1,9 @@
 import React from 'react'
 import type { ReactTimelineItemProps } from './timelineitem'
 
-import styles from './timelineitem.module.scss'
 import { classNames } from '../../utils/classNames'
+
+import styles from './timelineitem.module.scss'
 
 const TimelineItem = ({
     title,

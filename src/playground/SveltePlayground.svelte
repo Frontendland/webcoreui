@@ -1,9 +1,8 @@
 <script>
-    import Card from '@components/Card/Card.svelte'
-
     import Accordion from '@components/Accordion/Accordion.svelte'
     import Badge from '@components/Badge/Badge.svelte'
     import Button from '@components/Button/Button.svelte'
+    import Card from '@components/Card/Card.svelte'
     import Checkbox from '@components/Checkbox/Checkbox.svelte'
     import Collapsible from '@components/Collapsible/Collapsible.svelte'
     import Icon from '@components/Icon/Icon.svelte'
@@ -19,10 +18,11 @@
     import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.svelte'
     import Toast from '@components/Toast/Toast.svelte'
 
-    import { tabItems, themes, listWithStates, listWithGroups } from '@data'
     import { toast } from '@utils/toast'
-    
+
     import styles from './playground.module.scss'
+
+    import { listWithGroups,listWithStates, tabItems, themes } from '@data'
 
     let progress = 33
     let checkbox = false
@@ -94,7 +94,10 @@
             showSearchBarIcon={true}
             searchBarPlaceholder="Search the app..."
             noResultsLabel="Nothing found..."
-            onSelect={event => console.log(event)}
+            onSelect={event => {
+                // eslint-disable-next-line no-console
+                console.log(event)
+            }}
         />
     </Card>
 

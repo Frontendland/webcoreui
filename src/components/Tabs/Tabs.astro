@@ -1,5 +1,6 @@
 ---
 import type { TabsProps } from './tabs'
+
 import styles from './tabs.module.scss'
 
 interface Props extends TabsProps {}
@@ -59,7 +60,7 @@ const classes = [
                         } else {
                             element.dataset.active = false
                         }
-                })
+                    })
 
                 const tabs = target.parentElement?.querySelectorAll('button') as NodeListOf<HTMLButtonElement>
 

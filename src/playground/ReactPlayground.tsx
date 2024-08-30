@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 
-import Card from '@components/Card/Card.tsx'
-
 import Accordion from '@components/Accordion/Accordion.tsx'
 import Badge from '@components/Badge/Badge.tsx'
 import Button from '@components/Button/Button.tsx'
+import Card from '@components/Card/Card.tsx'
 import Checkbox from '@components/Checkbox/Checkbox.tsx'
 import Collapsible from '@components/Collapsible/Collapsible.tsx'
 import Icon from '@components/Icon/Icon.tsx'
@@ -20,10 +19,11 @@ import Textarea from '@components/Textarea/Textarea.tsx'
 import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.tsx'
 import Toast from '@components/Toast/Toast.tsx'
 
-import { tabItems, themes, listWithStates, listWithGroups } from '@data'
 import { toast } from '@utils/toast'
 
 import styles from './playground.module.scss'
+
+import { listWithGroups,listWithStates, tabItems, themes } from '@data'
 
 const ReactPlayground = () => {
     const [progress, setProgress] = useState(33)
@@ -98,6 +98,7 @@ const ReactPlayground = () => {
                     showSearchBarIcon={true}
                     searchBarPlaceholder="Search the app..."
                     noResultsLabel="Nothing found..."
+                    // eslint-disable-next-line no-console
                     onSelect={event => console.log(event)}
                 />
             </Card>
@@ -212,7 +213,6 @@ const ReactPlayground = () => {
             </Toast>
         </div>
     )
-    
 }
 
 export default ReactPlayground

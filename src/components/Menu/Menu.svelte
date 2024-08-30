@@ -1,9 +1,11 @@
 <script lang="ts">
     import type { MenuProps } from './menu'
+
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
-    import styles from './menu.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './menu.module.scss'
 
     export let items: MenuProps['items'] = []
     export let logo: MenuProps['logo'] = null
@@ -47,7 +49,7 @@
                     {@html logo.html}
                 </a>
             {/if}
-        
+
             {#if items?.length}
                 <ul>
                     {#each items as item}
@@ -64,7 +66,7 @@
                 </ul>
             {/if}
         </ConditionalWrapper>
-    
+
         {#if items?.length}
             <button class={styles.hamburger} on:click={toggleMenu}>
                 <span class={styles.meat}></span>
@@ -73,7 +75,7 @@
                 <span class={styles.meat}></span>
             </button>
         {/if}
-            
+
         {#if centerLogo && logo?.html}
             <a href="/" aria-label={logo.alt || 'Logo'}>
                 {@html logo.html}
@@ -90,7 +92,7 @@
                 />
             </a>
         {/if}
-    
+
         <slot />
     </div>
 </header>

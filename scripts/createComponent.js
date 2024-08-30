@@ -3,7 +3,7 @@ import fs from 'fs'
 const componentFlag = process.argv[2]
 
 if (!componentFlag) {
-    console.log("⚠️ Component name is missing. Use npm run create-component MyComponent.")
+    console.log('⚠️ Component name is missing. Use npm run create-component MyComponent.')
     process.exit()
 }
 
@@ -42,8 +42,9 @@ const templates = {
         <script lang="ts">
             import type { ${component}Props } from './${lowerCaseComponent}'
 
-            import styles from './${lowerCaseComponent}.module.scss'
             import { classNames } from '../../utils/classNames'
+
+            import styles from './${lowerCaseComponent}.module.scss'
 
             export let className: ${component}Props['className'] = ''
 
@@ -57,8 +58,9 @@ const templates = {
         import React from 'react'
         import type { ${component}Props } from './${lowerCaseComponent}'
 
-        import styles from './${lowerCaseComponent}.module.scss'
         import { classNames } from '../../utils/classNames'
+
+        import styles from './${lowerCaseComponent}.module.scss'
         
         const ${component} = ({
             className

@@ -10,7 +10,7 @@ export const debounce = (fn: any, waitFor = 100) => {
 
     const debouncedFn = (...args: any[]) => {
         clear()
-    
+
         timeout = setTimeout(() => {
             fn(...args)
         }, waitFor)

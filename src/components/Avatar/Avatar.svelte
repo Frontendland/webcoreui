@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { AvatarProps } from './avatar'
 
-    import styles from './avatar.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './avatar.module.scss'
 
     export let img: AvatarProps['img'] = ''
     export let alt: AvatarProps['alt'] = 'Avatar'

@@ -1,6 +1,6 @@
-import infoIcon from './icons/info.svg?raw'
-import gitHubIcon from './icons/github.svg?raw'
 import successIcon from './icons/circle-check.svg?raw'
+import gitHubIcon from './icons/github.svg?raw'
+import infoIcon from './icons/info.svg?raw'
 import moonIcon from './icons/moon.svg?raw'
 
 export const accordionItems = [{
@@ -51,20 +51,20 @@ export const tabItems = [{
 }]
 
 export const tabsWithIcons = [
-    {...tabItems[0], label: `${infoIcon} Introduction` },
-    {...tabItems[1], label: `${gitHubIcon} Setup` },
-    {...tabItems[2], label: `${successIcon} Conclusion`, disabled: true }
+    { ...tabItems[0], label: `${infoIcon} Introduction` },
+    { ...tabItems[1], label: `${gitHubIcon} Setup` },
+    { ...tabItems[2], label: `${successIcon} Conclusion`, disabled: true }
 ]
-export const inactiveTabs = tabItems.map(item => ({...item, active: false}))
+export const inactiveTabs = tabItems.map(item => ({ ...item, active: false }))
 export const disabledTabs = [
-    {...tabItems[0]},
-    {...tabItems[1]},
-    {...tabItems[2], disabled: true }
+    { ...tabItems[0] },
+    { ...tabItems[1] },
+    { ...tabItems[2], disabled: true }
 ]
 
 export const overflowTabs = Array(10).fill({
     label: '',
-    value: 0,
+    value: 0
 }).map((_, index) => ({
     label: `Tab ${index + 1}`,
     value: `tab-${index + 1}`
@@ -72,7 +72,7 @@ export const overflowTabs = Array(10).fill({
 
 export const menu = [
     { name: 'Home', url: '/' },
-    { name: 'Docs', url: '/docs'}
+    { name: 'Docs', url: '/docs' }
 ]
 
 export const menuLogo = {
@@ -87,7 +87,7 @@ export const themes = {
     '#415a77': 'midnight',
     '#d5bdaf': 'vintage',
     '#fCBA28': 'amber',
-    '#9D2BD6': 'synthwave',
+    '#9D2BD6': 'synthwave'
 }
 
 export const toggleThemes = {
@@ -171,7 +171,7 @@ export const listWithStates = [
             {
                 ...listWithGroups[0].items[0],
                 subText: 'Issue creation disabled',
-                disabled: true 
+                disabled: true
             },
             {
                 ...listWithGroups[0].items[1],

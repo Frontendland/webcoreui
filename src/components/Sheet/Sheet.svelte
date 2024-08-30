@@ -3,8 +3,9 @@
 
     import Modal from '../Modal/Modal.svelte'
 
-    import styles from './sheet.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './sheet.module.scss'
 
     export let position: SheetProps['position'] = null
     export let className: SheetProps['className'] = ''

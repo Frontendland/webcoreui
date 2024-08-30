@@ -1,10 +1,10 @@
 <script lang="ts">
     import { onMount } from 'svelte'
     import type { ThemeSwitcherProps } from './themeswitcher'
-    
+
     import { classNames } from '../../utils/classNames'
-    import { listen, dispatch } from '../../utils/event'
-    import { setCookie, getCookie } from '../../utils/cookies'
+    import { getCookie, setCookie } from '../../utils/cookies'
+    import { dispatch, listen } from '../../utils/event'
 
     import styles from './themeswitcher.module.scss'
 
@@ -24,10 +24,11 @@
 
     const primaryTheme = themes[Object.keys(themes)[0]]
     const secondaryTheme = themes[Object.keys(themes)[1]]
-    const useIcons = $$slots.primaryIcon && $$slots.secondaryIcon 
+    const useIcons = $$slots.primaryIcon && $$slots.secondaryIcon
 
     const setTheme = (theme: string | number) => {
         if (typeof theme === 'number') {
+            // eslint-disable-next-line no-param-reassign
             theme = toggled ? primaryTheme : secondaryTheme
         }
 

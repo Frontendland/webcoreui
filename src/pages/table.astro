@@ -1,6 +1,6 @@
 ---
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
 import AstroTable from '@components/Table/Table.astro'
 import SvelteTable from '@components/Table/Table.svelte'
@@ -44,7 +44,7 @@ const overflowTable = {
         ...data,
         `<a href="mailto:">${data[1]}@example.com</a>`,
         '✅'
-    ]),
+    ])
 }
 
 const scrollTable = {

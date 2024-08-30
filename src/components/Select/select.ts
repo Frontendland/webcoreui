@@ -1,5 +1,6 @@
-import type { ListProps, ListEventType } from '../List/list'
 import type { PopoverPosition } from '../../utils/popover'
+
+import type { ListEventType, ListProps } from '../List/list'
 
 export type SelectProps = {
     name: string

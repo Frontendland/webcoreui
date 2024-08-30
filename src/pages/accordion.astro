@@ -1,6 +1,6 @@
 ---
-import Layout from '@static/Layout.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
 
 import AstroAccordion from '@components/Accordion/Accordion.astro'
 import SvelteAccordion from '@components/Accordion/Accordion.svelte'
@@ -11,7 +11,7 @@ import { accordionItems } from '@data'
 
 <Layout>
     <h1>Accordion</h1>
-    
+
     <div class="grid md-2 lg-3">
         <ComponentWrapper type="Astro">
             <AstroAccordion items={accordionItems} />
@@ -23,6 +23,6 @@ import { accordionItems } from '@data'
 
         <ComponentWrapper type="React">
             <ReactAccordion items={accordionItems} client:load />
-        </ComponentWrapper> 
+        </ComponentWrapper>
     </div>
 </Layout>

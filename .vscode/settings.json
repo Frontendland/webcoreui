@@ -1,3 +1,6 @@
 {
-    "svelte.plugin.svelte.compilerWarnings": {}
+    "svelte.plugin.svelte.compilerWarnings": {},
+    "eslint.validate": [
+        "svelte"
+    ]
 }

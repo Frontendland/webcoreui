@@ -1,16 +1,17 @@
 import React from 'react'
 import type { ReactModalProps } from './modal'
 
-import styles from './modal.module.scss'
-import { classNames } from '../../utils/classNames'
-
 import Button from '../Button/Button.tsx'
 
-import info from '../../icons/info.svg?raw'
-import success from '../../icons/circle-check.svg?raw'
-import warning from '../../icons/warning.svg?raw'
+import { classNames } from '../../utils/classNames'
+
 import alert from '../../icons/alert.svg?raw'
+import success from '../../icons/circle-check.svg?raw'
 import closeIcon from '../../icons/close.svg?raw'
+import info from '../../icons/info.svg?raw'
+import warning from '../../icons/warning.svg?raw'
+
+import styles from './modal.module.scss'
 
 const iconMap = {
     info,

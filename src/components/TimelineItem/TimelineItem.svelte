@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { TimelineItemProps } from './timelineitem'
 
-    import styles from './timelineitem.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './timelineitem.module.scss'
 
     export let title: TimelineItemProps['title'] = ''
     export let titleTag: TimelineItemProps['titleTag'] = 'span'

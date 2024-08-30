@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { SvelteButtonProps } from './button'
 
-    import styles from './button.module.scss'
     import { classNames } from '../../utils/classNames'
+
+    import styles from './button.module.scss'
 
     export let theme: SvelteButtonProps['theme'] = null
     export let href: SvelteButtonProps['href'] = ''

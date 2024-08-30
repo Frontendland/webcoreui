@@ -1,11 +1,12 @@
 import React from 'react'
 import type { ReactAlertProps } from './alert'
+
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
-import info from '../../icons/info.svg?raw'
-import success from '../../icons/circle-check.svg?raw'
-import warning from '../../icons/warning.svg?raw'
 import alert from '../../icons/alert.svg?raw'
+import success from '../../icons/circle-check.svg?raw'
+import info from '../../icons/info.svg?raw'
+import warning from '../../icons/warning.svg?raw'
 
 import styles from './alert.module.scss'
 
