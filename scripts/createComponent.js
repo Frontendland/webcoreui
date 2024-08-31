@@ -24,6 +24,7 @@ const templates = {
     astro: `
         ---
         import type { ${component}Props } from './${lowerCaseComponent}'
+
         import styles from './${lowerCaseComponent}.module.scss'
 
         interface Props extends ${component}Props {}
@@ -89,8 +90,8 @@ const templates = {
     `,
     page: `
         ---
-        import Layout from '@static/Layout.astro'
         import ComponentWrapper from '@static/ComponentWrapper.astro'
+        import Layout from '@static/Layout.astro'
 
         import Astro${component} from '@components/${component}/${component}.astro'
         import Svelte${component} from '@components/${component}/${component}.svelte'

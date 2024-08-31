@@ -1,0 +1,246 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import Badge from '@components/Badge/Badge.astro'
+import Button from '@components/Button/Button.astro'
+import AstroGroup from '@components/Group/Group.astro'
+import SvelteGroup from '@components/Group/Group.svelte'
+import ReactGroup from '@components/Group/Group.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'groups',
+    components: [AstroGroup, SvelteGroup, ReactGroup]
+})
+---
+
+<Layout>
+    <h1>Group</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroGroup withSeparator={true}>
+                <Button>Profile</Button>
+                <Button>Preferences</Button>
+                <Button>Settings</Button>
+            </AstroGroup>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteGroup withSeparator={true}>
+                <Button theme="alert">Profile</Button>
+                <Button theme="alert">Preferences</Button>
+                <Button theme="alert">Settings</Button>
+            </SvelteGroup>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactGroup withSeparator={true}>
+                <Button theme="info">Profile</Button>
+                <Button theme="info">Preferences</Button>
+                <Button theme="info">Settings</Button>
+            </ReactGroup>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component>
+                    <Button>Profile</Button>
+                    <Button>Preferences</Button>
+                    <Button>Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Secondary buttons">
+                <section.component>
+                    <Button theme="secondary">Profile</Button>
+                    <Button theme="secondary">Preferences</Button>
+                    <Button theme="secondary">Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Outline buttons">
+                <section.component outline={true}>
+                    <Button theme="outline">Profile</Button>
+                    <Button theme="outline">Preferences</Button>
+                    <Button theme="outline">Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Flat buttons">
+                <section.component>
+                    <Button theme="flat">Profile</Button>
+                    <Button theme="flat">Preferences</Button>
+                    <Button theme="flat">Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Mixed buttons">
+                <section.component>
+                    <Button>Profile</Button>
+                    <Button theme="secondary">Preferences</Button>
+                    <Button theme="outline">Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Info buttons">
+                <section.component>
+                    <Button theme="info">Profile</Button>
+                    <Button theme="info">Preferences</Button>
+                    <Button theme="info">Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Success buttons">
+                <section.component>
+                    <Button theme="success">Profile</Button>
+                    <Button theme="success">Preferences</Button>
+                    <Button theme="success">Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Warning buttons">
+                <section.component>
+                    <Button theme="warning">Profile</Button>
+                    <Button theme="warning">Preferences</Button>
+                    <Button theme="warning">Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alert buttons">
+                <section.component>
+                    <Button theme="alert">Profile</Button>
+                    <Button theme="alert">Preferences</Button>
+                    <Button theme="alert">Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Primary - with separators">
+                <section.component withSeparator={true}>
+                    <Button>Profile</Button>
+                    <Button>Preferences</Button>
+                    <Button>Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Secondary - with separators">
+                <section.component withSeparator={true}>
+                    <Button theme="secondary">Profile</Button>
+                    <Button theme="secondary">Preferences</Button>
+                    <Button theme="secondary">Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Outline - with separators">
+                <section.component withSeparator={true}>
+                    <Button theme="outline">Profile</Button>
+                    <Button theme="outline">Preferences</Button>
+                    <Button theme="outline">Settings</Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Default badges">
+                <section.component>
+                    <Badge hover={true}>Profile</Badge>
+                    <Badge hover={true}>Preferences</Badge>
+                    <Badge hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Secondary badges">
+                <section.component>
+                    <Badge theme="secondary" hover={true}>Profile</Badge>
+                    <Badge theme="secondary" hover={true}>Preferences</Badge>
+                    <Badge theme="secondary" hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Outline badges">
+                <section.component outline={true}>
+                    <Badge theme="outline" hover={true}>Profile</Badge>
+                    <Badge theme="outline" hover={true}>Preferences</Badge>
+                    <Badge theme="outline" hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Flat badges">
+                <section.component>
+                    <Badge theme="flat" hover={true}>Profile</Badge>
+                    <Badge theme="flat" hover={true}>Preferences</Badge>
+                    <Badge theme="flat" hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Mixed badges">
+                <section.component>
+                    <Badge hover={true}>Profile</Badge>
+                    <Badge theme="secondary" hover={true}>Preferences</Badge>
+                    <Badge theme="outline" hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Info badges">
+                <section.component>
+                    <Badge theme="info" hover={true}>Profile</Badge>
+                    <Badge theme="info" hover={true}>Preferences</Badge>
+                    <Badge theme="info" hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Success badges">
+                <section.component>
+                    <Badge theme="success" hover={true}>Profile</Badge>
+                    <Badge theme="success" hover={true}>Preferences</Badge>
+                    <Badge theme="success" hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Warning badges">
+                <section.component>
+                    <Badge theme="warning" hover={true}>Profile</Badge>
+                    <Badge theme="warning" hover={true}>Preferences</Badge>
+                    <Badge theme="warning" hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alert badges">
+                <section.component>
+                    <Badge theme="alert" hover={true}>Profile</Badge>
+                    <Badge theme="alert" hover={true}>Preferences</Badge>
+                    <Badge theme="alert" hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Primary - with separators">
+                <section.component withSeparator={true}>
+                    <Badge hover={true}>Profile</Badge>
+                    <Badge hover={true}>Preferences</Badge>
+                    <Badge hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Secondary - with separators">
+                <section.component withSeparator={true}>
+                    <Badge theme="secondary" hover={true}>Profile</Badge>
+                    <Badge theme="secondary" hover={true}>Preferences</Badge>
+                    <Badge theme="secondary" hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Outline - with separators">
+                <section.component withSeparator={true}>
+                    <Badge theme="outline" hover={true}>Profile</Badge>
+                    <Badge theme="outline" hover={true}>Preferences</Badge>
+                    <Badge theme="outline" hover={true}>Settings</Badge>
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
