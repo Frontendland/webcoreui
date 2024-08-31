@@ -330,7 +330,7 @@
 }
 
 @mixin transition($args...) {
-    @if ($animations) {
+    @if (not $disableAnimations) {
         $property: all;
         $speed: .3s;
     
