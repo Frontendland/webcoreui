@@ -9,6 +9,7 @@
     @include typography(primary);
     @include border-radius(md);
     @include size(w300px);
+    @include position('t-100%');
 
     transform: translateY(-5px);
     pointer-events: none;

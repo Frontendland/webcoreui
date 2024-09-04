@@ -61,7 +61,7 @@ const wrapperClasses = [
                         tabindex={item.href || item.disabled ? undefined : 0}
                         data-value={item.value}
                         data-name={item.name}
-                        data-disabled={item.disabled}
+                        data-disabled={item.disabled ? 'true' : undefined}
                         data-selected={item.selected}
                     >
                         <ConditionalWrapper condition={!!item.href}>
@@ -99,7 +99,7 @@ const wrapperClasses = [
     const handleClick = (list: Element, items: Element[], event: Event) => {
         const target = event.target as HTMLElement
 
-        if (target.dataset.value) {
+        if (target.dataset.value && !target.dataset.disabled) {
             dispatch('listOnSelect', {
                 value: target.dataset.value,
                 name: target.dataset.name,

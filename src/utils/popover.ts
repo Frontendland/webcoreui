@@ -14,12 +14,20 @@ export type PopoverPosition = 'top'
     | 'bottom-start'
     | 'bottom-end'
 
+type Callback = {
+    trigger: HTMLElement
+    popover: HTMLElement
+    position: PopoverPosition | undefined
+}
+
 type Popover = {
     trigger: string
     popover: string
     position?: PopoverPosition
     offset?: number
     closeOnBlur?: boolean
+    onOpen?: (args: Callback) => unknown
+    onClose?: (args: Callback) => unknown
 }
 
 export const popover = ({
@@ -27,7 +35,9 @@ export const popover = ({
     popover,
     position,
     offset = 10,
-    closeOnBlur = true
+    closeOnBlur = true,
+    onOpen,
+    onClose
 }: Popover) => {
     const triggerDOM = document.querySelector(trigger) as HTMLElement
     const popoverDOM = document.querySelector(popover) as HTMLElement
@@ -143,6 +153,12 @@ export const popover = ({
                     popoverDOM.removeAttribute('data-show')
                 }
             }, 300)
+
+            onOpen?.({
+                trigger: triggerDOM,
+                popover: popoverDOM,
+                position
+            })
         }
 
         const handleClose = (event: MouseEvent) => {
@@ -153,6 +169,12 @@ export const popover = ({
 
             if (hidePopover) {
                 popoverDOM.dataset.show = ''
+
+                onClose?.({
+                    trigger: triggerDOM,
+                    popover: popoverDOM,
+                    position
+                })
             }
 
             setTimeout(() => {
