@@ -1,6 +1,5 @@
 export type GroupProps = {
     withSeparator?: boolean
-    outline?: boolean
     className?: string
 }
 

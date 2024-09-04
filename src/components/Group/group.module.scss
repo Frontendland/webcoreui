@@ -2,6 +2,7 @@
 
 .group {
     @include layout(flex, none);
+    @include visibility(auto);
 
     button,
     span {
@@ -16,17 +17,9 @@
         }
     }
 
-    &.separator button,
-    &.separator span {
-        @include border(1px, primary-70);
-
-        &:first-child {
-            @include border(right, 0);
-        }
-
-        &:last-child {
-            @include border(left, 0);
-        }
+    &.separator button:not(:last-child),
+    &.separator span:not(:last-child) {
+        @include border(1px, right, primary-70);
     }
 
     &.outline button

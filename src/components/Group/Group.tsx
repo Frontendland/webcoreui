@@ -7,14 +7,12 @@ import styles from './group.module.scss'
 
 const Group = ({
     withSeparator,
-    outline,
     className,
     children
 }: ReactGroupProps) => {
     const classes = classNames([
         styles.group,
         withSeparator && styles.separator,
-        outline && styles.outline,
         className
     ])
 
