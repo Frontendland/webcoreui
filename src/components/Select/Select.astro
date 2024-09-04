@@ -64,7 +64,8 @@ const classes = classNames([
 }
 
 <script>
-    import { dispatch,listen } from '../../utils/event'
+    import { debounce } from '../../utils/debounce'
+    import { dispatch, listen } from '../../utils/event'
     import { modal } from '../../utils/modal'
     import { closePopover, popover, type PopoverPosition } from '../../utils/popover'
 
@@ -76,19 +77,38 @@ const classes = classNames([
         const position = selectElement.dataset.position
 
         if (position === 'modal') {
-            select.addEventListener('click', () => {
-                modal(`[data-id="w-options-${name}"]`)
+            modal({
+                trigger: `[data-id="${selectElement.dataset.id}"]`,
+                modal: `[data-id="w-options-${name}"]`,
+                onOpen: ({ modal }) => {
+                    const search = modal.querySelector('input')
+
+                    if (search) {
+                        search.focus()
+                    }
+                }
             })
         } else {
-            const { width } = selectElement.getBoundingClientRect()
-            const dialogElement = document.querySelector(`[data-id="w-options-${name}"]`) as HTMLDialogElement
+            const resize = debounce(() => {
+                const { width } = selectElement.getBoundingClientRect()
+                const dialogElement = document.querySelector(`[data-id="w-options-${name}"]`) as HTMLDialogElement
 
-            dialogElement.style.width = `${width}px`
+                dialogElement.style.width = `${width}px`
+            })
+
+            new ResizeObserver(() => resize()).observe(document.body)
 
             popover({
                 trigger: `[data-id="${selectElement.dataset.id}"]`,
                 popover: `[data-id="w-options-${name}"]`,
-                position: position as PopoverPosition || 'bottom'
+                position: position as PopoverPosition || 'bottom',
+                onOpen({ popover }) {
+                    const search = popover.querySelector('input')
+
+                    if (search) {
+                        search.focus()
+                    }
+                }
             })
         }
     })

@@ -245,11 +245,18 @@ const sections = getSections({
     ]
 
     selectors.forEach(selector => {
-        on(`#modal-btn-${selector}`, () => modal(`#modal-${selector}`))
+        modal({
+            trigger: `#modal-btn-${selector}`,
+            modal: `#modal-${selector}`
+        })
+
         on(`#modal-close-btn-${selector}`, () => closeModal(`#modal-${selector}`))
     })
 
     variants.forEach(variant => {
-        on(`#modal-btn-${variant}`, () => modal(`#modal-${variant}`))
+        modal({
+            trigger: `#modal-btn-${variant}`,
+            modal: `#modal-${variant}`
+        })
     })
 </script>

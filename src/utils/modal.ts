@@ -1,59 +1,122 @@
-export const modal = (element: string) => {
-    const htmlElement = document.querySelector(element) as HTMLElement
+type Callback = {
+    trigger: Element | null
+    modal: HTMLElement
+}
 
-    if (htmlElement) {
+type Modal = {
+    trigger: string
+    modal: string
+    onOpen?: (args: Callback) => unknown
+    onClose?: (args: Callback) => unknown
+}
+
+export const modal = (config: Modal | string) => {
+    const {
+        trigger,
+        modal,
+        onOpen,
+        onClose
+    } = (typeof config === 'string' ? {} : config) as Modal
+
+    const modalSelector = typeof config === 'string' ? config : modal
+
+    const triggerDOM = document.querySelector(trigger)
+    const modalDOM = document.querySelector(modalSelector) as HTMLElement
+
+    if (modalDOM) {
+        const closeOptions = modalDOM.dataset.close?.split(',')
+
         const handleClose = {
-            icon: () => {
-                const close = htmlElement.querySelector('[data-id="close"]')
+            icon() {
+                const close = modalDOM.querySelector('[data-id="close"]')
 
                 const listener = () => {
-                    htmlElement.dataset.show = ''
+                    modalDOM.dataset.show = ''
 
-                    close?.removeEventListener('click', listener)
+                    onClose?.({
+                        trigger: triggerDOM,
+                        modal: modalDOM
+                    })
                 }
 
-                close?.addEventListener('click', listener)
+                return {
+                    add: () => close?.addEventListener('click', listener),
+                    remove: () => close?.removeEventListener('click', listener)
+                }
             },
 
-            esc: () => {
+            esc() {
                 const listener = (event: KeyboardEvent) => {
-                    if (event.key === 'Escape') {
-                        htmlElement.dataset.show = ''
+                    if (modalDOM.dataset.show && event.key === 'Escape') {
+                        modalDOM.dataset.show = ''
 
-                        document.removeEventListener('keydown', listener)
+                        onClose?.({
+                            trigger: triggerDOM,
+                            modal: modalDOM
+                        })
+
                     }
                 }
 
-                document.addEventListener('keydown', listener)
+                return {
+                    add: () => document.addEventListener('keydown', listener),
+                    remove: () => document.removeEventListener('keydown', listener)
+                }
             },
 
-            overlay: () => {
-                const close = htmlElement.nextElementSibling
+            overlay() {
+                const close = modalDOM.nextElementSibling
 
                 const listener = () => {
-                    htmlElement.dataset.show = ''
+                    modalDOM.dataset.show = ''
 
-                    close?.removeEventListener('click', listener)
+                    onClose?.({
+                        trigger: triggerDOM,
+                        modal: modalDOM
+                    })
                 }
 
-                close?.addEventListener('click', listener)
+                return {
+                    add: () => close?.addEventListener('click', listener),
+                    remove: () => close?.removeEventListener('click', listener)
+                }
             }
         }
 
-        const closeOptions = htmlElement.dataset.close?.split(',')
+        const handleOpen = () => {
+            modalDOM.dataset.show = 'true'
 
-        htmlElement.dataset.show = 'true'
+            onOpen?.({
+                trigger: triggerDOM,
+                modal: modalDOM
+            })
+        }
+
+        triggerDOM?.addEventListener('click', handleOpen)
 
         closeOptions?.forEach(option => {
-            handleClose[option as keyof typeof handleClose]()
+            handleClose[option as keyof typeof handleClose]().add()
         })
+
+        return {
+            open() {
+                handleOpen()
+            },
+            remove() {
+                triggerDOM?.removeEventListener('click', handleOpen)
+
+                closeOptions?.forEach(option => {
+                    handleClose[option as keyof typeof handleClose]().remove()
+                })
+            }
+        }
     }
 }
 
-export const closeModal = (element: string) => {
-    const htmlElement = document.querySelector(element) as HTMLElement
+export const closeModal = (modal: string) => {
+    const modalDOM = document.querySelector(modal) as HTMLElement
 
-    if (htmlElement) {
-        htmlElement.dataset.show = ''
+    if (modalDOM) {
+        modalDOM.dataset.show = ''
     }
 }

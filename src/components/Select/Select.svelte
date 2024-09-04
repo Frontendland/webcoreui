@@ -8,6 +8,7 @@
     import Popover from '../Popover/Popover.svelte'
 
     import { classNames } from '../../utils/classNames'
+    import { debounce } from '../../utils/debounce'
     import { modal } from '../../utils/modal'
     import { closePopover, popover, type PopoverPosition } from '../../utils/popover'
 
@@ -26,10 +27,8 @@
     export let onChange: SvelteSelectProps['onChange'] = () => {}
 
     let popoverInstance: any
-    let widthSet = false
 
     const classes = classNames([
-        `w-select-${name}`,
         styles.select,
         disabled && styles.disabled,
         className
@@ -39,12 +38,6 @@
         `w-options-${name}`,
         styles.popover
     ])
-
-    const open = () => {
-        if (position === 'modal') {
-            modal(`.w-options-${name}`)
-        }
-    }
 
     const select = (payload: any) => {
         closePopover(`.w-options-${name}`)
@@ -58,22 +51,41 @@
     }
 
     onMount(() => {
-        if (position !== 'modal') {
-            if (!widthSet) {
+        if (position === 'modal') {
+            modal({
+                trigger: `.w-select-${name}`,
+                modal: `.w-options-${name}`,
+                onOpen: ({ modal }) => {
+                    const search = modal.querySelector('input')
+
+                    if (search) {
+                        search.focus()
+                    }
+                }
+            })
+        } else {
+            const resize = debounce(() => {
                 const selectElement = document.querySelector(`.w-select-${name}`) as HTMLInputElement
 
                 const { width } = selectElement.getBoundingClientRect()
                 const dialogElement = document.querySelector(`.w-options-${name}`) as HTMLDialogElement
 
                 dialogElement.style.width = `${width}px`
+            })
 
-                widthSet = true
-            }
+            new ResizeObserver(() => resize()).observe(document.body)
 
             popoverInstance = popover({
                 trigger: `.w-select-${name}`,
                 popover: `.w-options-${name}`,
-                position: position as PopoverPosition
+                position: position as PopoverPosition,
+                onOpen({ popover }) {
+                    const search = popover.querySelector('input')
+
+                    if (search) {
+                        search.focus()
+                    }
+                }
             })
         }
 
@@ -91,8 +103,8 @@
     placeholder={placeholder}
     label={label}
     subText={subText}
+    className={`w-select-${name}`}
     labelClassName={classes}
-    onClick={open}
 >
     {@html ArrowDown}
 </Input>

@@ -111,6 +111,8 @@ const sections = getSections({
                     name="modal"
                     position="modal"
                     itemGroups={listWithGroups}
+                    showSearchBar={true}
+                    searchBarPlaceholder="Filter options"
                 />
             </ComponentWrapper>
         </div>
@@ -120,8 +122,8 @@ const sections = getSections({
 <script>
     import { listen } from '@utils/event'
 
-    listen('selectOnChange', payload => {
+    listen('selectOnChange', event => {
         // eslint-disable-next-line no-console
-        console.log(payload)
+        console.log(event)
     })
 </script>
