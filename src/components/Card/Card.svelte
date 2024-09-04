@@ -10,6 +10,7 @@
     export let titleTag: CardProps['titleTag'] = 'span'
     export let compact: CardProps['compact'] = false
     export let className: CardProps['className'] = ''
+    export let bodyClassName: CardProps['bodyClassName'] = ''
     export let secondary: CardProps['secondary'] = false
 
     const classes = classNames([
@@ -20,7 +21,8 @@
 
     const bodyClasses = classNames([
         styles.body,
-        compact && styles.compact
+        compact && styles.compact,
+        bodyClassName
     ])
 </script>
 

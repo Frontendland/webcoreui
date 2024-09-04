@@ -4,6 +4,7 @@ export type CardProps = {
     titleTag?: string
     compact?: boolean
     className?: string
+    bodyClassName?: string
     secondary?: boolean
     [key: string]: any
 }

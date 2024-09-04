@@ -11,6 +11,7 @@ const Card = ({
     TitleTag = 'span',
     compact,
     className,
+    bodyClassName,
     secondary,
     children,
     ...rest
@@ -23,7 +24,8 @@ const Card = ({
 
     const bodyClasses = classNames([
         styles.body,
-        compact && styles.compact
+        compact && styles.compact,
+        bodyClassName
     ])
 
     return (
