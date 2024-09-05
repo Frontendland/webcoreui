@@ -229,11 +229,18 @@ const sections = getSections({
     ]
 
     selectors.forEach(selector => {
-        on(`#sheet-btn-${selector}`, () => modal(`#sheet-${selector}`))
+        modal({
+            trigger: `#sheet-btn-${selector}`,
+            modal: `#sheet-${selector}`
+        })
+
         on(`#sheet-close-btn-${selector}`, () => closeModal(`#sheet-${selector}`))
     })
 
     variants.forEach(variant => {
-        on(`#sheet-btn-${variant}`, () => modal(`#sheet-${variant}`))
+        modal({
+            trigger: `#sheet-btn-${variant}`,
+            modal: `#sheet-${variant}`
+        })
     })
 </script>

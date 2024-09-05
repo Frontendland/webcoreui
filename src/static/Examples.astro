@@ -298,7 +298,6 @@ const tasks = [
     import { toast } from '@utils/toast'
 
     const marketing = document.querySelector('.marketing input')
-    const connect = document.querySelector('.connect')
     const closeButton = document.querySelectorAll('.close-modal')
 
     marketing?.addEventListener('change', (e: any) => {
@@ -310,8 +309,9 @@ const tasks = [
         })
     })
 
-    connect?.addEventListener('click', () => {
-        modal('.modal')
+    modal({
+        trigger: '.connect',
+        modal: '.modal'
     })
 
     Array.from(closeButton).forEach(button => {

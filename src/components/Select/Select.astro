@@ -93,7 +93,9 @@ const classes = classNames([
                 const { width } = selectElement.getBoundingClientRect()
                 const dialogElement = document.querySelector(`[data-id="w-options-${name}"]`) as HTMLDialogElement
 
-                dialogElement.style.width = `${width}px`
+                if (dialogElement) {
+                    dialogElement.style.width = `${width}px`
+                }
             })
 
             new ResizeObserver(() => resize()).observe(document.body)

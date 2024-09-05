@@ -56,7 +56,7 @@ type Toast = {
 declare module 'webcoreui' {
     export const classNames: (classes: any[]) => string
 
-    export const setCookie: (name: string, value: string, days: number) => undefined
+    export const setCookie: (name: string, value: string, days: number) => void
     export const getCookie: (name: string) => string | null
     export const removeCookie: (name: string) => void
 
