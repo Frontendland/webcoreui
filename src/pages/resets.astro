@@ -49,5 +49,45 @@ import Card from '@components/Card/Card.astro'
                 </figcaption>
             </figure>
         </div>
+
+        <h2 class="reset">Other ways to configure CSS</h2>
+
+        <p>You can use the following options in your <code>setup</code> mixin to further configure your CSS.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Default value</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>includeResets</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                        Include reset styles for native HTML elements.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>includeUtilities</code></td>
+                    <td><code>true</code></td>
+                    <td>
+                        Adds utility classes for CSS.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>includeTooltip</code></td>
+                    <td><code>true</code></td>
+                    <td>Adds global styles for tooltips.</td>
+                </tr>
+                <tr>
+                    <td><code>includeScrollbarStyles</code></td>
+                    <td><code>true</code></td>
+                    <td>Adds global styles for scrollbars.</td>
+                </tr>
+            </tbody>
+        </table>
     </Card>
 </Layout>

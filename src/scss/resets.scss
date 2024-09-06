@@ -103,4 +103,30 @@
         @include border(0);
         @include background(primary-50);
     }
+
+    table {
+        @include size('w100%');
+        @include typography(left);
+
+        border-collapse: collapse;
+    }
+
+    thead,
+    tfoot {
+        @include typography(bold);
+    }
+
+    th,
+    td {
+        @include spacing(py-xs, px-sm);
+    }
+
+    thead,
+    tr {
+        @include border(bottom, primary-50);
+
+        &:last-child {
+            @include border(bottom, 0);
+        }
+    }
 }    

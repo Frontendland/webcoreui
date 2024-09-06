@@ -1,17 +1,17 @@
 export const utilityTypes = `
-type ModalCallback = {
+export type ModalCallback = {
     trigger: Element | null
     modal: HTMLElement
 }
 
-type Modal = {
+export type Modal = {
     trigger: string
     modal: string
     onOpen?: (args: ModalCallback) => unknown
     onClose?: (args: ModalCallback) => unknown
 }
 
-type PopoverPosition = 'top'
+export type PopoverPosition = 'top'
     | 'top-start'
     | 'top-end'
     | 'left'
@@ -24,13 +24,13 @@ type PopoverPosition = 'top'
     | 'bottom-start'
     | 'bottom-end'
 
-type PopoverCallback = {
+export type PopoverCallback = {
     trigger: HTMLElement
     popover: HTMLElement
     position: PopoverPosition | undefined
 }
 
-type Popover = {
+export type Popover = {
     trigger: string
     popover: string
     position?: PopoverPosition
@@ -40,7 +40,7 @@ type Popover = {
     onClose?: (args: PopoverCallback) => unknown
 }
 
-type Toast = {
+export type Toast = {
     element: string
     timeout?: number
     title?: string
