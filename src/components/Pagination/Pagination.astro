@@ -1,0 +1,179 @@
+---
+import type { PaginationProps } from './pagination'
+
+import Button from '../Button/Button.astro'
+
+import ArrowLeft from '../../icons/arrow-left.svg?raw'
+import ArrowRight from '../../icons/arrow-right.svg?raw'
+
+import styles from './pagination.module.scss'
+
+interface Props extends PaginationProps {}
+
+const {
+    type,
+    showChevrons,
+    showDots,
+    disablePrevious,
+    disableNext,
+    previousLink,
+    nextLink,
+    previousPageLabel = 'Previous',
+    nextPageLabel = 'Next',
+    pages,
+    theme = 'outline',
+    totalPages,
+    currentPage,
+    className
+} = Astro.props
+
+const classes = [
+    styles.pagination,
+    theme !== 'outline' && (theme === null ? styles.primary : styles[theme]),
+    type === 'dots' && styles.dots,
+    className
+]
+
+const calculatedCurrentPage = currentPage
+    || (pages?.findIndex(page => page.active) || -1) + 1
+    || 1
+
+const calculatedTotalPages = totalPages
+    || pages?.length
+    || 0
+---
+
+<ul
+    class:list={classes}
+    data-id="w-pagination"
+    data-total-pages={calculatedTotalPages}
+    data-current-page={calculatedCurrentPage}
+>
+    {type === 'dots' ? (
+        <Fragment>
+            {pages?.map(page => (
+                <li>
+                    <button
+                        data-active={page.active ? 'true' : undefined}
+                        data-page={page.label}
+                    />
+                </li>
+            ))}
+        </Fragment>
+    ) : (
+        <li>
+            <Button
+                disabled={disablePrevious || (calculatedCurrentPage === 1 && !previousLink)}
+                href={previousLink}
+                theme={theme}
+                data-page="prev"
+            >
+                {(showChevrons || type === 'arrows') && <Fragment set:html={ArrowLeft} />}
+                {type !== 'arrows' && previousPageLabel}
+            </Button>
+        </li>
+        <Fragment>
+            {type !== 'arrows' && pages?.slice(0, calculatedTotalPages)?.map((page, index) =>
+                <li>
+                    <Button
+                        href={page.link}
+                        data-active={calculatedCurrentPage === index + 1 ? 'true' : null}
+                        theme={theme}
+                        data-page={page.label}
+                    >
+                        {page.label}
+                    </Button>
+                </li>
+            )}
+            {showDots && (
+                <li>
+                    <Button theme={theme} className={styles.inactive}>
+                        ...
+                    </Button>
+                </li>
+            )}
+        </Fragment>
+        <li>
+            <Button
+                disabled={disableNext || (calculatedCurrentPage === calculatedTotalPages && !nextLink)}
+                href={nextLink}
+                theme={theme}
+                data-page="next"
+            >
+                {type !== 'arrows' && nextPageLabel}
+                {(showChevrons || type === 'arrows') && <Fragment set:html={ArrowRight} />}
+            </Button>
+        </li>
+    )}
+</ul>
+
+<script>
+    import { dispatch } from '../../utils/event'
+
+    const getCurrentPage = (pageElements: Element[], current: number, next: string) => {
+        if (next === 'prev') {
+            return current - 1
+        }
+
+        if (next === 'next') {
+            return current + 1
+        }
+
+        return pageElements?.findIndex(child => {
+            const button = child.children[0] as HTMLButtonElement
+
+            return button.dataset.page === next
+        }) + 1
+    }
+
+    const paginations = document.querySelectorAll('[data-id="w-pagination"]')
+
+    Array.from(paginations).forEach(element => {
+        const pagination = element as HTMLUListElement
+        const totalPages = Number(pagination.dataset.totalPages)
+        let currentPage = Number(pagination.dataset.currentPage)
+
+        element.addEventListener('click', event => {
+            const target = event.target as HTMLButtonElement
+            const navigated = target.nodeName === 'BUTTON'
+                && !target.dataset.active
+                && !target.disabled
+
+            if (navigated) {
+                const prevPageButton = element.querySelector('[data-page="prev"]') as HTMLButtonElement
+                const nextPageButton = element.querySelector('[data-page="next"]') as HTMLButtonElement
+                const currentPageButton = element.querySelector('[data-active]') as HTMLButtonElement
+
+                const pageElements = Array
+                    .from(pagination.children)
+                    .filter(child => {
+                        const button = child.children[0] as HTMLButtonElement
+
+                        return button.dataset.page && !['prev', 'next'].includes(button.dataset.page)
+                    })
+
+                currentPage = getCurrentPage(pageElements, currentPage, target.dataset.page || '')
+                currentPageButton?.removeAttribute('data-active')
+
+                const activeButton = pageElements
+                    .find((_, index) => index + 1 === currentPage)
+                    ?.children[0] as HTMLButtonElement
+
+                if (activeButton) {
+                    activeButton.dataset.active = 'true'
+                }
+
+                if (prevPageButton && nextPageButton) {
+                    prevPageButton.disabled = currentPage === 1
+                    nextPageButton.disabled = currentPage === totalPages
+                }
+
+                dispatch('paginate', {
+                    page: currentPage,
+                    ...(activeButton?.dataset.page && { label: activeButton?.dataset.page }),
+                    element
+                })
+            }
+        })
+    })
+</script>

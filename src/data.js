@@ -182,3 +182,23 @@ export const listWithStates = [
     },
     listWithGroups[1]
 ]
+
+export const pages = [
+    { label: 1 },
+    { label: 2, active: true },
+    { label: 3 }
+]
+
+export const manyPages = [
+    { label: 1 },
+    { label: 2, active: true },
+    { label: 3 },
+    { label: 4 },
+    { label: 5 },
+    { label: 6 }
+]
+
+export const pagesWithCustomLabels = [
+    { label: 'Latest' },
+    { label: 'Trending', active: true }
+]

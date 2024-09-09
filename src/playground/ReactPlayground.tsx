@@ -9,6 +9,7 @@ import Collapsible from '@components/Collapsible/Collapsible.tsx'
 import Icon from '@components/Icon/Icon.tsx'
 import Input from '@components/Input/Input.tsx'
 import List from '@components/List/List.tsx'
+import Pagination from '@components/Pagination/Pagination.tsx'
 import Progress from '@components/Progress/Progress.tsx'
 import Radio from '@components/Radio/Radio.tsx'
 import Select from '@components/Select/Select.tsx'
@@ -23,7 +24,13 @@ import { toast } from '@utils/toast'
 
 import styles from './playground.module.scss'
 
-import { listWithGroups,listWithStates, tabItems, themes } from '@data'
+import {
+    listWithGroups,
+    listWithStates,
+    pages,
+    tabItems,
+    themes
+} from '@data'
 
 const ReactPlayground = () => {
     const [progress, setProgress] = useState(33)
@@ -98,8 +105,21 @@ const ReactPlayground = () => {
                     showSearchBarIcon={true}
                     searchBarPlaceholder="Search the app..."
                     noResultsLabel="Nothing found..."
-                    // eslint-disable-next-line no-console
-                    onSelect={event => console.log(event)}
+                    onSelect={event => {
+                        // eslint-disable-next-line no-console
+                        console.log(event)
+                    }}
+                />
+            </Card>
+
+            <Card>
+                <Pagination
+                    pages={pages}
+                    showChevrons={true}
+                    onChange={event => {
+                        // eslint-disable-next-line no-console
+                        console.log(event)
+                    }}
                 />
             </Card>
 

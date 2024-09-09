@@ -121,8 +121,8 @@ const sections = getSections({
 <script>
     import { listen } from '@utils/event'
 
-    listen('listOnSelect', payload => {
+    listen('listOnSelect', event => {
         // eslint-disable-next-line no-console
-        console.log(payload)
+        console.log(event)
     })
 </script>

@@ -13,10 +13,10 @@ export type ButtonProps = {
 }
 
 export type SvelteButtonProps = {
-    onClick?: () => any
+    onClick?: (() => any) | null
 } & ButtonProps
 
 export type ReactButtonProps = {
-    onClick?: () => any
+    onClick?: (() => any) | null
     children: React.ReactNode
 } & ButtonProps

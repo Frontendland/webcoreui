@@ -8,6 +8,7 @@
     import Icon from '@components/Icon/Icon.svelte'
     import Input from '@components/Input/Input.svelte'
     import List from '@components/List/List.svelte'
+    import Pagination from '@components/Pagination/Pagination.svelte'
     import Progress from '@components/Progress/Progress.svelte'
     import Radio from '@components/Radio/Radio.svelte'
     import Select from '@components/Select/Select.svelte'
@@ -22,7 +23,13 @@
 
     import styles from './playground.module.scss'
 
-    import { listWithGroups,listWithStates, tabItems, themes } from '@data'
+    import {
+        listWithGroups,
+        listWithStates,
+        pages,
+        tabItems,
+        themes
+    } from '@data'
 
     let progress = 33
     let checkbox = false
@@ -95,6 +102,17 @@
             searchBarPlaceholder="Search the app..."
             noResultsLabel="Nothing found..."
             onSelect={event => {
+                // eslint-disable-next-line no-console
+                console.log(event)
+            }}
+        />
+    </Card>
+
+    <Card>
+        <Pagination
+            pages={pages}
+            showChevrons={true}
+            onChange={event => {
                 // eslint-disable-next-line no-console
                 console.log(event)
             }}

@@ -2,7 +2,7 @@
 
 .button {
     @include layout(inline-flex, center, xs);
-    @include typography(default, primary-50, none);
+    @include typography(default, primary-50, none, normal);
     @include spacing(py-sm, px-md);
     @include border-radius(xs);
     @include border(0);
@@ -37,6 +37,11 @@
         &:hover {
             @include typography(primary);
             box-shadow: inset 0px 0px 0px 1px var(--w-color-primary);
+        }
+
+        &[disabled] {
+            @include typography(primary-30);
+            box-shadow: inset 0px 0px 0px 1px var(--w-color-primary-30);
         }
     }
 

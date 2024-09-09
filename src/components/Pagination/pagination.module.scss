@@ -1,0 +1,49 @@
+@import '../../scss/config.scss';
+
+.pagination {
+    @include layout(flex, xs, wrap);
+    @include spacing(0);
+
+    list-style-type: none;
+
+    &.primary [data-active] {
+        @include typography(primary-70);
+        @include background(primary-20);
+    }
+
+    &.dots button {
+        @include transition();
+        @include border-radius(max);
+        @include size(12px);
+        @include border(0);
+        @include spacing(p0);
+        @include background(primary-30);
+
+        cursor: pointer;
+
+        &[data-active] {
+            @include background(primary);
+            @include size(w20px);
+            @include border-radius(lg);
+        }
+    }
+
+    li {
+        @include spacing(m0);
+    }
+
+    svg {
+        @include size(10px);
+        pointer-events: none;
+    }
+
+    [data-active] {
+        @include typography(primary);
+        box-shadow: inset 0px 0px 0px 1px var(--w-color-primary);
+    }
+
+    .inactive {
+        pointer-events: none;
+        box-shadow: none;
+    }
+}

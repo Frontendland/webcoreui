@@ -1,5 +1,7 @@
 import Alert from '../../icons/alert.svg?raw'
 import ArrowDown from '../../icons/arrow-down.svg?raw'
+import ArrowLeft from '../../icons/arrow-left.svg?raw'
+import ArrowRight from '../../icons/arrow-right.svg?raw'
 import Check from '../../icons/check.svg?raw'
 import CircleCheck from '../../icons/circle-check.svg?raw'
 import Close from '../../icons/close.svg?raw'
@@ -13,6 +15,8 @@ import Warning from '../../icons/warning.svg?raw'
 const iconMap = {
     'alert': Alert,
     'arrow-down': ArrowDown,
+    'arrow-left': ArrowLeft,
+    'arrow-right': ArrowRight,
     'check': Check,
     'circle-check': CircleCheck,
     'close': Close,

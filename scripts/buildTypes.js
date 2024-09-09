@@ -29,6 +29,7 @@ const buildTypes = type => {
                 'Checkbox',
                 'Input',
                 'List',
+                'Pagination',
                 'Radio',
                 'Select',
                 'Slider',

@@ -1,0 +1,159 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroPagination from '@components/Pagination/Pagination.astro'
+import SveltePagination from '@components/Pagination/Pagination.svelte'
+import ReactPagination from '@components/Pagination/Pagination.tsx'
+
+import { getSections } from '@helpers'
+import { manyPages, pages, pagesWithCustomLabels } from '@data'
+
+const sections = getSections({
+    title: 'paginations',
+    components: [AstroPagination, SveltePagination, ReactPagination],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>Pagination</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroPagination />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SveltePagination client:idle />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactPagination client:idle />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With chevrons">
+                <section.component showChevrons={true} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With page data (affects onChange)">
+                <section.component
+                    currentPage={2}
+                    totalPages={10}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With pages">
+                <section.component
+                    showChevrons={true}
+                    pages={pages}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With explicit current page (set to 1)">
+                <section.component
+                    showChevrons={true}
+                    pages={pages}
+                    currentPage={1}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With explicit total pages (set to 2)">
+                <section.component
+                    showChevrons={true}
+                    pages={pages}
+                    currentPage={1}
+                    totalPages={2}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With custom page labels">
+                <section.component
+                    showChevrons={true}
+                    pages={pagesWithCustomLabels}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With fixed number of visible pages (WIP)">
+                <section.component
+                    showChevrons={true}
+                    pages={manyPages}
+                    numberOfVisiblePages={3}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With dots">
+                <section.component
+                    showChevrons={true}
+                    showDots={true}
+                    pages={pages}
+                    previousLink="#prev"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With custom labels">
+                <section.component
+                    showChevrons={true}
+                    showDots={true}
+                    previousPageLabel="Back"
+                    nextPageLabel="Forward"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With links">
+                <section.component
+                    showChevrons={true}
+                    showDots={true}
+                    previousLink="#prev"
+                    nextLink="#next"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled">
+                <section.component
+                    disablePrevious={true}
+                    disableNext={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Secondary theme">
+                <section.component
+                    theme="secondary"
+                    pages={pages}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Arrow type">
+                <section.component
+                    type="arrows"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Dot type">
+                <section.component
+                    type="dots"
+                    pages={pages}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<script>
+    import { listen } from '@utils/event'
+
+    listen('paginate', event => {
+        // eslint-disable-next-line no-console
+        console.log(event)
+    })
+</script>

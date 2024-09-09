@@ -209,6 +209,7 @@ import { Accordion } from 'webcoreui/react'
 - [List](https://github.com/Frontendland/webcoreui/tree/main/src/components/List)
 - [Menu](https://github.com/Frontendland/webcoreui/tree/main/src/components/Menu)
 - [Modal](https://github.com/Frontendland/webcoreui/tree/main/src/components/Modal)
+- [Pagination](https://github.com/Frontendland/webcoreui/tree/main/src/components/Pagination)
 - [Popover](https://github.com/Frontendland/webcoreui/tree/main/src/components/Popover)
 - [Progress](https://github.com/Frontendland/webcoreui/tree/main/src/components/Progress)
 - [Radio](https://github.com/Frontendland/webcoreui/tree/main/src/components/Radio)

@@ -15,6 +15,7 @@ import Icon from '@components/Icon/Icon.astro'
 import Input from '@components/Input/Input.astro'
 import List from '@components/List/List.astro'
 import Menu from '@components/Menu/Menu.astro'
+import Pagination from '@components/Pagination/Pagination.astro'
 import Progress from '@components/Progress/Progress.astro'
 import Radio from '@components/Radio/Radio.astro'
 import Rating from '@components/Rating/Rating.astro'
@@ -166,6 +167,9 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Modal" href="/modal">
             <Button theme="outline">Trigger Modal</Button>
+        </CardWrapper>
+        <CardWrapper title="Pagination" href="/pagination">
+            <Pagination showChevrons={true} />
         </CardWrapper>
         <CardWrapper title="Popover" href="/popover">
             <Button theme="outline">Open Popover</Button>
