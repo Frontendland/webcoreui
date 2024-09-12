@@ -20,6 +20,15 @@
         @include typography(bold);
     }
 
+    thead button {
+        @include spacing(p-xxs);
+
+        svg {
+            @include size(15px);
+            pointer-events: none;
+        }
+    }
+
     th,
     td {
         @include spacing(py-xs, px-sm);

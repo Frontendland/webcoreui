@@ -1,4 +1,5 @@
 ---
+/* eslint-disable max-lines */
 import type { DataTableProps, HeadingObject } from './datatable'
 
 import Button from '../Button/Button.astro'
@@ -8,6 +9,7 @@ import Pagination from '../Pagination/Pagination.astro'
 import Select from '../Select/Select.astro'
 
 import checkIcon from '../../icons/check.svg?raw'
+import orderIcon from '../../icons/order.svg?raw'
 import searchIcon from '../../icons/search.svg?raw'
 
 import styles from './datatable.module.scss'
@@ -117,8 +119,9 @@ const hasPagination = data?.length && itemsPerPage
                         {headings.map(heading => (
                             <th data-name={getColumnName(heading)}>
                                 <ConditionalWrapper condition={!!(heading as HeadingObject).sortable}>
-                                    <Button theme="flat" slot="wrapper">
+                                    <Button theme="flat" slot="wrapper" data-id="w-data-table-sort">
                                         children
+                                        <Fragment set:html={orderIcon} />
                                     </Button>
                                     {(heading as HeadingObject).name || heading}
                                 </ConditionalWrapper>
@@ -170,6 +173,7 @@ const hasPagination = data?.length && itemsPerPage
     import { dispatch, listen } from '../../utils/event'
 
     const filters = document.querySelectorAll('[data-id="w-data-table-filter"]')
+    const sorts = document.querySelectorAll('[data-id="w-data-table-sort"]')
 
     Array.from(filters).forEach(filter => {
         filter.addEventListener('input', debounce((event: Event) => {
@@ -231,6 +235,53 @@ const hasPagination = data?.length && itemsPerPage
                 numberOfResults: filteredRows.length
             })
         }, 400))
+    })
+
+    Array.from(sorts).forEach(sort => {
+        let sortOrder = 1
+
+        sort.addEventListener('click', event => {
+            const target = event.target as HTMLButtonElement
+            const sortBy = target.parentElement?.dataset.name
+            const table = target.closest('section')?.querySelector('table')
+            const tableBody = table?.querySelector('tbody')
+            const sortedTableRows = Array.from(
+                table?.querySelectorAll('tbody tr') as NodeListOf<HTMLTableRowElement>
+            ).sort((a, b) => {
+                let aValue: string | number = (a.querySelector(`[data-name=${sortBy}]`) as HTMLElement)
+                    ?.innerText.replace(/\s/g, '')
+                let bValue: string | number = (b.querySelector(`[data-name=${sortBy}]`) as HTMLElement)
+                    ?.innerText.replace(/\s/g, '')
+
+                if (!isNaN(aValue as any)) {
+                    aValue = Number(aValue)
+                }
+
+                if (!isNaN(bValue as any)) {
+                    bValue = Number(bValue)
+                }
+
+                return aValue > bValue
+                    ? sortOrder * -1
+                    : sortOrder
+            }).map((row, index) => {
+                if (table?.dataset.page) {
+                    row.dataset.page = `${Math.ceil((index + 1) / Number(table.dataset.itemsPerPage))}`
+
+                    if (row.dataset.page !== table.dataset.page) {
+                        row.dataset.hidden = 'true'
+                    } else {
+                        row.removeAttribute('data-hidden')
+                    }
+                }
+
+                return row
+            })
+
+            tableBody?.replaceChildren(...sortedTableRows)
+
+            sortOrder = sortOrder === 1 ? -1 : 1
+        })
     })
 
     listen('selectOnChange', event => {
