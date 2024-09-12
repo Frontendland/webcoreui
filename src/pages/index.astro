@@ -10,6 +10,7 @@ import Badge from '@components/Badge/Badge.astro'
 import Button from '@components/Button/Button.astro'
 import Checkbox from '@components/Checkbox/Checkbox.astro'
 import Collapsible from '@components/Collapsible/Collapsible.astro'
+import DataTable from '@components/DataTable/DataTable.astro'
 import Group from '@components/Group/Group.astro'
 import Icon from '@components/Icon/Icon.astro'
 import Input from '@components/Input/Input.astro'
@@ -114,6 +115,15 @@ const tabItems = [{
                 <span>This book has been rated for...</span>
                 <Badge slot="on">Expand</Badge>
             </Collapsible>
+        </CardWrapper>
+        <CardWrapper title="DataTable" href="/data-table">
+            <DataTable
+                headings={[
+                    { name: 'ID', filterable: true, toggleable: true },
+                    'Name'
+                ]}
+                data={[['1', 'John Doe']]}
+            />
         </CardWrapper>
         <CardWrapper title="Group" href="/group">
             <Group withSeparator={true}>

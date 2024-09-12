@@ -1,0 +1,93 @@
+@import '../../scss/config.scss';
+
+.filters {
+    @include layout(flex, xs);
+    @include spacing(mb-sm);
+}
+
+.table {
+    @include visibility(auto);
+
+    table {
+        @include size('w100%');
+        @include typography(left);
+
+        border-collapse: collapse;
+    }
+
+    thead,
+    thead button {
+        @include typography(bold);
+    }
+
+    th,
+    td {
+        @include spacing(py-xs, px-sm);
+
+        &.no-results {
+            @include typography(center);
+        }
+    }
+
+    thead,
+    tr {
+        @include border(bottom, primary-50);
+
+        &:last-child {
+            @include border(bottom, 0);
+        }
+    }
+
+    [data-hidden] {
+        @include visibility(none);
+    }
+
+    &.hover tr:hover,
+    &.striped-rows tbody tr:nth-child(odd),
+    &.striped-rows.offset tbody tr:nth-child(even),
+    &.striped-columns td:nth-child(odd),
+    &.striped-columns.offset td:nth-child(even),
+    &.hover.striped-rows.offset tbody tr:nth-child(odd):hover {
+        @include background(primary-60);
+    }
+
+    &.striped-rows tr,
+    &.striped-columns tr,
+    &.striped-columns thead {
+        @include border(bottom, 0);
+    }
+
+    &.striped-rows.offset tbody tr:nth-child(odd),
+    &.striped-columns.offset td:nth-child(odd) {
+        @include background(transparent);
+    }
+
+    &.compact {
+        th, td {
+            @include spacing(py-xxs, px-sm);
+        }
+    }
+
+    &.scroll {
+        @include spacing(pr-sm);
+
+        thead {
+            @include position(sticky, t0);
+            @include background(primary-70);
+            box-shadow: 0 .5px 0 var(--w-color-primary-50);
+        }
+    }
+}
+
+.footer {
+    @include layout(flex, h-end, v-center, xs);
+    @include spacing(mt-sm);
+
+    &.between {
+        @include layout(h-between);
+    }
+
+    .subtext {
+        @include typography(md, primary-20);
+    }
+}

@@ -6,6 +6,6 @@ export type TableProps = {
     striped?: 'column' | 'row' | null
     offsetStripe?: boolean
     compact?: boolean
-    maxHeight?: number
+    maxHeight?: string
     className?: string
 }

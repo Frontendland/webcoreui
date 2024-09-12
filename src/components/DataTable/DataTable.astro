@@ -1,0 +1,278 @@
+---
+import type { DataTableProps, HeadingObject } from './datatable'
+
+import Button from '../Button/Button.astro'
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+import Input from '../Input/Input.astro'
+import Pagination from '../Pagination/Pagination.astro'
+import Select from '../Select/Select.astro'
+
+import checkIcon from '../../icons/check.svg?raw'
+import searchIcon from '../../icons/search.svg?raw'
+
+import styles from './datatable.module.scss'
+
+interface Props extends DataTableProps {}
+
+const {
+    headings,
+    filterPlaceholder = 'Filter entries',
+    showFilterIcon,
+    noResultsLabel = 'No results.',
+    itemsPerPage,
+    subText,
+    columnToggleLabel = 'Columns',
+    pagination,
+    data,
+    hover,
+    striped,
+    offsetStripe,
+    compact,
+    maxHeight,
+    className
+} = Astro.props
+
+const classes = [
+    styles.table,
+    hover && styles.hover,
+    striped && styles[`striped-${striped}s`],
+    offsetStripe && styles.offset,
+    compact && styles.compact,
+    maxHeight && styles.scroll
+]
+
+const footerClasses = [
+    styles.footer,
+    subText && styles.between
+]
+
+const getColumnName = (heading: HeadingObject | string | undefined) => {
+    if (!heading) {
+        return undefined
+    }
+
+    return ((heading as HeadingObject).name || heading as string).toLowerCase().replace(/\s/g, '')
+}
+
+const showColumnToggle = headings?.some(heading => {
+    return typeof heading === 'string' ? false : heading.toggleable
+})
+
+const columnToggleItems = [{
+    items: headings?.length ? headings
+        .filter(heading => typeof heading !== 'string' && heading.toggleable)
+        .map(heading => ({
+            name: (heading as HeadingObject).name,
+            value: (heading as HeadingObject).name.toLowerCase(),
+            icon: checkIcon
+        })) : []
+}]
+
+const columnFilterItems = headings?.filter(heading => typeof heading !== 'string')
+    .filter(heading => heading.filterable)
+    .map(heading => heading.name)
+    .map(heading => getColumnName(heading))
+
+const hasPagination = data?.length && itemsPerPage
+    ? data.length > itemsPerPage
+    : false
+---
+
+<section class={className}>
+    {(!!columnFilterItems?.length || showColumnToggle) && (
+        <div class={styles.filters}>
+            {!!columnFilterItems?.length && (
+                <Input
+                    type="search"
+                    placeholder={filterPlaceholder}
+                    data-id="w-data-table-filter"
+                    data-filter={columnFilterItems}
+                >
+                    <Fragment
+                        set:html={searchIcon}
+                        slot={showFilterIcon ? 'default' : null}
+                    />
+                </Input>
+            )}
+
+            {showColumnToggle && (
+                <Select
+                    name={`data-table-${crypto.randomUUID()}`}
+                    itemGroups={columnToggleItems}
+                    position="bottom-end"
+                    value={columnToggleLabel}
+                    placeholder={columnToggleLabel}
+                />
+            )}
+        </div>
+    )}
+    <div
+        class:list={classes}
+        style={maxHeight ? `max-height:${maxHeight}` : undefined}
+    >
+        <table data-items-per-page={itemsPerPage} data-page={hasPagination && 1}>
+            {headings?.length && (
+                <thead>
+                    <tr>
+                        {headings.map(heading => (
+                            <th data-name={getColumnName(heading)}>
+                                <ConditionalWrapper condition={!!(heading as HeadingObject).sortable}>
+                                    <Button theme="flat" slot="wrapper">
+                                        children
+                                    </Button>
+                                    {(heading as HeadingObject).name || heading}
+                                </ConditionalWrapper>
+                            </th>
+                        ))}
+                    </tr>
+                </thead>
+            )}
+            <tbody>
+                {data?.map((row, index) => (
+                    <tr
+                        data-page={hasPagination ? Math.ceil((index + 1) / itemsPerPage!) : undefined}
+                        data-hidden={hasPagination && index >= itemsPerPage!}
+                    >
+                        {row.map((column, index) => (
+                            <td data-name={getColumnName(headings?.[index])}>
+                                <Fragment set:html={column} />
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+                <slot />
+            </tbody>
+            {!!columnFilterItems?.length && (
+                <tfoot data-hidden="true">
+                    <tr>
+                        <td colspan={data?.[0].length} class={styles['no-results']}>{noResultsLabel}</td>
+                    </tr>
+                </tfoot>
+            )}
+        </table>
+    </div>
+    {(subText || hasPagination) && (
+        <div class:list={footerClasses}>
+            {subText && <span class={styles.subtext}>{subText}</span>}
+            {hasPagination && (
+                <Pagination
+                    {...pagination}
+                    totalPages={Math.ceil((data?.length || 0) / itemsPerPage!)}
+                    className="w-data-table-pagination"
+                />
+            )}
+        </div>
+    )}
+</section>
+
+<script>
+    import { debounce } from '../../utils/debounce'
+    import { dispatch, listen } from '../../utils/event'
+
+    const filters = document.querySelectorAll('[data-id="w-data-table-filter"]')
+
+    Array.from(filters).forEach(filter => {
+        filter.addEventListener('input', debounce((event: Event) => {
+            const target = event.target as HTMLInputElement
+            const filterableColumns = target.dataset.filter
+            const table = target.closest('section')?.querySelector('table') as HTMLTableElement
+            const pagination = target.closest('section')?.querySelector('.w-data-table-pagination') as HTMLUListElement
+            const noResults = table.querySelector('tfoot') as HTMLElement
+            const tableRows = Array.from(table.querySelectorAll('tbody tr') as NodeListOf<HTMLTableRowElement>)
+
+            tableRows.forEach(row => {
+                const rowValue = Array.from(row.querySelectorAll('td'))
+                    .filter(td => filterableColumns?.includes(td.dataset.name || ''))
+                    .map(td => td.innerText)
+                    .join('')
+                    .toLowerCase()
+
+                if (rowValue.includes(target.value.toLowerCase())) {
+                    row.removeAttribute('data-hidden')
+                } else {
+                    row.dataset.hidden = 'true'
+                }
+            })
+
+            const filteredRows = Array.from(
+                table?.querySelectorAll('tbody tr:not([data-hidden])') as NodeListOf<HTMLTableRowElement>
+            )
+
+            if (!filteredRows.length) {
+                noResults.removeAttribute('data-hidden')
+            } else {
+                noResults.dataset.hidden = 'true'
+            }
+
+            if (table.dataset.itemsPerPage && filteredRows.length >= Number(table.dataset.itemsPerPage)) {
+                filteredRows.forEach((row, index) => {
+                    if (index >= Number(table.dataset.itemsPerPage)) {
+                        row.dataset.hidden = 'true'
+                    }
+                })
+            }
+
+            if (target.value) {
+                pagination.style.display = 'none'
+            } else {
+                pagination.style.display = 'flex'
+
+                tableRows.forEach(row => {
+                    if (row.dataset.page !== table.dataset.page) {
+                        row.dataset.hidden = 'true'
+                    } else {
+                        row.removeAttribute('data-hidden')
+                    }
+                })
+            }
+
+            dispatch('dataTableFilter', {
+                results: filteredRows,
+                numberOfResults: filteredRows.length
+            })
+        }, 400))
+    })
+
+    listen('selectOnChange', event => {
+        const eventName = event.name.toLowerCase().replace(/\s/g, '')
+        const table = event.selectElement
+            .closest('section')
+            .querySelector('table')
+
+        const affectedTableCells = Array.from(table.querySelectorAll(`[data-name=${eventName}]`)) as HTMLElement[]
+
+        const columnToggleListElement = Array.from(event.list.children)
+            .find(child => (child as HTMLLIElement).dataset.name === event.name) as HTMLLIElement
+        const svgIcon = columnToggleListElement.children[0] as HTMLElement
+
+        event.selectElement.value = event.selectElement.placeholder
+
+        svgIcon.style.opacity = svgIcon.style.opacity === '0'
+            ? '1'
+            : '0'
+
+        if (svgIcon.style.opacity === '0') {
+            affectedTableCells.forEach(cell => cell.dataset.hidden = 'true')
+        } else {
+            affectedTableCells.forEach(cell => cell.removeAttribute('data-hidden'))
+        }
+    })
+
+    listen('paginate', event => {
+        const table = event.element
+            .closest('section')
+            .querySelector('table')
+
+        const tableRows = Array.from(table.querySelectorAll('tbody tr') as NodeListOf<HTMLTableRowElement>)
+
+        table.dataset.page = event.page
+
+        tableRows.forEach(row => {
+            if (Number(row.dataset.page) === event.page) {
+                row.removeAttribute('data-hidden')
+            } else {
+                row.dataset.hidden = 'true'
+            }
+        })
+    })
+</script>
