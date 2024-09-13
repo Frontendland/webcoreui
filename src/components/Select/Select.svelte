@@ -16,14 +16,17 @@
 
     import styles from './select.module.scss'
 
+    import type { ListEventType } from '../List/list'
+
     export let name: SvelteSelectProps['name'] = ''
     export let value: SvelteSelectProps['value'] = ''
     export let placeholder: SvelteSelectProps['placeholder'] = ''
     export let label: SvelteSelectProps['label'] = ''
     export let subText: SvelteSelectProps['subText'] = ''
     export let disabled: SvelteSelectProps['disabled'] = false
-    export let className: SvelteSelectProps['className'] = ''
+    export let updateValue: SvelteSelectProps['updateValue'] = true
     export let position: SvelteSelectProps['position'] = 'bottom'
+    export let className: SvelteSelectProps['className'] = ''
     export let onChange: SvelteSelectProps['onChange'] = () => {}
 
     let popoverInstance: any
@@ -39,14 +42,16 @@
         styles.popover
     ])
 
-    const select = (payload: any) => {
+    const select = (event: ListEventType) => {
         closePopover(`.w-options-${name}`)
 
-        value = payload.name
+        if (updateValue) {
+            value = event.name
+        }
 
         onChange?.({
-            select: name,
-            ...payload
+            ...event,
+            select: name
         })
     }
 

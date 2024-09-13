@@ -15,6 +15,8 @@ import ArrowDown from '../../icons/arrow-down.svg?raw'
 
 import styles from './select.module.scss'
 
+import type { ListEventType } from '../List/list'
+
 const Select = ({
     name,
     value,
@@ -22,8 +24,9 @@ const Select = ({
     label,
     subText,
     disabled,
-    className,
+    updateValue = true,
     position = 'bottom',
+    className,
     onChange,
     ...rest
 }: ReactSelectProps) => {
@@ -41,14 +44,16 @@ const Select = ({
 
     let popoverInstance: any
 
-    const select = (payload: any) => {
+    const select = (event: ListEventType) => {
         closePopover(`.w-options-${name}`)
 
-        setValue(payload.name)
+        if (updateValue) {
+            setValue(event.name)
+        }
 
         onChange?.({
-            select: name,
-            ...payload
+            ...event,
+            select: name
         })
     }
 

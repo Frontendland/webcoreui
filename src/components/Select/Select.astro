@@ -21,8 +21,9 @@ const {
     label,
     subText,
     disabled,
-    className,
     position,
+    updateValue = true,
+    className,
     ...rest
 } = Astro.props
 
@@ -42,6 +43,7 @@ const classes = classNames([
     label={label}
     subText={subText}
     data-id={`w-select-${name}`}
+    data-no-update={!updateValue ? 'true' : undefined}
     data-position={position}
     labelClassName={classes}
 >
@@ -125,12 +127,13 @@ const classes = classNames([
 
         closePopover(`[data-id="${popoverId}"]`)
 
-        selectElement.value = name
+        if (!selectElement.dataset.noUpdate) {
+            selectElement.value = name
+        }
 
         dispatch('selectOnChange', {
-            select: selectName,
-            selectElement,
-            ...payload
+            ...payload,
+            select: selectName
         })
     })
 </script>
