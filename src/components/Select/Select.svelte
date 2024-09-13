@@ -56,6 +56,8 @@
     }
 
     onMount(() => {
+        let observer: ResizeObserver | undefined
+
         if (position === 'modal') {
             modal({
                 trigger: `.w-select-${name}`,
@@ -78,7 +80,8 @@
                 dialogElement.style.width = `${width}px`
             })
 
-            new ResizeObserver(() => resize()).observe(document.body)
+            observer = new ResizeObserver(() => resize())
+            observer.observe(document.body)
 
             popoverInstance = popover({
                 trigger: `.w-select-${name}`,
@@ -96,6 +99,7 @@
 
         return () => {
             popoverInstance?.remove()
+            observer?.unobserve(document.body)
         }
     })
 </script>
