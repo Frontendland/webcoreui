@@ -1,5 +1,10 @@
 import type { ButtonProps } from '../Button/button'
 
+export type PaginationEventType = {
+    page: number
+    label?: string | number | undefined
+}
+
 export type PaginationProps = {
     type?: 'arrows' | 'dots' | null
     showChevrons?: boolean
@@ -22,9 +27,9 @@ export type PaginationProps = {
 }
 
 export type SveltePaginationProps = {
-    onChange?: (event: any) => void
+    onChange?: (event: PaginationEventType) => void
 } & PaginationProps
 
 export type ReactPaginationProps = {
-    onChange?: (event: any) => void
+    onChange?: (event: PaginationEventType) => void
 } & PaginationProps
