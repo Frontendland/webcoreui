@@ -12,7 +12,7 @@
     export let striped: TableProps['striped'] = null
     export let offsetStripe: TableProps['offsetStripe'] = false
     export let compact: TableProps['compact'] = false
-    export let maxHeight: TableProps['maxHeight'] = 0
+    export let maxHeight: TableProps['maxHeight'] = ''
     export let className: TableProps['className'] = ''
 
     const classes = classNames([

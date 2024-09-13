@@ -7,44 +7,18 @@ import SvelteDataTable from '@components/DataTable/DataTable.svelte'
 import ReactDataTable from '@components/DataTable/DataTable.tsx'
 
 import { getSections } from '@helpers'
+import {
+    dataTableEntries,
+    filterableHeadings,
+    headings,
+    toggleableHeadings
+} from '@data'
 
 const sections = getSections({
     title: 'data tables',
-    components: [AstroDataTable, SvelteDataTable, ReactDataTable]
+    components: [AstroDataTable, SvelteDataTable, ReactDataTable],
+    showSubTitle: true
 })
-
-const headings = [
-    { name: 'User ID', toggleable: true, sortable: true, filterable: true },
-    { name: 'Score', toggleable: true, sortable: true, filterable: true },
-    'Status'
-]
-
-const toggleableHeadings = [
-    { name: 'User ID', toggleable: true },
-    { name: 'Score', toggleable: true },
-    'Status'
-]
-
-const filterableHeadings = [
-    { name: 'User ID', toggleable: true, filterable: true },
-    { name: 'Score', toggleable: true, filterable: true },
-    'Status'
-]
-
-const data = [
-    ['#1', '47', 'suspended'],
-    ['#2', '195', 'inactive'],
-    ['#3', '177', 'inactive'],
-    ['#4', '4', 'inactive'],
-    ['#5', '145', 'active'],
-    ['#6', '299', 'suspended'],
-    ['#7', '150', 'active'],
-    ['#8', '23', 'active'],
-    ['#9', '92', 'active'],
-    ['#10', '68', 'inactive'],
-    ['#11', '121', 'inactive'],
-    ['#12', '160', 'inactive']
-]
 ---
 
 <Layout>
@@ -53,12 +27,12 @@ const data = [
         <ComponentWrapper type="Astro">
             <AstroDataTable
                 headings={headings}
-                data={data}
+                data={dataTableEntries}
                 filterPlaceholder="Search users"
                 showFilterIcon={true}
                 noResultsLabel="We found no users..."
                 columnToggleLabel="Hide Columns"
-                subText={`${data.length} total entries`}
+                subText={`${dataTableEntries.length} total entries`}
                 itemsPerPage={5}
                 pagination={{
                     showChevrons: true
@@ -67,7 +41,20 @@ const data = [
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
-            <SvelteDataTable />
+            <SvelteDataTable
+                client:idle
+                headings={headings}
+                data={dataTableEntries}
+                filterPlaceholder="Search users"
+                showFilterIcon={true}
+                noResultsLabel="We found no users..."
+                columnToggleLabel="Hide Columns"
+                subText={`${dataTableEntries.length} total entries`}
+                itemsPerPage={5}
+                pagination={{
+                    showChevrons: true
+                }}
+            />
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
@@ -82,17 +69,17 @@ const data = [
         </Fragment>
         <div class="grid md-2 lg-3">
             <ComponentWrapper title="Default">
-                <section.component data={data} />
+                <section.component data={dataTableEntries} />
             </ComponentWrapper>
 
             <ComponentWrapper title="With heading">
-                <section.component headings={['ID', 'Score', 'Status']} data={data} />
+                <section.component headings={['ID', 'Score', 'Status']} data={dataTableEntries} />
             </ComponentWrapper>
 
             <ComponentWrapper title="Highlight on hover">
                 <section.component
                     headings={['ID', 'Score', 'Status']}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                 />
             </ComponentWrapper>
@@ -100,7 +87,7 @@ const data = [
             <ComponentWrapper title="Striped rows">
                 <section.component
                     headings={['ID', 'Score', 'Status']}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                 />
@@ -109,7 +96,7 @@ const data = [
             <ComponentWrapper title="Striped rows with offset">
                 <section.component
                     headings={['ID', 'Score', 'Status']}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     offsetStripe={true}
@@ -119,7 +106,7 @@ const data = [
             <ComponentWrapper title="Striped columns">
                 <section.component
                     headings={['ID', 'Score', 'Status']}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="column"
                 />
@@ -128,7 +115,7 @@ const data = [
             <ComponentWrapper title="Striped columns with offset">
                 <section.component
                     headings={['ID', 'Score', 'Status']}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="column"
                     offsetStripe={true}
@@ -138,7 +125,7 @@ const data = [
             <ComponentWrapper title="Compact table">
                 <section.component
                     headings={['ID', 'Score', 'Status']}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     compact={true}
@@ -148,7 +135,7 @@ const data = [
             <ComponentWrapper title="Fixed height table">
                 <section.component
                     headings={['ID', 'Score', 'Status']}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     maxHeight="250px"
@@ -158,7 +145,7 @@ const data = [
             <ComponentWrapper title="Paginated table">
                 <section.component
                     headings={['ID', 'Score', 'Status']}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     itemsPerPage={5}
@@ -168,7 +155,7 @@ const data = [
             <ComponentWrapper title="Paginated table with custom pagination">
                 <section.component
                     headings={['ID', 'Score', 'Status']}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     itemsPerPage={5}
@@ -186,18 +173,18 @@ const data = [
             <ComponentWrapper title="Paginated table with subText">
                 <section.component
                     headings={['ID', 'Score', 'Status']}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     itemsPerPage={5}
-                    subText={`${data.length} total entries`}
+                    subText={`${dataTableEntries.length} total entries`}
                 />
             </ComponentWrapper>
 
             <ComponentWrapper title="Toggleable columns">
                 <section.component
                     headings={toggleableHeadings}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     itemsPerPage={5}
@@ -207,7 +194,7 @@ const data = [
             <ComponentWrapper title="Custom toggle label">
                 <section.component
                     headings={toggleableHeadings}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     itemsPerPage={5}
@@ -218,7 +205,7 @@ const data = [
             <ComponentWrapper title="Filterable table">
                 <section.component
                     headings={filterableHeadings}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     itemsPerPage={5}
@@ -228,7 +215,7 @@ const data = [
             <ComponentWrapper title="Filter placeholder">
                 <section.component
                     headings={filterableHeadings}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     itemsPerPage={5}
@@ -239,7 +226,7 @@ const data = [
             <ComponentWrapper title="Filter with icon">
                 <section.component
                     headings={filterableHeadings}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     itemsPerPage={5}
@@ -251,7 +238,7 @@ const data = [
             <ComponentWrapper title="Custom 'No results.' label">
                 <section.component
                     headings={filterableHeadings}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     itemsPerPage={5}
@@ -264,7 +251,7 @@ const data = [
             <ComponentWrapper title="Sortable column">
                 <section.component
                     headings={headings}
-                    data={data}
+                    data={dataTableEntries}
                     hover={true}
                     striped="row"
                     itemsPerPage={5}

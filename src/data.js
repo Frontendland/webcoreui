@@ -202,3 +202,36 @@ export const pagesWithCustomLabels = [
     { label: 'Latest' },
     { label: 'Trending', active: true }
 ]
+
+export const headings = [
+    { name: 'User ID', toggleable: true, sortable: true, filterable: true },
+    { name: 'Score', toggleable: true, sortable: true, filterable: true },
+    'Status'
+]
+
+export const toggleableHeadings = [
+    { name: 'User ID', toggleable: true },
+    { name: 'Score', toggleable: true },
+    'Status'
+]
+
+export const filterableHeadings = [
+    { name: 'User ID', toggleable: true, filterable: true },
+    { name: 'Score', toggleable: true, filterable: true },
+    'Status'
+]
+
+export const dataTableEntries = [
+    ['#1', '47', 'suspended'],
+    ['#2', '195', 'inactive'],
+    ['#3', '177', 'inactive'],
+    ['#4', '4', 'inactive'],
+    ['#5', '145', 'active'],
+    ['#6', '299', 'suspended'],
+    ['#7', '150', 'active'],
+    ['#8', '23', 'active'],
+    ['#9', '92', 'active'],
+    ['#10', '68', 'inactive'],
+    ['#11', '121', 'inactive'],
+    ['#12', '160', 'inactive']
+]

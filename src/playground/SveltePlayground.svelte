@@ -5,6 +5,7 @@
     import Card from '@components/Card/Card.svelte'
     import Checkbox from '@components/Checkbox/Checkbox.svelte'
     import Collapsible from '@components/Collapsible/Collapsible.svelte'
+    import DataTable from '@components/DataTable/DataTable.svelte'
     import Icon from '@components/Icon/Icon.svelte'
     import Input from '@components/Input/Input.svelte'
     import List from '@components/List/List.svelte'
@@ -24,6 +25,8 @@
     import styles from './playground.module.scss'
 
     import {
+        dataTableEntries,
+        headings,
         listWithGroups,
         listWithStates,
         pages,
@@ -39,6 +42,7 @@
     let slider = 50
     let wordCount = 0
     let select = ''
+    let dataTableResults = dataTableEntries.length
 </script>
 
 <div class="playground grid md-2 lg-3">
@@ -77,6 +81,26 @@
             <Button slot="on">Show</Button>
             <Button slot="off">Hide</Button>
         </Collapsible>
+    </Card>
+
+    <Card title="Collapsible">
+        <DataTable
+            headings={headings}
+            data={dataTableEntries}
+            filterPlaceholder="Search users"
+            showFilterIcon={true}
+            noResultsLabel="We found no users..."
+            columnToggleLabel="Hide Columns"
+            subText={`Showing ${dataTableResults} total entries`}
+            itemsPerPage={5}
+            pagination={{ showChevrons: false }}
+            onFilter={event => {
+                // eslint-disable-next-line no-console
+                console.log(event)
+
+                dataTableResults = event.numberOfResults
+            }}
+        />
     </Card>
 
     <Card title="Input">

@@ -1,5 +1,10 @@
 import type { PaginationProps } from '../Pagination/pagination'
 
+export type DataTableEventType = {
+    results: string[][]
+    numberOfResults: number
+}
+
 export type HeadingObject = {
     name: string
     sortable?: boolean
@@ -12,7 +17,7 @@ export type DataTableProps = {
     filterPlaceholder?: string
     showFilterIcon?: boolean
     noResultsLabel?: string
-    itemsPerPage?: number
+    itemsPerPage?: number | null
     subText?: string
     columnToggleLabel?: string
     pagination?: PaginationProps
@@ -24,3 +29,11 @@ export type DataTableProps = {
     maxHeight?: string
     className?: string
 }
+
+export type SvelteDataTableProps = {
+    onFilter?: (event: DataTableEventType) => void
+} & DataTableProps
+
+export type ReactDataTableProps = {
+    onFilter?: (event: DataTableEventType) => void
+} & DataTableProps

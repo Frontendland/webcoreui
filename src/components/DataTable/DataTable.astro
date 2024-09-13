@@ -103,7 +103,7 @@ const hasPagination = data?.length && itemsPerPage
                     itemGroups={columnToggleItems}
                     position="bottom-end"
                     value={columnToggleLabel}
-                    placeholder={columnToggleLabel}
+                    updateValue={false}
                 />
             )}
         </div>
@@ -286,17 +286,15 @@ const hasPagination = data?.length && itemsPerPage
 
     listen('selectOnChange', event => {
         const eventName = event.name.toLowerCase().replace(/\s/g, '')
-        const table = event.selectElement
-            .closest('section')
-            .querySelector('table')
+        const table = (document.querySelector(`[data-id="w-select-${event.select}"]`)
+            ?.closest('section') as HTMLElement)
+            .querySelector('table') as HTMLTableElement
 
         const affectedTableCells = Array.from(table.querySelectorAll(`[data-name=${eventName}]`)) as HTMLElement[]
 
         const columnToggleListElement = Array.from(event.list.children)
             .find(child => (child as HTMLLIElement).dataset.name === event.name) as HTMLLIElement
         const svgIcon = columnToggleListElement.children[0] as HTMLElement
-
-        event.selectElement.value = event.selectElement.placeholder
 
         svgIcon.style.opacity = svgIcon.style.opacity === '0'
             ? '1'
