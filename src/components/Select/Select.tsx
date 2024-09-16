@@ -123,8 +123,6 @@ const Select = ({
                 <span
                     dangerouslySetInnerHTML={{ __html: ArrowDown }}
                     style={{
-                        height: '18px',
-                        position: 'absolute',
                         right: 0,
                         pointerEvents: 'none'
                     }}

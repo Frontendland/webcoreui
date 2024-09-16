@@ -32,6 +32,7 @@
     export let compact: SvelteDataTableProps['compact'] = false
     export let maxHeight: SvelteDataTableProps['maxHeight'] = ''
     export let className: SvelteDataTableProps['className'] = ''
+    export let id: SvelteDataTableProps['id'] = ''
     export let onFilter: SvelteDataTableProps['onFilter'] = () => {}
 
     let filteredData: any = data
@@ -108,7 +109,7 @@
             : '0'
 
         if (svgIcon.style.opacity === '0') {
-            filteredData = filteredData?.map((row: string[]) => {
+            filteredData = (hasActiveFilter ? data : filteredData)?.map((row: string[]) => {
                 return row.map((column, index) => index === Number(event.value) ? null : column)
             })
 
@@ -116,7 +117,7 @@
                 return ((heading as HeadingObject)?.name || heading) === event.name ? null : heading
             })
         } else {
-            filteredData = filteredData?.map((row: string[], x: number) => {
+            filteredData = (hasActiveFilter ? data : filteredData)?.map((row: string[], x: number) => {
                 return row.map((column, y) => y === Number(event.value) ? data?.[x][y] : column)
             })
 
@@ -127,6 +128,7 @@
             })
         }
 
+        hasActiveFilter = false
         toggledData = filteredData
     }
 
@@ -166,7 +168,7 @@
     }
 </script>
 
-<section class={className}>
+<section class={className || null} id={id || null}>
     {#if columnFilterIndexes?.length || showColumnToggle}
         <div class={styles.filters}>
             {#if columnFilterIndexes?.length}
@@ -188,7 +190,7 @@
             {/if}
             {#if showColumnToggle}
                 <Select
-                    name={`data-table-${crypto.randomUUID()}`}
+                    name={`data-table-${id || crypto.randomUUID()}`}
                     itemGroups={columnToggleItems}
                     position="bottom-end"
                     value={columnToggleLabel}
@@ -261,6 +263,7 @@
                 <Pagination
                     {...pagination}
                     totalPages={Math.ceil((data?.length || 0) / itemsPerPage)}
+                    currentPage={page}
                     onChange={event => page = event.page}
                 />
             {/if}

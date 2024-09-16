@@ -97,7 +97,6 @@ const List = ({
                     {showSearchBarIcon && (
                         <span
                             dangerouslySetInnerHTML={{ __html: searchIcon }}
-                            style={{ height: '18px', position: 'absolute' }}
                         />
                     )}
                 </Input>

@@ -21,13 +21,14 @@ export type DataTableProps = {
     subText?: string
     columnToggleLabel?: string
     pagination?: PaginationProps
-    data?: string[][]
+    data: string[][]
     hover?: boolean
     striped?: 'column' | 'row' | null
     offsetStripe?: boolean
     compact?: boolean
     maxHeight?: string
     className?: string
+    id?: string
 }
 
 export type SvelteDataTableProps = {
@@ -36,4 +37,5 @@ export type SvelteDataTableProps = {
 
 export type ReactDataTableProps = {
     onFilter?: (event: DataTableEventType) => void
+    children?: React.ReactNode
 } & DataTableProps

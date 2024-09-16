@@ -31,7 +31,8 @@ const {
     offsetStripe,
     compact,
     maxHeight,
-    className
+    className,
+    id
 } = Astro.props
 
 const classes = [
@@ -80,7 +81,7 @@ const hasPagination = data?.length && itemsPerPage
     : false
 ---
 
-<section class={className}>
+<section class={className} id={id}>
     {(!!columnFilterItems?.length || showColumnToggle) && (
         <div class={styles.filters}>
             {!!columnFilterItems?.length && (
@@ -99,7 +100,7 @@ const hasPagination = data?.length && itemsPerPage
 
             {showColumnToggle && (
                 <Select
-                    name={`data-table-${crypto.randomUUID()}`}
+                    name={`data-table-${id || crypto.randomUUID()}`}
                     itemGroups={columnToggleItems}
                     position="bottom-end"
                     value={columnToggleLabel}

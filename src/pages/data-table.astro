@@ -58,7 +58,21 @@ const sections = getSections({
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
-            <ReactDataTable />
+            <ReactDataTable
+                client:idle
+                headings={headings}
+                data={dataTableEntries}
+                filterPlaceholder="Search users"
+                showFilterIcon={true}
+                noResultsLabel="We found no users..."
+                columnToggleLabel="Hide Columns"
+                subText={`${dataTableEntries.length} total entries`}
+                itemsPerPage={5}
+                id="react-dt"
+                pagination={{
+                    showChevrons: true
+                }}
+            />
         </ComponentWrapper>
     </div>
 

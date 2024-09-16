@@ -6,6 +6,7 @@ import Button from '@components/Button/Button.tsx'
 import Card from '@components/Card/Card.tsx'
 import Checkbox from '@components/Checkbox/Checkbox.tsx'
 import Collapsible from '@components/Collapsible/Collapsible.tsx'
+import DataTable from '@components/DataTable/DataTable.tsx'
 import Icon from '@components/Icon/Icon.tsx'
 import Input from '@components/Input/Input.tsx'
 import List from '@components/List/List.tsx'
@@ -25,6 +26,8 @@ import { toast } from '@utils/toast'
 import styles from './playground.module.scss'
 
 import {
+    dataTableEntries,
+    headings,
     listWithGroups,
     listWithStates,
     pages,
@@ -41,6 +44,7 @@ const ReactPlayground = () => {
     const [slider, setSlider] = useState(50)
     const [wordCount, setWordCount] = useState(0)
     const [select, setSelect] = useState('')
+    const [dataTableResults, setDataTableResults] = useState(dataTableEntries.length)
 
     return (
         <div className="grid md-2 lg-3">
@@ -81,6 +85,27 @@ const ReactPlayground = () => {
                 >
                     <span>This paragraph can be toggled on and off.</span>
                 </Collapsible>
+            </Card>
+
+            <Card title="DataTable">
+                <DataTable
+                    headings={headings}
+                    data={dataTableEntries}
+                    filterPlaceholder="Search users"
+                    showFilterIcon={true}
+                    noResultsLabel="We found no users..."
+                    columnToggleLabel="Hide Columns"
+                    subText={`Showing ${dataTableResults} total entries`}
+                    itemsPerPage={5}
+                    pagination={{ showChevrons: false }}
+                    id="react-dt"
+                    onFilter={event => {
+                        // eslint-disable-next-line no-console
+                        console.log(event)
+
+                        setDataTableResults(event.numberOfResults)
+                    }}
+                />
             </Card>
 
             <Card title="Input">

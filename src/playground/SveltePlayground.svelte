@@ -83,7 +83,7 @@
         </Collapsible>
     </Card>
 
-    <Card title="Collapsible">
+    <Card title="DataTable">
         <DataTable
             headings={headings}
             data={dataTableEntries}

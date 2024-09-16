@@ -66,6 +66,11 @@
             padding-left: 40px;
         }
 
+        span {
+            @include position(absolute);
+            @include size(18px);
+        }
+
         svg {
             @include position(absolute, l10px);
             @include size(18px);
