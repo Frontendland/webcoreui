@@ -1,4 +1,14 @@
-<div><slot /></div>
+---
+const {
+    fullWidth = false
+} = Astro.props
+
+const classes = [
+    fullWidth && 'full'
+]
+---
+
+<div class:list={classes}><slot /></div>
 
 <style lang="scss">
     @import '../scss/config.scss';
@@ -10,5 +20,9 @@
         @include border(1px, primary-40);
         @include layout(flex, center);
         @include typography(sm, primary-20);
+
+        &.full {
+            @include size('w100%');
+        }
     }
 </style>

@@ -155,6 +155,8 @@ const calculatedTotalPages = totalPages
                 currentPage = getCurrentPage(pageElements, currentPage, target.dataset.page || '')
                 currentPageButton?.removeAttribute('data-active')
 
+                pagination.dataset.currentPage = String(currentPage)
+
                 const activeButton = pageElements
                     .find((_, index) => index + 1 === currentPage)
                     ?.children[0] as HTMLButtonElement
@@ -171,7 +173,8 @@ const calculatedTotalPages = totalPages
                 dispatch('paginate', {
                     page: currentPage,
                     ...(activeButton?.dataset.page && { label: activeButton?.dataset.page }),
-                    element
+                    target: element,
+                    trusted: event.isTrusted
                 })
             }
         })

@@ -26,7 +26,9 @@ const buildTypes = type => {
             const componentsWithSvelteSpecificTypes = [
                 'Badge',
                 'Button',
+                'Carousel',
                 'Checkbox',
+                'DataTable',
                 'Input',
                 'List',
                 'Pagination',

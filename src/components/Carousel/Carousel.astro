@@ -1,0 +1,179 @@
+---
+import type { CarouselProps } from './carousel'
+
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+import Pagination from '../Pagination/Pagination.astro'
+import Progress from '../Progress/Progress.astro'
+
+import { classNames } from '../../utils/classNames'
+
+import styles from './carousel.module.scss'
+
+interface Props extends CarouselProps {}
+
+const {
+    items,
+    visibleItems = 1,
+    subText,
+    scrollSnap = true,
+    progress,
+    pagination,
+    effect,
+    className,
+    wrapperClassName,
+    paginationClassName
+} = Astro.props
+
+const classes = [
+    styles.carousel,
+    className
+]
+
+const containerClasses = [
+    styles.container,
+    scrollSnap && styles.snap
+]
+
+const wrapperClasses = [
+    styles.wrapper,
+    effect && styles[effect],
+    wrapperClassName
+]
+
+const paginationWrapperClasses = [
+    styles['pagination-wrapper'],
+    paginationClassName
+]
+
+const paginationClasses = classNames([
+    styles.pagination,
+    !subText && paginationClassName
+])
+
+const totalPages = Math.ceil(items / visibleItems)
+const subTextValue = subText?.match(/\{0\}|\{1\}/g) ? subText : undefined
+const style = visibleItems > 1
+    ? `--w-slide-width: ${100 / visibleItems}%;`
+    : null
+---
+
+<section class:list={classes}>
+    <div class:list={containerClasses} data-id="w-carousel">
+        <ul
+            class:list={wrapperClasses}
+            style={style}
+            data-visible-items={visibleItems > 1 ? visibleItems : null}
+        >
+            <slot />
+        </ul>
+    </div>
+    <ConditionalWrapper condition={!!(subText || progress)}>
+        <div slot="wrapper" class:list={paginationWrapperClasses}>children</div>
+        {progress && (
+            <Progress
+                className="w-carousel-progress"
+                value={0}
+            />
+        )}
+        <Pagination
+            type="arrows"
+            {...pagination}
+            totalPages={totalPages}
+            className={paginationClasses}
+        />
+        {subText && (
+            <span class={styles.subtext} data-text={subTextValue}>
+                {subText
+                    .replace('{0}', '1')
+                    .replace('{1}', String(totalPages))
+                }
+            </span>
+        )}
+    </ConditionalWrapper>
+</section>
+
+<script>
+    import { debounce } from '../../utils/debounce'
+    import { listen } from '../../utils/event'
+
+    const carousels = Array.from(document.querySelectorAll('[data-id="w-carousel"]'))
+
+    const scroll = debounce((event: Event) => {
+        const target = event.target as HTMLDivElement
+
+        if (!target.dataset.paginated) {
+            const scrollLeft = target.scrollLeft
+            const itemWidth = target.children[0].clientWidth
+            const page = Math.round(scrollLeft / itemWidth) + 1
+            const carouselElement = target.children[0]
+            const paginationElement = target.parentElement
+                ?.querySelector('[data-id="w-pagination"]') as HTMLUListElement
+            const currentPage = Number(paginationElement.dataset.currentPage)
+            const diff = Math.abs(currentPage - page)
+
+            let triggerButton = currentPage > page
+                ? paginationElement.querySelector('[data-page="prev"]') as HTMLButtonElement
+                : paginationElement.querySelector('[data-page="next"]') as HTMLButtonElement
+
+            if (!triggerButton) {
+                triggerButton = paginationElement.querySelector(`[data-page="${page}"]`) as HTMLButtonElement
+            }
+
+            for (let i = 0; i < diff; i++) {
+                triggerButton.click()
+            }
+
+            Array.from(carouselElement.children).forEach(li => {
+                (li as HTMLLIElement).removeAttribute('data-active')
+            })
+
+            const activeElement = carouselElement.children[page - 1] as HTMLLIElement
+
+            activeElement.dataset.active = 'true'
+        } else {
+            target.removeAttribute('data-paginated')
+        }
+    }, 20)
+
+    carousels.forEach(carousel => {
+        carousel.addEventListener('scroll', scroll)
+    })
+
+    listen('paginate', event => {
+        const target = event.target
+        const carousel = target.closest('section').querySelector('[data-id="w-carousel"] ul')
+        const progress = target.closest('section').querySelector('.w-carousel-progress')
+        const progressValue = (100 / (Number(target.dataset.totalPages) - 1))
+        const visibleItems = Number(carousel.dataset.visibleItems) || 0
+        const pageIndex = (event.page + visibleItems) - 1
+
+        const liElement = carousel.children[pageIndex]
+        const subText = event.target.nextElementSibling
+
+        Array.from(carousel.children).forEach(li => {
+            (li as HTMLLIElement).removeAttribute('data-active')
+        })
+
+        if (subText?.dataset.text) {
+            subText.innerText = subText.dataset.text
+                .replace('{0}', event.page)
+                .replace('{1}', target.dataset.totalPages)
+        }
+
+        if (progress) {
+            const updatedProgress = progressValue * (Number(event.page) - 1)
+
+            progress.children[0]
+                .style.setProperty('--w-progress-width', `${updatedProgress}%`)
+        }
+
+        if (event.trusted) {
+            liElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+            liElement.dataset.active = 'true'
+
+            target.closest('section')
+                .querySelector('[data-id="w-carousel"]')
+                .dataset.paginated = 'true'
+        }
+    })
+</script>

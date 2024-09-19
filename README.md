@@ -200,6 +200,7 @@ import { Accordion } from 'webcoreui/react'
 - [Badge](https://github.com/Frontendland/webcoreui/tree/main/src/components/Badge)
 - [Button](https://github.com/Frontendland/webcoreui/tree/main/src/components/Button)
 - [Card](https://github.com/Frontendland/webcoreui/tree/main/src/components/Card)
+- [Carousel](https://github.com/Frontendland/webcoreui/tree/main/src/components/Carousel)
 - [Checkbox](https://github.com/Frontendland/webcoreui/tree/main/src/components/Checkbox)
 - [Collapsible](https://github.com/Frontendland/webcoreui/tree/main/src/components/Collapsible)
 - [ConditionalWrapper](https://github.com/Frontendland/webcoreui/tree/main/src/components/ConditionalWrapper)

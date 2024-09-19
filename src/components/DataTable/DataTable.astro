@@ -309,7 +309,7 @@ const hasPagination = data?.length && itemsPerPage
     })
 
     listen('paginate', event => {
-        const table = event.element
+        const table = event.target
             .closest('section')
             .querySelector('table')
 

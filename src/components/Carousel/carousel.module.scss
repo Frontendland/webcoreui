@@ -1,0 +1,58 @@
+@import '../../scss/config.scss';
+
+body {
+    --w-slide-width: 100%;
+}
+
+.carousel {
+    @include layout(flex, sm, column);
+}
+
+.container {
+    @include layout(flex, sm);
+    @include visibility(auto);
+
+    scrollbar-width: none;
+
+    &.snap {
+        scroll-snap-type: x mandatory;
+    }
+}
+
+.wrapper {
+    @include layout(flex, sm);
+    @include spacing(0);
+    @include size('w100%');
+
+    list-style-type: none;
+
+    &.opacity li:not([data-active]) {
+        opacity: .5;
+    }
+
+    &.saturate li:not([data-active]) {
+        filter: saturate(0);
+    }
+
+    li {
+        @include transition();
+        @include spacing(m0);
+        @include layout(flex, h-center);
+
+        scroll-snap-align: center;
+        min-width: var(--w-slide-width);
+    }
+}
+
+.pagination-wrapper {
+    @include layout(flex, sm, column);
+}
+
+.pagination {
+    @include layout(h-center);
+}
+
+.subtext {
+    @include layout(flex, h-center);
+    @include typography(md, primary-20);
+}
