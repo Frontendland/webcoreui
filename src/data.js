@@ -151,15 +151,15 @@ export const listWithGroups = [
                 icon: infoIcon,
                 subText: 'Learn more'
             },
-            { name: 'Switch theme', value: 'theme', icon: moonIcon }
+            { name: 'Switch theme', href: '#', icon: moonIcon }
         ]
     },
     {
         title: 'Settings',
         items: [
             { name: 'Profile', href: '#' },
-            { name: 'Preferences', href: '#' },
-            { name: 'Sign out', value: 'sign-out' }
+            { name: 'Preferences', href: '#', subText: 'Update styles' },
+            { name: 'Sign out', value: 'sign-out', subText: 'Save your work' }
         ]
     }
 ]

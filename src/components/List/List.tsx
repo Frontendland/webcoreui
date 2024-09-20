@@ -147,7 +147,7 @@ const List = ({
                                                 style={{ height: '18px' }}
                                             />
                                         )}
-                                        {item.name}
+                                        <div>{item.name}</div>
                                     </ConditionalWrapper>
                                     {item.subText && <span>{item.subText}</span>}
                                 </ConditionalWrapper>

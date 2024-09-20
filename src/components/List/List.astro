@@ -76,7 +76,7 @@ const wrapperClasses = [
                             <ConditionalWrapper condition={!!(item.icon && item.subText)}>
                                 <div slot="wrapper">children</div>
                                 {item.icon && <Fragment set:html={item.icon} />}
-                                {item.name}
+                                <div>{item.name}</div>
                             </ConditionalWrapper>
                             {item.subText && <span>{item.subText}</span>}
                         </ConditionalWrapper>

@@ -130,7 +130,7 @@
                             {#if item.icon}
                                 {@html item.icon}
                             {/if}
-                            {item.name}
+                            <div>{item.name}</div>
                         </ConditionalWrapper>
                         {#if item.subText}
                             <span>{item.subText}</span>
