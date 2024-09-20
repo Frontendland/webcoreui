@@ -76,6 +76,10 @@
             progress={true}
             pagination={{ type: 'dots' }}
             effect="opacity"
+            onScroll={page => {
+                // eslint-disable-next-line no-console
+                console.log(`scrolled to ${page}`)
+            }}
         >
             <li data-active="true"><Box fullWidth={true}>1</Box></li>
             <li><Box fullWidth={true}>2</Box></li>

@@ -7,7 +7,7 @@
     import Progress from '../Progress/Progress.svelte'
 
     import { classNames } from '../../utils/classNames'
-    import { debounce } from '../../utils/debounce'
+    import { debounce as debounceScroll } from '../../utils/debounce'
 
     import styles from './carousel.module.scss'
 
@@ -20,9 +20,11 @@
     export let progress: SvelteCarouselProps['progress'] = false
     export let pagination: SvelteCarouselProps['pagination'] = {}
     export let effect: SvelteCarouselProps['effect'] = null
+    export let debounce: SvelteCarouselProps['debounce'] = 20
     export let className: SvelteCarouselProps['className'] = ''
     export let wrapperClassName: SvelteCarouselProps['wrapperClassName'] = ''
     export let paginationClassName: SvelteCarouselProps['paginationClassName'] = ''
+    export let onScroll: SvelteCarouselProps['onScroll'] = () => {}
 
     let carouselContainer: HTMLDivElement
     let carousel: HTMLUListElement
@@ -80,9 +82,11 @@
 
             progressValue = percentage * (currentPage - 1)
         }
+
+        onScroll?.(currentPage)
     }
 
-    const scroll = debounce((event: Event) => {
+    const scroll = debounceScroll((event: Event) => {
         if (paginated) {
             paginated = false
         } else {
@@ -95,7 +99,7 @@
 
             updateValues()
         }
-    }, 20)
+    }, debounce)
 
     const paginate = (event: PaginationEventType) => {
         const liElement = carouselItems[event.page - 1] as HTMLLIElement
@@ -134,10 +138,7 @@
         class={paginationWrapperClasses}
     >
         {#if progress}
-            <Progress
-                className="w-carousel-progress"
-                value={progressValue}
-            />
+            <Progress value={progressValue} />
         {/if}
         <Pagination
             type="arrows"

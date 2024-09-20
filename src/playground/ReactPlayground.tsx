@@ -4,6 +4,7 @@ import Accordion from '@components/Accordion/Accordion.tsx'
 import Badge from '@components/Badge/Badge.tsx'
 import Button from '@components/Button/Button.tsx'
 import Card from '@components/Card/Card.tsx'
+import Carousel from '@components/Carousel/Carousel.tsx'
 import Checkbox from '@components/Checkbox/Checkbox.tsx'
 import Collapsible from '@components/Collapsible/Collapsible.tsx'
 import DataTable from '@components/DataTable/DataTable.tsx'
@@ -20,6 +21,7 @@ import Tabs from '@components/Tabs/Tabs.tsx'
 import Textarea from '@components/Textarea/Textarea.tsx'
 import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.tsx'
 import Toast from '@components/Toast/Toast.tsx'
+import Box from '@static/Box.tsx'
 
 import { toast } from '@utils/toast'
 
@@ -66,6 +68,25 @@ const ReactPlayground = () => {
                 <Button onClick={() => toast('#buttonToast')} theme="alert">
                     Click me
                 </Button>
+            </Card>
+
+            <Card title="Carousel">
+                <Carousel
+                    items={3}
+                    visibleItems={1}
+                    subText="Slide {0} of {1}"
+                    progress={true}
+                    pagination={{ type: 'dots' }}
+                    effect="opacity"
+                    onScroll={page => {
+                        // eslint-disable-next-line no-console
+                        console.log(`scrolled to ${page}`)
+                    }}
+                >
+                    <li data-active="true"><Box fullWidth={true}>1</Box></li>
+                    <li><Box fullWidth={true}>2</Box></li>
+                    <li><Box fullWidth={true}>3</Box></li>
+                </Carousel>
             </Card>
 
             <Card title="Checkbox">

@@ -1,11 +1,5 @@
 import type { PaginationProps } from '../Pagination/pagination'
 
-export type CarouselEventType = {
-    from: string
-    to: string
-    current: string
-}
-
 export type CarouselProps = {
     items: number
     visibleItems?: number
@@ -16,16 +10,17 @@ export type CarouselProps = {
     progress?: boolean
     pagination?: PaginationProps
     effect?: 'opacity' | 'saturate' | null
+    debounce?: number
     className?: string
     wrapperClassName?: string
     paginationClassName?: string
 }
 
 export type SvelteCarouselProps = {
-    onScroll?: (event: CarouselEventType) => void
+    onScroll?: (event: number) => void
 } & CarouselProps
 
 export type ReactCarouselProps = {
-    onScroll?: (event: CarouselEventType) => void
+    onScroll?: (event: number) => void
     children?: React.ReactNode
 } & CarouselProps

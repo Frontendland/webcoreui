@@ -19,6 +19,7 @@ const {
     progress,
     pagination,
     effect,
+    debounce = 20,
     className,
     wrapperClassName,
     paginationClassName
@@ -58,7 +59,11 @@ const style = visibleItems > 1
 ---
 
 <section class:list={classes}>
-    <div class:list={containerClasses} data-id="w-carousel">
+    <div
+        class:list={containerClasses}
+        data-id="w-carousel"
+        data-debounce={debounce !== 20 && debounce}
+    >
         <ul
             class:list={wrapperClasses}
             style={style}
@@ -98,7 +103,7 @@ const style = visibleItems > 1
 
     const carousels = Array.from(document.querySelectorAll('[data-id="w-carousel"]'))
 
-    const scroll = debounce((event: Event) => {
+    const scroll = (event: Event) => {
         const target = event.target as HTMLDivElement
 
         if (!target.dataset.paginated) {
@@ -133,10 +138,17 @@ const style = visibleItems > 1
         } else {
             target.removeAttribute('data-paginated')
         }
-    }, 20)
+    }
 
     carousels.forEach(carousel => {
-        carousel.addEventListener('scroll', scroll)
+        const carouselElement = carousel as HTMLDivElement
+        const debounceAmount = carouselElement.dataset.debounce
+            ? Number(carouselElement.dataset.debounce)
+            : 20
+
+        carousel.addEventListener('scroll', debounce((event: Event) => {
+            scroll(event)
+        }, debounceAmount))
     })
 
     listen('paginate', event => {

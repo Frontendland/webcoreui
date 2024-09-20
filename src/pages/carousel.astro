@@ -3,6 +3,8 @@ import Box from '@static/Box.astro'
 import ComponentWrapper from '@static/ComponentWrapper.astro'
 import Layout from '@static/Layout.astro'
 
+import Alert from '@components/Alert/Alert.astro'
+import Button from '@components/Button/Button.astro'
 import AstroCarousel from '@components/Carousel/Carousel.astro'
 import SvelteCarousel from '@components/Carousel/Carousel.svelte'
 import ReactCarousel from '@components/Carousel/Carousel.tsx'
@@ -142,7 +144,7 @@ const sections = getSections({
                 </section.component>
             </ComponentWrapper>
 
-            <ComponentWrapper title="Wiht opacity transition">
+            <ComponentWrapper title="With opacity transition">
                 <section.component
                     items={3}
                     subText="Slide {0} of {1}"
@@ -154,6 +156,107 @@ const sections = getSections({
                     <li><Box fullWidth={true}>3</Box></li>
                 </section.component>
             </ComponentWrapper>
+
+            <ComponentWrapper title="Saturate transition with images">
+                <section.component
+                    items={3}
+                    subText="Slide {0} of {1}"
+                    progress={true}
+                    effect="saturate"
+                    debounce={0}
+                    pagination={{ type: 'dots' }}
+                >
+                    <li data-active="true" class="img-li">
+                        <img src="./img/placeholder1.png" />
+                        <span>Astro</span>
+                    </li>
+                    <li class="img-li">
+                        <img src="./img/placeholder2.png" />
+                        <span>Svelte</span>
+                    </li>
+                    <li class="img-li">
+                        <img src="./img/placeholder3.png" />
+                        <span>React</span>
+                    </li>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With components">
+                <section.component
+                    items={3}
+                    subText="Step {0} of {1}"
+                    progress={true}
+                >
+                    <li>
+                        <Alert theme="success" className="alert" title="Note">
+                            You can put any component inside a carousel to create various elements.
+                        </Alert>
+                    </li>
+                    <li>
+                        <Alert theme="info" className="alert" title="Info">
+                            Make sure to set the element's width to <code>100%</code> to properly display each slide across all devices.
+                        </Alert>
+                    </li>
+                    <li>
+                        <Alert className="alert">
+                            <div>
+                                Combine multiple components to create interactive slides.
+                            </div>
+                            <Button className="go-back">Go back</Button>
+                        </Alert>
+
+                    </li>
+                </section.component>
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>
+
+<style lang="scss">
+    @import '../scss/config.scss';
+
+    img {
+        @include size('w100%', h150px);
+
+        object-fit: cover;
+    }
+
+    .img-li {
+        @include position(relative);
+        @include visibility(hidden);
+
+        &[data-active] span {
+            transform: translateY(0);
+        }
+
+        span {
+            @include transition();
+            @include position(absolute, b0, l0);
+            @include size('w100%');
+            @include spacing(py-xxs, px-sm);
+
+            transform: translateY(100%);
+            background: #000000c4;
+        }
+    }
+
+    .alert {
+        @include size('w100%');
+    }
+
+    .go-back {
+        @include spacing(mt-sm);
+    }
+</style>
+
+<script>
+    const button = document.querySelector('.go-back')
+
+    button?.addEventListener('click', () => {
+        const firstSlide = button
+            ?.closest('[data-id="w-carousel"]')
+            ?.children[0].children[0]
+
+        firstSlide?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    })
+</script>

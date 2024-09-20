@@ -1,28 +1,14 @@
 <script>
     import { classNames } from '@utils/classNames'
 
+    import styles from './box.module.scss'
+
     export let fullWidth = false
 
     const classes = classNames([
-        fullWidth && 'full'
+        styles.box,
+        fullWidth && styles.full
     ])
 </script>
 
 <div class={classes}><slot /></div>
-
-<style lang="scss">
-    @import '../scss/config.scss';
-
-    div {
-        @include size(80px);
-        @include border-radius(sm);
-        @include background(primary-50);
-        @include border(1px, primary-40);
-        @include layout(flex, center);
-        @include typography(sm, primary-20);
-
-        &.full {
-            @include size('w100%');
-        }
-    }
-</style>
