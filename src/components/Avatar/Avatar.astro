@@ -13,7 +13,8 @@ const {
     borderColor,
     borderless,
     reverse,
-    className
+    className,
+    groupClassName
 } = Astro.props
 
 const classes = [
@@ -21,10 +22,16 @@ const classes = [
     borderless && styles.borderless,
     className
 ]
+
+const groupClasses = [
+    styles.group,
+    reverse && styles.reverse,
+    groupClassName
+]
 ---
 
 {Array.isArray(img) ? (
-    <div class:list={[styles.group, reverse && styles.reverse]}
+    <div class:list={groupClasses}
         style={borderColor ? `--w-avatar-border: ${borderColor};` : null}
     >
         {img.map((img, index) => (

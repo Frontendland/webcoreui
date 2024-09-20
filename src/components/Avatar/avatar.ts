@@ -7,4 +7,5 @@ export type AvatarProps = {
     borderless?: boolean
     reverse?: boolean
     className?: string
+    groupClassName?: string
 }

@@ -13,6 +13,7 @@
     export let borderless: AvatarProps['borderless'] = false
     export let reverse: AvatarProps['reverse'] = false
     export let className: AvatarProps['className'] = ''
+    export let groupClassName: AvatarProps['groupClassName'] = ''
 
     const classes = classNames([
         styles.avatar,
@@ -22,7 +23,8 @@
 
     const groupStyles = classNames([
         styles.group,
-        reverse && styles.reverse
+        reverse && styles.reverse,
+        groupClassName
     ])
 </script>
 

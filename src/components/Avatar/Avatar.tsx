@@ -13,7 +13,8 @@ const Avatar = ({
     borderColor,
     borderless,
     reverse,
-    className
+    className,
+    groupClassName
 }: AvatarProps) => {
     const classes = classNames([
         styles.avatar,
@@ -23,7 +24,8 @@ const Avatar = ({
 
     const groupStyles = classNames([
         styles.group,
-        reverse && styles.reverse
+        reverse && styles.reverse,
+        groupClassName
     ])
 
     const borderColorStyle = borderColor
