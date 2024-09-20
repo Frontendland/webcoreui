@@ -1,4 +1,5 @@
 ---
+import Box from '@static/Box.astro'
 import CardWrapper from '@static/CardWrapper.astro'
 import Examples from '@static/Examples.astro'
 import Layout from '@static/Layout.astro'
@@ -8,6 +9,7 @@ import Alert from '@components/Alert/Alert.astro'
 import Avatar from '@components/Avatar/Avatar.astro'
 import Badge from '@components/Badge/Badge.astro'
 import Button from '@components/Button/Button.astro'
+import Carousel from '@components/Carousel/Carousel.astro'
 import Checkbox from '@components/Checkbox/Checkbox.astro'
 import Collapsible from '@components/Collapsible/Collapsible.astro'
 import DataTable from '@components/DataTable/DataTable.astro'
@@ -106,6 +108,15 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Card" href="/card">
             <p>Paragraph inside a card</p>
+        </CardWrapper>
+        <CardWrapper title="Carousel" href="/carousel">
+            <Carousel
+                items={3}
+                pagination={{ type: 'dots' }}
+                className="carousel-example"
+            >
+                <li><Box fullWidth={true}>1</Box></li>
+            </Carousel>
         </CardWrapper>
         <CardWrapper title="Checkbox" href="/checkbox">
             <Checkbox checked={true} label="Accept terms and conditions" />
@@ -283,6 +294,10 @@ const tabItems = [{
         align-items: center;
         justify-content: center;
         gap: 10px;
+    }
+
+    .carousel-example {
+        width: 100%;
     }
 
     .menu-example {

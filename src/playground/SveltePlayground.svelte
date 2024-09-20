@@ -3,6 +3,7 @@
     import Badge from '@components/Badge/Badge.svelte'
     import Button from '@components/Button/Button.svelte'
     import Card from '@components/Card/Card.svelte'
+    import Carousel from '@components/Carousel/Carousel.svelte'
     import Checkbox from '@components/Checkbox/Checkbox.svelte'
     import Collapsible from '@components/Collapsible/Collapsible.svelte'
     import DataTable from '@components/DataTable/DataTable.svelte'
@@ -19,6 +20,7 @@
     import Textarea from '@components/Textarea/Textarea.svelte'
     import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.svelte'
     import Toast from '@components/Toast/Toast.svelte'
+    import Box from '@static/Box.svelte'
 
     import { toast } from '@utils/toast'
 
@@ -64,6 +66,21 @@
         <Button onClick={() => toast('#buttonToast')} theme="alert">
             Click me
         </Button>
+    </Card>
+
+    <Card title="Carousel">
+        <Carousel
+            items={3}
+            visibleItems={1}
+            subText={'Slide {0} of {1}'}
+            progress={true}
+            pagination={{ type: 'dots' }}
+            effect="opacity"
+        >
+            <li data-active="true"><Box fullWidth={true}>1</Box></li>
+            <li><Box fullWidth={true}>2</Box></li>
+            <li><Box fullWidth={true}>3</Box></li>
+        </Carousel>
     </Card>
 
     <Card title="Checkbox">

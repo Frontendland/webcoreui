@@ -15,7 +15,7 @@ export type CarouselProps = {
     scrollSnap?: boolean
     progress?: boolean
     pagination?: PaginationProps
-    effect?: 'opacity' | 'saturate'
+    effect?: 'opacity' | 'saturate' | null
     className?: string
     wrapperClassName?: string
     paginationClassName?: string

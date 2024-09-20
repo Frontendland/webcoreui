@@ -1,0 +1,159 @@
+---
+import Box from '@static/Box.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroCarousel from '@components/Carousel/Carousel.astro'
+import SvelteCarousel from '@components/Carousel/Carousel.svelte'
+import ReactCarousel from '@components/Carousel/Carousel.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'carousels',
+    components: [AstroCarousel, SvelteCarousel, ReactCarousel],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>Carousel</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroCarousel
+                items={3}
+                visibleItems={1}
+                subText="Slide {0} of {1}"
+                progress={true}
+                pagination={{ type: 'dots' }}
+                effect="opacity"
+            >
+                <li data-active="true"><Box fullWidth={true}>1</Box></li>
+                <li><Box fullWidth={true}>2</Box></li>
+                <li><Box fullWidth={true}>3</Box></li>
+            </AstroCarousel>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteCarousel
+                client:idle
+                items={3}
+                visibleItems={1}
+                subText="Slide {0} of {1}"
+                progress={true}
+                pagination={{ type: 'dots' }}
+                effect="opacity"
+            >
+                <li data-active="true"><Box fullWidth={true}>1</Box></li>
+                <li><Box fullWidth={true}>2</Box></li>
+                <li><Box fullWidth={true}>3</Box></li>
+            </SvelteCarousel>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactCarousel
+                client:idle
+                items={3}
+                visibleItems={1}
+                subText="Slide {0} of {1}"
+                progress={true}
+                pagination={{ type: 'dots' }}
+                effect="opacity"
+            >
+                <li data-active="true"><Box fullWidth={true}>1</Box></li>
+                <li><Box fullWidth={true}>2</Box></li>
+                <li><Box fullWidth={true}>3</Box></li>
+            </ReactCarousel>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component items={3}>
+                    <li><Box fullWidth={true}>1</Box></li>
+                    <li><Box fullWidth={true}>2</Box></li>
+                    <li><Box fullWidth={true}>3</Box></li>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Carousel with dynamic text">
+                <section.component items={3} subText="Slide {0} of {1}">
+                    <li><Box fullWidth={true}>1</Box></li>
+                    <li><Box fullWidth={true}>2</Box></li>
+                    <li><Box fullWidth={true}>3</Box></li>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Scroll snap disabled (mobile only)">
+                <section.component items={3} scrollSnap={false}>
+                    <li><Box fullWidth={true}>1</Box></li>
+                    <li><Box fullWidth={true}>2</Box></li>
+                    <li><Box fullWidth={true}>3</Box></li>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Carousel with progress">
+                <section.component
+                    items={3}
+                    subText="Slide {0} of {1}"
+                    progress={true}
+                >
+                    <li><Box fullWidth={true}>1</Box></li>
+                    <li><Box fullWidth={true}>2</Box></li>
+                    <li><Box fullWidth={true}>3</Box></li>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Dots pagination">
+                <section.component
+                    items={3}
+                    subText="Slide {0} of {1}"
+                    progress={true}
+                    pagination={{ type: 'dots' }}
+                >
+                    <li><Box fullWidth={true}>1</Box></li>
+                    <li><Box fullWidth={true}>2</Box></li>
+                    <li><Box fullWidth={true}>3</Box></li>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom pagination">
+                <section.component
+                    items={3}
+                    subText="Slide {0} of {1}"
+                    progress={true}
+                    pagination={{
+                        type: null,
+                        pages: [
+                            { label: 1, active: true },
+                            { label: 2 },
+                            { label: 3 }
+                        ]
+                    }}
+                >
+                    <li><Box fullWidth={true}>1</Box></li>
+                    <li><Box fullWidth={true}>2</Box></li>
+                    <li><Box fullWidth={true}>3</Box></li>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Wiht opacity transition">
+                <section.component
+                    items={3}
+                    subText="Slide {0} of {1}"
+                    progress={true}
+                    effect="opacity"
+                >
+                    <li data-active="true"><Box fullWidth={true}>1</Box></li>
+                    <li><Box fullWidth={true}>2</Box></li>
+                    <li><Box fullWidth={true}>3</Box></li>
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
