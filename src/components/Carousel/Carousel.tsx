@@ -92,9 +92,7 @@ const Carousel = ({
     }
 
     const scroll = debounceScroll((event: Event) => {
-        if (paginated.current) {
-            paginated.current = false
-        } else {
+        if (!paginated.current) {
             const target = event.target as HTMLDivElement
             const scrollLeft = target.scrollLeft
             const itemWidth = target.children[0].clientWidth
@@ -115,6 +113,9 @@ const Carousel = ({
         paginated.current = true
 
         updateValues(event.page)
+        setTimeout(() => {
+            paginated.current = false
+        }, 300)
     }
 
     useEffect(() => {

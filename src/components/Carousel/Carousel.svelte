@@ -87,9 +87,7 @@
     }
 
     const scroll = debounceScroll((event: Event) => {
-        if (paginated) {
-            paginated = false
-        } else {
+        if (!paginated) {
             const target = event.target as HTMLDivElement
             const scrollLeft = target.scrollLeft
             const itemWidth = target.children[0].clientWidth
@@ -110,6 +108,9 @@
         paginated = true
 
         updateValues()
+        setTimeout(() => {
+            paginated = false
+        }, 300)
     }
 
     onMount(() => {

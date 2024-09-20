@@ -135,8 +135,6 @@ const style = visibleItems > 1
             const activeElement = carouselElement.children[page - 1] as HTMLLIElement
 
             activeElement.dataset.active = 'true'
-        } else {
-            target.removeAttribute('data-paginated')
         }
     }
 
@@ -180,12 +178,16 @@ const style = visibleItems > 1
         }
 
         if (event.trusted) {
+            const carouselContaienr = target.closest('section').querySelector('[data-id="w-carousel"]')
+
             liElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
             liElement.dataset.active = 'true'
 
-            target.closest('section')
-                .querySelector('[data-id="w-carousel"]')
-                .dataset.paginated = 'true'
+            carouselContaienr.dataset.paginated = 'true'
+
+            setTimeout(() => {
+                carouselContaienr.removeAttribute('data-paginated')
+            }, 300)
         }
     })
 </script>
