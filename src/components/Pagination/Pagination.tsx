@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import type { ReactPaginationProps } from './pagination'
 
 import Button from '../Button/Button.tsx'
@@ -45,6 +45,13 @@ const Pagination = ({
         || pages?.length
         || 0
 
+    const generatedPages = pages?.length
+        ? pages
+        : Array(totalPages || 0).fill(0).map((_, index) => ({
+            ...(index === 0 && { active: true }),
+            label: index + 1
+        }))
+
     const paginate = (to: string | number) => {
         let currentPage = calculatedCurrentPage
 
@@ -66,11 +73,17 @@ const Pagination = ({
         })
     }
 
+    useEffect(() => {
+        if (currentPage) {
+            setCalculatedCurrentPage(currentPage)
+        }
+    }, [currentPage])
+
     return (
         <ul className={classes}>
             {type === 'dots' ? (
                 <React.Fragment>
-                    {pages?.map((_, index) => (
+                    {generatedPages?.map((_, index) => (
                         <li key={index}>
                             <button
                                 data-active={calculatedCurrentPage === index + 1 ? 'true' : null}

@@ -37,6 +37,13 @@
         || pages?.length
         || 0
 
+    const generatedPages = pages?.length
+        ? pages
+        : Array(totalPages || 0).fill(0).map((_, index) => ({
+            ...(index === 0 && { active: true }),
+            label: index + 1
+        }))
+
     const paginate = (to: string | number) => {
         if (to === 'prev') {
             calculatedCurrentPage = calculatedCurrentPage - 1
@@ -54,14 +61,14 @@
         })
     }
 
-    let calculatedCurrentPage = currentPage
+    $: calculatedCurrentPage = currentPage
         || (pages?.findIndex(page => page.active) || -1) + 1
         || 1
 </script>
 
 <ul class={classes}>
-    {#if type === 'dots' && pages?.length}
-        {#each pages as _, index}
+    {#if type === 'dots' && generatedPages?.length}
+        {#each generatedPages as _, index}
             <li>
                 <button
                     data-active={calculatedCurrentPage === index + 1 ? 'true' : null}

@@ -41,6 +41,13 @@ const calculatedCurrentPage = currentPage
 const calculatedTotalPages = totalPages
     || pages?.length
     || 0
+
+const generatedPages = pages?.length
+    ? pages
+    : Array(totalPages || 0).fill(0).map((_, index) => ({
+        ...(index === 0 && { active: true }),
+        label: index + 1
+    }))
 ---
 
 <ul
@@ -51,7 +58,7 @@ const calculatedTotalPages = totalPages
 >
     {type === 'dots' ? (
         <Fragment>
-            {pages?.map(page => (
+            {generatedPages?.map(page => (
                 <li>
                     <button
                         data-active={page.active ? 'true' : undefined}
