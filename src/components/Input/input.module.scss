@@ -52,6 +52,7 @@
 
 .input-label {
     @include layout(flex, column);
+    @include size('w100%');
 
     .label {
         @include typography(primary-20);
