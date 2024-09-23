@@ -152,6 +152,11 @@ const style = visibleItems > 1
     listen('paginate', event => {
         const target = event.target
         const carousel = target.closest('section').querySelector('[data-id="w-carousel"] ul')
+
+        if (!carousel) {
+            return
+        }
+
         const progress = target.closest('section').querySelector('.w-carousel-progress')
         const progressValue = (100 / (Number(target.dataset.totalPages) - 1))
         const visibleItems = Number(carousel.dataset.visibleItems) || 0

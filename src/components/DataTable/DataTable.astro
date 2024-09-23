@@ -313,6 +313,10 @@ const hasPagination = data?.length && itemsPerPage
             .closest('section')
             .querySelector('table')
 
+        if (!table) {
+            return
+        }
+
         const tableRows = Array.from(table.querySelectorAll('tbody tr') as NodeListOf<HTMLTableRowElement>)
 
         table.dataset.page = event.page

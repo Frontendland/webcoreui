@@ -71,7 +71,7 @@ const generatedPages = pages?.length
         <li>
             <Button
                 disabled={disablePrevious || (calculatedCurrentPage === 1 && !previousLink)}
-                href={previousLink}
+                href={!disablePrevious ? previousLink : undefined}
                 theme={theme}
                 data-page="prev"
             >
@@ -103,7 +103,7 @@ const generatedPages = pages?.length
         <li>
             <Button
                 disabled={disableNext || (calculatedCurrentPage === calculatedTotalPages && !nextLink)}
-                href={nextLink}
+                href={!disableNext ? nextLink : undefined}
                 theme={theme}
                 data-page="next"
             >

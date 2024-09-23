@@ -82,8 +82,8 @@
     {:else}
         <li>
             <Button
-                disabled={disablePrevious || (calculatedCurrentPage === 1 && !previousLink)}
-                href={previousLink}
+                disabled={(disablePrevious || (calculatedCurrentPage === 1 && !previousLink)) ? true : null}
+                href={!disablePrevious ? previousLink : undefined}
                 theme={theme}
                 onClick={!(disablePrevious || (calculatedCurrentPage === 1 && !previousLink))
                     ? () => paginate('prev')
@@ -124,8 +124,8 @@
         {/if}
         <li>
             <Button
-                disabled={disableNext || calculatedCurrentPage === calculatedTotalPages}
-                href={nextLink}
+                disabled={(disableNext || calculatedCurrentPage === calculatedTotalPages) ? true : null}
+                href={!disableNext ? nextLink : undefined}
                 theme={theme}
                 onClick={!disableNext
                     ? () => paginate('next')

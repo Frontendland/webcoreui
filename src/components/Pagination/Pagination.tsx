@@ -100,7 +100,7 @@ const Pagination = ({
                     <li>
                         <Button
                             disabled={disablePrevious || (calculatedCurrentPage === 1 && !previousLink)}
-                            href={previousLink}
+                            href={!disablePrevious ? previousLink : undefined}
                             theme={theme}
                             onClick={!(disablePrevious || (calculatedCurrentPage === 1 && !previousLink))
                                 ? () => paginate('prev')
@@ -140,7 +140,7 @@ const Pagination = ({
                     <li>
                         <Button
                             disabled={disableNext || calculatedCurrentPage === calculatedTotalPages}
-                            href={nextLink}
+                            href={!disableNext ? nextLink : undefined}
                             theme={theme}
                             onClick={!disableNext
                                 ? () => paginate('next')
