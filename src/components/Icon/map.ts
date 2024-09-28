@@ -5,7 +5,10 @@ import ArrowRight from '../../icons/arrow-right.svg?raw'
 import Check from '../../icons/check.svg?raw'
 import CircleCheck from '../../icons/circle-check.svg?raw'
 import Close from '../../icons/close.svg?raw'
+import Components from '../../icons/components.svg?raw'
+import File from '../../icons/file.svg?raw'
 import Github from '../../icons/github.svg?raw'
+import Home from '../../icons/home.svg?raw'
 import Info from '../../icons/info.svg?raw'
 import Moon from '../../icons/moon.svg?raw'
 import Order from '../../icons/order.svg?raw'
@@ -21,7 +24,10 @@ const iconMap = {
     'check': Check,
     'circle-check': CircleCheck,
     'close': Close,
+    'components': Components,
+    'file': File,
     'github': Github,
+    'home': Home,
     'info': Info,
     'moon': Moon,
     'order': Order,

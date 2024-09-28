@@ -2,7 +2,7 @@
     import type { IconProps } from './icon'
     import iconMap from './map'
 
-    export let type: IconProps['type'] = ''
+    export let type: IconProps['type'] = 'alert'
     export let size: IconProps['size'] = 24
     export let color: IconProps['color'] = ''
 
