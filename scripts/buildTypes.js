@@ -45,13 +45,14 @@ const buildTypes = type => {
         }
 
         return format(`
+            import { SvelteComponent } from 'svelte'
             ${components.map(component => {
                 return `import type { ${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
 
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
-                    return `export function ${component}(_props: ${getTypeName(component)}): any`
+                    return `export class ${component} extends SvelteComponent<${getTypeName(component)}> {}`
                 }).join('\n\t')}
             }
         `)
@@ -62,6 +63,7 @@ const buildTypes = type => {
             const componentsWithoutReactSpecificTypes = [
                 'Accordion',
                 'Avatar',
+                'Breadcrumb',
                 'Icon',
                 'Rating',
                 'Spinner',
