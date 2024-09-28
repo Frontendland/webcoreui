@@ -1,0 +1,26 @@
+@import '../../scss/config.scss';
+
+.breadcrumb {
+    @include layout(flex, v-center, sm, wrap);
+    @include spacing(0);
+
+    list-style-type: none;
+
+    li {
+        @include layout(flex, v-center, xs);
+        @include spacing(m0);
+
+        a {
+            @include layout(flex, v-center, xs);
+            @include typography(none, primary-20);
+
+            &:hover {
+                @include typography(primary);
+            }
+        }
+    }
+
+    svg {
+        @include size(14px);
+    }
+}

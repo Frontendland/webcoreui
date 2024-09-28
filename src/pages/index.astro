@@ -8,6 +8,7 @@ import Accordion from '@components/Accordion/Accordion.astro'
 import Alert from '@components/Alert/Alert.astro'
 import Avatar from '@components/Avatar/Avatar.astro'
 import Badge from '@components/Badge/Badge.astro'
+import Breadcrumb from '@components/Breadcrumb/Breadcrumb.astro'
 import Button from '@components/Button/Button.astro'
 import Carousel from '@components/Carousel/Carousel.astro'
 import Checkbox from '@components/Checkbox/Checkbox.astro'
@@ -101,6 +102,13 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Badge" href="/badge">
             <Badge theme="outline">Badge</Badge>
+        </CardWrapper>
+        <CardWrapper title="Breadcrumb" href="/breadcrumb">
+            <Breadcrumb items={[
+                { icon: 'home' },
+                { label: 'Docs' },
+                { label: 'Components' }
+            ]} />
         </CardWrapper>
         <CardWrapper title="Button" href="/button">
             <Button>Primary</Button>

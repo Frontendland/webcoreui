@@ -1,0 +1,73 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroBreadcrumb from '@components/Breadcrumb/Breadcrumb.astro'
+import SvelteBreadcrumb from '@components/Breadcrumb/Breadcrumb.svelte'
+import ReactBreadcrumb from '@components/Breadcrumb/Breadcrumb.tsx'
+
+import { getSections } from '@helpers'
+import {
+    breadcrumbs,
+    breadcrumbsWithIcon,
+    breadcrumbsWithIcons,
+    breadcrumbsWithIconsOnly
+} from '@data'
+
+const sections = getSections({
+    title: 'breadcrumbs',
+    components: [AstroBreadcrumb, SvelteBreadcrumb, ReactBreadcrumb]
+})
+---
+
+<Layout>
+    <h1>Breadcrumb</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroBreadcrumb items={[
+                { icon: 'home', href: '/' },
+                breadcrumbsWithIcon[1],
+                breadcrumbsWithIcon[2]
+            ]} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteBreadcrumb items={breadcrumbsWithIcon} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactBreadcrumb items={breadcrumbsWithIcon} />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component items={breadcrumbs} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Breadcrumb with icons">
+                <section.component items={breadcrumbsWithIcons} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Breadcrumb with icons only">
+                <section.component items={breadcrumbsWithIconsOnly} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Breadcrumb with one element">
+                <section.component items={[breadcrumbs[0]]} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Breadcrumb with separator">
+                <section.component
+                    items={breadcrumbsWithIcons}
+                    separator="/"
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

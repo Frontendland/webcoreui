@@ -1,5 +1,8 @@
 import successIcon from './icons/circle-check.svg?raw'
+import componentsIcon from './icons/components.svg?raw'
+import fileIcon from './icons/file.svg?raw'
 import gitHubIcon from './icons/github.svg?raw'
+import homeIcon from './icons/home.svg?raw'
 import infoIcon from './icons/info.svg?raw'
 import moonIcon from './icons/moon.svg?raw'
 
@@ -234,4 +237,28 @@ export const dataTableEntries = [
     ['#10', '68', 'inactive'],
     ['#11', '121', 'inactive'],
     ['#12', '160', 'inactive']
+]
+
+export const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Docs', href: '/docs' },
+    { label: 'Components', href: '/docs/components' }
+]
+
+export const breadcrumbsWithIcon = [
+    { icon: homeIcon, href: '/' },
+    { label: 'Docs', href: '/docs' },
+    { label: 'Components', href: '/docs/components' }
+]
+
+export const breadcrumbsWithIcons = [
+    { icon: homeIcon, label: 'Home', href: '/' },
+    { icon: fileIcon, label: 'Docs', href: '/docs' },
+    { icon: componentsIcon, label: 'Components', href: '/docs/components' }
+]
+
+export const breadcrumbsWithIconsOnly = [
+    { icon: homeIcon, href: '/' },
+    { icon: fileIcon, href: '/docs' },
+    { icon: componentsIcon, href: '/docs/components' }
 ]

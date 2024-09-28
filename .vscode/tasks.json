@@ -6,7 +6,7 @@
     "tasks": [
         {
             "label": "🔍 Develop",
-            "command": "npm run develop",
+            "command": "npm run dev",
         },
         {
             "label": "🛠️ Build",
