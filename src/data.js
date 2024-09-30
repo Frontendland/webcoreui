@@ -74,8 +74,8 @@ export const overflowTabs = Array(10).fill({
 }))
 
 export const menu = [
-    { name: 'Home', url: '/' },
-    { name: 'Docs', url: '/docs' }
+    { name: 'Home', href: '/' },
+    { name: 'Docs', href: '/docs' }
 ]
 
 export const menuLogo = {

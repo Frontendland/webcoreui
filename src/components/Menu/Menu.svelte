@@ -55,7 +55,7 @@
                     {#each items as item}
                         <li>
                             <a
-                                href={item.url}
+                                href={item.href}
                                 target={item.target}
                                 class={item.active ? styles.active : null}
                             >

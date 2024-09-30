@@ -1,6 +1,6 @@
 export type MenuProps = {
     items?: {
-        url: string
+        href: string
         name: string
         target?: string
         active?: boolean
