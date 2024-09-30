@@ -1,3 +1,5 @@
+import type { ButtonProps } from '../Button/button'
+
 export type RatingProps = {
     score: number
     total?: number
@@ -8,7 +10,7 @@ export type RatingProps = {
     reviewCount?: number
     reviewText?: string
     reviewLink?: string
-    reviewTarget?: string
+    reviewTarget?: ButtonProps['target']
     color?: string
     emptyColor?: string
     size?: number

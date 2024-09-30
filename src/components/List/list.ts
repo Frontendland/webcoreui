@@ -1,3 +1,5 @@
+import type { ButtonProps } from '../Button/button'
+
 export type ListEventType = {
     value: string
     name: string
@@ -19,7 +21,7 @@ export type ListProps = {
             name: string
             value?: string
             href?: string
-            target?: '_self' | '_blank' | '_parent' | '_top' | '_unfencedTop'
+            target?: ButtonProps['target']
             selected?: boolean
             disabled?: boolean
             icon?: string

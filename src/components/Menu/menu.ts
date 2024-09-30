@@ -1,8 +1,10 @@
+import type { ButtonProps } from '../Button/button'
+
 export type MenuProps = {
     items?: {
         href: string
         name: string
-        target?: string
+        target?: ButtonProps['target']
         active?: boolean
     }[]
     logo?: {

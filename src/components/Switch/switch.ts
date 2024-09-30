@@ -11,9 +11,9 @@ export type SwitchProps = {
 }
 
 export type SvelteSwitchProps = {
-    onClick?: (key: any) => any
+    onClick?: ((event: MouseEvent) => void) | null
 } & SwitchProps
 
 export type ReactSwitchProps = {
-    onClick?: (key: any) => any
+    onClick?: (event: React.MouseEvent) => void
 } & SwitchProps

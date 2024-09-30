@@ -8,9 +8,9 @@ export type CheckboxProps = {
 }
 
 export type SvelteCheckboxProps = {
-    onClick?: (key: any) => any
+    onClick?: ((event: MouseEvent) => void) | null
 } & CheckboxProps
 
 export type ReactCheckboxProps = {
-    onClick?: (key: any) => any
+    onClick?: (event: React.MouseEvent) => void
 } & CheckboxProps

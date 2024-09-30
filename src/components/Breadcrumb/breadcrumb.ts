@@ -1,9 +1,11 @@
+import type { ButtonProps } from '../Button/button'
+
 export type BreadcrumbProps = {
     items: {
         icon?: string
         label?: string
         href?: string
-        target?: '_self' | '_blank' | '_parent' | '_top' | '_unfencedTop'
+        target?: ButtonProps['target']
     }[]
     separator?: string
     className?: string

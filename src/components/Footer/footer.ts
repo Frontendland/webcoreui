@@ -1,3 +1,5 @@
+import type { ButtonProps } from '../Button/button'
+
 export type FooterProps = {
     logo?: {
         url?: string
@@ -12,7 +14,7 @@ export type FooterProps = {
         items: {
             href: string
             name: string
-            target?: '_self' | '_blank' | '_parent' | '_top' | '_unfencedTop'
+            target?: ButtonProps['target']
             active?: boolean
         }[]
     }[]
