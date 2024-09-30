@@ -12,9 +12,7 @@ import { getSections } from '@helpers'
 const sections = getSections({
     title: 'badges',
     components: [AstroBadge, SvelteBadge, ReactBadge],
-    props: {
-        onClick: () => {}
-    }
+    showSubTitle: true
 })
 ---
 
@@ -40,58 +38,79 @@ const sections = getSections({
 
     {sections.map((section: any) => (
         <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
         <div class="grid md-2 lg-3">
             <ComponentWrapper title="Primary">
-                <section.component onClick={section.onClick}>
+                <section.component hover={true}>
                     Primary
                 </section.component>
             </ComponentWrapper>
 
             <ComponentWrapper title="Secondary">
-                <section.component theme="secondary" onClick={section.onClick}>
+                <section.component theme="secondary" hover={true}>
                     Secondary
                 </section.component>
             </ComponentWrapper>
 
             <ComponentWrapper title="Outline">
-                <section.component theme="outline" onClick={section.onClick}>
+                <section.component theme="outline" hover={true}>
                     Outline
                 </section.component>
             </ComponentWrapper>
 
             <ComponentWrapper title="Flat">
-                <section.component theme="flat" onClick={section.onClick}>
+                <section.component theme="flat" hover={true}>
                     Flat
                 </section.component>
             </ComponentWrapper>
 
             <ComponentWrapper title="With Icon">
-                <section.component theme="secondary" onClick={section.onClick}>
+                <section.component theme="secondary" hover={true}>
                     <Icon type="github" size={14} />
                     With Icon
                 </section.component>
             </ComponentWrapper>
 
             <ComponentWrapper title="Info">
-                <section.component theme="info" onClick={section.onClick}>
+                <section.component theme="info" hover={true}>
                     Info
                 </section.component>
             </ComponentWrapper>
 
             <ComponentWrapper title="Success">
-                <section.component theme="success" onClick={section.onClick}>
+                <section.component theme="success" hover={true}>
                     Success
                 </section.component>
             </ComponentWrapper>
 
             <ComponentWrapper title="Warning">
-                <section.component theme="warning" onClick={section.onClick}>
+                <section.component theme="warning" hover={true}>
                     Warning
                 </section.component>
             </ComponentWrapper>
 
             <ComponentWrapper title="Alert">
-                <section.component theme="alert" onClick={section.onClick}>
+                <section.component theme="alert" hover={true}>
+                    Alert
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Small success">
+                <section.component theme="success" small={true}>
+                    Success
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Small warning">
+                <section.component theme="warning" small={true}>
+                    Warning
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Small alert">
+                <section.component theme="alert" small={true}>
                     Alert
                 </section.component>
             </ComponentWrapper>

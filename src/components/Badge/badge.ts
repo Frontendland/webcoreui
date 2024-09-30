@@ -8,15 +8,16 @@ export type BadgeProps = {
         | 'alert'
         | null
     hover?: boolean
+    small?: boolean
     className?: string
     [key: string]: any
 }
 
 export type SvelteBadgeProps = {
-    onClick?: (() => any) | null
+    onClick?: ((event: MouseEvent) => void) | null
 } & BadgeProps
 
 export type ReactBadgeProps = {
-    onClick?: (() => any) | null
+    onClick?: (event: React.MouseEvent) => void
     children: React.ReactNode
 } & BadgeProps

@@ -9,6 +9,7 @@ const Badge = ({
     theme,
     onClick,
     hover,
+    small,
     className,
     children,
     ...rest
@@ -17,6 +18,7 @@ const Badge = ({
         styles.badge,
         theme && styles[theme],
         (onClick || hover) && styles.hover,
+        small && styles.small,
         className
     ])
 

@@ -83,4 +83,8 @@
         @include typography(alert-fg);
         @include background(alert);
     }
+
+    &.small {
+        @include spacing(py-xxs, px-xs);
+    }
 }
