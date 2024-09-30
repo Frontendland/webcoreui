@@ -1,3 +1,6 @@
+/* eslint-disable max-lines */
+import type { ButtonProps } from '@components/Button/button'
+
 import successIcon from './icons/circle-check.svg?raw'
 import componentsIcon from './icons/components.svg?raw'
 import fileIcon from './icons/file.svg?raw'
@@ -263,7 +266,7 @@ export const breadcrumbsWithIconsOnly = [
     { icon: componentsIcon, href: '/docs/components' }
 ]
 
-export const footerColumn1 = [{
+export const itemGroup1 = [{
     items: [
         { name: 'Home', href: '#' },
         { name: 'Docs', href: '#' },
@@ -271,7 +274,7 @@ export const footerColumn1 = [{
     ]
 }]
 
-export const footerColumn2 = [{
+export const itemGroup2 = [{
     items: [
         { name: 'CSS Config', href: '#' },
         { name: 'Styles', href: '#' },
@@ -279,18 +282,48 @@ export const footerColumn2 = [{
     ]
 }]
 
-export const footerColumns = [
-    { items: footerColumn1[0].items },
-    { items: footerColumn2[0].items }
+export const itemGroups = [
+    { items: itemGroup1[0].items },
+    { items: itemGroup2[0].items }
 ]
 
-export const footerColumnsWithTitle = [
+export const itemGroupsWithTitle = [
     {
         title: 'SITEMAP',
-        items: footerColumn1[0].items
+        items: itemGroup1[0].items
     },
     {
         title: 'THEMES',
-        items: footerColumn2[0].items
+        items: itemGroup2[0].items
+    }
+]
+
+export const itemGroupsWithBadges = [
+    {
+        title: 'SITEMAP',
+        items: [
+            { name: 'Home', href: '#' },
+            { name: 'Docs', href: '#', badge: 'updated', badgeTheme: 'info' as ButtonProps['theme'] },
+            { name: 'Component', href: '#', badge: 'new components' }
+        ]
+    },
+    {
+        title: 'THEMES',
+        items: itemGroup2[0].items
+    }
+]
+
+export const itemGroupsWithIcons = [
+    {
+        title: 'SITEMAP',
+        items: [
+            { name: 'Home', href: '#', icon: gitHubIcon, target: '_blank' as any },
+            { name: 'Docs', href: '#', badge: 'updated', badgeTheme: 'info' as ButtonProps['theme'], icon: fileIcon },
+            { name: 'Component', href: '#', badge: 'new components', icon: componentsIcon, active: true }
+        ]
+    },
+    {
+        title: 'THEMES',
+        items: itemGroup2[0].items
     }
 ]

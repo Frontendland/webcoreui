@@ -1,0 +1,74 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroSidebar from '@components/Sidebar/Sidebar.astro'
+import SvelteSidebar from '@components/Sidebar/Sidebar.svelte'
+import ReactSidebar from '@components/Sidebar/Sidebar.tsx'
+
+import { getSections } from '@helpers'
+import {
+    itemGroup1,
+    itemGroups,
+    itemGroupsWithBadges,
+    itemGroupsWithIcons,
+    itemGroupsWithTitle
+} from '@data'
+
+const sections = getSections({
+    title: 'sidebars',
+    components: [AstroSidebar, SvelteSidebar, ReactSidebar]
+})
+---
+
+<Layout>
+    <h1>Sidebar</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroSidebar groups={itemGroupsWithBadges} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteSidebar groups={itemGroupsWithIcons} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactSidebar groups={itemGroupsWithIcons} />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component groups={itemGroup1} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Sidebar with title">
+                <section.component groups={[{
+                    title: 'Sitemap',
+                    items: itemGroup1[0].items
+                }]} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Sidebar with multiple groups">
+                <section.component groups={itemGroups} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Multiple titled groups">
+                <section.component groups={itemGroupsWithTitle} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Sidebar with badges">
+                <section.component groups={itemGroupsWithBadges} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Sidebar with icons & states">
+                <section.component groups={itemGroupsWithIcons} />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

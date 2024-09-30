@@ -11,9 +11,9 @@ import logo from '../../public/img/logo.svg?raw'
 
 import { getSections } from '@helpers'
 import {
-    footerColumn1,
-    footerColumns,
-    footerColumnsWithTitle,
+    itemGroup1,
+    itemGroups,
+    itemGroupsWithTitle,
     menuLogo
 } from '@data'
 
@@ -31,7 +31,7 @@ const subText = `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
         <ComponentWrapper type="Astro">
             <AstroFooter
                 logo={{ html: logo }}
-                columns={footerColumnsWithTitle}
+                columns={itemGroupsWithTitle}
                 subText={subText}
             >
                 Built by Webcore with ❤️
@@ -41,7 +41,7 @@ const subText = `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
         <ComponentWrapper type="Svelte">
             <SvelteFooter
                 logo={{ html: logo }}
-                columns={footerColumnsWithTitle}
+                columns={itemGroupsWithTitle}
                 subText={subText}
             >
                 Built by Webcore with ❤️
@@ -51,7 +51,7 @@ const subText = `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
         <ComponentWrapper type="React">
             <ReactFooter
                 logo={{ html: logo }}
-                columns={footerColumnsWithTitle}
+                columns={itemGroupsWithTitle}
                 subText={subText}
             >
                 Built by Webcore with ❤️
@@ -66,7 +66,7 @@ const subText = `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
         </Fragment>
         <div class="grid md-2">
             <ComponentWrapper title="Default">
-                <section.component columns={footerColumn1} />
+                <section.component columns={itemGroup1} />
             </ComponentWrapper>
 
             <ComponentWrapper title="Logo only">
@@ -74,13 +74,13 @@ const subText = `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
             </ComponentWrapper>
 
             <ComponentWrapper title="Column with logo">
-                <section.component logo={{ html: logo }} columns={footerColumn1} />
+                <section.component logo={{ html: logo }} columns={itemGroup1} />
             </ComponentWrapper>
 
             <ComponentWrapper title="Logo with src">
                 <section.component
                     logo={menuLogo}
-                    columns={footerColumn1}
+                    columns={itemGroup1}
                 />
             </ComponentWrapper>
 
@@ -89,7 +89,7 @@ const subText = `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
                     logo={{ html: logo }}
                     columns={[{
                         title: 'SITEMAP',
-                        items: footerColumn1[0].items
+                        items: itemGroup1[0].items
                     }]}
                 />
             </ComponentWrapper>
@@ -97,14 +97,14 @@ const subText = `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
             <ComponentWrapper title="Mutliple columns">
                 <section.component
                     logo={{ html: logo }}
-                    columns={footerColumns}
+                    columns={itemGroups}
                 />
             </ComponentWrapper>
 
             <ComponentWrapper title="Mutliple columns with titles">
                 <section.component
                     logo={{ html: logo }}
-                    columns={footerColumnsWithTitle}
+                    columns={itemGroupsWithTitle}
                 />
             </ComponentWrapper>
 
@@ -113,14 +113,14 @@ const subText = `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
                     logo={{ html: logo }}
                     columns={[
                         {
-                            title: footerColumnsWithTitle[0].title,
+                            title: itemGroupsWithTitle[0].title,
                             items: [
                                 { name: 'Home', href: '#', active: true },
-                                { ...footerColumnsWithTitle[0].items[1] },
-                                { ...footerColumnsWithTitle[0].items[2] }
+                                { ...itemGroupsWithTitle[0].items[1] },
+                                { ...itemGroupsWithTitle[0].items[2] }
                             ]
                         },
-                        { ...footerColumnsWithTitle[1] }
+                        { ...itemGroupsWithTitle[1] }
                     ]}
                 />
             </ComponentWrapper>
@@ -128,7 +128,7 @@ const subText = `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
             <ComponentWrapper title="Subtext">
                 <section.component
                     logo={{ html: logo }}
-                    columns={footerColumnsWithTitle}
+                    columns={itemGroupsWithTitle}
                     subText={subText}
                 />
             </ComponentWrapper>
@@ -136,7 +136,7 @@ const subText = `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
             <ComponentWrapper title="Subtext with social icons">
                 <section.component
                     logo={{ html: logo }}
-                    columns={footerColumnsWithTitle}
+                    columns={itemGroupsWithTitle}
                     subText={subText}
                 >
                     <div class="flex sm">

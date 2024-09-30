@@ -1,0 +1,61 @@
+---
+import type { SidebarProps } from './sidebar'
+
+import Badge from '../Badge/Badge.astro'
+import Icon from '../Icon/Icon.astro'
+
+import styles from './sidebar.module.scss'
+
+import type { IconProps } from '../Icon/icon'
+
+interface Props extends SidebarProps {}
+
+const {
+    groups,
+    className
+} = Astro.props
+
+const classes = [
+    styles.sidebar,
+    className
+]
+---
+
+<aside class:list={classes}>
+    {groups.map(group => (
+        <Fragment>
+            {group.title && (
+                <strong>{group.title}</strong>
+            )}
+
+            <ul>
+                {group.items.map(item => (
+                    <li>
+                        <a
+                            href={item.href}
+                            target={item.target}
+                            class:list={[item.active && styles.active]}
+                        >
+                            {item.icon && (
+                                <Fragment>
+                                    {item.icon.startsWith('<svg')
+                                        ? <Fragment set:html={item.icon} />
+                                        : <Icon type={item.icon as IconProps['type']} />
+                                    }
+                                </Fragment>
+                            )}
+                            {item.name}
+                            {item.badge && (
+                                <Badge theme={item.badgeTheme || 'success'} small={true}>
+                                    {item.badge}
+                                </Badge>
+                            )}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </Fragment>
+    ))}
+
+    <slot />
+</aside>

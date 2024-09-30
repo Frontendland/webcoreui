@@ -1,0 +1,43 @@
+@import '../../scss/config.scss';
+
+.sidebar {
+
+    strong {
+        @include spacing(mb-sm);
+
+        display: block;
+    }
+
+    ul {
+        @include layout(flex, column, sm);
+        @include typography(normal);
+        @include spacing(0);
+
+        list-style-type: none;
+        
+        &:not(:last-child) {
+            @include spacing('mb-3xl');
+        }
+
+        li {
+            @include spacing(m0);
+        }
+
+        a {
+            @include typography(primary-20, none);
+            @include layout(flex, v-center, sm);
+
+            &:hover {
+                @include typography(primary);
+            }
+
+            &.active {
+                @include typography(primary);
+            }
+
+            svg {
+                @include size(18px);
+            }
+        }
+    }
+}
