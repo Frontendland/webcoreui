@@ -1,0 +1,150 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroFooter from '@components/Footer/Footer.astro'
+import SvelteFooter from '@components/Footer/Footer.svelte'
+import ReactFooter from '@components/Footer/Footer.tsx'
+import Icon from '@components/Icon/Icon.astro'
+
+import logo from '../../public/img/logo.svg?raw'
+
+import { getSections } from '@helpers'
+import {
+    footerColumn1,
+    footerColumns,
+    footerColumnsWithTitle,
+    menuLogo
+} from '@data'
+
+const sections = getSections({
+    title: 'footers',
+    components: [AstroFooter, SvelteFooter, ReactFooter]
+})
+
+const subText = `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
+---
+
+<Layout>
+    <h1>Footer</h1>
+    <div class="grid">
+        <ComponentWrapper type="Astro">
+            <AstroFooter
+                logo={{ html: logo }}
+                columns={footerColumnsWithTitle}
+                subText={subText}
+            >
+                Built by Webcore with ❤️
+            </AstroFooter>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteFooter
+                logo={{ html: logo }}
+                columns={footerColumnsWithTitle}
+                subText={subText}
+            >
+                Built by Webcore with ❤️
+            </SvelteFooter>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactFooter
+                logo={{ html: logo }}
+                columns={footerColumnsWithTitle}
+                subText={subText}
+            >
+                Built by Webcore with ❤️
+            </ReactFooter>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2">
+            <ComponentWrapper title="Default">
+                <section.component columns={footerColumn1} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Logo only">
+                <section.component logo={{ html: logo }} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Column with logo">
+                <section.component logo={{ html: logo }} columns={footerColumn1} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Logo with src">
+                <section.component
+                    logo={menuLogo}
+                    columns={footerColumn1}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Column with title">
+                <section.component
+                    logo={{ html: logo }}
+                    columns={[{
+                        title: 'SITEMAP',
+                        items: footerColumn1[0].items
+                    }]}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Mutliple columns">
+                <section.component
+                    logo={{ html: logo }}
+                    columns={footerColumns}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Mutliple columns with titles">
+                <section.component
+                    logo={{ html: logo }}
+                    columns={footerColumnsWithTitle}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Active column item">
+                <section.component
+                    logo={{ html: logo }}
+                    columns={[
+                        {
+                            title: footerColumnsWithTitle[0].title,
+                            items: [
+                                { name: 'Home', href: '#', active: true },
+                                { ...footerColumnsWithTitle[0].items[1] },
+                                { ...footerColumnsWithTitle[0].items[2] }
+                            ]
+                        },
+                        { ...footerColumnsWithTitle[1] }
+                    ]}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Subtext">
+                <section.component
+                    logo={{ html: logo }}
+                    columns={footerColumnsWithTitle}
+                    subText={subText}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Subtext with social icons">
+                <section.component
+                    logo={{ html: logo }}
+                    columns={footerColumnsWithTitle}
+                    subText={subText}
+                >
+                    <div class="flex sm">
+                        <a href="#"><Icon type="github" size={18} /></a>
+                        <a href="#"><Icon type="components" size={18} /></a>
+                    </div>
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

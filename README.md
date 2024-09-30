@@ -206,6 +206,7 @@ import { Accordion } from 'webcoreui/react'
 - [Collapsible](https://github.com/Frontendland/webcoreui/tree/main/src/components/Collapsible)
 - [ConditionalWrapper](https://github.com/Frontendland/webcoreui/tree/main/src/components/ConditionalWrapper)
 - [DataTable](https://github.com/Frontendland/webcoreui/tree/main/src/components/DataTable)
+- [Footer](https://github.com/Frontendland/webcoreui/tree/main/src/components/Footer)
 - [Group](https://github.com/Frontendland/webcoreui/tree/main/src/components/Group)
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
 - [Input](https://github.com/Frontendland/webcoreui/tree/main/src/components/Input)

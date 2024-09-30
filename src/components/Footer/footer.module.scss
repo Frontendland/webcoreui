@@ -1,0 +1,61 @@
+@import '../../scss/config.scss';
+
+.footer {
+    @include border(top, primary-50);
+
+    .column-title {
+        @include spacing(mb-default);
+
+        display: block;
+    }
+
+    .column {
+        @include spacing(0);
+        
+        list-style-type: none;
+        
+        a {
+            @include typography(primary-10, none);
+
+            &:hover,
+            &.active {
+                @include typography(primary, underline);
+            }
+        }
+    }
+}
+
+.container {
+    @include spacing(auto-default, px-default);
+
+    max-width: 1200px;
+}
+
+.wrapper {
+    @include layout(flex, column, default, h-between);
+}
+
+.columns {
+    @include layout(flex, column, default);
+}
+
+.subtext {
+    @include border(top, primary-60);
+    @include spacing(mt-default, py-default);
+    @include layout(flex, column, default, h-between);
+
+    span {
+        @include typography(md, primary-20);
+    }
+}
+
+@include media('sm') {
+    .wrapper,
+    .subtext {
+        @include layout(row, none);
+    }
+
+    .columns {
+        @include layout(row, '5xl');
+    }
+}

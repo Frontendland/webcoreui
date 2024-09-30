@@ -1,0 +1,91 @@
+---
+import type { FooterProps } from './footer'
+
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+
+import styles from './footer.module.scss'
+
+interface Props extends FooterProps {}
+
+const {
+    logo,
+    columns,
+    subText,
+    className,
+    wrapperClassName,
+    subTextClassName
+} = Astro.props
+
+const classes = [
+    styles.footer,
+    className
+]
+
+const containerClasses = [
+    styles.container,
+    wrapperClassName
+]
+
+const subTextClasses = [
+    styles.subtext,
+    subTextClassName
+]
+---
+
+<footer class:list={classes}>
+    <div class:list={containerClasses}>
+        <ConditionalWrapper condition={!!(logo?.url || logo?.html)}>
+            <div slot="wrapper" class={styles.wrapper}>children</div>
+            {logo?.url && (
+                <a href="/">
+                    <img
+                        src={logo.url}
+                        alt={logo.alt || 'Logo'}
+                        width={logo.width}
+                        height={logo.height}
+                        loading={logo.eager ? undefined : 'lazy'}
+                    />
+                </a>
+            )}
+
+            {logo?.html && (
+                <a href="/" aria-label={logo.alt || 'Logo'}>
+                    <Fragment set:html={logo.html} />
+                </a>
+            )}
+
+            {!!columns?.length && (
+                <ConditionalWrapper condition={columns.length > 1}>
+                    <div slot="wrapper" class={styles.columns}>children</div>
+                    {columns.map(column => (
+                        <ConditionalWrapper condition={!!column.title}>
+                            <div slot="wrapper">children</div>
+                            {column.title && (
+                                <strong class={styles['column-title']}>{column.title}</strong>
+                            )}
+                            <ul class={styles.column}>
+                                {column.items.map(item => (
+                                    <li>
+                                        <a
+                                            href={item.href}
+                                            target={item.target}
+                                            class:list={[item.active && styles.active]}
+                                        >
+                                            {item.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </ConditionalWrapper>
+                    ))}
+                </ConditionalWrapper>
+            )}
+        </ConditionalWrapper>
+        {(subText || Astro.slots.has('default')) && (
+            <div class:list={subTextClasses}>
+                {subText && <span set:html={subText} />}
+                <slot />
+            </div>
+        )}
+    </div>
+</footer>

@@ -262,3 +262,35 @@ export const breadcrumbsWithIconsOnly = [
     { icon: fileIcon, href: '/docs' },
     { icon: componentsIcon, href: '/docs/components' }
 ]
+
+export const footerColumn1 = [{
+    items: [
+        { name: 'Home', href: '#' },
+        { name: 'Docs', href: '#' },
+        { name: 'Component', href: '#' }
+    ]
+}]
+
+export const footerColumn2 = [{
+    items: [
+        { name: 'CSS Config', href: '#' },
+        { name: 'Styles', href: '#' },
+        { name: 'Utilities', href: '#' }
+    ]
+}]
+
+export const footerColumns = [
+    { items: footerColumn1[0].items },
+    { items: footerColumn2[0].items }
+]
+
+export const footerColumnsWithTitle = [
+    {
+        title: 'SITEMAP',
+        items: footerColumn1[0].items
+    },
+    {
+        title: 'THEMES',
+        items: footerColumn2[0].items
+    }
+]

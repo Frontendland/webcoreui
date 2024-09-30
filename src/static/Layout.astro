@@ -1,4 +1,7 @@
 ---
+import Footer from '@components/Footer/Footer.astro'
+import type { IconProps } from '@components/Icon/icon'
+import Icon from '@components/Icon/Icon.astro'
 import Menu from '@components/Menu/Menu.astro'
 
 import logo from '../../public/img/logo.svg?raw'
@@ -26,18 +29,39 @@ const menu = {
     ]
 }
 
+const footer = [
+    {
+        title: 'Playground',
+        items: [
+            { name: 'Svelte', href: '/svelte', active: isPath('svelte') },
+            { name: 'React', href: '/react', active: isPath('react') }
+        ]
+    },
+    {
+        title: 'CSS',
+        items: [
+            { name: 'Themes', href: '/themes', active: isPath('themes') },
+            { name: 'Resets', href: '/resets', active: isPath('resets') },
+            { name: 'Utilities', href: '/utilities', active: isPath('utilities') }
+        ]
+    }
+]
+
 const externalLinks = [
     {
         url: 'https://github.com/Frontendland/webcoreui',
-        name: 'github'
+        name: 'github',
+        icon: 'github'
     },
     {
         url: 'https://www.npmjs.com/package/webcoreui',
-        name: 'npm'
+        name: 'npm',
+        icon: 'components'
     },
     {
         url: 'https://webcoreui.dev',
-        name: 'docs'
+        name: 'docs',
+        icon: 'file'
     }
 ]
 ---
@@ -67,6 +91,19 @@ const externalLinks = [
         <div class="container my">
             <slot />
         </div>
+        <Footer
+            logo={{ html: logo }}
+            columns={footer}
+            subText="Learn more at <a href='https://webcoreui.dev' target='_blank'>webcoreui.dev</a>"
+        >
+            <div class="flex sm">
+                {externalLinks.map(link => (
+                    <a href={link.url} target="_blank" rel="noreferrer">
+                        <Icon type={link.icon as IconProps['type']} size={18} />
+                    </a>
+                ))}
+            </div>
+        </Footer>
     </body>
 </html>
 
@@ -88,7 +125,7 @@ const externalLinks = [
     ));
 
     body {
-        margin-bottom: 100px;
+        @include spacing('mb-5xl');
     }
 
     h1:not(.reset) {
