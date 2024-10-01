@@ -2,6 +2,8 @@
 import ComponentWrapper from '@static/ComponentWrapper.astro'
 import Layout from '@static/Layout.astro'
 
+import Button from '@components/Button/Button.astro'
+import Sheet from '@components/Sheet/Sheet.astro'
 import AstroSidebar from '@components/Sidebar/Sidebar.astro'
 import SvelteSidebar from '@components/Sidebar/Sidebar.svelte'
 import ReactSidebar from '@components/Sidebar/Sidebar.tsx'
@@ -69,6 +71,35 @@ const sections = getSections({
             <ComponentWrapper title="Sidebar with icons & states">
                 <section.component groups={itemGroupsWithIcons} />
             </ComponentWrapper>
+
+            {section.type === 'astro' && (
+                <ComponentWrapper title="Sidebar sheet">
+                    <Button theme="secondary" id="open-sidebar">
+                        Open Sidebar
+                    </Button>
+                    <Sheet
+                        id="sidebar"
+                        position="left"
+                    >
+                        <section.component groups={itemGroupsWithIcons} />
+                    </Sheet>
+                </ComponentWrapper>
+            )}
         </div>
     ))}
 </Layout>
+
+<style>
+    #sidebar {
+        width: 300px;
+    }
+</style>
+
+<script>
+    import { modal } from '@utils/modal'
+
+    modal({
+        trigger: '#open-sidebar',
+        modal: '#sidebar'
+    })
+</script>

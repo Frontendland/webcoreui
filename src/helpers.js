@@ -7,11 +7,13 @@ export const getSections = ({
     return [
         {
             title: `Astro ${title}`,
+            type: 'astro',
             component: components[0],
             ...(props && props)
         },
         ...(components[1] ? [{
             title: `Svelte ${title}`,
+            type: 'svelte',
             component: components[1],
             ...(showSubTitle && {
                 subTitle: 'For interactive examples, visit <a href="/svelte">Svelte Playground</a>'
@@ -20,6 +22,7 @@ export const getSections = ({
         }] : []),
         ...(components[2] ? [{
             title: `React ${title}`,
+            type: 'react',
             component: components[2],
             ...(showSubTitle && {
                 subTitle: 'For interactive examples, visit <a href="/react">React Playground</a>'
