@@ -1,0 +1,54 @@
+---
+import type { MasonryProps } from './masonry'
+
+import styles from './masonry.module.scss'
+
+interface Props extends MasonryProps {}
+
+const {
+    items,
+    element = 'section',
+    gap,
+    columns = 3,
+    sequential,
+    className
+} = Astro.props
+
+const classes = [
+    styles.masonry,
+    className
+]
+
+const Component = element
+
+const componentProps = {
+    'class:list': classes,
+    'style': gap ? `--w-masonry-gap: ${gap};` : null
+}
+
+const chunkSize = Math.ceil(items.length / columns)
+const columnGroups = Array.from({ length: columns }, (_, i) => {
+    return sequential
+        ? items.slice(i * chunkSize, (i + 1) * chunkSize)
+        : items.filter((_, index) => index % columns === i)
+})
+---
+
+<Component {...componentProps}>
+    {columnGroups.map(column => (
+        <div class={styles.column}>
+            {column.map(item => (
+                item.component
+                    ? <item.component {...item.props}>
+                        {typeof item.children === 'object'
+                            ? <item.children.component {...item.children.props}>
+                                <Fragment set:html={item.children.children} />
+                            </item.children.component>
+                            : <Fragment set:html={item.children} />
+                        }
+                    </item.component>
+                    : <Fragment set:html={item.html} />
+            ))}
+        </div>
+    ))}
+</Component>

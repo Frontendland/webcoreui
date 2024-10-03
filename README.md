@@ -117,6 +117,9 @@ html body {
     --w-collapsible-initial-height: 0;
     --w-collapsible-max-height: 100%;
 
+    // Masonry component
+    --w-masonry-gap: 5px;
+
     // Progress component
     --w-progress-color: var(--w-color-primary);
     --w-progress-background: var(--w-color-primary-50);
@@ -211,6 +214,7 @@ import { Accordion } from 'webcoreui/react'
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
 - [Input](https://github.com/Frontendland/webcoreui/tree/main/src/components/Input)
 - [List](https://github.com/Frontendland/webcoreui/tree/main/src/components/List)
+- [Masonry](https://github.com/Frontendland/webcoreui/tree/main/src/components/Masonry)
 - [Menu](https://github.com/Frontendland/webcoreui/tree/main/src/components/Menu)
 - [Modal](https://github.com/Frontendland/webcoreui/tree/main/src/components/Modal)
 - [Pagination](https://github.com/Frontendland/webcoreui/tree/main/src/components/Pagination)

@@ -1,0 +1,99 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroMasonry from '@components/Masonry/Masonry.astro'
+import SvelteMasonry from '@components/Masonry/Masonry.svelte'
+import ReactMasonry from '@components/Masonry/Masonry.tsx'
+
+import { getSections } from '@helpers'
+import {
+    masonryComponentItems,
+    masonryItems,
+    reactMasonryComponentItems,
+    reactMasonryItems,
+    svelteMasonryComponentItems,
+    svelteMasonryItems
+} from '@data'
+
+const sections = getSections({
+    title: 'masonrys',
+    components: [AstroMasonry, SvelteMasonry, ReactMasonry]
+})
+
+const masonryItemsMap: any = {
+    astro: masonryItems,
+    svelte: svelteMasonryItems,
+    react: reactMasonryItems
+}
+
+const masonryComponentItemsMap: any = {
+    astro: masonryComponentItems,
+    svelte: svelteMasonryComponentItems,
+    react: reactMasonryComponentItems
+}
+---
+
+<Layout>
+    <h1>Masonry</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroMasonry items={masonryItems} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteMasonry items={svelteMasonryItems} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactMasonry items={reactMasonryItems} />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component items={masonryItemsMap[section.type]} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Sequential">
+                <section.component
+                    items={masonryItemsMap[section.type]}
+                    sequential={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="2 Columns">
+                <section.component
+                    items={masonryItemsMap[section.type]}
+                    columns={2}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom HTML element (Inspect DOM)">
+                <section.component
+                    items={masonryItemsMap[section.type]}
+                    element="article"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom gaps">
+                <section.component
+                    items={masonryItemsMap[section.type]}
+                    gap="10px"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Component masonry">
+                <section.component
+                    items={masonryComponentItemsMap[section.type]}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+

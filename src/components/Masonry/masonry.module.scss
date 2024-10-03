@@ -1,0 +1,18 @@
+@import '../../scss/config.scss';
+
+body {
+    --w-masonry-gap: 5px;
+}
+
+.masonry {
+    @include layout(flex);
+
+    gap: var(--w-masonry-gap);
+    overflow-x: auto;
+
+    .column {
+        @include layout(flex, column);
+
+        gap: var(--w-masonry-gap);
+    }
+}

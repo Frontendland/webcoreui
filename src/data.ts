@@ -1,6 +1,13 @@
 /* eslint-disable max-lines */
 import type { ButtonProps } from '@components/Button/button'
 
+import Alert from '@components/Alert/Alert.astro'
+import Box from '@static/Box.astro'
+import SvelteAlert from '@components/Alert/Alert.svelte'
+import SvelteBox from '@static/Box.svelte'
+import ReactAlert from '@components/Alert/Alert.tsx'
+import ReactBox from '@static/Box.tsx'
+
 import successIcon from './icons/circle-check.svg?raw'
 import componentsIcon from './icons/components.svg?raw'
 import fileIcon from './icons/file.svg?raw'
@@ -327,3 +334,41 @@ export const itemGroupsWithIcons = [
         items: itemGroup2[0].items
     }
 ]
+
+export const masonryItems = [
+    { component: Box, props: { height: 100 }, children: 1 },
+    { component: Box, props: { height: 50 }, children: 2 },
+    { component: Box, props: { height: 70 }, children: 3 },
+    { component: Box, props: { height: 90 }, children: 4 },
+    { component: Box, props: { height: 140 }, children: 5 },
+    { component: Box, props: { height: 120 }, children: 6 }
+]
+
+export const masonryComponentItems = [
+    { component: Alert, children: 1 },
+    { component: Alert, props: { theme: 'info' }, children: 2 },
+    { component: Alert, children: 3 },
+    { component: Alert, props: { theme: 'success' }, children: 4 },
+    { component: Alert, props: { height: 140 }, children: 5 },
+    { component: Alert, props: { theme: 'warning' }, children: 6 }
+]
+
+export const svelteMasonryItems = masonryItems.map(item => ({
+    ...item,
+    component: SvelteBox
+}))
+
+export const svelteMasonryComponentItems = masonryComponentItems.map(item => ({
+    ...item,
+    component: SvelteAlert
+}))
+
+export const reactMasonryItems = masonryItems.map(item => ({
+    ...item,
+    component: ReactBox
+}))
+
+export const reactMasonryComponentItems = masonryComponentItems.map(item => ({
+    ...item,
+    component: ReactAlert
+}))

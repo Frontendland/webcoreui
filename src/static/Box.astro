@@ -2,13 +2,26 @@
 import styles from './box.module.scss'
 
 const {
-    fullWidth = false
+    fullWidth = false,
+    width,
+    height
 } = Astro.props
 
 const classes = [
     styles.box,
     fullWidth && styles.full
 ]
+
+const dimensions: any = {
+    width,
+    height
+}
+
+const cssStyles = Object.keys(dimensions)
+    .filter(key => dimensions[key])
+    .map(key => `${key}:${dimensions[key]}px`).join(';')
 ---
 
-<div class:list={classes}><slot /></div>
+<div class:list={classes} style={cssStyles || undefined}>
+    <slot />
+</div>

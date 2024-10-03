@@ -31,6 +31,7 @@ const buildTypes = type => {
                 'DataTable',
                 'Input',
                 'List',
+                'Masonry',
                 'Pagination',
                 'Radio',
                 'Select',
@@ -45,7 +46,7 @@ const buildTypes = type => {
         }
 
         return format(`
-            import { SvelteComponent } from 'svelte'
+            import type { SvelteComponent } from 'svelte'
             ${components.map(component => {
                 return `import type { ${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
