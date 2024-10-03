@@ -4,6 +4,7 @@ import ArrowLeft from '../../icons/arrow-left.svg?raw'
 import ArrowRight from '../../icons/arrow-right.svg?raw'
 import Check from '../../icons/check.svg?raw'
 import CircleCheck from '../../icons/circle-check.svg?raw'
+import CircleClose from '../../icons/circle-close.svg?raw'
 import Close from '../../icons/close.svg?raw'
 import Components from '../../icons/components.svg?raw'
 import File from '../../icons/file.svg?raw'
@@ -23,6 +24,7 @@ const iconMap = {
     'arrow-right': ArrowRight,
     'check': Check,
     'circle-check': CircleCheck,
+    'circle-close': CircleClose,
     'close': Close,
     'components': Components,
     'file': File,

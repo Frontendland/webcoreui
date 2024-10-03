@@ -31,3 +31,10 @@ export const getSections = ({
         }] : [])
     ]
 }
+
+export const on = (element, callback) => {
+    // eslint-disable-next-line no-undef
+    document
+        .querySelector(element)
+        ?.addEventListener('click', callback)
+}

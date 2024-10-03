@@ -206,11 +206,7 @@ const sections = getSections({
 <script>
     import { closeModal, modal } from '@utils/modal'
 
-    const on = (element: string, callback: () => any) => {
-        document
-            .querySelector(element)
-            ?.addEventListener('click', callback)
-    }
+    import { on } from '@helpers'
 
     const selectors = [
         'astro',

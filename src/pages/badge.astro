@@ -114,6 +114,42 @@ const sections = getSections({
                     Alert
                 </section.component>
             </ComponentWrapper>
+
+            <ComponentWrapper title="Rounded success">
+                <section.component theme="success" rounded={true}>
+                    Success
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rounded warning">
+                <section.component theme="warning" rounded={true}>
+                    Warning
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rounded alert">
+                <section.component theme="alert" rounded={true}>
+                    Alert
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Chips (removable badge)">
+                <section.component
+                    theme="outline"
+                    hover={true}
+                    rounded={true}
+                    className="remove"
+                >
+                    <Icon type="circle-close" size={14} />
+                    Click to remove
+                </section.component>
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>
+
+<script>
+    import { on } from '@helpers'
+
+    on('.remove', (event: any) => event.currentTarget.remove())
+</script>

@@ -157,13 +157,9 @@ const sections = getSections({
         toast
     } from '@utils/toast'
 
-    setDefaultTimeout(3000)
+    import { on } from '@helpers'
 
-    const on = (element: string, callback: () => any) => {
-        document
-            .querySelector(element)
-            ?.addEventListener('click', callback)
-    }
+    setDefaultTimeout(3000)
 
     const ids = Array(13).fill(10).map((x, index) => x * (index + 1))
     const buttons = [

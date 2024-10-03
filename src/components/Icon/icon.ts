@@ -5,6 +5,7 @@ export type IconProps = {
         | 'arrow-right'
         | 'check'
         | 'circle-check'
+        | 'circle-close'
         | 'close'
         | 'components'
         | 'file'
