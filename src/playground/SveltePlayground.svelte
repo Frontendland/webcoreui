@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Accordion from '@components/Accordion/Accordion.svelte'
     import Badge from '@components/Badge/Badge.svelte'
     import Button from '@components/Button/Button.svelte'
@@ -90,7 +90,7 @@
     <Card title="Checkbox">
         <Checkbox
             label="Accept"
-            onClick={e => checkbox = e.target.checked}
+            onClick={e => checkbox = e.currentTarget.checked}
         />
 
         <span class={styles.span}>{checkbox}</span>
@@ -128,12 +128,12 @@
         <Input
             label="Enter a value"
             placeholder="Or change the color below"
-            onKeyUp={e => input = e.target.value}
+            onKeyUp={e => input = e.currentTarget.value}
         />
 
         <Input
             type="color"
-            onChange={e => input = e.target.value}
+            onChange={e => input = e.currentTarget.value}
         />
 
         <span class={styles.span}>{input}</span>
@@ -217,7 +217,7 @@
 
     <Card title="Switch">
         <Switch
-            onClick={e => toggle = e.target.checked}
+            onClick={e => toggle = e.currentTarget.checked}
         />
 
         <span class={styles.span}>{toggle}</span>

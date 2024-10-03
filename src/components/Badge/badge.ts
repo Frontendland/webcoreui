@@ -1,3 +1,5 @@
+import type { MouseEventHandler } from 'svelte/elements'
+
 export type BadgeProps = {
     theme?: 'secondary'
         | 'outline'
@@ -14,10 +16,10 @@ export type BadgeProps = {
 }
 
 export type SvelteBadgeProps = {
-    onClick?: ((event: MouseEvent) => void) | null
+    onClick?: MouseEventHandler<HTMLButtonElement>
 } & BadgeProps
 
 export type ReactBadgeProps = {
-    onClick?: (event: React.MouseEvent) => void
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
     children: React.ReactNode
 } & BadgeProps

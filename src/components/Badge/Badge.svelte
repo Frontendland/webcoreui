@@ -6,10 +6,10 @@
     import styles from './badge.module.scss'
 
     export let theme: SvelteBadgeProps['theme'] = null
-    export let onClick: SvelteBadgeProps['onClick'] = null
     export let hover: SvelteBadgeProps['hover'] = false
     export let small: SvelteBadgeProps['small'] = false
     export let className: SvelteBadgeProps['className'] = ''
+    export let onClick: SvelteBadgeProps['onClick'] = () => {}
 
     const classes = classNames([
         styles.badge,

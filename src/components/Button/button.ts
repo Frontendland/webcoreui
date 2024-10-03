@@ -1,3 +1,5 @@
+import type { MouseEventHandler } from 'svelte/elements'
+
 export type ButtonProps = {
     theme?: 'secondary'
         | 'outline'
@@ -7,17 +9,24 @@ export type ButtonProps = {
         | 'warning'
         | 'alert'
         | null
+        | undefined
+    target?: '_self'
+        | '_blank'
+        | '_parent'
+        | '_top'
+        | '_unfencedTop'
+        | null
+        | undefined
     href?: string
-    target?: '_self' | '_blank' | '_parent' | '_top' | '_unfencedTop' | undefined
     className?: string
     [key: string]: any
 }
 
 export type SvelteButtonProps = {
-    onClick?: ((event: MouseEvent) => void) | null
+    onClick?: MouseEventHandler<HTMLButtonElement>
 } & ButtonProps
 
 export type ReactButtonProps = {
-    onClick?: (event: React.MouseEvent) => void
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
     children: React.ReactNode
 } & ButtonProps

@@ -92,7 +92,7 @@ const ReactPlayground = () => {
             <Card title="Checkbox">
                 <Checkbox
                     label="Accept"
-                    onClick={e => setCheckbox(e.target.checked)}
+                    onClick={e => setCheckbox(e.currentTarget.checked)}
                 />
 
                 <span className={styles.span}>{`${checkbox}`}</span>
@@ -222,7 +222,7 @@ const ReactPlayground = () => {
 
             <Card title="Switch">
                 <Switch
-                    onClick={e => setToggle(e.target.checked)}
+                    onClick={e => setToggle(e.currentTarget.checked)}
                 />
 
                 <span className={styles.span}>{`${toggle}`}</span>
