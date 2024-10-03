@@ -28,28 +28,11 @@
         }
     }
 
-    .close {
-        @include position(absolute, t10px, r10px);
-        @include spacing(p-xs);
-
-        svg {
-            @include size(10px);
-        }
-    }
-
-    .title {
-        @include typography(lg);
-        @include spacing(mb-xs);
-        @include layout(flex, v-center, xs);
-
-        svg {
-            @include size(20px);
-        }
-    }
-
-    .subTitle {
-        @include typography(primary-20);
-        @include spacing(mb-xs);
+    &.transparent {
+        @include border(0);
+        @include spacing(p0);
+        @include size('wfit-content');
+        @include background(transparent);
     }
 
     &.info {
@@ -82,6 +65,30 @@
         .title {
             @include typography(alert);
         }
+    }
+
+    .close {
+        @include position(absolute, t10px, r10px);
+        @include spacing(p-xs);
+
+        svg {
+            @include size(10px);
+        }
+    }
+
+    .title {
+        @include typography(lg);
+        @include spacing(mb-xs);
+        @include layout(flex, v-center, xs);
+
+        svg {
+            @include size(20px);
+        }
+    }
+
+    .subTitle {
+        @include typography(primary-20);
+        @include spacing(mb-xs);
     }
 }
 

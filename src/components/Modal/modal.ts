@@ -4,6 +4,7 @@ export type ModalProps = {
     showCloseIcon?: boolean
     closeOnEsc?: boolean
     closeOnOverlay?: boolean
+    transparent?: boolean
     id?: string
     className?: string
     theme?: 'info'

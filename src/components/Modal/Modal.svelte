@@ -18,6 +18,7 @@
     export let showCloseIcon: ModalProps['showCloseIcon'] = true
     export let closeOnEsc: ModalProps['closeOnEsc'] = true
     export let closeOnOverlay: ModalProps['closeOnOverlay'] = true
+    export let transparent: ModalProps['transparent'] = false
     export let theme: ModalProps['theme'] = null
     export let id : ModalProps['className'] = ''
     export let className: ModalProps['className'] = ''
@@ -31,6 +32,7 @@
 
     const classes = classNames([
         styles.modal,
+        transparent && styles.transparent,
         theme && styles[theme],
         className
     ])

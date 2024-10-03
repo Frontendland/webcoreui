@@ -28,5 +28,5 @@ export type SvelteButtonProps = {
 
 export type ReactButtonProps = {
     onClick?: React.MouseEventHandler<HTMLButtonElement>
-    children: React.ReactNode
+    children?: React.ReactNode
 } & ButtonProps

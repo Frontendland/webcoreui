@@ -6,6 +6,7 @@ import Button from '@components/Button/Button.astro'
 import AstroModal from '@components/Modal/Modal.astro'
 import SvelteModal from '@components/Modal/Modal.svelte'
 import ReactModal from '@components/Modal/Modal.tsx'
+import Spinner from '@components/Spinner/Spinner.astro'
 
 import { getSections } from '@helpers'
 
@@ -215,6 +216,22 @@ const sections = getSections({
                     This modal was created using the alert theme
                 </section.component>
             </ComponentWrapper>
+
+            <ComponentWrapper title="Loading modal">
+                <Button theme="secondary" id={`modal-btn-10${index}`}>
+                    Trigger
+                </Button>
+                <section.component
+                    id={`modal-10${index}`}
+                    showCloseIcon={false}
+                    transparent={true}
+                >
+                    <Spinner
+                        size={40}
+                        width={5}
+                    />
+                </section.component>
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>
@@ -230,7 +247,7 @@ const sections = getSections({
         'react'
     ]
 
-    const ids = Array(9).fill(10).map((x, index) => x * (index + 1))
+    const ids = Array(10).fill(10).map((x, index) => x * (index + 1))
     const variants = [
         '00',
         '01',

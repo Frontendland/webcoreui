@@ -26,6 +26,7 @@ const Modal = ({
     showCloseIcon = true,
     closeOnEsc = true,
     closeOnOverlay = true,
+    transparent,
     theme,
     id,
     className,
@@ -35,6 +36,7 @@ const Modal = ({
     const classes = classNames([
         styles.modal,
         theme && styles[theme],
+        transparent && styles.transparent,
         className
     ])
 
