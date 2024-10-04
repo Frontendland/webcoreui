@@ -19,6 +19,7 @@ import Group from '@components/Group/Group.astro'
 import Icon from '@components/Icon/Icon.astro'
 import Input from '@components/Input/Input.astro'
 import List from '@components/List/List.astro'
+import Masonry from '@components/Masonry/Masonry.astro'
 import Menu from '@components/Menu/Menu.astro'
 import Pagination from '@components/Pagination/Pagination.astro'
 import Progress from '@components/Progress/Progress.astro'
@@ -44,6 +45,7 @@ import {
     avatarGroup,
     avatarGroupAlt2,
     listPreview,
+    masonryItems,
     themes
 } from '@data'
 
@@ -143,6 +145,7 @@ const tabItems = [{
                     'Name'
                 ]}
                 data={[['1', 'John Doe']]}
+                className="data-table"
             />
         </CardWrapper>
         <CardWrapper title="Footer" href="/footer">
@@ -192,6 +195,9 @@ const tabItems = [{
                 showSearchBarIcon={true}
                 searchBarPlaceholder="Search items..."
             />
+        </CardWrapper>
+        <CardWrapper title="Masonry" href="/masonry">
+            <Masonry items={masonryItems} className="masonry" />
         </CardWrapper>
         <CardWrapper title="Menu" href="/menu">
             <Menu className="menu-example">
@@ -276,6 +282,8 @@ const tabItems = [{
 </Layout>
 
 <style is:global lang="scss">
+    @import '../scss/config.scss';
+
     h2.my {
        margin-top: 100px;
     }
@@ -316,7 +324,9 @@ const tabItems = [{
     }
 
     .carousel-example {
-        width: 100%;
+        @include position(absolute);
+        @include spacing(p-md);
+        @include size('w100%');
     }
 
     .menu-example {
@@ -326,5 +336,16 @@ const tabItems = [{
     .switcher {
         margin: 20px 0;
         justify-content: center;
+    }
+
+    .masonry {
+        @include position(absolute);
+
+        transform: scale(0.75);
+    }
+
+    .data-table {
+        @include position(absolute);
+        @include spacing(p-default);
     }
 </style>
