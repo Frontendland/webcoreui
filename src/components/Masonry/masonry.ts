@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import type { SvelteComponent } from 'svelte'
 
 type ChildrenProps<ComponentType> = {
-    component: ComponentType;
+    component: ComponentType
     children?: string | number
     props?: {
         [key: string]: any

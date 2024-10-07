@@ -22,5 +22,5 @@ export type SvelteBadgeProps = {
 
 export type ReactBadgeProps = {
     onClick?: React.MouseEventHandler<HTMLButtonElement>
-    children: React.ReactNode
+    children?: React.ReactNode
 } & BadgeProps
