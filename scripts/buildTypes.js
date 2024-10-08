@@ -10,12 +10,16 @@ const buildTypes = type => {
     if (type === 'astro') {
         return format(`
             ${components.map(component => {
-                return `import type { ${component}Props } from './components/${component}/${component.toLowerCase()}'`
+                return `import type { ${component}Props as W${component}Props } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
 
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
-                    return `export function ${component}(_props: ${component}Props): any`
+                    return `export function ${component}(_props: W${component}Props): any`
+                }).join('\n\t')}
+
+                ${components.map(component => {
+                    return `export type ${component}Props = W${component}Props`
                 }).join('\n\t')}
             }
         `)
@@ -48,12 +52,16 @@ const buildTypes = type => {
         return format(`
             import type { SvelteComponent } from 'svelte'
             ${components.map(component => {
-                return `import type { ${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
+                return `import type { ${getTypeName(component)} as W${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
 
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
-                    return `export class ${component} extends SvelteComponent<${getTypeName(component)}> {}`
+                    return `export class ${component} extends SvelteComponent<W${getTypeName(component)}> {}`
+                }).join('\n\t')}
+
+                ${components.map(component => {
+                    return `export type ${component}Props = W${getTypeName(component)}`
                 }).join('\n\t')}
             }
         `)
@@ -80,12 +88,16 @@ const buildTypes = type => {
         return format(`
             import { FC } from 'react'
             ${components.map(component => {
-                return `import type { ${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
+                return `import type { ${getTypeName(component)} as W${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
 
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
-                    return `export const ${component}: FC<${getTypeName(component)}>`
+                    return `export const ${component}: FC<W${getTypeName(component)}>`
+                }).join('\n\t')}
+
+                ${components.map(component => {
+                    return `export type ${component}Props = W${getTypeName(component)}`
                 }).join('\n\t')}
             }
         `)

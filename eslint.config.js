@@ -149,7 +149,8 @@ export default [
             react: {
                 version: 'detect'
             }
-        }
+        },
+        ignores: ['dist/**/*']
     },
     {
         files: ['**/*.astro'],
@@ -205,6 +206,12 @@ export default [
             'prefer-template': 'off',
             'max-len': 'off',
             'indent': 'off'
+        }
+    },
+    {
+        files: ['dist/**/*'],
+        rules: {
+            '@typescript-eslint/no-explicit-any': 'off'
         }
     }
 ]
