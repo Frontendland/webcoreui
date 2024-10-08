@@ -1,0 +1,6 @@
+@import 'webcoreui/config';
+
+.connect {
+    @include spacing(mt-sm);
+    @include typography(md);
+}

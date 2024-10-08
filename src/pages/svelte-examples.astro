@@ -1,0 +1,31 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Deployments from '@examples/Deployments/Deployments.svelte'
+import Profile from '@examples/Profile/Profile.svelte'
+import Seller from '@examples/Seller/Seller.svelte'
+import SEO from '@examples/SEO/SEO.svelte'
+import Settings from '@examples/Settings/Settings.svelte'
+import SignUp from '@examples/SignUp/SignUp.svelte'
+import Timeline from '@examples/Timeline/Timeline.svelte'
+
+---
+
+<Layout>
+    <h1>Svelte Example Components</h1>
+    <div class="grid xs-2 sm-3">
+        <div class="flex column">
+            <SignUp />
+            <Timeline />
+        </div>
+        <div class="flex column">
+            <Settings client:load />
+            <SEO />
+        </div>
+        <div class="flex column">
+            <Profile client:load />
+            <Seller />
+            <Deployments client:load />
+        </div>
+    </div>
+</Layout>

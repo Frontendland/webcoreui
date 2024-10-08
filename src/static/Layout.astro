@@ -14,7 +14,7 @@ const menuClasses = [
 ].filter(Boolean).join(' ')
 
 const theme = (Astro.cookies.get('w-theme')?.value || 'dark') as string
-const isPath = (path: string) => Astro.url.pathname.includes(path)
+const isPath = (path: string) => Astro.url.pathname === `/${path}`
 
 const menu = {
     logo: {
@@ -43,6 +43,14 @@ const footer = [
             { name: 'Themes', href: '/themes', active: isPath('themes') },
             { name: 'Resets', href: '/resets', active: isPath('resets') },
             { name: 'Utilities', href: '/utilities', active: isPath('utilities') }
+        ]
+    },
+    {
+        title: 'Examples',
+        items: [
+            { name: 'Astro', href: '/astro-examples', active: isPath('astro-examples') },
+            { name: 'Svelte', href: '/svelte-examples', active: isPath('svelte-examples') },
+            { name: 'React', href: '/react-examples', active: isPath('react-examples') }
         ]
     }
 ]

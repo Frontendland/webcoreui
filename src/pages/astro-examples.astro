@@ -1,0 +1,31 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Deployments from '@examples/Deployments/Deployments.astro'
+import Profile from '@examples/Profile/Profile.astro'
+import Seller from '@examples/Seller/Seller.astro'
+import SEO from '@examples/SEO/SEO.astro'
+import Settings from '@examples/Settings/Settings.astro'
+import SignUp from '@examples/SignUp/SignUp.astro'
+import Timeline from '@examples/Timeline/Timeline.astro'
+
+---
+
+<Layout>
+    <h1>Astro Example Components</h1>
+    <div class="grid xs-2 sm-3">
+        <div class="flex column">
+            <SignUp />
+            <Timeline />
+        </div>
+        <div class="flex column">
+            <Settings />
+            <SEO />
+        </div>
+        <div class="flex column">
+            <Profile />
+            <Seller />
+            <Deployments />
+        </div>
+    </div>
+</Layout>

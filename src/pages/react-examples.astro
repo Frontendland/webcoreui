@@ -1,0 +1,31 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Deployments from '@examples/Deployments/Deployments.tsx'
+import Profile from '@examples/Profile/Profile.tsx'
+import Seller from '@examples/Seller/Seller.tsx'
+import SEO from '@examples/SEO/SEO.tsx'
+import Settings from '@examples/Settings/Settings.tsx'
+import SignUp from '@examples/SignUp/SignUp.tsx'
+import Timeline from '@examples/Timeline/Timeline.tsx'
+
+---
+
+<Layout>
+    <h1>React Example Components</h1>
+    <div class="grid xs-2 sm-3">
+        <div class="flex column">
+            <SignUp />
+            <Timeline />
+        </div>
+        <div class="flex column">
+            <Settings client:load />
+            <SEO />
+        </div>
+        <div class="flex column">
+            <Profile client:load />
+            <Seller />
+            <Deployments client:load />
+        </div>
+    </div>
+</Layout>

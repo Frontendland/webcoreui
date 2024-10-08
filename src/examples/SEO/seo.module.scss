@@ -1,0 +1,10 @@
+
+@import 'webcoreui/config';
+
+.my {
+    @include spacing(auto-default);
+}
+
+.progress-label {
+    @include spacing(mb-xs);
+}

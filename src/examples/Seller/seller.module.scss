@@ -1,0 +1,19 @@
+
+@import 'webcoreui/config';
+
+.loading {
+    @include spacing(mt-default);
+
+    svg {
+        @include spacing(m0);
+    }
+}
+
+.sellers {
+    @include typography(center);
+
+    strong {
+        @include spacing(my-xs);
+        display: block;
+    }
+}

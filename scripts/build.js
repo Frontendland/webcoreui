@@ -43,6 +43,16 @@ Object.keys(files).forEach(key => {
         if (error) {
             console.error('🚨 error copying file', error)
         }
+
+        // Replace package name and remove dependency
+        if (key.includes('package.json')) {
+            const packageJson = fs.readFileSync(key, 'utf-8')
+            const modifiedPackageJson = packageJson
+                .replace('"webcore"', '"webcoreui"')
+                .replace(/,\s+"webcoreui":\s"[0-9.]+"/g, '')
+
+            fs.writeFileSync(files[key], modifiedPackageJson)
+        }
     })
 })
 

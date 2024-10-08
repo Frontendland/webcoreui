@@ -12,5 +12,10 @@ export default defineConfig({
     ],
     build: {
         format: 'file'
+    },
+    vite: {
+        ssr: {
+            noExternal: ['webcoreui']
+        }
     }
 })

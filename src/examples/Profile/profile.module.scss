@@ -1,0 +1,14 @@
+@import 'webcoreui/config';
+
+.tasks {
+    @include spacing(mt-sm);
+    display: block;
+}
+
+.task {
+    @include typography(none);
+
+    &:hover {
+        @include typography(primary);
+    }
+}
