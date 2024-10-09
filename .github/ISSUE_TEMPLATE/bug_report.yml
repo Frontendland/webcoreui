@@ -1,0 +1,54 @@
+name: '\U0001F41E Bug Report'
+description: Report an issue or possible bug
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ##  Quick Checklist
+        Thank you for taking the time to file a bug report! Please fill out this form as completely as possible.
+
+        ✅ I am using the **latest version of Webcore**
+        ✅ I am using a version of Node that Webcore supports (`v20.14.0` or higher.)
+  - type: input
+    id: browser
+    attributes:
+        label: If this issue only occurs in one browser, which browser is a problem?
+        placeholder: Chrome, Firefox, Safari
+  - type: textarea
+    id: bug
+    attributes:
+        label: Describe the bug
+        description: Please provide a clear and concise description of the bug.
+        placeholder: If applicable, please add screenshots to help explain your problem.
+    validations:
+        required: true
+  - type: textarea
+    id: expectation
+    attributes:
+        label: What's the expected result?
+        description: Please describe what you expect to happen.
+        placeholder: I expect that...
+    validations:
+        required: true
+  - type: input
+    id: repro
+    attributes:
+        label: Link to minimal reproducible example
+        description: Please provide a minimal reproduction of the problem, so that we can help you debug your issue.
+        placeholder: 'https://stackblitz.com/link-to-repro'
+    validations:
+        required: true
+  - type: dropdown
+    id: severity
+    attributes:
+        label: Severity
+        description: Select the severity of this issue
+        options:
+            - Low (P5)
+            - Medium (P4)
+            - High (P3)
+            - Critical (P2)
+            - Blocker (P1)
+    validations:
+        required: true

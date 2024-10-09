@@ -1,0 +1,23 @@
+name: '\U0001F4DA Documentation'
+description: Issues or suggestions regarding the documentation
+labels: [documentation]
+body:
+  - type: markdown
+    attributes:
+        value: |
+            Thank you for taking the time to file an issue/suggestion about our documentation! Please fill out this form as completely as possible.
+  - type: input
+    id: docs
+    attributes:
+        label: Link to the documentation page
+        description: Please provide a link to the documentation page where you'd like to request improvements.
+        placeholder: 'https://webcoreui.dev/docs/introduction'
+    validations:
+        required: true
+  - type: textarea
+    id: description
+    attributes:
+        label: Describe the issue or suggestion
+        description: Please provide a clear and concise description of your issue or suggestion.
+    validations:
+        required: true

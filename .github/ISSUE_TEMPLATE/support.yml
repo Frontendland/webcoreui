@@ -1,0 +1,16 @@
+name: '\U0001F4AC Support'
+description: Ask a question or request help
+labels: [support]
+body:
+  - type: markdown
+    attributes:
+        value: |
+            Thank you for reaching out! Before submitting a request, please be sure to search the [documentation](https://webcoreui.dev/) first.
+  - type: textarea
+    id: description
+    attributes:
+        label: Describe your question or request
+        description: Please provide a clear and concise description of your question.
+        placeholder: Add your question or request description here
+    validations:
+        required: true
