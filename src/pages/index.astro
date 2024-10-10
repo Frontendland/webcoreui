@@ -77,18 +77,20 @@ const tabItems = [{
             <Icon type="github" size={20} />
             GitHub
         </Button>
-        <Button theme="secondary" href="/svelte">
-            Svelte Playground
+        <Button theme="secondary" className="scroll-to-components">
+            <Icon type="components" size={20} />
+            Components
         </Button>
-        <Button theme="secondary" href="/react">
-            React Playground
+        <Button theme="secondary" href="/blocks">
+            <Icon type="file" size={20} />
+            Blocks
         </Button>
     </div>
 
     <ThemeSwitcher themes={themes} className="switcher" />
     <Examples />
 
-    <h2 class="my">Components</h2>
+    <h2 class="my components-heading">Components</h2>
     <div class="grid md-2 lg-3">
         <CardWrapper title="Accordion" href="/components/accordion">
             <Accordion items={accordionItems} />
@@ -315,6 +317,10 @@ const tabItems = [{
         gap: 10px;
     }
 
+    .components-heading {
+        scroll-margin-top: 60px;
+    }
+
     .card-wrapper > div {
         pointer-events: none;
         display: flex;
@@ -349,3 +355,13 @@ const tabItems = [{
         @include spacing(p-default);
     }
 </style>
+
+<script>
+    import { get, on } from '@utils/DOMUtils'
+
+    on('.scroll-to-components', 'click', () => {
+        (get('.components-heading') as HTMLDivElement).scrollIntoView({
+            behavior: 'smooth'
+        })
+    })
+</script>

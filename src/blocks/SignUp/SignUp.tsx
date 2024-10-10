@@ -53,7 +53,6 @@ const SignUp = ({
                 </div>
             </form>
         </Card>
-
     )
 }
 

@@ -5,6 +5,7 @@ import Link from '@static/Link.astro'
 import Card from '@components/Card/Card.astro'
 
 import SignUp from '@blocks/SignUp/SignUp.astro'
+import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
 ---
 
@@ -26,6 +27,13 @@ import User from '@blocks/User/User.astro'
                 showText={true}
             />
             <Link href="/blocks/user" />
+        </Card>
+        <Card title="Tiles with Icons">
+            <Tiles items={[
+                { icon: 'home', label: 'Home', href: '' },
+                { icon: 'github', label: 'Github', href: '' }
+            ]} columns={1} />
+            <Link href="/blocks/tiles" />
         </Card>
     </div>
 </Layout>

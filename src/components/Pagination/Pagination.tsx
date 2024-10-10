@@ -104,7 +104,7 @@ const Pagination = ({
                             theme={theme}
                             onClick={!(disablePrevious || (calculatedCurrentPage === 1 && !previousLink))
                                 ? () => paginate('prev')
-                                : null
+                                : undefined
                             }
                         >
                             {(showChevrons || type === 'arrows') && (
@@ -122,7 +122,7 @@ const Pagination = ({
                                     theme={theme}
                                     onClick={calculatedCurrentPage !== index + 1
                                         ? () => paginate(index + 1)
-                                        : null
+                                        : undefined
                                     }
                                 >
                                     {page.label}
@@ -144,7 +144,7 @@ const Pagination = ({
                             theme={theme}
                             onClick={!disableNext
                                 ? () => paginate('next')
-                                : null
+                                : undefined
                             }
                         >
                             {type !== 'arrows' && nextPageLabel}

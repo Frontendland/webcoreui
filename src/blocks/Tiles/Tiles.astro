@@ -1,0 +1,37 @@
+---
+import type { TilesProps } from './tiles'
+
+import styles from './tiles.module.scss'
+
+import { Button, Card, Icon, type IconProps } from 'webcoreui/astro'
+
+interface Props extends TilesProps {}
+
+const {
+    columns,
+    items
+} = Astro.props
+---
+
+<div class:list={[
+    'grid sm',
+    columns && `xs-${columns}`,
+    (items.length > 1 && items.length !== 3 && !columns) && 'xs-2',
+    (items.length === 3 && !columns) && 'xs-3'
+]}>
+    {items.map(item => (
+        <Button theme="flat" className={styles.btn} href={item.href} target={item.target}>
+            <Card secondary={true} className={styles.card}>
+                {item.icon && (
+                    <Fragment>
+                        {item.icon.startsWith('<svg')
+                            ? <Fragment set:html={item.icon} />
+                            : <Icon type={item.icon as IconProps['type']} />
+                        }
+                    </Fragment>
+                )}
+                {item.label}
+            </Card>
+        </Button>
+    ))}
+</div>

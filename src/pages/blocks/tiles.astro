@@ -1,0 +1,41 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Card from '@components/Card/Card.astro'
+
+import AstroTiles from '@blocks/Tiles/Tiles.astro'
+import SvelteTiles from '@blocks/Tiles/Tiles.svelte'
+import ReactTiles from '@blocks/Tiles/Tiles.tsx'
+import { circleCheck, components, info } from 'webcoreui/icons'
+---
+
+<Layout>
+    <h1>Tiles with Icons Blocks</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <div class="grid xs-2 sm-3">
+        <Card>
+            <AstroTiles items={[
+                { icon: 'home', label: 'Home', href: '' },
+                { icon: 'github', label: 'Github', href: '' },
+                { icon: 'file', label: 'Docs', href: '' }
+            ]} columns={1} />
+        </Card>
+        <Card>
+            <SvelteTiles items={[
+                { icon: info, label: 'Svelte', href: '' },
+                { icon: circleCheck, label: 'Tiles', href: '' }
+            ]} />
+        </Card>
+        <Card>
+            <ReactTiles items={[
+                { icon: components, label: 'React', href: '' },
+                { icon: circleCheck, label: 'Tiles', href: '' }
+            ]} />
+        </Card>
+    </div>
+</Layout>
