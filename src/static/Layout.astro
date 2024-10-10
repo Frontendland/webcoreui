@@ -21,6 +21,7 @@ const menu = {
         html: logo
     },
     items: [
+        { href: '/blocks', name: 'Blocks', active: isPath('blocks') },
         { href: '/svelte', name: 'Svelte', active: isPath('svelte') },
         { href: '/react', name: 'React', active: isPath('react') },
         { href: '/css/themes', name: 'Themes', active: isPath('css/themes') },
@@ -50,7 +51,8 @@ const footer = [
         items: [
             { name: 'Astro', href: '/astro-examples', active: isPath('astro-examples') },
             { name: 'Svelte', href: '/svelte-examples', active: isPath('svelte-examples') },
-            { name: 'React', href: '/react-examples', active: isPath('react-examples') }
+            { name: 'React', href: '/react-examples', active: isPath('react-examples') },
+            { name: 'Blocks', href: '/blocks', active: isPath('blocks') }
         ]
     }
 ]
@@ -184,5 +186,9 @@ const externalLinks = [
 
     .muted {
         @include typography(primary-20, md);
+    }
+
+    .relative {
+        @include position(relative);
     }
 </style>

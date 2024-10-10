@@ -68,6 +68,14 @@ declare module 'webcoreui' {
         cancel: () => void
     }
 
+    export const get: (selector: string, all: boolean) => Element | NodeListOf<Element> | null
+    export const on: (
+        selector: string | HTMLElement,
+        event: string,
+        callback: any,
+        all?: boolean
+    ) => void
+
     export const dispatch: (event: string, detail: unknown) => void
     export const listen: (event: string, callback: (e: any) => unknown) => {
         remove: () => void

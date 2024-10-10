@@ -1,0 +1,34 @@
+---
+import { Button } from 'webcoreui/astro'
+
+interface Props {
+    position?: 'top' | 'bottom' | 'left' | 'right'
+    label?: string
+    href: string
+}
+
+const {
+    label = 'Open examples',
+    position = '',
+    href
+} = Astro.props
+---
+
+<Button
+    theme="flat"
+    className="link"
+    data-tooltip={label}
+    data-position={position}
+    href={href}
+>
+...
+</Button>
+
+<style lang="scss">
+    @import 'webcoreui/config';
+
+    .link {
+        @include position(absolute, b0, r0);
+        padding: 5px !important;
+    }
+</style>

@@ -1,23 +1,66 @@
 ---
+import type { SignUpProps } from './signup'
+
 import {
     Button,
     Card,
     Input
 } from 'webcoreui/astro'
+
+interface Props extends SignUpProps {
+    primaryButtonSelector?: string
+    secondaryButtonSelector?: string
+}
+
+const {
+    label = 'Sign up',
+    emailLabel = 'Email',
+    emailPlaceholder = 'Enter your email',
+    emailSubText = '',
+    passwordLabel = 'Password',
+    passwordPlaceholder = 'Enter your password',
+    passwordSubText = 'Generate a unique password <a href="#">here</a>',
+    primaryButtonTheme = 'success',
+    primaryButtonLabel = 'Create an account',
+    secondaryButtonTheme = 'secondary',
+    secondaryButtonLabel = 'Sign in',
+    primaryButtonSelector,
+    secondaryButtonSelector
+} = Astro.props
 ---
 
-<Card title="Sign up">
-    <form class="flex column">
-        <Input label="Email" placeholder="Enter your email" />
+<Card title={label}>
+    <form class="flex column sign-up-form">
+        <Input
+            label={emailLabel}
+            placeholder={emailPlaceholder}
+            subText={emailSubText}
+            autocomplete="on"
+        />
         <Input
             type="password"
-            label="Password"
-            placeholder="Enter your password"
-            subText="Generate a unique password <a href='#'>here</a>"
+            label={passwordLabel}
+            placeholder={passwordPlaceholder}
+            subText={passwordSubText}
+            autocomplete="on"
         />
         <div class="flex xs wrap">
-            <Button theme="success">Create an account</Button>
-            <Button theme="secondary">Sign in</Button>
+            {primaryButtonLabel && (
+                <Button theme={primaryButtonTheme} className={primaryButtonSelector}>
+                    {primaryButtonLabel}
+                </Button>
+            )}
+            {secondaryButtonLabel && (
+                <Button theme={secondaryButtonTheme} className={secondaryButtonSelector}>
+                    {secondaryButtonLabel}
+                </Button>
+            )}
         </div>
     </form>
 </Card>
+
+<script>
+    import { on } from '@utils/DOMUtils'
+
+    on('.sign-up-form', 'submit', (event: Event) => event.preventDefault())
+</script>

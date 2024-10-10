@@ -1,0 +1,17 @@
+---
+import Layout from '@static/Layout.astro'
+import Link from '@static/Link.astro'
+
+import SignUp from '@blocks/SignUp/SignUp.astro'
+---
+
+<Layout>
+    <h1>Blocks</h1>
+
+    <div class="grid md-2 lg-3">
+        <div class="relative">
+            <SignUp />
+            <Link href="/blocks/sign-up" />
+        </div>
+    </div>
+</Layout>

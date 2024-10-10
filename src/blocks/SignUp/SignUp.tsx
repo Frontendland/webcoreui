@@ -1,4 +1,5 @@
 import React from 'react'
+import type { ReactSignUpProps } from './signup'
 
 import {
     Button,
@@ -6,24 +7,53 @@ import {
     Input
 } from 'webcoreui/react'
 
-const SignUp = () => {
+const SignUp = ({
+    label = 'Sign up',
+    emailLabel = 'Email',
+    emailPlaceholder = 'Enter your email',
+    emailSubText = '',
+    passwordLabel = 'Password',
+    passwordPlaceholder = 'Enter your password',
+    passwordSubText = 'Generate a unique password <a href="#">here</a>',
+    primaryButtonTheme = 'success',
+    primaryButtonLabel = 'Create an account',
+    secondaryButtonTheme = 'secondary',
+    secondaryButtonLabel = 'Sign in',
+    primaryOnClick,
+    secondaryOnClick
+}: ReactSignUpProps) => {
 
     return (
-        <Card title="Sign up">
-            <form className="flex column">
-                <Input label="Email" placeholder="Enter your email" />
+        <Card title={label}>
+            <form className="flex column" onSubmit={e => e.preventDefault()}>
+                <Input
+                    label={emailLabel}
+                    placeholder={emailPlaceholder}
+                    subText={emailSubText}
+                    autoComplete="on"
+                />
                 <Input
                     type="password"
-                    label="Password"
-                    placeholder="Enter your password"
-                    subText="Generate a unique password <a href='#'>here</a>"
+                    label={passwordLabel}
+                    placeholder={passwordPlaceholder}
+                    subText={passwordSubText}
+                    autoComplete="on"
                 />
                 <div className="flex xs wrap">
-                    <Button theme="success">Create an account</Button>
-                    <Button theme="secondary">Sign in</Button>
+                    {primaryButtonLabel && (
+                        <Button theme={primaryButtonTheme} onClick={primaryOnClick}>
+                            {primaryButtonLabel}
+                        </Button>
+                    )}
+                    {secondaryButtonLabel && (
+                        <Button theme={secondaryButtonTheme} onClick={secondaryOnClick}>
+                            {secondaryButtonLabel}
+                        </Button>
+                    )}
                 </div>
             </form>
         </Card>
+
     )
 }
 

@@ -1,0 +1,46 @@
+---
+import Layout from '@static/Layout.astro'
+
+import AstroSignUp from '@blocks/SignUp/SignUp.astro'
+import SvelteSignUp from '@blocks/SignUp/SignUp.svelte'
+import ReactSignUp from '@blocks/SignUp/SignUp.tsx'
+---
+
+<Layout>
+    <h1>Sign Up Blocks</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <div class="grid xs-2 sm-3">
+        <AstroSignUp
+            label="Astro Sign Up"
+            emailLabel="Username"
+            emailPlaceholder="Enter your username"
+            passwordSubText="No account yet? <a href='#'>Generate a strong password</a>."
+            secondaryButtonTheme="flat"
+            primaryButtonSelector="create-account"
+            secondaryButtonSelector="sign-in"
+        />
+        <SvelteSignUp
+            label="Svelte Sign Up"
+            primaryButtonTheme="alert"
+        />
+        <ReactSignUp
+            label="React Sign Up"
+            primaryButtonTheme="info"
+        />
+    </div>
+</Layout>
+
+<script>
+    import { on } from '@utils/DOMUtils'
+
+    // eslint-disable-next-line no-console
+    on('.create-account', 'click', () => console.log('Creating account'))
+
+    // eslint-disable-next-line no-console
+    on('.sign-in', 'click', () => console.log('Signing in'))
+</script>
