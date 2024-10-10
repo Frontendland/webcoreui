@@ -5,7 +5,7 @@
         "types": ["vite/client"],
         "paths": {
             "@components/*": ["src/components/*"],
-            "@examples/*": ["src/examples/*"],
+            "@blocks/*": ["src/blocks/*"],
             "@static/*": ["src/static/*"],
             "@playground/*": ["src/playground/*"],
             "@utils/*": ["src/utils/*"],

@@ -150,7 +150,7 @@ export default [
                 version: 'detect'
             }
         },
-        ignores: ['dist/**/*']
+        ignores: ['dist/**/*', 'src/env.d.ts']
     },
     {
         files: ['**/*.astro'],
@@ -171,7 +171,7 @@ export default [
         }
     },
     {
-        files: ['src/static/*.astro', 'src/pages/*.astro'],
+        files: ['src/static/*.astro', 'src/pages/**/*.astro'],
         rules: {
             'max-len': 'off',
             'max-lines': 'off',

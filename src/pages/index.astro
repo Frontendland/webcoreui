@@ -90,37 +90,37 @@ const tabItems = [{
 
     <h2 class="my">Components</h2>
     <div class="grid md-2 lg-3">
-        <CardWrapper title="Accordion" href="/accordion">
+        <CardWrapper title="Accordion" href="/components/accordion">
             <Accordion items={accordionItems} />
         </CardWrapper>
-        <CardWrapper title="Alert" href="/alert">
+        <CardWrapper title="Alert" href="/components/alert">
             <Alert title="💡 Note">You can create alert boxes.</Alert>
         </CardWrapper>
-        <CardWrapper title="Avatar" href="/avatar">
+        <CardWrapper title="Avatar" href="/components/avatar">
             <Avatar
                 size={[30, 40, 50, 40, 30]}
                 img={avatarGroup}
                 alt={avatarGroupAlt2}
             />
         </CardWrapper>
-        <CardWrapper title="Badge" href="/badge">
+        <CardWrapper title="Badge" href="/components/badge">
             <Badge theme="outline">Badge</Badge>
         </CardWrapper>
-        <CardWrapper title="Breadcrumb" href="/breadcrumb">
+        <CardWrapper title="Breadcrumb" href="/components/breadcrumb">
             <Breadcrumb items={[
                 { icon: 'home' },
                 { label: 'Docs' },
                 { label: 'Components' }
             ]} />
         </CardWrapper>
-        <CardWrapper title="Button" href="/button">
+        <CardWrapper title="Button" href="/components/button">
             <Button>Primary</Button>
             <Button theme="secondary">Secondary</Button>
         </CardWrapper>
-        <CardWrapper title="Card" href="/card">
+        <CardWrapper title="Card" href="/components/card">
             <p>Paragraph inside a card</p>
         </CardWrapper>
-        <CardWrapper title="Carousel" href="/carousel">
+        <CardWrapper title="Carousel" href="/components/carousel">
             <Carousel
                 items={3}
                 pagination={{ type: 'dots' }}
@@ -129,16 +129,16 @@ const tabItems = [{
                 <li><Box fullWidth={true}>1</Box></li>
             </Carousel>
         </CardWrapper>
-        <CardWrapper title="Checkbox" href="/checkbox">
+        <CardWrapper title="Checkbox" href="/components/checkbox">
             <Checkbox checked={true} label="Accept terms and conditions" />
         </CardWrapper>
-        <CardWrapper title="Collapsible" href="/collapsible">
+        <CardWrapper title="Collapsible" href="/components/collapsible">
             <Collapsible initialHeight="20px">
                 <span>This book has been rated for...</span>
                 <Badge slot="on">Expand</Badge>
             </Collapsible>
         </CardWrapper>
-        <CardWrapper title="DataTable" href="/data-table">
+        <CardWrapper title="DataTable" href="/components/data-table">
             <DataTable
                 headings={[
                     { name: 'ID', filterable: true, toggleable: true },
@@ -148,17 +148,17 @@ const tabItems = [{
                 className="data-table"
             />
         </CardWrapper>
-        <CardWrapper title="Footer" href="/footer">
+        <CardWrapper title="Footer" href="/components/footer">
             <Footer columns={[{ title: 'WEBCORE', items: [] }]} />
         </CardWrapper>
-        <CardWrapper title="Group" href="/group">
+        <CardWrapper title="Group" href="/components/group">
             <Group withSeparator={true}>
                 <Button theme="secondary">Profile</Button>
                 <Button theme="secondary">Repos</Button>
                 <Button theme="secondary">Stars</Button>
             </Group>
         </CardWrapper>
-        <CardWrapper title="Icon" href="/icon">
+        <CardWrapper title="Icon" href="/components/icon">
             <Icon
                 type="github"
                 size={12}
@@ -185,10 +185,10 @@ const tabItems = [{
                 color="#f2c262"
             />
         </CardWrapper>
-        <CardWrapper title="Input" href="/input">
+        <CardWrapper title="Input" href="/components/input">
             <Input placeholder="Please enter your email." />
         </CardWrapper>
-        <CardWrapper title="List" href="/list">
+        <CardWrapper title="List" href="/components/list">
             <List
                 itemGroups={listPreview}
                 showSearchBar={true}
@@ -196,86 +196,86 @@ const tabItems = [{
                 searchBarPlaceholder="Search items..."
             />
         </CardWrapper>
-        <CardWrapper title="Masonry" href="/masonry">
+        <CardWrapper title="Masonry" href="/components/masonry">
             <Masonry items={masonryItems} className="masonry" />
         </CardWrapper>
-        <CardWrapper title="Menu" href="/menu">
+        <CardWrapper title="Menu" href="/components/menu">
             <Menu className="menu-example">
                 <Fragment set:html={logo} />
             </Menu>
         </CardWrapper>
-        <CardWrapper title="Modal" href="/modal">
+        <CardWrapper title="Modal" href="/components/modal">
             <Button theme="outline">Trigger Modal</Button>
         </CardWrapper>
-        <CardWrapper title="Pagination" href="/pagination">
+        <CardWrapper title="Pagination" href="/components/pagination">
             <Pagination showChevrons={true} />
         </CardWrapper>
-        <CardWrapper title="Popover" href="/popover">
+        <CardWrapper title="Popover" href="/components/popover">
             <Button theme="outline">Open Popover</Button>
         </CardWrapper>
-        <CardWrapper title="Progress" href="/progress">
+        <CardWrapper title="Progress" href="/components/progress">
             <Progress value={33} />
         </CardWrapper>
-        <CardWrapper title="Radio" href="/radio">
+        <CardWrapper title="Radio" href="/components/radio">
             <Radio
                 items={[{ label: 'Radio', selected: true, value: '1' }]}
                 name="radio"
             />
         </CardWrapper>
-        <CardWrapper title="Rating" href="/rating">
+        <CardWrapper title="Rating" href="/components/rating">
             <Rating score={4} />
         </CardWrapper>
-        <CardWrapper title="Select" href="/select">
+        <CardWrapper title="Select" href="/components/select">
             <Select
                 name="select-preview"
                 placeholder="Search the documentation"
                 itemGroups={[]}
             />
         </CardWrapper>
-        <CardWrapper title="Sheet" href="/sheet">
+        <CardWrapper title="Sheet" href="/components/sheet">
             <Button theme="outline">Open Sheet</Button>
         </CardWrapper>
-        <CardWrapper title="Sidebar" href="/sidebar">
+        <CardWrapper title="Sidebar" href="/components/sidebar">
             <div class="flex sm">
                 <Icon type="components" size={18} />
                 Component
                 <Badge theme="success" small={true}>new components</Badge>
             </div>
         </CardWrapper>
-        <CardWrapper title="Slider" href="/slider">
+        <CardWrapper title="Slider" href="/components/slider">
             <Slider min={0} max={100} value={50} />
         </CardWrapper>
-        <CardWrapper title="Spinner" href="/spinner">
+        <CardWrapper title="Spinner" href="/components/spinner">
             <Spinner />
         </CardWrapper>
-        <CardWrapper title="Switch" href="/switch">
+        <CardWrapper title="Switch" href="/components/switch">
             <Switch toggled={true} />
         </CardWrapper>
-        <CardWrapper title="Table" href="/table">
+        <CardWrapper title="Table" href="/components/table">
             <Table
                 headings={['ID', 'Name']}
                 data={[['1', 'John Doe']]}
             />
         </CardWrapper>
-        <CardWrapper title="Tabs" href="/tabs">
+        <CardWrapper title="Tabs" href="/components/tabs">
             <Tabs items={tabItems} theme="boxed" />
         </CardWrapper>
-        <CardWrapper title="Textarea" href="/textarea">
+        <CardWrapper title="Textarea" href="/components/textarea">
             <Textarea placeholder="Get in touch with us" />
         </CardWrapper>
-        <CardWrapper title="ThemeSwitcher" href="/theme-switcher">
+        <CardWrapper title="ThemeSwitcher" href="/components/theme-switcher">
             <ThemeSwitcher themes={themes} />
         </CardWrapper>
-        <CardWrapper title="Timeline" href="/timeline">
+        <CardWrapper title="Timeline" href="/components/timeline">
             <Timeline>
                 <TimelineItem>Getting Started</TimelineItem>
                 <TimelineItem>Setup</TimelineItem>
             </Timeline>
         </CardWrapper>
-        <CardWrapper title="Toast" href="/toast">
+        <CardWrapper title="Toast" href="/components/toast">
             <Alert theme="success">Post saved</Alert>
         </CardWrapper>
-        <CardWrapper title="Tooltip" href="/tooltip">
+        <CardWrapper title="Tooltip" href="/components/tooltip">
             <p>Tooltip<sup>?</sup></p>
         </CardWrapper>
     </div>

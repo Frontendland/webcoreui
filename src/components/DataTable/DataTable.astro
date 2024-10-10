@@ -72,8 +72,8 @@ const columnToggleItems = [{
 }]
 
 const columnFilterItems = headings?.filter(heading => typeof heading !== 'string')
-    .filter(heading => heading.filterable)
-    .map(heading => heading.name)
+    .filter(heading => (heading as HeadingObject).filterable)
+    .map(heading => (heading as HeadingObject).name)
     .map(heading => getColumnName(heading))
 
 const hasPagination = data?.length && itemsPerPage

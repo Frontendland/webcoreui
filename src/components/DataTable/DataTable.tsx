@@ -61,7 +61,7 @@ const DataTable = ({
     ])
 
     const styleVariables = {
-        ...(maxHeight && { 'max-height': maxHeight })
+        ...(maxHeight && { maxHeight })
     } as React.CSSProperties
 
     const showColumnToggle = headings?.some(heading => {
