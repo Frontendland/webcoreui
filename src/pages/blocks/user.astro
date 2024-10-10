@@ -1,0 +1,48 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Card from '@components/Card/Card.astro'
+
+import AstroUser from '@blocks/User/User.astro'
+import SvelteUser from '@blocks/User/User.svelte'
+import ReactUser from '@blocks/User/User.tsx'
+---
+
+<Layout>
+    <h1>Sign Up Blocks</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <div class="grid xs-2 sm-3">
+        <Card>
+            <AstroUser
+                avatar="../img/avatar0.png"
+                name="Marcus"
+                role="Top rated seller"
+                roleTooltip="In Art & Collectibles"
+                rating={4.8}
+                showText={true}
+            />
+        </Card>
+        <Card>
+            <SvelteUser
+                avatar="../img/avatar1.png"
+                name="George"
+                role="Svelte dev"
+                rating={4.2}
+                showText={true}
+                text="{0}/{1}"
+            />
+        </Card>
+        <Card>
+            <ReactUser
+                avatar="../img/avatar2.png"
+                name="Emily"
+                role="React dev"
+            />
+        </Card>
+    </div>
+</Layout>

@@ -2,7 +2,10 @@
 import Layout from '@static/Layout.astro'
 import Link from '@static/Link.astro'
 
+import Card from '@components/Card/Card.astro'
+
 import SignUp from '@blocks/SignUp/SignUp.astro'
+import User from '@blocks/User/User.astro'
 ---
 
 <Layout>
@@ -13,5 +16,16 @@ import SignUp from '@blocks/SignUp/SignUp.astro'
             <SignUp />
             <Link href="/blocks/sign-up" />
         </div>
+        <Card title="User with Rating">
+            <User
+                avatar="../img/avatar0.png"
+                name="Marcus"
+                role="Top rated seller"
+                roleTooltip="In Art & Collectibles"
+                rating={4.8}
+                showText={true}
+            />
+            <Link href="/blocks/user" />
+        </Card>
     </div>
 </Layout>

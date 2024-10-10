@@ -1,0 +1,39 @@
+---
+import type { UserProps } from './user'
+
+import {
+    Avatar,
+    Rating
+} from 'webcoreui/astro'
+
+interface Props extends UserProps {}
+
+const {
+    avatar,
+    avatarSize = 50,
+    name,
+    role,
+    roleTooltip,
+    rating,
+    ...rest
+} = Astro.props
+---
+
+<div class="flex sm items-center">
+    <Avatar
+        img={avatar}
+        size={avatarSize}
+    />
+    <div class="flex column xs">
+        <span>{name}</span>
+        {role && (
+            <span class="muted" data-tooltip={roleTooltip}>
+                {role}
+            </span>
+        )}
+    </div>
+</div>
+{rating && (
+    <hr />
+    <Rating {...rest} score={rating} />
+)}

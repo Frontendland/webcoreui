@@ -15,7 +15,7 @@ export type ButtonProps = {
         | '_parent'
         | '_top'
         | '_unfencedTop'
-        | null
+        | ''
         | undefined
     href?: string
     className?: string
