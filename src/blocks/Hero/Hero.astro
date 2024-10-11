@@ -1,0 +1,69 @@
+---
+import type { HeroProps } from './hero'
+
+import styles from './hero.module.scss'
+
+import {
+    Badge,
+    Button,
+    ConditionalWrapper,
+    Icon,
+    type IconProps
+} from 'webcoreui/astro'
+
+interface Props extends HeroProps {}
+
+const {
+    heading,
+    subHeading,
+    buttons,
+    badge,
+    image,
+    reverse
+} = Astro.props
+
+const classes = [
+    styles.hero,
+    reverse && styles.reverse,
+    image?.src && styles.flex
+]
+---
+
+<section class:list={classes}>
+    <ConditionalWrapper condition={!!image?.src}>
+        <div slot="wrapper">children</div>
+        {badge && (
+            <Badge {...badge} className={styles.badge}>
+                {badge.text}
+            </Badge>
+        )}
+        <h1>{heading}</h1>
+        {subHeading && <h2>{subHeading}</h2>}
+
+        {!!buttons?.length && (
+            <div class:list={[styles.cta, 'flex xs']}>
+                {buttons?.map(button => (
+                    <Button {...button}>
+                        {button.icon && (
+                            <Fragment>
+                                {button.icon.startsWith('<svg')
+                                    ? <Fragment set:html={button.icon} />
+                                    : <Icon type={button.icon as IconProps['type']} />
+                                }
+                            </Fragment>
+                        )}
+                        {button.text}
+                    </Button>
+                ))}
+            </div>
+        )}
+    </ConditionalWrapper>
+    {image?.src && (
+        <img
+            src={image.src}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+        />
+    )}
+</section>

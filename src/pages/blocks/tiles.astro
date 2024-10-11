@@ -20,15 +20,17 @@ import { circleCheck, components, info } from 'webcoreui/icons'
     <div class="grid xs-2 sm-3">
         <Card>
             <AstroTiles items={[
-                { icon: 'home', label: 'Home', href: '' },
-                { icon: 'github', label: 'Github', href: '' },
-                { icon: 'file', label: 'Docs', href: '' }
+                { icon: 'home', label: 'Astro', href: '' },
+                { icon: 'github', label: 'Tiles', href: '' },
+                { icon: 'file', label: 'Single Column', href: '' }
             ]} columns={1} />
         </Card>
         <Card>
             <SvelteTiles items={[
                 { icon: info, label: 'Svelte', href: '' },
-                { icon: circleCheck, label: 'Tiles', href: '' }
+                { icon: circleCheck, label: 'Tiles', href: '' },
+                { label: 'Four Tiles', href: '' },
+                { label: 'Without icon', href: '' }
             ]} />
         </Card>
         <Card>

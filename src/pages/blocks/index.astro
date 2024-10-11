@@ -4,6 +4,7 @@ import Link from '@static/Link.astro'
 
 import Card from '@components/Card/Card.astro'
 
+import Hero from '@blocks/Hero/Hero.astro'
 import SignUp from '@blocks/SignUp/SignUp.astro'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
@@ -12,28 +13,63 @@ import User from '@blocks/User/User.astro'
 <Layout>
     <h1>Blocks</h1>
 
-    <div class="grid md-2 lg-3">
-        <div class="relative">
-            <SignUp />
-            <Link href="/blocks/sign-up" />
+    <div class="flex wrap justify-center">
+        <div class="block-column flex column">
+            <div class="relative">
+                <SignUp />
+                <Link href="/blocks/sign-up" />
+            </div>
         </div>
-        <Card title="User with Rating">
-            <User
-                avatar="../img/avatar0.png"
-                name="Marcus"
-                role="Top rated seller"
-                roleTooltip="In Art & Collectibles"
-                rating={4.8}
-                showText={true}
-            />
-            <Link href="/blocks/user" />
-        </Card>
-        <Card title="Tiles with Icons">
-            <Tiles items={[
-                { icon: 'home', label: 'Home', href: '' },
-                { icon: 'github', label: 'Github', href: '' }
-            ]} columns={1} />
-            <Link href="/blocks/tiles" />
-        </Card>
+        <div class="block-column flex column">
+            <Card title="User with Rating">
+                <User
+                    avatar="../img/avatar0.png"
+                    name="Marcus"
+                    role="Top rated seller"
+                    roleTooltip="In Art & Collectibles"
+                    rating={4.8}
+                    showText={true}
+                />
+                <Link href="/blocks/user" />
+            </Card>
+
+            <Card title="Hero section">
+                <Hero
+                    heading="Hero section"
+                    subHeading="With Subtitle, badges, and CTA"
+                    buttons={[
+                        { text: 'Get Started ->' },
+                        { text: 'Contact', theme: 'secondary' }
+                    ]}
+                    badge={{
+                        rounded: true,
+                        theme: 'alert',
+                        text: 'New releases'
+                    }}
+                />
+                <Link href="/blocks/hero" />
+            </Card>
+        </div>
+        <div class="block-column flex column">
+            <Card title="Tiles with Icons">
+                <Tiles items={[
+                    { icon: 'home', label: 'Home', href: '' },
+                    { icon: 'github', label: 'Github', href: '' }
+                ]} columns={1} />
+                <Link href="/blocks/tiles" />
+            </Card>
+        </div>
     </div>
 </Layout>
+
+<style is:global lang="scss">
+    @import 'webcoreui/config';
+
+    h2:not(.heading) {
+        @include typography(left);
+    }
+
+    .block-column {
+        @include size(w370px);
+    }
+</style>

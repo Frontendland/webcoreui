@@ -1,0 +1,94 @@
+---
+import Layout from '@static/Layout.astro'
+
+import AstroHero from '@blocks/Hero/Hero.astro'
+import SvelteHero from '@blocks/Hero/Hero.svelte'
+import ReactHero from '@blocks/Hero/Hero.tsx'
+import { info } from 'webcoreui/icons'
+---
+
+<Layout>
+    <h1>Hero Sections</h1>
+    <h2 class="heading">
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <AstroHero
+        heading="Hero section title"
+        subHeading="Subtitle for hero section"
+        buttons={[
+            { text: 'Get Started ->', theme: 'success' },
+            { text: 'Contact', theme: 'secondary', icon: 'info' }
+        ]}
+        badge={{
+            rounded: true,
+            theme: 'outline',
+            text: 'New releases'
+        }}
+        image={{
+            src: '/img/placeholder1.png',
+            alt: 'Banner',
+            width: 500,
+            height: 300
+        }}
+    />
+
+    <hr />
+
+    <SvelteHero
+        heading="Svelte Hero section"
+        subHeading="With subtitle and CTA"
+        buttons={[
+            { text: 'Get Started ->', theme: 'alert' },
+            { text: 'Contact', theme: 'secondary', icon: info }
+        ]}
+        badge={{
+            rounded: true,
+            theme: 'alert',
+            text: 'New releases'
+        }}
+        image={{
+            src: '/img/placeholder2.png',
+            alt: 'Banner',
+            width: 500,
+            height: 300
+        }}
+        reverse={true}
+    />
+
+    <hr />
+
+    <ReactHero
+        heading="React Hero section"
+        subHeading="With subtitle and CTA"
+        buttons={[
+            { text: 'Get Started ->', theme: 'info' },
+            { text: 'Contact', theme: 'secondary', icon: info }
+        ]}
+        badge={{
+            rounded: true,
+            theme: 'info',
+            text: 'New releases'
+        }}
+        image={{
+            src: '/img/placeholder3.png',
+            alt: 'Banner',
+            width: 500,
+            height: 300
+        }}
+    />
+</Layout>
+
+<style lang="scss" is:global>
+    @import 'webcoreui/config';
+
+    h2:not(.heading) {
+        @include typography(left);
+    }
+
+    hr {
+        @include spacing(my-default);
+    }
+</style>

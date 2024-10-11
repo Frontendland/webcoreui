@@ -1,0 +1,57 @@
+@import 'webcoreui/config';
+
+.hero {
+    &.flex {
+        @include layout(flex, h-between, column, default);
+
+        div, img {
+            flex: 1;
+        }
+    }
+
+    h1 {
+        @include spacing(m0);
+        @include typography('5xl');
+        font-size: 36px;
+    }
+
+    h2 {
+        @include typography('xl');
+        @include spacing(mt-xxs);
+    }
+
+    img {
+        @include border-radius();
+        @include size('w100%');
+
+        object-fit: cover;
+    }
+
+    svg {
+        @include size(18px);
+    }
+    
+    .badge {
+        @include spacing(mb-xs);
+    }
+
+    .cta {
+        @include spacing(mt-md);
+    }
+}
+
+@include media(sm) {
+    .hero {
+        &:not(.reverse) {
+            @include layout(v-center);
+        }
+
+        &.flex {
+            @include layout(row);
+        }
+
+        &.reverse {
+            @include layout(row-reverse);
+        }
+    }
+}
