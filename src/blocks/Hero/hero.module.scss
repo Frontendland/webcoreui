@@ -16,7 +16,7 @@
     }
 
     h2 {
-        @include typography('xl');
+        @include typography('xl', primary-10, regular, 400);
         @include spacing(mt-xxs);
     }
 
