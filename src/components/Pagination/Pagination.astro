@@ -150,6 +150,7 @@ const generatedPages = pages?.length
                 const prevPageButton = element.querySelector('[data-page="prev"]') as HTMLButtonElement
                 const nextPageButton = element.querySelector('[data-page="next"]') as HTMLButtonElement
                 const currentPageButton = element.querySelector('[data-active]') as HTMLButtonElement
+                const previousPage = currentPage
 
                 const pageElements = Array
                     .from(pagination.children)
@@ -179,6 +180,7 @@ const generatedPages = pages?.length
 
                 dispatch('paginate', {
                     page: currentPage,
+                    direction: previousPage > currentPage ? 'prev' : 'next',
                     ...(activeButton?.dataset.page && { label: activeButton?.dataset.page }),
                     target: element,
                     trusted: event.isTrusted

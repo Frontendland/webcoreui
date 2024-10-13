@@ -14,7 +14,7 @@
     import type { PaginationEventType } from '../Pagination/pagination'
 
     export let items: SvelteCarouselProps['items'] = 0
-    export let visibleItems: SvelteCarouselProps['visibleItems'] = 1
+    export let itemsPerSlide: SvelteCarouselProps['itemsPerSlide'] = 1
     export let subText: SvelteCarouselProps['subText'] = ''
     export let scrollSnap: SvelteCarouselProps['scrollSnap'] = true
     export let progress: SvelteCarouselProps['progress'] = false
@@ -46,6 +46,7 @@
     const wrapperClasses = classNames([
         styles.wrapper,
         effect && styles[effect],
+        itemsPerSlide! > 1 && styles['no-snap'],
         wrapperClassName
     ])
 
@@ -59,10 +60,10 @@
         !subText && paginationClassName
     ])
 
-    const totalPages = Math.ceil(items / visibleItems!)
+    const totalPages = Math.ceil(items / itemsPerSlide!)
     const subTextValue = subText?.match(/\{0\}|\{1\}/g) ? subText : undefined
-    const style = visibleItems! > 1
-        ? `--w-slide-width: ${100 / visibleItems!}%;`
+    const style = itemsPerSlide! > 1
+        ? `--w-slide-width: calc(${100 / itemsPerSlide!}% - 5px);`
         : null
 
     const updateValues = () => {
@@ -100,7 +101,16 @@
     }, debounce)
 
     const paginate = (event: PaginationEventType) => {
-        const liElement = carouselItems[event.page - 1] as HTMLLIElement
+        const indexes = Array.from({ length: Math.ceil(items / itemsPerSlide!) }, (_, i) => {
+            return Array.from({ length: itemsPerSlide! }, (_, j) => (i * itemsPerSlide!) + j)
+                .filter(index => index < items)
+        })
+
+        const pageIndex = event.direction === 'prev'
+            ? indexes[event.page - 1][0]
+            : indexes[event.page - 1][indexes[event.page - 1].length - 1]
+
+        const liElement = carouselItems[pageIndex] as HTMLLIElement
 
         liElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
 

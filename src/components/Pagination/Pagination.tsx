@@ -53,6 +53,7 @@ const Pagination = ({
         }))
 
     const paginate = (to: string | number) => {
+        const previousPage = calculatedCurrentPage
         let currentPage = calculatedCurrentPage
 
         if (to === 'prev') {
@@ -69,6 +70,7 @@ const Pagination = ({
 
         onChange?.({
             page: currentPage,
+            direction: previousPage > currentPage ? 'prev' : 'next',
             ...(label && { label })
         })
     }

@@ -2,7 +2,7 @@ import type { PaginationProps } from '../Pagination/pagination'
 
 export type CarouselProps = {
     items: number
-    visibleItems?: number
+    itemsPerSlide?: number
     subText?: string
     autoplay?: boolean
     vertical?: boolean

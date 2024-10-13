@@ -2,6 +2,7 @@ import type { ButtonProps } from '../Button/button'
 
 export type PaginationEventType = {
     page: number
+    direction?: 'prev' | 'next'
     label?: string | number | undefined
 }
 

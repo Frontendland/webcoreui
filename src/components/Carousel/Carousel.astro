@@ -13,7 +13,7 @@ interface Props extends CarouselProps {}
 
 const {
     items,
-    visibleItems = 1,
+    itemsPerSlide = 1,
     subText,
     scrollSnap = true,
     progress,
@@ -38,6 +38,7 @@ const containerClasses = [
 const wrapperClasses = [
     styles.wrapper,
     effect && styles[effect],
+    itemsPerSlide > 1 && styles['no-snap'],
     wrapperClassName
 ]
 
@@ -51,10 +52,10 @@ const paginationClasses = classNames([
     !subText && paginationClassName
 ])
 
-const totalPages = Math.ceil(items / visibleItems)
+const totalPages = Math.ceil(items / itemsPerSlide)
 const subTextValue = subText?.match(/\{0\}|\{1\}/g) ? subText : undefined
-const style = visibleItems > 1
-    ? `--w-slide-width: ${100 / visibleItems}%;`
+const style = itemsPerSlide > 1
+    ? `--w-slide-width: calc(${100 / itemsPerSlide}% - 5px);`
     : null
 ---
 
@@ -67,7 +68,7 @@ const style = visibleItems > 1
         <ul
             class:list={wrapperClasses}
             style={style}
-            data-visible-items={visibleItems > 1 ? visibleItems : null}
+            data-visible-items={itemsPerSlide > 1 ? itemsPerSlide : null}
         >
             <slot />
         </ul>
@@ -159,8 +160,16 @@ const style = visibleItems > 1
 
         const progress = target.closest('section').querySelector('.w-carousel-progress')
         const progressValue = (100 / (Number(target.dataset.totalPages) - 1))
-        const visibleItems = Number(carousel.dataset.visibleItems) || 0
-        const pageIndex = (event.page + visibleItems) - 1
+        const itemsPerSlide = Number(carousel.dataset.visibleItems) || 1
+        const totalItems = carousel.children.length
+        const indexes = Array.from({ length: Math.ceil(totalItems / itemsPerSlide) }, (_, i) => {
+            return Array.from({ length: itemsPerSlide }, (_, j) => (i * itemsPerSlide) + j)
+                .filter(index => index < totalItems)
+        })
+
+        const pageIndex = event.direction === 'prev'
+            ? indexes[event.page - 1][0]
+            : indexes[event.page - 1][indexes[event.page - 1].length - 1]
 
         const liElement = carousel.children[pageIndex]
         const subText = event.target.nextElementSibling

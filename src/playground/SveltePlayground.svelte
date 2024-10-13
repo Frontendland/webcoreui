@@ -71,7 +71,6 @@
     <Card title="Carousel">
         <Carousel
             items={3}
-            visibleItems={1}
             subText={'Slide {0} of {1}'}
             progress={true}
             pagination={{ type: 'dots' }}

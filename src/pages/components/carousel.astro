@@ -24,7 +24,6 @@ const sections = getSections({
         <ComponentWrapper type="Astro">
             <AstroCarousel
                 items={3}
-                visibleItems={1}
                 subText="Slide {0} of {1}"
                 progress={true}
                 pagination={{ type: 'dots' }}
@@ -40,7 +39,6 @@ const sections = getSections({
             <SvelteCarousel
                 client:idle
                 items={3}
-                visibleItems={1}
                 subText="Slide {0} of {1}"
                 progress={true}
                 pagination={{ type: 'dots' }}
@@ -56,7 +54,6 @@ const sections = getSections({
             <ReactCarousel
                 client:idle
                 items={3}
-                visibleItems={1}
                 subText="Slide {0} of {1}"
                 progress={true}
                 pagination={{ type: 'dots' }}
@@ -206,6 +203,28 @@ const sections = getSections({
                         </Alert>
 
                     </li>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Multiple items per slide (2)">
+                <section.component items={6} itemsPerSlide={2}>
+                    <li><Box fullWidth={true}>1</Box></li>
+                    <li><Box fullWidth={true}>2</Box></li>
+                    <li><Box fullWidth={true}>3</Box></li>
+                    <li><Box fullWidth={true}>4</Box></li>
+                    <li><Box fullWidth={true}>5</Box></li>
+                    <li><Box fullWidth={true}>6</Box></li>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Multiple items per slide (3)">
+                <section.component items={6} itemsPerSlide={3}>
+                    <li><Box fullWidth={true}>1</Box></li>
+                    <li><Box fullWidth={true}>2</Box></li>
+                    <li><Box fullWidth={true}>3</Box></li>
+                    <li><Box fullWidth={true}>4</Box></li>
+                    <li><Box fullWidth={true}>5</Box></li>
+                    <li><Box fullWidth={true}>6</Box></li>
                 </section.component>
             </ComponentWrapper>
         </div>

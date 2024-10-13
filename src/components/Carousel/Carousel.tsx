@@ -14,7 +14,7 @@ import type { PaginationEventType } from '../Pagination/pagination'
 
 const Carousel = ({
     items,
-    visibleItems = 1,
+    itemsPerSlide = 1,
     subText,
     scrollSnap = true,
     progress,
@@ -49,6 +49,7 @@ const Carousel = ({
     const wrapperClasses = classNames([
         styles.wrapper,
         effect && styles[effect],
+        itemsPerSlide! > 1 && styles['no-snap'],
         wrapperClassName
     ])
 
@@ -62,10 +63,10 @@ const Carousel = ({
         !subText && paginationClassName
     ])
 
-    const totalPages = Math.ceil(items / visibleItems!)
+    const totalPages = Math.ceil(items / itemsPerSlide!)
     const subTextValue = subText?.match(/\{0\}|\{1\}/g) ? subText : undefined
-    const style = visibleItems > 1
-        ? { '--w-slide-width': `${100 / visibleItems}%;` } as React.CSSProperties
+    const style = itemsPerSlide > 1
+        ? { '--w-slide-width': `calc(${100 / itemsPerSlide!}% - 5px);` } as React.CSSProperties
         : undefined
 
     const updateValues = (page: number) => {
@@ -105,7 +106,16 @@ const Carousel = ({
     }, debounce)
 
     const paginate = (event: PaginationEventType) => {
-        const liElement = carouselItems.current[event.page - 1]
+        const indexes = Array.from({ length: Math.ceil(items / itemsPerSlide!) }, (_, i) => {
+            return Array.from({ length: itemsPerSlide! }, (_, j) => (i * itemsPerSlide!) + j)
+                .filter(index => index < items)
+        })
+
+        const pageIndex = event.direction === 'prev'
+            ? indexes[event.page - 1][0]
+            : indexes[event.page - 1][indexes[event.page - 1].length - 1]
+
+        const liElement = carouselItems.current[pageIndex]
 
         liElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
 

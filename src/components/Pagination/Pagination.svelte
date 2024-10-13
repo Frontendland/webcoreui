@@ -45,6 +45,8 @@
         }))
 
     const paginate = (to: string | number) => {
+        const previousPage = calculatedCurrentPage
+
         if (to === 'prev') {
             calculatedCurrentPage = calculatedCurrentPage - 1
         } else if (to === 'next') {
@@ -57,6 +59,7 @@
 
         onChange?.({
             page: calculatedCurrentPage,
+            direction: previousPage > calculatedCurrentPage ? 'prev' : 'next',
             ...(label && { label })
         })
     }
@@ -87,7 +90,7 @@
                 theme={theme}
                 onClick={!(disablePrevious || (calculatedCurrentPage === 1 && !previousLink))
                     ? () => paginate('prev')
-                    : null
+                    : undefined
                 }
             >
                 {#if showChevrons || type === 'arrows'}
@@ -107,7 +110,7 @@
                         theme={theme}
                         onClick={calculatedCurrentPage !== index + 1
                             ? () => paginate(index + 1)
-                            : null
+                            : undefined
                         }
                     >
                         {page.label}
@@ -129,7 +132,7 @@
                 theme={theme}
                 onClick={!disableNext
                     ? () => paginate('next')
-                    : null
+                    : undefined
                 }
             >
                 {#if type !== 'arrows'}

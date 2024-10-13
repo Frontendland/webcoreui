@@ -34,12 +34,15 @@ body {
         filter: saturate(0);
     }
 
+    &:not(.no-snap) li {
+        scroll-snap-align: center;
+    }
+
     li {
         @include transition();
         @include spacing(m0);
         @include layout(flex, h-center);
 
-        scroll-snap-align: center;
         min-width: var(--w-slide-width);
     }
 }
