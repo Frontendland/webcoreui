@@ -12,7 +12,6 @@
     h1 {
         @include spacing(m0);
         @include typography('5xl');
-        font-size: 36px;
     }
 
     h2 {

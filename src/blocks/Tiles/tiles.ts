@@ -1,7 +1,7 @@
 import type { ButtonProps, IconProps } from 'webcoreui/astro'
 
 export type TilesProps = {
-    columns?: number
+    columns?: 0 | 1 | 2 | 3 | 4
     items: {
         label: string
         href: string
