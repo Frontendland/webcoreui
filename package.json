@@ -1,7 +1,7 @@
 {
     "name": "webcore",
     "type": "module",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "scripts": {
         "prepare": "husky",
         "pre-commit": "lint-staged",
@@ -35,7 +35,7 @@
         "svelte-eslint-parser": "0.41.0",
         "typescript": "5.4.5",
         "typescript-eslint": "8.3.0",
-        "webcoreui": "0.6.0"
+        "webcoreui": "0.6.1"
     },
     "exports": {
         ".": "./index.js",
