@@ -1,0 +1,48 @@
+---
+import type { IconListProps } from './iconList'
+
+import styles from './icon-list.module.scss'
+
+interface Props extends IconListProps {}
+
+import {
+    Icon,
+    type IconProps
+} from 'webcoreui/astro'
+
+const {
+    items,
+    color,
+    columns,
+    className
+} = Astro.props
+
+const classes = [
+    styles.list,
+    columns && `columns-${columns}`,
+    className
+]
+
+const getColor = (color: string | undefined) => {
+    return color
+        ? `--w-icon-list-color: ${color};`
+        : null
+}
+
+const styleVariables = [
+    getColor(color),
+    columns && `--w-icon-list-columns: ${columns};`
+].filter(Boolean).join('')
+---
+
+<ul class:list={classes} style={styleVariables || null}>
+    {items.map(item => (
+        <li style={getColor(item.color)}>
+            {item.icon.startsWith('<svg')
+                ? <Fragment set:html={item.icon} />
+                : <Icon type={item.icon as IconProps['type']} />
+            }
+            <div set:html={item.text} />
+        </li>
+    ))}
+</ul>

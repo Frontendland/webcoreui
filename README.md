@@ -235,3 +235,11 @@ import { Accordion } from 'webcoreui/react'
 - [Timeline](https://github.com/Frontendland/webcoreui/blob/main/src/pages/timeline.astro)
 - [Toast](https://github.com/Frontendland/webcoreui/tree/main/src/components/Toast)
 - [Tooltip](https://github.com/Frontendland/webcoreui/blob/main/src/pages/tooltip.astro)
+
+## Blocks
+
+- [Hero](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Hero)
+- [IconList](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/IconList)
+- [SignUp](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SignUp)
+- [Tiles](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Tiles)
+- [User](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/User)

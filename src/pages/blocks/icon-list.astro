@@ -1,0 +1,65 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Card from '@components/Card/Card.astro'
+
+import { getSections } from '@helpers'
+
+import AstroIconList from '@blocks/IconList/IconList.astro'
+import SvelteIconList from '@blocks/IconList/IconList.svelte'
+import ReactIconList from '@blocks/IconList/IconList.tsx'
+import { circleCheck, circleClose } from 'webcoreui/icons'
+
+const sections = getSections({
+    title: 'lists',
+    components: [AstroIconList, SvelteIconList, ReactIconList]
+})
+---
+
+<Layout>
+    <h1>List with Icon Blocks</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    {sections.map((section: any) => (
+        <Fragment>
+            {section.type !== 'astro' && <h2>{section.title}</h2>}
+        </Fragment>
+        <div class="grid xs-2 sm-3">
+            <Card title="List with icons">
+                <section.component items={[
+                    { icon: circleCheck, text: '<b>Advantages</b>' },
+                    { icon: circleClose, text: '<b>Disadvantages</b>' }
+                ]} />
+            </Card>
+            <Card title="Multiple columns">
+                <section.component items={[
+                    { icon: circleCheck, text: 'Advantage' },
+                    { icon: circleCheck, text: 'Advantage' },
+                    { icon: circleClose, text: 'Disadvantage' },
+                    { icon: circleClose, text: 'Disadvantage' }
+                ]} columns={2} />
+            </Card>
+
+            <Card title="Colored icons">
+                <section.component items={[
+                    { icon: circleCheck, text: 'Advantage' },
+                    { icon: circleCheck, text: 'Advantage' }
+                ]} columns={2} color="var(--w-color-success)" />
+            </Card>
+
+            <Card title="Individual colors">
+                <section.component items={[
+                    { icon: circleCheck, text: 'Advantage', color: 'var(--w-color-success)' },
+                    { icon: circleCheck, text: 'Advantage', color: 'var(--w-color-info)' },
+                    { icon: circleClose, text: 'Disadvantage', color: 'var(--w-color-warning)' },
+                    { icon: circleClose, text: 'Disadvantage', color: 'var(--w-color-alert)' }
+                ]} columns={2} />
+            </Card>
+        </div>
+    ))}
+
+</Layout>

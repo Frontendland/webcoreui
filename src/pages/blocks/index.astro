@@ -5,6 +5,7 @@ import Link from '@static/Link.astro'
 import Card from '@components/Card/Card.astro'
 
 import Hero from '@blocks/Hero/Hero.astro'
+import IconList from '@blocks/IconList/IconList.astro'
 import SignUp from '@blocks/SignUp/SignUp.astro'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
@@ -57,6 +58,13 @@ import User from '@blocks/User/User.astro'
                     { icon: 'github', label: 'Github', href: '' }
                 ]} columns={1} />
                 <Link href="/blocks/tiles" />
+            </Card>
+            <Card title="List with Icons">
+                <IconList items={[
+                    { icon: 'circle-check', text: '<b>Advantages</b>', color: 'var(--w-color-success)' },
+                    { icon: 'circle-close', text: '<b>Disadvantages</b>', color: 'var(--w-color-alert)' }
+                ]} />
+                <Link href="/blocks/icon-list" />
             </Card>
         </div>
     </div>

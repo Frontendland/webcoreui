@@ -1,0 +1,29 @@
+@import 'webcoreui/config';
+
+.list {
+    @include spacing(0);
+    list-style-type: none;
+
+    li {
+        @include layout(flex, sm);
+
+        &:last-child {
+            @include spacing(m0);
+        }
+
+        svg {
+            min-width: 24px;
+            color: var(--w-icon-list-color);
+        }
+
+        div {
+            word-break: break-all;
+        }
+    }
+}
+
+@include media(xs) {
+    .list {
+        columns: var(--w-icon-list-columns);
+    }
+}
