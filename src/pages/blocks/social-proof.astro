@@ -1,0 +1,54 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Card from '@components/Card/Card.astro'
+
+import AstroSocialProof from '@blocks/SocialProof/SocialProof.astro'
+import SvelteSocialProof from '@blocks/SocialProof/SocialProof.svelte'
+import ReactSocialProof from '@blocks/SocialProof/SocialProof.tsx'
+---
+
+<Layout>
+    <h1>Social Proof Blocks</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <div class="grid xs-2 sm-3">
+        <Card title="Social proof">
+            <AstroSocialProof items={[
+                { text: '1M+', subText: 'monthly readers' },
+                { text: '500+', subText: 'tutorials' },
+                { text: '1000+', subText: 'happy customers' }
+            ]} />
+        </Card>
+
+        <Card title="Social proof without subtext">
+            <SvelteSocialProof items={[
+                { text: '1M+ readers' },
+                { text: '•' },
+                { text: '500+ tuts' }
+            ]} />
+        </Card>
+
+        <Card title="Single social proof with HTML">
+            <ReactSocialProof items={[
+                {
+                    text: '1000+',
+                    subText: 'happy customers. <a href="#">Read our reviews.</a>'
+                }
+            ]} />
+        </Card>
+    </div>
+</Layout>
+
+<style lang="scss">
+    @import 'webcoreui/config';
+
+    .toggle {
+        @include typography(md);
+        @include spacing(py-xs, px-sm);
+    }
+</style>

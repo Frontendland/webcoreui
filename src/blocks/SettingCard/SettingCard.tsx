@@ -5,7 +5,7 @@ import styles from './setting-card.module.scss'
 
 import { Card } from 'webcoreui/react'
 
-const Tiles = ({
+const SettingCard = ({
     title,
     subTitle,
     children
@@ -26,4 +26,4 @@ const Tiles = ({
     )
 }
 
-export default Tiles
+export default SettingCard

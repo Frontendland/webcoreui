@@ -6,6 +6,7 @@ import Hero from '@blocks/Hero/Hero.astro'
 import IconList from '@blocks/IconList/IconList.astro'
 import SettingCard from '@blocks/SettingCard/SettingCard.astro'
 import SignUp from '@blocks/SignUp/SignUp.astro'
+import SocialProof from '@blocks/SocialProof/SocialProof.astro'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
 import { Card, Switch } from 'webcoreui/astro'
@@ -64,6 +65,15 @@ import { Card, Switch } from 'webcoreui/astro'
                     }}
                 />
                 <Link href="/blocks/hero" />
+            </Card>
+
+            <Card title="Social proof">
+                <SocialProof items={[
+                    { text: '1M+', subText: 'monthly readers' },
+                    { text: '500+', subText: 'tutorials' },
+                    { text: '1000+', subText: 'happy customers' }
+                ]} />
+                <Link href="/blocks/social-proof" />
             </Card>
         </div>
         <div class="block-column flex column">

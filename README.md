@@ -242,5 +242,6 @@ import { Accordion } from 'webcoreui/react'
 - [IconList](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/IconList)
 - [SettingCard](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SettingCard)
 - [SignUp](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SignUp)
+- [SocialProof](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SocialProof)
 - [Tiles](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Tiles)
 - [User](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/User)

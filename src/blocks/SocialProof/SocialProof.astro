@@ -1,0 +1,23 @@
+---
+import type { SocialProofProps } from './socialProof'
+
+import styles from './social-proof.module.scss'
+
+interface Props extends SocialProofProps {}
+
+const {
+    items,
+    className
+} = Astro.props
+---
+
+<section class:list={['flex center wrap', className]}>
+    {items.map(item => (
+        <div class={styles.proof}>
+            <strong set:html={item.text} />
+            {item.subText && (
+                <span class="muted" set:html={item.subText} />
+            )}
+        </div>
+    ))}
+</section>
