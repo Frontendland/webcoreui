@@ -1,0 +1,72 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Card from '@components/Card/Card.astro'
+
+import AstroSettingCard from '@blocks/SettingCard/SettingCard.astro'
+import SvelteSettingCard from '@blocks/SettingCard/SettingCard.svelte'
+import ReactSettingCard from '@blocks/SettingCard/SettingCard.tsx'
+import { Button, Checkbox, Switch } from 'webcoreui/astro'
+---
+
+<Layout>
+    <h1>Setting Card Blocks</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <div class="grid xs-2 sm-3">
+        <Card title="Setting cards" bodyClassName="flex column sm">
+            <AstroSettingCard
+                title="Security emails"
+                subTitle="Get security alerts for logins."
+            >
+                <Switch toggled={true} />
+            </AstroSettingCard>
+            <AstroSettingCard
+                title="Marketing emails"
+                subTitle="Get email about updates."
+            >
+                <Switch />
+            </AstroSettingCard>
+        </Card>
+
+        <Card title="Svelte setting cards" bodyClassName="flex column sm">
+            <SvelteSettingCard
+                title="Security emails"
+                subTitle="Get security alerts for logins."
+            >
+                <Checkbox checked={true} />
+            </SvelteSettingCard>
+            <SvelteSettingCard
+                title="Marketing emails"
+                subTitle="Get email about updates."
+            >
+                <Checkbox />
+            </SvelteSettingCard>
+        </Card>
+
+        <Card title="React setting cards" bodyClassName="flex column sm">
+            <ReactSettingCard title="Security emails">
+                <Button className="toggle">Toggle off</Button>
+            </ReactSettingCard>
+            <ReactSettingCard
+                title="Marketing emails"
+                subTitle="Get email about updates."
+            >
+                <Button className="toggle" theme="secondary">Toggle on</Button>
+            </ReactSettingCard>
+        </Card>
+    </div>
+</Layout>
+
+<style lang="scss">
+    @import 'webcoreui/config';
+
+    .toggle {
+        @include typography(md);
+        @include spacing(py-xs, px-sm);
+    }
+</style>

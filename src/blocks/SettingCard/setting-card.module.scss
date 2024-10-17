@@ -1,0 +1,13 @@
+@import 'webcoreui/config';
+
+section.card {
+    @include border(0);
+
+    .body {
+        @include layout(flex, h-between, v-center, xs);
+    }
+    
+    .titles {
+        @include layout(flex, column, xxs);
+    }
+}

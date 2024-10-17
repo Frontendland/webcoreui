@@ -2,13 +2,13 @@
 import Layout from '@static/Layout.astro'
 import Link from '@static/Link.astro'
 
-import Card from '@components/Card/Card.astro'
-
 import Hero from '@blocks/Hero/Hero.astro'
 import IconList from '@blocks/IconList/IconList.astro'
+import SettingCard from '@blocks/SettingCard/SettingCard.astro'
 import SignUp from '@blocks/SignUp/SignUp.astro'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
+import { Card, Switch } from 'webcoreui/astro'
 ---
 
 <Layout>
@@ -20,6 +20,21 @@ import User from '@blocks/User/User.astro'
                 <SignUp />
                 <Link href="/blocks/sign-up" />
             </div>
+            <Card title="Settings" bodyClassName="flex column sm">
+                <SettingCard
+                    title="Security emails"
+                    subTitle="Get security alerts for logins."
+                >
+                    <Switch toggled={true} />
+                </SettingCard>
+                <SettingCard
+                    title="Marketing emails"
+                    subTitle="Get email about updates."
+                >
+                    <Switch />
+                </SettingCard>
+                <Link href="/blocks/setting-card" />
+            </Card>
         </div>
         <div class="block-column flex column">
             <Card title="User with Rating">

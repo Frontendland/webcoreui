@@ -240,6 +240,7 @@ import { Accordion } from 'webcoreui/react'
 
 - [Hero](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Hero)
 - [IconList](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/IconList)
+- [SettingCard](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SettingCard)
 - [SignUp](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SignUp)
 - [Tiles](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Tiles)
 - [User](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/User)

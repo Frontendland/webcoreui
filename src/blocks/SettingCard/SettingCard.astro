@@ -1,0 +1,22 @@
+---
+import type { SettingCardProps } from './settingCard'
+
+import styles from './setting-card.module.scss'
+
+import { Card } from 'webcoreui/astro'
+
+interface Props extends SettingCardProps {}
+
+const {
+    title,
+    subTitle
+} = Astro.props
+---
+
+<Card secondary={true} className={styles.card} bodyClassName={styles.body}>
+    <div class={styles.titles}>
+        <div>{title}</div>
+        {subTitle && <div class="muted">{subTitle}</div>}
+    </div>
+    <slot />
+</Card>
