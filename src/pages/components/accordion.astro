@@ -6,7 +6,23 @@ import AstroAccordion from '@components/Accordion/Accordion.astro'
 import SvelteAccordion from '@components/Accordion/Accordion.svelte'
 import ReactAccordion from '@components/Accordion/Accordion.tsx'
 
+import { getSections } from '@helpers'
 import { accordionItems } from '@data'
+
+const alternatingAccordionItems = [
+    accordionItems[0],
+    {
+        ...accordionItems[1],
+        reverse: true
+    },
+    accordionItems[2]
+]
+
+const sections = getSections({
+    title: 'accordions',
+    components: [AstroAccordion, SvelteAccordion, ReactAccordion],
+    showSubTitle: true
+})
 ---
 
 <Layout>
@@ -25,4 +41,43 @@ import { accordionItems } from '@data'
             <ReactAccordion items={accordionItems} client:load />
         </ComponentWrapper>
     </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component items={accordionItems} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Plus icon">
+                <section.component
+                    items={accordionItems}
+                    icon="plus"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Without icon">
+                <section.component
+                    items={accordionItems}
+                    icon="none"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Reverse layout">
+                <section.component
+                    items={accordionItems}
+                    reverse={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alternating layout">
+                <section.component
+                    items={alternatingAccordionItems}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
 </Layout>

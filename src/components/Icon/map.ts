@@ -13,6 +13,7 @@ import Home from '../../icons/home.svg?raw'
 import Info from '../../icons/info.svg?raw'
 import Moon from '../../icons/moon.svg?raw'
 import Order from '../../icons/order.svg?raw'
+import Plus from '../../icons/plus.svg?raw'
 import Search from '../../icons/search.svg?raw'
 import Sun from '../../icons/sun.svg?raw'
 import Warning from '../../icons/warning.svg?raw'
@@ -33,6 +34,7 @@ const iconMap = {
     'info': Info,
     'moon': Moon,
     'order': Order,
+    'plus': Plus,
     'search': Search,
     'sun': Sun,
     'warning': Warning

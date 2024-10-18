@@ -4,6 +4,14 @@
     @include spacing(0);
     list-style-type: none;
 
+    &.reverse .title {
+        @include layout(row-reverse, h-end);
+    }
+
+    &.plus .title[data-open="true"] svg {
+        transform: rotate(135deg);
+    }
+
     li {
         @include border(primary-50, bottom);
         @include spacing(py-sm, px-none, m0);
@@ -26,6 +34,10 @@
 
             background: transparent;
             cursor: pointer;
+
+            &.reverse {
+                @include layout(row-reverse);
+            }
 
             svg {
                 @include transition(transform);
