@@ -2,6 +2,7 @@
 import Layout from '@static/Layout.astro'
 import Link from '@static/Link.astro'
 
+import BlogCard from '@blocks/BlogCard/BlogCard.astro'
 import FAQ from '@blocks/FAQ/FAQ.astro'
 import Hero from '@blocks/Hero/Hero.astro'
 import IconList from '@blocks/IconList/IconList.astro'
@@ -76,6 +77,18 @@ import { Card, Switch } from 'webcoreui/astro'
                 ]} />
                 <Link href="/blocks/social-proof" />
             </Card>
+
+            <BlogCard
+                href="/blocks/blog-card"
+                img={{
+                    src: '/img/placeholder3.png',
+                    alt: 'Blog img',
+                    width: 200,
+                    height: 150
+                }}
+                title="Blog Card Title"
+                text="This is a blog card with an introductory test. Click me to navigate to more examples."
+            />
         </div>
         <div class="block-column flex column">
             <Card title="Tiles with Icons">

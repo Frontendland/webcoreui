@@ -1,0 +1,46 @@
+---
+import type { BlogCardProps } from './blogCard'
+
+import styles from './blog-card.module.scss'
+
+import { classNames } from 'webcoreui'
+import {
+    Card,
+    ConditionalWrapper
+} from 'webcoreui/astro'
+
+interface Props extends BlogCardProps {}
+
+const {
+    href,
+    target,
+    img,
+    title,
+    text,
+    secondary,
+    className,
+    ...rest
+} = Astro.props
+---
+
+<a href={href} target={target} class:list={[styles.link, className]}>
+    <Card
+        {...rest}
+        className={styles.card}
+        bodyClassName={classNames([styles.body, secondary && styles.secondary])}
+        secondary={true}
+    >
+        <img
+            src={img.src}
+            alt={img.alt}
+            width={img.width}
+            height={img.height}
+            loading={img.lazy ? 'lazy' : undefined}
+        />
+        <ConditionalWrapper condition={!!text}>
+            <div slot="wrapper">children</div>
+            {title && <strong>{title}</strong>}
+            {text && <div class="muted" set:html={text} />}
+        </ConditionalWrapper>
+    </Card>
+</a>

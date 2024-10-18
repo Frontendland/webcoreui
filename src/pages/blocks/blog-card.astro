@@ -1,0 +1,88 @@
+---
+import Layout from '@static/Layout.astro'
+
+import { getSections } from '@helpers'
+
+import AstroBlogCard from '@blocks/BlogCard/BlogCard.astro'
+import SvelteBlogCard from '@blocks/BlogCard/BlogCard.svelte'
+import ReactBlogCard from '@blocks/BlogCard/BlogCard.tsx'
+
+const sections = getSections({
+    title: 'blog cards',
+    components: [AstroBlogCard, SvelteBlogCard, ReactBlogCard]
+})
+---
+
+<Layout>
+    <h1>Blog Cards</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    {sections.map((section: any) => (
+        <Fragment>
+            {section.type !== 'astro' && (<br /><h2>{section.title}</h2>)}
+        </Fragment>
+        <div class="grid xs-2 sm-3 items-end">
+            <section.component
+                href=""
+                img={{
+                    src: '/img/placeholder3.png',
+                    alt: 'Blog img',
+                    width: 200,
+                    height: 150
+                }}
+            />
+
+            <section.component
+                href=""
+                img={{
+                    src: '/img/placeholder3.png',
+                    alt: 'Blog img',
+                    width: 200,
+                    height: 150
+                }}
+                title="Blog Card with Title"
+            />
+
+            <section.component
+                href=""
+                img={{
+                    src: '/img/placeholder3.png',
+                    alt: 'Blog img',
+                    width: 200,
+                    height: 150
+                }}
+                title="Blog Card with Title and Text"
+                text="The text field also support the use of <code>HTML</code> code."
+            />
+
+            <section.component
+                href=""
+                img={{
+                    src: '/img/placeholder3.png',
+                    alt: 'Blog img',
+                    width: 200,
+                    height: 125
+                }}
+                title="Secondary Card with Title"
+                secondary={true}
+            />
+
+            <section.component
+                href=""
+                img={{
+                    src: '/img/placeholder3.png',
+                    alt: 'Blog img',
+                    width: 200,
+                    height: 125
+                }}
+                title="Secondary Card with Text"
+                text="The text field also support the use of <code>HTML</code> code."
+                secondary={true}
+            />
+        </div>
+    ))}
+</Layout>

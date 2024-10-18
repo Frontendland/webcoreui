@@ -33,6 +33,10 @@ $alignments: (
         max-width: 1200px;
     }
 
+    .muted {
+        @include typography(primary-20, md);
+    }
+
     // Gaps
     .flex, .grid {
         @each $key, $value in $spacing {

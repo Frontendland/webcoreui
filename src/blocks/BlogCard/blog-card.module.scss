@@ -1,0 +1,40 @@
+@import 'webcoreui/config';
+
+.link {
+    @include typography(none);
+
+    .card .body {
+        @include layout(flex, sm);
+        @include spacing(p-sm);
+
+        &.secondary {
+            img,
+            strong,
+            div {
+                flex: 1;
+            }
+        }
+    
+        &:not(.secondary) {
+            @include layout(column);
+        }
+    
+        img {
+            @include border-radius();
+            @include size('w100%');
+    
+            object-fit: cover;
+        }
+    
+        strong {
+            @include visibility(block);
+            @include typography(xl);
+        }
+        
+        strong + div {
+            @include typography(hmd);
+            @include spacing(mt-xs);
+        }
+    }
+}
+
