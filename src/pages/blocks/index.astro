@@ -2,6 +2,7 @@
 import Layout from '@static/Layout.astro'
 import Link from '@static/Link.astro'
 
+import FAQ from '@blocks/FAQ/FAQ.astro'
 import Hero from '@blocks/Hero/Hero.astro'
 import IconList from '@blocks/IconList/IconList.astro'
 import SettingCard from '@blocks/SettingCard/SettingCard.astro'
@@ -91,6 +92,12 @@ import { Card, Switch } from 'webcoreui/astro'
                 ]} />
                 <Link href="/blocks/icon-list" />
             </Card>
+            <Card>
+                <FAQ items={[]}>
+                    <span class="muted">Learn more about our product</span>
+                </FAQ>
+                <Link href="/blocks/faq" />
+            </Card>
         </div>
     </div>
 </Layout>
@@ -98,7 +105,8 @@ import { Card, Switch } from 'webcoreui/astro'
 <style is:global lang="scss">
     @import 'webcoreui/config';
 
-    h2:not(.heading) {
+    h2:not(.heading),
+    section h1:not(.reset) {
         @include typography(left);
     }
 

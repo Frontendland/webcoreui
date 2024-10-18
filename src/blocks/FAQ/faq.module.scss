@@ -1,0 +1,24 @@
+@import 'webcoreui/config';
+
+.faq {
+    @include layout(flex, default, column);
+
+    .col {
+        flex: 1;
+    }
+
+    .title {
+        @include typography('2xl', primary-10, bold);
+        @include spacing(mb-sm);
+    }
+
+    .accordion {
+        flex: 2;
+    }
+}
+
+@include media(sm) {
+    .faq {
+        @include layout(row);
+    }
+}

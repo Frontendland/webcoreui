@@ -1,0 +1,60 @@
+---
+import Layout from '@static/Layout.astro'
+
+import { accordionItems } from '@data'
+
+import AstroFAQ from '@blocks/FAQ/FAQ.astro'
+import SvelteFAQ from '@blocks/FAQ/FAQ.svelte'
+import ReactFAQ from '@blocks/FAQ/FAQ.tsx'
+import Tiles from '@blocks/Tiles/Tiles.astro'
+---
+
+<Layout>
+    <h1>FAQ Blocks</h1>
+    <h2 class="heading">
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <AstroFAQ items={accordionItems}>
+        <span class="muted">Here are the most common questions we get asked. If you don't find an answer for your question, please reach out to us through our <a href="#">contact form</a>.</span>
+    </AstroFAQ>
+
+    <hr />
+
+    <SvelteFAQ
+        title="FAQs"
+        items={accordionItems}
+        client:load
+    />
+
+    <hr />
+
+    <ReactFAQ
+        items={accordionItems}
+        client:load
+    >
+        <span class="muted mb">Looking for a specific page? Find them below:</span>
+
+        <Tiles items={[
+            { icon: 'home', label: 'Home', href: '' },
+            { icon: 'github', label: 'GitHub', href: '' },
+            { icon: 'file', label: 'Documentation', href: '' }
+        ]} columns={1} />
+    </ReactFAQ>
+
+</Layout>
+
+<style lang="scss" is:global>
+    @import 'webcoreui/config';
+
+    .mb {
+        @include visibility(block);
+        @include spacing(mb-default);
+    }
+
+    hr {
+        @include spacing(my-default);
+    }
+</style>

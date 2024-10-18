@@ -1,0 +1,36 @@
+---
+import type { FAQProps } from './faq'
+
+import styles from './faq.module.scss'
+
+import {
+    Accordion
+} from 'webcoreui/astro'
+
+interface Props extends FAQProps {}
+
+const {
+    element = 'section',
+    title = 'Frequently Asked Questions',
+    titleTag = 'h2',
+    items,
+    className,
+    ...rest
+} = Astro.props
+
+const classes = [
+    styles.faq,
+    className
+]
+
+const Component = element
+const Title = titleTag
+---
+
+<Component class:list={classes} {...rest}>
+    <div class={styles.col}>
+        <Title class:list={styles.title}>{title}</Title>
+        <slot />
+    </div>
+    <Accordion items={items} className={styles.accordion} />
+</Component>

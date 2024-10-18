@@ -238,6 +238,7 @@ import { Accordion } from 'webcoreui/react'
 
 ## Blocks
 
+- [FAQ](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/FAQ)
 - [Hero](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Hero)
 - [IconList](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/IconList)
 - [SettingCard](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SettingCard)
