@@ -1,0 +1,28 @@
+@import 'webcoreui/config';
+
+body {
+    --w-type-color: var(--w-color-info);
+}
+
+.error {
+    @include typography(center);
+
+    .type {
+        color: var(--w-type-color);
+        font-size: 100px;
+    }
+
+    .title {
+        @include typography(center, '3xl');
+        @include spacing(my-sm);
+    }
+
+    .sub-title {
+        @include typography(center, lg, primary-10, regular);
+        @include spacing(mb-sm);
+    }
+
+    svg {
+        @include size(18px);
+    }
+}

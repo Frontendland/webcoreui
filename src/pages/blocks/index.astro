@@ -3,6 +3,7 @@ import Layout from '@static/Layout.astro'
 import Link from '@static/Link.astro'
 
 import BlogCard from '@blocks/BlogCard/BlogCard.astro'
+import ErrorPage from '@blocks/ErrorPage/ErrorPage.astro'
 import FAQ from '@blocks/FAQ/FAQ.astro'
 import Hero from '@blocks/Hero/Hero.astro'
 import IconList from '@blocks/IconList/IconList.astro'
@@ -52,7 +53,7 @@ import { Card, Switch } from 'webcoreui/astro'
                 <Link href="/blocks/user" />
             </Card>
 
-            <Card title="Hero section">
+            <Card>
                 <Hero
                     heading="Hero section"
                     subHeading="With Subtitle, badges, and CTA"
@@ -110,6 +111,17 @@ import { Card, Switch } from 'webcoreui/astro'
                     <span class="muted">Learn more about our product</span>
                 </FAQ>
                 <Link href="/blocks/faq" />
+            </Card>
+            <Card>
+                <ErrorPage
+                    type={404}
+                    title="Page Not Found"
+                    subTitle="Sorry, we cannot found the page you were looking for."
+                    buttons={[
+                        { text: 'Back to Home', icon: 'home' }
+                    ]}
+                />
+                <Link href="/blocks/error-page" />
             </Card>
         </div>
     </div>

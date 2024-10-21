@@ -37,7 +37,7 @@
         {/if}
 
         {#if buttons?.length}
-            <div class={classNames([styles.cta, 'flex xs'])}>
+            <div class={classNames([styles.cta, 'flex xs wrap'])}>
                 {#each buttons as button}
                     <Button {...button}>
                         {#if button.icon}

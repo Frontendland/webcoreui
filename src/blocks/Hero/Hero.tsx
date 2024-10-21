@@ -36,7 +36,7 @@ const Hero = ({
                 {subHeading && <h2>{subHeading}</h2>}
 
                 {!!buttons?.length && (
-                    <div className={classNames([styles.cta, 'flex xs'])}>
+                    <div className={classNames([styles.cta, 'flex xs wrap'])}>
                         {buttons?.map((button, index) => (
                             <Button
                                 {...button}

@@ -41,7 +41,7 @@ const classes = [
         {subHeading && <h2>{subHeading}</h2>}
 
         {!!buttons?.length && (
-            <div class:list={[styles.cta, 'flex xs']}>
+            <div class:list={[styles.cta, 'flex xs wrap']}>
                 {buttons?.map(button => (
                     <Button {...button}>
                         {button.icon && (

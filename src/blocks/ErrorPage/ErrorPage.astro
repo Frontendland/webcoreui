@@ -1,0 +1,49 @@
+---
+import type { ErrorPageProps } from './errorPage'
+
+import styles from './error-page.module.scss'
+
+import {
+    Button,
+    Icon,
+    type IconProps
+} from 'webcoreui/astro'
+
+interface Props extends ErrorPageProps {}
+
+const {
+    type,
+    typeColor,
+    title,
+    subTitle,
+    buttons,
+    ...rest
+} = Astro.props
+
+const typeStyle = typeColor
+    ? `--w-type-color: ${typeColor};`
+    : null
+---
+
+<section class={styles.error} {...rest}>
+    <strong class={styles.type} style={typeStyle}>{type}</strong>
+    <h1 class={styles.title}>{title}</h1>
+    {subTitle && <h2 class={styles['sub-title']}>{subTitle}</h2>}
+    {!!buttons?.length && (
+        <div class="flex xs wrap justify-center">
+            {buttons?.map(button => (
+                <Button {...button}>
+                    {button.icon && (
+                        <Fragment>
+                            {button.icon.startsWith('<svg')
+                                ? <Fragment set:html={button.icon} />
+                                : <Icon type={button.icon as IconProps['type']} />
+                            }
+                        </Fragment>
+                    )}
+                    {button.text}
+                </Button>
+            ))}
+        </div>
+    )}
+</section>

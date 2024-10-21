@@ -1,0 +1,55 @@
+---
+import Layout from '@static/Layout.astro'
+
+import AstroErrorPage from '@blocks/ErrorPage/ErrorPage.astro'
+import SvelteErrorPage from '@blocks/ErrorPage/ErrorPage.svelte'
+import ReactErrorPage from '@blocks/ErrorPage/ErrorPage.tsx'
+import { Card } from 'webcoreui/astro'
+import { info } from 'webcoreui/icons'
+---
+
+<Layout>
+    <h1>Error Pages</h1>
+    <h2 class="heading">
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <Card className="mb">
+        <AstroErrorPage
+            type={404}
+            typeColor="var(--w-color-primary)"
+            title="Page Not Found"
+            subTitle="Sorry, we cannot found the page you were looking for."
+            buttons={[
+                { text: 'Back to Home', icon: 'home' }
+            ]}
+        />
+    </Card>
+
+    <Card className="mb">
+        <SvelteErrorPage
+            type={500}
+            typeColor="var(--w-color-alert)"
+            title="Something gone wrong"
+            subTitle="Sorry, we encountered an error. Reload the page or contact us if the issue persist."
+            buttons={[
+                { text: 'Reload', theme: 'secondary' },
+                { text: 'Contact', theme: 'secondary' }
+            ]}
+        />
+    </Card>
+
+    <Card>
+        <ReactErrorPage
+            type={403}
+            title="You don't have access to this page"
+            subTitle="If you think this is a mistake, please request access from our support team."
+            buttons={[
+                { text: 'Request access', theme: 'info', icon: info }
+            ]}
+        />
+    </Card>
+</Layout>
+
