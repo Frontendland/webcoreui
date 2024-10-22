@@ -28,6 +28,7 @@ import Rating from '@components/Rating/Rating.astro'
 import Select from '@components/Select/Select.astro'
 import Slider from '@components/Slider/Slider.astro'
 import Spinner from '@components/Spinner/Spinner.astro'
+import Spoiler from '@components/Spoiler/Spoiler.astro'
 import Switch from '@components/Switch/Switch.astro'
 import Table from '@components/Table/Table.astro'
 import Tabs from '@components/Tabs/Tabs.astro'
@@ -249,6 +250,9 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Spinner" href="/components/spinner">
             <Spinner />
+        </CardWrapper>
+        <CardWrapper title="Spoiler" href="/components/spoiler">
+            <Spoiler>This text is hidden.</Spoiler>
         </CardWrapper>
         <CardWrapper title="Switch" href="/components/switch">
             <Switch toggled={true} />

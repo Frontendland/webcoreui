@@ -1,0 +1,32 @@
+@import '../../scss/config.scss';
+
+body {
+    --w-spoiler-color: var(--w-color-primary);
+}
+
+.spoiler {
+    @include border-radius();
+    @include background(var(--w-spoiler-color));
+    @include typography(hmd);
+    @include visibility(inline);
+
+    color: transparent;
+    user-select: none;
+    cursor: pointer;
+
+    &.anim {
+        @include transition();
+    }
+
+    &.block {
+        @include visibility(block);
+    }
+
+    &[data-visible] {
+        @include background(transparent);
+        
+        color: inherit;
+        user-select: auto;
+        cursor: auto;
+    }
+}

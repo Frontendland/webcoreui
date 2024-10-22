@@ -15,6 +15,7 @@
     import Radio from '@components/Radio/Radio.svelte'
     import Select from '@components/Select/Select.svelte'
     import Slider from '@components/Slider/Slider.svelte'
+    import Spoiler from '@components/Spoiler/Spoiler.svelte'
     import Switch from '@components/Switch/Switch.svelte'
     import Tabs from '@components/Tabs/Tabs.svelte'
     import Textarea from '@components/Textarea/Textarea.svelte'
@@ -212,6 +213,10 @@
             className={styles.mt}
         />
         <span class={styles.span}>{slider}</span>
+    </Card>
+
+    <Card title="Spoiler">
+        <Spoiler>This text will be revealed upon click</Spoiler>
     </Card>
 
     <Card title="Switch">

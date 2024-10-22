@@ -1,0 +1,67 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroSpoiler from '@components/Spoiler/Spoiler.astro'
+import SvelteSpoiler from '@components/Spoiler/Spoiler.svelte'
+import ReactSpoiler from '@components/Spoiler/Spoiler.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'spoilers',
+    components: [AstroSpoiler, SvelteSpoiler, ReactSpoiler],
+    showSubTitle: true
+})
+
+const text = 'Spoiler element with text that wraps into multiple lines.'
+---
+
+<Layout>
+    <h1>Spoiler</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroSpoiler>{text}</AstroSpoiler>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteSpoiler client:load>{text}</SvelteSpoiler>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactSpoiler client:load>{text}</ReactSpoiler>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component>{text}</section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Spoiler with custom color">
+                <section.component color="var(--w-color-warning)">{text}</section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Spoiler with no animation">
+                <section.component animated={false}>{text}</section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Block spoiler">
+                <section.component block={true}>{text}</section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Spoiler with tooltip">
+                <section.component tooltip="Reveal">{text}</section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Spoiler with bottom tooltip">
+                <section.component tooltip="Reveal" tooltipPosition="bottom">{text}</section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

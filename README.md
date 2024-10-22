@@ -151,6 +151,9 @@ html body {
     --w-spinner-size: 30px;
     --w-spinner-dash: 8;
 
+    // Spoiler component
+    --w-spoiler-color: var(--w-color-primary);
+
     // Switch component
     --w-switch-off-color: var(--w-color-primary-50);
     --w-switch-on-color: var(--w-color-primary);
@@ -227,6 +230,7 @@ import { Accordion } from 'webcoreui/react'
 - [Sidebar](https://github.com/Frontendland/webcoreui/tree/main/src/components/Sidebar)
 - [Slider](https://github.com/Frontendland/webcoreui/tree/main/src/components/Slider)
 - [Spinner](https://github.com/Frontendland/webcoreui/tree/main/src/components/Spinner)
+- [Spoiler](https://github.com/Frontendland/webcoreui/tree/main/src/components/Spoiler)
 - [Switch](https://github.com/Frontendland/webcoreui/tree/main/src/components/Switch)
 - [Table](https://github.com/Frontendland/webcoreui/tree/main/src/components/Table)
 - [Tabs](https://github.com/Frontendland/webcoreui/tree/main/src/components/Tabs)

@@ -1,0 +1,50 @@
+---
+import type { SpoilerProps } from './spoiler'
+
+import styles from './spoiler.module.scss'
+
+interface Props extends SpoilerProps {}
+
+const {
+    color,
+    animated = true,
+    block,
+    tooltip,
+    tooltipPosition
+} = Astro.props
+
+const classes = [
+    styles.spoiler,
+    animated && styles.anim,
+    block && styles.block
+]
+
+const style = color
+    ? `--w-spoiler-color: ${color};`
+    : null
+---
+
+<span
+    class:list={classes}
+    style={style}
+    data-tooltip={tooltip}
+    data-position={tooltipPosition}
+    data-id="w-spoiler"
+    role="button"
+    tabindex="0"
+>
+    <slot />
+</span>
+
+<script>
+    import { on } from '../../utils/DOMUtils'
+
+    on('[data-id="w-spoiler"]', 'click', (event: Event) => {
+        const target = event.currentTarget as HTMLDivElement
+
+        target.dataset.visible = 'true'
+        target.removeAttribute('data-tooltip')
+        target.removeAttribute('role')
+        target.removeAttribute('tabindex')
+    }, true)
+</script>

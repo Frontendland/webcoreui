@@ -143,6 +143,6 @@ fs.writeFileSync(`${rootPath}/${component}/${component}.svelte`, format(template
 fs.writeFileSync(`${rootPath}/${component}/${component}.tsx`, format(templates.react))
 fs.writeFileSync(`${rootPath}/${component}/${lowerCaseComponent}.ts`, format(templates.types))
 fs.writeFileSync(`${rootPath}/${component}/${lowerCaseComponent}.module.scss`, format(templates.styles))
-fs.writeFileSync(`src/pages/${lowerCaseComponent}.astro`, format(templates.page))
+fs.writeFileSync(`src/pages/components/${lowerCaseComponent}.astro`, format(templates.page))
 
 console.log(`✅ Component ${component} created at ${rootPath}/${component}.`)
