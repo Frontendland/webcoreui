@@ -18,7 +18,7 @@ body {
     }
 
     .sub-title {
-        @include typography(center, lg, primary-10, regular);
+        @include typography(center, lg, primary-10, regular, 400);
         @include spacing(mb-sm);
     }
 

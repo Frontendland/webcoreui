@@ -12,7 +12,6 @@
 
     const classes = classNames([
         styles.list,
-        columns && `columns-${columns}`,
         className
     ])
 
