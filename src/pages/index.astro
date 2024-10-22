@@ -6,6 +6,7 @@ import Layout from '@static/Layout.astro'
 
 import Accordion from '@components/Accordion/Accordion.astro'
 import Alert from '@components/Alert/Alert.astro'
+import AspectRatio from '@components/AspectRatio/AspectRatio.astro'
 import Avatar from '@components/Avatar/Avatar.astro'
 import Badge from '@components/Badge/Badge.astro'
 import Breadcrumb from '@components/Breadcrumb/Breadcrumb.astro'
@@ -99,6 +100,11 @@ const tabItems = [{
         <CardWrapper title="Alert" href="/components/alert">
             <Alert title="💡 Note">You can create alert boxes.</Alert>
         </CardWrapper>
+        <CardWrapper title="Aspect Ratio" href="/components/aspect-ratio">
+            <AspectRatio ratio="16/9" className="absolute">
+                <Box>16 / 9</Box>
+            </AspectRatio>
+        </CardWrapper>
         <CardWrapper title="Avatar" href="/components/avatar">
             <Avatar
                 size={[30, 40, 50, 40, 30]}
@@ -127,7 +133,7 @@ const tabItems = [{
             <Carousel
                 items={3}
                 pagination={{ type: 'dots' }}
-                className="carousel-example"
+                className="carousel-example absolute"
             >
                 <li><Box fullWidth={true}>1</Box></li>
             </Carousel>
@@ -148,7 +154,7 @@ const tabItems = [{
                     'Name'
                 ]}
                 data={[['1', 'John Doe']]}
-                className="data-table"
+                className="data-table absolute"
             />
         </CardWrapper>
         <CardWrapper title="Footer" href="/components/footer">
@@ -200,7 +206,7 @@ const tabItems = [{
             />
         </CardWrapper>
         <CardWrapper title="Masonry" href="/components/masonry">
-            <Masonry items={masonryItems} className="masonry" />
+            <Masonry items={masonryItems} className="masonry absolute" />
         </CardWrapper>
         <CardWrapper title="Menu" href="/components/menu">
             <Menu className="menu-example">
@@ -333,8 +339,11 @@ const tabItems = [{
         gap: 10px;
     }
 
-    .carousel-example {
+    .absolute {
         @include position(absolute);
+    }
+
+    .carousel-example {
         @include spacing(p-md);
         @include size('w100%');
     }
@@ -349,13 +358,10 @@ const tabItems = [{
     }
 
     .masonry {
-        @include position(absolute);
-
         transform: scale(0.75);
     }
 
     .data-table {
-        @include position(absolute);
         @include spacing(p-default);
     }
 </style>

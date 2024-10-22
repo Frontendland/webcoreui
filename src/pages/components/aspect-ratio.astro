@@ -1,0 +1,94 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroAspectRatio from '@components/AspectRatio/AspectRatio.astro'
+import SvelteAspectRatio from '@components/AspectRatio/AspectRatio.svelte'
+import ReactAspectRatio from '@components/AspectRatio/AspectRatio.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'aspect ratios',
+    components: [AstroAspectRatio, SvelteAspectRatio, ReactAspectRatio]
+})
+---
+
+<Layout>
+    <h1>AspectRatio</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroAspectRatio ratio="16/9">
+                <img src="../img/placeholder1.png" />
+            </AstroAspectRatio>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteAspectRatio ratio="16/9">
+                <img src="../img/placeholder2.png" />
+            </SvelteAspectRatio>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactAspectRatio ratio="16/9">
+                <img src="../img/placeholder3.png" />
+            </ReactAspectRatio>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component ratio="16/9">
+                    <img src="../img/placeholder1.png" />
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alternate syntax">
+                <section.component ratio="16:9">
+                    <img src="../img/placeholder2.png" />
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom styles">
+                <section.component ratio="16:9" className="ratio">
+                    <img src="../img/placeholder3.png" />
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="1:1">
+                <section.component ratio="1">
+                    <img src="../img/placeholder1.png" />
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="4:3">
+                <section.component ratio="4/3">
+                    <img src="../img/placeholder2.png" />
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="21:9">
+                <section.component ratio="21/9">
+                    <img src="../img/placeholder3.png" />
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<style lang="scss" is:global>
+    @import '../../scss/config.scss';
+
+    .ratio {
+        @include background(primary-50);
+
+        img {
+            object-fit: contain;
+        }
+    }
+</style>

@@ -1,0 +1,21 @@
+---
+import type { AspectRatioProps } from './aspectratio'
+
+import styles from './aspect-ratio.module.scss'
+
+interface Props extends AspectRatioProps {}
+
+const {
+    ratio,
+    className
+} = Astro.props
+
+const classes = [
+    styles.ratio,
+    className
+]
+---
+
+<div class:list={classes} style={`aspect-ratio: ${ratio.replace(':', '/')};`}>
+    <slot />
+</div>

@@ -202,6 +202,7 @@ import { Accordion } from 'webcoreui/react'
 
 - [Accordion](https://github.com/Frontendland/webcoreui/tree/main/src/components/Accordion)
 - [Alert](https://github.com/Frontendland/webcoreui/tree/main/src/components/Alert)
+- [AspectRatio](https://github.com/Frontendland/webcoreui/tree/main/src/components/AspectRatio)
 - [Avatar](https://github.com/Frontendland/webcoreui/tree/main/src/components/Avatar)
 - [Badge](https://github.com/Frontendland/webcoreui/tree/main/src/components/Badge)
 - [Breadcrumb](https://github.com/Frontendland/webcoreui/tree/main/src/components/Breadcrumb)

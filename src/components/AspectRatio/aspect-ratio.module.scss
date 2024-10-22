@@ -1,0 +1,10 @@
+@import '../../scss/config.scss';
+
+.ratio {
+    @include layout(flex);
+    @include size('w100%');
+
+    * {
+        @include size(100%);
+    }
+}

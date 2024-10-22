@@ -67,6 +67,11 @@
 
     }
 
+    img {
+        @include border-radius();
+        object-fit: cover;
+    }
+
     figure {
         @include spacing(my-default);
         @include layout(inline-flex, column, v-center, xs);
