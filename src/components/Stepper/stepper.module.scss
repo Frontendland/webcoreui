@@ -1,0 +1,100 @@
+@import '../../scss/config.scss';
+
+body {
+    --w-stepper-color-border: var(--w-color-primary-50);
+    --w-stepper-color-active: var(--w-color-info);
+    --w-stepper-color-complete: var(--w-color-success);
+}
+
+$size: 20px;
+
+.stepper {
+    @include layout(flex, default, column);
+    @include spacing(0);
+    @include size('w100%');
+
+    list-style-type: none;
+
+    li {
+        @include layout(flex, sm, v-center);
+        @include typography(normal);
+        @include spacing(m0);
+
+        flex: 1;
+
+        &.connect {
+            @include position(relative);
+
+            &::before {
+                @include position(absolute, l16px);
+                @include background(primary-50);
+                @include size(w2px);
+
+                top: -50%;
+                bottom: calc(50% + $size);
+
+                content: '';
+            }
+
+            &.completed::before,
+            &.active::before {
+                @include background(var(--w-stepper-color-complete));
+            }
+        }
+
+        &.active .number {
+            border-color: var(--w-stepper-color-active);
+            color: var(--w-stepper-color-active);
+        }
+
+        &.completed .number {
+            border-color: var(--w-stepper-color-complete);
+            color: var(--w-stepper-color-complete);
+        }
+
+        .number {
+            @include size($size);
+            @include border-radius(max);
+            @include layout(flex, center);
+            @include spacing(p-md);
+            @include typography(bold, md);
+
+            border: 2px solid var(--w-stepper-color-border);
+
+            svg {
+                @include position(absolute);
+            }
+        }
+
+        .container {
+            @include layout(flex, column);
+        }
+
+        .muted {
+            @include typography(primary-20, md);
+        }
+    }
+}
+
+@include media(xs) {
+    .stepper:not(.vertical) {
+        @include layout(row);
+
+        li {
+            @include layout(column, xs, v-center);
+
+            &.connect::before {
+                @include size(h2px);
+
+                width: auto;
+                top: 16px;
+                left: calc(-50%);
+                right: calc(50% + $size);
+            }
+
+            .container {
+                @include layout(v-center);
+            }
+        }
+    }
+}

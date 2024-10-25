@@ -372,3 +372,33 @@ export const reactMasonryComponentItems = masonryComponentItems.map(item => ({
     ...item,
     component: ReactAlert
 }))
+
+export const stepper = [
+    { title: 'Setup' },
+    { title: 'Configure' },
+    { title: 'Finish' }
+]
+
+export const stepperWithSubTitle = [
+    { title: 'Setup', subTitle: 'Get ready' },
+    { title: 'Configure', subTitle: 'Preferences' },
+    { title: 'Finish', subTitle: 'Final steps' }
+]
+
+export const completedStepper = [
+    { title: 'Setup', subTitle: 'Get ready', completed: true },
+    { title: 'Configure', subTitle: 'Preferences' },
+    { title: 'Finish', subTitle: 'Final steps' }
+]
+
+export const activeStepper = [
+    { title: 'Setup', subTitle: 'Get ready', completed: true },
+    { title: 'Configure', subTitle: 'Preferences', active: true },
+    { title: 'Finish', subTitle: 'Final steps' }
+]
+
+export const stepperWithIcons = [
+    { title: 'Setup', subTitle: 'Get ready', completed: true, icon: successIcon },
+    { title: 'Configure', subTitle: 'Preferences', active: true, icon: gitHubIcon },
+    { title: 'Finish', subTitle: 'Final steps' }
+]

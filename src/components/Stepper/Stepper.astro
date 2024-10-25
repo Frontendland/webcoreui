@@ -1,0 +1,59 @@
+---
+import type { StepperProps } from './stepper'
+
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+import Icon from '../Icon/Icon.astro'
+
+import styles from './stepper.module.scss'
+
+import type { IconProps } from '../Icon/icon'
+
+interface Props extends StepperProps {}
+
+const {
+    items,
+    color,
+    completedColor,
+    activeColor,
+    vertical,
+    className
+} = Astro.props
+
+const classes = [
+    styles.stepper,
+    vertical && styles.vertical,
+    className
+]
+
+const styleVariables = [
+    color && `--w-stepper-color-border: ${color}`,
+    completedColor && `--w-stepper-color-complete: ${completedColor}`,
+    activeColor && `--w-stepper-color-active: ${activeColor}`
+].filter(Boolean).join('')
+---
+
+<ol class:list={classes} style={styleVariables}>
+    {items?.map((item, index) => (
+        <li class:list={[
+            index !== 0 && styles.connect,
+            item.active && styles.active,
+            item.completed && styles.completed
+        ]}>
+            <span class={styles.number}>
+                {item.icon ? (
+                    <Fragment>
+                        {item.icon.startsWith('<svg')
+                            ? <Fragment set:html={item.icon} />
+                            : <Icon type={item.icon as IconProps['type']} />
+                        }
+                    </Fragment>
+                ) : index + 1}
+            </span>
+            <ConditionalWrapper condition={!!(item.title && item.subTitle)}>
+                <div slot="wrapper" class={styles.container}>children</div>
+                {item.title && <span>{item.title}</span>}
+                {item.subTitle && <span class={styles.muted}>{item.subTitle}</span>}
+            </ConditionalWrapper>
+        </li>
+    ))}
+</ol>

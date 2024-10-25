@@ -1,0 +1,86 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroStepper from '@components/Stepper/Stepper.astro'
+import SvelteStepper from '@components/Stepper/Stepper.svelte'
+import ReactStepper from '@components/Stepper/Stepper.tsx'
+
+import { getSections } from '@helpers'
+import {
+    activeStepper,
+    completedStepper,
+    stepper,
+    stepperWithIcons,
+    stepperWithSubTitle
+} from '@data'
+
+const sections = getSections({
+    title: 'steppers',
+    components: [AstroStepper, SvelteStepper, ReactStepper]
+})
+
+const items = [
+    { title: 'Setup', subTitle: 'Get ready', completed: true, icon: 'circle-check' },
+    { title: 'Configure', subTitle: 'Preferences', active: true, icon: 'github' },
+    { title: 'Finish', subTitle: 'Final steps' }
+]
+---
+
+<Layout>
+    <h1>Stepper</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroStepper items={items} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteStepper items={items} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactStepper items={items} />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component items={stepper} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Stepper with subtitles">
+                <section.component items={stepperWithSubTitle} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Completed state">
+                <section.component items={completedStepper} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Active state">
+                <section.component items={activeStepper} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Stepper with icons">
+                <section.component items={stepperWithIcons} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Borderless stepper">
+                <section.component
+                    items={stepperWithIcons}
+                    color="transparent"
+                    completedColor="transparent"
+                    activeColor="transparent"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Vertical stepper">
+                <section.component items={stepperWithIcons} vertical={true} />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

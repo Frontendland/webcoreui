@@ -157,6 +157,11 @@ html body {
     // Spoiler component
     --w-spoiler-color: var(--w-color-primary);
 
+    // Stepper component
+    --w-stepper-color-border: var(--w-color-primary-50);
+    --w-stepper-color-active: var(--w-color-info);
+    --w-stepper-color-complete: var(--w-color-success);
+
     // Switch component
     --w-switch-off-color: var(--w-color-primary-50);
     --w-switch-on-color: var(--w-color-primary);
@@ -237,6 +242,7 @@ import { Accordion } from 'webcoreui/react'
 - [Slider](https://github.com/Frontendland/webcoreui/tree/main/src/components/Slider)
 - [Spinner](https://github.com/Frontendland/webcoreui/tree/main/src/components/Spinner)
 - [Spoiler](https://github.com/Frontendland/webcoreui/tree/main/src/components/Spoiler)
+- [Stepper](https://github.com/Frontendland/webcoreui/tree/main/src/components/Stepper)
 - [Switch](https://github.com/Frontendland/webcoreui/tree/main/src/components/Switch)
 - [Table](https://github.com/Frontendland/webcoreui/tree/main/src/components/Table)
 - [Tabs](https://github.com/Frontendland/webcoreui/tree/main/src/components/Tabs)

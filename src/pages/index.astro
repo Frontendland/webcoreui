@@ -32,6 +32,7 @@ import Select from '@components/Select/Select.astro'
 import Slider from '@components/Slider/Slider.astro'
 import Spinner from '@components/Spinner/Spinner.astro'
 import Spoiler from '@components/Spoiler/Spoiler.astro'
+import Stepper from '@components/Stepper/Stepper.astro'
 import Switch from '@components/Switch/Switch.astro'
 import Table from '@components/Table/Table.astro'
 import Tabs from '@components/Tabs/Tabs.astro'
@@ -50,6 +51,7 @@ import {
     avatarGroupAlt2,
     listPreview,
     masonryItems,
+    stepperWithIcons,
     themes
 } from '@data'
 
@@ -269,6 +271,9 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Spoiler" href="/components/spoiler">
             <Spoiler>This text is hidden.</Spoiler>
+        </CardWrapper>
+        <CardWrapper title="Stepper" href="/components/stepper">
+            <Stepper items={[stepperWithIcons[0], stepperWithIcons[1]]} />
         </CardWrapper>
         <CardWrapper title="Switch" href="/components/switch">
             <Switch toggled={true} />
