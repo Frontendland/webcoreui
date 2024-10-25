@@ -1,6 +1,7 @@
 ---
 import ComponentWrapper from '@static/ComponentWrapper.astro'
 import Layout from '@static/Layout.astro'
+import PlaceholderText from '@static/PlaceholderText.astro'
 
 import Button from '@components/Button/Button.astro'
 import Icon from '@components/Icon/Icon.astro'
@@ -28,11 +29,7 @@ const sections = getSections({
                 logo={{ html: logo }}
                 className="backdrop"
             />
-            {Array(3).fill(0).map(_ => (
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-                </p>
-            ))}
+            <PlaceholderText amount={3} />
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
@@ -41,11 +38,7 @@ const sections = getSections({
                 logo={{ html: logo }}
                 className="backdrop"
             />
-            {Array(3).fill(0).map(_ => (
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-                </p>
-            ))}
+            <PlaceholderText amount={3} />
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
@@ -54,11 +47,7 @@ const sections = getSections({
                 logo={{ html: logo }}
                 className="backdrop"
             />
-            {Array(3).fill(0).map(_ => (
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-                </p>
-            ))}
+            <PlaceholderText amount={3} />
         </ComponentWrapper>
     </div>
 
@@ -101,11 +90,9 @@ const sections = getSections({
                 />
             </ComponentWrapper>
 
-            <ComponentWrapper title="With backdrop" secondary={true}>
+            <ComponentWrapper title="With backdrop (scroll above text)" secondary={true}>
                 <section.component items={menu} className="backdrop" />
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-                </p>
+                <PlaceholderText />
             </ComponentWrapper>
 
             <ComponentWrapper title="With children" secondary={true}>
@@ -117,9 +104,7 @@ const sections = getSections({
                         <Button>Sign Up</Button>
                     </div>
                 </section.component>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-                </p>
+                <PlaceholderText />
             </ComponentWrapper>
 
             <ComponentWrapper title="With logo and children" secondary={true}>

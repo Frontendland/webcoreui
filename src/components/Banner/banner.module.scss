@@ -1,0 +1,57 @@
+@import '../../scss/config.scss';
+
+body {
+    --w-banner-top: 0;
+}
+
+.banner {
+    @include background(primary-60);
+    @include spacing(p-default);
+    @include position(sticky);
+    @include layer(top);
+    @include typography(center);
+
+    top: var(--w-banner-top);
+
+    &.padded {
+        @include border-radius();
+        @include position(l20px);
+
+        width: calc(100% - 40px);
+        top: calc(var(--w-banner-top) + 20px);
+
+        &.bottom {
+            @include position(l20px, b20px);
+        }
+    }
+
+    &.relative {
+        @include position(relative);
+        top: auto;
+    }
+
+    &.bottom {
+        @include position(fixed, b0, l0, r0);
+
+        top: auto;
+    }
+
+    &.closeable {
+        @include spacing(pl-default, pt-default, pb-default, pr-3xl);
+    }
+
+    .close {
+        @include position(absolute, v-center, r10px);
+        @include spacing(p-xs);
+
+        svg {
+            @include size(10px);
+        }
+    }
+}
+
+@include media(xs) {
+    .banner.closeable {
+        @include spacing(p-default);
+    }
+}

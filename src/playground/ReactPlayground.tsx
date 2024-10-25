@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import Accordion from '@components/Accordion/Accordion.tsx'
 import Badge from '@components/Badge/Badge.tsx'
+import Banner from '@components/Banner/Banner.tsx'
 import Button from '@components/Button/Button.tsx'
 import Card from '@components/Card/Card.tsx'
 import Carousel from '@components/Carousel/Carousel.tsx'
@@ -69,6 +70,12 @@ const ReactPlayground = () => {
                 <Button onClick={() => toast('#buttonToast')} theme="alert">
                     Click me
                 </Button>
+            </Card>
+
+            <Card title="Banner">
+                <Banner closeable={true} top={50}>
+                    Close me
+                </Banner>
             </Card>
 
             <Card title="Carousel">

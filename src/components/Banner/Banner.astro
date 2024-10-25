@@ -1,0 +1,56 @@
+---
+import type { BannerProps } from './banner'
+
+import Button from '../Button/Button.astro'
+
+import closeIcon from '../../icons/close.svg?raw'
+
+import styles from './banner.module.scss'
+
+interface Props extends BannerProps {}
+
+const {
+    top,
+    bottom,
+    closeable,
+    padded,
+    sticky = true,
+    className
+} = Astro.props
+
+const classes = [
+    styles.banner,
+    bottom && styles.bottom,
+    closeable && styles.closeable,
+    padded && styles.padded,
+    !sticky && styles.relative,
+    className
+]
+
+const style = top
+    ? `--w-banner-top: ${top}px;`
+    : null
+---
+
+<div class:list={classes} style={style}>
+    <slot />
+    {closeable && (
+        <Button
+            theme="flat"
+            className={styles.close}
+            data-id="w-banner-close"
+        >
+            <Fragment set:html={closeIcon} />
+        </Button>
+    )}
+</div>
+
+<script>
+    import { on } from '../../utils/DOMUtils'
+
+    on('[data-id="w-banner-close"]', 'click', (event: Event) => {
+        const target = event.currentTarget as HTMLDivElement
+
+        target.parentElement?.remove()
+    }, true)
+</script>

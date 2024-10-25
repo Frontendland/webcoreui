@@ -1,0 +1,116 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+import PlaceholderText from '@static/PlaceholderText.astro'
+
+import AstroBanner from '@components/Banner/Banner.astro'
+import SvelteBanner from '@components/Banner/Banner.svelte'
+import ReactBanner from '@components/Banner/Banner.tsx'
+import Button from '@components/Button/Button.astro'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'banners',
+    components: [AstroBanner, SvelteBanner, ReactBanner],
+    showSubTitle: true
+})
+
+const text = 'We just released a new version! ✨'
+---
+
+<Layout>
+    <h1>Banner</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroBanner top={50}>
+                {text}&nbsp;<a href="#">See our changelog</a>
+            </AstroBanner>
+            <PlaceholderText amount={3} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteBanner top={50}>
+                {text}&nbsp;<a href="#">See our changelog</a>
+            </SvelteBanner>
+            <PlaceholderText amount={3} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactBanner top={50}>
+                {text}&nbsp;<a href="#">See our changelog</a>
+            </ReactBanner>
+            <PlaceholderText amount={3} />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2">
+            <ComponentWrapper title="Default">
+                <section.component top={50}>{text}</section.component>
+                <PlaceholderText />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Padded">
+                <section.component padded={true} top={50}>{text}</section.component>
+                <PlaceholderText />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Bottom">
+                <section.component bottom={true} closeable={true} className="bottom">
+                    {text}
+                </section.component>
+                <Button className="bottom-trigger">Show bottom</Button>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Bottom padded">
+                <section.component
+                    bottom={true}
+                    padded={true}
+                    closeable={true}
+                    className="bottom-padded"
+                >
+                    {text}
+                </section.component>
+                <Button className="bottom-padded-trigger">Show bottom padded</Button>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Closeable">
+                <section.component closeable={true} top={50}>{text}</section.component>
+                <PlaceholderText />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Non sticky">
+                <section.component sticky={false}>
+                    {text}
+                </section.component>
+                <PlaceholderText />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<style lang="scss" is:global>
+    @import '../../scss/config.scss';
+
+    .bottom,
+    .bottom-padded {
+        @include visibility(none);
+    }
+</style>
+
+<script>
+    import { get,on } from '@utils/DOMUtils'
+
+    on('.bottom-trigger', 'click', () => {
+        (get('.bottom') as HTMLDivElement).classList.remove('bottom')
+    })
+
+    on('.bottom-padded-trigger', 'click', () => {
+        (get('.bottom-padded') as HTMLDivElement).classList.remove('bottom-padded')
+    })
+</script>

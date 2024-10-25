@@ -110,6 +110,9 @@ html body {
     // Avatar component
     --w-avatar-border: var(--w-color-primary-70);
 
+    // Banner component
+    --w-banner-top: 0;
+
     // Checkbox component
     --w-checkbox-color: var(--w-color-primary);
 
@@ -205,6 +208,7 @@ import { Accordion } from 'webcoreui/react'
 - [AspectRatio](https://github.com/Frontendland/webcoreui/tree/main/src/components/AspectRatio)
 - [Avatar](https://github.com/Frontendland/webcoreui/tree/main/src/components/Avatar)
 - [Badge](https://github.com/Frontendland/webcoreui/tree/main/src/components/Badge)
+- [Banner](https://github.com/Frontendland/webcoreui/tree/main/src/components/Banner)
 - [Breadcrumb](https://github.com/Frontendland/webcoreui/tree/main/src/components/Breadcrumb)
 - [Button](https://github.com/Frontendland/webcoreui/tree/main/src/components/Button)
 - [Card](https://github.com/Frontendland/webcoreui/tree/main/src/components/Card)

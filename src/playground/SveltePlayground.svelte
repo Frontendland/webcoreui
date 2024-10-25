@@ -1,6 +1,7 @@
 <script lang="ts">
     import Accordion from '@components/Accordion/Accordion.svelte'
     import Badge from '@components/Badge/Badge.svelte'
+    import Banner from '@components/Banner/Banner.svelte'
     import Button from '@components/Button/Button.svelte'
     import Card from '@components/Card/Card.svelte'
     import Carousel from '@components/Carousel/Carousel.svelte'
@@ -67,6 +68,12 @@
         <Button onClick={() => toast('#buttonToast')} theme="alert">
             Click me
         </Button>
+    </Card>
+
+    <Card title="Banner">
+        <Banner closeable={true} top={50}>
+            Close me
+        </Banner>
     </Card>
 
     <Card title="Carousel">

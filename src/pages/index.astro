@@ -9,6 +9,7 @@ import Alert from '@components/Alert/Alert.astro'
 import AspectRatio from '@components/AspectRatio/AspectRatio.astro'
 import Avatar from '@components/Avatar/Avatar.astro'
 import Badge from '@components/Badge/Badge.astro'
+import Banner from '@components/Banner/Banner.astro'
 import Breadcrumb from '@components/Breadcrumb/Breadcrumb.astro'
 import Button from '@components/Button/Button.astro'
 import Carousel from '@components/Carousel/Carousel.astro'
@@ -114,6 +115,11 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Badge" href="/components/badge">
             <Badge theme="outline">Badge</Badge>
+        </CardWrapper>
+        <CardWrapper title="Banner" href="/components/banner">
+            <Banner closeable={true} className="banner-example">
+                New version available!
+            </Banner>
         </CardWrapper>
         <CardWrapper title="Breadcrumb" href="/components/breadcrumb">
             <Breadcrumb items={[
@@ -332,19 +338,22 @@ const tabItems = [{
     }
 
     .card-wrapper > div {
+        @include layout(flex, center, sm);
+        @include visibility(hidden);
+
         pointer-events: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
     }
 
     .absolute {
         @include position(absolute);
     }
 
+    .banner-example {
+        padding-right: 40px !important;
+    }
+
     .carousel-example {
-        @include spacing(p-md);
+        @include spacing(p-sm);
         @include size('w100%');
     }
 
@@ -358,7 +367,7 @@ const tabItems = [{
     }
 
     .masonry {
-        transform: scale(0.75);
+        transform: scale(0.6);
     }
 
     .data-table {
