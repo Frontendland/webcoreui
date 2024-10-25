@@ -58,7 +58,7 @@ Webcore components use Sass for styling. To use the component library, you must 
 Depending on your project setup, you'll also need the following packages:
 
 - **For Astro projects**
-    - [Astro](https://www.npmjs.com/package/astro) - `v4.10` and above
+    - [Astro](https://www.npmjs.com/package/astro) - `v4.15` and above
 - **For Svelte projects**
     - [Svelte](https://www.npmjs.com/package/svelte) - `v4.2` and above
 - **For React projects**
@@ -221,6 +221,7 @@ import { Accordion } from 'webcoreui/react'
 - [Group](https://github.com/Frontendland/webcoreui/tree/main/src/components/Group)
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
 - [Input](https://github.com/Frontendland/webcoreui/tree/main/src/components/Input)
+- [Kbd](https://github.com/Frontendland/webcoreui/tree/main/src/components/Kbd)
 - [List](https://github.com/Frontendland/webcoreui/tree/main/src/components/List)
 - [Masonry](https://github.com/Frontendland/webcoreui/tree/main/src/components/Masonry)
 - [Menu](https://github.com/Frontendland/webcoreui/tree/main/src/components/Menu)

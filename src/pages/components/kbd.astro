@@ -1,0 +1,54 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroKbd from '@components/Kbd/Kbd.astro'
+import SvelteKbd from '@components/Kbd/Kbd.svelte'
+import ReactKbd from '@components/Kbd/Kbd.tsx'
+import { keyMap } from '@components/Kbd/keyMap'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'kbds',
+    components: [AstroKbd, SvelteKbd, ReactKbd]
+})
+---
+
+<Layout>
+    <h1>Kbd</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroKbd keys={['cmd', 'shift']}>A</AstroKbd>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteKbd keys={['ctrl', 'space']}>S</SvelteKbd>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactKbd keys={['up', 'down']}>R</ReactKbd>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="No key">
+                <section.component>N</section.component>
+                <section.component keys={['capslock']} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="One key">
+                <section.component keys={['cmd']}>O</section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="All keys"s>
+                <section.component keys={Object.keys(keyMap)}>All</section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

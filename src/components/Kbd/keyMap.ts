@@ -1,0 +1,21 @@
+export const keyMap = {
+    cmd: '⌘',
+    shift: '⇧',
+    ctrl: '⌃',
+    option: '⌥',
+    enter: '↵',
+    del: '⌫',
+    esc: '⎋',
+    tab: '⇥',
+    capslock: '⇪',
+    up: '↑',
+    down: '↓',
+    left: '←',
+    right: '→',
+    pageup: '⇞',
+    pagedown: '⇟',
+    home: '↖',
+    end: '↘',
+    help: '?',
+    space: '␣'
+}

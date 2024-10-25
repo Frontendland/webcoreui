@@ -20,6 +20,7 @@ import Footer from '@components/Footer/Footer.astro'
 import Group from '@components/Group/Group.astro'
 import Icon from '@components/Icon/Icon.astro'
 import Input from '@components/Input/Input.astro'
+import Kbd from '@components/Kbd/Kbd.astro'
 import List from '@components/List/List.astro'
 import Masonry from '@components/Masonry/Masonry.astro'
 import Menu from '@components/Menu/Menu.astro'
@@ -202,6 +203,9 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Input" href="/components/input">
             <Input placeholder="Please enter your email." />
+        </CardWrapper>
+        <CardWrapper title="Kbd" href="/components/kbd">
+            <Kbd keys={['cmd', 'shift']}>K</Kbd>
         </CardWrapper>
         <CardWrapper title="List" href="/components/list">
             <List
