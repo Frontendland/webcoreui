@@ -15,6 +15,10 @@ $size: 20px;
 
     list-style-type: none;
 
+    &:not(.borderless) .number {
+        border: 2px solid var(--w-stepper-color-border);
+    }
+
     li {
         @include layout(flex, sm, v-center);
         @include typography(normal);
@@ -27,7 +31,7 @@ $size: 20px;
 
             &::before {
                 @include position(absolute, l16px);
-                @include background(primary-50);
+                @include background(var(--w-stepper-color-border));
                 @include size(w2px);
 
                 top: -50%;
@@ -58,8 +62,6 @@ $size: 20px;
             @include layout(flex, center);
             @include spacing(p-md);
             @include typography(bold, md);
-
-            border: 2px solid var(--w-stepper-color-border);
 
             svg {
                 @include position(absolute);

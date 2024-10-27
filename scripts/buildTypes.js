@@ -76,6 +76,7 @@ const buildTypes = type => {
                 'Icon',
                 'Rating',
                 'Spinner',
+                'Stepper',
                 'Table',
                 'Progress'
             ]

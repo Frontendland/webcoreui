@@ -19,27 +19,21 @@ const sections = getSections({
     title: 'steppers',
     components: [AstroStepper, SvelteStepper, ReactStepper]
 })
-
-const items = [
-    { title: 'Setup', subTitle: 'Get ready', completed: true, icon: 'circle-check' },
-    { title: 'Configure', subTitle: 'Preferences', active: true, icon: 'github' },
-    { title: 'Finish', subTitle: 'Final steps' }
-]
 ---
 
 <Layout>
     <h1>Stepper</h1>
     <div class="grid md-2 lg-3">
         <ComponentWrapper type="Astro">
-            <AstroStepper items={items} />
+            <AstroStepper items={stepperWithIcons} />
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
-            <SvelteStepper items={items} />
+            <SvelteStepper items={stepperWithIcons} />
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
-            <ReactStepper items={items} />
+            <ReactStepper items={stepperWithIcons} />
         </ComponentWrapper>
     </div>
 
@@ -72,9 +66,16 @@ const items = [
             <ComponentWrapper title="Borderless stepper">
                 <section.component
                     items={stepperWithIcons}
-                    color="transparent"
-                    completedColor="transparent"
-                    activeColor="transparent"
+                    borderless={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom colors">
+                <section.component
+                    items={stepperWithIcons}
+                    color="var(--w-color-alert)"
+                    completedColor="var(--w-color-info)"
+                    activeColor="var(--w-color-warning)"
                 />
             </ComponentWrapper>
 

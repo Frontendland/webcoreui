@@ -11,6 +11,7 @@ export type StepperProps = {
     color?: string
     completedColor?: string
     activeColor?: string
+    borderless?: boolean
     vertical?: boolean
     className?: string
 }

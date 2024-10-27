@@ -15,12 +15,14 @@ const {
     color,
     completedColor,
     activeColor,
+    borderless,
     vertical,
     className
 } = Astro.props
 
 const classes = [
     styles.stepper,
+    borderless && styles.borderless,
     vertical && styles.vertical,
     className
 ]
@@ -29,7 +31,7 @@ const styleVariables = [
     color && `--w-stepper-color-border: ${color}`,
     completedColor && `--w-stepper-color-complete: ${completedColor}`,
     activeColor && `--w-stepper-color-active: ${activeColor}`
-].filter(Boolean).join('')
+].filter(Boolean).join(';')
 ---
 
 <ol class:list={classes} style={styleVariables}>
