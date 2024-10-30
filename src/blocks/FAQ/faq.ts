@@ -7,6 +7,8 @@ export type FAQProps = {
     title?: string
     titleTag?: string
     items: AccordionProps['items']
+    icon?: AccordionProps['icon']
+    reverse?: AccordionProps['reverse']
     className?: string
 }
 

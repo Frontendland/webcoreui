@@ -4,16 +4,17 @@
     @include layout(flex, default, column);
 
     .col {
-        flex: 1;
+        flex: 3;
     }
 
     .title {
         @include typography('2xl', primary-10, bold);
         @include spacing(mb-sm);
+        @include visibility(block);
     }
 
     .accordion {
-        flex: 2;
+        flex: 4;
     }
 }
 

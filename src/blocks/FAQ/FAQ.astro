@@ -27,10 +27,10 @@ const Component = element
 const Title = titleTag
 ---
 
-<Component class:list={classes} {...rest}>
+<Component class:list={classes}>
     <div class={styles.col}>
         <Title class:list={styles.title}>{title}</Title>
         <slot />
     </div>
-    <Accordion items={items} className={styles.accordion} />
+    <Accordion items={items} className={styles.accordion} {...rest} />
 </Component>

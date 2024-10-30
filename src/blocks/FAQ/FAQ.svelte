@@ -20,12 +20,12 @@
     ])
 </script>
 
-<svelte:element this={element} class={classes} {...$$restProps}>
-    <div>
+<svelte:element this={element} class={classes}>
+    <div class={styles.col}>
         <svelte:element this={titleTag} class={styles.title}>
             {title}
         </svelte:element>
         <slot />
     </div>
-    <Accordion items={items} className={styles.accordion} />
+    <Accordion items={items} className={styles.accordion} {...$$restProps} />
 </svelte:element>

@@ -27,12 +27,12 @@ const FAQ = ({
     ])
 
     return (
-        <Component className={classes} {...rest}>
-            <div>
+        <Component className={classes}>
+            <div className={styles.col}>
                 <Title className={styles.title}>{title}</Title>
                 {children}
             </div>
-            <Accordion items={items} className={styles.accordion} />
+            <Accordion items={items} className={styles.accordion} {...rest} />
         </Component>
     )
 }
