@@ -213,5 +213,11 @@ export default [
         rules: {
             '@typescript-eslint/no-explicit-any': 'off'
         }
+    },
+    {
+        files: ['src/env.d.ts'],
+        rules: {
+            '@typescript-eslint/triple-slash-reference': 'off'
+        }
     }
 ]
