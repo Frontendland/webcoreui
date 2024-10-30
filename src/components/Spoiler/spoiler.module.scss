@@ -4,7 +4,7 @@ body {
     --w-spoiler-color: var(--w-color-primary);
 }
 
-.spoiler {
+span.spoiler {
     @include border-radius();
     @include background(var(--w-spoiler-color));
     @include typography(hmd);
@@ -22,11 +22,19 @@ body {
         @include visibility(block);
     }
 
+    code {
+        @include border(0);
+    }
+
     &[data-visible] {
         @include background(transparent);
         
         color: inherit;
         user-select: auto;
         cursor: auto;
+
+        code {
+            @include border(primary-50);
+        }
     }
 }

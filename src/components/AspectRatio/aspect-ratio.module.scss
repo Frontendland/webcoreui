@@ -1,6 +1,6 @@
 @import '../../scss/config.scss';
 
-.ratio {
+div.ratio[style] {
     @include layout(flex);
     @include size('w100%');
 
