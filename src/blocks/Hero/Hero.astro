@@ -43,7 +43,7 @@ const classes = [
         {!!buttons?.length && (
             <div class:list={[styles.cta, 'flex xs wrap']}>
                 {buttons?.map(button => (
-                    <Button {...button}>
+                    <Button {...button} icon={null}>
                         {button.icon && (
                             <Fragment>
                                 {button.icon.startsWith('<svg')

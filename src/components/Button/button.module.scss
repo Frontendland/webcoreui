@@ -89,4 +89,8 @@
             @include background(alert-accent);
         }
     }
+
+    svg {
+        pointer-events: none;
+    }
 }

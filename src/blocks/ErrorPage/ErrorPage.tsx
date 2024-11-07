@@ -30,6 +30,7 @@ const ErrorPage = ({
                         <Button
                             {...button}
                             key={index}
+                            icon={null}
                             dangerouslySetInnerHTML={{ __html: button.icon
                                 ? `${button.icon} ${button.text}`
                                 : button.text

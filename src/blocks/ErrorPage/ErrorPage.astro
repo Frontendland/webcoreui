@@ -32,7 +32,7 @@ const typeStyle = typeColor
     {!!buttons?.length && (
         <div class="flex xs wrap justify-center">
             {buttons?.map(button => (
-                <Button {...button}>
+                <Button {...button} icon={null}>
                     {button.icon && (
                         <Fragment>
                             {button.icon.startsWith('<svg')
