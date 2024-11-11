@@ -27,7 +27,7 @@ const Table = ({
     ])
 
     const styleVariables = {
-        ...(maxHeight && { 'max-height': maxHeight })
+        ...(maxHeight && { maxHeight })
     } as React.CSSProperties
 
     return (
