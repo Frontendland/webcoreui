@@ -1,4 +1,4 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 body {
     --w-slider-background: var(--w-color-primary-50);

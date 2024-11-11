@@ -1,4 +1,4 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 body {
     --w-stepper-color-border: var(--w-color-primary-50);

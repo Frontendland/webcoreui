@@ -1,4 +1,4 @@
-@import 'webcoreui/config';
+@use 'webcoreui/config' as *;
 
 .btn {
     padding: 2px !important;

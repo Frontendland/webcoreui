@@ -1,4 +1,4 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .sheet {
     @include position(t0, 'r-100%', lauto);

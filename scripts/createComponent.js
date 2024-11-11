@@ -82,7 +82,7 @@ const templates = {
         }
     `,
     styles: `
-        @import '../../scss/config.scss';
+        @use '../../scss/config.scss' as *;
 
         .${lowerCaseComponent} {
 

@@ -1,4 +1,4 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .footer {
     @include border(top, primary-50);

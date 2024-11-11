@@ -1,19 +1,19 @@
 @use './config.scss' as *;
 
-@mixin resets() {
-    @if (config('fontRegular')) {
+@mixin resets($fontRegular, $fontBold) {
+    @if ($fontRegular) {
         @font-face {
             font-family: Regular;
             font-display: swap;
-            src: url(#{config('fontRegular')}) format('woff2');
+            src: url(#{$fontRegular}) format('woff2');
         }
     }
 
-    @if (config('fontBold')) {
+    @if ($fontBold) {
         @font-face {
             font-family: Bold;
             font-display: swap;
-            src: url(#{config('fontBold')}) format('woff2');
+            src: url(#{$fontBold}) format('woff2');
         }
     }
 

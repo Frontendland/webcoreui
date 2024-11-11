@@ -1,4 +1,4 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .popover {
     @include spacing(m0, p-default);

@@ -1,4 +1,4 @@
-@import '../../scss/config.scss';
+@use '../../scss/config.scss' as *;
 
 .breadcrumb {
     @include layout(flex, v-center, sm, wrap);

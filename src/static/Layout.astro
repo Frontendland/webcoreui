@@ -118,8 +118,8 @@ const externalLinks = [
 </html>
 
 <style is:global lang="scss">
-    @import '../scss/index.scss';
-    @import '../scss/config.scss';
+    @use '../scss/index.scss' as *;
+    @use '../scss/config.scss' as *;
 
     @include setup((
         fontRegular: '/fonts/Inter-Regular.woff2',

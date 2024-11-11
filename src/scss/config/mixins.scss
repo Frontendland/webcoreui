@@ -3,6 +3,13 @@
 @use 'sass:list';
 @use 'sass:string';
 
+@use 'webcore.config.scss' as *;
+@use './color-palette.scss' as *;
+@use './css-values.scss' as *;
+@use './layout.scss' as *;
+@use './typography.scss' as *;
+@use './variables.scss' as *;
+
 @mixin background($arg) {
     background: map.get($colorPalette, '#{$arg}') or $arg;
 }

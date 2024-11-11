@@ -82,7 +82,7 @@ yarn add webcoreui
 Create an empty [`webcore.config.scss`](https://webcoreui.dev/docs/css-configuration#webcoreconfigscss) file at the root of your project to setup CSS configurations. Setup default styles and fonts by calling the following in your global SCSS file:
 
 ```scss
-@import 'webcoreui/styles';
+@use 'webcoreui/styles' as *;
 @include setup((
     // Define paths for your fonts
     fontRegular: '/fonts/Inter-Regular.woff2',

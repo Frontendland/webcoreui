@@ -1,5 +1,5 @@
 
-@import 'webcoreui/config';
+@use 'webcoreui/config' as *;
 
 .loading {
     @include spacing(mt-default);

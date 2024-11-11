@@ -1,5 +1,11 @@
 @use 'sass:map';
 
+@use './resets.scss' as *;
+@use './global/scrollbar.scss' as *;
+@use './global/theme.scss' as *;
+@use './global/tooltip.scss' as *;
+@use './global/utility.scss' as *;
+
 $config: (
     includeResets: true,
     includeUtilities: true,
@@ -22,7 +28,7 @@ body {
     $config: map.merge($config, $customConfig) !global;
 
     @if (config('includeResets')) {
-        @include resets();
+        @include resets(config('fontRegular'), config('fontBold'));
     }
 
     @if (config('includeUtilities')) {

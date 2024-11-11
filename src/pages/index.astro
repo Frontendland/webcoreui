@@ -1,7 +1,7 @@
 ---
 import Box from '@static/Box.astro'
 import CardWrapper from '@static/CardWrapper.astro'
-import Examples from '@static/Examples.astro'
+// import Examples from '@static/Examples.astro'
 import Layout from '@static/Layout.astro'
 
 import Accordion from '@components/Accordion/Accordion.astro'
@@ -94,7 +94,7 @@ const tabItems = [{
     </div>
 
     <ThemeSwitcher themes={themes} className="switcher" />
-    <Examples />
+    <!-- <Examples /> -->
 
     <h2 class="my components-heading">Components</h2>
     <div class="grid md-2 lg-3">
@@ -309,7 +309,7 @@ const tabItems = [{
 </Layout>
 
 <style is:global lang="scss">
-    @import '../scss/config.scss';
+    @use '../scss/config.scss' as *;
 
     h2.my {
        margin-top: 100px;
@@ -376,7 +376,7 @@ const tabItems = [{
     }
 
     .masonry {
-        transform: scale(0.6);
+        transform: scale(0.8);
     }
 
     .data-table {

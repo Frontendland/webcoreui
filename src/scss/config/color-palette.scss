@@ -1,3 +1,5 @@
+@use 'webcore.config.scss' as *;
+
 $colorPalette: (
     'primary': var(--w-color-primary),
     'primary-10': var(--w-color-primary-10),

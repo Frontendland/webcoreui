@@ -1,7 +1,7 @@
-@import '../../webcore.config.scss';
-@import './config/color-palette';
-@import './config/css-values';
-@import './config/typography';
-@import './config/variables';
-@import './config/layout';
-@import './config/mixins';
+@forward 'webcore.config.scss';
+@forward './config/color-palette';
+@forward './config/css-values';
+@forward './config/typography';
+@forward './config/variables';
+@forward './config/layout';
+@forward './config/mixins';

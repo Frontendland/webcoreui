@@ -1,4 +1,4 @@
-@import 'webcoreui/config';
+@use 'webcoreui/config' as *;
 
 .link {
     @include typography(none);
