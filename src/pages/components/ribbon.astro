@@ -1,0 +1,127 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroRibbon from '@components/Ribbon/Ribbon.astro'
+import SvelteRibbon from '@components/Ribbon/Ribbon.svelte'
+import ReactRibbon from '@components/Ribbon/Ribbon.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'ribbons',
+    components: [AstroRibbon, SvelteRibbon, ReactRibbon]
+})
+---
+
+<Layout>
+    <h1>Ribbon</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro" bodyClassName="hidden">
+            <AstroRibbon>Ribbon</AstroRibbon>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte" bodyClassName="hidden">
+            <SvelteRibbon theme="alert">Svelte</SvelteRibbon>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React" bodyClassName="hidden">
+            <ReactRibbon theme="info">React</ReactRibbon>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default" bodyClassName="hidden">
+                <section.component>Ribbon</section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Long text with offset" bodyClassName="hidden">
+                <section.component offset={30}>Longer text</section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Secondary" bodyClassName="hidden">
+                <section.component offset={30} theme="secondary">
+                    Secondary
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Info" bodyClassName="hidden">
+                <section.component offset={30} theme="info">
+                    Info
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Success" bodyClassName="hidden">
+                <section.component offset={30} theme="success">
+                    Success
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Warning" bodyClassName="hidden">
+                <section.component offset={30} theme="warning">
+                    Warning
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alert" bodyClassName="hidden">
+                <section.component offset={30} theme="alert">
+                    Alert
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Folded" bodyClassName="card">
+                <section.component type="folded">
+                    Folded
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Folded secondary" bodyClassName="card">
+                <section.component type="folded" theme="secondary">
+                    Secondary
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Folded info" bodyClassName="card">
+                <section.component type="folded" theme="info">
+                    Info
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Folded success" bodyClassName="card">
+                <section.component type="folded" theme="success">
+                    Success
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Folded warning" bodyClassName="card">
+                <section.component type="folded" theme="warning">
+                    Warning
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Folded alert" bodyClassName="card">
+                <section.component type="folded" theme="alert">
+                    Alert
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<style lang="scss" is:global>
+    @use '../../scss/config.scss' as *;
+
+    .hidden {
+        @include visibility(hidden);
+    }
+
+    .card,
+    .hidden {
+        min-height: 100px;
+    }
+</style>

@@ -28,6 +28,7 @@ import Pagination from '@components/Pagination/Pagination.astro'
 import Progress from '@components/Progress/Progress.astro'
 import Radio from '@components/Radio/Radio.astro'
 import Rating from '@components/Rating/Rating.astro'
+import Ribbon from '@components/Ribbon/Ribbon.astro'
 import Select from '@components/Select/Select.astro'
 import Skeleton from '@components/Skeleton/Skeleton.astro'
 import Slider from '@components/Slider/Slider.astro'
@@ -246,6 +247,9 @@ const tabItems = [{
         </CardWrapper>
         <CardWrapper title="Rating" href="/components/rating">
             <Rating score={4} />
+        </CardWrapper>
+        <CardWrapper title="Ribbon" href="/components/ribbon">
+            <Ribbon>Ribbon</Ribbon>
         </CardWrapper>
         <CardWrapper title="Select" href="/components/select">
             <Select

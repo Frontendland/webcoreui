@@ -1,0 +1,28 @@
+---
+import type { RibbonProps } from './ribbon'
+
+import styles from './ribbon.module.scss'
+
+interface Props extends RibbonProps {}
+
+const {
+    offset,
+    type,
+    theme,
+    className
+} = Astro.props
+
+const classes = [
+    styles.ribbon,
+    theme && styles[theme],
+    type && styles[type],
+    className
+]
+---
+
+<span
+    class:list={classes}
+    style={offset ? `top:${offset}px;left:${offset}px` : null}
+>
+    <slot />
+</span>

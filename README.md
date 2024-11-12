@@ -138,6 +138,10 @@ html body {
     --w-rating-empty-background: var(--w-color-primary-70);
     --w-rating-size: 18px;
 
+    // Ribbon component
+    --w-ribbon-offset: 20px;
+    --w-ribbon-folded-offset: 10px;
+
     // Scrollbars
     --w-scrollbar-bg: var(--w-color-primary-60);
     --w-scrollbar-fg: var(--w-color-primary-50);
@@ -240,6 +244,7 @@ import { Accordion } from 'webcoreui/react'
 - [Progress](https://github.com/Frontendland/webcoreui/tree/main/src/components/Progress)
 - [Radio](https://github.com/Frontendland/webcoreui/tree/main/src/components/Radio)
 - [Rating](https://github.com/Frontendland/webcoreui/tree/main/src/components/Rating)
+- [Ribbon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Ribbon)
 - [Select](https://github.com/Frontendland/webcoreui/tree/main/src/components/Select)
 - [Sheet](https://github.com/Frontendland/webcoreui/tree/main/src/components/Sheet)
 - [Sidebar](https://github.com/Frontendland/webcoreui/tree/main/src/components/Sidebar)

@@ -5,7 +5,8 @@ const {
     title,
     secondary,
     compact,
-    type
+    type,
+    bodyClassName
 } = Astro.props
 ---
 
@@ -15,6 +16,7 @@ const {
     titleTag="strong"
     secondary={secondary}
     compact={compact}
+    bodyClassName={bodyClassName}
 >
     <slot />
 </Card>

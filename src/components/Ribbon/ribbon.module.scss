@@ -1,0 +1,83 @@
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-ribbon-offset: 20px;
+    --w-ribbon-folded-offset: 10px;
+}
+
+.ribbon {
+    @include position(absolute);
+    @include typography(sm, primary-70);
+    @include background(primary);
+    @include spacing('px-5xl');
+
+    top: var(--w-ribbon-offset);
+    left: var(--w-ribbon-offset);
+
+    transform: rotate(-45deg) translate(-50%, -50%);
+    transform-origin: top left;
+    pointer-events: none;
+
+    &.folded {
+        @include spacing(px-sm);
+
+        transform: none;
+        left: calc(var(--w-ribbon-folded-offset) * -1);
+
+        &::before {
+            @include position(absolute, t15px, l0);
+            @include layer(bg);
+
+            content: '';
+            transform: translateY(-50%);
+            border-right: var(--w-ribbon-folded-offset) solid var(--w-color-primary-20);
+            border-top: var(--w-ribbon-folded-offset) solid transparent;
+            border-bottom: var(--w-ribbon-folded-offset) solid transparent;
+        }
+    }
+
+    &.secondary {
+        @include typography(primary);
+        @include background(primary-50);
+
+        &.folded::before {
+            border-right-color: var(--w-color-primary-30);
+        }
+    }
+
+    &.info {
+        @include typography(info-fg);
+        @include background(info);
+
+        &.folded::before {
+            border-right-color: var(--w-color-info-accent);
+        }
+    }
+
+    &.success {
+        @include typography(success-fg);
+        @include background(success);
+
+        &.folded::before {
+            border-right-color: var(--w-color-success-accent);
+        }
+    }
+
+    &.warning {
+        @include typography(warning-fg);
+        @include background(warning);
+
+        &.folded::before {
+            border-right-color: var(--w-color-warning-accent);
+        }
+    }
+
+    &.alert {
+        @include typography(alert-fg);
+        @include background(alert);
+
+        &.folded::before {
+            border-right-color: var(--w-color-alert-accent);
+        }
+    }
+}
