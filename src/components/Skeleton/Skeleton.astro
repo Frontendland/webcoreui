@@ -1,0 +1,35 @@
+---
+import type { SkeletonProps } from './skeleton'
+
+import { classNames } from '../../utils/classNames'
+
+import styles from './skeleton.module.scss'
+
+interface Props extends SkeletonProps {}
+
+const {
+    animate = 'wave',
+    type = 'rounded',
+    width,
+    height,
+    color,
+    waveColor,
+    className
+} = Astro.props
+
+const classes = [
+    animate && styles[animate],
+    styles[type],
+    styles.skeleton,
+    className
+]
+
+const styleVariables = classNames([
+    width && `width: ${width}px;`,
+    height && `height: ${height}px;`,
+    color && `--w-skeleton-color: ${color};`,
+    waveColor && `--w-skeleton-wave-color: ${waveColor};`
+])
+---
+
+<div class:list={classes} style={styleVariables}>&nbsp;</div>

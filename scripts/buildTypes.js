@@ -75,6 +75,7 @@ const buildTypes = type => {
                 'Breadcrumb',
                 'Icon',
                 'Rating',
+                'Skeleton',
                 'Spinner',
                 'Stepper',
                 'Table',

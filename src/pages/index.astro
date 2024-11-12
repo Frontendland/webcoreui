@@ -29,6 +29,7 @@ import Progress from '@components/Progress/Progress.astro'
 import Radio from '@components/Radio/Radio.astro'
 import Rating from '@components/Rating/Rating.astro'
 import Select from '@components/Select/Select.astro'
+import Skeleton from '@components/Skeleton/Skeleton.astro'
 import Slider from '@components/Slider/Slider.astro'
 import Spinner from '@components/Spinner/Spinner.astro'
 import Spoiler from '@components/Spoiler/Spoiler.astro'
@@ -262,6 +263,9 @@ const tabItems = [{
                 Component
                 <Badge theme="success" small={true}>new components</Badge>
             </div>
+        </CardWrapper>
+        <CardWrapper title="Skeleton" href="/components/skeleton">
+            <Skeleton height={15} />
         </CardWrapper>
         <CardWrapper title="Slider" href="/components/slider">
             <Slider min={0} max={100} value={50} />

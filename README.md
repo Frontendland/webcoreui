@@ -142,6 +142,10 @@ html body {
     --w-scrollbar-bg: var(--w-color-primary-60);
     --w-scrollbar-fg: var(--w-color-primary-50);
 
+    // Skeleton component
+    --w-skeleton-color: var(--w-color-primary-60);
+    --w-skeleton-wave-color: var(--w-color-primary-50);
+
     // Slider component
     --w-slider-background: var(--w-color-primary-50);
     --w-slider-color: var(--w-color-primary);
@@ -239,6 +243,7 @@ import { Accordion } from 'webcoreui/react'
 - [Select](https://github.com/Frontendland/webcoreui/tree/main/src/components/Select)
 - [Sheet](https://github.com/Frontendland/webcoreui/tree/main/src/components/Sheet)
 - [Sidebar](https://github.com/Frontendland/webcoreui/tree/main/src/components/Sidebar)
+- [Skeleton](https://github.com/Frontendland/webcoreui/tree/main/src/components/Skeleton)
 - [Slider](https://github.com/Frontendland/webcoreui/tree/main/src/components/Slider)
 - [Spinner](https://github.com/Frontendland/webcoreui/tree/main/src/components/Spinner)
 - [Spoiler](https://github.com/Frontendland/webcoreui/tree/main/src/components/Spoiler)

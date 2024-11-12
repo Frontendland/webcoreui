@@ -1,0 +1,68 @@
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-skeleton-color: var(--w-color-primary-60);
+    --w-skeleton-wave-color: var(--w-color-primary-50);
+}
+
+.skeleton {
+    @include background(var(--w-skeleton-color));
+    @include size(100%);
+
+    text-indent: -9999px;
+
+    &.wave {
+        @include position(relative);
+        @include visibility(hidden);
+
+        &::after {
+            @include position(absolute, t0);
+            @include visibility(block);
+            @include size('w200px', 'h100%');
+
+            content: '';
+            left: -200px;
+            animation: wave 1s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                var(--w-skeleton-wave-color) 50%,
+                transparent 100%
+            );
+        }
+    }
+
+    &.pulse {
+        animation: pulse 1.3s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+    }
+
+    &.rounded {
+        @include border-radius();
+    }
+
+    &.circle {
+        @include border-radius(max);
+    }
+}
+
+@keyframes wave {
+    from {
+        left: -200px;
+    }
+    to   {
+        left: 100%;
+    }
+}
+
+
+@keyframes pulse {
+    0% {
+        @include visibility(1);
+    }
+    50% {
+        @include visibility(.7);
+    }
+    100% {
+        @include visibility(1);
+    }
+}

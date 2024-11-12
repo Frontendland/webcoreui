@@ -1,0 +1,70 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroSkeleton from '@components/Skeleton/Skeleton.astro'
+import SvelteSkeleton from '@components/Skeleton/Skeleton.svelte'
+import ReactSkeleton from '@components/Skeleton/Skeleton.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'skeletons',
+    components: [AstroSkeleton, SvelteSkeleton, ReactSkeleton]
+})
+---
+
+<Layout>
+    <h1>Skeleton</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroSkeleton />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteSkeleton
+                color="var(--w-color-warning)"
+                waveColor="var(--w-color-alert-accent)"
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactSkeleton
+                color="var(--w-color-info)"
+                waveColor="var(--w-color-info-accent)"
+            />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Pulse animation">
+                <section.component animate="pulse" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="No animation">
+                <section.component animate={false} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rectangular">
+                <section.component type="rectangular" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Circle">
+                <section.component type="circle" width={20} height={20} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom size">
+                <section.component width={100} />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
