@@ -38,7 +38,7 @@ Object.keys(folders).forEach(key => {
             console.error('🚨 error copying directory', error)
         }
 
-        if (key.includes('scss')) {
+        if (key.includes('scss') && !process.argv[2]) {
             const configFile = fs.readFileSync(sassConfigEntry, 'utf-8')
 
             fs.writeFileSync(

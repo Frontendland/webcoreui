@@ -8,6 +8,7 @@
         "dev": "astro dev",
         "build": "astro check && astro build",
         "build:package": "node scripts/build.js",
+        "build:local": "node scripts/build.js --local",
         "test": "echo \"Error: no test specified\"",
         "create-component": "node scripts/createComponent.js",
         "lint": "eslint src/**/* --fix"
