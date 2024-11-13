@@ -17,7 +17,7 @@ import Tiles from '@blocks/Tiles/Tiles.astro'
         </a>
     </h2>
 
-    <AstroFAQ items={accordionItems}>
+    <AstroFAQ items={accordionItems} titleTag="strong">
         <span class="muted">Here are the most common questions we get asked. If you don't find an answer for your question, please reach out to us through our <a href="#">contact form</a>.</span>
     </AstroFAQ>
 
@@ -25,6 +25,7 @@ import Tiles from '@blocks/Tiles/Tiles.astro'
 
     <SvelteFAQ
         title="FAQs"
+        titleTag="strong"
         items={accordionItems}
         client:load
     />
@@ -33,6 +34,7 @@ import Tiles from '@blocks/Tiles/Tiles.astro'
 
     <ReactFAQ
         items={accordionItems}
+        titleTag="strong"
         client:load
     >
         <span class="muted mb">Looking for a specific page? Find them below:</span>
@@ -43,7 +45,6 @@ import Tiles from '@blocks/Tiles/Tiles.astro'
             { icon: 'file', label: 'Documentation', href: '' }
         ]} columns={1} />
     </ReactFAQ>
-
 </Layout>
 
 <style lang="scss" is:global>
@@ -55,6 +56,6 @@ import Tiles from '@blocks/Tiles/Tiles.astro'
     }
 
     hr {
-        @include spacing(my-default);
+        @include spacing('my-5xl');
     }
 </style>
