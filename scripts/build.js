@@ -16,7 +16,15 @@ const files = {
     'package.json': 'dist/package.json'
 }
 
-const sassConfig = 'dist/scss/config.scss'
+const sassConfigEntry = 'dist/scss/config.scss'
+const sassConfigs = [
+    'dist/scss/config/color-palette.scss',
+    'dist/scss/config/css-values.scss',
+    'dist/scss/config/layout.scss',
+    'dist/scss/config/mixins.scss',
+    'dist/scss/config/typography.scss',
+    'dist/scss/config/variables.scss'
+]
 
 console.log('🚀 Preparing package build')
 
@@ -31,9 +39,21 @@ Object.keys(folders).forEach(key => {
         }
 
         if (key.includes('scss')) {
-            const configFile = fs.readFileSync(sassConfig, 'utf-8')
+            const configFile = fs.readFileSync(sassConfigEntry, 'utf-8')
 
-            fs.writeFileSync(sassConfig, configFile.replace('../../webcore', '../webcore'))
+            fs.writeFileSync(
+                sassConfigEntry,
+                configFile.replace('webcore.config', '../../../webcore.config')
+            )
+
+            sassConfigs.forEach(config => {
+                const file = fs.readFileSync(config, 'utf-8')
+
+                fs.writeFileSync(
+                    config,
+                    file.replace('webcore.config', '../../../../webcore.config')
+                )
+            })
         }
     })
 })
