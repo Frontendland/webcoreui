@@ -19,6 +19,7 @@ body {
     pointer-events: none;
 
     &.folded {
+        @include position(t10px);
         @include spacing(px-sm);
 
         transform: none;
