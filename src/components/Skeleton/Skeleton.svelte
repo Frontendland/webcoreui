@@ -21,8 +21,8 @@
     ])
 
     const styleVariables = classNames([
-        width && `width: ${width}px;`,
-        height && `height: ${height}px;`,
+        width && `max-width: ${width}px;`,
+        height && `max-height: ${height}px;`,
         color && `--w-skeleton-color: ${color};`,
         waveColor && `--w-skeleton-wave-color: ${waveColor};`
     ])

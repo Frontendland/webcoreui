@@ -22,8 +22,8 @@ const Skeleton = ({
     ])
 
     const styleVariables = {
-        ...(width && { width: `${width}px` }),
-        ...(height && { height: `${height}px` }),
+        ...(width && { maxWidth: `${width}px` }),
+        ...(height && { maxHeight: `${height}px` }),
         ...(color && { '--w-skeleton-color': color }),
         ...(waveColor && { '--w-skeleton-wave-color': waveColor })
     } as React.CSSProperties
