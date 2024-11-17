@@ -1,4 +1,4 @@
-export const get = (selector: string, all: boolean = false) => all
+export const get = (selector: string, all?: boolean) => all
     ? document?.querySelectorAll(selector)
     : document?.querySelector(selector)
 
