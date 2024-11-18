@@ -44,6 +44,7 @@
                 @include size(15px);
                 @include typography(primary-20);
                 pointer-events: none;
+                min-width: 15px;
             }
 
             &[data-open="true"] {
