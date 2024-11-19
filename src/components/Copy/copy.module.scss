@@ -1,0 +1,37 @@
+@use '../../scss/config.scss' as *;
+
+.copy {
+    @include typography(md);
+
+    svg {
+        @include size(18px);
+
+        cursor: pointer;
+    }
+
+    .icons {
+        @include position(relative);
+        @include size(18px);
+    }
+
+    .copy-icon,
+    .copied {
+        @include position(absolute, t0, l0);
+        @include transition(opacity);
+    }
+
+    .copy-icon {
+        @include background(transparent);
+        @include border(0);
+        @include spacing(p0);
+        
+        color: inherit;
+    }
+
+    .copied {
+        @include visibility(0);
+        
+        pointer-events: none;
+        cursor: auto;
+    }
+}

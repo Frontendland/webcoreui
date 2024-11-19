@@ -1,0 +1,63 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroCopy from '@components/Copy/Copy.astro'
+import SvelteCopy from '@components/Copy/Copy.svelte'
+import ReactCopy from '@components/Copy/Copy.tsx'
+
+import checkIcon from '../../icons/check.svg?raw'
+import fileIcon from '../../icons/file.svg?raw'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'copies',
+    components: [AstroCopy, SvelteCopy, ReactCopy],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>Copy</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroCopy tooltip="Click icon to copy">Copy Astro</AstroCopy>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteCopy theme="alert" tooltip="Click icon to copy" client:load>Copy Svelte</SvelteCopy>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactCopy theme="info" tooltip="Click icon to copy" client:load>Copy React</ReactCopy>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="flex wrap sm">
+            <section.component>Default</section.component>
+            <section.component theme="secondary">Secondary</section.component>
+            <section.component theme="outline">Outline</section.component>
+            <section.component theme="flat">Flat</section.component>
+            <section.component theme="info">Info</section.component>
+            <section.component theme="success">Success</section.component>
+            <section.component theme="warning">Warning</section.component>
+            <section.component theme="alert">Alert</section.component>
+            <section.component tooltip="Click icon to copy">With tooltip</section.component>
+            <section.component tooltip="Click icon to copy" tooltipPosition="bottom">
+                With tooltip position
+            </section.component>
+            <section.component copyIcon={fileIcon} copiedIcon={checkIcon}>
+                Custom Icons
+            </section.component>
+            <section.component small={true} rounded={true}>
+                Small & rounded
+            </section.component>
+        </div>
+    ))}
+</Layout>

@@ -229,6 +229,7 @@ import { Accordion } from 'webcoreui/react'
 - [Checkbox](https://github.com/Frontendland/webcoreui/tree/main/src/components/Checkbox)
 - [Collapsible](https://github.com/Frontendland/webcoreui/tree/main/src/components/Collapsible)
 - [ConditionalWrapper](https://github.com/Frontendland/webcoreui/tree/main/src/components/ConditionalWrapper)
+- [Copy](https://github.com/Frontendland/webcoreui/tree/main/src/components/Copy)
 - [DataTable](https://github.com/Frontendland/webcoreui/tree/main/src/components/DataTable)
 - [Footer](https://github.com/Frontendland/webcoreui/tree/main/src/components/Footer)
 - [Group](https://github.com/Frontendland/webcoreui/tree/main/src/components/Group)

@@ -1,0 +1,74 @@
+---
+import type { CopyProps } from './copy'
+
+import Badge from '../Badge/Badge.astro'
+import Icon from '../Icon/Icon.astro'
+
+import { classNames } from '../../utils/classNames'
+
+import styles from './copy.module.scss'
+
+import type { IconProps } from '../Icon/icon'
+
+interface Props extends CopyProps {}
+
+const {
+    tooltip,
+    tooltipPosition,
+    copyIcon = 'copy',
+    copiedIcon = 'circle-check',
+    className,
+    ...rest
+} = Astro.props
+
+const classes = classNames([
+    styles.copy,
+    className
+])
+---
+
+<Badge
+    {...rest}
+    className={classes}
+    data-tooltip={tooltip}
+    data-position={tooltipPosition}
+>
+    <slot />
+    <div class={styles.icons}>
+        <button
+            class={styles['copy-icon']}
+            data-id="w-copy"
+        >
+            {copyIcon?.startsWith('<svg')
+                ? <Fragment set:html={copyIcon} />
+                : <Icon type={copyIcon as IconProps['type']} />
+            }
+        </button>
+        <span class={styles.copied}>
+            {copiedIcon?.startsWith('<svg')
+                ? <Fragment set:html={copiedIcon} />
+                : <Icon type={copiedIcon as IconProps['type']} />
+            }
+        </span>
+    </div>
+</Badge>
+
+<script>
+    import { on } from '../../utils/DOMUtils'
+
+    on('[data-id="w-copy"]', 'click', (event: Event) => {
+        const copy = event.currentTarget as HTMLButtonElement
+        const copied = copy.nextElementSibling as HTMLSpanElement
+        const badge = copy.parentElement?.parentElement as HTMLElement
+
+        const text = copy.parentElement?.previousSibling?.textContent?.trim()
+
+        copy.style.opacity = '0'
+        copy.style.pointerEvents = 'none'
+
+        copied.style.opacity = '1'
+        badge.removeAttribute('data-tooltip')
+
+        navigator.clipboard.writeText(text as string)
+    }, true)
+</script>

@@ -7,6 +7,7 @@
     import Carousel from '@components/Carousel/Carousel.svelte'
     import Checkbox from '@components/Checkbox/Checkbox.svelte'
     import Collapsible from '@components/Collapsible/Collapsible.svelte'
+    import Copy from '@components/Copy/Copy.svelte'
     import DataTable from '@components/DataTable/DataTable.svelte'
     import Icon from '@components/Icon/Icon.svelte'
     import Input from '@components/Input/Input.svelte'
@@ -109,6 +110,10 @@
             <Button slot="on">Show</Button>
             <Button slot="off">Hide</Button>
         </Collapsible>
+    </Card>
+
+    <Card title="Copy">
+        <Copy>Click to copy text</Copy>
     </Card>
 
     <Card title="DataTable">

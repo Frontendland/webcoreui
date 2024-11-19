@@ -8,6 +8,7 @@ export type IconProps = {
         | 'circle-close'
         | 'close'
         | 'components'
+        | 'copy'
         | 'file'
         | 'github'
         | 'home'

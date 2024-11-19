@@ -15,6 +15,7 @@ import Button from '@components/Button/Button.astro'
 import Carousel from '@components/Carousel/Carousel.astro'
 import Checkbox from '@components/Checkbox/Checkbox.astro'
 import Collapsible from '@components/Collapsible/Collapsible.astro'
+import Copy from '@components/Copy/Copy.astro'
 import DataTable from '@components/DataTable/DataTable.astro'
 import Footer from '@components/Footer/Footer.astro'
 import Group from '@components/Group/Group.astro'
@@ -157,6 +158,9 @@ const tabItems = [{
                 <span>This book has been rated for...</span>
                 <Badge slot="on">Expand</Badge>
             </Collapsible>
+        </CardWrapper>
+        <CardWrapper title="Copy" href="/components/copy">
+            <Copy>Click to copy</Copy>
         </CardWrapper>
         <CardWrapper title="DataTable" href="/components/data-table">
             <DataTable

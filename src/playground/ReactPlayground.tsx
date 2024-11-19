@@ -8,6 +8,7 @@ import Card from '@components/Card/Card.tsx'
 import Carousel from '@components/Carousel/Carousel.tsx'
 import Checkbox from '@components/Checkbox/Checkbox.tsx'
 import Collapsible from '@components/Collapsible/Collapsible.tsx'
+import Copy from '@components/Copy/Copy.tsx'
 import DataTable from '@components/DataTable/DataTable.tsx'
 import Icon from '@components/Icon/Icon.tsx'
 import Input from '@components/Input/Input.tsx'
@@ -113,6 +114,10 @@ const ReactPlayground = () => {
                 >
                     <span>This paragraph can be toggled on and off.</span>
                 </Collapsible>
+            </Card>
+
+            <Card title="Copy">
+                <Copy>Click to copy text</Copy>
             </Card>
 
             <Card title="DataTable">

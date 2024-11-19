@@ -7,6 +7,7 @@ import CircleCheck from '../../icons/circle-check.svg?raw'
 import CircleClose from '../../icons/circle-close.svg?raw'
 import Close from '../../icons/close.svg?raw'
 import Components from '../../icons/components.svg?raw'
+import Copy from '../../icons/copy.svg?raw'
 import File from '../../icons/file.svg?raw'
 import Github from '../../icons/github.svg?raw'
 import Home from '../../icons/home.svg?raw'
@@ -28,6 +29,7 @@ const iconMap = {
     'circle-close': CircleClose,
     'close': Close,
     'components': Components,
+    'copy': Copy,
     'file': File,
     'github': Github,
     'home': Home,
