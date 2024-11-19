@@ -10,7 +10,8 @@
         "build:package": "node scripts/build.js",
         "build:local": "node scripts/build.js --local",
         "compile": "node scripts/sass.js",
-        "test": "echo \"Error: no test specified\"",
+        "test": "vitest run",
+        "test:dev": "vitest",
         "create-component": "node scripts/createComponent.js",
         "lint": "eslint src/**/* --fix"
     },
@@ -33,10 +34,12 @@
         "react": "18.3.1",
         "react-dom": "18.3.1",
         "sass": "1.80.6",
+        "sass-true": "8.1.0",
         "svelte": "4.2.19",
         "svelte-eslint-parser": "0.41.0",
         "typescript": "5.4.5",
         "typescript-eslint": "8.3.0",
+        "vitest": "2.1.5",
         "webcoreui": "0.8.1"
     },
     "exports": {
