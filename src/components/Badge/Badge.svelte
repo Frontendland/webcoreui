@@ -10,7 +10,7 @@
     export let small: SvelteBadgeProps['small'] = false
     export let rounded: SvelteBadgeProps['rounded'] = false
     export let className: SvelteBadgeProps['className'] = ''
-    export let onClick: SvelteBadgeProps['onClick'] = () => {}
+    export let onClick: SvelteBadgeProps['onClick'] = null
 
     const classes = classNames([
         styles.badge,

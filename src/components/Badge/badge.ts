@@ -17,7 +17,7 @@ export type BadgeProps = {
 }
 
 export type SvelteBadgeProps = {
-    onClick?: MouseEventHandler<HTMLButtonElement>
+    onClick?: MouseEventHandler<HTMLButtonElement> | null
 } & BadgeProps
 
 export type ReactBadgeProps = {
