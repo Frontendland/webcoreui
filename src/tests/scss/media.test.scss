@@ -1,0 +1,52 @@
+@use 'true' as *;
+@use '../../scss/config.scss' as *;
+
+@include describe('media') {
+  @include it('Should apply the correct media rule') {
+    @include assert {
+      @include output {
+        // XS
+        @include media(xs) {
+          color: #FFF;
+        }
+
+        // SM
+        @include media(sm) {
+          color: #FFF;
+        }
+
+        // MD
+        @include media(md) {
+          color: #FFF;
+        }
+
+        // LG
+        @include media(lg) {
+          color: #FFF;
+        }
+      }
+
+      @include expect {
+        // XS
+        @media (min-width: 600px) {
+          color: #FFF;
+        }
+
+        // SM
+        @media (min-width: 800px) {
+          color: #FFF;
+        }
+
+        // MD
+        @media (min-width: 1024px) {
+          color: #FFF;
+        }
+
+        // LG
+        @media (min-width: 1200px) {
+          color: #FFF;
+        }
+      }
+    }
+  }
+}

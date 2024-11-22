@@ -1,0 +1,55 @@
+@use 'true' as *;
+@use '../../scss/config.scss' as *;
+
+@include describe('border-radius') {
+  @include it('Should apply the correct border-radius rule') {
+    @include assert {
+      @include output {
+        // Default
+        @include border-radius();
+
+        // Sizes
+        @include border-radius(sm);
+        @include border-radius(md);
+        @include border-radius(lg);
+        @include border-radius(xl);
+        @include border-radius(max);
+
+        // Side
+        @include border-radius(top);
+        @include border-radius(bottom);
+        @include border-radius(left);
+        @include border-radius(right);
+        @include border-radius(diagonal);
+        @include border-radius(reverse-diagonal);
+
+        // Combined
+        @include border-radius(xl, top);
+      }
+
+      @include expect {
+        // Default
+        border-radius: var(--w-md-radius);
+
+        // Sizes
+        border-radius: var(--w-sm-radius);
+        border-radius: var(--w-md-radius);
+        border-radius: var(--w-lg-radius);
+        border-radius: var(--w-xl-radius);
+        border-radius: 100%;
+
+        // Side
+        border-radius: var(--w-md-radius) var(--w-md-radius) 0 0;
+        border-radius: 0 0 var(--w-md-radius) var(--w-md-radius);
+        border-radius: var(--w-md-radius) 0 0 var(--w-md-radius);
+        border-radius: 0 var(--w-md-radius) var(--w-md-radius) 0;
+        border-radius: var(--w-md-radius) 0;
+        border-radius: 0 var(--w-md-radius);
+
+        // Combined
+        border-radius: var(--w-xl-radius) var(--w-xl-radius) 0 0;
+      }
+    }
+  }
+}
+
