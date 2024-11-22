@@ -34,7 +34,7 @@ $alignments: (
     }
 
     .muted {
-        @include typography(primary-20, md);
+        @include typography(primary-20, md, hmd);
     }
 
     // Gaps

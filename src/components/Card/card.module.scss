@@ -4,6 +4,7 @@
     @include border(primary-50);
     @include border-radius(md);
     @include layout(flex, column);
+    @include background(primary-70);
 
     &.secondary {
         @include background(primary-60);
