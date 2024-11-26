@@ -268,6 +268,7 @@ import { Accordion } from 'webcoreui/react'
 - [BlogCard](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/BlogCard)
 - [ErrorPage](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/ErrorPage)
 - [FAQ](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/FAQ)
+- [GridWithIcons](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/GridWithIcons)
 - [Hero](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Hero)
 - [IconList](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/IconList)
 - [SettingCard](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SettingCard)

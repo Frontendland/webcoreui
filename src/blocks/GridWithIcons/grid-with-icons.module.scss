@@ -1,0 +1,37 @@
+@use 'webcoreui/config' as *;
+
+.list {
+    @include spacing(0);
+    list-style-type: none;
+
+    &.center {
+        @include typography(center);
+
+        &:not(.secondary) svg {
+            @include spacing(auto-none);
+        }
+    }
+
+    &.right {
+        @include typography(right);
+
+        svg {
+            margin-left: auto;
+        }
+    }
+
+    &.icon-bg svg {
+        @include background(primary-50);
+        @include border(6px, primary-50);
+        @include border-radius(max);
+        @include size(34px);
+    }
+
+    .title {
+        @include typography(lg);
+    }
+
+    li {
+        margin-bottom: auto;
+    }
+}

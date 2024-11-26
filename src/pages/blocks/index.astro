@@ -5,6 +5,7 @@ import Link from '@static/Link.astro'
 import BlogCard from '@blocks/BlogCard/BlogCard.astro'
 import ErrorPage from '@blocks/ErrorPage/ErrorPage.astro'
 import FAQ from '@blocks/FAQ/FAQ.astro'
+import GridWithIcons from '@blocks/GridWithIcons/GridWithIcons.astro'
 import Hero from '@blocks/Hero/Hero.astro'
 import IconList from '@blocks/IconList/IconList.astro'
 import SettingCard from '@blocks/SettingCard/SettingCard.astro'
@@ -38,6 +39,14 @@ import { Card, Switch } from 'webcoreui/astro'
                     <Switch />
                 </SettingCard>
                 <Link href="/blocks/setting-card" />
+            </Card>
+            <Card>
+                <GridWithIcons items={[{
+                    icon: 'components',
+                    title: 'Grid with Icons',
+                    text: 'Use the <code>GridWithIcons</code> block to organize your list into a grid with icons to enhance clarity and visual appeal.'
+                }]} columns={1} />
+                <Link href="/blocks/grid-with-icons" />
             </Card>
         </div>
         <div class="block-column flex column">

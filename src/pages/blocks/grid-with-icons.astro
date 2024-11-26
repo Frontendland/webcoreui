@@ -1,0 +1,69 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import { getSections } from '@helpers'
+import { gridWithIconsItems } from '@data'
+
+import AstroGridWithIcons from '@blocks/GridWithIcons/GridWithIcons.astro'
+import SvelteGridWithIcons from '@blocks/GridWithIcons/GridWithIcons.svelte'
+import ReactGridWithIcons from '@blocks/GridWithIcons/GridWithIcons.tsx'
+
+const sections = getSections({
+    title: '',
+    components: [AstroGridWithIcons, SvelteGridWithIcons, ReactGridWithIcons]
+})
+---
+
+<Layout>
+    <h1>Grid with Icons</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    {sections.map(section => (
+        <h3>{section.title} Blocks</h3>
+        <div class="grid">
+            <ComponentWrapper type={section.type} title="Default">
+                <section.component items={gridWithIconsItems} />
+            </ComponentWrapper>
+
+            <ComponentWrapper type={section.type} title="Custom number of columns (2)">
+                <section.component
+                    items={gridWithIconsItems.slice(0, 4)}
+                    columns={2}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper type={section.type} title="Center aligned">
+                <section.component
+                    items={gridWithIconsItems}
+                    alignment="center"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper type={section.type} title="Right aligned">
+                <section.component
+                    items={gridWithIconsItems}
+                    alignment="right"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper type={section.type} title="With icon background">
+                <section.component
+                    items={gridWithIconsItems}
+                    iconWithBackground={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper type={section.type} title="Secondary">
+                <section.component
+                    items={gridWithIconsItems}
+                    secondary={true}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

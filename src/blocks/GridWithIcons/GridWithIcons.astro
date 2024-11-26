@@ -1,0 +1,63 @@
+---
+import type { GridWithIconsProps } from './gridWithIcons'
+
+import styles from './grid-with-icons.module.scss'
+
+interface Props extends GridWithIconsProps {}
+
+import {
+    ConditionalWrapper,
+    Icon,
+    type IconProps
+} from 'webcoreui/astro'
+
+const {
+    items,
+    columns,
+    alignment,
+    iconWithBackground,
+    secondary,
+    className
+} = Astro.props
+
+const classes = [
+    `grid sm-${columns || 3}`,
+    styles.list,
+    alignment && styles[alignment],
+    iconWithBackground && styles['icon-bg'],
+    secondary && styles.secondary,
+    className
+]
+
+const wrapperClasses = [
+    'flex sm items-center',
+    alignment === 'center' && 'justify-center',
+    alignment === 'right' && 'justify-end'
+]
+---
+
+<ul class:list={classes}>
+    {items?.map(item => (
+        <li class="grid sm">
+            <ConditionalWrapper condition={!!secondary}>
+                <div slot="wrapper" class:list={[wrapperClasses]}>
+                    children
+                </div>
+
+                {item.icon && (
+                    <Fragment>
+                        {item.icon.startsWith('<svg')
+                            ? <Fragment set:html={item.icon} />
+                            : <Icon type={item.icon as IconProps['type']} />
+                        }
+                    </Fragment>
+                )}
+
+                {item.title && (
+                    <strong class={styles.title}>{item.title}</strong>
+                )}
+            </ConditionalWrapper>
+            <div set:html={item.text} class="muted" />
+        </li>
+    ))}
+</ul>

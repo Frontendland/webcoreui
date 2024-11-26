@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable max-lines */
 import type { ButtonProps } from '@components/Button/button'
 
@@ -8,6 +9,7 @@ import SvelteBox from '@static/Box.svelte'
 import ReactAlert from '@components/Alert/Alert.tsx'
 import ReactBox from '@static/Box.tsx'
 
+import alertIcon from './icons/alert.svg?raw'
 import successIcon from './icons/circle-check.svg?raw'
 import componentsIcon from './icons/components.svg?raw'
 import fileIcon from './icons/file.svg?raw'
@@ -402,3 +404,22 @@ export const stepperWithIcons = [
     { title: 'Configure', subTitle: 'Preferences', active: true, icon: gitHubIcon },
     { title: 'Finish', subTitle: 'Final steps' }
 ]
+
+export const gridWithIconsItems = [{
+    icon: componentsIcon,
+    title: 'Grid with Icons',
+    text: 'Use the <code>GridWithIcons</code> block to organize your list into a grid with icons to enhance clarity and visual appeal.'
+}, {
+    icon: alertIcon,
+    title: 'Configurable',
+    text: 'You can create as many items as necessary with icons and an optional title. You can also configure the number of columns.'
+}, {
+    icon: successIcon,
+    title: 'Supports formatting',
+    text: 'The <code>text</code> prop also supports formatting through <b>HTML</b> tags to help you customize the appearance of the element.'
+}, {
+    title: 'Graceful degradation',
+    text: 'If the <code>items</code> prop is not defined, nothing will be rendered. Grid items can be rendered without icons or titles too.'
+}, {
+    text: 'This last item is created without an icon or title, meaning you can also use this block to create simple text in a grid layout.'
+}]
