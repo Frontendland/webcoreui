@@ -20,6 +20,12 @@
             alt="License"
         />
     </a>
+    <a href="https://github.com/Frontendland/webcoreui/actions">
+        <img
+            src="https://img.shields.io/github/actions/workflow/status/Frontendland/webcoreui/checks.yml"
+            alt="Build"
+        />
+    </a>
 </p>
 
 > [!IMPORTANT]
