@@ -17,6 +17,14 @@
             "command": "git fetch && git pull"
         },
         {
+            "label": "✅ Run Tests",
+            "command": "npm run test"
+        },
+        {
+            "label": "✅🎯 Run Current Spec",
+            "command": "npm run test ${relativeFile}"
+        },
+        {
             "label": "✔️ Check TypeScript Errors",
             "command": "tsc",
         },

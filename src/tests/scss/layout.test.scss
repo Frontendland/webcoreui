@@ -1,0 +1,130 @@
+@use 'true' as *;
+@use '../../scss/config.scss' as *;
+
+@include describe('layer') {
+    @include it('Should apply the correct layout rule') {
+        @include assert {
+            @include output {
+                // Layout
+                @include layout(flex);
+                @include layout(inline-flex);
+                @include layout(grid);
+                @include layout(inline-grid);
+
+                // Alignments
+                @include layout(v-center);
+                @include layout(v-start);
+                @include layout(v-end);
+                @include layout(v-baseline);
+                @include layout(v-stretch);
+
+                @include layout(h-center);
+                @include layout(h-start);
+                @include layout(h-end);
+                @include layout(h-between);
+                @include layout(h-around);
+                @include layout(h-evenly);
+                @include layout(h-stretch);
+
+                @include layout(center);
+
+                // Gaps
+                @include layout(none);
+                @include layout(xxs);
+                @include layout(xs);
+                @include layout(sm);
+                @include layout(md);
+                @include layout(default);
+                @include layout(lg);
+                @include layout(xl);
+                @include layout('2xl');
+                @include layout('3xl');
+                @include layout('4xl');
+                @include layout('5xl');
+
+                // Flex direction
+                @include layout(row);
+                @include layout(column);
+                @include layout(row-reverse);
+                @include layout(column-reverse);
+
+                // Flex wrap
+                @include layout(wrap);
+                @include layout(nowrap);
+                @include layout(wrap-reverse);
+
+                // Grid columns
+                @include layout(0);
+                @include layout(1);
+                @include layout(2);
+                @include layout(3);
+
+                // Combined
+                @include layout(flex, row, wrap, xs);
+            }
+            
+            @include expect {
+                // Layout
+                display: flex;
+                display: inline-flex;
+                display: grid;
+                display: inline-grid;
+
+                // Alignments
+                align-items: center;
+                align-items: flex-start;
+                align-items: flex-end;
+                align-items: baseline;
+                align-items: stretch;
+
+                justify-content: center;
+                justify-content: flex-start;
+                justify-content: flex-end;
+                justify-content: space-between;
+                justify-content: space-around;
+                justify-content: space-evenly;
+                justify-content: stretch;
+
+                align-items: center;
+                justify-content: center;
+
+                // Gaps
+                gap: 0;
+                gap: 2px;
+                gap: 5px;
+                gap: 10px;
+                gap: 15px;
+                gap: 20px;
+                gap: 25px;
+                gap: 30px;
+                gap: 35px;
+                gap: 40px;
+                gap: 45px;
+                gap: 50px;
+
+                // Flex direction
+                flex-direction: row;
+                flex-direction: column;
+                flex-direction: row-reverse;
+                flex-direction: column-reverse;
+
+                // Flex wrap
+                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                flex-wrap: wrap-reverse;
+
+                // Grid columns
+                grid-template-columns: repeat(0, minmax(0, 1fr));    
+                grid-template-columns: repeat(1, minmax(0, 1fr));    
+                grid-template-columns: repeat(2, minmax(0, 1fr));     
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                
+                // Combined
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+        }
+    }
+}
