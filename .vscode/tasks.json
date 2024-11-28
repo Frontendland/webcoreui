@@ -21,8 +21,12 @@
             "command": "npm run test"
         },
         {
+            "label": "✅🎨 Run Sass Tests",
+            "command": "npm run test:sass"
+        },
+        {
             "label": "✅🎯 Run Current Spec",
-            "command": "npm run test ${relativeFile}"
+            "command": "npm run test:run ${relativeFile}"
         },
         {
             "label": "✔️ Check TypeScript Errors",
