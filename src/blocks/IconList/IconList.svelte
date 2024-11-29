@@ -1,9 +1,8 @@
 <script lang="ts">
-    import type { IconListProps } from './iconList'
-
-    import styles from './icon-list.module.scss'
-
     import { classNames } from 'webcoreui'
+
+    import type { IconListProps } from './iconList'
+    import styles from './icon-list.module.scss'
 
     export let items: IconListProps['items'] = []
     export let color: IconListProps['color'] = ''

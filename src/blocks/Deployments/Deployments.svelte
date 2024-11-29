@@ -1,8 +1,5 @@
 <script>
     import { onMount } from 'svelte'
-
-    import styles from './deployments.module.scss'
-
     import { closeModal,modal } from 'webcoreui'
     import {
         Alert,
@@ -10,6 +7,8 @@
         Icon,
         Modal
     } from 'webcoreui/svelte'
+
+    import styles from './deployments.module.scss'
 
     let modalInstance
 

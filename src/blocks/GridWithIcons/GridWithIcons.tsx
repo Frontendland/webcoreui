@@ -1,10 +1,9 @@
 import React from 'react'
-import type { GridWithIconsProps } from './gridWithIcons'
-
-import styles from './grid-with-icons.module.scss'
-
 import { classNames } from 'webcoreui'
 import { ConditionalWrapper } from 'webcoreui/react'
+
+import type { GridWithIconsProps } from './gridWithIcons'
+import styles from './grid-with-icons.module.scss'
 
 const GridWithIcons = ({
     items,

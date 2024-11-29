@@ -1,13 +1,12 @@
 import React from 'react'
-import type { BlogCardProps } from './blogCard'
-
-import styles from './blog-card.module.scss'
-
 import { classNames } from 'webcoreui'
 import {
     Card,
     ConditionalWrapper
 } from 'webcoreui/react'
+
+import type { BlogCardProps } from './blogCard'
+import styles from './blog-card.module.scss'
 
 const BlogCard = ({
     href,

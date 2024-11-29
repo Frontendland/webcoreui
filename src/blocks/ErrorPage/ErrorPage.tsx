@@ -1,11 +1,8 @@
 import React from 'react'
+import { Button } from 'webcoreui/react'
+
 import type { ErrorPageProps } from './errorPage'
-
 import styles from './error-page.module.scss'
-
-import {
-    Button
-} from 'webcoreui/react'
 
 const ErrorPage = ({
     type,

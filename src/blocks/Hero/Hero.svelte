@@ -1,14 +1,13 @@
 <script lang="ts">
-    import type { HeroProps } from './hero'
-
-    import styles from './hero.module.scss'
-
     import { classNames } from 'webcoreui'
     import {
         Badge,
         Button,
         ConditionalWrapper
     } from 'webcoreui/svelte'
+
+    import type { HeroProps } from './hero'
+    import styles from './hero.module.scss'
 
     export let heading: HeroProps['heading'] = ''
     export let subHeading: HeroProps['subHeading'] = ''

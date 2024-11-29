@@ -1,9 +1,8 @@
 import React from 'react'
-import type { IconListProps } from './iconList'
-
-import styles from './icon-list.module.scss'
-
 import { classNames } from 'webcoreui'
+
+import type { IconListProps } from './iconList'
+import styles from './icon-list.module.scss'
 
 const IconList = ({
     items,

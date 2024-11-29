@@ -1,12 +1,11 @@
 import React from 'react'
-
-import styles from './seo.module.scss'
-
 import { classNames } from 'webcoreui'
 import {
     Card,
     Progress
 } from 'webcoreui/react'
+
+import styles from './seo.module.scss'
 
 const progressClass = classNames([
     'flex justify-between muted',

@@ -1,5 +1,4 @@
 import type { MouseEventHandler } from 'svelte/elements'
-
 import type { ButtonProps } from 'webcoreui/astro'
 
 export type SignUpProps = {

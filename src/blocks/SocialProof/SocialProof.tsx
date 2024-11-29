@@ -1,9 +1,8 @@
 import React from 'react'
-import type { SocialProofProps } from './socialProof'
-
-import styles from './social-proof.module.scss'
-
 import { classNames } from 'webcoreui'
+
+import type { SocialProofProps } from './socialProof'
+import styles from './social-proof.module.scss'
 
 const SocialProof = ({
     items,

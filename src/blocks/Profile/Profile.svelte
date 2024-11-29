@@ -1,6 +1,4 @@
 <script>
-    import styles from './profile.module.scss'
-
     import {
         Avatar,
         Badge,
@@ -8,6 +6,8 @@
         Table,
         Tabs
     } from 'webcoreui/svelte'
+
+    import styles from './profile.module.scss'
 
     const tabItems = [{
         label: 'Profile',

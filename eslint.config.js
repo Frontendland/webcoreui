@@ -186,6 +186,26 @@ export default [
         }
     },
     {
+        files: ['src/blocks/**/*'],
+        rules: {
+            'simple-import-sort/imports': ['error', {
+                groups: [
+                    [
+                        '^react',
+                        '^svelte',
+                        'webcoreui'
+                    ],
+                    [
+                        '^.+\\.astro',
+                        '^.+\\.svelte',
+                        '^.+\\.tsx'
+                    ],
+                    ['^\\./', '^.+\\.svg', '^.+\\.scss']
+                ]
+            }]
+        }
+    },
+    {
         files: ['**/*.svelte'],
         languageOptions: {
             parser: svelteParser,

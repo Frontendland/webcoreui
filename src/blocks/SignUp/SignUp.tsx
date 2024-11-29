@@ -1,11 +1,11 @@
 import React from 'react'
-import type { ReactSignUpProps } from './signup'
-
 import {
     Button,
     Card,
     Input
 } from 'webcoreui/react'
+
+import type { ReactSignUpProps } from './signup'
 
 const SignUp = ({
     label = 'Sign up',

@@ -1,10 +1,9 @@
 <script lang="ts">
-    import type { GridWithIconsProps } from './gridWithIcons'
-
-    import styles from './grid-with-icons.module.scss'
-
     import { classNames } from 'webcoreui'
     import { ConditionalWrapper } from 'webcoreui/svelte'
+
+    import type { GridWithIconsProps } from './gridWithIcons'
+    import styles from './grid-with-icons.module.scss'
 
     export let items: GridWithIconsProps['items'] = []
     export let columns: GridWithIconsProps['columns'] = null

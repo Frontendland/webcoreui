@@ -1,10 +1,9 @@
 import React from 'react'
-import type { TilesProps } from './tiles'
-
-import styles from './tiles.module.scss'
-
 import { classNames } from 'webcoreui'
 import { Button, Card } from 'webcoreui/react'
+
+import type { TilesProps } from './tiles'
+import styles from './tiles.module.scss'
 
 
 const Tiles = ({

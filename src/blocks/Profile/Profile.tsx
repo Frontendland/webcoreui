@@ -1,7 +1,4 @@
 import React from 'react'
-
-import styles from './profile.module.scss'
-
 import {
     Avatar,
     Badge,
@@ -9,6 +6,8 @@ import {
     Table,
     Tabs
 } from 'webcoreui/react'
+
+import styles from './profile.module.scss'
 
 const tabItems = [{
     label: 'Profile',

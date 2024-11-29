@@ -1,7 +1,4 @@
 import React from 'react'
-
-import styles from './seller.module.scss'
-
 import { classNames } from 'webcoreui'
 import {
     Avatar,
@@ -9,6 +6,8 @@ import {
     Rating,
     Spinner
 } from 'webcoreui/react'
+
+import styles from './seller.module.scss'
 
 const avatarGroup = [
     '/img/avatar0.png',

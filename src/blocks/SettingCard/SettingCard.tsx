@@ -1,9 +1,8 @@
 import React from 'react'
-import type { ReactSettingCardProps } from './settingCard'
-
-import styles from './setting-card.module.scss'
-
 import { Card } from 'webcoreui/react'
+
+import type { ReactSettingCardProps } from './settingCard'
+import styles from './setting-card.module.scss'
 
 const SettingCard = ({
     title,

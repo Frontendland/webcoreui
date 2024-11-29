@@ -1,11 +1,11 @@
 <script>
-    import styles from './seo.module.scss'
-
     import { classNames } from 'webcoreui'
     import {
         Card,
         Progress
     } from 'webcoreui/svelte'
+
+    import styles from './seo.module.scss'
 
     const progressClass = classNames([
         'flex justify-between muted',

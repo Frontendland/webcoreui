@@ -1,10 +1,10 @@
 import React from 'react'
-import type { UserProps } from './user'
-
 import {
     Avatar,
     Rating
 } from 'webcoreui/react'
+
+import type { UserProps } from './user'
 
 const User = ({
     avatar,

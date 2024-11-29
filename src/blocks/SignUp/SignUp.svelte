@@ -1,11 +1,11 @@
 <script lang="ts">
-    import type { SvelteSignUpProps } from './signup'
-
     import {
         Button,
         Card,
         Input
     } from 'webcoreui/svelte'
+
+    import type { SvelteSignUpProps } from './signup'
 
     export let label: SvelteSignUpProps['label'] = 'Sign up'
     export let emailLabel: SvelteSignUpProps['emailLabel'] = 'Email'

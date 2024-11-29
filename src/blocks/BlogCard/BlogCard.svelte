@@ -1,13 +1,12 @@
 <script lang="ts">
-    import type { BlogCardProps } from './blogCard'
-
-    import styles from './blog-card.module.scss'
-
     import { classNames } from 'webcoreui'
     import {
         Card,
         ConditionalWrapper
     } from 'webcoreui/svelte'
+
+    import type { BlogCardProps } from './blogCard'
+    import styles from './blog-card.module.scss'
 
     const defaultImg = { src: '', alt: '', width: 0, height: 0 }
 

@@ -1,14 +1,13 @@
 import React from 'react'
-import type { HeroProps } from './hero'
-
-import styles from './hero.module.scss'
-
 import { classNames } from 'webcoreui'
 import {
     Badge,
     Button,
     ConditionalWrapper
 } from 'webcoreui/react'
+
+import type { HeroProps } from './hero'
+import styles from './hero.module.scss'
 
 const Hero = ({
     heading,

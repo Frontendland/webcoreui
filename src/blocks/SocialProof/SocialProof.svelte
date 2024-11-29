@@ -1,9 +1,8 @@
 <script lang="ts">
-    import type { SocialProofProps } from './socialProof'
-
-    import styles from './social-proof.module.scss'
-
     import { classNames } from 'webcoreui'
+
+    import type { SocialProofProps } from './socialProof'
+    import styles from './social-proof.module.scss'
 
     export let items: SocialProofProps['items'] = []
     export let className: SocialProofProps['className'] = ''

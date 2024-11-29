@@ -1,12 +1,9 @@
 <script lang="ts">
-    import type { FAQProps } from './faq'
-
-    import styles from './faq.module.scss'
-
     import { classNames } from 'webcoreui'
-    import {
-        Accordion
-    } from 'webcoreui/svelte'
+    import { Accordion } from 'webcoreui/svelte'
+
+    import type { FAQProps } from './faq'
+    import styles from './faq.module.scss'
 
     export let element: FAQProps['element'] = 'section'
     export let title: FAQProps['title'] = 'Frequently Asked Questions'

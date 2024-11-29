@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
-import styles from './deployments.module.scss'
-
 import { closeModal,modal } from 'webcoreui'
 import {
     Alert,
@@ -9,6 +6,8 @@ import {
     Icon,
     Modal
 } from 'webcoreui/react'
+
+import styles from './deployments.module.scss'
 
 type ModalInstance = {
     open: () => void

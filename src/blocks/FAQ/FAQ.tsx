@@ -1,13 +1,10 @@
 
 import React from 'react'
-import type { ReactFAQProps } from './faq'
-
-import styles from './faq.module.scss'
-
 import { classNames } from 'webcoreui'
-import {
-    Accordion
-} from 'webcoreui/react'
+import { Accordion } from 'webcoreui/react'
+
+import type { ReactFAQProps } from './faq'
+import styles from './faq.module.scss'
 
 const FAQ = ({
     element = 'section',

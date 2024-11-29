@@ -1,9 +1,8 @@
 <script lang="ts">
-    import type { ErrorPageProps } from './errorPage'
-
-    import styles from './error-page.module.scss'
-
     import { Button } from 'webcoreui/svelte'
+
+    import type { ErrorPageProps } from './errorPage'
+    import styles from './error-page.module.scss'
 
     export let type: ErrorPageProps['type'] = 404
     export let typeColor: ErrorPageProps['typeColor'] = ''

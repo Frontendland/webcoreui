@@ -1,10 +1,9 @@
 <script lang="ts">
-    import type { TilesProps } from './tiles'
-
-    import styles from './tiles.module.scss'
-
     import { classNames } from 'webcoreui'
     import { Button, Card } from 'webcoreui/svelte'
+
+    import type { TilesProps } from './tiles'
+    import styles from './tiles.module.scss'
 
     export let columns: TilesProps['columns'] = 0
     export let items: TilesProps['items'] = []

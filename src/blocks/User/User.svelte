@@ -1,10 +1,10 @@
 <script lang="ts">
-    import type { UserProps } from './user'
-
     import {
         Avatar,
         Rating
     } from 'webcoreui/svelte'
+
+    import type { UserProps } from './user'
 
     export let avatar: UserProps['avatar'] = ''
     export let avatarSize: UserProps['avatarSize'] = 50
