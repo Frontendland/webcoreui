@@ -1,11 +1,11 @@
 ---
 import Layout from '@static/Layout.astro'
 
-import { getSections } from '@helpers'
-
 import AstroBlogCard from '@blocks/BlogCard/BlogCard.astro'
 import SvelteBlogCard from '@blocks/BlogCard/BlogCard.svelte'
 import ReactBlogCard from '@blocks/BlogCard/BlogCard.tsx'
+
+import { getSections } from '@helpers'
 
 const sections = getSections({
     title: 'blog cards',

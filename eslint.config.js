@@ -177,8 +177,10 @@ export default [
             'max-lines': 'off',
             'simple-import-sort/imports': ['error', {
                 groups: [
+                    ['webcoreui'],
                     ['@static'],
                     ['@components'],
+                    ['@blocks'],
                     ['^.+\\.svg'],
                     ['@helpers', '@data']
                 ]

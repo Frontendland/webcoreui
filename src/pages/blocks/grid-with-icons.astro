@@ -2,12 +2,12 @@
 import ComponentWrapper from '@static/ComponentWrapper.astro'
 import Layout from '@static/Layout.astro'
 
-import { getSections } from '@helpers'
-import { gridWithIconsItems } from '@data'
-
 import AstroGridWithIcons from '@blocks/GridWithIcons/GridWithIcons.astro'
 import SvelteGridWithIcons from '@blocks/GridWithIcons/GridWithIcons.svelte'
 import ReactGridWithIcons from '@blocks/GridWithIcons/GridWithIcons.tsx'
+
+import { getSections } from '@helpers'
+import { gridWithIconsItems } from '@data'
 
 const sections = getSections({
     title: '',
