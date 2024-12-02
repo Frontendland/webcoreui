@@ -1,0 +1,164 @@
+---
+import {
+    Accordion,
+    Alert,
+    AspectRatio,
+    Avatar,
+    Badge,
+    Banner,
+    Breadcrumb,
+    Button,
+    Card,
+    Carousel,
+    Checkbox,
+    Collapsible,
+    ConditionalWrapper,
+    DataTable,
+    Footer,
+    Group,
+    Icon,
+    Input,
+    Kbd,
+    List,
+    Masonry,
+    Menu,
+    Modal,
+    Pagination,
+    Popover,
+    Progress,
+    Radio,
+    Rating,
+    Ribbon,
+    Select,
+    Sheet,
+    Sidebar,
+    Skeleton,
+    Slider,
+    Spinner,
+    Spoiler,
+    Stepper,
+    Switch,
+    Table,
+    Textarea,
+    Timeline,
+    TimelineItem,
+    Toast
+} from 'webcoreui/astro'
+
+import type { ComponentMapProps } from './componentMap'
+
+import {
+    BlogCard,
+    ErrorPage,
+    FAQ,
+    GridWithIcons,
+    Hero,
+    IconList,
+    SettingCard,
+    SignUp,
+    SocialProof,
+    Tiles,
+    User
+} from '@blocks/astro'
+
+interface Props extends ComponentMapProps {}
+
+const {
+    element = 'div',
+    gap = 'default',
+    components
+} = Astro.props
+
+const blockMap: Record<string, (_props: any) => any> = {
+    BlogCard,
+    ErrorPage,
+    FAQ,
+    GridWithIcons,
+    Hero,
+    IconList,
+    SettingCard,
+    SignUp,
+    SocialProof,
+    Tiles,
+    User
+}
+
+const map: Record<string, (_props: any) => any> = {
+    Accordion,
+    Alert,
+    AspectRatio,
+    Avatar,
+    Badge,
+    Banner,
+    Breadcrumb,
+    Button,
+    Card,
+    Carousel,
+    Checkbox,
+    Collapsible,
+    ConditionalWrapper,
+    DataTable,
+    Footer,
+    Group,
+    Icon,
+    Input,
+    Kbd,
+    List,
+    Masonry,
+    Menu,
+    Modal,
+    Pagination,
+    Popover,
+    Progress,
+    Radio,
+    Rating,
+    Ribbon,
+    Select,
+    Sheet,
+    Sidebar,
+    Skeleton,
+    Slider,
+    Spinner,
+    Spoiler,
+    Stepper,
+    Switch,
+    Table,
+    Textarea,
+    Timeline,
+    TimelineItem,
+    Toast,
+    ...blockMap
+}
+
+const Element = element
+---
+
+<Element class:list={['flex column', gap]}>
+    {components?.map((component, index) => {
+        const Component = map[component.type]
+        const ChildComponent = map[component.data?.children?.type]
+
+        if (component.type === 'HTML') {
+            return <Fragment set:html={component.data?.children} />
+        }
+
+        if (typeof Component === 'undefined') {
+            return (
+                <div>
+                    Component <code>{component.type}</code> not found at index {index}.
+                </div>
+            )
+        }
+
+        return (
+            <Component {...component.data}>
+                {ChildComponent && (
+                    <ChildComponent {...component.data?.children?.data} />
+                )}
+                {typeof component.data?.children === 'string' && (
+                    <Fragment set:html={component.data?.children} />
+                )}
+            </Component>
+        )
+    })}
+</Element>

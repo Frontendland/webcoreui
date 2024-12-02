@@ -1,8 +1,11 @@
 ---
+import { Card, Switch } from 'webcoreui/astro'
+
 import Layout from '@static/Layout.astro'
 import Link from '@static/Link.astro'
 
 import BlogCard from '@blocks/BlogCard/BlogCard.astro'
+import ComponentMap from '@blocks/ComponentMap/ComponentMap.astro'
 import ErrorPage from '@blocks/ErrorPage/ErrorPage.astro'
 import FAQ from '@blocks/FAQ/FAQ.astro'
 import GridWithIcons from '@blocks/GridWithIcons/GridWithIcons.astro'
@@ -13,7 +16,6 @@ import SignUp from '@blocks/SignUp/SignUp.astro'
 import SocialProof from '@blocks/SocialProof/SocialProof.astro'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
-import { Card, Switch } from 'webcoreui/astro'
 ---
 
 <Layout>
@@ -47,6 +49,27 @@ import { Card, Switch } from 'webcoreui/astro'
                     text: 'Use the <code>GridWithIcons</code> block to organize your list into a grid with icons to enhance clarity and visual appeal.'
                 }]} columns={1} />
                 <Link href="/blocks/grid-with-icons" />
+            </Card>
+            <Card>
+                <ComponentMap
+                    components={[{
+                        type: 'Button',
+                        data: {
+                            theme: 'warning',
+                            children: 'Component Map'
+                        }
+                    }, {
+                        type: 'Rating',
+                        data: {
+                            score: 5,
+                            showText: true,
+                            text: '{0}.0',
+                            reviewText: 'out of {0} reviews',
+                            reviewCount: 56
+                        }
+                    }]}
+                />
+                <Link href="/blocks/component-map" />
             </Card>
         </div>
         <div class="block-column flex column">

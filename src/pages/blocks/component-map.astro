@@ -1,0 +1,94 @@
+---
+import Layout from '@static/Layout.astro'
+
+import type { ComponentMapProps } from '@blocks/ComponentMap/componentMap'
+import AstroComponentMap from '@blocks/ComponentMap/ComponentMap.astro'
+import SvelteComponentMap from '@blocks/ComponentMap/ComponentMap.svelte'
+import ReactComponentMap from '@blocks/ComponentMap/ComponentMap.tsx'
+
+const getData = (title: string, theme: string) => [
+    {
+        type: 'HTML',
+        data: {
+            children: `<div>
+                <h3>${title} Component Map (Blocks + Components)</h3>
+                <hr />
+            </div>`
+        }
+    },
+    {
+        type: 'Hero',
+        data: {
+            heading: `High Quality ${title} Prompts`,
+            subHeading: 'Get connected to our top prompt developers',
+            badge: {
+                rounded: true,
+                theme,
+                text: 'Buy one, get one for free'
+            },
+            image: {
+                src: '/img/placeholder1.png',
+                alt: 'Banner',
+                width: 500,
+                height: 250
+            }
+        }
+    },
+    {
+        type: 'Card',
+        data: {
+            secondary: true,
+            children: {
+                type: 'User',
+                data: {
+                    avatar: '../img/avatar0.png',
+                    name: 'Marcus',
+                    role: 'Top rated seller',
+                    rating: 4.8,
+                    showText: true
+                }
+            }
+        }
+    },
+    {
+        type: 'Button',
+        data: {
+            theme,
+            children: 'Get in Touch'
+        }
+    }
+] as ComponentMapProps['components']
+---
+
+<Layout>
+    <h1>Component Maps</h1>
+    <h2 class="heading">
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <AstroComponentMap
+        element="section"
+        components={getData('Astro', 'success')}
+    />
+
+    <SvelteComponentMap
+        element="section"
+        components={getData('Svelte', 'alert')}
+    />
+
+    <ReactComponentMap
+        element="section"
+        components={getData('React', 'info')}
+    />
+</Layout>
+
+<style lang="scss" is:global>
+    @use 'webcoreui/config' as *;
+
+    h2:not(.heading),
+    section h1:not(.reset) {
+        @include typography(left);
+    }
+</style>
