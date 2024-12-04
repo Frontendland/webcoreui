@@ -134,10 +134,10 @@ const ComponentMap = ({
         <Element className={classNames(['flex column', gap])}>
             {components?.map((component, index) => {
                 const Component = map[component.type]
-                const ChildComponent = map[component.data?.children?.type]
+                const ChildComponent = map[component.props?.children?.type]
 
                 if (component.type === 'HTML') {
-                    return <div dangerouslySetInnerHTML={{ __html: component.data?.children }} key={index} />
+                    return <div dangerouslySetInnerHTML={{ __html: component.props?.children }} key={index} />
                 }
 
                 if (typeof Component === 'undefined') {
@@ -149,12 +149,12 @@ const ComponentMap = ({
                 }
 
                 return (
-                    <Component {...component.data} key={index}>
+                    <Component {...component.props} key={index}>
                         {ChildComponent && (
-                            <ChildComponent {...component.data?.children?.data} />
+                            <ChildComponent {...component.props?.children?.props} />
                         )}
-                        {typeof component.data?.children === 'string' && (
-                            <div dangerouslySetInnerHTML={{ __html: component.data?.children }} />
+                        {typeof component.props?.children === 'string' && (
+                            <div dangerouslySetInnerHTML={{ __html: component.props?.children }} />
                         )}
                     </Component>
                 )

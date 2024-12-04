@@ -70,7 +70,7 @@ export type ComponentMapProps = {
             | 'Toast'
             | 'HTML'
             | BlockTypes
-        data?: {
+        props?: {
             children?: any
             [key: string]: any
         }

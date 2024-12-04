@@ -132,22 +132,22 @@
 <svelte:element this={element} class={classNames(['flex column', gap])}>
     {#each components as component, index}
         {#if component.type === 'HTML'}
-            {@html component.data?.children}
+            {@html component.props?.children}
         {:else if typeof map[component.type] === 'undefined'}
             <div>
                 Component <code>{component.type}</code> not found at index {index}.
             </div>
         {:else}
-            <svelte:component this={map[component.type]} {...component.data}>
-                {#if map[component.data?.children?.type]}
+            <svelte:component this={map[component.type]} {...component.props}>
+                {#if map[component.props?.children?.type]}
                     <svelte:component
-                        this={map[component.data?.children?.type]}
-                        {...component.data?.children?.data}
+                        this={map[component.props?.children?.type]}
+                        {...component.props?.children?.props}
                     />
                 {/if}
 
-                {#if typeof component.data?.children === 'string'}
-                    {@html component.data?.children}
+                {#if typeof component.props?.children === 'string'}
+                    {@html component.props?.children}
                 {/if}
             </svelte:component>
         {/if}

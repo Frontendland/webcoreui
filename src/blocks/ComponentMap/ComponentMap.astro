@@ -136,10 +136,10 @@ const Element = element
 <Element class:list={['flex column', gap]}>
     {components?.map((component, index) => {
         const Component = map[component.type]
-        const ChildComponent = map[component.data?.children?.type]
+        const ChildComponent = map[component.props?.children?.type]
 
         if (component.type === 'HTML') {
-            return <Fragment set:html={component.data?.children} />
+            return <Fragment set:html={component.props?.children} />
         }
 
         if (typeof Component === 'undefined') {
@@ -151,12 +151,12 @@ const Element = element
         }
 
         return (
-            <Component {...component.data}>
+            <Component {...component.props}>
                 {ChildComponent && (
-                    <ChildComponent {...component.data?.children?.data} />
+                    <ChildComponent {...component.props?.children?.props} />
                 )}
-                {typeof component.data?.children === 'string' && (
-                    <Fragment set:html={component.data?.children} />
+                {typeof component.props?.children === 'string' && (
+                    <Fragment set:html={component.props?.children} />
                 )}
             </Component>
         )

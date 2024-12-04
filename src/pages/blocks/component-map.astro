@@ -9,7 +9,7 @@ import ReactComponentMap from '@blocks/ComponentMap/ComponentMap.tsx'
 const getData = (title: string, theme: string) => [
     {
         type: 'HTML',
-        data: {
+        props: {
             children: `<div>
                 <h3>${title} Component Map (Blocks + Components)</h3>
                 <hr />
@@ -18,7 +18,7 @@ const getData = (title: string, theme: string) => [
     },
     {
         type: 'Hero',
-        data: {
+        props: {
             heading: `High Quality ${title} Prompts`,
             subHeading: 'Get connected to our top prompt developers',
             badge: {
@@ -36,11 +36,11 @@ const getData = (title: string, theme: string) => [
     },
     {
         type: 'Card',
-        data: {
+        props: {
             secondary: true,
             children: {
                 type: 'User',
-                data: {
+                props: {
                     avatar: '../img/avatar0.png',
                     name: 'Marcus',
                     role: 'Top rated seller',
@@ -52,7 +52,7 @@ const getData = (title: string, theme: string) => [
     },
     {
         type: 'Button',
-        data: {
+        props: {
             theme,
             children: 'Get in Touch'
         }
