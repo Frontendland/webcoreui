@@ -7,6 +7,7 @@ export type CheckboxProps = {
     disabled?: boolean
     color?: string
     className?: string
+    [key: string]: any
 }
 
 export type SvelteCheckboxProps = {

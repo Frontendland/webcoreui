@@ -13,7 +13,8 @@ const {
     subText,
     value = '',
     disabled,
-    className
+    className,
+    ...rest
 } = Astro.props
 
 const classes = [
@@ -41,5 +42,6 @@ const useLabel = !!(label || subText)
         placeholder={placeholder}
         disabled={disabled}
         class:list={classes}
+        {...rest}
     >{value}</textarea>
 </ConditionalWrapper>

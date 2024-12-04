@@ -39,6 +39,7 @@
             checked={checked}
             disabled={disabled}
             on:click={onClick}
+            {...$$restProps}
         />
         <span class={styles.check}>
             {@html check}

@@ -38,6 +38,7 @@
         class={classes}
         on:change={onChange}
         on:keyup={onKeyUp}
+        {...$$restProps}
     >{value}</textarea>
     {#if subText}
         <div class={styles.subtext}>

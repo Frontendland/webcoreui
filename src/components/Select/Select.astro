@@ -27,6 +27,10 @@ const {
     ...rest
 } = Astro.props
 
+const inputRestProps = Object.fromEntries(
+    Object.entries(rest).filter(([key]) => key.includes('data'))
+)
+
 const classes = classNames([
     styles.select,
     disabled && styles.disabled,
@@ -46,6 +50,7 @@ const classes = classNames([
     data-no-update={!updateValue ? 'true' : undefined}
     data-position={position}
     labelClassName={classes}
+    {...inputRestProps}
 >
     <Fragment set:html={ArrowDown} />
 </Input>

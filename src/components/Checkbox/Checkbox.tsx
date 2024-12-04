@@ -16,7 +16,8 @@ const Checkbox = ({
     disabled,
     color,
     className,
-    onClick
+    onClick,
+    ...rest
 }: ReactCheckboxProps) => {
     const classes = classNames([
         styles.checkbox,
@@ -43,6 +44,7 @@ const Checkbox = ({
                     defaultChecked={checked}
                     disabled={disabled}
                     onClick={onClick}
+                    {...rest}
                 />
                 <span
                     className={styles.check}

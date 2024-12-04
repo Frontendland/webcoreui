@@ -42,6 +42,10 @@ const Select = ({
         styles.popover
     ])
 
+    const inputRestProps = Object.fromEntries(
+        Object.entries(rest).filter(([key]) => key.includes('data'))
+    )
+
     let popoverInstance: any
 
     const select = (event: ListEventType) => {
@@ -119,6 +123,7 @@ const Select = ({
                 subText={subText}
                 className={`w-select-${name}`}
                 labelClassName={classes}
+                {...inputRestProps}
             >
                 <span
                     dangerouslySetInnerHTML={{ __html: ArrowDown }}

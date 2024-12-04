@@ -16,7 +16,8 @@ const {
     small,
     square,
     disabled,
-    className
+    className,
+    ...rest
 } = Astro.props
 
 const classes = [
@@ -35,7 +36,7 @@ const styleVariables = classNames([
 ---
 
 <label class:list={classes} style={styleVariables}>
-    <input type="checkbox" checked={toggled} disabled={disabled} />
+    <input type="checkbox" checked={toggled} disabled={disabled} {...rest} />
     <span class={styles.toggle}></span>
     {label && <span class={styles.label}>{label}</span>}
 </label>

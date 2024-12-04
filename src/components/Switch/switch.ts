@@ -10,6 +10,7 @@ export type SwitchProps = {
     onColor?: string
     offColor?: string
     className?: string
+    [key: string]: any
 }
 
 export type SvelteSwitchProps = {

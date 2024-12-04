@@ -13,7 +13,8 @@ const Radio = ({
     color,
     inline,
     className,
-    onChange
+    onChange,
+    ...rest
 }: ReactRadioProps) => {
     const classes = classNames([
         styles.radio,
@@ -28,10 +29,10 @@ const Radio = ({
     return (
         <div className={classes} style={style}>
             {items.map((item, index) => (
-                <label className={[
+                <label className={classNames([
                     item.subText && styles.col,
                     item.disabled && styles.disabled
-                ].filter(Boolean).join(' ')} key={index}>
+                ])} key={index}>
                     <ConditionalWrapper
                         condition={!!(item.subText)}
                         wrapper={children => (
@@ -47,6 +48,7 @@ const Radio = ({
                             defaultChecked={item.selected}
                             disabled={item.disabled}
                             onChange={onChange}
+                            {...rest}
                         />
                         <span className={styles.icon} />
                         <span

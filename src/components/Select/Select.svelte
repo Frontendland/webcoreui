@@ -42,6 +42,10 @@
         styles.popover
     ])
 
+    const inputRestProps = Object.fromEntries(
+        Object.entries($$restProps).filter(([key]) => key.includes('data'))
+    )
+
     const select = (event: ListEventType) => {
         closePopover(`.w-options-${name}`)
 
@@ -106,14 +110,15 @@
 
 <Input
     type="text"
-    value={value}
+    value={value || null}
     readonly={true}
     disabled={disabled}
-    placeholder={placeholder}
+    placeholder={placeholder || null}
     label={label}
     subText={subText}
     className={`w-select-${name}`}
     labelClassName={classes}
+    {...inputRestProps}
 >
     {@html ArrowDown}
 </Input>

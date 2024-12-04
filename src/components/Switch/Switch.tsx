@@ -15,7 +15,8 @@ const Switch = ({
     square,
     disabled,
     className,
-    onClick
+    onClick,
+    ...rest
 }: ReactSwitchProps) => {
     const classes = classNames([
         styles.switch,
@@ -38,6 +39,7 @@ const Switch = ({
                 defaultChecked={toggled}
                 disabled={disabled}
                 onClick={onClick}
+                {...rest}
             />
             <span className={styles.toggle}></span>
             {label && <span className={styles.label}>{label}</span>}

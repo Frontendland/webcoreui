@@ -37,6 +37,7 @@
         checked={toggled}
         disabled={disabled}
         on:click={onClick}
+        {...$$restProps}
     />
     <span class={styles.toggle}></span>
     {#if label}

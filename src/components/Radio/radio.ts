@@ -10,6 +10,7 @@ export type RadioProps = {
     color?: string
     inline?: boolean
     className?: string
+    [key: string]: any
 }
 
 export type SvelteRadioProps = {

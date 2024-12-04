@@ -5,6 +5,7 @@ export type TextareaProps = {
     value?: string
     disabled?: boolean
     className?: string
+    [key: string]: any
 }
 
 export type SvelteTextareaProps = {

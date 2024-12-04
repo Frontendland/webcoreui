@@ -27,10 +27,10 @@
 
 <div class={classes} style={style}>
     {#each items as item}
-        <label class={[
+        <label class={classNames([
             item.subText && styles.col,
             item.disabled && styles.disabled
-        ].filter(Boolean).join(' ')}
+        ])}
         >
             <ConditionalWrapper
                 condition={!!(item.subText)}
@@ -44,6 +44,7 @@
                     checked={item.selected}
                     disabled={item.disabled}
                     on:change={onChange}
+                    {...$$restProps}
                 />
                 <span class={styles.icon} />
                 <span class={styles.label}>
