@@ -1,0 +1,140 @@
+---
+import { AspectRatio, Icon } from 'webcoreui/astro'
+
+import Layout from '@static/Layout.astro'
+
+import AstroDeviceMockup from '@blocks/DeviceMockup/DeviceMockup.astro'
+import SvelteDeviceMockup from '@blocks/DeviceMockup/DeviceMockup.svelte'
+import ReactDeviceMockup from '@blocks/DeviceMockup/DeviceMockup.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: '',
+    components: [AstroDeviceMockup, SvelteDeviceMockup, ReactDeviceMockup]
+})
+---
+
+<Layout>
+    <h1>Device Mockup Blocks</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    {sections.map(section => (
+        <h3>{section.title} Blocks</h3>
+        <div class="grid">
+            <div class="mobile-container">
+                <section.component className="example">
+                    <div class="grid sm">
+                        <AspectRatio ratio="1/1.5">
+                            <img
+                                src="/img/placeholder1.png"
+                                width="380"
+                                height="380"
+                            />
+                        </AspectRatio>
+                        <Icon type="components" />
+                        <span class="muted">Mobile Mockup</span>
+                    </div>
+                </section.component>
+            </div>
+
+            <div class="grid md-2">
+                <section.component type="desktop" className="example">
+                    <div class="grid sm">
+                        <AspectRatio ratio="21:9">
+                            <img
+                                src="/img/placeholder3.png"
+                                width="500"
+                                height="500"
+                            />
+                        </AspectRatio>
+                        <span class="muted">Desktop Mockup</span>
+                    </div>
+                </section.component>
+
+                <section.component
+                    type="desktop"
+                    url="webcoreui.dev"
+                    className="example"
+                >
+                    <div class="grid sm">
+                        <AspectRatio ratio="21:9">
+                            <img
+                                src="/img/placeholder3.png"
+                                width="500"
+                                height="500"
+                            />
+                        </AspectRatio>
+                        <span class="muted">Desktop Mockup with URL</span>
+                    </div>
+                </section.component>
+
+                <section.component
+                    type="desktop"
+                    url="webcoreui.dev"
+                    showButtons={false}
+                    className="example"
+                >
+                    <div class="grid sm">
+                        <AspectRatio ratio="21:9">
+                            <img
+                                src="/img/placeholder3.png"
+                                width="500"
+                                height="500"
+                            />
+                        </AspectRatio>
+                        <span class="muted">Desktop Mockup without icons</span>
+                    </div>
+                </section.component>
+
+                <section.component
+                    type="desktop"
+                    url="webcoreui.dev"
+                    className="example"
+                    closeButtonColor="#D13824"
+                    maximizeButtonColor="#E7A121"
+                    minimizeButtonColor="#97E038"
+                >
+                    <div class="grid sm">
+                        <AspectRatio ratio="21:9">
+                            <img
+                                src="/img/placeholder3.png"
+                                width="500"
+                                height="500"
+                            />
+                        </AspectRatio>
+                        <span class="muted">Desktop Mockup with icon colors</span>
+                    </div>
+                </section.component>
+            </div>
+        </div>
+    ))}
+</Layout>
+
+<style lang="scss" is:global>
+    @use 'webcoreui/config' as *;
+
+    svg {
+        @include spacing(none-auto);
+    }
+
+    .example {
+        @include typography(center);
+        @include background(primary-50);
+    }
+
+    .mobile-container {
+        @include spacing(auto-none);
+
+        max-width: 300px;
+    }
+
+    // .toggle {
+    //     @include typography(md);
+    //     @include spacing(py-xs, px-sm);
+    // }
+</style>

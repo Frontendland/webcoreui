@@ -1,0 +1,45 @@
+---
+import type { DeviceMockupProps } from './deviceMockup'
+import styles from './device-mockup.module.scss'
+
+interface Props extends DeviceMockupProps {}
+
+const {
+    type,
+    url,
+    showButtons = true,
+    closeButtonColor,
+    maximizeButtonColor,
+    minimizeButtonColor,
+    className
+} = Astro.props
+
+const classes = [
+    styles.mockup,
+    className
+]
+
+const getColor = (color: string | undefined) => color
+    ? `background:${color};`
+    : null
+---
+
+<div class:list={classes}>
+    {(type === 'desktop' && (showButtons || url)) && (
+        <div class={styles.actions}>
+            {showButtons && (
+                <div class={styles.container}>
+                    <span class={styles.button} style={getColor(closeButtonColor)} />
+                    <span class={styles.button} style={getColor(maximizeButtonColor)} />
+                    <span class={styles.button} style={getColor(minimizeButtonColor)} />
+                </div>
+            )}
+            {url && (
+                <div class:list={[styles.url, !showButtons && styles.full]}>
+                    {url}
+                </div>
+            )}
+        </div>
+    )}
+    <slot />
+</div>

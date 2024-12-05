@@ -1,0 +1,36 @@
+@use 'webcoreui/config' as *;
+
+.mockup {
+    @include background(primary-70);
+    @include border(6px, primary-50);
+    @include border-radius(xl);
+    @include visibility(hidden);
+}
+
+.actions {
+    @include background(primary-50);
+    @include spacing(pl-sm, pr-sm, pb-xs);
+    @include layout(flex, xl);
+
+    .container {
+        min-width: fit-content
+    }
+
+    .button {
+        @include background(primary-20);
+        @include size(10px);
+        @include visibility(inline-block);
+        @include border-radius(maxs);
+    }
+
+    .url {
+        @include background(primary-40);
+        @include typography(md, primary-20, center);
+        @include border-radius();
+        @include size('w90%');
+
+        &.full {
+            @include size('w100%');
+        }
+    }
+}

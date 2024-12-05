@@ -1,11 +1,12 @@
 ---
-import { Card, Switch } from 'webcoreui/astro'
+import { AspectRatio, Card, Switch } from 'webcoreui/astro'
 
 import Layout from '@static/Layout.astro'
 import Link from '@static/Link.astro'
 
 import BlogCard from '@blocks/BlogCard/BlogCard.astro'
 import ComponentMap from '@blocks/ComponentMap/ComponentMap.astro'
+import DeviceMockup from '@blocks/DeviceMockup/DeviceMockup.astro'
 import ErrorPage from '@blocks/ErrorPage/ErrorPage.astro'
 import FAQ from '@blocks/FAQ/FAQ.astro'
 import GridWithIcons from '@blocks/GridWithIcons/GridWithIcons.astro'
@@ -122,6 +123,20 @@ import User from '@blocks/User/User.astro'
                 title="Blog Card Title"
                 text="This is a blog card with an introductory test. Click me to navigate to more examples."
             />
+
+            <DeviceMockup className="device-mockup-example">
+                <div class="grid xs">
+                    <AspectRatio ratio="1">
+                        <img
+                            src="/img/placeholder1.png"
+                            width="380"
+                            height="380"
+                        />
+                    </AspectRatio>
+                    <span class="muted">Device Mockup</span>
+                    <a href="/blocks/device-mockup">See examples {'->'}</a>
+                </div>
+            </DeviceMockup>
         </div>
         <div class="block-column flex column">
             <Card title="Tiles with Icons">
@@ -169,5 +184,10 @@ import User from '@blocks/User/User.astro'
 
     .block-column {
         @include size(w370px);
+    }
+
+    .device-mockup-example {
+        @include typography(center);
+        @include background(primary-50);
     }
 </style>
