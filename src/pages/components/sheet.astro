@@ -204,9 +204,8 @@ const sections = getSections({
 </Layout>
 
 <script>
+    import { on } from '@utils/DOMUtils'
     import { closeModal, modal } from '@utils/modal'
-
-    import { on } from '@helpers'
 
     const selectors = [
         'astro',
@@ -230,7 +229,7 @@ const sections = getSections({
             modal: `#sheet-${selector}`
         })
 
-        on(`#sheet-close-btn-${selector}`, () => closeModal(`#sheet-${selector}`))
+        on(`#sheet-close-btn-${selector}`, 'click', () => closeModal(`#sheet-${selector}`))
     })
 
     variants.forEach(variant => {

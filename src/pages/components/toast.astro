@@ -151,13 +151,12 @@ const sections = getSections({
 </Layout>
 
 <script>
+    import { on } from '@utils/DOMUtils'
     import {
         hideToast,
         setDefaultTimeout,
         toast
     } from '@utils/toast'
-
-    import { on } from '@helpers'
 
     setDefaultTimeout(3000)
 
@@ -176,26 +175,26 @@ const sections = getSections({
 
     // Show toast functionaly
     buttons.forEach(id => {
-        on(`#toast-btn-${id}`, () => toast(`#toast-${id}`))
+        on(`#toast-btn-${id}`, 'click', () => toast(`#toast-${id}`))
     });
 
     // Dismissable functionality with long timeout
     [0, 1, 2].forEach(x => {
-        on(`#dismissable-show-${x}`, () => {
+        on(`#dismissable-show-${x}`, 'click', () => {
             toast({
                 element: `#dismissable-toast-${x}`,
                 timeout: 10_000
             })
         })
 
-        on(`#dismissable-hide-${x}`, () => {
+        on(`#dismissable-hide-${x}`, 'click', () => {
             hideToast(`#dismissable-toast-${x}`)
         })
     });
 
     // Programmatically setting title & content
     [0, 1, 2].forEach(x => {
-        on(`#programmatic-btn-${x}`, () => {
+        on(`#programmatic-btn-${x}`, 'click', () => {
             toast({
                 element: `#programmatic-toast-${x}`,
                 title: 'Title set through JS',
@@ -206,7 +205,7 @@ const sections = getSections({
 
     // Programmatically setting position
     [0, 1, 2].forEach(x => {
-        on(`#pos-btn-${x}`, () => {
+        on(`#pos-btn-${x}`, 'click', () => {
             toast({
                 element: `#pos-toast-${x}`,
                 title: 'Title set through JS',

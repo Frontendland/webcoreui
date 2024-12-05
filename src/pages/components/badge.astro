@@ -149,7 +149,7 @@ const sections = getSections({
 </Layout>
 
 <script>
-    import { on } from '@helpers'
+    import { on } from '@utils/DOMUtils'
 
-    on('.remove', (event: any) => event.currentTarget.remove())
+    on('.remove', 'click', (event: any) => event.currentTarget.remove())
 </script>
