@@ -45,8 +45,6 @@ import Timeline from '@components/Timeline/Timeline.astro'
 import TimelineItem from '@components/TimelineItem/TimelineItem.astro'
 
 import logo from '../../public/img/logo.svg?raw'
-import gitHubIcon from '../icons/github.svg?raw'
-import infoIcon from '../icons/info.svg?raw'
 
 import {
     accordionItems,
@@ -55,17 +53,9 @@ import {
     listPreview,
     masonryItems,
     stepperWithIcons,
+    tabItemsExample,
     themes
 } from '@data'
-
-const tabItems = [{
-    label: `${infoIcon} Intro`,
-    value: 'intro',
-    active: true
-}, {
-    label: `${gitHubIcon} Setup`,
-    value: 'setup'
-}]
 ---
 
 <Layout>
@@ -297,7 +287,7 @@ const tabItems = [{
             />
         </CardWrapper>
         <CardWrapper title="Tabs" href="/components/tabs">
-            <Tabs items={tabItems} theme="boxed" />
+            <Tabs items={tabItemsExample} theme="boxed" />
         </CardWrapper>
         <CardWrapper title="Textarea" href="/components/textarea">
             <Textarea placeholder="Get in touch with us" />

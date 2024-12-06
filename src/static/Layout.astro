@@ -6,12 +6,17 @@ import Menu from '@components/Menu/Menu.astro'
 
 import logo from '../../public/img/logo.svg?raw'
 
-const { nonStickyMenu } = Astro.props
+import { classNames } from '@utils/classNames'
 
-const menuClasses = [
+const {
+    nonStickyMenu,
+    docs = ''
+} = Astro.props
+
+const menuClasses = classNames([
     'menu',
     nonStickyMenu && 'fixed'
-].filter(Boolean).join(' ')
+])
 
 const theme = (Astro.cookies.get('w-theme')?.value || 'dark') as string
 const isPath = (path: string) => Astro.url.pathname === `/${path}`
@@ -69,7 +74,7 @@ const externalLinks = [
         icon: 'components'
     },
     {
-        url: 'https://webcoreui.dev',
+        url: `https://webcoreui.dev${docs}`,
         name: 'docs',
         icon: 'file'
     }
@@ -182,10 +187,6 @@ const externalLinks = [
 
     .mb {
         @include spacing(mb-default);
-    }
-
-    .muted {
-        @include typography(primary-20, md);
     }
 
     .relative {

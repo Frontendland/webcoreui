@@ -14,7 +14,7 @@ const sections = getSections({
 })
 ---
 
-<Layout>
+<Layout docs="/docs/aspect-ratio">
     <h1>AspectRatio</h1>
     <div class="grid md-2 lg-3">
         <ComponentWrapper type="Astro">
@@ -42,13 +42,13 @@ const sections = getSections({
             {section.subTitle && <h2 set:html={section.subTitle} />}
         </Fragment>
         <div class="grid md-2 lg-3">
-            <ComponentWrapper title="Default">
+            <ComponentWrapper title="Default (16/9)">
                 <section.component ratio="16/9">
                     <img src="../img/placeholder1.png" />
                 </section.component>
             </ComponentWrapper>
 
-            <ComponentWrapper title="Alternate syntax">
+            <ComponentWrapper title="Alternate syntax (16:9)">
                 <section.component ratio="16:9">
                     <img src="../img/placeholder2.png" />
                 </section.component>

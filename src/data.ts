@@ -53,6 +53,15 @@ export const avatarGroupAlt2 = [
     'Jonathan'
 ]
 
+export const tabItemsExample = [{
+    label: `${infoIcon} Intro`,
+    value: 'intro',
+    active: true
+}, {
+    label: `${gitHubIcon} Setup`,
+    value: 'setup'
+}]
+
 export const tabItems = [{
     label: 'Introduction',
     value: 'intro',
