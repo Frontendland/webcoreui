@@ -4,6 +4,14 @@ import Layout from '@static/Layout.astro'
 
 import Card from '@components/Card/Card.astro'
 
+const breakpoints: any = {
+    'none': 3,
+    'xs': 4,
+    'sm': 4,
+    'md': 6,
+    'lg': 8
+}
+
 const spacings = [
     'xxs',
     'xs',
@@ -126,4 +134,22 @@ const wraps = [
             </Card>
         ))}
     </div>
+
+    <h3>Grid</h3>
+    {Object.keys(breakpoints).map(key => (
+        <Fragment>
+            {Array.from({ length: breakpoints[key] - 1 }, (_, i) => i + 2).map(i => (
+                <div class:list={[
+                    'grid my',
+                    key === 'none' ? `col-${i}` : `${key}-${i}`
+                ]}>
+                    {Array(i).fill(0).map(_ => (
+                        <Card>
+                            <Box>{key}-{i}</Box>
+                        </Card>
+                    ))}
+                </div>
+            ))}
+        </Fragment>
+    ))}
 </Layout>

@@ -48,7 +48,13 @@ $alignments: (
               $class: string.slice($key, 2, -1) + $firstLetter;
             }
 
-            &.#{$class} { gap: $value; }        
+            &.#{$class} { gap: $value; }      
+
+            @each $key, $v in $breakpoints {
+                @include media($key) {
+                    &.#{$key}-#{$class} { gap: $value; }   
+                }
+            }
         }
     }
 
@@ -69,7 +75,27 @@ $alignments: (
         align-items: center;
     }
 
-    // Flex wraps
+    @each $key, $value in $breakpoints {
+        @include media($key) {
+            @each $alignmentKey, $alignmentValue in $alignments {
+                .#{$key}-#{$alignmentKey} {
+                    @if (string.index($alignmentKey, 'items')) {
+                        align-items: $alignmentValue;
+                    } @else {
+                        justify-content: $alignmentValue;
+                    } 
+                }
+            }
+
+            .flex.#{$key}-center,
+            .grid.#{$key}-center {
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    // Flex directions & wraps
     .flex {
         @include layout(flex, default);
 
@@ -82,6 +108,24 @@ $alignments: (
         @each $wrap in $flexWrapValues {
             &.#{$wrap} {
                 flex-wrap: $wrap;
+            }
+        }
+    }
+
+    @each $key, $value in $breakpoints {
+        @include media($key) {
+            .flex {
+                @each $direction in $flexDirectionValues {
+                    &.#{$key}-#{$direction} {
+                        flex-direction: $direction;
+                    }
+                }
+
+                @each $wrap in $flexWrapValues {
+                    &.#{$key}-#{$wrap} {
+                        flex-wrap: $wrap;
+                    }
+                }
             }
         }
     }
