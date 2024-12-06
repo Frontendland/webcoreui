@@ -69,6 +69,7 @@ $alignments: (
         align-items: center;
     }
 
+    // Flex wraps
     .flex {
         @include layout(flex, default);
 
@@ -85,6 +86,7 @@ $alignments: (
         }
     }
 
+    // Grid columns
     .grid {
         @include layout(grid, default);
 
@@ -99,7 +101,6 @@ $alignments: (
         }
     }
 
-    // Grid columns
     @each $key, $value in $breakpoints {
         @include media($key) {
             @for $i from 2 to map.get($breakpointMap, $key) + 1 {

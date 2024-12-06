@@ -1,0 +1,273 @@
+@use 'true' as *;
+@use '../../scss/global/utility.scss' as *;
+
+@include describe('utility') {
+    @include it('Should create the correct utility classes') {
+        @include assert {
+            @include output {
+                @include utility();
+            }
+            
+            @include expect {
+                // Container
+                .container {
+                    margin: 0 auto;
+                    padding: 0 20px;
+                    max-width: 1200px;
+                }
+                
+                .muted {
+                    color: var(--w-color-primary-20);
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+                
+                // Gaps
+                .flex.none,
+                .grid.none {
+                    gap: 0;
+                }
+                
+                .flex.xxs,
+                .grid.xxs {
+                    gap: 2px;
+                }
+                
+                .flex.xs,
+                .grid.xs {
+                    gap: 5px;
+                }
+                
+                .flex.sm,
+                .grid.sm {
+                    gap: 10px;
+                }
+                
+                .flex.md,
+                .grid.md {
+                    gap: 15px;
+                }
+                
+                .flex.default,
+                .grid.default {
+                    gap: 20px;
+                }
+                
+                .flex.lg,
+                .grid.lg {
+                    gap: 25px;
+                }
+                
+                .flex.xl,
+                .grid.xl {
+                    gap: 30px;
+                }
+                
+                .flex.xl2,
+                .grid.xl2 {
+                    gap: 35px;
+                }
+                
+                .flex.xl3,
+                .grid.xl3 {
+                    gap: 40px;
+                }
+                
+                .flex.xl4,
+                .grid.xl4 {
+                    gap: 45px;
+                }
+                
+                .flex.xl5,
+                .grid.xl5 {
+                    gap: 50px;
+                }
+                
+                // Alignments
+                .items-center {
+                    align-items: center;
+                }
+                
+                .items-start {
+                    align-items: flex-start;
+                }
+                
+                .items-end {
+                    align-items: flex-end;
+                }
+                
+                .items-baseline {
+                    align-items: baseline;
+                }
+                
+                .items-stretch {
+                    align-items: stretch;
+                }
+                
+                .justify-center {
+                    justify-content: center;
+                }
+                
+                .justify-start {
+                    justify-content: flex-start;
+                }
+                
+                .justify-end {
+                    justify-content: flex-end;
+                }
+                
+                .justify-between {
+                    justify-content: space-between;
+                }
+                
+                .justify-around {
+                    justify-content: space-around;
+                }
+                
+                .justify-evenly {
+                    justify-content: space-evenly;
+                }
+                
+                .justify-stretch {
+                    justify-content: stretch;
+                }
+                
+                .flex.center,
+                .grid.center {
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                .flex {
+                    display: flex;
+                    gap: 20px;
+                }
+                
+                .flex.row {
+                    flex-direction: row;
+                }
+                
+                .flex.column {
+                    flex-direction: column;
+                }
+                
+                .flex.row-reverse {
+                    flex-direction: row-reverse;
+                }
+                
+                .flex.column-reverse {
+                    flex-direction: column-reverse;
+                }
+                
+                // Flex wraps
+                .flex.wrap {
+                    flex-wrap: wrap;
+                }
+                
+                .flex.nowrap {
+                    flex-wrap: nowrap;
+                }
+                
+                .flex.wrap-reverse {
+                    flex-wrap: wrap-reverse;
+                }
+
+                // Grid columns
+                .grid {
+                    display: grid;
+                    gap: 20px;
+                    grid-template-columns: minmax(0, 1fr);
+                }
+                
+                .grid.col-2 {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+                
+                .grid.col-3 {
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                }
+                
+                @media (min-width: 600px) {
+                    .grid.xs-2 {
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                    }
+                    
+                    .grid.xs-3 {
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                    }
+                    
+                    .grid.xs-4 {
+                        grid-template-columns: repeat(4, minmax(0, 1fr));
+                    }
+                }
+                
+                @media (min-width: 800px) {
+                    .grid.sm-2 {
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                    }
+                    
+                    .grid.sm-3 {
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                    }
+                    
+                    .grid.sm-4 {
+                        grid-template-columns: repeat(4, minmax(0, 1fr));
+                    }
+                }
+                
+                @media (min-width: 1024px) {
+                    .grid.md-2 {
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                    }
+                    
+                    .grid.md-3 {
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                    }
+                    
+                    .grid.md-4 {
+                        grid-template-columns: repeat(4, minmax(0, 1fr));
+                    }
+                    
+                    .grid.md-5 {
+                        grid-template-columns: repeat(5, minmax(0, 1fr));
+                    }
+                    
+                    .grid.md-6 {
+                        grid-template-columns: repeat(6, minmax(0, 1fr));
+                    }
+                }
+                
+                @media (min-width: 1200px) {
+                    .grid.lg-2 {
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                    }
+                    
+                    .grid.lg-3 {
+                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                    }
+                    
+                    .grid.lg-4 {
+                        grid-template-columns: repeat(4, minmax(0, 1fr));
+                    }
+                    
+                    .grid.lg-5 {
+                        grid-template-columns: repeat(5, minmax(0, 1fr));
+                    }
+                    
+                    .grid.lg-6 {
+                        grid-template-columns: repeat(6, minmax(0, 1fr));
+                    }
+                    
+                    .grid.lg-7 {
+                        grid-template-columns: repeat(7, minmax(0, 1fr));
+                    }
+                    
+                    .grid.lg-8 {
+                        grid-template-columns: repeat(8, minmax(0, 1fr));
+                    }
+                }
+            }
+        }
+    }
+}
+
