@@ -18,11 +18,12 @@ describe('getLayoutClasses', () => {
         expect(getLayoutClasses({ gap: 'xl5' })).toBe('xl5')
 
         expect(getLayoutClasses({ gap: {
+            default: 'sm',
             xs: 'xl2',
             sm: 'xl3',
             md: 'xl4',
             lg: 'xl5'
-        } })).toBe('xs-xl2 sm-xl3 md-xl4 lg-xl5')
+        } })).toBe('sm xs-xl2 sm-xl3 md-xl4 lg-xl5')
     })
 
     it('should return the correct classes for alignment', () => {
@@ -46,6 +47,10 @@ describe('getLayoutClasses', () => {
         } })).toBe('center')
 
         expect(getLayoutClasses({ alignment: {
+            default: {
+                horizontal: 'around',
+                vertical: 'stretch'
+            },
             xs: {
                 horizontal: 'start',
                 vertical: 'start'
@@ -63,6 +68,8 @@ describe('getLayoutClasses', () => {
                 vertical: 'baseline'
             }
         } })).toBe([
+            'justify-around',
+            'items-stretch',
             'xs-justify-start',
             'xs-items-start',
             'sm-center',
@@ -80,11 +87,12 @@ describe('getLayoutClasses', () => {
         expect(getLayoutClasses({ direction: 'column-reverse' })).toBe('column-reverse')
 
         expect(getLayoutClasses({ direction: {
+            default: 'column',
             xs: 'row',
             sm: 'column',
             md: 'row-reverse',
             lg: 'column-reverse'
-        } })).toBe('xs-row sm-column md-row-reverse lg-column-reverse')
+        } })).toBe('column xs-row sm-column md-row-reverse lg-column-reverse')
     })
 
     it('should return the correct classes for wrap', () => {
@@ -93,11 +101,12 @@ describe('getLayoutClasses', () => {
         expect(getLayoutClasses({ wrap: 'wrap-reverse' })).toBe('wrap-reverse')
 
         expect(getLayoutClasses({ wrap: {
+            default: 'nowrap',
             xs: 'wrap',
             sm: 'nowrap',
             md: 'wrap-reverse',
             lg: 'wrap'
-        } })).toBe('xs-wrap sm-nowrap md-wrap-reverse lg-wrap')
+        } })).toBe('nowrap xs-wrap sm-nowrap md-wrap-reverse lg-wrap')
     })
 
     it('should return the correct combined classes', () => {
@@ -112,6 +121,7 @@ describe('getLayoutClasses', () => {
 
         expect(getLayoutClasses({
             gap: {
+                default: 'xs',
                 xs: 'default',
                 sm: 'lg'
             },
@@ -130,10 +140,12 @@ describe('getLayoutClasses', () => {
                 sm: 'column'
             },
             wrap: {
+                default: 'wrap-reverse',
                 xs: 'nowrap',
                 sm: 'wrap'
             }
         })).toBe([
+            'xs',
             'xs-default',
             'sm-lg',
             'xs-center',
@@ -141,6 +153,7 @@ describe('getLayoutClasses', () => {
             'sm-items-end',
             'xs-row',
             'sm-column',
+            'wrap-reverse',
             'xs-nowrap',
             'sm-wrap'
         ].join(' '))

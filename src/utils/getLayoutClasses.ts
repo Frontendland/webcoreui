@@ -42,6 +42,7 @@ export type Wrap = 'wrap'
     | ''
 
 export type Responsive<T> = T | {
+    default?: T
     xs?: T
     sm?: T
     md?: T
@@ -68,15 +69,21 @@ export const getLayoutClasses = ({
 }: getLayoutClassesProps) => {
     const gaps = typeof gap === 'string'
         ? gap
-        : Object.entries(gap || {}).map(([key, value]) => `${key}-${value}`)
+        : Object.entries(gap || {}).map(([key, value]) => key === 'default'
+            ? value
+            : `${key}-${value}`)
 
     const directions = typeof direction === 'string'
         ? direction
-        : Object.entries(direction || {}).map(([key, value]) => `${key}-${value}`)
+        : Object.entries(direction || {}).map(([key, value]) => key === 'default'
+            ? value
+            : `${key}-${value}`)
 
     const wraps = typeof wrap === 'string'
         ? wrap
-        : Object.entries(wrap || {}).map(([key, value]) => `${key}-${value}`)
+        : Object.entries(wrap || {}).map(([key, value]) => key === 'default'
+            ? value
+            : `${key}-${value}`)
 
     // Flatten alignments, eg.: { xs: { horizontal: 'center' } } to { xs-justify: 'center' }
     const flattenAlignments = (obj: Responsive<Alignment>, prefix = ''): Responsive<Alignment> => {
@@ -89,7 +96,7 @@ export const getLayoutClasses = ({
                 return { ...acc, ...flattenAlignments(value, newKey) }
             }
 
-            return { ...acc, [newKey]: value }
+            return { ...acc, [newKey.replace('default-', '')]: value }
         }, {})
     }
 
