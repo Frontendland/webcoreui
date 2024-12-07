@@ -1,16 +1,10 @@
 import type {
+    Alignment,
     Direction,
     Gap,
-    HorizontalAlignment,
     Responsive,
-    VerticalAlignment,
     Wrap
 } from '../../utils/getLayoutClasses'
-
-type Alignment = {
-    horizontal?: HorizontalAlignment
-    vertical?: VerticalAlignment
-}
 
 export type FlexProps = {
     element?: string
