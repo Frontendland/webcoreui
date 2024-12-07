@@ -1,0 +1,34 @@
+---
+import type { FlexProps } from './flex'
+
+import { classNames } from '../../utils/classNames'
+import { getLayoutClasses } from '../../utils/getLayoutClasses'
+
+interface Props extends FlexProps {}
+
+const {
+    element = 'div',
+    gap,
+    alignment,
+    direction,
+    wrap,
+    className,
+    ...rest
+} = Astro.props
+
+const Component = element
+
+const classes = classNames([
+    'flex',
+    getLayoutClasses({ gap, alignment, direction, wrap }),
+    className
+])
+
+const props = {
+    class: classes
+}
+---
+
+<Component {...props} {...rest}>
+    <slot />
+</Component>

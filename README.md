@@ -237,6 +237,7 @@ import { Accordion } from 'webcoreui/react'
 - [ConditionalWrapper](https://github.com/Frontendland/webcoreui/tree/main/src/components/ConditionalWrapper)
 - [Copy](https://github.com/Frontendland/webcoreui/tree/main/src/components/Copy)
 - [DataTable](https://github.com/Frontendland/webcoreui/tree/main/src/components/DataTable)
+- [Flex](https://github.com/Frontendland/webcoreui/tree/main/src/components/Flex)
 - [Footer](https://github.com/Frontendland/webcoreui/tree/main/src/components/Footer)
 - [Group](https://github.com/Frontendland/webcoreui/tree/main/src/components/Group)
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)

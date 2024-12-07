@@ -17,6 +17,7 @@ import Checkbox from '@components/Checkbox/Checkbox.astro'
 import Collapsible from '@components/Collapsible/Collapsible.astro'
 import Copy from '@components/Copy/Copy.astro'
 import DataTable from '@components/DataTable/DataTable.astro'
+import Flex from '@components/Flex/Flex.astro'
 import Footer from '@components/Footer/Footer.astro'
 import Group from '@components/Group/Group.astro'
 import Icon from '@components/Icon/Icon.astro'
@@ -161,6 +162,13 @@ import {
                 data={[['1', 'John Doe']]}
                 className="data-table absolute"
             />
+        </CardWrapper>
+        <CardWrapper title="Flex" href="/components/flex">
+            <Flex gap="xs" wrap="wrap">
+                <Box>1</Box>
+                <Box>2</Box>
+                <Box>3</Box>
+            </Flex>
         </CardWrapper>
         <CardWrapper title="Footer" href="/components/footer">
             <Footer columns={[{ title: 'WEBCORE', items: [] }]} />

@@ -1,0 +1,145 @@
+---
+import Box from '@static/Box.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroFlex from '@components/Flex/Flex.astro'
+import SvelteFlex from '@components/Flex/Flex.svelte'
+import ReactFlex from '@components/Flex/Flex.tsx'
+
+import { getSections } from '@helpers'
+
+import type { Gap, Responsive } from '@utils/getLayoutClasses'
+
+const sections = getSections({
+    title: 'flex items',
+    components: [AstroFlex, SvelteFlex, ReactFlex]
+})
+
+const gap = {
+    xs: 'xs',
+    sm: 'sm',
+    md: 'md',
+    lg: 'default'
+} as Responsive<Gap>
+---
+
+<Layout>
+    <h1>Flex</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroFlex gap={gap}>
+                <Box>1</Box>
+                <Box>2</Box>
+                <Box>3</Box>
+            </AstroFlex>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteFlex gap={gap}>
+                <Box>1</Box>
+                <Box>2</Box>
+                <Box>3</Box>
+            </SvelteFlex>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactFlex gap={gap}>
+                <Box>1</Box>
+                <Box>2</Box>
+                <Box>3</Box>
+            </ReactFlex>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component>
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom gap">
+                <section.component gap="xs">
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom direction">
+                <section.component direction="column">
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Row reverse">
+                <section.component direction="row-reverse">
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Column reverse">
+                <section.component direction="column-reverse">
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Horizontal alignment">
+                <section.component alignment={{ horizontal: 'center' }}>
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Vertical alignment">
+                <section.component alignment={{ vertical: 'center' }} direction="column">
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Wrapping">
+                <section.component wrap="wrap">
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                    <Box>4</Box>
+                    <Box>5</Box>
+                    <Box>6</Box>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Multiple properties">
+                <section.component
+                    gap="sm"
+                    wrap="wrap"
+                    alignment={{ horizontal: 'center', vertical: 'center' }}
+                    direction="row-reverse"
+                >
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                    <Box>4</Box>
+                    <Box>5</Box>
+                    <Box>6</Box>
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
