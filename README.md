@@ -239,6 +239,7 @@ import { Accordion } from 'webcoreui/react'
 - [DataTable](https://github.com/Frontendland/webcoreui/tree/main/src/components/DataTable)
 - [Flex](https://github.com/Frontendland/webcoreui/tree/main/src/components/Flex)
 - [Footer](https://github.com/Frontendland/webcoreui/tree/main/src/components/Footer)
+- [Grid](https://github.com/Frontendland/webcoreui/tree/main/src/components/Grid)
 - [Group](https://github.com/Frontendland/webcoreui/tree/main/src/components/Group)
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
 - [Input](https://github.com/Frontendland/webcoreui/tree/main/src/components/Input)

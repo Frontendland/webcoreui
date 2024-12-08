@@ -58,6 +58,8 @@ const wraps = [
 <Layout docs="/docs/layout">
     <h1>CSS Utility Classes</h1>
 
+    <p>The classes below are only available if <code>includeUtilities</code> is not disabled in your <code>setup</code> mixin.</p>
+
     <h3>Container</h3>
     <Card>
         <div class="container">
@@ -139,6 +141,9 @@ const wraps = [
     </div>
 
     <h3>Grid</h3>
+
+    <p>You can also use the <code><a href="/components/grid">Grid</a></code> component to build grid layouts.</p>
+
     {Object.keys(breakpoints).map(key => (
         <Fragment>
             {Array.from({ length: breakpoints[key] - 1 }, (_, i) => i + 2).map(i => (

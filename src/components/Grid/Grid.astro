@@ -1,0 +1,32 @@
+---
+import type { GridProps } from './grid'
+
+import { classNames } from '../../utils/classNames'
+import { getLayoutClasses } from '../../utils/getLayoutClasses'
+
+interface Props extends GridProps {}
+
+const {
+    element = 'div',
+    gap,
+    column,
+    className,
+    ...rest
+} = Astro.props
+
+const Component = element
+
+const classes = classNames([
+    'grid',
+    getLayoutClasses({ gap, column }),
+    className
+])
+
+const props = {
+    class: classes
+}
+---
+
+<Component {...props} {...rest}>
+    <slot />
+</Component>

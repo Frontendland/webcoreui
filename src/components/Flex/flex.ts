@@ -13,6 +13,7 @@ export type FlexProps = {
     direction?: Responsive<Direction>
     wrap?: Responsive<Wrap>
     className?: string
+    [key: string]: any
 }
 
 export type ReactFlexProps = {

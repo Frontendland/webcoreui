@@ -1,4 +1,73 @@
 export const utilityTypes = `
+export type Gap = 'none'
+    | 'xxs'
+    | 'xs'
+    | 'sm'
+    | 'md'
+    | 'default'
+    | 'lg'
+    | 'xl'
+    | 'xl2'
+    | 'xl3'
+    | 'xl4'
+    | 'xl5'
+    | ''
+
+export type VerticalAlignment = 'center'
+    | 'start'
+    | 'end'
+    | 'baseline'
+    | 'stretch'
+    | ''
+
+export type HorizontalAlignment = 'center'
+    | 'start'
+    | 'end'
+    | 'between'
+    | 'around'
+    | 'evenly'
+    | 'stretch'
+    | ''
+
+export type Direction = 'row'
+    | 'column'
+    | 'row-reverse'
+    | 'column-reverse'
+    | ''
+
+export type Wrap = 'wrap'
+    | 'nowrap'
+    | 'wrap-reverse'
+    | ''
+
+export type Column = (2 | 3) | {
+    default?: 2 | 3
+    xs?: 2 | 3 | 4
+    sm?: 2 | 3 | 4
+    md?: 2 | 3 | 4 | 5 | 6
+    lg?: 2 | 3 | 4 | 5 | 6 | 7 | 8
+} | null
+
+export type Responsive<T> = T | {
+    default?: T
+    xs?: T
+    sm?: T
+    md?: T
+    lg?: T
+}
+
+export type Alignment = {
+    horizontal?: HorizontalAlignment
+    vertical?: VerticalAlignment
+}
+
+export type getLayoutClassesConfig = {
+    gap?: Responsive<Gap>
+    alignment?: Responsive<Alignment>
+    direction?: Responsive<Direction>
+    wrap?: Responsive<Wrap>
+}
+
 export type ModalCallback = {
     trigger: Element | null
     modal: HTMLElement
@@ -80,6 +149,8 @@ declare module 'webcoreui' {
     export const listen: (event: string, callback: (e: any) => unknown) => {
         remove: () => void
     }
+
+    export const getLayoutClasses: (config: getLayoutClassesConfig) => string
 
     export const clamp: (num: number, min: number, max: number) => number
     export const lerp: (start: number, end: number, value: number) => number

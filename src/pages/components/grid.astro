@@ -1,0 +1,107 @@
+---
+import Box from '@static/Box.astro'
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroGrid from '@components/Grid/Grid.astro'
+import SvelteGrid from '@components/Grid/Grid.svelte'
+import ReactGrid from '@components/Grid/Grid.tsx'
+
+import { getSections } from '@helpers'
+
+import type { Gap, Responsive } from '@utils/getLayoutClasses'
+
+const sections = getSections({
+    title: 'grids',
+    components: [AstroGrid, SvelteGrid, ReactGrid]
+})
+
+const gap = {
+    default: 'xxs',
+    xs: 'xs',
+    sm: 'sm',
+    md: 'md',
+    lg: 'default'
+} as Responsive<Gap>
+---
+
+<Layout>
+    <h1>Grid</h1>
+
+    <p>
+        To use this component, <code>includeUtilities</code> must not be disabled in your <code>setup</code> mixin.
+        You can also use the <a href="/css/utilities">utility classes</a> without this component to build grid layouts.
+        To build flexible layouts, see the <code><a href="/components/flex">Flex</a></code> component.
+    </p>
+
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroGrid gap={gap}>
+                <Box>1</Box>
+                <Box>2</Box>
+                <Box>3</Box>
+            </AstroGrid>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteGrid gap={gap}>
+                <Box>1</Box>
+                <Box>2</Box>
+                <Box>3</Box>
+            </SvelteGrid>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactGrid gap={gap}>
+                <Box>1</Box>
+                <Box>2</Box>
+                <Box>3</Box>
+            </ReactGrid>
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component>
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom gap">
+                <section.component gap="xs">
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Number of columns (Set to 3)">
+                <section.component column={3}>
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Media-query columns">
+                <section.component column={{
+                    xs: 2,
+                    sm: 3,
+                    md: 4
+                }}>
+                    <Box>1</Box>
+                    <Box>2</Box>
+                    <Box>3</Box>
+                    <Box>4</Box>
+                </section.component>
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

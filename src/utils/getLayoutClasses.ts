@@ -41,6 +41,14 @@ export type Wrap = 'wrap'
     | 'wrap-reverse'
     | ''
 
+export type Column = (2 | 3) | {
+    default?: 2 | 3
+    xs?: 2 | 3 | 4
+    sm?: 2 | 3 | 4
+    md?: 2 | 3 | 4 | 5 | 6
+    lg?: 2 | 3 | 4 | 5 | 6 | 7 | 8
+} | null
+
 export type Responsive<T> = T | {
     default?: T
     xs?: T
@@ -54,19 +62,21 @@ export type Alignment = {
     vertical?: VerticalAlignment
 }
 
-export type getLayoutClassesProps = {
+export type getLayoutClassesConfig = {
     gap?: Responsive<Gap>
     alignment?: Responsive<Alignment>
     direction?: Responsive<Direction>
     wrap?: Responsive<Wrap>
+    column?: Responsive<Column>
 }
 
 export const getLayoutClasses = ({
     gap,
     alignment,
     direction,
-    wrap
-}: getLayoutClassesProps) => {
+    wrap,
+    column
+}: getLayoutClassesConfig) => {
     const gaps = typeof gap === 'string'
         ? gap
         : Object.entries(gap || {}).map(([key, value]) => key === 'default'
@@ -83,6 +93,12 @@ export const getLayoutClasses = ({
         ? wrap
         : Object.entries(wrap || {}).map(([key, value]) => key === 'default'
             ? value
+            : `${key}-${value}`)
+
+    const columns = typeof column === 'number'
+        ? `col-${column}`
+        : Object.entries(column || {}).map(([key, value]) => key === 'default'
+            ? `col-${value}`
             : `${key}-${value}`)
 
     // Flatten alignments, eg.: { xs: { horizontal: 'center' } } to { xs-justify: 'center' }
@@ -119,6 +135,7 @@ export const getLayoutClasses = ({
         gaps,
         alignments,
         directions,
-        wraps
+        wraps,
+        columns
     ])
 }

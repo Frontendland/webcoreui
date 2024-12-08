@@ -19,6 +19,7 @@ import Copy from '@components/Copy/Copy.astro'
 import DataTable from '@components/DataTable/DataTable.astro'
 import Flex from '@components/Flex/Flex.astro'
 import Footer from '@components/Footer/Footer.astro'
+import Grid from '@components/Grid/Grid.astro'
 import Group from '@components/Group/Group.astro'
 import Icon from '@components/Icon/Icon.astro'
 import Input from '@components/Input/Input.astro'
@@ -172,6 +173,12 @@ import {
         </CardWrapper>
         <CardWrapper title="Footer" href="/components/footer">
             <Footer columns={[{ title: 'WEBCORE', items: [] }]} />
+        </CardWrapper>
+        <CardWrapper title="Grid" href="/components/grid">
+            <Grid column={2} gap="xs">
+                <Box>1</Box>
+                <Box>2</Box>
+            </Grid>
         </CardWrapper>
         <CardWrapper title="Group" href="/components/group">
             <Group withSeparator={true}>
