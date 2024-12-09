@@ -44,6 +44,7 @@
     let radio = ''
     let toggle = false
     let input = ''
+    let inputBinding = ''
     let slider = 50
     let wordCount = 0
     let select = ''
@@ -138,6 +139,7 @@
 
     <Card title="Input">
         <Input
+            bind:value={inputBinding}
             label="Enter a value"
             placeholder="Or change the color below"
             onKeyUp={e => input = e.currentTarget.value}
@@ -147,6 +149,8 @@
             type="color"
             onChange={e => input = e.currentTarget.value}
         />
+
+        <p>Binding: {inputBinding}</p>
 
         <span class={styles.span}>{input}</span>
     </Card>

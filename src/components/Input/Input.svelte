@@ -48,13 +48,13 @@
     >
         <slot />
         <input
-            {...{ type }}
             class={classes}
             bind:value
             on:change={onChange}
             on:keyup={onKeyUp}
             on:input={onInput}
             on:click={onClick}
+            {...{ type }}
             {...$$restProps}
         />
     </ConditionalWrapper>

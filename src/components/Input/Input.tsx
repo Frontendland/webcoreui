@@ -38,7 +38,10 @@ const Input = ({
             </label>
         )}>
             {label && (
-                <div className={styles.label}>{label}</div>
+                <div
+                    className={styles.label}
+                    dangerouslySetInnerHTML={{ __html: label }}
+                />
             )}
             <ConditionalWrapper condition={!!children} wrapper={children => (
                 <div className={styles.wrapper}>
