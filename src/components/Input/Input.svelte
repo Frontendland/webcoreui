@@ -10,6 +10,7 @@
     export let type: SvelteInputProps['type'] = 'text'
     export let theme: SvelteInputProps['theme'] = null
     export let label: SvelteInputProps['label'] = ''
+    export let value: SvelteInputProps['value'] = ''
     export let subText: SvelteInputProps['subText'] = ''
     export let className: SvelteInputProps['className'] = ''
     export let labelClassName: SvelteInputProps['labelClassName'] = ''
@@ -38,7 +39,7 @@
     class={labelClasses}
 >
     {#if label}
-        <div class={styles.label}>{label}</div>
+        <div class={styles.label}>{@html label}</div>
     {/if}
     <ConditionalWrapper
         condition={$$slots.default}
@@ -47,8 +48,9 @@
     >
         <slot />
         <input
-            type={type}
+            {...{ type }}
             class={classes}
+            bind:value
             on:change={onChange}
             on:keyup={onKeyUp}
             on:input={onInput}
