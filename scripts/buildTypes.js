@@ -1,3 +1,4 @@
+import { getAdditionalTypeExports, getAdditionalTypeImports } from './additionalTypes.js'
 import { utilityTypes } from './utilityTypes.js'
 
 import fs from 'fs'
@@ -13,6 +14,8 @@ const buildTypes = type => {
                 return `import type { ${component}Props as W${component}Props } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
 
+            ${getAdditionalTypeImports()}
+
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
                     return `export function ${component}(_props: W${component}Props): any`
@@ -21,6 +24,8 @@ const buildTypes = type => {
                 ${components.map(component => {
                     return `export type ${component}Props = W${component}Props`
                 }).join('\n\t')}
+
+                ${getAdditionalTypeExports()}
             }
         `)
     }
@@ -55,6 +60,8 @@ const buildTypes = type => {
                 return `import type { ${getTypeName(component)} as W${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
 
+            ${getAdditionalTypeImports()}
+
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
                     return `export class ${component} extends SvelteComponent<W${getTypeName(component)}> {}`
@@ -63,6 +70,8 @@ const buildTypes = type => {
                 ${components.map(component => {
                     return `export type ${component}Props = W${getTypeName(component)}`
                 }).join('\n\t')}
+
+                ${getAdditionalTypeExports()}
             }
         `)
     }
@@ -93,6 +102,8 @@ const buildTypes = type => {
                 return `import type { ${getTypeName(component)} as W${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
 
+            ${getAdditionalTypeImports()}
+
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
                     return `export const ${component}: FC<W${getTypeName(component)}>`
@@ -101,6 +112,8 @@ const buildTypes = type => {
                 ${components.map(component => {
                     return `export type ${component}Props = W${getTypeName(component)}`
                 }).join('\n\t')}
+
+                ${getAdditionalTypeExports()}
             }
         `)
     }
