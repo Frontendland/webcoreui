@@ -30,7 +30,11 @@ const Select = ({
     onChange,
     ...rest
 }: ReactSelectProps) => {
-    const [val, setValue] = useState(value)
+    const inferredValue = rest.itemGroups.map(group => group.items)
+        .flat()
+        .find(item => item.value === value)?.name
+
+    const [val, setValue] = useState((value && inferredValue) ? inferredValue : value)
 
     const classes = classNames([
         styles.select,

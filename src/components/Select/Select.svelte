@@ -16,7 +16,7 @@
 
     import styles from './select.module.scss'
 
-    import type { ListEventType } from '../List/list'
+    import type { ListEventType, ListProps } from '../List/list'
 
     export let name: SvelteSelectProps['name'] = ''
     export let value: SvelteSelectProps['value'] = ''
@@ -41,6 +41,11 @@
         `w-options-${name}`,
         styles.popover
     ])
+
+    const inferredValue = $$restProps.itemGroups
+        .map((group: ListProps['itemGroups'][0]) => group.items)
+        .flat()
+        .find((item: ListProps['itemGroups'][0]['items'][0]) => item.value === value)?.name
 
     const inputRestProps = Object.fromEntries(
         Object.entries($$restProps).filter(([key]) => key.includes('data'))
@@ -110,7 +115,7 @@
 
 <Input
     type="text"
-    value={value || null}
+    value={(value && inferredValue) ? inferredValue : value}
     readonly={true}
     disabled={disabled}
     placeholder={placeholder || null}

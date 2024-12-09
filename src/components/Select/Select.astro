@@ -27,20 +27,24 @@ const {
     ...rest
 } = Astro.props
 
-const inputRestProps = Object.fromEntries(
-    Object.entries(rest).filter(([key]) => key.includes('data'))
-)
-
 const classes = classNames([
     styles.select,
     disabled && styles.disabled,
     className
 ])
+
+const inferredValue = rest.itemGroups.map(group => group.items)
+    .flat()
+    .find(item => item.value === value)?.name
+
+const inputRestProps = Object.fromEntries(
+    Object.entries(rest).filter(([key]) => key.includes('data'))
+)
 ---
 
 <Input
     type="text"
-    value={value}
+    value={(value && inferredValue) ? inferredValue : value}
     readonly={true}
     disabled={disabled}
     placeholder={placeholder}
