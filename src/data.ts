@@ -432,3 +432,18 @@ export const gridWithIconsItems = [{
 }, {
     text: 'This last item is created without an icon or title, meaning you can also use this block to create simple text in a grid layout.'
 }]
+
+export const bottomNavigationItems = [
+    {
+        icon: homeIcon,
+        name: 'Home'
+    },
+    {
+        icon: componentsIcon,
+        name: 'Components'
+    },
+    {
+        icon: gitHubIcon,
+        name: 'GitHub'
+    }
+]

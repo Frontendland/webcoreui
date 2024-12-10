@@ -119,6 +119,9 @@ html body {
     // Banner component
     --w-banner-top: 0;
 
+    // BottomNavigation component
+    --w-bottom-navigation-max-width: auto;
+
     // Checkbox component
     --w-checkbox-color: var(--w-color-primary);
 
@@ -228,6 +231,7 @@ import { Accordion } from 'webcoreui/react'
 - [Avatar](https://github.com/Frontendland/webcoreui/tree/main/src/components/Avatar)
 - [Badge](https://github.com/Frontendland/webcoreui/tree/main/src/components/Badge)
 - [Banner](https://github.com/Frontendland/webcoreui/tree/main/src/components/Banner)
+- [BottomNavigation](https://github.com/Frontendland/webcoreui/tree/main/src/components/BottomNavigation)
 - [Breadcrumb](https://github.com/Frontendland/webcoreui/tree/main/src/components/Breadcrumb)
 - [Button](https://github.com/Frontendland/webcoreui/tree/main/src/components/Button)
 - [Card](https://github.com/Frontendland/webcoreui/tree/main/src/components/Card)

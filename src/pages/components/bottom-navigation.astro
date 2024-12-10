@@ -1,0 +1,170 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroBottomNavigation from '@components/BottomNavigation/BottomNavigation.astro'
+import SvelteBottomNavigation from '@components/BottomNavigation/BottomNavigation.svelte'
+import ReactBottomNavigation from '@components/BottomNavigation/BottomNavigation.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'bottom navigations',
+    components: [AstroBottomNavigation, SvelteBottomNavigation, ReactBottomNavigation]
+})
+
+import { bottomNavigationItems } from '@data'
+---
+
+<Layout>
+    <h1>BottomNavigation</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroBottomNavigation
+                items={bottomNavigationItems}
+                floating={true}
+                separated={true}
+                className="example"
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteBottomNavigation
+                items={bottomNavigationItems}
+                floating={true}
+                separated={true}
+                className="example"
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactBottomNavigation
+                items={bottomNavigationItems}
+                floating={true}
+                separated={true}
+                className="example"
+            />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component
+                    items={bottomNavigationItems.map(item => ({ ...item, icon: '' }))}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With icons">
+                <section.component
+                    items={bottomNavigationItems.map(item => ({ ...item, name: '' }))}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With icons & text">
+                <section.component
+                    items={bottomNavigationItems}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With missing icons">
+                <section.component
+                    className="example"
+                    items={bottomNavigationItems.map((item, index) => ({
+                        ...item,
+                        icon: index === 0 ? '' : item.icon
+                    }))}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With tooltips">
+                <section.component
+                    className="example"
+                    items={bottomNavigationItems.map(item => ({
+                        ...item,
+                        tooltip: item.name,
+                        name: ''
+                    }))}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Separated">
+                <section.component
+                    items={bottomNavigationItems.map(item => ({ ...item, tooltip: item.name }))}
+                    separated={true}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Floating">
+                <section.component
+                    items={bottomNavigationItems.map(item => ({ ...item, tooltip: item.name }))}
+                    floating={true}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Separated & floating">
+                <section.component
+                    items={bottomNavigationItems}
+                    separated={true}
+                    floating={true}
+                    className="example"
+                />
+            </ComponentWrapper>
+        </div>
+        <br />
+        <div class="grid">
+            <ComponentWrapper title="Max width">
+                <section.component
+                    items={bottomNavigationItems}
+                    maxWidth="350px"
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Max width separated">
+                <section.component
+                    items={bottomNavigationItems}
+                    separated={true}
+                    maxWidth="350px"
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Max width floating">
+                <section.component
+                    items={bottomNavigationItems}
+                    floating={true}
+                    maxWidth="350px"
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Max separated & floating">
+                <section.component
+                    items={bottomNavigationItems}
+                    separated={true}
+                    floating={true}
+                    maxWidth="350px"
+                    className="example"
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<style lang="scss" is:global>
+    @use '../../scss/config.scss' as *;
+
+    .example {
+        @include position(static);
+    }
+</style>

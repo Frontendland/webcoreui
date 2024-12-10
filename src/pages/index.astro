@@ -10,6 +10,7 @@ import AspectRatio from '@components/AspectRatio/AspectRatio.astro'
 import Avatar from '@components/Avatar/Avatar.astro'
 import Badge from '@components/Badge/Badge.astro'
 import Banner from '@components/Banner/Banner.astro'
+import BottomNavigation from '@components/BottomNavigation/BottomNavigation.astro'
 import Breadcrumb from '@components/Breadcrumb/Breadcrumb.astro'
 import Button from '@components/Button/Button.astro'
 import Carousel from '@components/Carousel/Carousel.astro'
@@ -52,6 +53,7 @@ import {
     accordionItems,
     avatarGroup,
     avatarGroupAlt2,
+    bottomNavigationItems,
     listPreview,
     masonryItems,
     stepperWithIcons,
@@ -71,7 +73,7 @@ import {
         Rocket launch your frontend projects with fully coded components. <br />
         Configurable. Themeable. Accessible.
     </h2>
-    <div class="cta">
+    <div class="flex center sm wrap">
         <Button
             href="https://github.com/Frontendland/webcoreui" target="_blank"
         >
@@ -118,6 +120,14 @@ import {
             <Banner closeable={true} className="banner-example">
                 New version available!
             </Banner>
+        </CardWrapper>
+        <CardWrapper title="Bottom Navigation" href="/components/bottom-navigation" bodyClassName="card-sm">
+            <BottomNavigation
+                items={bottomNavigationItems}
+                separated={true}
+                floating={true}
+                className="bottom-navigation-example"
+            />
         </CardWrapper>
         <CardWrapper title="Breadcrumb" href="/components/breadcrumb">
             <Breadcrumb items={[
@@ -352,13 +362,6 @@ import {
         color: #00a0cc;
     }
 
-    .cta {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-
     .components-heading {
         scroll-margin-top: 60px;
     }
@@ -398,6 +401,15 @@ import {
 
     .data-table {
         @include spacing(p-default);
+    }
+
+    .bottom-navigation-example {
+        @include position(static);
+        @include size('w100%');
+    }
+
+    .card-sm {
+        padding: 10px !important;
     }
 </style>
 

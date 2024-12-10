@@ -78,7 +78,9 @@ const iconTypes = fs.readdirSync('src/icons')
         <p>All icons rendered by {section.title.split(' ')[0]}</p>
         <div class="flex wrap sm">
             {iconTypes.map((type: string) => (
-                <section.component type={type} />
+                <span data-tooltip={type}>
+                    <section.component type={type} />
+                </span>
             ))}
         </div>
     ))}

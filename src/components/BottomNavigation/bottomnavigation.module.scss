@@ -1,0 +1,70 @@
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-bottom-navigation-max-width: auto;
+}
+
+.nav {
+    @include background(primary-60);
+    @include position(fixed, b0, l0, r0);
+    @include layer(header);
+    @include border(top, primary-50);
+
+    &.separated ul li:not(:last-child) {
+        @include border(right, primary-50);
+    }
+
+    &.separated.bordered ul {
+        @include border(left, primary-50);
+        @include border(right, primary-50);
+    }
+
+    &.floating {
+        @include position(l20px, r20px, b20px);
+        @include border-radius(xl);
+        @include border(0);
+
+        &:not(.bordered) {
+            li:first-child .item {
+                @include border-radius(xl, left);
+            }
+    
+            li:last-child .item {
+                @include border-radius(xl, right);
+            }
+        }
+    }
+
+    ul {
+        @include spacing(none-auto, p0);
+        @include layout(flex, h-center);
+
+        max-width: var(--w-bottom-navigation-max-width);
+        list-style-type: none;
+
+        li {
+            @include spacing(mb-0);
+
+            flex: 1;
+
+            &.with-icon .item {
+                @include spacing(pt-sm, pb-xs);
+            }
+            
+            .item {
+                @include layout(flex, column, center, xs);
+                @include spacing(py-sm);
+                @include size('h100%');
+                @include transition(background);
+                @include typography(md, primary-10, none);
+
+                user-select: none;
+                cursor: pointer;
+
+                &:hover {
+                    @include background(primary-50);
+                }
+            }
+        }
+    }
+}
