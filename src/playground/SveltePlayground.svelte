@@ -214,7 +214,11 @@
             showSearchBarIcon={true}
             searchBarPlaceholder="Filter options"
             className={styles.mt}
-            onChange={payload => select = `${payload.name} (${payload.value})`}
+            onChange={event => select = `${event.name} (${event.value})`}
+            onClose={event => {
+                // eslint-disable-next-line no-console
+                console.log('Select closed', event)
+            }}
         />
 
         <span class={styles.span}>Selected: {select}</span>

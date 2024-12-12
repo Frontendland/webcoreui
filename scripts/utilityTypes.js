@@ -105,6 +105,7 @@ export type Popover = {
     position?: PopoverPosition
     offset?: number
     closeOnBlur?: boolean
+    closeOnEsc?: boolean
     onOpen?: (args: PopoverCallback) => unknown
     onClose?: (args: PopoverCallback) => unknown
 }
@@ -139,7 +140,7 @@ declare module 'webcoreui' {
 
     export const get: (selector: string, all: boolean) => Element | NodeListOf<Element> | null
     export const on: (
-        selector: string | HTMLElement,
+        selector: string | HTMLElement | Document,
         event: string,
         callback: any,
         all?: boolean

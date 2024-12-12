@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { useState } from 'react'
 
 import Accordion from '@components/Accordion/Accordion.tsx'
@@ -216,6 +217,10 @@ const ReactPlayground = () => {
                     searchBarPlaceholder="Filter options"
                     className={styles.mt}
                     onChange={payload => setSelect(`${payload.name} (${payload.value})`)}
+                    onClose={event => {
+                        // eslint-disable-next-line no-console
+                        console.log('Select closed', event)
+                    }}
                 />
 
                 <span className={styles.span}>Selected: {select}</span>

@@ -1,13 +1,13 @@
-type Callback = {
+export type ModalCallback = {
     trigger: Element | null
     modal: HTMLElement
 }
 
-type Modal = {
+export type Modal = {
     trigger: string
     modal: string
-    onOpen?: (args: Callback) => unknown
-    onClose?: (args: Callback) => unknown
+    onOpen?: (args: ModalCallback) => unknown
+    onClose?: (args: ModalCallback) => unknown
 }
 
 export const modal = (config: Modal | string) => {

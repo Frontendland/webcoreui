@@ -245,7 +245,8 @@ const sections = getSections({
             trigger: `#popover-btn-${variant}`,
             popover: `#popover-${variant}`,
             position: button?.dataset.pos as any || 'bottom',
-            closeOnBlur: !button?.dataset.noClose
+            closeOnBlur: !button?.dataset.noClose,
+            closeOnEsc: !button?.dataset.noClose
         })
 
         if (removeButton) {

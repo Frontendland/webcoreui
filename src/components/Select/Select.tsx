@@ -8,6 +8,7 @@ import Popover from '../Popover/Popover.tsx'
 
 import { classNames } from '../../utils/classNames'
 import { debounce } from '../../utils/debounce'
+import { on } from '../../utils/DOMUtils'
 import { modal } from '../../utils/modal'
 import { closePopover, popover, type PopoverPosition } from '../../utils/popover'
 
@@ -28,6 +29,7 @@ const Select = ({
     position = 'bottom',
     className,
     onChange,
+    onClose,
     ...rest
 }: ReactSelectProps) => {
     const inferredValue = rest.itemGroups.map(group => group.items)
@@ -51,6 +53,7 @@ const Select = ({
     )
 
     let popoverInstance: any
+    let focusByTab = false
 
     const select = (event: ListEventType) => {
         closePopover(`.w-options-${name}`)
@@ -68,6 +71,14 @@ const Select = ({
     useEffect(() => {
         let observer: ResizeObserver | undefined
 
+        on(document, 'keydown', (event: KeyboardEvent) => {
+            if (event.key === 'Tab') {
+                focusByTab = true
+            }
+        })
+
+        on(document, 'mousedown', () => focusByTab = false)
+
         if (position === 'modal') {
             modal({
                 trigger: `.w-select-${name}`,
@@ -78,6 +89,9 @@ const Select = ({
                     if (search) {
                         search.focus()
                     }
+                },
+                onClose(event) {
+                    onClose?.(event)
                 }
             })
         } else {
@@ -104,10 +118,19 @@ const Select = ({
                         if (search) {
                             search.focus()
                         }
+                    },
+                    onClose(event) {
+                        onClose?.(event)
                     }
                 })
             }, 0)
         }
+
+        on(`.w-select-${name}`, 'focus', (event: Event) => {
+            if (focusByTab) {
+                (event.currentTarget as HTMLInputElement).click()
+            }
+        })
 
         return () => {
             popoverInstance?.remove()

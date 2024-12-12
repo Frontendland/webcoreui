@@ -1,4 +1,5 @@
-import type { PopoverPosition } from '../../utils/popover'
+import type { ModalCallback } from '../../utils/modal'
+import type { PopoverCallback, PopoverPosition } from '../../utils/popover'
 
 import type { ListEventType, ListProps } from '../List/list'
 
@@ -19,8 +20,10 @@ export type SelectProps = {
 
 export type SvelteSelectProps = {
     onChange?: (event: SelectEventType) => void
+    onClose?: (event: ModalCallback | PopoverCallback) => void
 } & SelectProps
 
 export type ReactSelectProps = {
     onChange?: (event: SelectEventType) => void
+    onClose?: (event: ModalCallback | PopoverCallback) => void
 } & SelectProps

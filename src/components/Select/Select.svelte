@@ -9,6 +9,7 @@
 
     import { classNames } from '../../utils/classNames'
     import { debounce } from '../../utils/debounce'
+    import { on } from '../../utils/DOMUtils'
     import { modal } from '../../utils/modal'
     import { closePopover, popover, type PopoverPosition } from '../../utils/popover'
 
@@ -28,8 +29,11 @@
     export let position: SvelteSelectProps['position'] = 'bottom'
     export let className: SvelteSelectProps['className'] = ''
     export let onChange: SvelteSelectProps['onChange'] = () => {}
+    export let onClose: SvelteSelectProps['onClose'] = () => {}
 
     let popoverInstance: any
+    let val: string
+    let focusByTab = false
 
     const classes = classNames([
         styles.select,
@@ -47,6 +51,8 @@
         .flat()
         .find((item: ListProps['itemGroups'][0]['items'][0]) => item.value === value)?.name
 
+    val = (value && inferredValue) ? inferredValue : value
+
     const inputRestProps = Object.fromEntries(
         Object.entries($$restProps).filter(([key]) => key.includes('data'))
     )
@@ -55,7 +61,7 @@
         closePopover(`.w-options-${name}`)
 
         if (updateValue) {
-            value = event.name
+            val = event.name
         }
 
         onChange?.({
@@ -67,6 +73,14 @@
     onMount(() => {
         let observer: ResizeObserver | undefined
 
+        on(document, 'keydown', (event: KeyboardEvent) => {
+            if (event.key === 'Tab') {
+                focusByTab = true
+            }
+        })
+
+        on(document, 'mousedown', () => focusByTab = false)
+
         if (position === 'modal') {
             modal({
                 trigger: `.w-select-${name}`,
@@ -77,6 +91,9 @@
                     if (search) {
                         search.focus()
                     }
+                },
+                onClose(event) {
+                    onClose?.(event)
                 }
             })
         } else {
@@ -102,9 +119,18 @@
                     if (search) {
                         search.focus()
                     }
+                },
+                onClose(event) {
+                    onClose?.(event)
                 }
             })
         }
+
+        on(`.w-select-${name}`, 'focus', (event: Event) => {
+            if (focusByTab) {
+                (event.currentTarget as HTMLInputElement).click()
+            }
+        })
 
         return () => {
             popoverInstance?.remove()
@@ -115,7 +141,7 @@
 
 <Input
     type="text"
-    value={(value && inferredValue) ? inferredValue : value}
+    value={val}
     readonly={true}
     disabled={disabled}
     placeholder={placeholder || null}

@@ -50,6 +50,7 @@
             @include spacing(m0);
             
             padding-bottom: 0;
+            user-select: none;
             
             &:not(:first-child) {
                 @include border(top, primary-50);
@@ -74,7 +75,9 @@
 
         span {
             @include typography(md, primary-20);
+
             pointer-events: none;
+            user-select: none;
         }
     }
 }

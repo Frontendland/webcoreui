@@ -3,7 +3,7 @@ export const get = (selector: string, all?: boolean) => all
     : document?.querySelector(selector)
 
 export const on = (
-    selector: string | HTMLElement,
+    selector: string | HTMLElement | Document,
     event: string,
     callback: any,
     all?: boolean

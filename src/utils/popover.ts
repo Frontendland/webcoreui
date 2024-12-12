@@ -14,20 +14,21 @@ export type PopoverPosition = 'top'
     | 'bottom-start'
     | 'bottom-end'
 
-type Callback = {
+export type PopoverCallback = {
     trigger: HTMLElement
     popover: HTMLElement
     position: PopoverPosition | undefined
 }
 
-type Popover = {
+export type Popover = {
     trigger: string
     popover: string
     position?: PopoverPosition
     offset?: number
     closeOnBlur?: boolean
-    onOpen?: (args: Callback) => unknown
-    onClose?: (args: Callback) => unknown
+    closeOnEsc?: boolean
+    onOpen?: (args: PopoverCallback) => unknown
+    onClose?: (args: PopoverCallback) => unknown
 }
 
 export const popover = ({
@@ -36,6 +37,7 @@ export const popover = ({
     position,
     offset = 10,
     closeOnBlur = true,
+    closeOnEsc = true,
     onOpen,
     onClose
 }: Popover) => {
@@ -184,6 +186,22 @@ export const popover = ({
             }, 300)
         }
 
+        const handleCloseOnEsc = (event: KeyboardEvent) => {
+            if (event.key === 'Escape' && popoverDOM.dataset.show) {
+                popoverDOM.dataset.show = ''
+
+                onClose?.({
+                    trigger: triggerDOM,
+                    popover: popoverDOM,
+                    position
+                })
+
+                setTimeout(() => {
+                    popoverDOM.removeAttribute('data-show')
+                }, 300)
+            }
+        }
+
         const removeOnResize = debounce(() => {
             popoverDOM.dataset.show = ''
 
@@ -207,6 +225,10 @@ export const popover = ({
             document.addEventListener('click', handleClose)
         }
 
+        if (closeOnEsc) {
+            document.addEventListener('keydown', handleCloseOnEsc)
+        }
+
         return {
             remove() {
                 triggerDOM.removeEventListener('click', handleOpen)
@@ -214,6 +236,10 @@ export const popover = ({
 
                 if (closeOnBlur) {
                     document.removeEventListener('click', handleClose)
+                }
+
+                if (closeOnEsc) {
+                    document.removeEventListener('keydown', handleCloseOnEsc)
                 }
             }
         }
