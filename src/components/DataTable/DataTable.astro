@@ -135,7 +135,7 @@ const hasPagination = data?.length && itemsPerPage
                 {data?.map((row, index) => (
                     <tr
                         data-page={hasPagination ? Math.ceil((index + 1) / itemsPerPage!) : undefined}
-                        data-hidden={hasPagination && index >= itemsPerPage!}
+                        data-hidden={(hasPagination && index >= itemsPerPage!) ? true : undefined}
                     >
                         {row.map((column, index) => (
                             <td data-name={getColumnName(headings?.[index])}>
