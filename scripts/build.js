@@ -64,12 +64,13 @@ Object.keys(files).forEach(key => {
             console.error('🚨 error copying file', error)
         }
 
-        // Replace package name and remove dependency
+        // Replace package name, remove dependency, update tests path
         if (key.includes('package.json')) {
             const packageJson = fs.readFileSync(key, 'utf-8')
             const modifiedPackageJson = packageJson
                 .replace('"webcore"', '"webcoreui"')
                 .replace(/,\s+"webcoreui":\s"[0-9.]+"/g, '')
+                .replace('vitest run &&', 'cd .. && vitest run &&')
 
             fs.writeFileSync(files[key], modifiedPackageJson)
         }
