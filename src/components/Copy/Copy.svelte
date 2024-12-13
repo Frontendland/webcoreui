@@ -25,9 +25,11 @@
     let copiedButton: HTMLSpanElement
 
     const copyText = () => {
-        const text = copyButton.parentElement?.previousSibling?.textContent?.trim()
-            || (copyButton.parentElement?.previousSibling as Text)?.wholeText?.trim()
-            || copyButton.parentElement?.previousElementSibling?.textContent?.trim()
+        const text = copyButton
+            .parentElement
+            ?.parentElement
+            ?.querySelector('[data-id="text"]')
+            ?.textContent?.trim()
 
         copyButton.style.opacity = '0'
         copyButton.style.pointerEvents = 'none'
@@ -45,7 +47,7 @@
     data-tooltip={tooltip || undefined}
     data-position={tooltipPosition}
 >
-    <slot />
+    <span data-id="text"><slot /></span>
     <div class={styles.icons}>
         <button
             class={styles['copy-icon']}
