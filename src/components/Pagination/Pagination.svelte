@@ -74,6 +74,7 @@
         {#each generatedPages as _, index}
             <li>
                 <button
+                    aria-label={`page ${index + 1}`}
                     data-active={calculatedCurrentPage === index + 1 ? 'true' : null}
                     on:click={calculatedCurrentPage !== index + 1
                         ? () => paginate(index + 1)

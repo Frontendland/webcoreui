@@ -3,9 +3,11 @@ import { vitePreprocess } from '@astrojs/svelte'
 export default {
     preprocess: vitePreprocess(),
     onwarn: (warning, handler) => {
-        // Suppress false positive warnings in terminal
+        // Suppress false positive warnings in terminal and eslint
         // Edit .vscode/settings.json to also suppress warnings in VSCode
-        const ignoreWarnings = []
+        const ignoreWarnings = [
+            'element_invalid_self_closing_tag'
+        ]
 
         const warningText = [
             warning.code,

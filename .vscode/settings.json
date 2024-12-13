@@ -1,5 +1,7 @@
 {
-    "svelte.plugin.svelte.compilerWarnings": {},
+    "svelte.plugin.svelte.compilerWarnings": {
+        "element_invalid_self_closing_tag": "ignore"
+    },
     "eslint.validate": [
         "svelte"
     ],

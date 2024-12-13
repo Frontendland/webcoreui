@@ -1,4 +1,5 @@
 import svelteParser from 'svelte-eslint-parser'
+import svelteConfig from './svelte.config.js'
 
 import js from '@eslint/js'
 import tsParser from '@typescript-eslint/parser'
@@ -212,7 +213,8 @@ export default [
         languageOptions: {
             parser: svelteParser,
             parserOptions: {
-                parser: tsParser
+                parser: tsParser,
+                svelteConfig
             }
         },
         rules: {

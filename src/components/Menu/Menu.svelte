@@ -68,7 +68,11 @@
         </ConditionalWrapper>
 
         {#if items?.length}
-            <button class={styles.hamburger} on:click={toggleMenu}>
+            <button
+                class={styles.hamburger}
+                on:click={toggleMenu}
+                aria-label="menu"
+            >
                 <span class={styles.meat}></span>
                 <span class={styles.meat}></span>
                 <span class={styles.meat}></span>
