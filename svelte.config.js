@@ -5,9 +5,7 @@ export default {
     onwarn: (warning, handler) => {
         // Suppress false positive warnings in terminal and eslint
         // Edit .vscode/settings.json to also suppress warnings in VSCode
-        const ignoreWarnings = [
-            'element_invalid_self_closing_tag'
-        ]
+        const ignoreWarnings = []
 
         const warningText = [
             warning.code,

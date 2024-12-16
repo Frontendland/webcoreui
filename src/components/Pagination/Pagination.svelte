@@ -80,7 +80,7 @@
                         ? () => paginate(index + 1)
                         : null
                     }
-                />
+                ></button>
             </li>
         {/each}
     {:else}

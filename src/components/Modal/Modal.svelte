@@ -72,4 +72,4 @@
     {/if}
     <slot />
 </dialog>
-<div class={styles.overlay} />
+<div class={styles.overlay}></div>

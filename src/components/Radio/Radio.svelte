@@ -46,7 +46,7 @@
                     on:change={onChange}
                     {...$$restProps}
                 />
-                <span class={styles.icon} />
+                <span class={styles.icon}></span>
                 <span class={styles.label}>
                     {@html item.label}
                 </span>
