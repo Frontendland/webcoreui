@@ -1,3 +1,5 @@
+import { bodyFreeze } from './bodyFreeze'
+
 export type ModalCallback = {
     trigger: Element | null
     modal: HTMLElement
@@ -33,6 +35,8 @@ export const modal = (config: Modal | string) => {
                 const listener = () => {
                     modalDOM.dataset.show = ''
 
+                    bodyFreeze(false)
+
                     onClose?.({
                         trigger: triggerDOM,
                         modal: modalDOM
@@ -49,6 +53,8 @@ export const modal = (config: Modal | string) => {
                 const listener = (event: KeyboardEvent) => {
                     if (modalDOM.dataset.show && event.key === 'Escape') {
                         modalDOM.dataset.show = ''
+
+                        bodyFreeze(false)
 
                         onClose?.({
                             trigger: triggerDOM,
@@ -70,6 +76,8 @@ export const modal = (config: Modal | string) => {
                 const listener = () => {
                     modalDOM.dataset.show = ''
 
+                    bodyFreeze(false)
+
                     onClose?.({
                         trigger: triggerDOM,
                         modal: modalDOM
@@ -85,6 +93,8 @@ export const modal = (config: Modal | string) => {
 
         const handleOpen = () => {
             modalDOM.dataset.show = 'true'
+
+            bodyFreeze()
 
             onOpen?.({
                 trigger: triggerDOM,
