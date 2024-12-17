@@ -36,7 +36,7 @@
     ])
 
     const search = (event: InputEvent) => {
-        searchValue = (event.target as HTMLInputElement).value
+        searchValue = (event.target as HTMLInputElement).value.toLowerCase()
 
         numberOfResults = itemGroups
             .map(group => group.items)
