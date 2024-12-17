@@ -42,7 +42,7 @@ const List = ({
         : undefined
 
     const search = (event: React.FormEvent<HTMLInputElement>) => {
-        const value = (event.target as HTMLInputElement).value
+        const value = (event.target as HTMLInputElement).value.toLowerCase()
 
         setSearchValue(value)
         setNumberOfResults(
