@@ -5,10 +5,14 @@
 
     import styles from './button.module.scss'
 
-    export let theme: SvelteButtonProps['theme'] = null
-    export let href: SvelteButtonProps['href'] = ''
-    export let className: SvelteButtonProps['className'] = ''
-    export let onClick: SvelteButtonProps['onClick'] = () => {}
+    const {
+        theme,
+        href,
+        className,
+        onClick,
+        children,
+        ...rest
+    }: SvelteButtonProps = $props()
 
     const classes = classNames([
         styles.button,
@@ -19,11 +23,11 @@
 
 
 {#if href}
-    <a {...$$restProps} href={href} class={classes || null}>
-        <slot />
+    <a {...rest} href={href} class={classes}>
+        {@render children?.()}
     </a>
 {:else}
-    <button {...$$restProps} class={classes || null} on:click={onClick}>
-        <slot />
+    <button {...rest} class={classes} onclick={onClick}>
+        {@render children?.()}
     </button>
 {/if}

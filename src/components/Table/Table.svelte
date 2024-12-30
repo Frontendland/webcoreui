@@ -5,15 +5,17 @@
 
     import styles from './table.module.scss'
 
-    export let headings: TableProps['headings'] = []
-    export let footer: TableProps['footer'] = []
-    export let data: TableProps['data'] = []
-    export let hover: TableProps['hover'] = false
-    export let striped: TableProps['striped'] = null
-    export let offsetStripe: TableProps['offsetStripe'] = false
-    export let compact: TableProps['compact'] = false
-    export let maxHeight: TableProps['maxHeight'] = ''
-    export let className: TableProps['className'] = ''
+    const {
+        headings,
+        footer,
+        data,
+        hover,
+        striped,
+        offsetStripe,
+        compact,
+        maxHeight,
+        className
+    }: TableProps = $props()
 
     const classes = classNames([
         styles.table,

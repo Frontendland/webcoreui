@@ -28,7 +28,9 @@ const Menu = ({
         wrapperClassName
     ])
 
-    const wrapMenu = (logo?.url || logo?.html) && items?.length && children
+    const wrapMenu = (logo?.url || logo?.html)
+        && items?.length
+        && children
 
     const toggleMenu = () => setActive(!active)
 

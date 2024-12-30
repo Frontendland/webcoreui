@@ -9,4 +9,5 @@ export type ErrorPageProps = {
         text: string
         icon?: IconProps['type'] | string
     } & ButtonProps)[]
+    [key: string]: any
 }

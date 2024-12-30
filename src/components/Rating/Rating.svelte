@@ -7,20 +7,22 @@
 
     import styles from './rating.module.scss'
 
-    export let score: RatingProps['score']
-    export let total: RatingProps['total'] = 5
-    export let showText: RatingProps['showText'] = false
-    export let text: RatingProps['text'] = '{0} out of {1}'
-    export let showEmpty: RatingProps['showEmpty'] = true
-    export let outline: RatingProps['outline'] = true
-    export let reviewCount: RatingProps['reviewCount'] = 0
-    export let reviewText: RatingProps['reviewText'] = '{0} reviews'
-    export let reviewLink: RatingProps['reviewLink'] = ''
-    export let reviewTarget: RatingProps['reviewTarget'] = ''
-    export let color: RatingProps['color'] = ''
-    export let emptyColor: RatingProps['emptyColor'] = ''
-    export let size: RatingProps['size'] = 0
-    export let className: RatingProps['className'] = ''
+    const {
+        score,
+        total = 5,
+        showText,
+        text = '{0} out of {1}',
+        showEmpty = true,
+        outline = true,
+        reviewCount,
+        reviewText = '{0} reviews',
+        reviewLink,
+        reviewTarget,
+        color,
+        emptyColor,
+        size,
+        className
+    }: RatingProps = $props()
 
     const classes = classNames([
         styles.rating,

@@ -7,17 +7,21 @@
 
     import styles from './input.module.scss'
 
-    export let type: SvelteInputProps['type'] = 'text'
-    export let theme: SvelteInputProps['theme'] = null
-    export let label: SvelteInputProps['label'] = ''
-    export let value: SvelteInputProps['value'] = ''
-    export let subText: SvelteInputProps['subText'] = ''
-    export let className: SvelteInputProps['className'] = ''
-    export let labelClassName: SvelteInputProps['labelClassName'] = ''
-    export let onChange: SvelteInputProps['onChange'] = () => {}
-    export let onKeyUp: SvelteInputProps['onKeyUp'] = () => {}
-    export let onInput: SvelteInputProps['onInput'] = () => {}
-    export let onClick: SvelteInputProps['onClick'] = () => {}
+    let {
+        type = 'text',
+        theme,
+        label,
+        value = $bindable(''),
+        subText,
+        className,
+        labelClassName,
+        onChange,
+        onKeyUp,
+        onInput,
+        onClick,
+        children,
+        ...rest
+    }: SvelteInputProps = $props()
 
     const classes = classNames([
         styles.input,
@@ -30,7 +34,7 @@
         labelClassName
     ])
 
-    const useLabel = !!(label || subText || $$slots.default)
+    const useLabel = !!(label || subText || children)
 </script>
 
 <ConditionalWrapper
@@ -42,20 +46,20 @@
         <div class={styles.label}>{@html label}</div>
     {/if}
     <ConditionalWrapper
-        condition={$$slots.default}
+        condition={!!children}
         element="div"
         class={styles.wrapper}
     >
-        <slot />
+        {@render children?.()}
         <input
-            class={classes}
             bind:value
-            on:change={onChange}
-            on:keyup={onKeyUp}
-            on:input={onInput}
-            on:click={onClick}
+            class={classes}
+            onchange={onChange}
+            onkeyup={onKeyUp}
+            oninput={onInput}
+            onclick={onClick}
             {...{ type }}
-            {...$$restProps}
+            {...rest}
         />
     </ConditionalWrapper>
     {#if subText}

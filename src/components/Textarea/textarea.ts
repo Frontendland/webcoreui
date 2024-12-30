@@ -1,3 +1,8 @@
+type Target = {
+    target: HTMLTextAreaElement
+    currentTarget: HTMLTextAreaElement
+}
+
 export type TextareaProps = {
     label?: string
     placeholder?: string
@@ -9,11 +14,11 @@ export type TextareaProps = {
 }
 
 export type SvelteTextareaProps = {
-    onChange?: (e: any) => any
-    onKeyUp?: (e: any) => any
+    onChange?: (event: Event & Target) => void
+    onKeyUp?: (event: KeyboardEvent & Target) => void
 } & TextareaProps
 
 export type ReactTextareaProps = {
-    onChange?: (e: any) => any
-    onKeyUp?: (e: any) => any
+    onChange?: (event: React.ChangeEvent<HTMLTextAreaElement> & Target) => void
+    onKeyUp?: (event: React.KeyboardEvent<HTMLTextAreaElement> & Target) => void
 } & TextareaProps

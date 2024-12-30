@@ -7,13 +7,15 @@
 
     import styles from './stepper.module.scss'
 
-    export let items: StepperProps['items'] = []
-    export let color: StepperProps['color'] = ''
-    export let completedColor: StepperProps['completedColor'] = ''
-    export let activeColor: StepperProps['activeColor'] = ''
-    export let borderless: StepperProps['vertical'] = false
-    export let vertical: StepperProps['vertical'] = false
-    export let className: StepperProps['className'] = ''
+    const {
+        items,
+        color,
+        completedColor,
+        activeColor,
+        borderless,
+        vertical,
+        className
+    }: StepperProps = $props()
 
     const classes = classNames([
         styles.stepper,

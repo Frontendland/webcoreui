@@ -1,13 +1,16 @@
 <script lang="ts">
-    import type { TimelineItemProps } from './timelineitem'
+    import type { SvelteTimelineItemProps } from './timelineitem'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './timelineitem.module.scss'
 
-    export let title: TimelineItemProps['title'] = ''
-    export let titleTag: TimelineItemProps['titleTag'] = 'span'
-    export let className: TimelineItemProps['className'] = ''
+    const {
+        title,
+        titleTag = 'span',
+        className,
+        children
+    }: SvelteTimelineItemProps = $props()
 
     const classes = classNames([
         styles.item,
@@ -21,5 +24,5 @@
             {title}
         </svelte:element>
     {/if}
-    <slot />
+    {@render children?.()}
 </li>

@@ -1,5 +1,7 @@
+import type { Snippet } from 'svelte'
+
 export type DeviceMockupProps = {
-    type?: 'desktop' | null
+    type?: 'desktop'
     url?: string
     showButtons?: boolean
     closeButtonColor?: string
@@ -7,6 +9,10 @@ export type DeviceMockupProps = {
     minimizeButtonColor?: string
     className?: string
 }
+
+export type SvelteDeviceMockupProps = {
+    children: Snippet
+} & DeviceMockupProps
 
 export type ReactDeviceMockupProps = {
     children: React.ReactNode

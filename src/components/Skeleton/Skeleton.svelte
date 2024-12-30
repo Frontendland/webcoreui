@@ -5,13 +5,15 @@
 
     import styles from './skeleton.module.scss'
 
-    export let animate: SkeletonProps['animate'] = 'wave'
-    export let type: SkeletonProps['type'] = 'rounded'
-    export let width: SkeletonProps['width'] = 0
-    export let height: SkeletonProps['height'] = 0
-    export let color: SkeletonProps['color'] = ''
-    export let waveColor: SkeletonProps['waveColor'] = ''
-    export let className: SkeletonProps['className'] = ''
+    const {
+        animate = 'wave',
+        type = 'rounded',
+        width,
+        height,
+        color,
+        waveColor,
+        className
+    }: SkeletonProps = $props()
 
     const classes = classNames([
         animate && styles[animate],

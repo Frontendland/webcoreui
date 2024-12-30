@@ -1,3 +1,5 @@
+import type { Snippet } from 'svelte'
+
 import type { PaginationProps } from '../Pagination/pagination'
 
 export type CarouselProps = {
@@ -18,6 +20,7 @@ export type CarouselProps = {
 
 export type SvelteCarouselProps = {
     onScroll?: (event: number) => void
+    children: Snippet
 } & CarouselProps
 
 export type ReactCarouselProps = {

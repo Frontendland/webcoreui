@@ -6,8 +6,8 @@ export type GridWithIconsProps = {
         title?: string
         text: string
     }[]
-    columns?: 1 | 2 | 3 | 4 | null
-    alignment?: 'center' | 'right' | null
+    columns?: 1 | 2 | 3 | 4
+    alignment?: 'center' | 'right'
     iconWithBackground?: boolean
     secondary?: boolean
     className?: string

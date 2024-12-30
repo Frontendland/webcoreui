@@ -1,15 +1,19 @@
 <script lang="ts">
-    import type { FlexProps } from './flex'
+    import type { SvelteFlexProps } from './flex'
 
     import { classNames } from '../../utils/classNames'
     import { getLayoutClasses } from '../../utils/getLayoutClasses'
 
-    export let element: FlexProps['className'] = 'div'
-    export let gap: FlexProps['gap'] = ''
-    export let alignment: FlexProps['alignment'] = {}
-    export let direction: FlexProps['direction'] = ''
-    export let wrap: FlexProps['wrap'] = ''
-    export let className: FlexProps['className'] = ''
+    const {
+        element = 'div',
+        gap,
+        alignment,
+        direction,
+        wrap,
+        className,
+        children,
+        ...rest
+    }: SvelteFlexProps = $props()
 
     const classes = classNames([
         'flex',
@@ -17,11 +21,11 @@
         className
     ])
 
-    const props = {
+    const componentProps = {
         class: classes
     }
 </script>
 
-<svelte:element this={element} {...props} {...$$restProps}>
-    <slot />
+<svelte:element this={element} {...componentProps} {...rest}>
+    {@render children?.()}
 </svelte:element>

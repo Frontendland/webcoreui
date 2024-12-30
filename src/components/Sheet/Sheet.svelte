@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { SheetProps } from './sheet'
+    import type { SvelteSheetProps } from './sheet'
 
     import Modal from '../Modal/Modal.svelte'
 
@@ -7,8 +7,12 @@
 
     import styles from './sheet.module.scss'
 
-    export let position: SheetProps['position'] = null
-    export let className: SheetProps['className'] = ''
+    const {
+        position,
+        className,
+        children,
+        ...rest
+    }: SvelteSheetProps = $props()
 
     const classes = classNames([
         styles.sheet,
@@ -19,7 +23,7 @@
 
 <Modal
     className={classes}
-    {...$$restProps}
+    {...rest}
 >
-    <slot />
+    {@render children?.()}
 </Modal>

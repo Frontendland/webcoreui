@@ -3,6 +3,26 @@ import { utilityTypes } from './utilityTypes.js'
 
 import fs from 'fs'
 
+const getTypeName = (component, framework) => {
+    const componentsWithoutFrameworkSpecificTypes = [
+        'Accordion',
+        'Avatar',
+        'BottomNavigation',
+        'Breadcrumb',
+        'Icon',
+        'Rating',
+        'Skeleton',
+        'Spinner',
+        'Stepper',
+        'Table',
+        'Progress'
+    ]
+
+    return componentsWithoutFrameworkSpecificTypes.includes(component)
+        ? `${component}Props`
+        : `${framework}${component}Props`
+}
+
 const format = template => template.trim().replace(new RegExp('^[ \\t]{12}', 'gm'), '')
 
 const buildTypes = type => {
@@ -31,44 +51,21 @@ const buildTypes = type => {
     }
 
     if (type === 'svelte') {
-        const getTypeName = component => {
-            const componentsWithSvelteSpecificTypes = [
-                'Badge',
-                'Button',
-                'Carousel',
-                'Checkbox',
-                'DataTable',
-                'Input',
-                'List',
-                'Masonry',
-                'Pagination',
-                'Radio',
-                'Select',
-                'Slider',
-                'Switch',
-                'Textarea'
-            ]
-
-            return componentsWithSvelteSpecificTypes.includes(component)
-                ? `Svelte${component}Props`
-                : `${component}Props`
-        }
-
         return format(`
-            import type { SvelteComponent } from 'svelte'
+            import type { Component } from 'svelte'
             ${components.map(component => {
-                return `import type { ${getTypeName(component)} as W${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
+                return `import type { ${getTypeName(component, 'Svelte')} as W${getTypeName(component, 'Svelte')} } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
 
             ${getAdditionalTypeImports()}
 
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
-                    return `export class ${component} extends SvelteComponent<W${getTypeName(component)}> {}`
+                    return `export const ${component}: Component<W${getTypeName(component, 'Svelte')}>`
                 }).join('\n\t')}
 
                 ${components.map(component => {
-                    return `export type ${component}Props = W${getTypeName(component)}`
+                    return `export type ${component}Props = W${getTypeName(component, 'Svelte')}`
                 }).join('\n\t')}
 
                 ${getAdditionalTypeExports()}
@@ -77,40 +74,21 @@ const buildTypes = type => {
     }
 
     if (type === 'react') {
-        const getTypeName = component => {
-            const componentsWithoutReactSpecificTypes = [
-                'Accordion',
-                'Avatar',
-                'Breadcrumb',
-                'Icon',
-                'Rating',
-                'Skeleton',
-                'Spinner',
-                'Stepper',
-                'Table',
-                'Progress'
-            ]
-
-            return componentsWithoutReactSpecificTypes.includes(component)
-                ? `${component}Props`
-                : `React${component}Props`
-        }
-
         return format(`
             import { FC } from 'react'
             ${components.map(component => {
-                return `import type { ${getTypeName(component)} as W${getTypeName(component)} } from './components/${component}/${component.toLowerCase()}'`
+                return `import type { ${getTypeName(component, 'React')} as W${getTypeName(component, 'React')} } from './components/${component}/${component.toLowerCase()}'`
             }).join('\n')}
 
             ${getAdditionalTypeImports()}
 
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
-                    return `export const ${component}: FC<W${getTypeName(component)}>`
+                    return `export const ${component}: FC<W${getTypeName(component, 'React')}>`
                 }).join('\n\t')}
 
                 ${components.map(component => {
-                    return `export type ${component}Props = W${getTypeName(component)}`
+                    return `export type ${component}Props = W${getTypeName(component, 'React')}`
                 }).join('\n\t')}
 
                 ${getAdditionalTypeExports()}

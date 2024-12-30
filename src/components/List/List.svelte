@@ -10,19 +10,21 @@
 
     import styles from './list.module.scss'
 
-    export let showSearchBar: SvelteListProps['showSearchBar'] = false
-    export let showSearchBarIcon: SvelteListProps['showSearchBarIcon'] = false
-    export let searchBarPlaceholder: SvelteListProps['searchBarPlaceholder'] = ''
-    export let noResultsLabel: SvelteListProps['noResultsLabel'] = 'No results.'
-    export let maxHeight: SvelteListProps['maxHeight'] = ''
-    export let id: SvelteListProps['id'] = ''
-    export let className: SvelteListProps['className'] = ''
-    export let wrapperClassName: SvelteListProps['wrapperClassName'] = ''
-    export let itemGroups: SvelteListProps['itemGroups'] = []
-    export let onSelect: SvelteListProps['onSelect'] = () => {}
+    let {
+        showSearchBar,
+        showSearchBarIcon,
+        searchBarPlaceholder,
+        noResultsLabel = 'No results.',
+        maxHeight,
+        id,
+        className,
+        wrapperClassName,
+        itemGroups = $bindable([]),
+        onSelect
+    }: SvelteListProps = $props()
 
-    let searchValue = ''
-    let numberOfResults = 1
+    let searchValue = $state('')
+    let numberOfResults = $state(1)
 
     const classes = classNames([
         styles.list,
@@ -91,7 +93,7 @@
     {/if}
     <ul
         class={classes}
-        id={id || null}
+        id={id}
         style={maxHeight ? `max-height: ${maxHeight}` : null}
     >
         {#each itemGroups as group}
@@ -103,7 +105,7 @@
                 </li>
             {/if}
             {#each group.items as item}
-                <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+                <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
                 <li
                     tabIndex={item.href || item.disabled ? undefined : 0}
                     data-value={item.value}
@@ -115,8 +117,8 @@
                         && !item.subText?.toLowerCase().includes(searchValue)
                         && !item.name.toLowerCase().includes(searchValue)
                     ) ? true : null}
-                    on:click={item.disabled ? null : select}
-                    on:keyup={item.disabled ? null : selectByKey}
+                    onclick={item.disabled ? null : select}
+                    onkeyup={item.disabled ? null : selectByKey}
                 >
                     <ConditionalWrapper
                         condition={!!item.href}

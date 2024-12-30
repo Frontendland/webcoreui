@@ -4,8 +4,10 @@
     import type { SocialProofProps } from './socialProof'
     import styles from './social-proof.module.scss'
 
-    export let items: SocialProofProps['items'] = []
-    export let className: SocialProofProps['className'] = ''
+    const {
+        items,
+        className
+    }: SocialProofProps = $props()
 </script>
 
 <section class={classNames(['flex center wrap', className])}>

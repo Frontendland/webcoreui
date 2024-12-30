@@ -4,10 +4,12 @@
     import type { IconListProps } from './iconList'
     import styles from './icon-list.module.scss'
 
-    export let items: IconListProps['items'] = []
-    export let color: IconListProps['color'] = ''
-    export let columns: IconListProps['columns'] = 0
-    export let className: IconListProps['className'] = ''
+    const {
+        items,
+        color,
+        columns,
+        className
+    }: IconListProps = $props()
 
     const classes = classNames([
         styles.list,

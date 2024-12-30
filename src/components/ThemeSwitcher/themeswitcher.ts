@@ -1,3 +1,5 @@
+import type { Snippet } from 'svelte'
+
 export type ThemeSwitcherProps = {
     themes: {
         [key: string]: string
@@ -6,6 +8,11 @@ export type ThemeSwitcherProps = {
     size?: number
     className?: string
 }
+
+export type SvelteThemeSwitcherProps = {
+    primaryIcon?: Snippet
+    secondaryIcon?: Snippet
+} & ThemeSwitcherProps
 
 export type ReactThemeSwitcherProps = {
     primaryIcon?: React.ReactNode

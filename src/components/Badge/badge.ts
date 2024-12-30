@@ -1,3 +1,4 @@
+import type { Snippet } from 'svelte'
 import type { MouseEventHandler } from 'svelte/elements'
 
 export type BadgeProps = {
@@ -18,6 +19,7 @@ export type BadgeProps = {
 
 export type SvelteBadgeProps = {
     onClick?: MouseEventHandler<HTMLButtonElement> | null
+    children?: Snippet
 } & BadgeProps
 
 export type ReactBadgeProps = {

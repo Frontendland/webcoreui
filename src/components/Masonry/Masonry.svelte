@@ -5,12 +5,14 @@
 
     import styles from './masonry.module.scss'
 
-    export let items: SvelteMasonryProps['items'] = []
-    export let element: SvelteMasonryProps['element'] = 'section'
-    export let gap: SvelteMasonryProps['gap'] = ''
-    export let columns: SvelteMasonryProps['columns'] = 3
-    export let sequential: SvelteMasonryProps['sequential'] = false
-    export let className: SvelteMasonryProps['className'] = ''
+    const {
+        items,
+        element = 'section',
+        gap,
+        columns = 3,
+        sequential,
+        className
+    }: SvelteMasonryProps = $props()
 
     const classes = classNames([
         styles.masonry,
@@ -36,15 +38,15 @@
         <div class={styles.column}>
             {#each group as item}
                 {#if item.component}
-                    <svelte:component this={item.component} {...item.props}>
+                    <item.component {...item.props}>
                         {#if typeof item.children === 'object' && item.children.component}
-                            <svelte:component this={item.children.component} {...item.children.props}>
+                            <item.children.component {...item.children.props}>
                                 {@html item.children.children}
-                            </svelte:component>
+                            </item.children.component>
                         {:else}
                             {@html item.children}
                         {/if}
-                    </svelte:component>
+                    </item.component>
                 {:else}
                     {@html item.html}
                 {/if}

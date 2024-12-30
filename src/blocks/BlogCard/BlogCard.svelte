@@ -8,20 +8,21 @@
     import type { BlogCardProps } from './blogCard'
     import styles from './blog-card.module.scss'
 
-    const defaultImg = { src: '', alt: '', width: 0, height: 0 }
-
-    export let href: BlogCardProps['href'] = ''
-    export let target: BlogCardProps['target'] = ''
-    export let img: BlogCardProps['img'] = defaultImg
-    export let title: BlogCardProps['title'] = ''
-    export let text: BlogCardProps['text'] = ''
-    export let secondary: BlogCardProps['secondary'] = false
-    export let className: BlogCardProps['className'] = ''
+    const {
+        href,
+        target,
+        img,
+        title,
+        text,
+        secondary,
+        className,
+        ...rest
+    }: BlogCardProps = $props()
 </script>
 
 <a href={href} target={target} class={classNames([styles.link, className])}>
     <Card
-        {...$$restProps}
+        {...rest}
         className={styles.card}
         bodyClassName={classNames([styles.body, secondary && styles.secondary])}
         secondary={true}

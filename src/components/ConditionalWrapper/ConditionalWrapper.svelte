@@ -1,14 +1,18 @@
 <script lang="ts">
-    import type { ConditionalWrapperProps } from './conditionalwrapper'
+    import type { SvelteConditionalWrapperProps } from './conditionalwrapper'
 
-    export let condition: ConditionalWrapperProps['condition']
-    export let element: string = 'div'
+    const {
+        condition,
+        element = 'div',
+        children,
+        ...rest
+    }: SvelteConditionalWrapperProps = $props()
 </script>
 
 {#if condition}
-    <svelte:element this={element} {...$$restProps}>
-        <slot />
+    <svelte:element this={element} {...rest}>
+        {@render children?.()}
     </svelte:element>
 {:else}
-    <slot />
+    {@render children?.()}
 {/if}

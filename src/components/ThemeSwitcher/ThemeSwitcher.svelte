@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-    import type { ThemeSwitcherProps } from './themeswitcher'
+    import type { SvelteThemeSwitcherProps } from './themeswitcher'
 
     import { classNames } from '../../utils/classNames'
     import { getCookie, setCookie } from '../../utils/cookies'
@@ -8,12 +8,16 @@
 
     import styles from './themeswitcher.module.scss'
 
-    export let themes: ThemeSwitcherProps['themes'] = {}
-    export let toggle: ThemeSwitcherProps['toggle'] = false
-    export let size: ThemeSwitcherProps['size'] = 20
-    export let className: ThemeSwitcherProps['className'] = ''
+    const {
+        themes,
+        toggle,
+        size,
+        primaryIcon,
+        secondaryIcon,
+        className
+    }: SvelteThemeSwitcherProps = $props()
 
-    let currentTheme = ''
+    let currentTheme = $state('')
     let toggled = false
 
     const classes = classNames([
@@ -24,7 +28,7 @@
 
     const primaryTheme = themes[Object.keys(themes)[0]]
     const secondaryTheme = themes[Object.keys(themes)[1]]
-    const useIcons = $$slots.primaryIcon && $$slots.secondaryIcon
+    const useIcons = primaryIcon && secondaryIcon
 
     const setTheme = (theme: string | number) => {
         if (typeof theme === 'number') {
@@ -62,7 +66,7 @@
 >
     {#each Object.keys(themes) as theme, index}
         <button
-            on:click={() => setTheme(toggle ? index : themes[theme])}
+            onclick={() => setTheme(toggle ? index : themes[theme])}
             style={!useIcons ? `background:${theme};` : undefined}
             data-active={currentTheme === themes[theme]}
             aria-label={themes[theme]}
@@ -71,8 +75,8 @@
                 useIcons && styles.icons
             ])}
         >
-            {#if index === 0}<slot name="primaryIcon" />{/if}
-            {#if index !== 0}<slot name="secondaryIcon" />{/if}
+            {#if index === 0}{@render primaryIcon?.()}{/if}
+            {#if index !== 0}{@render secondaryIcon?.()}{/if}
         </button>
     {/each}
 </div>

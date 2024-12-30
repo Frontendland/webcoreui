@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { SidebarProps } from './sidebar'
+    import type { SvelteSidebarProps } from './sidebar'
 
     import Badge from '../Badge/Badge.svelte'
 
@@ -7,8 +7,11 @@
 
     import styles from './sidebar.module.scss'
 
-    export let groups: SidebarProps['groups'] = []
-    export let className: SidebarProps['className'] = ''
+    const {
+        groups,
+        children,
+        className
+    }: SvelteSidebarProps = $props()
 
     const classes = classNames([
         styles.sidebar,
@@ -46,5 +49,5 @@
         </ul>
     {/each}
 
-    <slot />
+    {@render children?.()}
 </aside>

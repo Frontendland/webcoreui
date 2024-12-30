@@ -1,3 +1,9 @@
+import type { Snippet } from 'svelte'
+
+export type InputTarget = {
+    currentTarget: HTMLInputElement
+}
+
 export type InputProps = {
     type?: 'text'
         | 'email'
@@ -40,10 +46,11 @@ export type InputProps = {
 }
 
 export type SvelteInputProps = {
-    onChange?: (event: Event & { currentTarget: HTMLInputElement }) => void
-    onKeyUp?: (event: KeyboardEvent & { currentTarget: HTMLInputElement }) => void
+    onChange?: (event: Event & InputTarget) => void
+    onKeyUp?: (event: KeyboardEvent & InputTarget) => void
     onInput?: (event: any) => void
-    onClick?: (event: MouseEvent & { currentTarget: HTMLInputElement }) => void
+    onClick?: (event: MouseEvent & InputTarget) => void
+    children?: Snippet
 } & InputProps
 
 export type ReactInputProps = {

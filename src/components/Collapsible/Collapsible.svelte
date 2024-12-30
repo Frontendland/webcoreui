@@ -1,15 +1,20 @@
 <script lang="ts">
-    import type { CollapsibleProps } from './collapsible'
+    import type { SvelteCollapsibleProps } from './collapsible'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './collapsible.module.scss'
 
-    export let initialHeight: CollapsibleProps['initialHeight'] = ''
-    export let maxHeight: CollapsibleProps['maxHeight'] = ''
-    export let toggled: CollapsibleProps['toggled'] = false
-    export let className: CollapsibleProps['className'] = ''
-    export let togglesClassName: CollapsibleProps['togglesClassName'] = ''
+    let {
+        initialHeight,
+        maxHeight,
+        toggled = $bindable(),
+        className,
+        togglesClassName,
+        children,
+        off,
+        on
+    }: SvelteCollapsibleProps = $props()
 
     const classes = classNames([
         styles.collapsible,
@@ -31,19 +36,19 @@
         class={styles.wrapper}
         style={styleVariables}
     >
-        <slot />
+        {@render children?.()}
     </div>
     <div
-        on:click={() => toggled = !toggled}
-        on:keyup={() => toggled = !toggled}
+        onclick={() => toggled = !toggled}
+        onkeyup={() => toggled = !toggled}
         role="button"
         tabindex={0}
         class={togglesClassName}
     >
         {#if toggled}
-            <slot name="off" />
+            {@render off?.()}
         {:else}
-            <slot name="on" />
+            {@render on?.()}
         {/if}
     </div>
 </div>

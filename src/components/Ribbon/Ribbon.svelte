@@ -1,14 +1,17 @@
 <script lang="ts">
-    import type { RibbonProps } from './ribbon'
+    import type { SvelteRibbonProps } from './ribbon'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './ribbon.module.scss'
 
-    export let offset: RibbonProps['offset'] = 0
-    export let type: RibbonProps['type'] = null
-    export let theme: RibbonProps['theme'] = null
-    export let className: RibbonProps['className'] = ''
+    const {
+        offset,
+        type,
+        theme,
+        className,
+        children
+    }: SvelteRibbonProps = $props()
 
     const classes = classNames([
         styles.ribbon,
@@ -22,5 +25,5 @@
     class={classes}
     style={offset ? `top:${offset}px;left:${offset}px` : null}
 >
-    <slot />
+    {@render children?.()}
 </span>

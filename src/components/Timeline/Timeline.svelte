@@ -1,17 +1,20 @@
 <script lang="ts">
-    import type { TimelineProps } from './timeline'
+    import type { SvelteTimelineProps } from './timeline'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './timeline.module.scss'
 
-    export let theme: TimelineProps['theme'] = null
-    export let counter: TimelineProps['counter'] = null
-    export let alternate: TimelineProps['alternate'] = false
-    export let centered: TimelineProps['centered'] = false
-    export let color: TimelineProps['color'] = ''
-    export let textColor: TimelineProps['textColor'] = ''
-    export let className: TimelineProps['className'] = ''
+    const {
+        theme,
+        counter,
+        alternate,
+        centered,
+        color,
+        textColor,
+        className,
+        children
+    }: SvelteTimelineProps = $props()
 
     const classes = classNames([
         styles.timeline,
@@ -29,5 +32,5 @@
 </script>
 
 <ul class={classes} style={styleVariables || null}>
-    <slot />
+    {@render children?.()}
 </ul>

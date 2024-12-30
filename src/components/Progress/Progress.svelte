@@ -5,16 +5,18 @@
 
     import styles from './progress.module.scss'
 
-    export let value: ProgressProps['value'] = 0
-    export let size: ProgressProps['size'] = null
-    export let label: ProgressProps['label'] = false
-    export let color: ProgressProps['color'] = ''
-    export let background: ProgressProps['background'] = ''
-    export let square: ProgressProps['square'] = false
-    export let striped: ProgressProps['striped'] = false
-    export let stripeLight: ProgressProps['stripeLight'] = ''
-    export let stripeDark: ProgressProps['stripeDark'] = ''
-    export let className: ProgressProps['className'] = ''
+    const {
+        value,
+        size,
+        label,
+        color,
+        background,
+        square,
+        striped,
+        stripeLight,
+        stripeDark,
+        className
+    }: ProgressProps = $props()
 
     const classes = classNames([
         styles['w-progress'],

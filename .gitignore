@@ -1,6 +1,7 @@
 # build output
 dist
 build
+astro.config.mjs.timestamp*
 
 # generated types
 .astro/

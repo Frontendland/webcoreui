@@ -5,12 +5,14 @@
     import type { GridWithIconsProps } from './gridWithIcons'
     import styles from './grid-with-icons.module.scss'
 
-    export let items: GridWithIconsProps['items'] = []
-    export let columns: GridWithIconsProps['columns'] = null
-    export let alignment: GridWithIconsProps['alignment'] = null
-    export let iconWithBackground: GridWithIconsProps['iconWithBackground'] = false
-    export let secondary: GridWithIconsProps['secondary'] = false
-    export let className: GridWithIconsProps['className'] = ''
+    const {
+        items = [],
+        columns,
+        alignment,
+        iconWithBackground,
+        secondary,
+        className
+    }: GridWithIconsProps = $props()
 
     const classes = classNames([
         `grid sm-${columns || 3}`,

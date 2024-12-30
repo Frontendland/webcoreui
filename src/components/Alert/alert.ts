@@ -1,16 +1,23 @@
+import type { Snippet } from 'svelte'
+
 export type AlertProps = {
     element?: string
-    title?: string | null
+    title?: string
     titleTag?: string
     titleProps?: any
     bodyProps?: any
-    className?: string | null
+    className?: string
     theme?: 'info'
         | 'success'
         | 'warning'
         | 'alert'
-        | null
+    [key: string]: any
 }
+
+export type SvelteAlertProps = {
+    icon?: Snippet
+    children: Snippet
+} & AlertProps
 
 export type ReactAlertProps = {
     Element?: keyof JSX.IntrinsicElements

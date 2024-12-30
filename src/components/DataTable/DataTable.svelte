@@ -17,29 +17,32 @@
 
     import type { ListEventType } from '../List/list'
 
-    export let headings: SvelteDataTableProps['headings'] = []
-    export let filterPlaceholder: SvelteDataTableProps['filterPlaceholder'] = 'Filter entries'
-    export let showFilterIcon: SvelteDataTableProps['showFilterIcon'] = false
-    export let noResultsLabel: SvelteDataTableProps['noResultsLabel'] = 'No results.'
-    export let itemsPerPage: SvelteDataTableProps['itemsPerPage'] = null
-    export let subText: SvelteDataTableProps['subText'] = ''
-    export let columnToggleLabel: SvelteDataTableProps['columnToggleLabel'] = 'Columns'
-    export let pagination: SvelteDataTableProps['pagination'] = {}
-    export let data: SvelteDataTableProps['data'] = []
-    export let hover: SvelteDataTableProps['hover'] = false
-    export let striped: SvelteDataTableProps['striped'] = null
-    export let offsetStripe: SvelteDataTableProps['offsetStripe'] = false
-    export let compact: SvelteDataTableProps['compact'] = false
-    export let maxHeight: SvelteDataTableProps['maxHeight'] = ''
-    export let className: SvelteDataTableProps['className'] = ''
-    export let id: SvelteDataTableProps['id'] = ''
-    export let onFilter: SvelteDataTableProps['onFilter'] = () => {}
+    const {
+        headings,
+        filterPlaceholder = 'Filter entries',
+        showFilterIcon,
+        noResultsLabel = 'No results.',
+        itemsPerPage,
+        subText,
+        columnToggleLabel = 'Columns',
+        pagination,
+        data,
+        hover,
+        striped,
+        offsetStripe,
+        compact,
+        maxHeight,
+        className,
+        id,
+        onFilter,
+        children
+    }: SvelteDataTableProps = $props()
 
-    let filteredData: any = data
-    let toggledData: any = filteredData
-    let filteredHeadings: any = headings
-    let page: number = 1
-    let hasActiveFilter: boolean = false
+    let filteredData: any = $state(data)
+    let toggledData: any = $state(data)
+    let filteredHeadings: any = $state(headings)
+    let page: number = $state(1)
+    let hasActiveFilter: boolean = $state(false)
     let sortOrder = 1
 
     const classes = classNames([
@@ -94,7 +97,7 @@
         })
 
         onFilter?.({
-            results: filteredData,
+            results: $state.snapshot(filteredData),
             numberOfResults: filteredData.length
         })
     }, 400)
@@ -153,7 +156,8 @@
         sortOrder = sortOrder === 1 ? -1 : 1
     }
 
-    $: isNextPage = (index: number) => {
+    // eslint-disable-next-line prefer-const
+    let isNextPage = $derived((index: number) => {
         if (hasPagination && itemsPerPage && !hasActiveFilter) {
             const currentPage = Math.ceil((index + 1) / itemsPerPage)
 
@@ -165,10 +169,10 @@
         }
 
         return undefined
-    }
+    })
 </script>
 
-<section class={className || null} id={id || null}>
+<section class={className} id={id}>
     {#if columnFilterIndexes?.length || showColumnToggle}
         <div class={styles.filters}>
             {#if columnFilterIndexes?.length}
@@ -213,7 +217,7 @@
                             {#if heading}
                                 <th>
                                     {#if heading.sortable}
-                                        <Button theme="flat" slot="wrapper" onClick={() => sort(index)}>
+                                        <Button theme="flat" onClick={() => sort(index)}>
                                             {heading.name || heading}
                                             {@html orderIcon}
                                         </Button>
@@ -241,7 +245,7 @@
                         </tr>
                     {/each}
                 {/if}
-                <slot />
+                {@render children?.()}
             </tbody>
             {#if columnFilterIndexes?.length && !filteredData.length}
                 <tfoot>

@@ -231,7 +231,7 @@ const ReactPlayground = () => {
                     min={0}
                     max={100}
                     value={slider}
-                    onChange={e => setSlider(e.target.value)}
+                    onChange={e => setSlider(Number(e.target.value))}
                     className={styles.mt}
                 />
                 <span className={styles.span}>{slider}</span>

@@ -1,3 +1,4 @@
+import type { Snippet } from 'svelte'
 import type { MouseEventHandler } from 'svelte/elements'
 
 export type ButtonProps = {
@@ -8,15 +9,12 @@ export type ButtonProps = {
         | 'success'
         | 'warning'
         | 'alert'
-        | null
-        | undefined
     target?: '_self'
         | '_blank'
         | '_parent'
         | '_top'
         | '_unfencedTop'
         | ''
-        | undefined
     href?: string
     className?: string
     [key: string]: any
@@ -24,6 +22,7 @@ export type ButtonProps = {
 
 export type SvelteButtonProps = {
     onClick?: MouseEventHandler<HTMLButtonElement>
+    children: Snippet
 } & ButtonProps
 
 export type ReactButtonProps = {

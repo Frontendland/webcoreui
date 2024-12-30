@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { MenuProps } from './menu'
+    import type { SvelteMenuProps } from './menu'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
@@ -7,11 +7,14 @@
 
     import styles from './menu.module.scss'
 
-    export let items: MenuProps['items'] = []
-    export let logo: MenuProps['logo'] = null
-    export let centerLogo: MenuProps['centerLogo'] = false
-    export let className: MenuProps['className'] = ''
-    export let wrapperClassName: MenuProps['wrapperClassName'] = ''
+    const {
+        items,
+        logo,
+        centerLogo,
+        className,
+        wrapperClassName,
+        children
+    }: SvelteMenuProps = $props()
 
     const classes = classNames([
         styles.menu,
@@ -23,9 +26,11 @@
         wrapperClassName
     ])
 
-    const wrapMenu = (logo?.url || logo?.html) && items?.length && $$slots.default
+    const wrapMenu = (logo?.url || logo?.html)
+        && items?.length
+        && children
 
-    let active = false
+    let active = $state(false)
 
     const toggleMenu = () => active = !active
 </script>
@@ -70,7 +75,7 @@
         {#if items?.length}
             <button
                 class={styles.hamburger}
-                on:click={toggleMenu}
+                onclick={toggleMenu}
                 aria-label="menu"
             >
                 <span class={styles.meat}></span>
@@ -97,6 +102,6 @@
             </a>
         {/if}
 
-        <slot />
+        {@render children?.()}
     </div>
 </header>

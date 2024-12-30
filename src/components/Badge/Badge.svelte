@@ -5,12 +5,16 @@
 
     import styles from './badge.module.scss'
 
-    export let theme: SvelteBadgeProps['theme'] = null
-    export let hover: SvelteBadgeProps['hover'] = false
-    export let small: SvelteBadgeProps['small'] = false
-    export let rounded: SvelteBadgeProps['rounded'] = false
-    export let className: SvelteBadgeProps['className'] = ''
-    export let onClick: SvelteBadgeProps['onClick'] = null
+    const {
+        theme,
+        hover,
+        small,
+        rounded,
+        className,
+        onClick,
+        children,
+        ...rest
+    }: SvelteBadgeProps = $props()
 
     const classes = classNames([
         styles.badge,
@@ -23,12 +27,12 @@
 </script>
 
 {#if onClick}
-    <button class={classes} on:click={onClick} {...$$restProps}>
-        <slot />
+    <button class={classes} onclick={onClick} {...rest}>
+        {@render children?.()}
     </button>
 {:else}
-    <span class={classes} {...$$restProps}>
-        <slot />
+    <span class={classes} {...rest}>
+        {@render children?.()}
     </span>
 {/if}
 

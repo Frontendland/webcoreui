@@ -1,3 +1,5 @@
+import type { InputTarget } from '../Input/input'
+
 export type RadioProps = {
     items: {
         label: string
@@ -14,9 +16,9 @@ export type RadioProps = {
 }
 
 export type SvelteRadioProps = {
-    onChange?: (key: any) => any
+    onChange?: (event: Event & InputTarget) => void
 } & RadioProps
 
 export type ReactRadioProps = {
-    onChange?: (key: any) => any
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 } & RadioProps

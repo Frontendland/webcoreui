@@ -9,9 +9,11 @@
 
     import styles from './breadcrumb.module.scss'
 
-    export let items: BreadcrumbProps['items'] = []
-    export let separator: BreadcrumbProps['separator'] = ''
-    export let className: BreadcrumbProps['className'] = ''
+    const {
+        items,
+        separator,
+        className
+    }: BreadcrumbProps = $props()
 
     const classes = classNames([
         styles.breadcrumb,
@@ -36,7 +38,7 @@
                 {/if}
             </ConditionalWrapper>
         </li>
-        {#if index < items.length - 1 }
+        {#if index < items.length - 1}
             <li>
                 {@html separator || ArrowRight}
             </li>

@@ -5,17 +5,19 @@
 
     import styles from './slider.module.scss'
 
-    export let min: SvelteSliderProps['min'] = 0
-    export let max: SvelteSliderProps['max'] = 100
-    export let value: SvelteSliderProps['value'] = 0
-    export let step: SvelteSliderProps['step'] = 1
-    export let disabled: SvelteSliderProps['disabled'] = false
-    export let color: SvelteSliderProps['color'] = ''
-    export let background: SvelteSliderProps['background'] = ''
-    export let thumb: SvelteSliderProps['thumb'] = ''
-    export let id: SvelteSliderProps['id'] = ''
-    export let className: SvelteSliderProps['className'] = ''
-    export let onChange: SvelteSliderProps['onChange'] = () => {}
+    const {
+        min,
+        max,
+        value,
+        step,
+        disabled,
+        color,
+        background,
+        thumb,
+        id,
+        className,
+        onChange
+    }: SvelteSliderProps = $props()
 
     const classes = classNames([
         styles.slider,
@@ -37,7 +39,7 @@
     step={step}
     disabled={disabled}
     class={classes}
-    id={id || null}
+    id={id}
     style={styleVariables || null}
-    on:change={onChange}
+    onchange={onChange}
 />

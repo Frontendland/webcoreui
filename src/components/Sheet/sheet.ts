@@ -1,10 +1,14 @@
-import type { ModalProps, ReactModalProps } from '../Modal/modal'
+import type {
+    ModalProps,
+    ReactModalProps,
+    SvelteModalProps
+} from '../Modal/modal'
 
 export type SheetProps = {
     position?: 'left'
         | 'top'
         | 'bottom'
-        | null
 } & ModalProps
 
+export type SvelteSheetProps = SheetProps & SvelteModalProps
 export type ReactSheetProps = SheetProps & ReactModalProps

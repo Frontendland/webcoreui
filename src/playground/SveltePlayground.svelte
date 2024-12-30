@@ -39,18 +39,19 @@
         themes
     } from '@data'
 
-    let progress = 33
-    let checkbox = false
-    let radio = ''
-    let toggle = false
-    let input = ''
-    let inputBinding = ''
-    let slider = 50
-    let wordCount = 0
-    let select = ''
-    let dataTableResults = dataTableEntries.length
+    let progress = $state(33)
+    let checkbox = $state(false)
+    let radio = $state('')
+    let toggle = $state(false)
+    let input = $state('')
+    let inputBinding = $state('')
+    let slider = $state(50)
+    let wordCount = $state(0)
+    let select = $state('')
+    let dataTableResults = $state(dataTableEntries.length)
 </script>
 
+<!-- eslint-disable max-lines -->
 <div class="playground grid md-2 lg-3">
     <Card title="Accordion">
         <Accordion items={[{
@@ -108,8 +109,12 @@
     <Card title="Collapsible">
         <Collapsible maxHeight="50px">
             <span>This paragraph can be toggled on and off.</span>
-            <Button slot="on">Show</Button>
-            <Button slot="off">Hide</Button>
+            {#snippet on()}
+                <Button >Show</Button>
+            {/snippet}
+            {#snippet off()}
+                <Button >Hide</Button>
+            {/snippet}
         </Collapsible>
     </Card>
 
@@ -200,7 +205,7 @@
                 { label: 'Large', value: 'lg' }
             ]}
             name="radio"
-            onChange={e => radio = e.target.value}
+            onChange={e => radio = e.currentTarget.value}
         />
 
         <span class={styles.span}>{radio}</span>
@@ -229,7 +234,7 @@
             min={0}
             max={100}
             value={slider}
-            onChange={e => slider = e.target.value}
+            onChange={e => slider = Number(e.currentTarget.value)}
             className={styles.mt}
         />
         <span class={styles.span}>{slider}</span>
@@ -281,8 +286,12 @@
 
     <Card title="ThemeSwitcher - toggle with icons">
         <ThemeSwitcher themes={themes} toggle={true}>
-            <Icon type="moon" slot="primaryIcon" />
-            <Icon type="sun" slot="secondaryIcon" />
+            {#snippet primaryIcon()}
+                <Icon type="moon" />
+            {/snippet}
+            {#snippet secondaryIcon()}
+                <Icon type="sun" />
+            {/snippet}
         </ThemeSwitcher>
     </Card>
 </div>

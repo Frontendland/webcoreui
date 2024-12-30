@@ -5,8 +5,10 @@
     import type { TilesProps } from './tiles'
     import styles from './tiles.module.scss'
 
-    export let columns: TilesProps['columns'] = 0
-    export let items: TilesProps['items'] = []
+    const {
+        columns,
+        items
+    }: TilesProps = $props()
 </script>
 
 <div class={classNames([

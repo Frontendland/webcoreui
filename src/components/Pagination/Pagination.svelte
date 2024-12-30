@@ -10,21 +10,23 @@
 
     import styles from './pagination.module.scss'
 
-    export let type: SveltePaginationProps['type'] = null
-    export let showChevrons: SveltePaginationProps['showChevrons'] = false
-    export let showDots: SveltePaginationProps['showDots'] = false
-    export let disablePrevious: SveltePaginationProps['disablePrevious'] = false
-    export let disableNext: SveltePaginationProps['disableNext'] = false
-    export let previousLink: SveltePaginationProps['previousLink'] = ''
-    export let nextLink: SveltePaginationProps['nextLink'] = ''
-    export let previousPageLabel: SveltePaginationProps['previousPageLabel'] = 'Previous'
-    export let nextPageLabel: SveltePaginationProps['nextPageLabel'] = 'Next'
-    export let pages: SveltePaginationProps['pages'] = []
-    export let theme: SveltePaginationProps['theme'] = 'outline'
-    export let totalPages: SveltePaginationProps['totalPages'] = null
-    export let currentPage: SveltePaginationProps['currentPage'] = null
-    export let className: SveltePaginationProps['className'] = ''
-    export let onChange: SveltePaginationProps['onChange'] = () => {}
+    const {
+        type,
+        showChevrons,
+        showDots,
+        disablePrevious,
+        disableNext,
+        previousLink,
+        nextLink,
+        previousPageLabel = 'Previous',
+        nextPageLabel = 'Next',
+        pages,
+        theme = 'outline',
+        totalPages,
+        currentPage,
+        onChange,
+        className
+    }: SveltePaginationProps = $props()
 
     const classes = classNames([
         styles.pagination,
@@ -64,9 +66,11 @@
         })
     }
 
-    $: calculatedCurrentPage = currentPage
-        || (pages?.findIndex(page => page.active) || -1) + 1
-        || 1
+    let calculatedCurrentPage = $state(
+        currentPage
+            || (pages?.findIndex(page => page.active) || -1) + 1
+            || 1
+    )
 </script>
 
 <ul class={classes}>
@@ -76,10 +80,9 @@
                 <button
                     aria-label={`page ${index + 1}`}
                     data-active={calculatedCurrentPage === index + 1 ? 'true' : null}
-                    on:click={calculatedCurrentPage !== index + 1
+                    onclick={calculatedCurrentPage !== index + 1
                         ? () => paginate(index + 1)
-                        : null
-                    }
+                        : null}
                 ></button>
             </li>
         {/each}

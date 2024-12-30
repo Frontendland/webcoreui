@@ -3,7 +3,7 @@ export type TableProps = {
     footer?: string[]
     data: string[][]
     hover?: boolean
-    striped?: 'column' | 'row' | null
+    striped?: 'column' | 'row'
     offsetStripe?: boolean
     compact?: boolean
     maxHeight?: string

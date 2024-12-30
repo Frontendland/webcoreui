@@ -1,6 +1,6 @@
 export type ProgressProps = {
     value: number
-    size?: 'medium' | 'large' | null
+    size?: 'medium' | 'large'
     label?: boolean
     color?: string
     background?: string

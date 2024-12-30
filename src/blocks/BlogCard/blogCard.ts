@@ -1,4 +1,4 @@
-import type { ButtonProps } from 'webcoreui/astro'
+import type { ButtonProps, CardProps } from 'webcoreui/astro'
 
 export type BlogCardProps = {
     href: string
@@ -14,4 +14,5 @@ export type BlogCardProps = {
     text?: string
     secondary?: boolean
     className?: string
-}
+    [key: string]: any
+} & CardProps

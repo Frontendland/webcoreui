@@ -1,12 +1,15 @@
 <script lang="ts">
-    import type { AspectRatioProps } from './aspectratio'
+    import type { SvelteAspectRatioProps } from './aspectratio'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './aspect-ratio.module.scss'
 
-    export let ratio: AspectRatioProps['ratio'] = ''
-    export let className: AspectRatioProps['className'] = ''
+    const {
+        ratio,
+        className,
+        children
+    }: SvelteAspectRatioProps = $props()
 
     const classes = classNames([
         styles.ratio,
@@ -15,5 +18,5 @@
 </script>
 
 <div class={classes} style={`aspect-ratio: ${ratio.replace(':', '/')};`}>
-    <slot />
+    {@render children?.()}
 </div>

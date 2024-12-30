@@ -1,18 +1,21 @@
 <script lang="ts">
-    import type { TabsProps } from './tabs'
+    import type { SvelteTabsProps } from './tabs'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './tabs.module.scss'
 
-    export let items: TabsProps['items'] = []
-    export let theme: TabsProps['theme'] = null
-    export let vertical: TabsProps['vertical'] = false
-    export let even: TabsProps['even'] = false
-    export let className: TabsProps['className'] = ''
+    const {
+        items,
+        theme,
+        vertical,
+        even,
+        className,
+        children
+    }: SvelteTabsProps = $props()
 
-    let active = ''
-    let tabContainer: HTMLDivElement
+    let active = $state('')
+    let tabContainer: HTMLDivElement | undefined = $state()
 
     const classes = classNames([
         styles.tabs,
@@ -23,7 +26,7 @@
     ])
 
     const setTab = (tab: string) => {
-        const tabs = tabContainer.querySelectorAll('[data-tab]')
+        const tabs = tabContainer!.querySelectorAll('[data-tab]')
 
         active = tab
 
@@ -44,7 +47,7 @@
                 <button
                     data-active={active ? active === item.value : item.active}
                     disabled={item.disabled}
-                    on:click={() => setTab(item.value)}
+                    onclick={() => setTab(item.value)}
                 >
                     {@html item.label}
                 </button>
@@ -52,6 +55,6 @@
         </div>
     </div>
     <div class={styles.content} bind:this={tabContainer}>
-        <slot />
+        {@render children?.()}
     </div>
 </section>

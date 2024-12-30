@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { SvelteComponent } from 'svelte'
+    import type { Component, SvelteComponent } from 'svelte'
     import { classNames } from 'webcoreui'
     import {
         Accordion,
@@ -63,11 +63,13 @@
         User
     } from '@blocks/svelte'
 
-    export let element: ComponentMapProps['element'] = 'div'
-    export let gap: ComponentMapProps['gap'] = 'default'
-    export let components: ComponentMapProps['components'] = []
+    const {
+        element = 'div',
+        gap = 'default',
+        components = []
+    }: ComponentMapProps = $props()
 
-    const blockMap: Record<string, typeof SvelteComponent<any>> = {
+    const blockMap: Record<string, Component<any>> = {
         BlogCard,
         ErrorPage,
         FAQ,
@@ -138,18 +140,17 @@
                 Component <code>{component.type}</code> not found at index {index}.
             </div>
         {:else}
-            <svelte:component this={map[component.type]} {...component.props}>
+            {@const SvelteComponent = map[component.type]}
+            <SvelteComponent {...component.props}>
                 {#if map[component.props?.children?.type]}
-                    <svelte:component
-                        this={map[component.props?.children?.type]}
-                        {...component.props?.children?.props}
-                    />
+                    {@const ChildComponent = map[component.props?.children?.type]}
+                    <ChildComponent {...component.props?.children?.props} />
                 {/if}
 
                 {#if typeof component.props?.children === 'string'}
                     {@html component.props?.children}
                 {/if}
-            </svelte:component>
+            </SvelteComponent>
         {/if}
     {/each}
 </svelte:element>

@@ -1,3 +1,5 @@
+import type { Snippet } from 'svelte'
+
 export type BannerProps = {
     top?: number
     bottom?: boolean
@@ -6,6 +8,10 @@ export type BannerProps = {
     sticky?: boolean
     className?: string
 }
+
+export type SvelteBannerProps = {
+    children: Snippet
+} & BannerProps
 
 export type ReactBannerProps = {
     children: React.ReactNode

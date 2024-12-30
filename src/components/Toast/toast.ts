@@ -1,4 +1,8 @@
-import type { AlertProps, ReactAlertProps } from '../Alert/alert'
+import type {
+    AlertProps,
+    ReactAlertProps,
+    SvelteAlertProps
+} from '../Alert/alert'
 
 export type ToastProps = {
     position?: 'bottom-left'
@@ -10,4 +14,5 @@ export type ToastProps = {
     [key: string]: any
 } & AlertProps
 
+export type SvelteToastProps = ToastProps & SvelteAlertProps
 export type ReactToastProps = ToastProps & ReactAlertProps

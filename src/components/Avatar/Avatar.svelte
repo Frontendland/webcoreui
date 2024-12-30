@@ -5,15 +5,17 @@
 
     import styles from './avatar.module.scss'
 
-    export let img: AvatarProps['img'] = ''
-    export let alt: AvatarProps['alt'] = 'Avatar'
-    export let size: AvatarProps['size'] = 40
-    export let lazy: AvatarProps['lazy'] = true
-    export let borderColor: AvatarProps['borderColor'] = ''
-    export let borderless: AvatarProps['borderless'] = false
-    export let reverse: AvatarProps['reverse'] = false
-    export let className: AvatarProps['className'] = ''
-    export let groupClassName: AvatarProps['groupClassName'] = ''
+    const {
+        img,
+        alt = 'Avatar',
+        size = 40,
+        lazy = true,
+        borderColor,
+        borderless,
+        reverse,
+        className,
+        groupClassName
+    }: AvatarProps = $props()
 
     const classes = classNames([
         styles.avatar,

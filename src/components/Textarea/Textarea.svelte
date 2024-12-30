@@ -7,14 +7,17 @@
 
     import styles from './textarea.module.scss'
 
-    export let label: SvelteTextareaProps['label'] = ''
-    export let placeholder: SvelteTextareaProps['placeholder'] = ''
-    export let subText: SvelteTextareaProps['subText'] = ''
-    export let value: SvelteTextareaProps['value'] = ''
-    export let disabled: SvelteTextareaProps['disabled'] = false
-    export let className: SvelteTextareaProps['className'] = ''
-    export let onChange: SvelteTextareaProps['onChange'] = () => {}
-    export let onKeyUp: SvelteTextareaProps['onKeyUp'] = () => {}
+    const {
+        label,
+        placeholder,
+        subText,
+        value = '',
+        disabled,
+        className,
+        onChange,
+        onKeyUp,
+        ...rest
+    }: SvelteTextareaProps = $props()
 
     const classes = classNames([
         styles.textarea,
@@ -36,9 +39,9 @@
         placeholder={placeholder}
         disabled={disabled}
         class={classes}
-        on:change={onChange}
-        on:keyup={onKeyUp}
-        {...$$restProps}
+        onchange={onChange}
+        onkeyup={onKeyUp}
+        {...rest}
     >{value}</textarea>
     {#if subText}
         <div class={styles.subtext}>

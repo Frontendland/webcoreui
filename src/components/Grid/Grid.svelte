@@ -1,13 +1,17 @@
 <script lang="ts">
-    import type { GridProps } from './grid'
+    import type { SvelteGridProps } from './grid'
 
     import { classNames } from '../../utils/classNames'
     import { getLayoutClasses } from '../../utils/getLayoutClasses'
 
-    export let element: GridProps['className'] = 'div'
-    export let gap: GridProps['gap'] = ''
-    export let column: GridProps['column'] = null
-    export let className: GridProps['className'] = ''
+    const {
+        element = 'div',
+        gap,
+        column,
+        className,
+        children,
+        ...rest
+    }: SvelteGridProps = $props()
 
     const classes = classNames([
         'grid',
@@ -15,11 +19,11 @@
         className
     ])
 
-    const props = {
+    const componentProps = {
         class: classes
     }
 </script>
 
-<svelte:element this={element} {...props} {...$$restProps}>
-    <slot />
+<svelte:element this={element} {...componentProps} {...rest}>
+    {@render children?.()}
 </svelte:element>

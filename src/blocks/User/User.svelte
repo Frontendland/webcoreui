@@ -6,12 +6,15 @@
 
     import type { UserProps } from './user'
 
-    export let avatar: UserProps['avatar'] = ''
-    export let avatarSize: UserProps['avatarSize'] = 50
-    export let name: UserProps['name'] = ''
-    export let role: UserProps['role'] = ''
-    export let roleTooltip: UserProps['roleTooltip'] = null
-    export let rating: UserProps['rating'] = 0
+    const {
+        avatar,
+        avatarSize = 50,
+        name,
+        role,
+        roleTooltip,
+        rating,
+        ...rest
+    }: UserProps = $props()
 </script>
 
 <div class="flex sm items-center">
@@ -30,5 +33,5 @@
 </div>
 {#if rating}
     <hr />
-    <Rating {...$$restProps} score={rating} />
+    <Rating {...rest} score={rating} />
 {/if}

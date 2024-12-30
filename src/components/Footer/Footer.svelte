@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { FooterProps } from './footer'
+    import type { SvelteFooterProps } from './footer'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
@@ -7,12 +7,15 @@
 
     import styles from './footer.module.scss'
 
-    export let logo: FooterProps['logo'] = null
-    export let columns: FooterProps['columns'] = []
-    export let subText: FooterProps['subText'] = ''
-    export let className: FooterProps['className'] = ''
-    export let wrapperClassName: FooterProps['wrapperClassName'] = ''
-    export let subTextClassName: FooterProps['subTextClassName'] = ''
+    const {
+        logo,
+        columns,
+        subText,
+        className,
+        wrapperClassName,
+        subTextClassName,
+        children
+    }: SvelteFooterProps = $props()
 
     const classes = classNames([
         styles.footer,
@@ -82,12 +85,12 @@
                 </ConditionalWrapper>
             {/if}
         </ConditionalWrapper>
-        {#if subText || $$slots.default}
+        {#if subText || children}
             <div class={subTextClasses}>
                 {#if subText}
                     <span>{@html subText}</span>
                 {/if}
-                <slot />
+                {@render children?.()}
             </div>
         {/if}
     </div>

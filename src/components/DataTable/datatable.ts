@@ -1,3 +1,5 @@
+import type { Snippet } from 'svelte'
+
 import type { PaginationProps } from '../Pagination/pagination'
 
 export type DataTableEventType = {
@@ -17,13 +19,13 @@ export type DataTableProps = {
     filterPlaceholder?: string
     showFilterIcon?: boolean
     noResultsLabel?: string
-    itemsPerPage?: number | null
+    itemsPerPage?: number
     subText?: string
     columnToggleLabel?: string
     pagination?: PaginationProps
     data: string[][]
     hover?: boolean
-    striped?: 'column' | 'row' | null
+    striped?: 'column' | 'row'
     offsetStripe?: boolean
     compact?: boolean
     maxHeight?: string
@@ -33,6 +35,7 @@ export type DataTableProps = {
 
 export type SvelteDataTableProps = {
     onFilter?: (event: DataTableEventType) => void
+    children?: Snippet
 } & DataTableProps
 
 export type ReactDataTableProps = {

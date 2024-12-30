@@ -9,13 +9,16 @@
 
     import styles from './checkbox.module.scss'
 
-    export let checked: SvelteCheckboxProps['checked'] = false
-    export let label: SvelteCheckboxProps['label'] = ''
-    export let subText: SvelteCheckboxProps['subText'] = ''
-    export let disabled: SvelteCheckboxProps['disabled'] = false
-    export let color: SvelteCheckboxProps['color'] = ''
-    export let className: SvelteCheckboxProps['className'] = ''
-    export let onClick: SvelteCheckboxProps['onClick'] = () => {}
+    const {
+        checked,
+        label,
+        subText,
+        disabled,
+        color,
+        className,
+        onClick,
+        ...rest
+    }: SvelteCheckboxProps = $props()
 
     const classes = classNames([
         styles.checkbox,
@@ -38,8 +41,8 @@
             type="checkbox"
             checked={checked}
             disabled={disabled}
-            on:click={onClick}
-            {...$$restProps}
+            onclick={onClick}
+            {...rest}
         />
         <span class={styles.check}>
             {@html check}

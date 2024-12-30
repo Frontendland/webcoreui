@@ -1,3 +1,5 @@
+import type { Snippet } from 'svelte'
+
 import type {
     Column,
     Gap,
@@ -11,6 +13,10 @@ export type GridProps = {
     className?: string
     [key: string]: any
 }
+
+export type SvelteGridProps = {
+    children: Snippet
+} & GridProps
 
 export type ReactGridProps = {
     Element?: keyof JSX.IntrinsicElements

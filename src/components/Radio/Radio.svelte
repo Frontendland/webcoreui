@@ -7,12 +7,15 @@
 
     import styles from './radio.module.scss'
 
-    export let name: SvelteRadioProps['name'] = ''
-    export let items: SvelteRadioProps['items'] = []
-    export let color: SvelteRadioProps['color'] = ''
-    export let inline: SvelteRadioProps['inline'] = false
-    export let className: SvelteRadioProps['className'] = ''
-    export let onChange: SvelteRadioProps['onChange'] = () => {}
+    const {
+        name,
+        items,
+        color,
+        inline,
+        className,
+        onChange,
+        ...rest
+    }: SvelteRadioProps = $props()
 
     const classes = classNames([
         styles.radio,
@@ -43,8 +46,8 @@
                     value={item.value}
                     checked={item.selected}
                     disabled={item.disabled}
-                    on:change={onChange}
-                    {...$$restProps}
+                    onchange={onChange}
+                    {...rest}
                 />
                 <span class={styles.icon}></span>
                 <span class={styles.label}>

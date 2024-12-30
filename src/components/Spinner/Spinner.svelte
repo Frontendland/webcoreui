@@ -5,11 +5,13 @@
 
     import styles from './spinner.module.scss'
 
-    export let color: SpinnerProps['color'] = ''
-    export let width: SpinnerProps['width'] = 0
-    export let speed: SpinnerProps['speed'] = 0
-    export let size: SpinnerProps['size'] = 0
-    export let dashArray: SpinnerProps['dashArray'] = 0
+    const {
+        color,
+        width,
+        speed,
+        size,
+        dashArray
+    }: SpinnerProps = $props()
 
     const classes = classNames([
         styles.spinner,

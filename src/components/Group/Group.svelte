@@ -1,12 +1,15 @@
 <script lang="ts">
-    import type { GroupProps } from './group'
+    import type { SvelteGroupProps } from './group'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './group.module.scss'
 
-    export let withSeparator: GroupProps['withSeparator'] = false
-    export let className: GroupProps['className'] = ''
+    const {
+        withSeparator,
+        className,
+        children
+    }: SvelteGroupProps = $props()
 
     const classes = classNames([
         styles.group,
@@ -16,5 +19,5 @@
 </script>
 
 <div class={classes}>
-    <slot />
+    {@render children?.()}
 </div>

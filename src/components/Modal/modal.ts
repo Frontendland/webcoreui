@@ -1,3 +1,5 @@
+import type { Snippet } from 'svelte'
+
 export type ModalProps = {
     title?: string
     subTitle?: string
@@ -11,9 +13,12 @@ export type ModalProps = {
         | 'success'
         | 'warning'
         | 'alert'
-        | null
     [key: string]: any
 }
+
+export type SvelteModalProps = {
+    children: Snippet
+} & ModalProps
 
 export type ReactModalProps = {
     children?: React.ReactNode

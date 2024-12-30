@@ -1,3 +1,5 @@
+import type { InputTarget } from '../Input/input'
+
 export type SliderProps = {
     min: number
     max: number
@@ -12,9 +14,9 @@ export type SliderProps = {
 }
 
 export type SvelteSliderProps = {
-    onChange?: (e: any) => any
+    onChange?: (event: Event & InputTarget) => void
 } & SliderProps
 
 export type ReactSliderProps = {
-    onChange?: (e: any) => any
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 } & SliderProps

@@ -17,6 +17,10 @@ body {
     appearance: none;
     cursor: pointer;
 
+    &[disabled] {
+        cursor: no-drop;
+    }
+
     &[disabled]::-webkit-slider-runnable-track {
         @include background(primary-50);
     }

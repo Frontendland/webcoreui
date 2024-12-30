@@ -219,7 +219,10 @@ export default [
         },
         rules: {
             'svelte/no-at-html-tags': 'off',
-            'no-undef': 'off'
+            'no-undef': 'off',
+            'prefer-const': ['error', {
+                destructuring: 'all' // Revert after https://github.com/sveltejs/eslint-plugin-svelte/issues/889
+            }]
         }
     },
     {

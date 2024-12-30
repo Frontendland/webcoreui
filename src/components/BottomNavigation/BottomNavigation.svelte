@@ -5,11 +5,13 @@
 
     import styles from './bottomnavigation.module.scss'
 
-    export let items: BottomNavigationProps['items'] = []
-    export let separated: BottomNavigationProps['separated'] = false
-    export let floating: BottomNavigationProps['floating'] = false
-    export let maxWidth: BottomNavigationProps['maxWidth'] = ''
-    export let className: BottomNavigationProps['className'] = ''
+    const {
+        items,
+        separated,
+        floating,
+        maxWidth,
+        className
+    }: BottomNavigationProps = $props()
 
     const classes = classNames([
         styles.nav,

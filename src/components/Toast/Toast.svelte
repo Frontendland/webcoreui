@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { ToastProps } from './toast'
+    import type { SvelteToastProps } from './toast'
 
     import Alert from '../Alert/Alert.svelte'
 
@@ -7,8 +7,13 @@
 
     import styles from './toast.module.scss'
 
-    export let position: ToastProps['position'] = null
-    export let className: ToastProps['className'] = ''
+    const {
+        position,
+        className,
+        icon,
+        children,
+        ...rest
+    }: SvelteToastProps = $props()
 
     const classes = classNames([
         styles.toast,
@@ -24,16 +29,14 @@
             'data-id': 'body'
         }
     }
+
+    const iconRender = $derived(icon)
 </script>
 
-{#if $$slots.icon}
-    <Alert {...$$restProps} className={classes} {...additionalProps}>
-        <slot slot="icon" name="icon" />
-        <slot />
-    </Alert>
-{:else}
-    <Alert {...$$restProps} className={classes} {...additionalProps}>
-        <slot />
-    </Alert>
-{/if}
+<Alert {...rest} className={classes} {...additionalProps}>
+    {#snippet icon()}
+        {@render iconRender?.()}
+    {/snippet}
+    {@render children?.()}
+</Alert>
 

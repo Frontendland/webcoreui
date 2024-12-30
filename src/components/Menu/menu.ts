@@ -1,3 +1,5 @@
+import type { Snippet } from 'svelte'
+
 import type { ButtonProps } from '../Button/button'
 
 export type MenuProps = {
@@ -18,6 +20,10 @@ export type MenuProps = {
     className?: string
     wrapperClassName?: string
 }
+
+export type SvelteMenuProps = {
+    children?: Snippet
+} & MenuProps
 
 export type ReactMenuProps = {
     children?: React.ReactNode

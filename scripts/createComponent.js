@@ -47,7 +47,9 @@ const templates = {
 
             import styles from './${lowerCaseComponent}.module.scss'
 
-            export let className: ${component}Props['className'] = ''
+            const {
+                className
+            }: ${component}Props = $props()
 
             const classes = classNames([
                 styles.${lowerCaseComponent},

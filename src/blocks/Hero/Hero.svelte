@@ -9,12 +9,14 @@
     import type { HeroProps } from './hero'
     import styles from './hero.module.scss'
 
-    export let heading: HeroProps['heading'] = ''
-    export let subHeading: HeroProps['subHeading'] = ''
-    export let buttons: HeroProps['buttons'] = []
-    export let badge: HeroProps['badge'] = null
-    export let image: HeroProps['image'] = null
-    export let reverse: HeroProps['reverse'] = false
+    const {
+        heading,
+        subHeading,
+        buttons,
+        badge,
+        image,
+        reverse
+    }: HeroProps = $props()
 
     const classes = classNames([
         styles.hero,

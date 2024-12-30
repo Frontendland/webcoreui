@@ -1,15 +1,18 @@
 <script lang="ts">
-    import type { SpoilerProps } from './spoiler'
+    import type { SvelteSpoilerProps } from './spoiler'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './spoiler.module.scss'
 
-    export let color: SpoilerProps['color'] = ''
-    export let animated: SpoilerProps['animated'] = true
-    export let block: SpoilerProps['block'] = false
-    export let tooltip: SpoilerProps['tooltip'] = ''
-    export let tooltipPosition: SpoilerProps['tooltipPosition'] = null
+    const {
+        color,
+        animated = true,
+        block,
+        tooltip,
+        tooltipPosition,
+        children
+    }: SvelteSpoilerProps = $props()
 
     const classes = classNames([
         styles.spoiler,
@@ -34,12 +37,12 @@
 <span
     class={classes}
     style={style}
-    data-tooltip={tooltip || null}
+    data-tooltip={tooltip}
     data-position={tooltipPosition}
     role="button"
     tabindex="0"
-    on:click={toggle}
-    on:keyup={toggle}
+    onclick={toggle}
+    onkeyup={toggle}
 >
-    <slot />
+    {@render children?.()}
 </span>

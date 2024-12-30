@@ -21,14 +21,14 @@ const Button = ({
 
     if (href) {
         return (
-            <a {...rest} href={href} className={classes || undefined}>
+            <a {...rest} href={href} className={classes}>
                 {children}
             </a>
         )
     }
 
     return (
-        <button {...rest} className={classes || undefined} onClick={onClick}>
+        <button {...rest} className={classes} onClick={onClick}>
             {children}
         </button>
     )

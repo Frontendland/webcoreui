@@ -19,20 +19,23 @@
 
     import type { ListEventType, ListProps } from '../List/list'
 
-    export let name: SvelteSelectProps['name'] = ''
-    export let value: SvelteSelectProps['value'] = ''
-    export let placeholder: SvelteSelectProps['placeholder'] = ''
-    export let label: SvelteSelectProps['label'] = ''
-    export let subText: SvelteSelectProps['subText'] = ''
-    export let disabled: SvelteSelectProps['disabled'] = false
-    export let updateValue: SvelteSelectProps['updateValue'] = true
-    export let position: SvelteSelectProps['position'] = 'bottom'
-    export let className: SvelteSelectProps['className'] = ''
-    export let onChange: SvelteSelectProps['onChange'] = () => {}
-    export let onClose: SvelteSelectProps['onClose'] = () => {}
+    const {
+        name,
+        value,
+        placeholder,
+        label,
+        subText,
+        disabled,
+        updateValue = true,
+        position = 'bottom',
+        className,
+        onChange,
+        onClose,
+        ...rest
+    }: SvelteSelectProps = $props()
 
     let popoverInstance: any
-    let val: string
+    let val: string | undefined = $state('')
     let focusByTab = false
 
     const classes = classNames([
@@ -46,7 +49,7 @@
         styles.popover
     ])
 
-    const inferredValue = $$restProps.itemGroups
+    const inferredValue = rest.itemGroups
         .map((group: ListProps['itemGroups'][0]) => group.items)
         .flat()
         .find((item: ListProps['itemGroups'][0]['items'][0]) => item.value === value)?.name
@@ -54,7 +57,7 @@
     val = (value && inferredValue) ? inferredValue : value
 
     const inputRestProps = Object.fromEntries(
-        Object.entries($$restProps).filter(([key]) => key.includes('data'))
+        Object.entries(rest).filter(([key]) => key.includes('data'))
     )
 
     const select = (event: ListEventType) => {
@@ -144,7 +147,7 @@
     value={val}
     readonly={true}
     disabled={disabled}
-    placeholder={placeholder || null}
+    placeholder={placeholder}
     label={label}
     subText={subText}
     className={`w-select-${name}`}
@@ -158,10 +161,10 @@
         className={popoverClasses}
         showCloseIcon={false}
     >
-        <List onSelect={select} {...$$restProps} />
+        <List onSelect={select} {...rest} />
     </Modal>
 {:else}
     <Popover className={popoverClasses}>
-        <List onSelect={select} {...$$restProps} />
+        <List onSelect={select} {...rest} />
     </Popover>
 {/if}

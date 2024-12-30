@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { AlertProps } from './alert'
+    import type { SvelteAlertProps } from './alert'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
@@ -10,13 +10,18 @@
 
     import styles from './alert.module.scss'
 
-    export let element: AlertProps['element'] = 'section'
-    export let title: AlertProps['title'] = null
-    export let titleTag: AlertProps['title'] = 'strong'
-    export let titleProps: AlertProps['titleProps'] = null
-    export let bodyProps: AlertProps['bodyProps'] = null
-    export let className: AlertProps['className'] = null
-    export let theme: AlertProps['theme'] = null
+    const {
+        element = 'section',
+        title,
+        titleTag = 'strong',
+        titleProps,
+        bodyProps,
+        className,
+        theme,
+        icon,
+        children,
+        ...rest
+    }: SvelteAlertProps = $props()
 
     const iconMap = {
         info,
@@ -25,7 +30,7 @@
         alert
     }
 
-    const hasCustomIcon = $$slots.icon
+    const hasCustomIcon = icon
 
     const classes = [
         styles['w-alert'],
@@ -35,8 +40,8 @@
     ].filter(Boolean).join(' ')
 </script>
 
-<svelte:element this={element} class={classes} {...$$restProps}>
-    <slot name="icon" />
+<svelte:element this={element} class={classes} {...rest}>
+    {@render icon?.()}
 
     {#if !hasCustomIcon && theme}
         {@html iconMap[theme]}
@@ -53,7 +58,7 @@
             </svelte:element>
         {/if}
         <div class={styles.body} {...bodyProps}>
-            <slot />
+            {@render children?.()}
         </div>
     </ConditionalWrapper>
 </svelte:element>

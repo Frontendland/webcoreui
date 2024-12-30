@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte'
-    import { closeModal,modal } from 'webcoreui'
+    import { closeModal, modal } from 'webcoreui'
     import {
         Alert,
         Button,
@@ -21,7 +21,9 @@
 </script>
 
 <Alert title="Deployments">
-    <Icon type="github" slot="icon" />
+    {#snippet icon()}
+        <Icon type="github" />
+    {/snippet}
     <span>Connect your project to GitHub to start running automatic deployments.</span>
     <br />
     <Button className={styles.connect} onClick={connect}>Connect</Button>

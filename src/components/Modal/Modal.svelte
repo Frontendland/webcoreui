@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { ModalProps } from './modal'
+    import type { SvelteModalProps } from './modal'
 
     import Button from '../Button/Button.svelte'
 
@@ -13,15 +13,19 @@
 
     import styles from './modal.module.scss'
 
-    export let title: ModalProps['title'] = ''
-    export let subTitle: ModalProps['subTitle'] = ''
-    export let showCloseIcon: ModalProps['showCloseIcon'] = true
-    export let closeOnEsc: ModalProps['closeOnEsc'] = true
-    export let closeOnOverlay: ModalProps['closeOnOverlay'] = true
-    export let transparent: ModalProps['transparent'] = false
-    export let theme: ModalProps['theme'] = null
-    export let id : ModalProps['className'] = ''
-    export let className: ModalProps['className'] = ''
+    const {
+        title,
+        subTitle,
+        showCloseIcon = true,
+        closeOnEsc = true,
+        closeOnOverlay = true,
+        transparent,
+        theme,
+        id,
+        className,
+        children,
+        ...rest
+    }: SvelteModalProps = $props()
 
     const iconMap = {
         info,
@@ -48,7 +52,7 @@
     class={classes}
     id={id}
     data-close={close.length ? close : undefined}
-    {...$$restProps}
+    {...rest}
 >
     {#if showCloseIcon}
         <Button
@@ -70,6 +74,6 @@
     {#if subTitle}
         <div class={styles.subTitle}>{subTitle}</div>
     {/if}
-    <slot />
+    {@render children?.()}
 </dialog>
 <div class={styles.overlay}></div>

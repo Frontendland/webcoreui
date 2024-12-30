@@ -1,12 +1,16 @@
 <script lang="ts">
-    import type { PopoverProps } from './popover'
+    import type { SveltePopoverProps } from './popover'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './popover.module.scss'
 
-    export let id: PopoverProps['id'] = ''
-    export let className: PopoverProps['className'] = ''
+    const {
+        id,
+        className,
+        children,
+        ...rest
+    }: SveltePopoverProps = $props()
 
     const classes = classNames([
         styles.popover,
@@ -16,8 +20,8 @@
 
 <dialog
     class={classes}
-    id={id || null}
-    {...$$restProps}
+    id={id}
+    {...rest}
 >
-    <slot />
+    {@render children?.()}
 </dialog>

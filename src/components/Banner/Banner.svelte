@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { BannerProps } from './banner'
+    import type { SvelteBannerProps } from './banner'
 
     import Button from '../Button/Button.svelte'
 
@@ -9,14 +9,15 @@
 
     import styles from './banner.module.scss'
 
-    export let top: BannerProps['top'] = 0
-    export let bottom: BannerProps['bottom'] = false
-    export let closeable: BannerProps['closeable'] = false
-    export let padded: BannerProps['padded'] = false
-    export let sticky: BannerProps['sticky'] = true
-    export let className: BannerProps['className'] = ''
-
-    let visible = true
+    const {
+        top,
+        bottom,
+        closeable,
+        padded,
+        sticky = true,
+        className,
+        children
+    }: SvelteBannerProps = $props()
 
     const classes = classNames([
         styles.banner,
@@ -29,11 +30,13 @@
     const style = top
         ? `--w-banner-top: ${top}px;`
         : null
+
+    let visible = $state(true)
 </script>
 
 {#if visible}
     <div class={classes} style={style}>
-        <slot />
+        {@render children?.()}
         {#if closeable}
             <Button
                 theme="flat"
