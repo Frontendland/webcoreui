@@ -19,6 +19,8 @@ describe('bodyFreeze', () => {
             configurable: true,
             get: vi.fn(() => 1000)
         })
+
+        globalThis.setTimeout = vi.fn((fn, _) => fn())
     })
 
     afterEach(() => {

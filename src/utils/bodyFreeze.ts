@@ -5,7 +5,9 @@ export const bodyFreeze = (freeze = true) => {
         document.body.style.paddingRight = `${scrollbarWidth}px`
         document.body.style.overflow = 'hidden'
     } else {
-        document.body.style.paddingRight = ''
-        document.body.style.overflow = ''
+        setTimeout(() => {
+            document.body.style.paddingRight = ''
+            document.body.style.overflow = ''
+        }, 300)
     }
 }

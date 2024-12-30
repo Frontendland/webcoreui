@@ -1,6 +1,11 @@
+import { bodyFreeze } from '@utils/bodyFreeze'
 import { closeModal, modal } from '@utils/modal'
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+
+vi.mock('@utils/bodyFreeze', () => ({
+    bodyFreeze: vi.fn()
+}))
 
 describe('modal', () => {
     let modalElement: HTMLElement
@@ -145,7 +150,9 @@ describe('closeModal', () => {
         expect(modalElement.dataset.show).toBe('true')
 
         closeModal('#modal')
+
         expect(modalElement.dataset.show).toBe('')
+        expect(bodyFreeze).toHaveBeenCalledWith(false)
     })
 
     it('should do nothing if modal does not exist', () => {

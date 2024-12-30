@@ -128,5 +128,7 @@ export const closeModal = (modal: string) => {
 
     if (modalDOM) {
         modalDOM.dataset.show = ''
+
+        bodyFreeze(false)
     }
 }
