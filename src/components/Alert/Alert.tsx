@@ -40,7 +40,7 @@ const Alert = ({
         <Element className={classes} {...rest}>
             {icon && icon}
             {!icon && theme && <div
-                dangerouslySetInnerHTML={{ __html: iconMap[theme] }}
+                dangerouslySetInnerHTML={{ __html: iconMap[theme as keyof typeof iconMap] }}
                 style={{ height: '20px' }}
             />}
 
