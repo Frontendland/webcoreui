@@ -21,4 +21,5 @@ export type HeroProps = {
         height: number
     } | null
     reverse?: boolean
+    className?: string
 }

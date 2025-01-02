@@ -15,13 +15,15 @@
         buttons,
         badge,
         image,
-        reverse
+        reverse,
+        className
     }: HeroProps = $props()
 
     const classes = classNames([
         styles.hero,
         reverse && styles.reverse,
-        image?.src && styles.flex
+        image?.src && styles.flex,
+        className
     ])
 </script>
 

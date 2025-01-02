@@ -18,13 +18,15 @@ const {
     buttons,
     badge,
     image,
-    reverse
+    reverse,
+    className
 } = Astro.props
 
 const classes = [
     styles.hero,
     reverse && styles.reverse,
-    image?.src && styles.flex
+    image?.src && styles.flex,
+    className
 ]
 ---
 

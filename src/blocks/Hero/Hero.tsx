@@ -15,12 +15,14 @@ const Hero = ({
     buttons,
     badge,
     image,
-    reverse
+    reverse,
+    className
 }: HeroProps) => {
     const classes = classNames([
         styles.hero,
         reverse && styles.reverse,
-        image?.src && styles.flex
+        image?.src && styles.flex,
+        className
     ])
 
     return (
