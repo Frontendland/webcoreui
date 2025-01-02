@@ -9,7 +9,6 @@ export type BadgeProps = {
         | 'success'
         | 'warning'
         | 'alert'
-        | null
     hover?: boolean
     small?: boolean
     rounded?: boolean

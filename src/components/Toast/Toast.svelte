@@ -33,10 +33,15 @@
     const iconRender = $derived(icon)
 </script>
 
-<Alert {...rest} className={classes} {...additionalProps}>
-    {#snippet icon()}
-        {@render iconRender?.()}
-    {/snippet}
-    {@render children?.()}
-</Alert>
-
+{#if icon}
+    <Alert {...rest} className={classes} {...additionalProps}>
+        {#snippet icon()}
+            {@render iconRender?.()}
+        {/snippet}
+        {@render children?.()}
+    </Alert>
+{:else}
+    <Alert {...rest} className={classes} {...additionalProps}>
+        {@render children?.()}
+    </Alert>
+{/if}
