@@ -1,47 +1,74 @@
 import React from 'react'
-import { classNames } from 'webcoreui'
-import {
-    Card,
-    Progress
-} from 'webcoreui/react'
 
-import styles from './seo.module.scss'
+import type { SEOProps } from './SEO'
 
-const progressClass = classNames([
-    'flex justify-between muted',
-    styles['progress-label']
-])
-
-const SEO = () => {
-
+const SEO = ({
+    title,
+    url,
+    faviconUrl,
+    description,
+    canonical,
+    prefetchGTAG,
+    prefetchGA,
+    noIndex,
+    meta,
+    hrefLangs,
+    structuredContents
+}: SEOProps) => {
     return (
-        <Card title="SEO Overview">
-            <span>Keep track of the SEO performance of your posts.</span>
+        <React.Fragment>
+            <title>{title}</title>
 
-            <div className={classNames(['flex column md', styles.my])}>
-                <div>
-                    <div className={progressClass}>
-                        <span>Underperforming</span>
-                        <span>50%</span>
-                    </div>
-                    <Progress value={50} color="var(--w-color-alert)" />
-                </div>
-                <div>
-                    <div className={progressClass}>
-                        <span>OK</span>
-                        <span>30%</span>
-                    </div>
-                    <Progress value={30} color="var(--w-color-warning)" />
-                </div>
-                <div>
-                    <div className={progressClass}>
-                        <span>SEO-friendly</span>
-                        <span>20%</span>
-                    </div>
-                    <Progress value={20} color="var(--w-color-success)" />
-                </div>
-            </div>
-        </Card>
+            {prefetchGTAG && (
+                <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
+            )}
+
+            {prefetchGA && (
+                <link rel="dns-prefetch" href="https://www.google-analytics.com/" />
+            )}
+
+            <link rel="icon" type="image/x-icon" href={faviconUrl} />
+            <link rel="canonical" href={canonical || url} />
+
+            {hrefLangs?.map((hrefLang, index) => (
+                <link
+                    key={index}
+                    rel="alternate"
+                    hrefLang={hrefLang.hreflang}
+                    href={hrefLang.href}
+                />
+            ))}
+
+            <meta charSet="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            <meta name="description" content={description} />
+            <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
+            <meta name="og:url" content={url} />
+            <meta name="og:title" content={title} />
+            <meta name="og:description" content={description} />
+            <meta name="og:type" content="website" />
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:title" content={title} />
+            <meta name="twitter:description" content={description} />
+
+            {meta?.map((meta, index) => (
+                <meta
+                    key={index}
+                    name={meta.name}
+                    content={meta.content}
+                />
+            ))}
+
+            {structuredContents?.filter(Boolean).map((structuredContent, index) => (
+                <script
+                    key={index}
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(structuredContent, null, 0)
+                    }}
+                />
+            ))}
+        </React.Fragment>
     )
 }
 
