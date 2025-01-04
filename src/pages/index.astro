@@ -386,8 +386,9 @@ import {
         @include size('w100%');
     }
 
-    .menu-example {
-        z-index: 0;
+    .menu-example,
+    .bottom-navigation-example {
+        @include layer(default);
     }
 
     .switcher {

@@ -1,0 +1,32 @@
+---
+import Layout from '@static/Layout.astro'
+
+import BlogCard from '@blocks/BlogCard/BlogCard.astro'
+
+const templates = [
+    { name: 'Product Page', url: 'product-page' }
+]
+---
+
+<Layout>
+    <h1 class="reset">Templates</h1>
+
+    <div class="grid md-2 lg-3">
+        {templates.map(template => (
+            <Fragment>
+                {['Astro', 'Svelte', 'React'].map((framework, index) => (
+                    <BlogCard
+                        href={`templates/${template.url}/${framework.toLowerCase()}`}
+                        title={`${framework} ${template.name}`}
+                        img={{
+                            src: `/img/placeholder${index + 1}.png`,
+                            alt: framework,
+                            width: 200,
+                            height: 200
+                        }}
+                    />
+                ))}
+            </Fragment>
+        ))}
+    </div>
+</Layout>

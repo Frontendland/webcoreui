@@ -1,0 +1,25 @@
+@use 'webcoreui/config' as *;
+
+.container {
+    @include spacing(auto-none, px-default);
+    max-width: 1200px;
+}
+
+.carousel img {
+    @include size('w100%');
+    @include border-radius(none);
+}
+
+.separator {
+    @include spacing(my-lg);
+}
+
+@include media(sm) {
+    .main {
+        flex: 4;
+    }
+    
+    .sidebar {
+        flex: 2;
+    }
+}

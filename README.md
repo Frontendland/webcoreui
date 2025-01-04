@@ -292,3 +292,7 @@ import { Accordion } from 'webcoreui/react'
 - [SocialProof](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SocialProof)
 - [Tiles](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Tiles)
 - [User](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/User)
+
+## Templates
+
+- [ProductPage](https://github.com/Frontendland/webcoreui/tree/main/src/templates/ProductPage)

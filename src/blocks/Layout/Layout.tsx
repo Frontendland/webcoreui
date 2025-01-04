@@ -11,6 +11,7 @@ const Layout = ({
     seo,
     menu,
     footer,
+    className,
     insideMenu,
     atf,
     leftSidebar,
@@ -44,7 +45,7 @@ const Layout = ({
                     {leftSidebar}
                     <ConditionalWrapper
                         condition={!!hasSidebar}
-                        wrapper={children => <div>{children}</div>}
+                        wrapper={children => <div className={className}>{children}</div>}
                     >
                         {children}
                     </ConditionalWrapper>

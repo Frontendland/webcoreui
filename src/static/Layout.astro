@@ -26,16 +26,23 @@ const menu = {
         html: logo
     },
     items: [
+        { href: '/templates', name: 'Templates', active: isPath('templates') },
         { href: '/blocks', name: 'Blocks', active: isPath('blocks') },
-        { href: '/svelte', name: 'Svelte', active: isPath('svelte') },
-        { href: '/react', name: 'React', active: isPath('react') },
         { href: '/css/themes', name: 'Themes', active: isPath('css/themes') },
         { href: '/css/resets', name: 'Resets', active: isPath('css/resets') },
-        { href: '/css/utilities', name: 'Utilities', active: isPath('css/utilities') }
+        { href: '/css/utilities', name: 'Utilities', active: isPath('css/utilities') },
+        { href: '/svelte', name: 'Svelte', active: isPath('svelte') },
+        { href: '/react', name: 'React', active: isPath('react') }
     ]
 }
 
 const footer = [
+    {
+        title: 'Templates',
+        items: [
+            { name: 'Product Page', href: '/templates/product-page/astro', active: isPath('templates/product-page/astro') }
+        ]
+    },
     {
         title: 'Playground',
         items: [

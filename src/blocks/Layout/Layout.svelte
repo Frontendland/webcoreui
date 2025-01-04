@@ -11,6 +11,7 @@
         seo,
         menu,
         footer,
+        className,
         insideMenu,
         atf,
         leftSidebar,
@@ -43,7 +44,7 @@
         {@render atf?.()}
         <main class={containerClasses}>
             {@render leftSidebar?.()}
-            <ConditionalWrapper condition={!!hasSidebar}>
+            <ConditionalWrapper condition={!!hasSidebar} class={className}>
                 {@render children?.()}
             </ConditionalWrapper>
             {@render rightSidebar?.()}

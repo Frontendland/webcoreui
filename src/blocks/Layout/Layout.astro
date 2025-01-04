@@ -12,6 +12,7 @@ const {
     seo,
     menu,
     footer,
+    className,
     ...rest
 } = Astro.props
 
@@ -40,7 +41,7 @@ const containerClasses = [
         <main class:list={containerClasses}>
             <slot name="left-sidebar" />
             <ConditionalWrapper condition={hasSidebar}>
-                <div slot="wrapper">children</div>
+                <div slot="wrapper" class:list={className}>children</div>
                 <slot />
             </ConditionalWrapper>
             <slot name="right-sidebar" />

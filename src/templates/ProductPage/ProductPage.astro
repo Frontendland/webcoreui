@@ -1,0 +1,83 @@
+---
+import type { ProductPageProps } from './productPage'
+
+import BlogCard from '@blocks/BlogCard/BlogCard.astro'
+import Button from '@blocks/Button/Button.astro'
+import IconList from '@blocks/IconList/IconList.astro'
+import Layout from '@blocks/Layout/Layout.astro'
+
+import styles from './product-page.module.scss'
+
+import { Carousel } from 'webcoreui/astro'
+
+interface Props extends ProductPageProps {}
+
+const {
+    layout,
+    images,
+    carousel,
+    buttons,
+    features,
+    recommended,
+    ...rest
+} = Astro.props
+---
+
+<Layout {...layout} {...rest} className={styles.main}>
+    {Astro.slots.has('menu') && (
+        <div slot="menu">
+            <slot name="menu" />
+        </div>
+    )}
+
+    {images?.length && (
+        <Carousel
+            {...carousel}
+            slot="atf"
+            items={images.length}
+            className={styles.container}
+            wrapperClassName={styles.carousel}
+        >
+            {images.map(img => (
+                <li>
+                    <img
+                        src={img.src}
+                        alt={img.alt}
+                        width={img.width}
+                        height={img.height}
+                        loading={img.lazy ? 'lazy' : undefined}
+                    />
+                </li>
+            ))}
+        </Carousel>
+    )}
+
+    <slot />
+
+    {(buttons?.length || features?.length) && (
+        <aside slot="right-sidebar" class={styles.sidebar}>
+            {!!buttons?.length && (
+                <div class="grid sm">
+                    {buttons?.map(button => (
+                        <Button {...button} />
+                    ))}
+                </div>
+            )}
+            {!!features?.length && (
+                <hr class={styles.separator} />
+                <IconList items={features} />
+            )}
+        </aside>
+    )}
+
+    {!!recommended?.items?.length && (
+        <section slot="above-footer" class="container">
+            <h2>{recommended.title || 'Recommended'}</h2>
+            <div class="grid sm-3">
+                {recommended.items.map(item => (
+                    <BlogCard {...item} />
+                ))}
+            </div>
+        </section>
+    )}
+</Layout>

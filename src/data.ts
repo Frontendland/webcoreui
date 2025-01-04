@@ -9,6 +9,7 @@ import SvelteBox from '@static/Box.svelte'
 import ReactAlert from '@components/Alert/Alert.tsx'
 import ReactBox from '@static/Box.tsx'
 
+import logo from '../public/img/logo.svg?raw'
 import alertIcon from './icons/alert.svg?raw'
 import successIcon from './icons/circle-check.svg?raw'
 import componentsIcon from './icons/components.svg?raw'
@@ -17,6 +18,8 @@ import gitHubIcon from './icons/github.svg?raw'
 import homeIcon from './icons/home.svg?raw'
 import infoIcon from './icons/info.svg?raw'
 import moonIcon from './icons/moon.svg?raw'
+
+import type { PaginationProps } from 'webcoreui/astro'
 
 export const accordionItems = [{
     title: 'Do you offer support?',
@@ -447,3 +450,77 @@ export const bottomNavigationItems = [
         name: 'GitHub'
     }
 ]
+
+export const getProductPageTemplateData = (theme = 'success') => ({
+    layout: {
+        seo: {
+            title: 'Product Page Template - Webcore',
+            url: 'https://webcoreui.dev/',
+            description: 'A customizable and easy to use template for products.',
+            faviconUrl: '/logo.svg'
+        },
+        menu: {
+            logo: {
+                html: logo
+            }
+        },
+        footer: {
+            logo: {
+                html: logo
+            },
+            columns: [
+                {
+                    title: 'Sitemap',
+                    items: [
+                        { href: '/', name: 'Home' }
+                    ]
+                }
+            ],
+            subText: `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
+        }
+    },
+    images: Array
+        .from({ length: 4 }, (_, i) => i + 1)
+        .map(i => ({
+            src: `/img/placeholder${i}.png`,
+            alt: 'img',
+            width: 500,
+            height: 250
+        })),
+    carousel: {
+        pagination: {
+            type: 'dots' as PaginationProps['type']
+        }
+    },
+    recommended: {
+        items: Array
+            .from({ length: 3 }, (_, i) => i + 5)
+            .map(i => ({
+                href: '#',
+                img: {
+                    src: `/img/placeholder${i}.png`,
+                    alt: 'img',
+                    width: 500,
+                    height: 250
+                },
+                title: `Recommended Card #${i - 4}`,
+                text: 'You can also pass <b>HTML</b> tags to your recommended cards.'
+            }))
+    },
+    buttons: [
+        { text: 'Get Started ->', theme: theme as ButtonProps['theme'] },
+        { text: 'Demo', theme: 'secondary' as ButtonProps['theme'] }
+    ],
+    features: [
+        'Easily configure your menu and footer',
+        'Add carousel for preview images',
+        'Define your main content the way you want',
+        'Customize your call to actions',
+        'List features',
+        'Add recommendations'
+    ].map(feature => ({
+        icon: successIcon,
+        color: `var(--w-color-${theme})`,
+        text: feature
+    }))
+})

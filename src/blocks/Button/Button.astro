@@ -1,0 +1,36 @@
+---
+import { classNames } from 'webcoreui'
+import {
+    Badge,
+    Button as WebcoreButton,
+    Icon,
+    type IconProps
+} from 'webcoreui/astro'
+
+import type { ButtonProps } from './button'
+import styles from './button.module.scss'
+
+interface Props extends ButtonProps {}
+
+const {
+    icon,
+    text,
+    badge,
+    className,
+    ...rest
+} = Astro.props
+
+const Component = badge ? Badge : WebcoreButton
+---
+
+<Component {...rest} className={classNames([styles.button, className])}>
+    {icon && (
+        <Fragment>
+            {icon.startsWith('<svg')
+                ? <Fragment set:html={icon} />
+                : <Icon type={icon as IconProps['type']} />
+            }
+        </Fragment>
+    )}
+    {text}
+</Component>

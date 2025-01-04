@@ -7,6 +7,7 @@ export type LayoutProps = {
     seo: SEOProps
     menu?: MenuProps
     footer?: FooterProps
+    className?: string
     [key: string]: any
 }
 

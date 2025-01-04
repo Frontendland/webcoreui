@@ -1,0 +1,70 @@
+---
+import { Icon } from 'webcoreui/astro'
+
+import { getProductPageTemplateData } from '@data'
+
+import ProductPage from '@templates/ProductPage/ProductPage.astro'
+---
+
+<ProductPage {...getProductPageTemplateData()}>
+    <a
+        slot="menu"
+        href="https://github.com/Frontendland/webcoreui"
+        target="_blank"
+        rel="noreferrer"
+    >
+        <Icon type="github" size={18} />
+    </a>
+
+    <a class="muted" href="/templates">{'<-'} Back to all templates</a>
+
+    <h1>Astro Product Page</h1>
+    <h2 class="muted">Customizable and easy to setup template for your products</h2>
+
+    <p>
+        This template is designed to help you create professional product pages with minimal effort while offering full customization to meet your needs. To ensure a seamless user experience, the layout is fully-responsive and optimized for all devices.
+    </p>
+
+    <hr />
+
+    <h3>Key Features</h3>
+    <ul>
+        <li>
+            <b>Menu and Footer Configuration:</b>
+            Quickly set up and customize your navigation and footer to match your site’s structure and style.
+        </li>
+        <li>
+            <b>Image Carousel:</b>
+            Showcase product images with an interactive carousel for a more engaging user experience.
+        </li>
+        <li>
+            <b>Flexible Content Layout:</b>
+            Define your main content the way you want—whether it’s a detailed description, video, or anything else that suits your product.
+        </li>
+        <li>
+            <b>Customizable Call-to-Actions (CTAs):</b>
+            Design CTAs that fit your brand and guide users toward the actions that matter most.
+        </li>
+        <li>
+            <b>Feature Listing:</b>
+            Highlight product features in a clear, organized way to inform and attract customers.
+        </li>
+        <li>
+            <b>Recommendation Section:</b>
+            Add recommendations or related products to enhance discoverability and boost engagement.
+        </li>
+    </ul>
+</ProductPage>
+
+<style lang="scss">
+    @use 'webcoreui/config' as *;
+
+    h1 {
+        @include spacing(mt-default);
+    }
+
+    h2 {
+        @include typography(lg, 400, regular);
+        @include spacing(m0);
+    }
+</style>

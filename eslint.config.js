@@ -96,7 +96,7 @@ export default [
                 allowExpressions: true
             }],
             'react/jsx-tag-spacing': ['error'],
-            'react/no-unused-prop-types': 'error',
+            'react/prop-types': 'off',
             'radix': 'error',
             'semi': ['error', 'never'],
             'simple-import-sort/imports': ['error', {
