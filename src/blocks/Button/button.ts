@@ -10,7 +10,3 @@ export type ButtonProps = {
     badge?: boolean
     className?: string
 } & WebcoreButtonProps & BadgeProps
-
-export type ReactButtonProps = {
-    children?: React.ReactNode
-} & ButtonProps

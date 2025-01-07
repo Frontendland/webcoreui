@@ -5,7 +5,7 @@ import {
     Button as WebcoreButton
 } from 'webcoreui/react'
 
-import type { ReactButtonProps } from './button'
+import type { ButtonProps } from './button'
 import styles from './button.module.scss'
 
 const Button = ({
@@ -14,7 +14,7 @@ const Button = ({
     badge,
     className,
     ...rest
-}: ReactButtonProps) => {
+}: ButtonProps) => {
     const Component = badge ? Badge : WebcoreButton
 
     return (
