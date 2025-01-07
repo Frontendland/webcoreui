@@ -480,11 +480,11 @@ export const getProductPageTemplateData = (theme = 'success') => ({
         }
     },
     images: Array
-        .from({ length: 4 }, (_, i) => i + 1)
+        .from({ length: 3 }, (_, i) => i + 1)
         .map(i => ({
-            src: `/img/placeholder${i}.png`,
+            src: `/img/placeholder-hd${i}.png`,
             alt: 'img',
-            width: 500,
+            width: 1200,
             height: 250
         })),
     carousel: {
