@@ -42,10 +42,10 @@ const classes = [
 </section>
 
 <script>
-    const tabs = document.querySelectorAll('[data-id="w-tabs"]')
+    import { on } from '../../utils/DOMUtils'
 
-    Array.from(tabs).forEach(element => {
-        element.addEventListener('click', event => {
+    const addEventListeners = () => {
+        on('[data-id="w-tabs"]', 'click', (event: Event) => {
             const target = event.target as HTMLDivElement
 
             if (target.dataset.value) {
@@ -72,6 +72,9 @@ const classes = [
                     }
                 })
             }
-        })
-    })
+        }, true)
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
 </script>

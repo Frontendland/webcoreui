@@ -267,13 +267,15 @@ const sections = getSections({
 </style>
 
 <script>
-    const button = document.querySelector('.go-back')
+    import { on } from '@utils/DOMUtils'
 
-    button?.addEventListener('click', () => {
-        const firstSlide = button
-            ?.closest('[data-id="w-carousel"]')
-            ?.children[0].children[0]
+    on(document, 'astro:page-load', () => {
+        on('.go-back', 'click', (event: Event) => {
+            const firstSlide = (event.currentTarget as HTMLButtonElement)
+                ?.closest('[data-id="w-carousel"]')
+                ?.children[0].children[0]
 
-        firstSlide?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+            firstSlide?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+        })
     })
 </script>

@@ -417,9 +417,11 @@ import {
 <script>
     import { get, on } from '@utils/DOMUtils'
 
-    on('.scroll-to-components', 'click', () => {
-        (get('.components-heading') as HTMLDivElement).scrollIntoView({
-            behavior: 'smooth'
+    on(document, 'astro:page-load', () => {
+        on('.scroll-to-components', 'click', () => {
+            (get('.components-heading') as HTMLDivElement).scrollIntoView({
+                behavior: 'smooth'
+            })
         })
     })
 </script>

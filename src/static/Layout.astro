@@ -7,6 +7,7 @@ import Menu from '@components/Menu/Menu.astro'
 import logo from '../../public/img/logo.svg?raw'
 
 import { classNames } from '@utils/classNames'
+import { ClientRouter } from 'astro:transitions'
 
 const {
     nonStickyMenu,
@@ -95,6 +96,7 @@ const externalLinks = [
         <link rel="icon" href="/img/logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>Webcore</title>
+        <ClientRouter />
     </head>
     <body class={theme}>
         <Menu

@@ -93,77 +93,82 @@ const wrapperClasses = [
 <script>
     import { dispatch } from '../../utils/event'
 
-    const lists = document.querySelectorAll('[data-id="w-list"]')
-    const searchInputs = document.querySelectorAll('[data-id="w-list-search"]')
+    const addEventListeners = () => {
+        const lists = document.querySelectorAll('[data-id="w-list"]')
+        const searchInputs = document.querySelectorAll('[data-id="w-list-search"]')
 
-    const handleClick = (list: Element, items: Element[], event: Event) => {
-        const target = event.target as HTMLElement
+        const handleClick = (list: Element, items: Element[], event: Event) => {
+            const target = event.target as HTMLElement
 
-        if (target.dataset.value && !target.dataset.disabled) {
-            dispatch('listOnSelect', {
-                value: target.dataset.value,
-                name: target.dataset.name,
-                list
-            })
+            if (target.dataset.value && !target.dataset.disabled) {
+                dispatch('listOnSelect', {
+                    value: target.dataset.value,
+                    name: target.dataset.name,
+                    list
+                })
 
-            items.forEach(item => item.removeAttribute('data-selected'))
-            target.dataset.selected = 'true'
-        }
-    }
-
-    Array.from(lists).forEach(list => {
-        const items = Array.from(list.children)
-
-        list.addEventListener('click', event => handleClick(list, items, event))
-        list.addEventListener('keyup', event => {
-            if ((event as KeyboardEvent).key === 'Enter') {
-                handleClick(list, items, event)
+                items.forEach(item => item.removeAttribute('data-selected'))
+                target.dataset.selected = 'true'
             }
-        })
-    })
+        }
 
-    Array.from(searchInputs).forEach(element => {
-        element.addEventListener('input', event => {
-            const target = event.target as HTMLInputElement
-            const ul = target.closest('[data-id="w-list-wrapper"]')
-                ?.querySelector('ul') as HTMLUListElement
+        Array.from(lists).forEach(list => {
+            const items = Array.from(list.children)
 
-            const noResults = ul.querySelector('[data-id="w-no-results"]')
-            const items = Array.from(ul.children)
-            const value = target.value.toLowerCase()
-
-            items.forEach(item => {
-                const li = item as HTMLLIElement
-                const hideItem = (!li.dataset.value?.toLowerCase().includes(value)
-                    && !li.innerText.toLowerCase().includes(value))
-                    || li.dataset.id === 'w-list-title'
-                    || li.dataset.id === 'w-no-results'
-
-                if (hideItem) {
-                    li.dataset.hidden = 'true'
-                } else if (li.dataset.id !== 'w-no-results') {
-                    li.removeAttribute('data-hidden')
+            list.addEventListener('click', event => handleClick(list, items, event))
+            list.addEventListener('keyup', event => {
+                if ((event as KeyboardEvent).key === 'Enter') {
+                    handleClick(list, items, event)
                 }
             })
+        })
 
-            const numberOfResults = items.filter(item => {
-                const li = item as HTMLLIElement
-                return li.dataset.name && !li.dataset.hidden
-            }).length
+        Array.from(searchInputs).forEach(element => {
+            element.addEventListener('input', event => {
+                const target = event.target as HTMLInputElement
+                const ul = target.closest('[data-id="w-list-wrapper"]')
+                    ?.querySelector('ul') as HTMLUListElement
 
-            if (!numberOfResults) {
-                noResults?.removeAttribute('data-hidden')
-            }
+                const noResults = ul.querySelector('[data-id="w-no-results"]')
+                const items = Array.from(ul.children)
+                const value = target.value.toLowerCase()
 
-            if (!value) {
                 items.forEach(item => {
                     const li = item as HTMLLIElement
+                    const hideItem = (!li.dataset.value?.toLowerCase().includes(value)
+                        && !li.innerText.toLowerCase().includes(value))
+                        || li.dataset.id === 'w-list-title'
+                        || li.dataset.id === 'w-no-results'
 
-                    li.dataset.id === 'w-no-results'
-                        ? li.dataset.hidden = 'true'
-                        : li.removeAttribute('data-hidden')
+                    if (hideItem) {
+                        li.dataset.hidden = 'true'
+                    } else if (li.dataset.id !== 'w-no-results') {
+                        li.removeAttribute('data-hidden')
+                    }
                 })
-            }
+
+                const numberOfResults = items.filter(item => {
+                    const li = item as HTMLLIElement
+                    return li.dataset.name && !li.dataset.hidden
+                }).length
+
+                if (!numberOfResults) {
+                    noResults?.removeAttribute('data-hidden')
+                }
+
+                if (!value) {
+                    items.forEach(item => {
+                        const li = item as HTMLLIElement
+
+                        li.dataset.id === 'w-no-results'
+                            ? li.dataset.hidden = 'true'
+                            : li.removeAttribute('data-hidden')
+                    })
+                }
+            })
         })
-    })
+    }
+
+    document.addEventListener('astro:after-swap', addEventListeners)
+    addEventListeners()
 </script>

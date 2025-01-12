@@ -38,9 +38,11 @@ import ReactSignUp from '@blocks/SignUp/SignUp.tsx'
 <script>
     import { on } from '@utils/DOMUtils'
 
-    // eslint-disable-next-line no-console
-    on('.create-account', 'click', () => console.log('Creating account'))
+    on(document, 'astro:page-load', () => {
+        // eslint-disable-next-line no-console
+        on('.create-account', 'click', () => console.log('Creating account'))
 
-    // eslint-disable-next-line no-console
-    on('.sign-in', 'click', () => console.log('Signing in'))
+        // eslint-disable-next-line no-console
+        on('.sign-in', 'click', () => console.log('Signing in'))
+    })
 </script>

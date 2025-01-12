@@ -173,123 +173,130 @@ const hasPagination = data?.length && itemsPerPage
     import { debounce } from '../../utils/debounce'
     import { dispatch, listen } from '../../utils/event'
 
-    const filters = document.querySelectorAll('[data-id="w-data-table-filter"]')
-    const sorts = document.querySelectorAll('[data-id="w-data-table-sort"]')
+    const addEventListeners = () => {
+        const filters = document.querySelectorAll('[data-id="w-data-table-filter"]')
+        const sorts = document.querySelectorAll('[data-id="w-data-table-sort"]')
 
-    Array.from(filters).forEach(filter => {
-        filter.addEventListener('input', debounce((event: Event) => {
-            const target = event.target as HTMLInputElement
-            const filterableColumns = target.dataset.filter
-            const table = target.closest('section')?.querySelector('table') as HTMLTableElement
-            const pagination = target.closest('section')?.querySelector('.w-data-table-pagination') as HTMLUListElement
-            const noResults = table.querySelector('tfoot') as HTMLElement
-            const tableRows = Array.from(table.querySelectorAll('tbody tr') as NodeListOf<HTMLTableRowElement>)
-
-            tableRows.forEach(row => {
-                const rowValue = Array.from(row.querySelectorAll('td'))
-                    .filter(td => filterableColumns?.includes(td.dataset.name || ''))
-                    .map(td => td.innerText)
-                    .join('')
-                    .toLowerCase()
-
-                if (rowValue.includes(target.value.toLowerCase())) {
-                    row.removeAttribute('data-hidden')
-                } else {
-                    row.dataset.hidden = 'true'
-                }
-            })
-
-            const filteredRows = Array.from(
-                table?.querySelectorAll('tbody tr:not([data-hidden])') as NodeListOf<HTMLTableRowElement>
-            )
-
-            if (!filteredRows.length) {
-                noResults.removeAttribute('data-hidden')
-            } else {
-                noResults.dataset.hidden = 'true'
-            }
-
-            if (table.dataset.itemsPerPage && filteredRows.length >= Number(table.dataset.itemsPerPage)) {
-                filteredRows.forEach((row, index) => {
-                    if (index >= Number(table.dataset.itemsPerPage)) {
-                        row.dataset.hidden = 'true'
-                    }
-                })
-            }
-
-            if (target.value) {
-                pagination.style.display = 'none'
-            } else {
-                pagination.style.display = 'flex'
+        Array.from(filters).forEach(filter => {
+            filter.addEventListener('input', debounce((event: Event) => {
+                const target = event.target as HTMLInputElement
+                const filterableColumns = target.dataset.filter
+                const section = target.closest('section')
+                const table = section?.querySelector('table') as HTMLTableElement
+                const pagination = section?.querySelector('.w-data-table-pagination') as HTMLUListElement
+                const noResults = table.querySelector('tfoot') as HTMLElement
+                const tableRows = Array.from(table.querySelectorAll('tbody tr') as NodeListOf<HTMLTableRowElement>)
 
                 tableRows.forEach(row => {
-                    if (row.dataset.page !== table.dataset.page) {
-                        row.dataset.hidden = 'true'
-                    } else {
+                    const rowValue = Array.from(row.querySelectorAll('td'))
+                        .filter(td => filterableColumns?.includes(td.dataset.name || ''))
+                        .map(td => td.innerText)
+                        .join('')
+                        .toLowerCase()
+
+                    if (rowValue.includes(target.value.toLowerCase())) {
                         row.removeAttribute('data-hidden')
+                    } else {
+                        row.dataset.hidden = 'true'
                     }
                 })
-            }
 
-            dispatch('dataTableFilter', {
-                results: filteredRows,
-                numberOfResults: filteredRows.length
-            })
-        }, 400))
-    })
+                const filteredRows = Array.from(
+                    table?.querySelectorAll('tbody tr:not([data-hidden])') as NodeListOf<HTMLTableRowElement>
+                )
 
-    Array.from(sorts).forEach(sort => {
-        let sortOrder = 1
-
-        sort.addEventListener('click', event => {
-            const target = event.target as HTMLButtonElement
-            const sortBy = target.parentElement?.dataset.name
-            const table = target.closest('section')?.querySelector('table')
-            const tableBody = table?.querySelector('tbody')
-            const sortedTableRows = Array.from(
-                table?.querySelectorAll('tbody tr') as NodeListOf<HTMLTableRowElement>
-            ).sort((a, b) => {
-                let aValue: string | number = (a.querySelector(`[data-name=${sortBy}]`) as HTMLElement)
-                    ?.innerText.replace(/\s/g, '')
-                let bValue: string | number = (b.querySelector(`[data-name=${sortBy}]`) as HTMLElement)
-                    ?.innerText.replace(/\s/g, '')
-
-                if (!isNaN(aValue as any)) {
-                    aValue = Number(aValue)
+                if (!filteredRows.length) {
+                    noResults.removeAttribute('data-hidden')
+                } else {
+                    noResults.dataset.hidden = 'true'
                 }
 
-                if (!isNaN(bValue as any)) {
-                    bValue = Number(bValue)
+                if (table.dataset.itemsPerPage && filteredRows.length >= Number(table.dataset.itemsPerPage)) {
+                    filteredRows.forEach((row, index) => {
+                        if (index >= Number(table.dataset.itemsPerPage)) {
+                            row.dataset.hidden = 'true'
+                        }
+                    })
                 }
 
-                return aValue > bValue
-                    ? sortOrder * -1
-                    : sortOrder
-            }).map((row, index) => {
-                if (table?.dataset.page) {
-                    row.dataset.page = `${Math.ceil((index + 1) / Number(table.dataset.itemsPerPage))}`
+                if (target.value) {
+                    pagination.style.display = 'none'
+                } else {
+                    pagination.style.display = 'flex'
 
-                    if (row.dataset.page !== table.dataset.page) {
-                        row.dataset.hidden = 'true'
-                    } else {
-                        row.removeAttribute('data-hidden')
-                    }
+                    tableRows.forEach(row => {
+                        if (row.dataset.page !== table.dataset.page) {
+                            row.dataset.hidden = 'true'
+                        } else {
+                            row.removeAttribute('data-hidden')
+                        }
+                    })
                 }
 
-                return row
-            })
-
-            tableBody?.replaceChildren(...sortedTableRows)
-
-            sortOrder = sortOrder === 1 ? -1 : 1
+                dispatch('dataTableFilter', {
+                    results: filteredRows,
+                    numberOfResults: filteredRows.length
+                })
+            }, 400))
         })
-    })
+
+        Array.from(sorts).forEach(sort => {
+            let sortOrder = 1
+
+            sort.addEventListener('click', event => {
+                const target = event.target as HTMLButtonElement
+                const sortBy = target.parentElement?.dataset.name
+                const table = target.closest('section')?.querySelector('table')
+                const tableBody = table?.querySelector('tbody')
+                const sortedTableRows = Array.from(
+                    table?.querySelectorAll('tbody tr') as NodeListOf<HTMLTableRowElement>
+                ).sort((a, b) => {
+                    let aValue: string | number = (a.querySelector(`[data-name=${sortBy}]`) as HTMLElement)
+                        ?.innerText.replace(/\s/g, '')
+                    let bValue: string | number = (b.querySelector(`[data-name=${sortBy}]`) as HTMLElement)
+                        ?.innerText.replace(/\s/g, '')
+
+                    if (!isNaN(aValue as any)) {
+                        aValue = Number(aValue)
+                    }
+
+                    if (!isNaN(bValue as any)) {
+                        bValue = Number(bValue)
+                    }
+
+                    return aValue > bValue
+                        ? sortOrder * -1
+                        : sortOrder
+                }).map((row, index) => {
+                    if (table?.dataset.page) {
+                        row.dataset.page = `${Math.ceil((index + 1) / Number(table.dataset.itemsPerPage))}`
+
+                        if (row.dataset.page !== table.dataset.page) {
+                            row.dataset.hidden = 'true'
+                        } else {
+                            row.removeAttribute('data-hidden')
+                        }
+                    }
+
+                    return row
+                })
+
+                tableBody?.replaceChildren(...sortedTableRows)
+
+                sortOrder = sortOrder === 1 ? -1 : 1
+            })
+        })
+    }
 
     listen('selectOnChange', event => {
         const eventName = event.name.toLowerCase().replace(/\s/g, '')
         const table = (document.querySelector(`[data-id="w-select-${event.select}"]`)
             ?.closest('section') as HTMLElement)
             .querySelector('table') as HTMLTableElement
+
+        if (!table) {
+            return
+        }
 
         const affectedTableCells = Array.from(table.querySelectorAll(`[data-name=${eventName}]`)) as HTMLElement[]
 
@@ -329,4 +336,7 @@ const hasPagination = data?.length && itemsPerPage
             }
         })
     })
+
+    document.addEventListener('astro:after-swap', addEventListeners)
+    addEventListeners()
 </script>

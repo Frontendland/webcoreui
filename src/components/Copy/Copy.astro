@@ -56,19 +56,24 @@ const classes = classNames([
 <script>
     import { on } from '../../utils/DOMUtils'
 
-    on('[data-id="w-copy"]', 'click', (event: Event) => {
-        const copy = event.currentTarget as HTMLButtonElement
-        const copied = copy.nextElementSibling as HTMLSpanElement
-        const badge = copy.parentElement?.parentElement as HTMLElement
+    const addEventListeners = () => {
+        on('[data-id="w-copy"]', 'click', (event: Event) => {
+            const copy = event.currentTarget as HTMLButtonElement
+            const copied = copy.nextElementSibling as HTMLSpanElement
+            const badge = copy.parentElement?.parentElement as HTMLElement
 
-        const text = copy.parentElement?.previousSibling?.textContent?.trim()
+            const text = copy.parentElement?.previousSibling?.textContent?.trim()
 
-        copy.style.opacity = '0'
-        copy.style.pointerEvents = 'none'
+            copy.style.opacity = '0'
+            copy.style.pointerEvents = 'none'
 
-        copied.style.opacity = '1'
-        badge.removeAttribute('data-tooltip')
+            copied.style.opacity = '1'
+            badge.removeAttribute('data-tooltip')
 
-        navigator.clipboard.writeText(text as string)
-    }, true)
+            navigator.clipboard.writeText(text as string)
+        }, true)
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
 </script>

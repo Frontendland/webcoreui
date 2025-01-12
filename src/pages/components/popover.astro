@@ -207,57 +207,60 @@ const sections = getSections({
 </Layout>
 
 <script>
+    import { on } from '@utils/DOMUtils'
     import { closePopover, popover } from '@utils/popover'
 
-    const selectors = [
-        'astro',
-        'svelte',
-        'react'
-    ]
+    on(document, 'astro:page-load', () => {
+        const selectors = [
+            'astro',
+            'svelte',
+            'react'
+        ]
 
-    const ids = Array(14).fill(10).map((x, index) => x * (index + 1))
-    const variants = [
-        '00',
-        '01',
-        '02',
-        ...ids,
-        ...ids.map(x => x + 1),
-        ...ids.map(x => x + 2)
-    ]
+        const ids = Array(14).fill(10).map((x, index) => x * (index + 1))
+        const variants = [
+            '00',
+            '01',
+            '02',
+            ...ids,
+            ...ids.map(x => x + 1),
+            ...ids.map(x => x + 2)
+        ]
 
-    selectors.forEach(selector => {
-        const event = popover({
-            trigger: `#popover-btn-${selector}`,
-            popover: `#popover-${selector}`
-        })
-
-        document.querySelector('#popover-remove')?.addEventListener('click', () => {
-            closePopover(`#popover-${selector}`)
-            event?.remove()
-        })
-    })
-
-    variants.forEach(variant => {
-        const button = document.querySelector(`#popover-btn-${variant}`) as HTMLButtonElement
-        const removeButton = document.querySelector(`#popover-${variant} button`)
-
-        const popoverInstance = popover({
-            trigger: `#popover-btn-${variant}`,
-            popover: `#popover-${variant}`,
-            position: button?.dataset.pos as any || 'bottom',
-            closeOnBlur: !button?.dataset.noClose,
-            closeOnEsc: !button?.dataset.noClose
-        })
-
-        if (removeButton) {
-            removeButton.addEventListener('click', () => {
-                closePopover(`#popover-${variant}`)
-                popoverInstance?.remove()
-
-                button.disabled = true
-                button.classList.remove(button.classList.item(1) as string)
-                button.innerText = 'Popover disabled'
+        selectors.forEach(selector => {
+            const event = popover({
+                trigger: `#popover-btn-${selector}`,
+                popover: `#popover-${selector}`
             })
-        }
+
+            document.querySelector('#popover-remove')?.addEventListener('click', () => {
+                closePopover(`#popover-${selector}`)
+                event?.remove()
+            })
+        })
+
+        variants.forEach(variant => {
+            const button = document.querySelector(`#popover-btn-${variant}`) as HTMLButtonElement
+            const removeButton = document.querySelector(`#popover-${variant} button`)
+
+            const popoverInstance = popover({
+                trigger: `#popover-btn-${variant}`,
+                popover: `#popover-${variant}`,
+                position: button?.dataset.pos as any || 'bottom',
+                closeOnBlur: !button?.dataset.noClose,
+                closeOnEsc: !button?.dataset.noClose
+            })
+
+            if (removeButton) {
+                removeButton.addEventListener('click', () => {
+                    closePopover(`#popover-${variant}`)
+                    popoverInstance?.remove()
+
+                    button.disabled = true
+                    button.classList.remove(button.classList.item(1) as string)
+                    button.innerText = 'Popover disabled'
+                })
+            }
+        })
     })
 </script>

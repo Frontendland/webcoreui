@@ -103,10 +103,12 @@
             const resize = debounce(() => {
                 const selectElement = document.querySelector(`.w-select-${name}`) as HTMLInputElement
 
-                const { width } = selectElement.getBoundingClientRect()
-                const dialogElement = document.querySelector(`.w-options-${name}`) as HTMLDialogElement
+                if (selectElement) {
+                    const { width } = selectElement.getBoundingClientRect()
+                    const dialogElement = document.querySelector(`.w-options-${name}`) as HTMLDialogElement
 
-                dialogElement.style.width = `${width}px`
+                    dialogElement.style.width = `${width}px`
+                }
             })
 
             observer = new ResizeObserver(() => resize())

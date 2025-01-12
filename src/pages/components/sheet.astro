@@ -207,35 +207,37 @@ const sections = getSections({
     import { on } from '@utils/DOMUtils'
     import { closeModal, modal } from '@utils/modal'
 
-    const selectors = [
-        'astro',
-        'svelte',
-        'react'
-    ]
+    on(document, 'astro:page-load', () => {
+        const selectors = [
+            'astro',
+            'svelte',
+            'react'
+        ]
 
-    const ids = Array(9).fill(10).map((x, index) => x * (index + 1))
-    const variants = [
-        '00',
-        '01',
-        '02',
-        ...ids,
-        ...ids.map(x => x + 1),
-        ...ids.map(x => x + 2)
-    ]
+        const ids = Array(9).fill(10).map((x, index) => x * (index + 1))
+        const variants = [
+            '00',
+            '01',
+            '02',
+            ...ids,
+            ...ids.map(x => x + 1),
+            ...ids.map(x => x + 2)
+        ]
 
-    selectors.forEach(selector => {
-        modal({
-            trigger: `#sheet-btn-${selector}`,
-            modal: `#sheet-${selector}`
+        selectors.forEach(selector => {
+            modal({
+                trigger: `#sheet-btn-${selector}`,
+                modal: `#sheet-${selector}`
+            })
+
+            on(`#sheet-close-btn-${selector}`, 'click', () => closeModal(`#sheet-${selector}`))
         })
 
-        on(`#sheet-close-btn-${selector}`, 'click', () => closeModal(`#sheet-${selector}`))
-    })
-
-    variants.forEach(variant => {
-        modal({
-            trigger: `#sheet-btn-${variant}`,
-            modal: `#sheet-${variant}`
+        variants.forEach(variant => {
+            modal({
+                trigger: `#sheet-btn-${variant}`,
+                modal: `#sheet-${variant}`
+            })
         })
     })
 </script>

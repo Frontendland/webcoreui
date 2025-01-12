@@ -50,59 +50,65 @@ const buttonClasses = [
 
 <script>
     import { getCookie, setCookie } from '../../utils/cookies'
+    import { on } from '../../utils/DOMUtils'
     import { dispatch, listen } from '../../utils/event'
 
-    const switchers = document.querySelectorAll('[data-id="w-theme-switcher"]')
+    const addEventListeners = () => {
+        const switchers = document.querySelectorAll('[data-id="w-theme-switcher"]')
 
-    let currentTheme = localStorage.getItem('w-theme')
-        || getCookie('w-theme')
-        || (switchers[0] as HTMLDivElement).dataset.primaryTheme
-        || ''
+        let currentTheme = localStorage.getItem('w-theme')
+                || getCookie('w-theme')
+                || (switchers[0] as HTMLDivElement).dataset.primaryTheme
+                || ''
 
-    const setActiveButton = (buttons: HTMLButtonElement[]) => {
-        buttons.forEach(button => button.dataset.active = 'false')
+        const setActiveButton = (buttons: HTMLButtonElement[]) => {
+            buttons.forEach(button => button.dataset.active = 'false')
 
-        buttons.forEach(button => {
-            if (button.dataset.theme === currentTheme) {
-                button.dataset.active = 'true'
-            }
-        })
-    }
+            buttons.forEach(button => {
+                if (button.dataset.theme === currentTheme) {
+                    button.dataset.active = 'true'
+                }
+            })
+        }
 
-    Array.from(switchers).forEach(switcher => {
-        const buttons = Array.from(switcher.querySelectorAll('button'))
-
-        setActiveButton(buttons)
-
-        listen('theme-switched', theme => {
-            currentTheme = theme
+        Array.from(switchers).forEach(switcher => {
+            const buttons = Array.from(switcher.querySelectorAll('button'))
 
             setActiveButton(buttons)
-        })
 
-        switcher.addEventListener('click', event => {
-            const target = event.target as HTMLButtonElement
-
-            if (target.nodeName === 'BUTTON') {
-                const toggleTheme = (switcher as HTMLDivElement).dataset.secondaryTheme
-
-                const theme = toggleTheme
-                    ? toggleTheme === target.dataset.theme
-                        ? (target.previousElementSibling as HTMLButtonElement).dataset.theme as string
-                        : (target.nextElementSibling as HTMLButtonElement).dataset.theme as string
-                    : target.dataset.theme as string
-
-                document.body.classList.replace(currentTheme, theme)
-
+            listen('theme-switched', theme => {
                 currentTheme = theme
 
                 setActiveButton(buttons)
-                setCookie('w-theme', currentTheme, 30)
-                localStorage.setItem('w-theme', currentTheme)
+            })
 
-                dispatch('theme-switched', currentTheme)
-            }
+            switcher.addEventListener('click', event => {
+                const target = event.target as HTMLButtonElement
+
+                if (target.nodeName === 'BUTTON') {
+                    const toggleTheme = (switcher as HTMLDivElement).dataset.secondaryTheme
+
+                    const theme = toggleTheme
+                        ? toggleTheme === target.dataset.theme
+                            ? (target.previousElementSibling as HTMLButtonElement).dataset.theme as string
+                            : (target.nextElementSibling as HTMLButtonElement).dataset.theme as string
+                        : target.dataset.theme as string
+
+                    document.body.classList.replace(currentTheme, theme)
+
+                    currentTheme = theme
+
+                    setActiveButton(buttons)
+                    setCookie('w-theme', currentTheme, 30)
+                    localStorage.setItem('w-theme', currentTheme)
+
+                    dispatch('theme-switched', currentTheme)
+                }
+            })
         })
-    })
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
 </script>
 

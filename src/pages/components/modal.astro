@@ -240,35 +240,37 @@ const sections = getSections({
     import { on } from '@utils/DOMUtils'
     import { closeModal, modal } from '@utils/modal'
 
-    const selectors = [
-        'astro',
-        'svelte',
-        'react'
-    ]
+    on(document, 'astro:page-load', () => {
+        const selectors = [
+            'astro',
+            'svelte',
+            'react'
+        ]
 
-    const ids = Array(10).fill(10).map((x, index) => x * (index + 1))
-    const variants = [
-        '00',
-        '01',
-        '02',
-        ...ids,
-        ...ids.map(x => x + 1),
-        ...ids.map(x => x + 2)
-    ]
+        const ids = Array(10).fill(10).map((x, index) => x * (index + 1))
+        const variants = [
+            '00',
+            '01',
+            '02',
+            ...ids,
+            ...ids.map(x => x + 1),
+            ...ids.map(x => x + 2)
+        ]
 
-    selectors.forEach(selector => {
-        modal({
-            trigger: `#modal-btn-${selector}`,
-            modal: `#modal-${selector}`
+        selectors.forEach(selector => {
+            modal({
+                trigger: `#modal-btn-${selector}`,
+                modal: `#modal-${selector}`
+            })
+
+            on(`#modal-close-btn-${selector}`, 'click', () => closeModal(`#modal-${selector}`))
         })
 
-        on(`#modal-close-btn-${selector}`, 'click', () => closeModal(`#modal-${selector}`))
-    })
-
-    variants.forEach(variant => {
-        modal({
-            trigger: `#modal-btn-${variant}`,
-            modal: `#modal-${variant}`
+        variants.forEach(variant => {
+            modal({
+                trigger: `#modal-btn-${variant}`,
+                modal: `#modal-${variant}`
+            })
         })
     })
 </script>

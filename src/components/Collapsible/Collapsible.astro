@@ -45,10 +45,10 @@ const styleVariables = classNames([
 </div>
 
 <script>
-    const collapsibles = document.querySelectorAll('[data-id="w-collapsible"]')
+    import { on } from '../../utils/DOMUtils'
 
-    Array.from(collapsibles).forEach(element => {
-        element.addEventListener('click', event => {
+    const addEventListeners = () => {
+        on('[data-id="w-collapsible"]', 'click', (event: Event) => {
             const collapsible = event.currentTarget as HTMLDivElement
             const target = event.target as HTMLDivElement
 
@@ -59,6 +59,9 @@ const styleVariables = classNames([
             if (target.parentElement?.dataset.toggleOff) {
                 collapsible.dataset.toggled = 'false'
             }
-        })
-    })
+        }, true)
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
 </script>

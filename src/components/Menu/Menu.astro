@@ -99,9 +99,10 @@ const wrapMenu = (logo?.url || logo?.html) && items?.length && Astro.slots.has('
 </header>
 
 <script>
-    document
-        .querySelector('[data-id="hamburger"]')
-        ?.addEventListener('click', event => {
+    import { on } from '../../utils/DOMUtils'
+
+    const addToggle = () => {
+        on('[data-id="hamburger"]', 'click', (event: Event) => {
             const hamburger = event.currentTarget as HTMLDivElement
             const header = hamburger.parentElement?.parentElement as HTMLHeadElement
 
@@ -109,4 +110,8 @@ const wrapMenu = (logo?.url || logo?.html) && items?.length && Astro.slots.has('
                 ? 'false'
                 : 'true'
         })
+    }
+
+    on(document, 'astro:after-swap', addToggle)
+    addToggle()
 </script>

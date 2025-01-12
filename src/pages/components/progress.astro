@@ -19,15 +19,15 @@ const sections = getSections({
     <h1>Progress</h1>
     <div class="grid md-2 lg-3">
         <ComponentWrapper type="Astro">
-            <AstroProgress value={25} />
+            <AstroProgress value={25} className="progress" />
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
-            <SvelteProgress value={50} color="#ee5253" />
+            <SvelteProgress value={50} color="#ee5253" className="progress" />
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
-            <ReactProgress value={75} color="#48dbfb" />
+            <ReactProgress value={75} color="#48dbfb" className="progress" />
         </ComponentWrapper>
     </div>
 
@@ -163,7 +163,7 @@ const sections = getSections({
 </style>
 
 <script>
-    const animate = false
+    const animate = true
 
     const simulateProgress = (progress: number): any => {
         return new Promise(resolve => {
@@ -173,24 +173,26 @@ const sections = getSections({
         }).then(res => res)
     }
 
-    if (animate) {
-        Array.from(document.querySelectorAll('.progress'))
-            .forEach(async progress => {
-                let percent = Number((progress as HTMLElement).style
-                    .getPropertyValue('--w-progress-width')
-                    .split('%')[0])
+    document.addEventListener('astro:page-load', () => {
+        if (animate) {
+            Array.from(document.querySelectorAll('.progress div'))
+                .forEach(async progress => {
+                    let percent = Number((progress as HTMLElement).style
+                        .getPropertyValue('--w-progress-width')
+                        .split('%')[0])
 
-                while (true) {
-                    percent = await simulateProgress(percent);
+                    while (true) {
+                        percent = await simulateProgress(percent);
 
-                    (progress as HTMLElement)
-                        .style
-                        .setProperty('--w-progress-width', `${percent}%`)
+                        (progress as HTMLElement)
+                            .style
+                            .setProperty('--w-progress-width', `${percent}%`)
 
-                    if (percent === 100) {
-                        percent = 0
+                        if (percent === 100) {
+                            percent = 0
+                        }
                     }
-                }
-            })
-    }
+                })
+        }
+    })
 </script>

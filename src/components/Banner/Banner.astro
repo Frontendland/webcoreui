@@ -48,9 +48,14 @@ const style = top
 <script>
     import { on } from '../../utils/DOMUtils'
 
-    on('[data-id="w-banner-close"]', 'click', (event: Event) => {
-        const target = event.currentTarget as HTMLDivElement
+    const addEventListeners = () => {
+        on('[data-id="w-banner-close"]', 'click', (event: Event) => {
+            const target = event.currentTarget as HTMLDivElement
 
-        target.parentElement?.remove()
-    }, true)
+            target.parentElement?.remove()
+        }, true)
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
 </script>

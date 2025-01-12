@@ -62,5 +62,10 @@ const {
 <script>
     import { on } from '@utils/DOMUtils'
 
-    on('.sign-up-form', 'submit', (event: Event) => event.preventDefault())
+    const addEventListener = () => {
+        on('.sign-up-form', 'submit', (event: Event) => event.preventDefault())
+    }
+
+    on(document, 'astro:after-swap', addEventListener)
+    addEventListener()
 </script>

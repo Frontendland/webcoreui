@@ -45,13 +45,18 @@ const classes = [
 <script>
     import { on } from '../../utils/DOMUtils'
 
-    on('[data-id="w-accordion"]', 'click', (event: Event) => {
-        const target = event.target as HTMLDivElement
+    const addEventListeners = () => {
+        on('[data-id="w-accordion"]', 'click', (event: Event) => {
+            const target = event.target as HTMLDivElement
 
-        if (target.dataset.toggle) {
-            target.dataset.open = target.dataset.open === 'true'
-                ? 'false'
-                : 'true'
-        }
-    }, true)
+            if (target.dataset.toggle) {
+                target.dataset.open = target.dataset.open === 'true'
+                    ? 'false'
+                    : 'true'
+            }
+        }, true)
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
 </script>

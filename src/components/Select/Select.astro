@@ -81,78 +81,85 @@ const inputRestProps = Object.fromEntries(
     import { modal } from '../../utils/modal'
     import { closePopover, popover, type PopoverPosition } from '../../utils/popover'
 
-    const selects = document.querySelectorAll('[data-id^="w-select"]')
-    let focusByTab = false
+    const addEventListeners = () => {
+        const selects = document.querySelectorAll('[data-id^="w-select"]')
+        let focusByTab = false
 
-    on(document, 'keydown', (event: KeyboardEvent) => {
-        if (event.key === 'Tab') {
-            focusByTab = true
-        }
-    })
-
-    on(document, 'mousedown', () => focusByTab = false)
-
-    Array.from(selects).forEach(select => {
-        const selectElement = select as HTMLElement
-        const name = selectElement.dataset.id!.split('w-select-')[1]
-        const position = selectElement.dataset.position
-
-        if (position === 'modal') {
-            modal({
-                trigger: `[data-id="${selectElement.dataset.id}"]`,
-                modal: `[data-id="w-options-${name}"]`,
-                onOpen: ({ modal }) => {
-                    const search = modal.querySelector('input')
-
-                    if (search) {
-                        search.focus()
-                    }
-                },
-                onClose(event) {
-                    dispatch('selectOnClose', event)
-                }
-            })
-        } else {
-            const resize = debounce(() => {
-                const { width } = selectElement.getBoundingClientRect()
-                const dialogElement = document.querySelector(`[data-id="w-options-${name}"]`) as HTMLDialogElement
-
-                if (dialogElement) {
-                    dialogElement.style.width = `${width}px`
-                }
-            })
-
-            new ResizeObserver(() => resize()).observe(document.body)
-
-            popover({
-                trigger: `[data-id="${selectElement.dataset.id}"]`,
-                popover: `[data-id="w-options-${name}"]`,
-                position: position as PopoverPosition || 'bottom',
-                onOpen({ popover }) {
-                    const search = popover.querySelector('input')
-
-                    if (search) {
-                        search.focus()
-                    } else {
-                        popover.focus()
-                    }
-                },
-                onClose(event) {
-                    dispatch('selectOnClose', event)
-                }
-            })
-        }
-
-        on(selectElement, 'focus', (event: Event) => {
-            if (focusByTab) {
-                (event.currentTarget as HTMLInputElement).click()
+        on(document, 'keydown', (event: KeyboardEvent) => {
+            if (event.key === 'Tab') {
+                focusByTab = true
             }
         })
-    })
+
+        on(document, 'mousedown', () => focusByTab = false)
+
+        Array.from(selects).forEach(select => {
+            const selectElement = select as HTMLElement
+            const name = selectElement.dataset.id!.split('w-select-')[1]
+            const position = selectElement.dataset.position
+
+            if (position === 'modal') {
+                modal({
+                    trigger: `[data-id="${selectElement.dataset.id}"]`,
+                    modal: `[data-id="w-options-${name}"]`,
+                    onOpen: ({ modal }) => {
+                        const search = modal.querySelector('input')
+
+                        if (search) {
+                            search.focus()
+                        }
+                    },
+                    onClose(event) {
+                        dispatch('selectOnClose', event)
+                    }
+                })
+            } else {
+                const resize = debounce(() => {
+                    const { width } = selectElement.getBoundingClientRect()
+                    const dialogElement = document.querySelector(`[data-id="w-options-${name}"]`) as HTMLDialogElement
+
+                    if (dialogElement) {
+                        dialogElement.style.width = `${width}px`
+                    }
+                })
+
+                new ResizeObserver(() => resize()).observe(document.body)
+
+                popover({
+                    trigger: `[data-id="${selectElement.dataset.id}"]`,
+                    popover: `[data-id="w-options-${name}"]`,
+                    position: position as PopoverPosition || 'bottom',
+                    onOpen({ popover }) {
+                        const search = popover.querySelector('input')
+
+                        if (search) {
+                            search.focus()
+                        } else {
+                            popover.focus()
+                        }
+                    },
+                    onClose(event) {
+                        dispatch('selectOnClose', event)
+                    }
+                })
+            }
+
+            on(selectElement, 'focus', (event: Event) => {
+                if (focusByTab) {
+                    (event.currentTarget as HTMLInputElement).click()
+                }
+            })
+        })
+    }
 
     listen('listOnSelect', payload => {
         const { name, list } = payload
         const dialog = list.closest('dialog')
+
+        if (!dialog) {
+            return
+        }
+
         const popoverId = dialog.dataset.id
         const selectName = popoverId.split('w-options-')[1]
         const selectId = `[data-id="w-select-${selectName}"]`
@@ -169,4 +176,7 @@ const inputRestProps = Object.fromEntries(
             select: selectName
         })
     })
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
 </script>

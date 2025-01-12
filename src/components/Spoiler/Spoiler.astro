@@ -39,12 +39,17 @@ const style = color
 <script>
     import { on } from '../../utils/DOMUtils'
 
-    on('[data-id="w-spoiler"]', 'click', (event: Event) => {
-        const target = event.currentTarget as HTMLDivElement
+    const addEventListeners = () => {
+        on('[data-id="w-spoiler"]', 'click', (event: Event) => {
+            const target = event.currentTarget as HTMLDivElement
 
-        target.dataset.visible = 'true'
-        target.removeAttribute('data-tooltip')
-        target.removeAttribute('role')
-        target.removeAttribute('tabindex')
-    }, true)
+            target.dataset.visible = 'true'
+            target.removeAttribute('data-tooltip')
+            target.removeAttribute('role')
+            target.removeAttribute('tabindex')
+        }, true)
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
 </script>

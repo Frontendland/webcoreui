@@ -158,58 +158,60 @@ const sections = getSections({
         toast
     } from '@utils/toast'
 
-    setDefaultTimeout(3000)
+    on(document, 'astro:page-load', () => {
+        setDefaultTimeout(3000)
 
-    const ids = Array(13).fill(10).map((x, index) => x * (index + 1))
-    const buttons = [
-        'astro',
-        'svelte',
-        'react',
-        '00',
-        '01',
-        '02',
-        ...ids,
-        ...ids.map(x => x + 1),
-        ...ids.map(x => x + 2)
-    ]
+        const ids = Array(13).fill(10).map((x, index) => x * (index + 1))
+        const buttons = [
+            'astro',
+            'svelte',
+            'react',
+            '00',
+            '01',
+            '02',
+            ...ids,
+            ...ids.map(x => x + 1),
+            ...ids.map(x => x + 2)
+        ]
 
-    // Show toast functionaly
-    buttons.forEach(id => {
-        on(`#toast-btn-${id}`, 'click', () => toast(`#toast-${id}`))
-    });
+        // Show toast functionaly
+        buttons.forEach(id => {
+            on(`#toast-btn-${id}`, 'click', () => toast(`#toast-${id}`))
+        });
 
-    // Dismissable functionality with long timeout
-    [0, 1, 2].forEach(x => {
-        on(`#dismissable-show-${x}`, 'click', () => {
-            toast({
-                element: `#dismissable-toast-${x}`,
-                timeout: 10_000
+        // Dismissable functionality with long timeout
+        [0, 1, 2].forEach(x => {
+            on(`#dismissable-show-${x}`, 'click', () => {
+                toast({
+                    element: `#dismissable-toast-${x}`,
+                    timeout: 10_000
+                })
             })
-        })
 
-        on(`#dismissable-hide-${x}`, 'click', () => {
-            hideToast(`#dismissable-toast-${x}`)
-        })
-    });
-
-    // Programmatically setting title & content
-    [0, 1, 2].forEach(x => {
-        on(`#programmatic-btn-${x}`, 'click', () => {
-            toast({
-                element: `#programmatic-toast-${x}`,
-                title: 'Title set through JS',
-                content: 'Content created in JS with <strong>HTML</strong>'
+            on(`#dismissable-hide-${x}`, 'click', () => {
+                hideToast(`#dismissable-toast-${x}`)
             })
-        })
-    });
+        });
 
-    // Programmatically setting position
-    [0, 1, 2].forEach(x => {
-        on(`#pos-btn-${x}`, 'click', () => {
-            toast({
-                element: `#pos-toast-${x}`,
-                title: 'Title set through JS',
-                position: 'top-left'
+        // Programmatically setting title & content
+        [0, 1, 2].forEach(x => {
+            on(`#programmatic-btn-${x}`, 'click', () => {
+                toast({
+                    element: `#programmatic-toast-${x}`,
+                    title: 'Title set through JS',
+                    content: 'Content created in JS with <strong>HTML</strong>'
+                })
+            })
+        });
+
+        // Programmatically setting position
+        [0, 1, 2].forEach(x => {
+            on(`#pos-btn-${x}`, 'click', () => {
+                toast({
+                    element: `#pos-toast-${x}`,
+                    title: 'Title set through JS',
+                    position: 'top-left'
+                })
             })
         })
     })

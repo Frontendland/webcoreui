@@ -36,16 +36,21 @@ const radioItems = [
 </Toast>
 
 <script>
-    import { toast } from 'webcoreui'
+    import { on, toast } from 'webcoreui'
 
-    const marketing = document.querySelector('.marketing input')
+    const addToast = () => {
+        const marketing = document.querySelector('.marketing input')
 
-    marketing?.addEventListener('change', (e: any) => {
-        toast({
-            element: '.marketing-toast',
-            content: e.target.checked
-                ? 'Marketing emails enabled'
-                : 'Marketing emails disabled'
+        marketing?.addEventListener('change', (e: any) => {
+            toast({
+                element: '.marketing-toast',
+                content: e.target.checked
+                    ? 'Marketing emails enabled'
+                    : 'Marketing emails disabled'
+            })
         })
-    })
+    }
+
+    on(document, 'astro:after-swap', addToast)
+    addToast()
 </script>

@@ -151,5 +151,7 @@ const sections = getSections({
 <script>
     import { on } from '@utils/DOMUtils'
 
-    on('.remove', 'click', (event: any) => event.currentTarget.remove())
+    on(document, 'astro:page-load', () => {
+        on('.remove', 'click', (event: any) => event.currentTarget.remove())
+    })
 </script>

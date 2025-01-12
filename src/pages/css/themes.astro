@@ -37,51 +37,54 @@ import { themes } from '@data'
 </Layout>
 
 <script>
+    import { on } from '@utils/DOMUtils'
     import { interpolate } from '@utils/interpolate'
     import { toast } from '@utils/toast'
 
-    const input = document.querySelector('#radius') as HTMLElement
-    const copy = document.querySelector('#copy') as HTMLElement
+    on(document, 'astro:page-load', () => {
+        const input = document.querySelector('#radius') as HTMLElement
+        const copy = document.querySelector('#copy') as HTMLElement
 
-    input.addEventListener('change', (e: any) => {
-        const value = Number(e.target.value)
+        input?.addEventListener('change', (e: any) => {
+            const value = Number(e.target.value)
 
-        const sm = interpolate(value, [0, 100], [0, 8])
-        const md = interpolate(value, [0, 100], [0, 20])
-        const lg = interpolate(value, [0, 100], [0, 40])
-        const xl = interpolate(value, [0, 100], [0, 60])
+            const sm = interpolate(value, [0, 100], [0, 8])
+            const md = interpolate(value, [0, 100], [0, 20])
+            const lg = interpolate(value, [0, 100], [0, 40])
+            const xl = interpolate(value, [0, 100], [0, 60])
 
-        document.body.style.setProperty('--w-sm-radius', `${sm}px`)
-        document.body.style.setProperty('--w-md-radius', `${md}px`)
-        document.body.style.setProperty('--w-lg-radius', `${lg}px`)
-        document.body.style.setProperty('--w-xl-radius', `${xl}px`)
-    })
+            document.body.style.setProperty('--w-sm-radius', `${sm}px`)
+            document.body.style.setProperty('--w-md-radius', `${md}px`)
+            document.body.style.setProperty('--w-lg-radius', `${lg}px`)
+            document.body.style.setProperty('--w-xl-radius', `${xl}px`)
+        })
 
-    copy.addEventListener('click', () => {
-        const bodyStyles = document.body.style
+        copy?.addEventListener('click', () => {
+            const bodyStyles = document.body.style
 
-        const sm = bodyStyles.getPropertyValue('--w-sm-radius') || '2px'
-        const md = bodyStyles.getPropertyValue('--w-md-radius') || '5px'
-        const lg = bodyStyles.getPropertyValue('--w-lg-radius') || '10px'
-        const xl = bodyStyles.getPropertyValue('--w-xl-radius') || '15px'
+            const sm = bodyStyles.getPropertyValue('--w-sm-radius') || '2px'
+            const md = bodyStyles.getPropertyValue('--w-md-radius') || '5px'
+            const lg = bodyStyles.getPropertyValue('--w-lg-radius') || '10px'
+            const xl = bodyStyles.getPropertyValue('--w-xl-radius') || '15px'
 
-        const code = `
-            @use 'webcoreui/styles' as *;
-            @include setup((
-                theme: '${document.body.className}'
-            ));
+            const code = `
+                @use 'webcoreui/styles' as *;
+                @include setup((
+                    theme: '${document.body.className}'
+                ));
 
-            html body {
-                --w-sm-radius: ${sm};
-                --w-md-radius: ${md};
-                --w-lg-radius: ${lg};
-                --w-xl-radius: ${xl};
-            }
-        `.trim().replace(new RegExp('^[ \\t]{12}', 'gm'), '')
+                html body {
+                    --w-sm-radius: ${sm};
+                    --w-md-radius: ${md};
+                    --w-lg-radius: ${lg};
+                    --w-xl-radius: ${xl};
+                }
+            `.trim().replace(new RegExp('^[ \\t]{12}', 'gm'), '')
 
-        navigator.clipboard.writeText(code)
+            navigator.clipboard.writeText(code)
 
-        toast('#toast')
+            toast('#toast')
+        })
     })
 </script>
 

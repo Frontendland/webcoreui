@@ -100,14 +100,18 @@ const sections = getSections({
 </Layout>
 
 <script>
-    const slider1 = document.querySelector('.labelled')
-    const slider2 = document.querySelector('.labelled1')
+    import { on } from '@utils/DOMUtils'
 
-    slider1?.addEventListener('change', (e: any) => {
-        e.target.nextElementSibling.innerText = e.target.value
-    })
+    on(document, 'astro:page-load', () => {
+        const slider1 = document.querySelector('.labelled')
+        const slider2 = document.querySelector('.labelled1')
 
-    slider2?.addEventListener('change', (e: any) => {
-        e.target.previousElementSibling.innerText = e.target.value
+        slider1?.addEventListener('change', (e: any) => {
+            e.target.nextElementSibling.innerText = e.target.value
+        })
+
+        slider2?.addEventListener('change', (e: any) => {
+            e.target.previousElementSibling.innerText = e.target.value
+        })
     })
 </script>

@@ -23,16 +23,21 @@ import styles from './deployments.module.scss'
 </Modal>
 
 <script>
-    import { closeModal, modal } from 'webcoreui'
+    import { closeModal, modal, on } from 'webcoreui'
 
-    const closeButton = document.querySelectorAll('.close-modal')
+    const addModal = () => {
+        const closeButton = document.querySelectorAll('.close-modal')
 
-    modal({
-        trigger: '#connect',
-        modal: '.modal'
-    })
+        modal({
+            trigger: '#connect',
+            modal: '.modal'
+        })
 
-    Array.from(closeButton).forEach(button => {
-        button?.addEventListener('click', () => closeModal('.modal'))
-    })
+        Array.from(closeButton).forEach(button => {
+            button?.addEventListener('click', () => closeModal('.modal'))
+        })
+    }
+
+    on(document, 'astro:after-swap', addModal)
+    addModal()
 </script>

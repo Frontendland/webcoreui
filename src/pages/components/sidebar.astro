@@ -96,10 +96,13 @@ const sections = getSections({
 </style>
 
 <script>
+    import { on } from '@utils/DOMUtils'
     import { modal } from '@utils/modal'
 
-    modal({
-        trigger: '#open-sidebar',
-        modal: '#sidebar'
+    on(document, 'astro:page-load', () => {
+        modal({
+            trigger: '#open-sidebar',
+            modal: '#sidebar'
+        })
     })
 </script>

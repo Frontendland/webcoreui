@@ -104,13 +104,15 @@ const text = 'We just released a new version! ✨'
 </style>
 
 <script>
-    import { get,on } from '@utils/DOMUtils'
+    import { get, on } from '@utils/DOMUtils'
 
-    on('.bottom-trigger', 'click', () => {
-        (get('.bottom') as HTMLDivElement).classList.remove('bottom')
-    })
+    on(document, 'astro:page-load', () => {
+        on('.bottom-trigger', 'click', () => {
+            (get('.bottom') as HTMLDivElement).classList.remove('bottom')
+        })
 
-    on('.bottom-padded-trigger', 'click', () => {
-        (get('.bottom-padded') as HTMLDivElement).classList.remove('bottom-padded')
+        on('.bottom-padded-trigger', 'click', () => {
+            (get('.bottom-padded') as HTMLDivElement).classList.remove('bottom-padded')
+        })
     })
 </script>
