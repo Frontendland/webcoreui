@@ -38,6 +38,7 @@ const classes = classNames([
         <button
             class={styles['copy-icon']}
             data-id="w-copy"
+            aria-label="copy"
         >
             {copyIcon?.startsWith('<svg')
                 ? <Fragment set:html={copyIcon} />

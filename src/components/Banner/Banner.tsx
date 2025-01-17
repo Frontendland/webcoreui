@@ -45,6 +45,7 @@ const Banner = ({
                     className={styles.close}
                     dangerouslySetInnerHTML={{ __html: closeIcon }}
                     onClick={() => setVisible(false)}
+                    aria-label="close"
                 />
             )}
         </div>

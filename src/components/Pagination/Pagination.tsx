@@ -88,6 +88,7 @@ const Pagination = ({
                     {generatedPages?.map((_, index) => (
                         <li key={index}>
                             <button
+                                aria-label={`page ${index + 1}`}
                                 data-active={calculatedCurrentPage === index + 1 ? 'true' : null}
                                 onClick={calculatedCurrentPage !== index + 1
                                     ? () => paginate(index + 1)

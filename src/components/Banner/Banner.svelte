@@ -42,6 +42,7 @@
                 theme="flat"
                 className={styles.close}
                 onClick={() => visible = false}
+                aria-label="close"
             >
                 {@html closeIcon}
             </Button>

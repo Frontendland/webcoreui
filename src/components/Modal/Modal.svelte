@@ -59,6 +59,7 @@
             theme="flat"
             className={styles.close}
             data-id="close"
+            aria-label="close"
         >
             {@html closeIcon}
         </Button>

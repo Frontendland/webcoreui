@@ -58,8 +58,9 @@ const Modal = ({
                     <Button
                         theme="flat"
                         className={styles.close}
-                        data-id="close"
                         dangerouslySetInnerHTML={{ __html: closeIcon }}
+                        data-id="close"
+                        aria-label="close"
                     />
                 )}
                 {title && (

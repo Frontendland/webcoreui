@@ -58,11 +58,12 @@ const generatedPages = pages?.length
 >
     {type === 'dots' ? (
         <Fragment>
-            {generatedPages?.map(page => (
+            {generatedPages?.map((page, index) => (
                 <li>
                     <button
                         data-active={page.active ? 'true' : undefined}
                         data-page={page.label}
+                        aria-label={`page ${index + 1}`}
                     />
                 </li>
             ))}

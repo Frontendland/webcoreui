@@ -54,9 +54,10 @@
     <span data-id="text">{@render children?.()}</span>
     <div class={styles.icons}>
         <button
-            class={styles['copy-icon']}
             bind:this={copyButton}
+            class={styles['copy-icon']}
             onclick={copyText}
+            aria-label="copy"
         >
             {@html copyIcon || copy}
         </button>

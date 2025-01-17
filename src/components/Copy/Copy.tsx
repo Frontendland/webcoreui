@@ -58,6 +58,7 @@ const Copy = ({
                     className={styles['copy-icon']}
                     ref={copyButton}
                     onClick={copyText}
+                    aria-label="copy"
                     dangerouslySetInnerHTML={{ __html: copyIcon || copy }}
                 />
                 <span
