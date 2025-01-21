@@ -524,3 +524,152 @@ export const getProductPageTemplateData = (theme = 'success') => ({
         text: feature
     }))
 })
+
+export const getPortfolioTemplateData = (theme = 'success') => ({
+    layout: {
+        seo: {
+            title: 'Portfolio Template - Webcore',
+            url: 'https://webcoreui.dev/',
+            description: 'A customizable and easy to use template for portfolios.',
+            faviconUrl: '/logo.svg'
+        },
+        menu: {
+            logo: {
+                html: logo
+            },
+            items: [
+                { name: '<- Back to templates', href: '/templates' }
+            ]
+        },
+        footer: {
+            logo: {
+                html: logo
+            },
+            columns: [
+                {
+                    title: 'Contacts',
+                    items: [
+                        { href: 'mailto:josh@example.com', name: 'john@example.com' },
+                        { href: 'tel:+1 234 5678', name: '+1 234 5678' }
+                    ]
+                }
+            ]
+        }
+    },
+    hero: {
+        heading: 'Hey, I\'m Josh 👋',
+        subHeading: 'Senior React Developer based in Oregon',
+        buttons: [
+            { text: 'Call Me', theme: theme as ButtonProps['theme'] },
+            { text: 'Send an Email', theme: 'outline' as ButtonProps['theme'] }
+        ],
+        badge: {
+            rounded: true,
+            theme: 'outline' as ButtonProps['theme'],
+            text: '⭐ Top rated developer'
+        },
+        image: {
+            src: '/img/placeholder-hd1.png',
+            alt: 'Banner',
+            width: 500,
+            height: 300
+        }
+    },
+    aboutMe: {
+        title: 'More About Me',
+        text: 'Description about the person, including previous work experiences, studies, and relevant projects. Anything that can establish credibility, experience, and expertise should be listed here to instill trustworthiness in the visitor. This field can also handle <code>HTML</code> tags for further formatting.',
+        img: {
+            src: '/img/avatar0-hd.png',
+            alt: 'About me',
+            width: 250,
+            height: 250
+        },
+        services: [
+            'List of services provided by the person',
+            'Broken into two columns on larger screens',
+            'Define a list of ratings',
+            'Create CTAs between blocks',
+            'Add your previous work',
+            'Provide a list of services'
+        ].map(feature => ({
+            icon: successIcon,
+            color: `var(--w-color-${theme})`,
+            text: feature
+        }))
+    },
+    ratings: [
+        {
+            score: 5,
+            showText: true,
+            text: 'Rated for result',
+            feedback: '"He did an excellent job. The end result is what we wanted."'
+        },
+        {
+            score: 5,
+            showText: true,
+            text: 'Rated for design',
+            feedback: '"A thorough, reliable, precise professional who is demanding in his work! I can only recommend him!"'
+        },
+        {
+            score: 5,
+            showText: true,
+            text: 'Rated for communication',
+            feedback: '"Thank you for your work! It turned out very nice!"'
+        }
+    ],
+    ratingCta: { text: 'More reviews', theme: 'secondary' as ButtonProps['theme'] },
+    myWork: {
+        title: 'My Most Recent Work',
+        items: Array
+            .from({ length: 3 }, (_, i) => i + 3)
+            .map(i => ({
+                href: '#',
+                img: {
+                    src: `/img/placeholder${i}.png`,
+                    alt: 'img',
+                    width: 500,
+                    height: 250
+                },
+                title: `My Work #${i - 2}`,
+                text: 'You can also pass <b>HTML</b> tags to your cards.'
+            }))
+    },
+    servicesCta: { text: 'Call Me', theme: theme as ButtonProps['theme'] },
+    services: {
+        secondary: true,
+        items: [
+            {
+                icon: componentsIcon,
+                title: 'List of services',
+                text: 'Use the <code>GridWithIcons</code> block to organize your list into a grid with icons to enhance clarity and visual appeal.'
+            }, {
+                icon: alertIcon,
+                title: 'Configurable',
+                text: 'You can create as many items as necessary with icons and an optional title. You can also configure the number of columns.'
+            }, {
+                icon: successIcon,
+                title: 'Supports formatting',
+                text: 'The <code>text</code> prop also supports formatting through <b>HTML</b> tags to help you customize the appearance of the element.'
+            }
+        ]
+    }
+})
+
+// items: {
+//     icon?: IconProps['type'] | string
+//     title?: string
+//     text: string
+// }[]
+// columns?: 1 | 2 | 3 | 4
+// alignment?: 'center' | 'right'
+// iconWithBackground?: boolean
+// secondary?: boolean
+// className?: string
+
+// servicesTitle?: string
+// services?: GridWithIconsProps
+// servicesCta?: {
+//     text: string
+//     icon?: IconProps['type'] | string
+// } & ButtonProps
+// [key: string]: any

@@ -1,0 +1,23 @@
+@use 'webcoreui/config' as *;
+
+.cta {
+    @include visibility(block);
+    @include spacing(auto-none);
+}
+
+.title {
+    @include typography(center);
+}
+
+.img {
+    @include spacing(auto-none);
+    @include size('w100%');
+}
+
+.about {
+    @include typography(hlg);
+}
+
+.ratings {
+    @include spacing(p0);
+}

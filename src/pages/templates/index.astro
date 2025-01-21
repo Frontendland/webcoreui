@@ -4,7 +4,8 @@ import Layout from '@static/Layout.astro'
 import BlogCard from '@blocks/BlogCard/BlogCard.astro'
 
 const templates = [
-    { name: 'Product Page', url: 'product-page' }
+    { name: 'Product Page', url: 'product-page' },
+    { name: 'Portfolio', url: 'portfolio' }
 ]
 ---
 
@@ -14,12 +15,12 @@ const templates = [
     <div class="grid md-2 lg-3">
         {templates.map(template => (
             <Fragment>
-                {['Astro', 'Svelte', 'React'].map((framework, index) => (
+                {['Astro', 'Svelte', 'React'].map(framework => (
                     <BlogCard
                         href={`templates/${template.url}/${framework.toLowerCase()}`}
                         title={`${framework} ${template.name}`}
                         img={{
-                            src: `/img/placeholder${index + 1}.png`,
+                            src: `/img/templates/${template.url}.png`,
                             alt: framework,
                             width: 200,
                             height: 200

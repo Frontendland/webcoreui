@@ -1,0 +1,13 @@
+---
+import { getPortfolioTemplateData } from '@data'
+
+import Portfolio from '@templates/Portfolio/Portfolio.tsx'
+---
+
+<Portfolio {...getPortfolioTemplateData('info')}>
+    <div slot="insideMenu">
+        <a href="tel:+1 234 5678">+1 234 5678</a>
+        <span>•</span>
+        <a href="mailto:josh@example.com">josh@example.com</a>
+    </div>
+</Portfolio>

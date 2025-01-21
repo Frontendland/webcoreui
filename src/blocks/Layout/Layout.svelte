@@ -27,7 +27,8 @@
 
     const containerClasses = classNames([
         'container',
-        hasSidebar && 'flex column sm-row'
+        hasSidebar && 'flex column sm-row',
+        !hasSidebar && className
     ])
 </script>
 

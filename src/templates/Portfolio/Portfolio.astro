@@ -1,0 +1,104 @@
+---
+import type { PortfolioProps } from './portfolio'
+
+import BlogCard from '@blocks/BlogCard/BlogCard.astro'
+import Button from '@blocks/Button/Button.astro'
+import GridWithIcons from '@blocks/GridWithIcons/GridWithIcons.astro'
+import Hero from '@blocks/Hero/Hero.astro'
+import IconList from '@blocks/IconList/IconList.astro'
+import Layout from '@blocks/Layout/Layout.astro'
+
+import styles from './portfolio.module.scss'
+
+import { ConditionalWrapper, Rating } from 'webcoreui/astro'
+
+interface Props extends PortfolioProps {}
+
+const {
+    layout,
+    hero,
+    aboutMe,
+    ratings,
+    ratingCta,
+    myWork,
+    servicesTitle,
+    services,
+    servicesCta,
+    ...rest
+} = Astro.props
+
+---
+
+<Layout {...layout} {...rest} className="flex column">
+    {Astro.slots.has('menu') && (
+        <div slot="menu">
+            <slot name="menu" />
+        </div>
+    )}
+
+    {hero && <Hero {...hero} />}
+
+    <section>
+        <h2 class={styles.title}>{aboutMe.title || 'About Me'}</h2>
+        <ConditionalWrapper condition={!!(aboutMe.img?.src || aboutMe.services?.length)}>
+            <div slot="wrapper" class="flex column md-row">children</div>
+            {aboutMe.img?.src && (
+                <img
+                    src={aboutMe.img.src}
+                    alt={aboutMe.img.alt}
+                    width={aboutMe.img.width}
+                    height={aboutMe.img.height}
+                    class={styles.img}
+                />
+            )}
+            <ConditionalWrapper condition={!!(aboutMe.text && aboutMe.services?.length)}>
+                <div slot="wrapper" class="flex column">children</div>
+                <div class={styles.about}>
+                    <Fragment set:html={aboutMe.text} />
+                </div>
+                {aboutMe.services?.length && (
+                    <IconList items={aboutMe.services} columns={2} />
+                )}
+            </ConditionalWrapper>
+        </ConditionalWrapper>
+
+        {ratings?.length && (
+            <ul class:list={[styles.ratings, 'grid sm-3 items-start']}>
+                {ratings.map(rating => (
+                    <li class="grid xs">
+                        <Rating {...(({ feedback, ...rest }) => rest)(rating)} />
+                        <span class="muted">
+                            <Fragment set:html={rating.feedback} />
+                        </span>
+                    </li>
+                ))}
+            </ul>
+        )}
+    </section>
+
+    {ratingCta?.text && (
+        <Button {...ratingCta} className={styles.cta} />
+    )}
+
+    {myWork?.items?.length && (
+        <section>
+            <h2 class={styles.title}>{myWork.title || 'My Work'}</h2>
+            <div class="grid sm-2 md-3">
+                {myWork.items.map(item => (
+                    <BlogCard {...item} />
+                ))}
+            </div>
+        </section>
+    )}
+
+    {services?.items?.length && (
+        <section>
+            <h2 class={styles.title}>{servicesTitle || 'Services'}</h2>
+            <GridWithIcons {...services} />
+        </section>
+    )}
+
+    {servicesCta?.text && (
+        <Button {...servicesCta} className={styles.cta} />
+    )}
+</Layout>
