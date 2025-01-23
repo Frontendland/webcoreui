@@ -125,7 +125,7 @@ const Select = ({
                         onClose?.(event)
                     }
                 })
-            }, 0)
+            }, 1)
         }
 
         on(`.w-select-${name}`, 'focus', (event: Event) => {

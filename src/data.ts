@@ -9,7 +9,7 @@ import SvelteBox from '@static/Box.svelte'
 import ReactAlert from '@components/Alert/Alert.tsx'
 import ReactBox from '@static/Box.tsx'
 
-import logo from '../public/img/logo.svg?raw'
+import logo from './assets/img/logo.svg?raw'
 import alertIcon from './icons/alert.svg?raw'
 import successIcon from './icons/circle-check.svg?raw'
 import componentsIcon from './icons/components.svg?raw'

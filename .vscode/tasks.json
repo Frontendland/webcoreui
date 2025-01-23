@@ -9,8 +9,12 @@
             "command": "npm run dev",
         },
         {
-            "label": "🛠️ Build",
+            "label": "🛠️ Build Package",
             "command": "npm run build:package"
+        },
+        {
+            "label": "🛠️ Build Astro",
+            "command": "npm run build"
         },
         {
             "label": "📥 Git fetch && pull",
