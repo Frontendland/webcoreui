@@ -35,6 +35,10 @@
     svg {
         @include size(10px);
         pointer-events: none;
+
+        path {
+            stroke-width: 3px;
+        }
     }
 
     [data-active] {

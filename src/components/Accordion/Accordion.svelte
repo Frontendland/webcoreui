@@ -3,7 +3,7 @@
 
     import { classNames } from '../../utils/classNames'
 
-    import ArrowDown from '../../icons/arrow-down.svg?raw'
+    import ChevronDown from '../../icons/chevron-down.svg?raw'
     import Plus from '../../icons/plus.svg?raw'
 
     import styles from './accordion.module.scss'
@@ -45,7 +45,7 @@
             >
                 {item.title}
                 {#if icon !== 'none'}
-                    {@html icon === 'plus' ? Plus : ArrowDown}
+                    {@html icon === 'plus' ? Plus : ChevronDown}
                 {/if}
             </button>
             <div class={styles.wrapper}>

@@ -5,8 +5,8 @@
 
     import { classNames } from '../../utils/classNames'
 
-    import ArrowLeft from '../../icons/arrow-left.svg?raw'
-    import ArrowRight from '../../icons/arrow-right.svg?raw'
+    import ChevronLeft from '../../icons/chevron-left.svg?raw'
+    import ChevronRight from '../../icons/chevron-right.svg?raw'
 
     import styles from './pagination.module.scss'
 
@@ -98,7 +98,7 @@
                 }
             >
                 {#if showChevrons || type === 'arrows'}
-                    {@html ArrowLeft}
+                    {@html ChevronLeft}
                 {/if}
                 {#if type !== 'arrows'}
                     {previousPageLabel}
@@ -143,7 +143,7 @@
                     {nextPageLabel}
                 {/if}
                 {#if showChevrons || type === 'arrows'}
-                    {@html ArrowRight}
+                    {@html ChevronRight}
                 {/if}
             </Button>
         </li>

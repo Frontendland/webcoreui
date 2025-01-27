@@ -1,9 +1,9 @@
 import Alert from '../../icons/alert.svg?raw'
-import ArrowDown from '../../icons/arrow-down.svg?raw'
-import ArrowLeft from '../../icons/arrow-left.svg?raw'
-import ArrowRight from '../../icons/arrow-right.svg?raw'
-import ArrowUp from '../../icons/arrow-up.svg?raw'
 import Check from '../../icons/check.svg?raw'
+import ChevronDown from '../../icons/chevron-down.svg?raw'
+import ChevronLeft from '../../icons/chevron-left.svg?raw'
+import ChevronRight from '../../icons/chevron-right.svg?raw'
+import ChevronUp from '../../icons/chevron-up.svg?raw'
 import CircleCheck from '../../icons/circle-check.svg?raw'
 import CircleClose from '../../icons/circle-close.svg?raw'
 import Close from '../../icons/close.svg?raw'
@@ -20,11 +20,11 @@ import Warning from '../../icons/warning.svg?raw'
 
 const iconMap = {
     'alert': Alert,
-    'arrow-down': ArrowDown,
-    'arrow-left': ArrowLeft,
-    'arrow-right': ArrowRight,
-    'arrow-up': ArrowUp,
     'check': Check,
+    'chevron-down': ChevronDown,
+    'chevron-left': ChevronLeft,
+    'chevron-right': ChevronRight,
+    'chevron-up': ChevronUp,
     'circle-check': CircleCheck,
     'circle-close': CircleClose,
     'close': Close,

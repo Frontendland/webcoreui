@@ -12,7 +12,7 @@ import { on } from '../../utils/DOMUtils'
 import { modal } from '../../utils/modal'
 import { closePopover, popover, type PopoverPosition } from '../../utils/popover'
 
-import ArrowDown from '../../icons/arrow-down.svg?raw'
+import ChevronDown from '../../icons/chevron-down.svg?raw'
 
 import styles from './select.module.scss'
 
@@ -155,7 +155,7 @@ const Select = ({
                 {...inputRestProps}
             >
                 <span
-                    dangerouslySetInnerHTML={{ __html: ArrowDown }}
+                    dangerouslySetInnerHTML={{ __html: ChevronDown }}
                     style={{
                         right: 0,
                         pointerEvents: 'none'

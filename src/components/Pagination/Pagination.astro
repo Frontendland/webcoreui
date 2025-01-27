@@ -3,8 +3,8 @@ import type { PaginationProps } from './pagination'
 
 import Button from '../Button/Button.astro'
 
-import ArrowLeft from '../../icons/arrow-left.svg?raw'
-import ArrowRight from '../../icons/arrow-right.svg?raw'
+import ChevronLeft from '../../icons/chevron-left.svg?raw'
+import ChevronRight from '../../icons/chevron-right.svg?raw'
 
 import styles from './pagination.module.scss'
 
@@ -76,7 +76,7 @@ const generatedPages = pages?.length
                 theme={theme}
                 data-page="prev"
             >
-                {(showChevrons || type === 'arrows') && <Fragment set:html={ArrowLeft} />}
+                {(showChevrons || type === 'arrows') && <Fragment set:html={ChevronLeft} />}
                 {type !== 'arrows' && previousPageLabel}
             </Button>
         </li>
@@ -109,7 +109,7 @@ const generatedPages = pages?.length
                 data-page="next"
             >
                 {type !== 'arrows' && nextPageLabel}
-                {(showChevrons || type === 'arrows') && <Fragment set:html={ArrowRight} />}
+                {(showChevrons || type === 'arrows') && <Fragment set:html={ChevronRight} />}
             </Button>
         </li>
     )}

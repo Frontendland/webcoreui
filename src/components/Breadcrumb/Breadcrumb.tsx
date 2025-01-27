@@ -5,7 +5,7 @@ import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
 import { classNames } from '../../utils/classNames'
 
-import ArrowRight from '../../icons/arrow-right.svg?raw'
+import ChevronRight from '../../icons/chevron-right.svg?raw'
 
 import styles from './breadcrumb.module.scss'
 
@@ -38,7 +38,7 @@ const Breadcrumb = ({
                         <li>
                             {separator
                                 ? separator
-                                : <span dangerouslySetInnerHTML={{ __html: ArrowRight }} />
+                                : <span dangerouslySetInnerHTML={{ __html: ChevronRight }} />
                             }
                         </li>
                     )}

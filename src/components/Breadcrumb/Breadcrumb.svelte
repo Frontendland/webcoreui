@@ -5,7 +5,7 @@
 
     import { classNames } from '../../utils/classNames'
 
-    import ArrowRight from '../../icons/arrow-right.svg?raw'
+    import ChevronRight from '../../icons/chevron-right.svg?raw'
 
     import styles from './breadcrumb.module.scss'
 
@@ -40,7 +40,7 @@
         </li>
         {#if index < items.length - 1}
             <li>
-                {@html separator || ArrowRight}
+                {@html separator || ChevronRight}
             </li>
         {/if}
     {/each}

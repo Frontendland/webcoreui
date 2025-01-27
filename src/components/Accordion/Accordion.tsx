@@ -3,7 +3,7 @@ import type { AccordionProps } from './accordion'
 
 import { classNames } from '../../utils/classNames'
 
-import ArrowDown from '../../icons/arrow-down.svg?raw'
+import ChevronDown from '../../icons/chevron-down.svg?raw'
 import Plus from '../../icons/plus.svg?raw'
 
 import styles from './accordion.module.scss'
@@ -43,7 +43,7 @@ const Accordion = ({
                         ])}
                         dangerouslySetInnerHTML={{ __html: icon === 'none'
                             ? item.title
-                            : `${item.title} ${icon === 'plus' ? Plus : ArrowDown}`
+                            : `${item.title} ${icon === 'plus' ? Plus : ChevronDown}`
                         }}
                     />
                     <div className={styles.wrapper}>

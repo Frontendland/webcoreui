@@ -13,7 +13,7 @@
     import { modal } from '../../utils/modal'
     import { closePopover, popover, type PopoverPosition } from '../../utils/popover'
 
-    import ArrowDown from '../../icons/arrow-down.svg?raw'
+    import ChevronDown from '../../icons/chevron-down.svg?raw'
 
     import styles from './select.module.scss'
 
@@ -156,7 +156,7 @@
     labelClassName={classes}
     {...inputRestProps}
 >
-    {@html ArrowDown}
+    {@html ChevronDown}
 </Input>
 {#if position === 'modal'}
     <Modal

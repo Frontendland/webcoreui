@@ -1,7 +1,7 @@
 ---
 import type { AccordionProps } from './accordion'
 
-import ArrowDown from '../../icons/arrow-down.svg?raw'
+import ChevronDown from '../../icons/chevron-down.svg?raw'
 import Plus from '../../icons/plus.svg?raw'
 
 import styles from './accordion.module.scss'
@@ -32,7 +32,7 @@ const classes = [
             >
                 {item.title}
                 {icon !== 'none' && (
-                    <Fragment set:html={icon === 'plus' ? Plus : ArrowDown} />
+                    <Fragment set:html={icon === 'plus' ? Plus : ChevronDown} />
                 )}
             </button>
             <div class={styles.wrapper}>

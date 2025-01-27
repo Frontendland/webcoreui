@@ -5,8 +5,8 @@ import Button from '../Button/Button.tsx'
 
 import { classNames } from '../../utils/classNames'
 
-import ArrowLeft from '../../icons/arrow-left.svg?raw'
-import ArrowRight from '../../icons/arrow-right.svg?raw'
+import ChevronLeft from '../../icons/chevron-left.svg?raw'
+import ChevronRight from '../../icons/chevron-right.svg?raw'
 
 import styles from './pagination.module.scss'
 
@@ -111,7 +111,7 @@ const Pagination = ({
                             }
                         >
                             {(showChevrons || type === 'arrows') && (
-                                <span dangerouslySetInnerHTML={{ __html: ArrowLeft }} />
+                                <span dangerouslySetInnerHTML={{ __html: ChevronLeft }} />
                             )}
                             {type !== 'arrows' && previousPageLabel}
                         </Button>
@@ -152,7 +152,7 @@ const Pagination = ({
                         >
                             {type !== 'arrows' && nextPageLabel}
                             {(showChevrons || type === 'arrows') && (
-                                <span dangerouslySetInnerHTML={{ __html: ArrowRight }} />
+                                <span dangerouslySetInnerHTML={{ __html: ChevronRight }} />
                             )}
                         </Button>
                     </li>

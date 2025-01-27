@@ -1,9 +1,10 @@
 export type IconProps = {
     type: 'alert'
-        | 'arrow-down'
-        | 'arrow-left'
-        | 'arrow-right'
         | 'check'
+        | 'chevron-down'
+        | 'chevron-left'
+        | 'chevron-right'
+        | 'chevron-up'
         | 'circle-check'
         | 'circle-close'
         | 'close'
