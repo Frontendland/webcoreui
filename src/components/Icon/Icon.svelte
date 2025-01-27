@@ -5,13 +5,27 @@
     const {
         type,
         size = 24,
-        color
+        color,
+        theme,
+        iconSet
     }: IconProps = $props()
 
-    const icon = iconMap[type as keyof typeof iconMap]
-        .replace('width="24"', `width=${size}`)
-        .replace('height="24"', color
-            ? `height=${size} color=${color}`
+    const icons = {
+        ...iconMap,
+        ...(iconSet || {})
+    }
+
+    const svg = icons[type as keyof typeof iconMap]
+
+    if (!svg) {
+        // eslint-disable-next-line no-console
+        console.error('Cannot find icon type:', type)
+    }
+
+    const icon = svg
+        ?.replace('width="24"', `width=${size}`)
+        ?.replace('height="24"', color || theme
+            ? `height=${size} color=${color || `var(--w-color-${theme})`}`
             : `height=${size}`)
 </script>
 

@@ -36,6 +36,8 @@ const iconTypes = fs.readdirSync('src/icons')
         </ComponentWrapper>
     </div>
 
+    <p>Use the <code>iconSet</code> prop to include custom icons. See the <a href="/blocks/icon"><code>Icon</code></a> block for example.</p>
+
     {sections.map(section => (
         <h1>{section.title}</h1>
         <div class="grid md-2 lg-3">
@@ -43,8 +45,11 @@ const iconTypes = fs.readdirSync('src/icons')
                 <section.component type="github" />
             </ComponentWrapper>
 
-            <ComponentWrapper title="With color">
-                <section.component type="github" color="#ad74f7" />
+            <ComponentWrapper title="Themes">
+                <section.component type="github" theme="info" />
+                <section.component type="github" theme="success" />
+                <section.component type="github" theme="warning" />
+                <section.component type="github" theme="alert" />
             </ComponentWrapper>
 
             <ComponentWrapper title="With size and colors">
@@ -75,7 +80,7 @@ const iconTypes = fs.readdirSync('src/icons')
                 />
             </ComponentWrapper>
         </div>
-        <p>All icons rendered by {section.title.split(' ')[0]}</p>
+        <p>All icons ({iconTypes.length}) rendered by {section.title.split(' ')[0]}</p>
         <div class="flex wrap sm">
             {iconTypes.map((type: string) => (
                 <span data-tooltip={type}>

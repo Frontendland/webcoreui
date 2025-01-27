@@ -18,6 +18,11 @@ export type IconProps = {
         | 'search'
         | 'sun'
         | 'warning'
+        | string
     size?: number
     color?: string
+    theme?: 'info' | 'success' | 'warning' | 'alert',
+    iconSet?: {
+        [key: string]: string
+    }
 }

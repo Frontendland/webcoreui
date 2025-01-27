@@ -1,0 +1,48 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Card from '@components/Card/Card.astro'
+
+import AstroIcon from '@blocks/Icon/Icon.astro'
+import SvelteIcon from '@blocks/Icon/Icon.svelte'
+import ReactIcon from '@blocks/Icon/Icon.tsx'
+
+import { getSections } from '@helpers'
+
+// @ts-expect-error no-module
+import fs from 'fs'
+
+const sections = getSections({
+    title: 'custom icons',
+    components: [AstroIcon, SvelteIcon, ReactIcon]
+})
+
+const iconTypes = fs.readdirSync('src/blocks/Icon/icons')
+    .map((icon: string) => icon.split('.')[0])
+---
+
+<Layout docs="/blocks/social-proof">
+    <h1>Extended Icon Component</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <div class="grid xs-2 sm-3">
+        {sections.map(section => (
+            <Card title={section.title}>
+                <div class="flex wrap">
+                    {iconTypes.map((type: string) => (
+                        <span data-tooltip={type}>
+                            <section.component type={type} />
+                        </span>
+                    ))}
+                </div>
+            </Card>
+        ))}
+    </div>
+
+    <p>Also see the <a href="/components/icon"><code>Icon</code></a> component for additional configuration options.</p>
+</Layout>
+

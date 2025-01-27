@@ -284,6 +284,7 @@ import { Accordion } from 'webcoreui/react'
 - [FAQ](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/FAQ)
 - [GridWithIcons](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/GridWithIcons)
 - [Hero](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Hero)
+- [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Icon)
 - [IconList](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/IconList)
 - [Layout](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Layout)
 - [SEO](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SEO)

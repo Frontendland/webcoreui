@@ -1,8 +1,9 @@
 ---
 import Footer from '@components/Footer/Footer.astro'
-import type { IconProps } from '@components/Icon/icon'
-import Icon from '@components/Icon/Icon.astro'
 import Menu from '@components/Menu/Menu.astro'
+
+import type { CustomIconProps } from '@blocks/Icon/icon'
+import Icon from '@blocks/Icon/Icon.astro'
 
 import logo from '../assets/img/logo.svg?raw'
 
@@ -123,7 +124,7 @@ const externalLinks = [
             <div class="flex sm">
                 {externalLinks.map(link => (
                     <a href={link.url} target="_blank" rel="noreferrer">
-                        <Icon type={link.icon as IconProps['type']} size={18} />
+                        <Icon type={link.icon as CustomIconProps['type']} size={18} />
                     </a>
                 ))}
             </div>

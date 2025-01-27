@@ -2,13 +2,12 @@ import Alert from '../../icons/alert.svg?raw'
 import ArrowDown from '../../icons/arrow-down.svg?raw'
 import ArrowLeft from '../../icons/arrow-left.svg?raw'
 import ArrowRight from '../../icons/arrow-right.svg?raw'
+import ArrowUp from '../../icons/arrow-up.svg?raw'
 import Check from '../../icons/check.svg?raw'
 import CircleCheck from '../../icons/circle-check.svg?raw'
 import CircleClose from '../../icons/circle-close.svg?raw'
 import Close from '../../icons/close.svg?raw'
-import Components from '../../icons/components.svg?raw'
 import Copy from '../../icons/copy.svg?raw'
-import File from '../../icons/file.svg?raw'
 import Github from '../../icons/github.svg?raw'
 import Home from '../../icons/home.svg?raw'
 import Info from '../../icons/info.svg?raw'
@@ -24,13 +23,12 @@ const iconMap = {
     'arrow-down': ArrowDown,
     'arrow-left': ArrowLeft,
     'arrow-right': ArrowRight,
+    'arrow-up': ArrowUp,
     'check': Check,
     'circle-check': CircleCheck,
     'circle-close': CircleClose,
     'close': Close,
-    'components': Components,
     'copy': Copy,
-    'file': File,
     'github': Github,
     'home': Home,
     'info': Info,

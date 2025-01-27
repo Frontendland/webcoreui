@@ -11,6 +11,7 @@ import ErrorPage from '@blocks/ErrorPage/ErrorPage.astro'
 import FAQ from '@blocks/FAQ/FAQ.astro'
 import GridWithIcons from '@blocks/GridWithIcons/GridWithIcons.astro'
 import Hero from '@blocks/Hero/Hero.astro'
+import Icon from '@blocks/Icon/Icon.astro'
 import IconList from '@blocks/IconList/IconList.astro'
 import SettingCard from '@blocks/SettingCard/SettingCard.astro'
 import SignUp from '@blocks/SignUp/SignUp.astro'
@@ -50,6 +51,14 @@ import User from '@blocks/User/User.astro'
                     text: 'Use the <code>GridWithIcons</code> block to organize your list into a grid with icons to enhance clarity and visual appeal.'
                 }]} columns={1} />
                 <Link href="/blocks/grid-with-icons" />
+            </Card>
+            <Card title="Social proof">
+                <SocialProof items={[
+                    { text: '1M+', subText: 'monthly readers' },
+                    { text: '500+', subText: 'tutorials' },
+                    { text: '1000+', subText: 'happy customers' }
+                ]} />
+                <Link href="/blocks/social-proof" />
             </Card>
             <Card>
                 <ComponentMap
@@ -103,13 +112,13 @@ import User from '@blocks/User/User.astro'
                 <Link href="/blocks/hero" />
             </Card>
 
-            <Card title="Social proof">
-                <SocialProof items={[
-                    { text: '1M+', subText: 'monthly readers' },
-                    { text: '500+', subText: 'tutorials' },
-                    { text: '1000+', subText: 'happy customers' }
-                ]} />
-                <Link href="/blocks/social-proof" />
+            <Card title="Custom icons">
+                <div class="flex sm center">
+                    <Icon type="svelte" size={30} />
+                    <Icon type="astro" size={30} />
+                    <Icon type="react" size={30} />
+                </div>
+                <Link href="/blocks/icon" />
             </Card>
 
             <BlogCard

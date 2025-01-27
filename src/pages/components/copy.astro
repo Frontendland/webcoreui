@@ -7,7 +7,7 @@ import SvelteCopy from '@components/Copy/Copy.svelte'
 import ReactCopy from '@components/Copy/Copy.tsx'
 
 import checkIcon from '../../icons/check.svg?raw'
-import fileIcon from '../../icons/file.svg?raw'
+import plusIcon from '../../icons/plus.svg?raw'
 
 import { getSections } from '@helpers'
 
@@ -52,7 +52,7 @@ const sections = getSections({
             <section.component tooltip="Click icon to copy" tooltipPosition="bottom">
                 With tooltip position
             </section.component>
-            <section.component copyIcon={fileIcon} copiedIcon={checkIcon}>
+            <section.component copyIcon={plusIcon} copiedIcon={checkIcon}>
                 Custom Icons
             </section.component>
             <section.component small={true} rounded={true}>

@@ -1,0 +1,10 @@
+---
+import IconComponent from '@components/Icon/Icon.astro'
+
+import type { CustomIconProps } from './icon'
+import iconSet from './iconSet'
+
+interface Props extends CustomIconProps {}
+---
+
+<IconComponent iconSet={iconSet} {...Astro.props} />
