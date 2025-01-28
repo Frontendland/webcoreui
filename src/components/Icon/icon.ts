@@ -22,7 +22,7 @@ export type IconProps = {
         | string
     size?: number
     color?: string
-    theme?: 'info' | 'success' | 'warning' | 'alert',
+    theme?: 'info' | 'success' | 'warning' | 'alert'
     iconSet?: {
         [key: string]: string
     }

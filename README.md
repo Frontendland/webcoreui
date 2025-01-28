@@ -28,7 +28,7 @@
     </a>
     <a href="https://www.npmjs.com/package/webcoreui">
         <img
-            src="https://img.shields.io/npm/d18m/webcoreui.svg"
+            src="https://img.shields.io/npm/d18m/webcoreui.svg?color=black"
             alt="NPM"
         />
     </a>
