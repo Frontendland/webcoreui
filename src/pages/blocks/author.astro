@@ -1,0 +1,62 @@
+---
+import Layout from '@static/Layout.astro'
+
+import AstroAuthor from '@blocks/Author/Author.astro'
+import SvelteAuthor from '@blocks/Author/Author.svelte'
+import ReactAuthor from '@blocks/Author/Author.tsx'
+
+const socials = {
+    links: [
+        'https://twitter.com',
+        'https://linkedin.com',
+        'https://github.com'
+    ]
+}
+---
+
+<Layout>
+    <h1>Author Blocks</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <div class="grid xs-2 sm-3">
+        <AstroAuthor
+            img={{
+                src: '/img/avatar1.png',
+                alt: 'avatar',
+                size: 50
+            }}
+            name="Jake Brown"
+            role="Astro developer"
+            description="Short description about the author."
+            socials={socials}
+        />
+
+        <SvelteAuthor
+            img={{
+                src: '/img/avatar2.png',
+                alt: 'avatar',
+                size: 50
+            }}
+            name="Emma Moore"
+            role="Svelte developer"
+            description="Short description about the author."
+            socials={socials}
+        />
+
+        <ReactAuthor
+            img={{
+                src: '/img/avatar3.png',
+                alt: 'avatar',
+                size: 50
+            }}
+            name="Jonathan Miller"
+            role="React developer"
+            description="Short description about the author."
+            socials={socials}
+        />
+    </div>
+</Layout>

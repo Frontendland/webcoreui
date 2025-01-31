@@ -283,6 +283,7 @@ import { Accordion } from 'webcoreui/react'
 
 ## Blocks
 
+- [Author](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Author)
 - [BlogCard](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/BlogCard)
 - [ComponentMap](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/ComponentMap)
 - [DeviceMockup](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/DeviceMockup)
@@ -297,6 +298,7 @@ import { Accordion } from 'webcoreui/react'
 - [SettingCard](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SettingCard)
 - [SignUp](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SignUp)
 - [SocialProof](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SocialProof)
+- [Socials](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Socials)
 - [Tiles](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Tiles)
 - [User](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/User)
 

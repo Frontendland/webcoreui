@@ -1,0 +1,38 @@
+---
+import { classNames } from 'webcoreui'
+import { Avatar, Card } from 'webcoreui/astro'
+
+import Socials from '@blocks/Socials/Socials.astro'
+
+import type { AuthorProps } from './author'
+import styles from './author.module.scss'
+
+interface Props extends AuthorProps {}
+
+const {
+    img,
+    name,
+    role,
+    description,
+    socials,
+    bodyClassName,
+    ...rest
+} = Astro.props
+
+const classes = classNames([
+    'flex sm column sm-row',
+    bodyClassName
+])
+---
+
+<Card bodyClassName={classes} {...rest}>
+    <div class={styles.meta}>
+        <Avatar img={img.src} {...img} />
+        <div class="flex column xxs">
+            <strong>{name}</strong>
+            <span class="muted">{role}</span>
+            {socials?.links?.length && <Socials {...socials} />}
+        </div>
+    </div>
+    <div class={styles.description} set:html={description} />
+</Card>

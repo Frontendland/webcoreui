@@ -4,6 +4,7 @@ import { AspectRatio, Card, Switch } from 'webcoreui/astro'
 import Layout from '@static/Layout.astro'
 import Link from '@static/Link.astro'
 
+import Author from '@blocks/Author/Author.astro'
 import BlogCard from '@blocks/BlogCard/BlogCard.astro'
 import ComponentMap from '@blocks/ComponentMap/ComponentMap.astro'
 import DeviceMockup from '@blocks/DeviceMockup/DeviceMockup.astro'
@@ -190,6 +191,18 @@ import User from '@blocks/User/User.astro'
                 />
                 <Link href="/blocks/error-page" />
             </Card>
+            <Author
+                img={{
+                    src: '/img/avatar1.png',
+                    alt: 'avatar',
+                    size: 50
+                }}
+                name="Jake Brown"
+                role="Astro developer"
+                description="See examples ->"
+                element="a"
+                href="/blocks/author"
+            />
         </div>
     </div>
 </Layout>
