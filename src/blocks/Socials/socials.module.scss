@@ -1,0 +1,16 @@
+@use 'webcoreui/config' as *;
+
+.socials {
+    @include spacing(0);
+    @include layout(flex, xxs, wrap);
+
+    list-style-type: none;
+
+    li {
+        @include spacing(m0);
+
+        a, svg {
+            @include visibility(block);
+        }
+    }
+}

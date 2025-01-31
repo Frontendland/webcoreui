@@ -16,6 +16,7 @@ import IconList from '@blocks/IconList/IconList.astro'
 import SettingCard from '@blocks/SettingCard/SettingCard.astro'
 import SignUp from '@blocks/SignUp/SignUp.astro'
 import SocialProof from '@blocks/SocialProof/SocialProof.astro'
+import Socials from '@blocks/Socials/Socials.astro'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
 ---
@@ -59,6 +60,16 @@ import User from '@blocks/User/User.astro'
                     { text: '1000+', subText: 'happy customers' }
                 ]} />
                 <Link href="/blocks/social-proof" />
+            </Card>
+            <Card title="Socials">
+                <div class="flex justify-center">
+                    <Socials links={[
+                        'https://twitter.com',
+                        'https://facebook.com',
+                        'https://youtube.com'
+                    ]} size={30} />
+                </div>
+                <Link href="/blocks/socials" />
             </Card>
             <Card>
                 <ComponentMap

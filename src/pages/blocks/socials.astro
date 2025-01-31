@@ -1,0 +1,79 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Card from '@components/Card/Card.astro'
+
+import AstroSocials from '@blocks/Socials/Socials.astro'
+import SvelteSocials from '@blocks/Socials/Socials.svelte'
+import ReactSocials from '@blocks/Socials/Socials.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'lists',
+    components: [AstroSocials, SvelteSocials, ReactSocials]
+})
+
+const links = [
+    'https://www.behance.net/',
+    'https://www.deviantart.com/',
+    'https://discord.gg/c4dYmJFh2x',
+    'http://dribbble.com/',
+    'http://facebook.com/',
+    'https://www.flickr.com/',
+    'https://github.com/Frontendland/webcoreui',
+    'https://www.instagram.com/',
+    'https://www.linkedin.com/',
+    'https://medium.com/',
+    'https://www.pinterest.com/',
+    'http://reddit.com/',
+    'https://stackexchange.com/',
+    'https://stackoverflow.com/',
+    'https://www.tiktok.com/',
+    'https://webcoreui.dev/',
+    'https://x.com/',
+    'http://twitter.com/',
+    'https://www.youtube.com/'
+]
+---
+
+<Layout>
+    <h1>Social links with icons</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    {sections.map((section: any) => (
+        <Fragment>
+            {section.type !== 'astro' && <h2>{section.title}</h2>}
+        </Fragment>
+        <div class="grid xs-2 sm-3">
+            <Card title="All icons">
+                <section.component links={links} />
+            </Card>
+
+            <Card title="Custom size">
+                <section.component
+                    links={links}
+                    size={36}
+                />
+            </Card>
+
+            <Card title="Theme">
+                <section.component
+                    links={links}
+                    theme="info"
+                />
+            </Card>
+
+            <Card title="Custom color">
+                <section.component
+                    links={links}
+                    color="#FCBA28"
+                />
+            </Card>
+        </div>
+    ))}
+</Layout>

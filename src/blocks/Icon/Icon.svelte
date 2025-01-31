@@ -1,5 +1,5 @@
 <script lang="ts">
-    import IconComponent from '@components/Icon/Icon.svelte'
+    import { Icon as IconComponent } from 'webcoreui/svelte'
 
     import type { CustomIconProps } from './icon'
     import iconSet from './iconSet'
