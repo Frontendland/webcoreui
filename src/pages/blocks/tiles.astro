@@ -1,5 +1,5 @@
 ---
-import { circleCheck, components, info } from 'webcoreui/icons'
+import { circleCheck, info } from 'webcoreui/icons'
 
 import Layout from '@static/Layout.astro'
 
@@ -23,7 +23,7 @@ import ReactTiles from '@blocks/Tiles/Tiles.tsx'
             <AstroTiles items={[
                 { icon: 'home', label: 'Astro', href: '' },
                 { icon: 'github', label: 'Tiles', href: '' },
-                { icon: 'file', label: 'Single Column', href: '' }
+                { icon: 'info', label: 'Single Column', href: '' }
             ]} columns={1} />
         </Card>
         <Card>
@@ -36,7 +36,7 @@ import ReactTiles from '@blocks/Tiles/Tiles.tsx'
         </Card>
         <Card>
             <ReactTiles items={[
-                { icon: components, label: 'React', href: '' },
+                { icon: info, label: 'React', href: '' },
                 { icon: circleCheck, label: 'Tiles', href: '' }
             ]} />
         </Card>
