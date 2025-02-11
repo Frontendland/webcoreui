@@ -113,7 +113,7 @@ const hasPagination = data?.length && itemsPerPage
         class:list={classes}
         style={maxHeight ? `max-height:${maxHeight}` : undefined}
     >
-        <table data-items-per-page={itemsPerPage} data-page={hasPagination && 1}>
+        <table data-items-per-page={itemsPerPage} data-page={hasPagination ? 1 : undefined}>
             {headings?.length && (
                 <thead>
                     <tr>
