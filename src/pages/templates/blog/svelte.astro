@@ -1,0 +1,20 @@
+---
+import { getBlogTemplateData } from '@data'
+
+import Blog from '@templates/Blog/Blog.svelte'
+---
+
+<Blog {...getBlogTemplateData('alert')}>
+    <h2>Main Content</h2>
+
+    <p>This is your main content. You can add components and HTML inside your <code>Blog</code> component. Consider adding additional engaging content to improve user experience and SEO, for example:</p>
+    <ul>
+        <li><b>Author Highlights:</b> Introduce yourself or key contributors to create a personal connection with the audience.</li>
+        <li><b>Popular Topics / Tags:</b> Display trending topics or commonly searched tags to help users explore related content.</li>
+        <li><b>Newsletter Signup:</b> Encourage visitors to subscribe for updates, which helps with retention and audience building.</li>
+        <li><b>Reader Testimonials or Comments:</b> Show recent comments or feedback to build trust and community engagement.</li>
+        <li><b>Call-to-Action:</b> Guide users toward an action, like exploring a specific topic, signing up, or following on social media.</li>
+        <li><b>Social Proof / Community Engagement:</b> Display stats like total reads, shares, or community discussions to reinforce credibility.</li>
+    </ul>
+</Blog>
+

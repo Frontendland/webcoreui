@@ -12,13 +12,19 @@ import ReactBox from '@static/Box.tsx'
 import logo from './assets/img/logo.svg?raw'
 import alertIcon from './icons/alert.svg?raw'
 import successIcon from './icons/circle-check.svg?raw'
+import copyIcon from './icons/copy.svg?raw'
 import gitHubIcon from './icons/github.svg?raw'
 import homeIcon from './icons/home.svg?raw'
 import infoIcon from './icons/info.svg?raw'
 import moonIcon from './icons/moon.svg?raw'
+import astroIcon from '@blocks/Icon/icons/astro.svg?raw'
 import componentsIcon from '@blocks/Icon/icons/components.svg?raw'
+import discordIcon from '@blocks/Icon/icons/discord.svg?raw'
 import fileIcon from '@blocks/Icon/icons/file.svg?raw'
+import rocketIcon from '@blocks/Icon/icons/rocket.svg?raw'
+import terminalIcon from '@blocks/Icon/icons/terminal.svg?raw'
 
+import type { TilesProps } from '@blocks/Tiles/tiles'
 import type { PaginationProps } from 'webcoreui/astro'
 
 export const accordionItems = [{
@@ -652,5 +658,120 @@ export const getPortfolioTemplateData = (theme = 'success') => ({
                 text: 'The <code>text</code> prop also supports formatting through <b>HTML</b> tags to help you customize the appearance of the element.'
             }
         ]
+    }
+})
+
+export const getBlogTemplateData = (theme = 'success') => ({
+    layout: {
+        seo: {
+            title: 'Blog Template - Webcore',
+            url: 'https://webcoreui.dev/',
+            description: 'A versatile and easy to use template for blogs.',
+            faviconUrl: '/logo.svg'
+        },
+        menu: {
+            logo: {
+                html: logo
+            },
+            items: [
+                { name: '<- Back to templates', href: '/templates' }
+            ]
+        },
+        footer: {
+            logo: {
+                html: logo
+            },
+            columns: [
+                {
+                    title: 'Sitemap',
+                    items: [
+                        { name: 'Latest', href: '' },
+                        { name: 'Contact', href: '' },
+                        { name: 'RSS', href: '' }
+                    ]
+                },
+                {
+                    title: 'Social',
+                    items: [
+                        { name: 'LinkedIn', href: '' },
+                        { name: 'Medium', href: '' },
+                        { name: 'X', href: '' }
+                    ]
+                }
+            ],
+            subText: `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
+        }
+    },
+    hero: {
+        heading: 'Brand New Array Methods',
+        subHeading: 'What\'s new in the latest version of JavaScript',
+        buttons: [{ text: 'Read More' }],
+        badge: {
+            rounded: true,
+            theme: theme as ButtonProps['theme'],
+            text: 'in JavaScript'
+        },
+        image: {
+            src: '/img/placeholder-hd1.png',
+            alt: 'Banner',
+            width: 500,
+            height: 300
+        }
+    },
+    tiles: {
+        columns: 3 as TilesProps['columns'],
+        items: [
+            { icon: astroIcon, label: 'Roadmaps', href: '#' },
+            { icon: copyIcon, label: 'Categories', href: '#' },
+            { icon: gitHubIcon, label: 'Projects', href: '#' },
+            { icon: rocketIcon, label: 'Product launches', href: '#' },
+            { icon: terminalIcon, label: 'Playgrounds', href: '#' },
+            { icon: discordIcon, label: 'Community', href: '#' }
+        ]
+    },
+    posts: Array
+        .from({ length: 6 }, (_, i) => i + 2)
+        .map(i => ({
+            href: '#',
+            img: {
+                src: `/img/placeholder${i}.png`,
+                alt: 'img',
+                width: 200,
+                height: 150
+            },
+            title: `Latest Post #${i}`,
+            text: `Jan 01, ${new Date().getFullYear()} • ${i} min read`
+        })),
+    recommended: Array
+        .from({ length: 3 }, (_, i) => i + 9)
+        .map(i => ({
+            href: '#',
+            img: {
+                src: `/img/placeholder${i}.png`,
+                alt: 'img',
+                width: 200,
+                height: 150
+            },
+            title: `Recommended Post #${i - 8}`,
+            text: `Jan 01, ${new Date().getFullYear()} • ${i} min read<br />Add a short description to cards to improve engagement.`,
+            secondary: true
+        })),
+    author: {
+        img: {
+            src: '/img/avatar1.png',
+            alt: 'avatar',
+            size: 50
+        },
+        name: 'Jake Brown',
+        role: 'Astro developer',
+        description: 'A short description about the author. Should be concise yet engaging, giving readers a quick insight into who you are and why they should trust your content. For example: <i>"Frontend developer passionate about building fast, accessible web experiences. Sharing insights on React, Astro, and web performance."</i>',
+        secondary: true,
+        socials: {
+            links: [
+                'https://linkedin.com',
+                'https://medium.com',
+                'https://twitter.com'
+            ]
+        }
     }
 })

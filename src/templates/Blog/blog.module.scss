@@ -1,0 +1,23 @@
+@use 'webcoreui/config' as *;
+
+.hero {
+    @include background(primary-60);
+}
+
+.container {
+    @include spacing(auto-none, px-default);
+    
+    max-width: 1200px;
+
+    img {
+        @include border-radius(none);
+    }
+}
+
+.main {
+    flex: 3
+}
+
+.recommended {
+    flex: 2;
+}

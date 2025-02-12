@@ -1,0 +1,91 @@
+---
+import type { BlogProps } from './blog'
+
+import Author from '@blocks/Author/Author.astro'
+import BlogCard from '@blocks/BlogCard/BlogCard.astro'
+import Hero from '@blocks/Hero/Hero.astro'
+import Layout from '@blocks/Layout/Layout.astro'
+import Tiles from '@blocks/Tiles/Tiles.astro'
+
+import styles from './blog.module.scss'
+
+import { ConditionalWrapper } from 'webcoreui/astro'
+
+interface Props extends BlogProps {}
+
+const {
+    layout,
+    hero,
+    tilesTitle = 'Explore',
+    tiles,
+    postsTitle = 'Latest Articles',
+    posts,
+    recommendedTitle = 'Recommended',
+    recommended,
+    authorTitle = 'About the Author',
+    author,
+    ...rest
+} = Astro.props
+---
+
+<Layout {...layout} {...rest} className="flex column">
+    {Astro.slots.has('menu') && (
+        <div slot="menu">
+            <slot name="menu" />
+        </div>
+    )}
+
+    {hero && (
+        <div slot="atf" class={styles.hero}>
+            <Hero {...hero} className={styles.container} />
+        </div>
+    )}
+
+    {!!tiles?.items?.length && (
+        <ConditionalWrapper condition={!!tilesTitle}>
+            <section slot="wrapper">children</section>
+            {tilesTitle && (
+                <h2>{tilesTitle}</h2>
+            )}
+            <Tiles {...tiles} />
+        </ConditionalWrapper>
+    )}
+
+    {!!posts?.length && (
+        <ConditionalWrapper condition={!!postsTitle}>
+            <div slot="wrapper">children</div>
+            {postsTitle && (
+                <h2>{postsTitle}</h2>
+            )}
+            <div class="grid sm-2 lg-3">
+                {posts.map(post => <BlogCard {...post} />)}
+            </div>
+        </ConditionalWrapper>
+    )}
+
+    <ConditionalWrapper condition={!!recommended?.length}>
+        <section slot="wrapper" class="flex column md-row">
+            children
+        </section>
+        {Astro.slots.default && (
+            <section class={styles.main}>
+                <slot />
+            </section>
+        )}
+        {!!recommended?.length && (
+            <section class={styles.recommended}>
+                <h2>{recommendedTitle}</h2>
+                <div class="grid">
+                    {recommended.map(post => <BlogCard {...post} />)}
+                </div>
+            </section>
+        )}
+    </ConditionalWrapper>
+
+    {author && (
+        <div>
+            <h2>{authorTitle}</h2>
+            <Author {...author} />
+        </div>
+    )}
+</Layout>

@@ -304,5 +304,6 @@ import { Accordion } from 'webcoreui/react'
 
 ## Templates
 
+- [Blog](https://github.com/Frontendland/webcoreui/tree/main/src/templates/Blog)
 - [Portfolio](https://github.com/Frontendland/webcoreui/tree/main/src/templates/Portfolio)
 - [ProductPage](https://github.com/Frontendland/webcoreui/tree/main/src/templates/ProductPage)
