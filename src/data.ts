@@ -116,16 +116,17 @@ export const menuLogo = {
 
 export const themes = {
     '#252525': 'dark',
-    '#DDD': 'light',
+    '#FFF': 'light',
     '#415a77': 'midnight',
     '#d5bdaf': 'vintage',
     '#fCBA28': 'amber',
-    '#9D2BD6': 'synthwave'
+    '#9D2BD6': 'synthwave',
+    '#9A1F40': 'velvet'
 }
 
 export const toggleThemes = {
     '#252525': 'dark',
-    '#DDD': 'light'
+    '#FFF': 'light'
 }
 
 export const listPreview = [{
