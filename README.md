@@ -170,6 +170,9 @@ html body {
     --w-slider-color: var(--w-color-primary);
     --w-slider-thumb: var(--w-color-primary-50);
 
+    // SpeedDial component
+    --w-speed-dial-size: 50px;
+
     // Spinner component
     --w-spinner-color: var(--w-color-primary);
     --w-spinner-width: 2px;
@@ -269,6 +272,7 @@ import { Accordion } from 'webcoreui/react'
 - [Sidebar](https://github.com/Frontendland/webcoreui/tree/main/src/components/Sidebar)
 - [Skeleton](https://github.com/Frontendland/webcoreui/tree/main/src/components/Skeleton)
 - [Slider](https://github.com/Frontendland/webcoreui/tree/main/src/components/Slider)
+- [SpeedDial](https://github.com/Frontendland/webcoreui/tree/main/src/components/SpeedDial)
 - [Spinner](https://github.com/Frontendland/webcoreui/tree/main/src/components/Spinner)
 - [Spoiler](https://github.com/Frontendland/webcoreui/tree/main/src/components/Spoiler)
 - [Stepper](https://github.com/Frontendland/webcoreui/tree/main/src/components/Stepper)

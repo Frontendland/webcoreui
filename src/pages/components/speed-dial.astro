@@ -1,0 +1,184 @@
+---
+import { home } from 'webcoreui/icons'
+
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroSpeedDial from '@components/SpeedDial/SpeedDial.astro'
+import SvelteSpeedDial from '@components/SpeedDial/SpeedDial.svelte'
+import ReactSpeedDial from '@components/SpeedDial/SpeedDial.tsx'
+
+import { getSections } from '@helpers'
+import {
+    speedDialItems,
+    speedDialItemsWithTooltip
+} from '@data'
+
+const sections = getSections({
+    title: 'speed dials',
+    components: [AstroSpeedDial, SvelteSpeedDial, ReactSpeedDial],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>SpeedDial</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro" bodyClassName="card">
+            <AstroSpeedDial
+                items={speedDialItems}
+                className="example"
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte" bodyClassName="card">
+            <SvelteSpeedDial
+                items={speedDialItems}
+                className="example"
+            />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React" bodyClassName="card">
+            <ReactSpeedDial
+                items={speedDialItems}
+                className="example"
+            />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default" bodyClassName="card">
+                <section.component
+                    items={speedDialItems}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With tooltips" bodyClassName="card">
+                <section.component
+                    items={speedDialItemsWithTooltip}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Top-left" bodyClassName="card">
+                <section.component
+                    items={speedDialItemsWithTooltip}
+                    position="top-left"
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Top-right" bodyClassName="card">
+                <section.component
+                    items={speedDialItemsWithTooltip}
+                    position="top-right"
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Bottom-left" bodyClassName="card">
+                <section.component
+                    items={speedDialItemsWithTooltip}
+                    position="bottom-left"
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Horizontal" bodyClassName="card">
+                <section.component
+                    items={speedDialItemsWithTooltip}
+                    horizontal={true}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Top-left horizontal" bodyClassName="card">
+                <section.component
+                    items={speedDialItemsWithTooltip}
+                    position="top-left"
+                    horizontal={true}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Top-right horizontal" bodyClassName="card">
+                <section.component
+                    items={speedDialItemsWithTooltip}
+                    position="top-right"
+                    horizontal={true}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Bottom-left horizontal" bodyClassName="card">
+                <section.component
+                    items={speedDialItemsWithTooltip}
+                    position="bottom-left"
+                    horizontal={true}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Circular" bodyClassName="card">
+                <section.component
+                    items={speedDialItems}
+                    circular={true}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Themed" bodyClassName="card">
+                <section.component
+                    items={speedDialItems}
+                    theme="info"
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom icon" bodyClassName="card">
+                <section.component
+                    items={speedDialItems}
+                    icon={home}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Trigger on click" bodyClassName="card">
+                <section.component
+                    items={speedDialItems}
+                    triggerOnClick={true}
+                    className="example"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom size" bodyClassName="card">
+                <section.component
+                    items={speedDialItems}
+                    className="example size"
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<style lang="scss" is:global>
+    @use '../../scss/config.scss' as *;
+
+    .card {
+        height: 260px !important;
+    }
+
+    .example {
+        @include position(absolute);
+    }
+
+    .size {
+        --w-speed-dial-size: 50px;
+    }
+</style>

@@ -17,6 +17,7 @@ import gitHubIcon from './icons/github.svg?raw'
 import homeIcon from './icons/home.svg?raw'
 import infoIcon from './icons/info.svg?raw'
 import moonIcon from './icons/moon.svg?raw'
+import searchIcon from './icons/search.svg?raw'
 import astroIcon from '@blocks/Icon/icons/astro.svg?raw'
 import componentsIcon from '@blocks/Icon/icons/components.svg?raw'
 import discordIcon from '@blocks/Icon/icons/discord.svg?raw'
@@ -776,3 +777,36 @@ export const getBlogTemplateData = (theme = 'success') => ({
         }
     }
 })
+
+export const speedDialItems = [
+    {
+        icon: gitHubIcon,
+        href: ''
+    },
+    {
+        icon: copyIcon,
+        href: ''
+    },
+    {
+        icon: searchIcon,
+        href: ''
+    }
+]
+
+export const speedDialItemsWithTooltip = [
+    {
+        icon: gitHubIcon,
+        tooltip: 'GitHub',
+        href: ''
+    },
+    {
+        icon: copyIcon,
+        tooltip: 'Docs',
+        href: ''
+    },
+    {
+        icon: searchIcon,
+        tooltip: 'Search',
+        href: ''
+    }
+]

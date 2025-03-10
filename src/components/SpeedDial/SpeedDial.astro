@@ -1,0 +1,106 @@
+---
+import type { SpeedDialProps } from './speeddial'
+
+import Button from '../Button/Button.astro'
+import Icon from '../Icon/Icon.astro'
+
+import styles from './speeddial.module.scss'
+
+interface Props extends SpeedDialProps {}
+
+const {
+    items,
+    position,
+    horizontal,
+    circular,
+    theme,
+    icon,
+    triggerOnClick,
+    className
+} = Astro.props
+
+const classes = [
+    styles.dial,
+    position && styles[position],
+    horizontal && styles.horizontal,
+    circular && styles.circular,
+    className
+]
+
+const getTooltipPosition = () => {
+    const positionMap = {
+        'top-left': 'right',
+        'bottom-left': 'right',
+        'horizontal': {
+            'top-left': 'bottom',
+            'top-right': 'bottom'
+        }
+    }
+
+    return horizontal
+        ? positionMap.horizontal[position as keyof typeof positionMap.horizontal]
+        : positionMap[position as keyof typeof positionMap] || 'left'
+}
+---
+
+{!!items?.length && (
+    <div class:list={classes} data-id={triggerOnClick ? 'w-speed-dial' : null}>
+        <Button className={styles.trigger} {...(theme && { theme })}>
+            {icon && (
+                <Fragment>
+                    {icon.startsWith('<svg')
+                        ? <Fragment set:html={icon} />
+                        : <Icon type={icon} size={18} />
+                    }
+                </Fragment>
+            )}
+            {!icon && <span>+</span>}
+        </Button>
+
+        <ul class={styles.list}>
+            {items.map(item => (
+                <li>
+                    <Button
+                        data-tooltip={item.tooltip}
+                        data-position={getTooltipPosition()}
+                        href={item.href}
+                        target={item.target}
+                        className={styles.button}
+                        {...(theme && { theme })}
+                    >
+                        {item.icon.startsWith('<svg')
+                            ? <Fragment set:html={item.icon} />
+                            : <Icon type={item.icon} size={16} />
+                        }
+                    </Button>
+                </li>
+            ))}
+        </ul>
+    </div>
+)}
+
+<script>
+    import { get, on } from '../../utils/DOMUtils'
+
+    const addEventListeners = () => {
+        const speedDial = get('[data-id="w-speed-dial"] button') as HTMLButtonElement
+        const speedDialContainer = speedDial?.parentElement as HTMLDivElement
+
+        if (speedDial) {
+            on(speedDial, 'click', () => {
+                speedDialContainer.dataset.show = speedDialContainer.dataset.show === 'true'
+                    ? 'false'
+                    : 'true'
+            })
+
+            on(document, 'click', (event: Event) => {
+                if (!speedDial.contains((event.target || event.currentTarget) as HTMLElement)) {
+                    speedDialContainer.dataset.show = 'false'
+                }
+            })
+        }
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
+</script>

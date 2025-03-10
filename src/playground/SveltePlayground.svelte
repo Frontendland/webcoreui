@@ -17,6 +17,7 @@
     import Radio from '@components/Radio/Radio.svelte'
     import Select from '@components/Select/Select.svelte'
     import Slider from '@components/Slider/Slider.svelte'
+    import SpeedDial from '@components/SpeedDial/SpeedDial.svelte'
     import Spoiler from '@components/Spoiler/Spoiler.svelte'
     import Switch from '@components/Switch/Switch.svelte'
     import Tabs from '@components/Tabs/Tabs.svelte'
@@ -35,6 +36,7 @@
         listWithGroups,
         listWithStates,
         pages,
+        speedDialItems,
         tabItems,
         themes
     } from '@data'
@@ -238,6 +240,14 @@
             className={styles.mt}
         />
         <span class={styles.span}>{slider}</span>
+    </Card>
+
+    <Card title="SpeedDial">
+        <SpeedDial
+            items={speedDialItems}
+            triggerOnClick={true}
+            className={styles.dial}
+        />
     </Card>
 
     <Card title="Spoiler">

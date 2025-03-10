@@ -19,6 +19,7 @@ import Progress from '@components/Progress/Progress.tsx'
 import Radio from '@components/Radio/Radio.tsx'
 import Select from '@components/Select/Select.tsx'
 import Slider from '@components/Slider/Slider.tsx'
+import SpeedDial from '@components/SpeedDial/SpeedDial.tsx'
 import Spoiler from '@components/Spoiler/Spoiler.tsx'
 import Switch from '@components/Switch/Switch.tsx'
 import Tabs from '@components/Tabs/Tabs.tsx'
@@ -37,6 +38,7 @@ import {
     listWithGroups,
     listWithStates,
     pages,
+    speedDialItems,
     tabItems,
     themes
 } from '@data'
@@ -235,6 +237,14 @@ const ReactPlayground = () => {
                     className={styles.mt}
                 />
                 <span className={styles.span}>{slider}</span>
+            </Card>
+
+            <Card title="SpeedDial">
+                <SpeedDial
+                    items={speedDialItems}
+                    triggerOnClick={true}
+                    className={styles.dial}
+                />
             </Card>
 
             <Card title="Spoiler">

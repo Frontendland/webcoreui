@@ -1,0 +1,94 @@
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-speed-dial-size: 40px;
+}
+
+.dial {
+    @include layout(flex, column-reverse, center, xs);
+    @include position(fixed, b20px, r20px);
+
+    width: fit-content;
+
+    &.top-left,
+    &.top-right {
+        @include position(t20px, bauto);
+        @include layout(column);
+    }
+
+    &.top-left,
+    &.bottom-left {
+        @include position(l20px, rauto);
+        
+        &.horizontal {
+            @include layout(row);
+        }
+    }
+
+    &.circular {
+        .trigger,
+        .button {
+            @include border-radius(max);
+        }
+    }
+
+    &.horizontal {
+        @include layout(row-reverse, v-stretch);
+
+        .list {
+            @include layout(row, v-stretch);
+        }
+    }
+
+    &:not([data-id]):hover .list,
+    &[data-show="true"] .list {
+        @include layout(flex);
+    }
+
+    &:not([data-id]):hover .trigger span,
+    &[data-show="true"] .trigger span {
+        transform: rotate(45deg) translate(1px);
+    }
+}
+
+.trigger {
+    @include layout(flex, column);
+    @include typography(bold);
+    @include size(var(--w-speed-dial-size));
+
+    user-select: none;
+
+    span {
+        @include transition(transform);
+    }
+
+    svg {
+        @include size(18px);
+    }
+}
+
+.list {
+    @include spacing(0);
+    @include layout(flex, column, center, xs);
+    @include visibility(none);
+
+    list-style-type: none;
+    
+    &:hover {
+        @include layout(flex);
+    }
+
+    li {
+        @include spacing(0);
+        @include size('w100%');
+    }
+
+    .button {
+        @include layout(flex, column, xs);
+        @include size(var(--w-speed-dial-size));
+    
+        svg {
+            @include size(16px);
+        }
+    }
+}

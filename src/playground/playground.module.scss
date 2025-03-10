@@ -1,3 +1,5 @@
+@use '../scss/config.scss' as *;
+
 .span {
     position: absolute;
     top: 10px;
@@ -8,4 +10,8 @@
 
 .mt {
     margin-top: 20px;
+}
+
+.dial {
+    @include position(absolute);
 }

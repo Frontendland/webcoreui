@@ -36,6 +36,7 @@ import Ribbon from '@components/Ribbon/Ribbon.astro'
 import Select from '@components/Select/Select.astro'
 import Skeleton from '@components/Skeleton/Skeleton.astro'
 import Slider from '@components/Slider/Slider.astro'
+import SpeedDial from '@components/SpeedDial/SpeedDial.astro'
 import Spinner from '@components/Spinner/Spinner.astro'
 import Spoiler from '@components/Spoiler/Spoiler.astro'
 import Stepper from '@components/Stepper/Stepper.astro'
@@ -295,6 +296,12 @@ import {
         <CardWrapper title="Slider" href="/components/slider">
             <Slider min={0} max={100} value={50} />
         </CardWrapper>
+        <CardWrapper title="SpeedDial" href="/components/speed-dial">
+            <SpeedDial
+                items={[{ icon: 'github', href: '' }]}
+                className="absolute speed-dial-example"
+            />
+        </CardWrapper>
         <CardWrapper title="Spinner" href="/components/spinner">
             <Spinner />
         </CardWrapper>
@@ -413,6 +420,10 @@ import {
 
     .card-sm {
         padding: 10px !important;
+    }
+
+    .speed-dial-example {
+        @include position(center);
     }
 </style>
 
