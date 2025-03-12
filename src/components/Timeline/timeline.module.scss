@@ -67,6 +67,17 @@ body {
                     right: $rightOffset;
                 }
             }
+            
+            &.icons > li {
+                &:nth-child(even) > span:first-child {
+                    left: 25px;
+                }
+
+                &:nth-child(odd) > span:first-child {
+                    right: -15px;
+                }
+            }
+
         }
     
         &.centered > li:nth-child(odd) {

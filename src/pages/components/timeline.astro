@@ -10,6 +10,11 @@ import AstroTimelineItem from '@components/TimelineItem/TimelineItem.astro'
 import SvelteTimelineItem from '@components/TimelineItem/TimelineItem.svelte'
 import ReactTimelineItem from '@components/TimelineItem/TimelineItem.tsx'
 
+import copy from '../../icons/copy.svg?raw'
+import github from '../../icons/github.svg?raw'
+import home from '../../icons/home.svg?raw'
+import info from '../../icons/info.svg?raw'
+
 const sections = [
     {
         title: 'Astro timelines',
@@ -135,6 +140,40 @@ const sections = [
                     <section.item>Setup</section.item>
                     <section.item>Conclusion</section.item>
                     <section.item>Resources</section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom colors with icons">
+                <section.component textColor="#1dd1a1">
+                    <section.item icon={home}>Getting started</section.item>
+                    <section.item icon={github}>Setup</section.item>
+                    <section.item icon={copy}>Conclusion</section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alternate with icons">
+                <section.component alternate={true} theme="icons">
+                    <section.item icon={home}>Getting started</section.item>
+                    <section.item icon={github}>Setup</section.item>
+                    <section.item icon={info}>Conclusion</section.item>
+                    <section.item icon={copy}>Resources</section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alternate centered with icons">
+                <section.component alternate={true} centered={true} theme="icons">
+                    <section.item icon={home}>Getting started</section.item>
+                    <section.item icon={github}>Setup</section.item>
+                    <section.item icon={info}>Conclusion</section.item>
+                    <section.item icon={copy}>Resources</section.item>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Icons with titles">
+                <section.component>
+                    <section.item title="Start here" icon={home}>Getting started</section.item>
+                    <section.item title="Prerequisites" icon={copy}>Setup</section.item>
+                    <section.item title="Wrapping Up" icon={info}>Conclusion</section.item>
                 </section.component>
             </ComponentWrapper>
         </div>

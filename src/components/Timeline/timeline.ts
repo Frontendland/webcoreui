@@ -1,7 +1,7 @@
 import type { Snippet } from 'svelte'
 
 export type TimelineProps = {
-    theme?: 'fill' | 'stroke' | 'stroke fill'
+    theme?: 'fill' | 'stroke' | 'stroke fill' | 'icons'
     alternate?: boolean
     centered?: boolean
     color?: string

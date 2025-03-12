@@ -4,7 +4,7 @@
     @include position(relative);
     @include spacing(m0);
 
-    &::before {
+    &:not(.with-icon)::before {
         @include position(absolute, t-5px);
         @include size(25px);
         @include border-radius(max);
@@ -17,6 +17,21 @@
         counter-increment: item;
         color: var(--w-timeline-text-color);
         margin-left: -40px;
+    }
+
+    .icon {
+        @include position(absolute);
+        @include background(primary-70);
+        @include border(6px, primary-70);
+        @include layout(flex);
+        
+        color: var(--w-timeline-text-color);
+        margin-left: -40px;
+        margin-top: -4px;
+        
+        svg {
+            @include size(18px);
+        }
     }
 
     .title {

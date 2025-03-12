@@ -8,17 +8,24 @@
     const {
         title,
         titleTag = 'span',
+        icon,
         className,
         children
     }: SvelteTimelineItemProps = $props()
 
     const classes = classNames([
         styles.item,
+        icon && styles['with-icon'],
         className
     ])
 </script>
 
 <li class={classes}>
+    {#if icon}
+        <span class={styles.icon}>
+            {@html icon}
+        </span>
+    {/if}
     {#if title}
         <svelte:element this={titleTag} class={styles.title}>
             {title}

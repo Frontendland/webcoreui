@@ -1,6 +1,8 @@
 ---
 import type { TimelineItemProps } from './timelineitem'
 
+import Icon from '../Icon/Icon.astro'
+
 import styles from './timelineitem.module.scss'
 
 interface Props extends TimelineItemProps {}
@@ -8,11 +10,13 @@ interface Props extends TimelineItemProps {}
 const {
     title,
     titleTag = 'span',
+    icon,
     className
 } = Astro.props
 
 const classes = [
     styles.item,
+    icon && styles['with-icon'],
     className
 ]
 
@@ -20,6 +24,14 @@ const Title = titleTag
 ---
 
 <li class:list={classes}>
+    {icon && (
+        <span class={styles.icon}>
+            {icon.startsWith('<svg')
+                ? <Fragment set:html={icon} />
+                : <Icon type={icon} size={18} />
+            }
+        </span>
+    )}
     {title && (
         <Title class:list={styles.title}>{title}</Title>
     )}
