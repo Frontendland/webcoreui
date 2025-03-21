@@ -1,0 +1,36 @@
+---
+import type { MaintenanceProps } from './maintenance'
+import cog from './cog.svg?raw'
+import styles from './maintenance.module.scss'
+
+interface Props extends MaintenanceProps {}
+
+const {
+    logo,
+    animated = true,
+    title = 'Under Maintenance',
+    subTitle = 'We are performing scheduled maintenance.',
+    className
+} = Astro.props
+
+const classes = [
+    styles.maintenance,
+    animated && styles.animated,
+    className
+]
+---
+
+<section class:list={classes}>
+    {logo?.url ? (
+        <img
+            src={logo.url}
+            alt={logo.alt || 'Logo'}
+            width={logo.width}
+            height={logo.height}
+        />
+    ) : <Fragment set:html={cog} />}
+    <h1 class={styles.title}>{title}</h1>
+    {subTitle && (
+        <span class="muted" set:html={subTitle} />
+    )}
+</section>

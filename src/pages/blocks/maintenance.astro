@@ -1,0 +1,51 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Card from '@components/Card/Card.astro'
+
+import AstroMaintenance from '@blocks/Maintenance/Maintenance.astro'
+import SvelteMaintenance from '@blocks/Maintenance/Maintenance.svelte'
+import ReactMaintenance from '@blocks/Maintenance/Maintenance.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'maintenance block',
+    components: [AstroMaintenance, SvelteMaintenance, ReactMaintenance]
+})
+---
+
+<Layout>
+    <h1>Maintenance</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    {sections.map((section: any) => (
+        <Fragment>
+            {section.type !== 'astro' && (
+                <br />
+                <h2>{section.title}</h2>
+            )}
+        </Fragment>
+        <div class="grid">
+            <Card title="Default state">
+                <section.component />
+            </Card>
+
+            <Card title="No animation">
+                <section.component animated={false} />
+            </Card>
+
+            <Card title="Custom data">
+                <section.component
+                    logo={{ url: '/img/logo.png' }}
+                    title="Maintenance"
+                    subTitle="We are currently doing scheduled maintenance. Our website will be back up and running shortly.<br />Keep up to date about our status on our <a href='#'>X</a> profile."
+                />
+            </Card>
+        </div>
+    ))}
+</Layout>

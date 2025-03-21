@@ -1,0 +1,33 @@
+@use 'webcoreui/config' as *;
+
+.maintenance {
+    @include typography(center);
+    @include layout(grid, md);
+
+    &.animated svg {
+        animation: 15s rotate infinite linear;
+    }
+
+    svg,
+    img {
+        @include spacing(m-auto);
+    }
+
+    svg {
+        @include size(45px);
+    }
+
+    .title {
+        @include typography(center);
+        @include spacing(0);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+    to   {
+        transform: rotate(360deg);
+    }
+}

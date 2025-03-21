@@ -14,12 +14,15 @@ import GridWithIcons from '@blocks/GridWithIcons/GridWithIcons.astro'
 import Hero from '@blocks/Hero/Hero.astro'
 import Icon from '@blocks/Icon/Icon.astro'
 import IconList from '@blocks/IconList/IconList.astro'
+import Maintenance from '@blocks/Maintenance/Maintenance.astro'
 import SettingCard from '@blocks/SettingCard/SettingCard.astro'
 import SignUp from '@blocks/SignUp/SignUp.astro'
 import SocialProof from '@blocks/SocialProof/SocialProof.astro'
 import Socials from '@blocks/Socials/Socials.astro'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
+
+import { gridWithIconsItems } from '@data'
 ---
 
 <Layout docs="/blocks/introduction">
@@ -47,11 +50,10 @@ import User from '@blocks/User/User.astro'
                 <Link href="/blocks/setting-card" />
             </Card>
             <Card>
-                <GridWithIcons items={[{
-                    icon: 'components',
-                    title: 'Grid with Icons',
-                    text: 'Use the <code>GridWithIcons</code> block to organize your list into a grid with icons to enhance clarity and visual appeal.'
-                }]} columns={1} />
+                <GridWithIcons
+                    items={[gridWithIconsItems[0]]}
+                    columns={1}
+                />
                 <Link href="/blocks/grid-with-icons" />
             </Card>
             <Card title="Social proof">
@@ -203,6 +205,10 @@ import User from '@blocks/User/User.astro'
                 element="a"
                 href="/blocks/author"
             />
+            <Card>
+                <Maintenance />
+                <Link href="/blocks/maintenance" />
+            </Card>
         </div>
     </div>
 </Layout>
