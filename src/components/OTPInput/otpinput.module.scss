@@ -1,0 +1,85 @@
+@use '../../scss/config.scss' as *;
+
+.wrapper {
+    @include layout(flex, column, xs);
+
+    .label {
+        @include typography(primary-20);
+        @include spacing(mb-xs);
+    }
+
+    .input-wrapper {
+        @include position(relative);
+
+        input {
+            @include visibility(0);
+            @include position(absolute, t0, l0);
+            @include size(h40px);
+        }
+    }
+
+    .placeholders {
+        @include layout(flex);
+    }
+
+    .placeholder {
+        @include layout(flex, center);
+        @include border(top, primary-50);
+        @include border(bottom, primary-50);
+        @include border(right, primary-50);
+        @include size(40px);
+
+        &:first-child {
+            @include border(primary-50);
+            @include border-radius(left);
+        }
+
+        &:last-child {
+            @include border(primary-50);
+            @include border(left, 0);
+            @include border-radius(right);
+        }
+
+        &[data-active="true"] {
+            @include border(primary);
+
+            &::before {
+                @include size(w1px, h15px);
+                @include background(primary);
+
+                content: '';
+                animation: flash 1s infinite forwards;
+            }
+        }
+    }
+
+    .separator {
+        @include size(40px);
+        @include layout(flex, center);
+
+        + .placeholder {
+            @include border(left, primary-50);
+
+            &[data-active="true"] {
+                @include border(left, primary);
+            }
+        }
+    }
+
+    .subtext {
+        @include typography(md, primary-30);
+        @include spacing(mt-xs);
+    }
+}
+
+@keyframes flash {
+    0% {
+        @include visibility(0);
+    }
+    50% {
+        @include visibility(1);
+    }
+    100% {
+        @include visibility(0);
+    }
+}

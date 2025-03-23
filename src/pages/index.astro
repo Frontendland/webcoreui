@@ -28,6 +28,7 @@ import Kbd from '@components/Kbd/Kbd.astro'
 import List from '@components/List/List.astro'
 import Masonry from '@components/Masonry/Masonry.astro'
 import Menu from '@components/Menu/Menu.astro'
+import OTPInput from '@components/OTPInput/OTPInput.astro'
 import Pagination from '@components/Pagination/Pagination.astro'
 import Progress from '@components/Progress/Progress.astro'
 import Radio from '@components/Radio/Radio.astro'
@@ -251,6 +252,9 @@ import {
         </CardWrapper>
         <CardWrapper title="Modal" href="/components/modal">
             <Button theme="outline">Trigger Modal</Button>
+        </CardWrapper>
+        <CardWrapper title="OTP Input" href="/components/otp-input">
+            <OTPInput groupLength={3} />
         </CardWrapper>
         <CardWrapper title="Pagination" href="/components/pagination">
             <Pagination showChevrons={true} />

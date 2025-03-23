@@ -261,6 +261,7 @@ import { Accordion } from 'webcoreui/react'
 - [Masonry](https://github.com/Frontendland/webcoreui/tree/main/src/components/Masonry)
 - [Menu](https://github.com/Frontendland/webcoreui/tree/main/src/components/Menu)
 - [Modal](https://github.com/Frontendland/webcoreui/tree/main/src/components/Modal)
+- [OTPInput](https://github.com/Frontendland/webcoreui/tree/main/src/components/OTPInput)
 - [Pagination](https://github.com/Frontendland/webcoreui/tree/main/src/components/Pagination)
 - [Popover](https://github.com/Frontendland/webcoreui/tree/main/src/components/Popover)
 - [Progress](https://github.com/Frontendland/webcoreui/tree/main/src/components/Progress)

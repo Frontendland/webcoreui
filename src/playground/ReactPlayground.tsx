@@ -14,6 +14,7 @@ import DataTable from '@components/DataTable/DataTable.tsx'
 import Icon from '@components/Icon/Icon.tsx'
 import Input from '@components/Input/Input.tsx'
 import List from '@components/List/List.tsx'
+import OTPInput from '@components/OTPInput/OTPInput.tsx'
 import Pagination from '@components/Pagination/Pagination.tsx'
 import Progress from '@components/Progress/Progress.tsx'
 import Radio from '@components/Radio/Radio.tsx'
@@ -49,6 +50,7 @@ const ReactPlayground = () => {
     const [radio, setRadio] = useState('')
     const [toggle, setToggle] = useState(false)
     const [input, setInput] = useState('')
+    const [otpInput, setOtpInput] = useState('')
     const [slider, setSlider] = useState(50)
     const [wordCount, setWordCount] = useState(0)
     const [select, setSelect] = useState('')
@@ -171,6 +173,13 @@ const ReactPlayground = () => {
                         console.log(event)
                     }}
                 />
+            </Card>
+
+            <Card title="OTP Input" bodyClassName="flex column">
+                <OTPInput onInput={(event: any) => setOtpInput(event.target.value)} />
+                <OTPInput onInput={(event: any) => setOtpInput(event.target.value)} groupLength={2} />
+
+                <span className={styles.span}>{otpInput}</span>
             </Card>
 
             <Card>

@@ -12,6 +12,7 @@
     import Icon from '@components/Icon/Icon.svelte'
     import Input from '@components/Input/Input.svelte'
     import List from '@components/List/List.svelte'
+    import OTPInput from '@components/OTPInput/OTPInput.svelte'
     import Pagination from '@components/Pagination/Pagination.svelte'
     import Progress from '@components/Progress/Progress.svelte'
     import Radio from '@components/Radio/Radio.svelte'
@@ -47,6 +48,7 @@
     let toggle = $state(false)
     let input = $state('')
     let inputBinding = $state('')
+    let otpBinding = $state('')
     let slider = $state(50)
     let wordCount = $state(0)
     let select = $state('')
@@ -174,6 +176,13 @@
                 console.log(event)
             }}
         />
+    </Card>
+
+    <Card title="OTP Input" bodyClassName="flex column">
+        <OTPInput bind:value={otpBinding} />
+        <OTPInput bind:value={otpBinding} groupLength={2} />
+
+        <p>Binding: {otpBinding}</p>
     </Card>
 
     <Card>

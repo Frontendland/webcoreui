@@ -1,0 +1,96 @@
+---
+import type { OTPInputProps } from './otpinput'
+
+import Input from '../Input/Input.astro'
+
+import styles from './otpinput.module.scss'
+
+interface Props extends OTPInputProps {}
+
+const {
+    name,
+    disabled,
+    length = 6,
+    groupLength = 0,
+    separator = '•',
+    label,
+    subText,
+    className,
+    ...rest
+} = Astro.props
+
+const classes = [
+    styles.wrapper,
+    className
+]
+
+const inputPlaceholders = Array.from({ length }, (_, i) => i + 1)
+    .reduce<(number | string)[]>((acc, num, i) =>
+        groupLength > 0 && i % groupLength === 0 && i !== 0
+            ? [...acc, separator, num]
+            : [...acc, num]
+    , [])
+---
+
+<div class:list={classes}>
+    {label && (
+        <label
+            for={name}
+            class={styles.label}
+            set:html={label}
+        />
+    )}
+
+    <div class={styles['input-wrapper']}>
+        <Input
+            name={name || 'otp'}
+            data-id="w-input-otp"
+            disabled={disabled}
+            maxlength={length}
+            required={true}
+            {...rest}
+        />
+
+        <div class={styles.placeholders}>
+            {inputPlaceholders.map((placeholder, index) => (
+                <div
+                    class={typeof placeholder === 'string' ? styles.separator : styles.placeholder}
+                    data-active={index === 0 ? true : undefined}
+                    data-separator={typeof placeholder === 'string' ? true : undefined}
+                >
+                    {typeof placeholder === 'string' ? placeholder : ''}
+                </div>
+            ))}
+        </div>
+    </div>
+
+    {subText && (
+        <div class={styles.subtext} set:html={subText} />
+    )}
+</div>
+
+<script>
+    import { on } from '../../utils/DOMUtils'
+
+    const addEventListeners = () => {
+        on('[data-id="w-input-otp"]', 'input', (event: Event) => {
+            const target = event.target as HTMLInputElement
+            const value = target.value
+            const placeholders = Array.from(target.nextElementSibling!.children)
+                .filter(child => !(child as HTMLDivElement).dataset.separator)
+
+
+            placeholders.forEach((placeholder, index) => {
+                const placeholderElement = placeholder as HTMLDivElement
+
+                placeholderElement.innerText = value[index] || ''
+                placeholderElement.dataset.active = value.length === index
+                    ? 'true'
+                    : 'false'
+            })
+        }, true)
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
+</script>

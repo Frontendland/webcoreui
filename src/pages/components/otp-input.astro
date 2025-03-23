@@ -1,0 +1,78 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroOTPInput from '@components/OTPInput/OTPInput.astro'
+import SvelteOTPInput from '@components/OTPInput/OTPInput.svelte'
+import ReactOTPInput from '@components/OTPInput/OTPInput.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'OTP inputs',
+    components: [AstroOTPInput, SvelteOTPInput, ReactOTPInput],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>OTPInput</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroOTPInput />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteOTPInput client:idle />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactOTPInput client:idle />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom length">
+                <section.component length={3} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Groups">
+                <section.component groupLength={2} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom separator">
+                <section.component groupLength={2} separator="-" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Labelled">
+                <section.component label="One-time password" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Label & subtext">
+                <section.component
+                    label="One-time password"
+                    subText="Please enter the one-time password sent to your mobile device."
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+
+name?: string
+disabled?: boolean
+length?: number
+groupLength?: number
+separator?: string
+label?: string
+subText?: string
+className?: string
