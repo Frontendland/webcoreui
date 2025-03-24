@@ -10,12 +10,14 @@ const getTypeName = (component, framework) => {
         'BottomNavigation',
         'Breadcrumb',
         'Icon',
+        'OTPInput',
         'Rating',
         'Skeleton',
         'Spinner',
         'Stepper',
         'Table',
-        'Progress'
+        'Progress',
+        'SpeedDial'
     ]
 
     return componentsWithoutFrameworkSpecificTypes.includes(component)
