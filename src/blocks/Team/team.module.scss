@@ -1,0 +1,28 @@
+@use 'webcoreui/config' as *;
+
+.member {
+    @include layout(grid, xxs);
+    @include typography(center);
+
+    > svg {
+        @include size(40px);
+        @include spacing(auto-xs);
+    }
+
+    b {
+        @include typography(lg);
+    }
+}
+
+.avatar {
+    @include spacing(auto-xs);
+}
+
+.description {
+    @include typography(hmd);
+    @include spacing(my-sm);
+}
+
+.socials {
+    @include layout(h-center);
+}

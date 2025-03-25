@@ -1,0 +1,90 @@
+---
+import Layout from '@static/Layout.astro'
+
+import Card from '@components/Card/Card.astro'
+
+import AstroTeam from '@blocks/Team/Team.astro'
+import SvelteTeam from '@blocks/Team/Team.svelte'
+import ReactTeam from '@blocks/Team/Team.tsx'
+
+import { getSections } from '@helpers'
+import { members } from '@data'
+
+const sections = getSections({
+    title: 'teams',
+    components: [AstroTeam, SvelteTeam, ReactTeam]
+})
+
+const requiredOnly = members.map(member => ({ name: member.name }))
+const withAvatars = members.map(member => ({
+    name: member.name,
+    img: member.img
+}))
+
+const withRoles = members.map(member => ({
+    name: member.name,
+    img: member.img,
+    role: member.role
+}))
+
+const withSocials = members.map(member => ({
+    ...member,
+    socials: [
+        'https://linkedin.com',
+        'https://github.com'
+    ]
+}))
+---
+
+<Layout>
+    <h1>Team Blocks</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <AstroTeam members={withSocials} secondary={true} />
+    <br />
+
+    {sections.map((section: any) => (
+        <Fragment>
+            {section.type !== 'astro' && (
+                <br />
+                <h2>{section.title}</h2>
+            )}
+        </Fragment>
+        <div class="grid">
+            <Card title="Required fields only" secondary={true}>
+                <section.component members={requiredOnly} />
+            </Card>
+
+            <Card title="With avatars" secondary={true}>
+                <section.component members={withAvatars} />
+            </Card>
+
+            <Card title="With roles" secondary={true}>
+                <section.component members={withRoles} />
+            </Card>
+
+            <Card title="With description" secondary={true}>
+                <section.component members={members} />
+            </Card>
+
+            <Card title="Custom avatars" secondary={true}>
+                <section.component
+                    members={withSocials}
+                    avatar={{ size: 40, borderColor: 'var(--w-color-info)' }}
+                />
+            </Card>
+
+            <Card title="Custom number of columns">
+                <section.component
+                    members={withSocials}
+                    columns={2}
+                    compact={true}
+                />
+            </Card>
+        </div>
+    ))}
+</Layout>

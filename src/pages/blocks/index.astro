@@ -19,10 +19,11 @@ import SettingCard from '@blocks/SettingCard/SettingCard.astro'
 import SignUp from '@blocks/SignUp/SignUp.astro'
 import SocialProof from '@blocks/SocialProof/SocialProof.astro'
 import Socials from '@blocks/Socials/Socials.astro'
+import Team from '@blocks/Team/Team.astro'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
 
-import { gridWithIconsItems } from '@data'
+import { gridWithIconsItems, members } from '@data'
 ---
 
 <Layout docs="/blocks/introduction">
@@ -95,6 +96,20 @@ import { gridWithIconsItems } from '@data'
                 />
                 <Link href="/blocks/component-map" />
             </Card>
+
+            <div class="relative">
+                <Team
+                    columns={1}
+                    members={[{
+                        ...members[0],
+                        socials: [
+                            'https://linkedin.com',
+                            'https://github.com'
+                        ]
+                    }]}
+                />
+                <Link href="/blocks/team" />
+            </div>
         </div>
         <div class="block-column flex column">
             <Card title="User with Rating">

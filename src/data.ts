@@ -810,3 +810,42 @@ export const speedDialItemsWithTooltip = [
         href: ''
     }
 ]
+
+export const members = [
+    {
+        img: '/img/avatar2.png',
+        name: 'Alice Johnson',
+        role: 'Frontend Developer',
+        description: 'Alice is our creative frontend developer with a passion for building user-friendly, responsive interfaces using React.'
+    },
+    {
+        img: '/img/avatar1.png',
+        name: 'Bob Smith',
+        role: 'Backend Developer',
+        description: 'Bob is our backend expert specializing in Node.js and database management, ensuring seamless data flow and efficient server-side operations.'
+    },
+    {
+        img: '/img/avatar0.png',
+        name: 'Charlie Davis',
+        role: 'UI/UX Designer',
+        description: 'Charlie brings intuitive design concepts to life with a focus on user experience and accessibility, always striving for clean and modern visuals.'
+    },
+    {
+        img: '/img/avatar4.png',
+        name: 'Daniel Lee',
+        role: 'Project Manager',
+        description: 'Daniel leads the team with excellent communication skills and organizational expertise, ensuring deadlines are met and projects are completed on time.'
+    },
+    {
+        img: '/img/avatar3.png',
+        name: 'Ethan Brown',
+        role: 'QA Engineer',
+        description: 'Ethan is our detail-oriented QA engineer who ensures every feature is tested thoroughly for quality and functionality before release.'
+    },
+    {
+        img: '/img/avatar5.png',
+        name: 'Fiona Green',
+        role: 'DevOps Engineer',
+        description: 'Fiona manages the deployment pipelines and cloud infrastructure, making sure our applications are scalable, secure, and run smoothly.'
+    }
+]

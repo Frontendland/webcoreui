@@ -1,0 +1,73 @@
+---
+import { Avatar, Card } from 'webcoreui/astro'
+
+import Socials from '@blocks/Socials/Socials.astro'
+
+import type { TeamProps } from './team'
+import user from './user.svg?raw'
+import styles from './team.module.scss'
+
+interface Props extends TeamProps {}
+
+const {
+    members,
+    avatar,
+    columns = 3,
+    compact,
+    secondary,
+    className
+} = Astro.props
+
+const classes = [
+    'grid',
+    columns > 1 && 'sm-2',
+    columns > 2 && `md-${columns}`,
+    className
+]
+---
+
+{members?.length && (
+    <section class:list={classes}>
+        {members.map(member => (
+            <Card
+                compact={compact}
+                secondary={secondary}
+                bodyClassName={styles.member}
+            >
+                {member.img ? (
+                    <Avatar
+                        img={member.img}
+                        alt={member.name}
+                        size={60}
+                        className={styles.avatar}
+                        {...avatar}
+                    />
+                ) : (
+                    <Fragment set:html={user} />
+                )}
+
+                <b>{member.name}</b>
+
+                {member.role && (
+                    <span class="muted">{member.role}</span>
+                )}
+
+                {member.description && (
+                    <div
+                        set:html={member.description}
+                        class={styles.description}
+                    />
+                )}
+
+                {member.socials?.length && (
+                    <Socials
+                        links={member.socials}
+                        className={styles.socials}
+                        color="var(--w-color-primary-20)"
+                    />
+                )}
+            </Card>
+        ))}
+    </section>
+)}
+

@@ -305,6 +305,7 @@ import { Accordion } from 'webcoreui/react'
 - [SignUp](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SignUp)
 - [SocialProof](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SocialProof)
 - [Socials](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Socials)
+- [Team](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Team)
 - [Tiles](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Tiles)
 - [User](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/User)
 
