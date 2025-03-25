@@ -1,4 +1,5 @@
 <script lang="ts">
+    // Use svelte:head outside of Astro
     import { classNames } from 'webcoreui'
     import { ConditionalWrapper, Footer, Menu } from 'webcoreui/svelte'
 
@@ -33,9 +34,11 @@
 </script>
 
 <html lang="en">
+    <!-- eslint-disable-next-line svelte/no-raw-special-elements -->
     <head>
         <SEO {...seo} />
     </head>
+    <!-- eslint-disable-next-line svelte/no-raw-special-elements -->
     <body {...rest}>
         {#if menu}
             <Menu {...menu}>

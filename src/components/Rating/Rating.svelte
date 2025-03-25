@@ -61,7 +61,7 @@
     {/if}
 
     {#if reviewCount}
-        {'•'}
+        •
         <ConditionalWrapper
             condition={!!reviewLink}
             element="a"

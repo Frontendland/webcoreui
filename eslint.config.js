@@ -219,6 +219,7 @@ export default [
         },
         rules: {
             'svelte/no-at-html-tags': 'off',
+            'svelte/require-each-key': 'off',
             'no-undef': 'off',
             'prefer-const': ['error', {
                 destructuring: 'all' // Revert after https://github.com/sveltejs/eslint-plugin-svelte/issues/889
