@@ -6,7 +6,7 @@
     import styles from './maintenance.module.scss'
 
     const {
-        logo,
+        img,
         animated = true,
         title = 'Under Maintenance',
         subTitle = 'We are performing scheduled maintenance.',
@@ -21,12 +21,12 @@
 </script>
 
 <section class={classes}>
-    {#if logo?.url}
+    {#if img?.url}
         <img
-            src={logo.url}
-            alt={logo.alt || 'Logo'}
-            width={logo.width}
-            height={logo.height}
+            src={img.url}
+            alt={img.alt || title}
+            width={img.width}
+            height={img.height}
         />
     {:else}
         {@html cog}

@@ -6,7 +6,7 @@ import cog from './cog.svg?raw'
 import styles from './maintenance.module.scss'
 
 const Maintenance = ({
-    logo,
+    img,
     animated = true,
     title = 'Under Maintenance',
     subTitle = 'We are performing scheduled maintenance.',
@@ -20,12 +20,12 @@ const Maintenance = ({
 
     return (
         <section className={classes}>
-            {logo?.url ? (
+            {img?.url ? (
                 <img
-                    src={logo.url}
-                    alt={logo.alt || 'Logo'}
-                    width={logo.width}
-                    height={logo.height}
+                    src={img.url}
+                    alt={img.alt || title}
+                    width={img.width}
+                    height={img.height}
                 />
             ) : <span dangerouslySetInnerHTML={{ __html: cog }} />}
             <h1 className={styles.title}>{title}</h1>
