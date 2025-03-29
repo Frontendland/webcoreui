@@ -13,7 +13,7 @@ const {
     prefetchGA,
     noIndex,
     meta,
-    hrefLangs,
+    links,
     structuredContents
 } = Astro.props
 ---
@@ -28,12 +28,10 @@ const {
     <link rel="dns-prefetch" href="https://www.google-analytics.com/" />
 )}
 
+{links?.map(link => <link {...link} />)}
+
 <link rel="icon" type="image/x-icon" href={faviconUrl} />
 <link rel="canonical" href={canonical || url} />
-
-{hrefLangs?.map(hrefLang => (
-    <link rel="alternate" hreflang={hrefLang.hreflang} href={hrefLang.href} />
-))}
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />

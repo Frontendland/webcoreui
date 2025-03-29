@@ -12,7 +12,7 @@
         prefetchGA,
         noIndex,
         meta,
-        hrefLangs,
+        links,
         structuredContents
     }: SEOProps = $props()
 </script>
@@ -30,13 +30,9 @@
 <link rel="icon" type="image/x-icon" href={faviconUrl} />
 <link rel="canonical" href={canonical || url} />
 
-{#if hrefLangs}
-    {#each hrefLangs as hrefLang}
-        <link
-            rel="alternate"
-            hreflang={hrefLang.hreflang}
-            href={hrefLang.href}
-        />
+{#if links?.length}
+    {#each links as link}
+        <link {...link} />
     {/each}
 {/if}
 

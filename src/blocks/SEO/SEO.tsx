@@ -12,7 +12,7 @@ const SEO = ({
     prefetchGA,
     noIndex,
     meta,
-    hrefLangs,
+    links,
     structuredContents
 }: SEOProps) => {
     return (
@@ -30,13 +30,8 @@ const SEO = ({
             <link rel="icon" type="image/x-icon" href={faviconUrl} />
             <link rel="canonical" href={canonical || url} />
 
-            {hrefLangs?.map((hrefLang, index) => (
-                <link
-                    key={index}
-                    rel="alternate"
-                    hrefLang={hrefLang.hreflang}
-                    href={hrefLang.href}
-                />
+            {links?.map((link, index) => (
+                <link key={index} {...link} />
             ))}
 
             <meta charSet="utf-8" />
