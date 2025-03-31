@@ -5,6 +5,7 @@ import type { SEOProps } from '@blocks/SEO/SEO.ts'
 
 export type LayoutProps = {
     seo: SEOProps
+    lang?: string
     menu?: MenuProps
     footer?: FooterProps
     className?: string

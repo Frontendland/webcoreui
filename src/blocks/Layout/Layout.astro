@@ -10,6 +10,7 @@ interface Props extends LayoutProps {}
 
 const {
     seo,
+    lang = 'en',
     menu,
     footer,
     className,
@@ -28,7 +29,7 @@ const containerClasses = [
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
     <head>
         <SEO {...seo} />
     </head>

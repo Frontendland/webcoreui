@@ -9,6 +9,7 @@ import './layout.scss'
 
 const Layout = ({
     seo,
+    lang = 'lang',
     menu,
     footer,
     className,
@@ -31,7 +32,7 @@ const Layout = ({
     ])
 
     return (
-        <html lang="en">
+        <html lang={lang}>
             <head>
                 <SEO {...seo} />
             </head>

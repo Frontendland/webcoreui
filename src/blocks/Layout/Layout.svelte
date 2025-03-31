@@ -10,6 +10,7 @@
 
     const {
         seo,
+        lang = 'en',
         menu,
         footer,
         className,
@@ -33,7 +34,7 @@
     ])
 </script>
 
-<html lang="en">
+<html lang={lang}>
     <!-- eslint-disable-next-line svelte/no-raw-special-elements -->
     <head>
         <SEO {...seo} />
