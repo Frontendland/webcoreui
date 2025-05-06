@@ -1,0 +1,98 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import Card from '@components/Card/Card.astro'
+
+import AstroExpandableTable from '@blocks/ExpandableTable/ExpandableTable.astro'
+import SvelteExpandableTable from '@blocks/ExpandableTable/ExpandableTable.svelte'
+import ReactExpandableTable from '@blocks/ExpandableTable/ExpandableTable.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'expandable tables',
+    components: [
+        AstroExpandableTable,
+        SvelteExpandableTable,
+        ReactExpandableTable
+    ]
+})
+
+const headings = ['ID', 'Name']
+
+const data = [
+    ['#1', 'John Doe'],
+    ['#2', 'Jane Smith'],
+    ['#3', 'Bob Johnson'],
+    ['#4', 'Emily Davis'],
+    ['#5', 'William Brown'],
+    ['#6', 'Frank Miller']
+]
+---
+
+<Layout>
+    <h1>Expandable tables</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <div class="grid xs-2 sm-3">
+        <ComponentWrapper type="Astro">
+            <AstroExpandableTable
+                headings={headings}
+                data={data}
+            />
+        </ComponentWrapper>
+        <ComponentWrapper type="Svelte">
+            <SvelteExpandableTable
+                headings={headings}
+                data={data}
+                expandButton={{ theme: 'alert' }}
+                client:idle
+            />
+        </ComponentWrapper>
+        <ComponentWrapper type="React">
+            <ReactExpandableTable
+                headings={headings}
+                data={data}
+                expandButton={{ theme: 'info' }}
+                client:idle
+            />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map((section: any) => (
+        <br />
+        <h2>{section.title}</h2>
+        <div class="grid xs-2 sm-3">
+            <Card title="Default">
+                <section.component
+                    headings={headings}
+                    data={data}
+                />
+            </Card>
+
+            <Card title="Custom number of visible rows">
+                <section.component
+                    numberOfVisibleRows={3}
+                    headings={headings}
+                    data={data}
+                />
+            </Card>
+
+            <Card title="Custom buttons">
+                <section.component
+                    numberOfVisibleRows={3}
+                    expandButtonLabel="Toggle More"
+                    collapseButtonLabel="Toggle Less"
+                    expandButton={{ theme: 'success' }}
+                    headings={headings}
+                    data={data}
+                />
+            </Card>
+        </div>
+    ))}
+</Layout>

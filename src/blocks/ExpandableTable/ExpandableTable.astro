@@ -1,0 +1,100 @@
+---
+import Button from '@blocks/Button/Button.astro'
+
+import type { ExpandableTableProps } from './expandableTable'
+import styles from './expandable-table.module.scss'
+
+interface Props extends ExpandableTableProps {}
+
+const {
+    headings,
+    data,
+    hover,
+    striped,
+    offsetStripe,
+    compact,
+    maxHeight,
+    className,
+    numberOfVisibleRows = 5,
+    expandButtonLabel = 'Expand',
+    collapseButtonLabel = 'Collapse',
+    expandButton
+} = Astro.props
+
+const classes = [
+    styles.table,
+    hover && styles.hover,
+    striped && styles[`striped-${striped}s`],
+    offsetStripe && styles.offset,
+    compact && styles.compact,
+    maxHeight && styles.scroll,
+    className
+]
+---
+
+<div
+    class:list={classes}
+    style={maxHeight ? `max-height:${maxHeight}` : undefined}
+>
+    <table>
+        {headings?.length && (
+            <thead>
+                <tr>
+                    {headings.map(heading => (
+                        <th>{heading}</th>
+                    ))}
+                </tr>
+            </thead>
+        )}
+        <tbody>
+            {data.map((row, index) => (
+                <tr
+                    data-hidden={numberOfVisibleRows < index + 1 ? 'true' : undefined}
+                >
+                    {row.map(column => (
+                        <td>
+                            <Fragment set:html={column} />
+                        </td>
+                    ))}
+                </tr>
+            ))}
+        </tbody>
+    </table>
+</div>
+
+{data.length > numberOfVisibleRows && (
+    <Button
+        data-id="w-expander"
+        data-expand-label={expandButtonLabel}
+        data-collapse-label={collapseButtonLabel}
+        text={expandButtonLabel}
+        {...expandButton}
+    />
+)}
+
+<script>
+    import { on } from '@utils/DOMUtils'
+
+    const addEventListener = () => {
+        let expanded = false
+
+        on('[data-id="w-expander"]', 'click', (event: Event) => {
+            const buttonElement = event.currentTarget as HTMLButtonElement
+            const table = buttonElement.previousElementSibling as HTMLTableElement
+            const toggleElements = table.querySelectorAll('tr[data-hidden]')
+
+            expanded = !expanded
+
+            Array.from(toggleElements).forEach((tr) => {
+                (tr as HTMLTableRowElement).dataset.hidden = expanded ? 'false' : 'true'
+            })
+
+            buttonElement.innerText = expanded
+                ? buttonElement.dataset.collapseLabel as string
+                : buttonElement.dataset.expandLabel as string
+        }, true)
+    }
+
+    on(document, 'astro:after-swap', addEventListener)
+    addEventListener()
+</script>

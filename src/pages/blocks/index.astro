@@ -9,6 +9,7 @@ import BlogCard from '@blocks/BlogCard/BlogCard.astro'
 import ComponentMap from '@blocks/ComponentMap/ComponentMap.astro'
 import DeviceMockup from '@blocks/DeviceMockup/DeviceMockup.astro'
 import ErrorPage from '@blocks/ErrorPage/ErrorPage.astro'
+import ExpandableTable from '@blocks/ExpandableTable/ExpandableTable.astro'
 import FAQ from '@blocks/FAQ/FAQ.astro'
 import GridWithIcons from '@blocks/GridWithIcons/GridWithIcons.astro'
 import Hero from '@blocks/Hero/Hero.astro'
@@ -175,6 +176,24 @@ import { gridWithIconsItems, members } from '@data'
                     <a href="/blocks/device-mockup">See examples {'->'}</a>
                 </div>
             </DeviceMockup>
+
+            <Card title="Expandable table" secondary={true}>
+                <ExpandableTable
+                    headings={['ID', 'Name']}
+                    numberOfVisibleRows={3}
+                    expandButtonLabel="Expand"
+                    collapseButtonLabel="Collapse"
+                    data={[
+                        ['#1', 'John Doe'],
+                        ['#2', 'Jane Smith'],
+                        ['#3', 'Bob Johnson'],
+                        ['#4', 'Emily Davis'],
+                        ['#5', 'William Brown']
+                    ]}
+                />
+
+                <Link href="/blocks/expandable-tables" />
+            </Card>
         </div>
         <div class="block-column flex column">
             <Card title="Tiles with Icons">
