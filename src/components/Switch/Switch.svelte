@@ -44,6 +44,6 @@
     />
     <span class={styles.toggle}></span>
     {#if label}
-        <span class={styles.label}>{label}</span>
+        <span class={styles.label}>{@html label}</span>
     {/if}
 </label>

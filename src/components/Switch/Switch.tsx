@@ -42,7 +42,12 @@ const Switch = ({
                 {...rest}
             />
             <span className={styles.toggle}></span>
-            {label && <span className={styles.label}>{label}</span>}
+            {label && (
+                <span
+                    className={styles.label}
+                    dangerouslySetInnerHTML={{ __html: label }}
+                />
+            )}
         </label>
     )
 }

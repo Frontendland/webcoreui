@@ -38,5 +38,5 @@ const styleVariables = classNames([
 <label class:list={classes} style={styleVariables}>
     <input type="checkbox" checked={toggled} disabled={disabled} {...rest} />
     <span class={styles.toggle}></span>
-    {label && <span class={styles.label}>{label}</span>}
+    {label && <span class={styles.label} set:html={label} />}
 </label>
