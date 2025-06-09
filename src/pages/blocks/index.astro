@@ -11,6 +11,7 @@ import DeviceMockup from '@blocks/DeviceMockup/DeviceMockup.astro'
 import ErrorPage from '@blocks/ErrorPage/ErrorPage.astro'
 import ExpandableTable from '@blocks/ExpandableTable/ExpandableTable.astro'
 import FAQ from '@blocks/FAQ/FAQ.astro'
+import Form from '@blocks/Form/Form.astro'
 import GridWithIcons from '@blocks/GridWithIcons/GridWithIcons.astro'
 import Hero from '@blocks/Hero/Hero.astro'
 import Icon from '@blocks/Icon/Icon.astro'
@@ -243,6 +244,14 @@ import { gridWithIconsItems, members } from '@data'
                 <Maintenance />
                 <Link href="/blocks/maintenance" />
             </Card>
+            <Card title="Form" bodyClassName="padded">
+                <Form fields={[
+                    { type: 'email', label: 'E-mail' },
+                    { type: 'textarea', label: 'Message' },
+                    { type: 'button', label: 'Send' }
+                ]} />
+                <Link href="/blocks/form" />
+            </Card>
         </div>
     </div>
 </Layout>
@@ -262,5 +271,9 @@ import { gridWithIconsItems, members } from '@data'
     .device-mockup-example {
         @include typography(center);
         @include background(primary-50);
+    }
+
+    section .padded {
+        padding-bottom: 40px !important;
     }
 </style>

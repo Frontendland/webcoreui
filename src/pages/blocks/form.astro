@@ -1,0 +1,197 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import type { ButtonProps } from '@components/Button/button'
+import Card from '@components/Card/Card.astro'
+import Toast from '@components/Toast/Toast.astro'
+
+import type { FormProps } from '@blocks/Form/form'
+import AstroForm from '@blocks/Form/Form.astro'
+import SvelteForm from '@blocks/Form/Form.svelte'
+import ReactForm from '@blocks/Form/Form.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'forms',
+    components: [
+        AstroForm,
+        SvelteForm,
+        ReactForm
+    ]
+})
+
+const getThemedContactForm = (theme: ButtonProps['theme']): FormProps['fields'] => [
+    { type: 'email', label: 'E-mail', name: 'email' },
+    { type: 'textarea', label: 'Message', name: 'message' },
+    { type: 'button', label: 'Send', theme }
+]
+---
+
+<Layout>
+    <h1>Expandable tables</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <div class="grid xs-2 sm-3">
+        <ComponentWrapper type="Astro">
+            <AstroForm fields={getThemedContactForm(undefined)} />
+        </ComponentWrapper>
+        <ComponentWrapper type="Svelte">
+            <SvelteForm fields={getThemedContactForm('alert')} />
+        </ComponentWrapper>
+        <ComponentWrapper type="React">
+            <SvelteForm fields={getThemedContactForm('info')} />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map((section: any) => (
+        <br />
+        <h2>{section.title}</h2>
+        <div class="grid xs-2 sm-3">
+            <Card title="Input fields">
+                <section.component fields={[
+                    { type: 'text', label: 'Name' },
+                    { type: 'tel', label: 'Phone' },
+                    { type: 'date', label: 'Check-in' }
+                ]} />
+            </Card>
+
+            <Card title="Contact form">
+                <section.component fields={getThemedContactForm(undefined)} />
+            </Card>
+
+            <Card title="Form with checkbox">
+                <section.component fields={[
+                    { type: 'text', label: 'Name' },
+                    { type: 'email', label: 'Email' },
+                    { type: 'checkbox', label: 'I accept the <a>terms and conditions</a>' },
+                    { type: 'button', label: 'Send' }
+                ]} />
+            </Card>
+
+            <Card title="Form with radio">
+                <section.component fields={[
+                    { type: 'email', label: 'Email' },
+                    {
+                        type: 'radio',
+                        name: `radio-${section.type}`,
+                        items: [
+                            { label: 'Small', value: 'sm', selected: true },
+                            { label: 'Medium with <a href="/" target="_blank">link</a>', value: 'md' },
+                            { label: 'Large', value: 'lg' }
+                        ]
+                    }
+                ]} />
+            </Card>
+
+            <Card title="Form with select">
+                <section.component fields={[
+                    { type: 'text', label: 'Full Name' },
+                    {
+                        type: 'select',
+                        label: 'Country',
+                        itemGroups: [{
+                            items: [
+                                {
+                                    name: 'United States',
+                                    value: 'us'
+                                },
+                                {
+                                    name: 'United Kingdom',
+                                    value: 'uk'
+                                }
+                            ]
+                        }],
+                        showSearchBar: true,
+                        showSearchBarIcon: true,
+                        searchBarPlaceholder: 'Search for country'
+                    }
+                ]} />
+            </Card>
+
+            <Card title="Form with switch">
+                <section.component fields={[
+                    { type: 'text', label: 'Name' },
+                    { type: 'email', label: 'Email' },
+                    { type: 'switch', label: 'I accept the terms and conditions' },
+                    { type: 'button', label: 'Send' }
+                ]} />
+            </Card>
+
+            <Card title="Form with slider">
+                <section.component fields={[
+                    { type: 'text', label: 'Full Name' },
+                    {
+                        type: 'slider',
+                        min: 0,
+                        max: 100,
+                        value: 20
+                    }
+                ]} />
+            </Card>
+
+            <Card title="Form with custom gaps">
+                <section.component fields={[
+                    { type: 'text', placeholder: 'Name' },
+                    { type: 'tel', placeholder: 'Phone' },
+                    { type: 'date', placeholder: 'Check-in' }
+                ]} gap="sm" />
+            </Card>
+
+            <Card title="Form with useForm hook">
+                <section.component
+                    fields={getThemedContactForm(undefined)}
+                    id="form"
+                />
+            </Card>
+        </div>
+    ))}
+
+    <Toast id="toast" title="UseForm"></Toast>
+</Layout>
+
+<script>
+    import { toast } from '@utils/toast'
+
+    import { useForm } from '@blocks/Form/useForm'
+
+    const form = useForm('#form')
+
+    if (form) {
+        form.preventDefault()
+            .update('email', 'john@doe.com')
+            .update('message', 'You can update values dynamically')
+            .onChange(formValues => {
+                const validationRules = {
+                    email: !!formValues.email.includes('john'),
+                    message: !!(formValues.message?.length > 10)
+                }
+
+                form.setValidations(validationRules)
+            })
+            .onSubmit(form => {
+                toast({
+                    element: '#toast',
+                    content: `Submitting form with values: ${JSON.stringify(form)}`
+                })
+
+                // eslint-disable-next-line no-console
+                console.log('Submitting form with values:', form)
+            })
+            .onError(form => {
+                toast({
+                    element: '#toast',
+                    content: `Error submitting form. Invalid fields: ${JSON.stringify(form)}`
+                })
+
+                // eslint-disable-next-line no-console
+                console.log('Error submitting form. Invalid fields:', form)
+            })
+    }
+
+</script>

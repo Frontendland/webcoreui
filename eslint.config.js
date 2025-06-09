@@ -37,7 +37,7 @@ export default [
             'eqeqeq': 'error',
             'for-direction': 'error',
             'func-call-spacing': 'error',
-            'indent': ['error', 4],
+            'indent': ['error', 4, { 'SwitchCase': 1 }],
             'jsx-quotes': 'error',
             'key-spacing': 'error',
             'keyword-spacing': 'error',
