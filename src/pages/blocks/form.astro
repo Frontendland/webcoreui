@@ -143,6 +143,26 @@ const getThemedContactForm = (theme: ButtonProps['theme']): FormProps['fields'] 
                 ]} gap="sm" />
             </Card>
 
+            <Card title="Form with grouped inputs">
+                <section.component fields={[
+                    {
+                        type: 'group',
+                        fields: [
+                            { type: 'text', placeholder: 'Name' },
+                            { type: 'tel', placeholder: 'Phone' }
+                        ]
+                    },
+                    { type: 'date', placeholder: 'Check-in' },
+                    {
+                        type: 'group',
+                        fields: [
+                            { type: 'button', label: 'Send' },
+                            { type: 'button', label: 'Go Back', theme: 'secondary' }
+                        ]
+                    }
+                ]} />
+            </Card>
+
             <Card title="Form with useForm hook">
                 <section.component
                     fields={getThemedContactForm(undefined)}
@@ -193,5 +213,4 @@ const getThemedContactForm = (theme: ButtonProps['theme']): FormProps['fields'] 
                 console.log('Error submitting form. Invalid fields:', form)
             })
     }
-
 </script>

@@ -11,6 +11,7 @@ import type {
 } from 'webcoreui/astro'
 
 export type FormField =
+    | ({ type: 'group', fields: FormField[] })
     | ({ type: 'button', label: string } & ButtonProps)
     | ({ type: 'checkbox' } & CheckboxProps)
     | ({ type: 'radio' } & RadioProps)
@@ -18,7 +19,7 @@ export type FormField =
     | ({ type: 'slider' } & SliderProps)
     | ({ type: 'switch' } & SwitchProps)
     | ({ type: 'textarea' } & TextareaProps)
-    | ({ type: InputProps['type'] } & Omit<InputProps, 'type'>)
+    | ({ type: NonNullable<InputProps['type']> } & Omit<InputProps, 'type'>)
 
 export type FormProps = {
     fields: FormField[]
@@ -30,8 +31,9 @@ export type FormProps = {
     method?: 'post' | 'get' | 'dialog'
     noValidate?: boolean
     target?: ButtonProps['target']
-    enctype?: 'application/x-www-form-urlencoded'
+    enctype?:
+        | 'application/x-www-form-urlencoded'
         | 'multipart/form-data'
-        |'text/plain'
+        | 'text/plain'
 }
 
