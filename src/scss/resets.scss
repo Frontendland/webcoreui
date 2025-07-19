@@ -38,6 +38,10 @@
     strong,
     b {
         font-family: Bold, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        @if ($fontBold) {
+            font-weight: normal;
+        }
     }
 
     a {
