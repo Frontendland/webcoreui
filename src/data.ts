@@ -470,7 +470,10 @@ export const getProductPageTemplateData = (theme = 'success') => ({
         menu: {
             logo: {
                 html: logo
-            }
+            },
+            items: [
+                { name: '<- Back to templates', href: '/templates' }
+            ]
         },
         footer: {
             logo: {
@@ -480,7 +483,8 @@ export const getProductPageTemplateData = (theme = 'success') => ({
                 {
                     title: 'Sitemap',
                     items: [
-                        { href: '/', name: 'Home' }
+                        { href: '/', name: 'Home' },
+                        { href: '/templates', name: 'All templates' }
                     ]
                 }
             ],
