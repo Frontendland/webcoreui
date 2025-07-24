@@ -42,7 +42,9 @@ const footer = [
     {
         title: 'Templates',
         items: [
-            { name: 'Product Page', href: '/templates/product-page/astro', active: isPath('templates/product-page/astro') }
+            { name: 'Product Page', href: '/templates/product-page/astro' },
+            { name: 'Portfolio', href: '/templates/portfolio/astro' },
+            { name: 'Blog', href: '/templates/blog/astro' }
         ]
     },
     {
@@ -172,6 +174,25 @@ const externalLinks = [
         a {
             text-decoration: underline;
         }
+    }
+
+    .a:not(.default),
+    .a > strong {
+        background: #B545ED;
+        background: linear-gradient(to right, #505FFF, #B545ED);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .s:not(.default),
+    .s > strong {
+        color: #FF3E00;
+    }
+
+    .r:not(.default),
+    .r > strong {
+        color: #61DAFB;
     }
 
     .menu {
