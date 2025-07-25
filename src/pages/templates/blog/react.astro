@@ -1,10 +1,21 @@
 ---
+import { Icon } from 'webcoreui/react'
+
 import { getBlogTemplateData } from '@data'
 
 import Blog from '@templates/Blog/Blog.tsx'
 ---
 
 <Blog {...getBlogTemplateData('info')}>
+    <a
+        slot="insideMenu"
+        href="https://github.com/Frontendland/webcoreui"
+        target="_blank"
+        rel="noreferrer"
+    >
+        <Icon type="github" size={18} />
+    </a>
+
     <h2>Main Content</h2>
 
     <p>This is your main content. You can add components and HTML inside your <code>Blog</code> component. Consider adding additional engaging content to improve user experience and SEO, for example:</p>

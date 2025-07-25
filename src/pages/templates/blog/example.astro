@@ -1,5 +1,5 @@
 ---
-import type { ButtonProps } from 'webcoreui/astro'
+import { type ButtonProps, Icon } from 'webcoreui/astro'
 import { copy, github } from 'webcoreui/icons'
 
 import type { TilesProps } from '@blocks/Tiles/tiles'
@@ -145,6 +145,15 @@ const author = {
     recommended={recommended}
     author={author}
 >
+    <a
+        slot="menu"
+        href="https://github.com/Frontendland/webcoreui"
+        target="_blank"
+        rel="noreferrer"
+    >
+        <Icon type="github" size={18} />
+    </a>
+
     <h2>Main Content</h2>
 
     <p>This is your main content. You can add components and HTML inside your <code>Blog</code> component. Consider adding additional engaging content to improve user experience and SEO, for example:</p>
