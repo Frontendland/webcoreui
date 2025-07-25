@@ -1,0 +1,168 @@
+---
+import { type ButtonProps, Icon, type PaginationProps } from 'webcoreui/astro'
+
+import logo from '@img/logo.svg?raw'
+
+import ProductPage from '@templates/ProductPage/ProductPage.astro'
+
+// Your layout, including menu and footer
+const layout = {
+    seo: {
+        title: 'Product Page Template for Astro - Webcore',
+        url: 'https://webcoreui.dev/previews/product-page',
+        description: 'A customizable and easy to use template for products.',
+        faviconUrl: '/img/favicon.ico'
+    },
+    menu: {
+        logo: {
+            html: logo
+        },
+        items: [
+            { name: 'Latest', href: '#' }
+        ]
+    },
+    footer: {
+        logo: {
+            html: logo
+        },
+        columns: [
+            {
+                title: 'Sitemap',
+                items: [
+                    { href: '/', name: 'Home' },
+                    { href: 'https://webcoreui.dev/templates', name: 'Templates' }
+                ]
+            }
+        ],
+        subText: `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
+    }
+}
+
+// Your carousel images
+const images = Array
+    .from({ length: 3 }, (_, i) => i + 1)
+    .map(i => ({
+        src: `/img/placeholder-hd${i}.png`,
+        alt: 'img',
+        width: 1200,
+        height: 250
+    }))
+
+// Your carousel configuration
+const carousel = {
+    pagination: {
+        type: 'dots' as PaginationProps['type']
+    }
+}
+
+// Your list of recommended products
+const recommended = {
+    items: Array
+        .from({ length: 3 }, (_, i) => i + 5)
+        .map(i => ({
+            href: '#',
+            img: {
+                src: `/img/placeholder${i}.png`,
+                alt: 'img',
+                width: 500,
+                height: 250
+            },
+            title: `Recommended Card #${i - 4}`,
+            text: 'You can also pass <b>HTML</b> tags to your recommended cards.'
+        }))
+}
+
+// Your CTA buttons
+const buttons = [
+    {
+        text: 'Get Started ->',
+        theme: 'success' as ButtonProps['theme'],
+        href: '#'
+    },
+    { text: 'Demo', theme: 'secondary' as ButtonProps['theme'] }
+]
+
+// List of features under the CTA buttons
+const features = [
+    'Easily configure your menu and footer',
+    'Add carousel for preview images',
+    'Define your main content the way you want',
+    'Customize your call to actions',
+    'List features',
+    'Add recommendations'
+].map(feature => ({
+    icon: 'circle-check',
+    color: 'var(--w-color-success)',
+    text: feature
+}))
+---
+
+<ProductPage
+    layout={layout}
+    images={images}
+    carousel={carousel}
+    buttons={buttons}
+    features={features}
+    recommended={recommended}
+>
+    <a
+        slot="menu"
+        href="https://github.com/Frontendland/webcoreui"
+        target="_blank"
+        rel="noreferrer"
+    >
+        <Icon type="github" size={18} />
+    </a>
+
+    <a class="muted" href="/templates">{'<-'} Back to all templates</a>
+
+    <h1>Astro Product Page</h1>
+    <h2 class="muted">Customizable and easy to setup template for your products</h2>
+
+    <p>
+        This template is designed to help you create professional product pages with minimal effort while offering full customization to meet your needs. To ensure a seamless user experience, the layout is fully-responsive and optimized for all devices.
+    </p>
+
+    <hr />
+
+    <h3>Key Features</h3>
+    <ul>
+        <li>
+            <b>Menu and Footer Configuration:</b>
+            Quickly set up and customize your navigation and footer to match your site’s structure and style.
+        </li>
+        <li>
+            <b>Image Carousel:</b>
+            Showcase product images with an interactive carousel for a more engaging user experience.
+        </li>
+        <li>
+            <b>Flexible Content Layout:</b>
+            Define your main content the way you want—whether it’s a detailed description, video, or anything else that suits your product.
+        </li>
+        <li>
+            <b>Customizable Call-to-Actions (CTAs):</b>
+            Design CTAs that fit your brand and guide users toward the actions that matter most.
+        </li>
+        <li>
+            <b>Feature Listing:</b>
+            Highlight product features in a clear, organized way to inform and attract customers.
+        </li>
+        <li>
+            <b>Recommendation Section:</b>
+            Add recommendations or related products to enhance discoverability and boost engagement.
+        </li>
+    </ul>
+</ProductPage>
+
+<style lang="scss">
+    @use 'webcoreui/config' as *;
+
+    h1 {
+        @include spacing(mt-default);
+    }
+
+    h2 {
+        @include typography(lg, 400, regular);
+        @include spacing(m0);
+    }
+</style>

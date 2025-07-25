@@ -1,0 +1,159 @@
+---
+import type { ButtonProps } from 'webcoreui/astro'
+import { copy, github } from 'webcoreui/icons'
+
+import type { TilesProps } from '@blocks/Tiles/tiles'
+
+import astroIcon from '@blocks/Icon/icons/astro.svg?raw'
+import discordIcon from '@blocks/Icon/icons/discord.svg?raw'
+import rocketIcon from '@blocks/Icon/icons/rocket.svg?raw'
+import terminalIcon from '@blocks/Icon/icons/terminal.svg?raw'
+import logo from '@img/logo.svg?raw'
+
+import Blog from '@templates/Blog/Blog.astro'
+
+// Your layout, including menu and footer
+const layout = {
+    seo: {
+        title: 'Blog Template - Webcore',
+        url: 'https://webcoreui.dev/',
+        description: 'A versatile and easy to use template for blogs.',
+        faviconUrl: '/logo.svg'
+    },
+    menu: {
+        logo: {
+            html: logo
+        },
+        items: [
+            { name: 'Categories', href: '#' }
+        ]
+    },
+    footer: {
+        logo: {
+            html: logo
+        },
+        columns: [
+            {
+                title: 'Sitemap',
+                items: [
+                    { name: 'Latest', href: '' },
+                    { name: 'Contact', href: '' },
+                    { name: 'RSS', href: '' }
+                ]
+            },
+            {
+                title: 'Social',
+                items: [
+                    { name: 'LinkedIn', href: '' },
+                    { name: 'Medium', href: '' },
+                    { name: 'X', href: '' }
+                ]
+            }
+        ],
+        subText: `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
+    }
+}
+
+// Your hero section
+const hero = {
+    heading: 'Brand New Array Methods',
+    subHeading: 'What\'s new in the latest version of JavaScript',
+    buttons: [{ text: 'Read More' }],
+    badge: {
+        rounded: true,
+        theme: 'success' as ButtonProps['theme'],
+        text: 'in JavaScript'
+    },
+    image: {
+        src: '/img/placeholder-hd1.png',
+        alt: 'Hero',
+        width: 500,
+        height: 300
+    }
+}
+
+// Category tiles
+const tiles = {
+    columns: 3 as TilesProps['columns'],
+    items: [
+        { icon: astroIcon, label: 'Roadmaps', href: '#' },
+        { icon: copy, label: 'Categories', href: '#' },
+        { icon: github, label: 'Projects', href: '#' },
+        { icon: rocketIcon, label: 'Product launches', href: '#' },
+        { icon: terminalIcon, label: 'Playgrounds', href: '#' },
+        { icon: discordIcon, label: 'Community', href: '#' }
+    ]
+}
+
+// Latest articles
+const posts = Array
+    .from({ length: 6 }, (_, i) => i + 2)
+    .map(i => ({
+        href: '#',
+        img: {
+            src: `/img/placeholder${i}.png`,
+            alt: 'img',
+            width: 200,
+            height: 150
+        },
+        title: `Latest Post #${i}`,
+        text: `Jan 01, ${new Date().getFullYear()} • ${i} min read`
+    }))
+
+// Recommended posts
+const recommended = Array
+    .from({ length: 3 }, (_, i) => i + 9)
+    .map(i => ({
+        href: '#',
+        img: {
+            src: `/img/placeholder${i}.png`,
+            alt: 'img',
+            width: 200,
+            height: 150
+        },
+        title: `Recommended Post #${i - 8}`,
+        text: `Jan 01, ${new Date().getFullYear()} • ${i} min read<br />Add a short description to cards to improve engagement.`,
+        secondary: true
+    }))
+
+// Author bio
+const author = {
+    img: {
+        src: '/img/avatar1.png',
+        alt: 'Jake Brown',
+        size: 50
+    },
+    name: 'Jake Brown',
+    role: 'Astro developer',
+    description: 'A short description about the author. Should be concise yet engaging, giving readers a quick insight into who you are and why they should trust your content. For example: <i>"Frontend developer passionate about building fast, accessible web experiences. Sharing insights on React, Astro, and web performance."</i>',
+    secondary: true,
+    socials: {
+        links: [
+            'https://linkedin.com',
+            'https://medium.com',
+            'https://twitter.com'
+        ]
+    }
+}
+---
+
+<Blog
+    layout={layout}
+    hero={hero}
+    tiles={tiles}
+    posts={posts}
+    recommended={recommended}
+    author={author}
+>
+    <h2>Main Content</h2>
+
+    <p>This is your main content. You can add components and HTML inside your <code>Blog</code> component. Consider adding additional engaging content to improve user experience and SEO, for example:</p>
+    <ul>
+        <li><b>Author Highlights:</b> Introduce yourself or key contributors to create a personal connection with the audience.</li>
+        <li><b>Popular Topics / Tags:</b> Display trending topics or commonly searched tags to help users explore related content.</li>
+        <li><b>Newsletter Signup:</b> Encourage visitors to subscribe for updates, which helps with retention and audience building.</li>
+        <li><b>Reader Testimonials or Comments:</b> Show recent comments or feedback to build trust and community engagement.</li>
+        <li><b>Call-to-Action:</b> Guide users toward an action, like exploring a specific topic, signing up, or following on social media.</li>
+        <li><b>Social Proof / Community Engagement:</b> Display stats like total reads, shares, or community discussions to reinforce credibility.</li>
+    </ul>
+</Blog>

@@ -1,0 +1,170 @@
+---
+import type { ButtonProps } from 'webcoreui/astro'
+
+import logo from '@img/logo.svg?raw'
+
+import Portfolio from '@templates/Portfolio/Portfolio.astro'
+
+// Your layout, including menu and footer
+const layout = {
+    seo: {
+        title: 'Portfolio Template - Webcore',
+        url: 'https://webcoreui.dev/',
+        description: 'A customizable and easy to use template for portfolios.',
+        faviconUrl: '/logo.svg'
+    },
+    menu: {
+        logo: {
+            html: logo
+        }
+    },
+    footer: {
+        logo: {
+            html: logo
+        },
+        columns: [
+            {
+                title: 'Contacts',
+                items: [
+                    { href: 'mailto:josh@example.com', name: 'john@example.com' },
+                    { href: 'tel:+1 234 5678', name: '+1 234 5678' }
+                ]
+            }
+        ]
+    }
+}
+
+// Your hero section
+const hero = {
+    heading: 'Hey, I\'m Josh 👋',
+    subHeading: 'Senior React Developer based in Oregon',
+    buttons: [
+        { text: 'Call Me', theme: 'success' as ButtonProps['theme'] },
+        { text: 'Send an Email', theme: 'outline' as ButtonProps['theme'] }
+    ],
+    badge: {
+        rounded: true,
+        theme: 'outline' as ButtonProps['theme'],
+        text: '⭐ Top rated developer'
+    },
+    image: {
+        src: '/img/placeholder-hd1.png',
+        alt: 'Banner',
+        width: 500,
+        height: 300
+    }
+}
+
+// Your "About Me" section
+const aboutMe = {
+    title: 'More About Me',
+    text: 'Description about the person, including previous work experiences, studies, and relevant projects. Anything that can establish credibility, experience, and expertise should be listed here to instill trustworthiness in the visitor. This field can also handle <code>HTML</code> tags for further formatting.',
+    img: {
+        src: '/img/avatar0-hd.png',
+        alt: 'About me',
+        width: 250,
+        height: 250
+    },
+    services: [
+        'List of services provided by the person',
+        'Broken into two columns on larger screens',
+        'Define a list of ratings',
+        'Create CTAs between blocks',
+        'Add your previous work',
+        'Provide a list of services'
+    ].map(feature => ({
+        icon: 'circle-check',
+        color: 'var(--w-color-success)',
+        text: feature
+    }))
+}
+
+// Ratings under "About Me"
+const ratings = [
+    {
+        score: 5,
+        showText: true,
+        text: 'Rated for result',
+        feedback: '"He did an excellent job. The end result is what we wanted."'
+    },
+    {
+        score: 5,
+        showText: true,
+        text: 'Rated for design',
+        feedback: '"A thorough, reliable, precise professional who is demanding in his work! I can only recommend him!"'
+    },
+    {
+        score: 5,
+        showText: true,
+        text: 'Rated for communication',
+        feedback: '"Thank you for your work! It turned out very nice!"'
+    }
+]
+
+// CTA below your ratings
+const ratingCta = {
+    text: 'More reviews',
+    theme: 'secondary' as ButtonProps['theme']
+}
+
+// Your work in a grid layout
+const myWork = {
+    title: 'My Most Recent Work',
+    items: Array
+        .from({ length: 3 }, (_, i) => i + 3)
+        .map(i => ({
+            href: '#',
+            img: {
+                src: `/img/placeholder${i}.png`,
+                alt: 'img',
+                width: 500,
+                height: 250
+            },
+            title: `My Work #${i - 2}`,
+            text: 'You can also pass <b>HTML</b> tags to your cards.'
+        }))
+}
+
+// Your list of services
+const services = {
+    secondary: true,
+    items: [
+        {
+            icon: 'info',
+            title: 'List of services',
+            text: 'Use the <code>GridWithIcons</code> block to organize your list into a grid with icons to enhance clarity and visual appeal.'
+        }, {
+            icon: 'alert',
+            title: 'Configurable',
+            text: 'You can create as many items as necessary with icons and an optional title. You can also configure the number of columns.'
+        }, {
+            icon: 'circle-check',
+            title: 'Supports formatting',
+            text: 'The <code>text</code> prop also supports formatting through <b>HTML</b> tags to help you customize the appearance of the element.'
+        }
+    ]
+}
+
+// Last CTA at the end of the portfolio
+const servicesCta = {
+    text: 'Call Me',
+    theme: 'success' as ButtonProps['theme']
+}
+---
+
+<Portfolio
+    layout={layout}
+    hero={hero}
+    aboutMe={aboutMe}
+    ratings={ratings}
+    ratingCta={ratingCta}
+    myWork={myWork}
+    services={services}
+    servicesCta={servicesCta}
+>
+    <div slot="menu">
+        <a href="tel:+1 234 5678">+1 234 5678</a>
+        <span>•</span>
+        <a href="mailto:josh@example.com">josh@example.com</a>
+    </div>
+</Portfolio>

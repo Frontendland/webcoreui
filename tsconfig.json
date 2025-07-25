@@ -8,6 +8,7 @@
             "@templates/*": ["src/templates/*"],
             "@blocks/*": ["src/blocks/*"],
             "@static/*": ["src/static/*"],
+            "@img/*": ["public/img/*"],
             "@playground/*": ["src/playground/*"],
             "@utils/*": ["src/utils/*"],
             "@data": ["src/data.ts"],
