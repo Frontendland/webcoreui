@@ -121,8 +121,13 @@
     }
 
     thead,
-    tfoot {
+    tfoot,
+    th {
         @include typography(bold);
+
+        @if ($fontBold) {
+            font-weight: normal;
+        }
     }
 
     th,
