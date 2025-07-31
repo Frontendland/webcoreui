@@ -199,7 +199,7 @@
     <Card title="Progress">
         <Progress value={progress} />
 
-        <div class="flex xs my">
+        <div class="flex xs my wrap">
             <Button onClick={() => progress = 0}>0%</Button>
             <Button onClick={() => progress = 25}>25%</Button>
             <Button onClick={() => progress = 50}>50%</Button>

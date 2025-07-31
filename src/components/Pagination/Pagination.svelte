@@ -66,7 +66,7 @@
         })
     }
 
-    let calculatedCurrentPage = $state(
+    let calculatedCurrentPage = $derived(
         currentPage
             || (pages?.findIndex(page => page.active) || -1) + 1
             || 1

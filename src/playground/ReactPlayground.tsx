@@ -196,7 +196,7 @@ const ReactPlayground = () => {
             <Card title="Progress">
                 <Progress value={progress} />
 
-                <div className="flex xs my">
+                <div className="flex xs my wrap">
                     <Button onClick={() => setProgress(0)}>0%</Button>
                     <Button onClick={() => setProgress(25)}>25%</Button>
                     <Button onClick={() => setProgress(50)}>50%</Button>

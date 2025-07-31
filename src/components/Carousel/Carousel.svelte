@@ -13,25 +13,28 @@
 
     import type { PaginationEventType } from '../Pagination/pagination'
 
-    export let items: SvelteCarouselProps['items'] = 0
-    export let itemsPerSlide: SvelteCarouselProps['itemsPerSlide'] = 1
-    export let subText: SvelteCarouselProps['subText'] = ''
-    export let scrollSnap: SvelteCarouselProps['scrollSnap'] = true
-    export let progress: SvelteCarouselProps['progress'] = false
-    export let pagination: SvelteCarouselProps['pagination'] = {}
-    export let effect: SvelteCarouselProps['effect'] = null
-    export let debounce: SvelteCarouselProps['debounce'] = 20
-    export let className: SvelteCarouselProps['className'] = ''
-    export let wrapperClassName: SvelteCarouselProps['wrapperClassName'] = ''
-    export let paginationClassName: SvelteCarouselProps['paginationClassName'] = ''
-    export let onScroll: SvelteCarouselProps['onScroll'] = () => {}
+    let {
+        items = 0,
+        itemsPerSlide = 1,
+        subText,
+        scrollSnap = true,
+        progress,
+        pagination,
+        effect,
+        debounce = 20,
+        className,
+        wrapperClassName,
+        paginationClassName,
+        children,
+        onScroll
+    }: SvelteCarouselProps = $props()
 
     let carouselContainer: HTMLDivElement
     let carousel: HTMLUListElement
     let carouselItems: HTMLCollection | NodeListOf<HTMLLIElement>
-    let progressValue = 0
+    let progressValue = $state(0)
     let paginated = false
-    let currentPage = 1
+    let currentPage = $state(1)
 
     const classes = classNames([
         styles.carousel,
@@ -141,7 +144,7 @@
 <section class={classes}>
     <div class={containerClasses} bind:this={carouselContainer}>
         <ul class={wrapperClasses} style={style} bind:this={carousel}>
-            <slot />
+            {@render children?.()}
         </ul>
     </div>
     <ConditionalWrapper
