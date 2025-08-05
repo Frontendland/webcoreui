@@ -32,4 +32,5 @@ export type ReactLayoutProps = {
     insideFooter?: React.ReactNode
     scripts?: React.ReactNode
     children?: React.ReactNode
+    bodyClassName?: string
 } & LayoutProps

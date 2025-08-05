@@ -1,0 +1,137 @@
+---
+import type { AuthenticationProps } from './authentication'
+
+import Form from '@blocks/Form/Form.astro'
+import Layout from '@blocks/Layout/Layout.astro'
+
+import styles from './authentication.module.scss'
+
+import type { FormField } from '@blocks/Form/form'
+import { classNames } from 'webcoreui'
+import { ConditionalWrapper, Tabs } from 'webcoreui/astro'
+
+interface Props extends AuthenticationProps {}
+
+const {
+    layout,
+    banner,
+    type = 'signup',
+    loginForm,
+    signUpForm,
+    tabs,
+    reverse,
+    className,
+    ...rest
+} = Astro.props
+
+const defaultLoginFormFields: FormField[] = [
+    { type: 'email', label: 'Email', name: 'email' },
+    { type: 'password', label: 'Password', name: 'password', autoComplete: true },
+    { type: 'button', label: 'Login' }
+]
+
+const defaultSignUpFormFields: FormField[] = [
+    { type: 'email', label: 'Email', name: 'email' },
+    { type: 'password', label: 'Password', name: 'password', autoComplete: true },
+    { type: 'checkbox', label: 'I accept the <a href="#">terms and conditions</a>', name: 'terms' },
+    { type: 'button', label: 'Sign Up' }
+]
+
+const loginProps = {
+    id: 'login-form',
+    fields: defaultLoginFormFields,
+    ...loginForm
+}
+
+const signUpProps = {
+    id: 'sign-up-form',
+    fields: defaultSignUpFormFields,
+    ...signUpForm
+}
+
+const layoutClasses = classNames([
+    'flex',
+    styles.layout,
+    reverse && 'row-reverse',
+    className
+])
+
+const useTabs = !!tabs?.items?.length
+---
+
+<Layout {...layout} {...rest} class={styles.body} className={layoutClasses}>
+    {Astro.slots.has('menu') && (
+        <div slot="menu">
+            <slot name="menu" />
+        </div>
+    )}
+
+    <ConditionalWrapper condition={useTabs}>
+        {useTabs && (
+            <Tabs {...tabs} className={styles.tabs} slot="wrapper">
+                children
+            </Tabs>
+        )}
+
+        <ConditionalWrapper condition={useTabs}>
+            <div
+                slot="wrapper"
+                data-tab="signup"
+                data-active={type === 'signup'}
+            >
+                children
+            </div>
+
+            {(type === 'signup' || useTabs) && (
+                <Form {...signUpProps} />
+            )}
+        </ConditionalWrapper>
+
+        <ConditionalWrapper condition={useTabs}>
+            <div
+                slot="wrapper"
+                data-tab="login"
+                data-active={type === 'login'}
+            >
+                children
+            </div>
+
+            {(type === 'login' || useTabs) && (
+                <Form {...loginProps} />
+            )}
+        </ConditionalWrapper>
+    </ConditionalWrapper>
+
+    {banner?.src && (
+        <img
+            src={banner.src}
+            alt={banner.alt}
+            width={banner.width}
+            height={banner.height}
+            class={styles.banner}
+        />
+    )}
+</Layout>
+
+<script>
+    import { useForm } from '@blocks/Form/useForm'
+
+    const loginForm = useForm('#login-form')
+    const signUpForm = useForm('#sign-up-form')
+
+    if (loginForm) {
+        loginForm.preventDefault()
+            .onSubmit(form => {
+                // eslint-disable-next-line no-console
+                console.log('Submitting login form with values:', form)
+            })
+    }
+
+    if (signUpForm) {
+        signUpForm.preventDefault()
+            .onSubmit(form => {
+                // eslint-disable-next-line no-console
+                console.log('Submitting sign up form with values:', form)
+            })
+    }
+</script>

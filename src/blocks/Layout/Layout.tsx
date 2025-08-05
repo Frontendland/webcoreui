@@ -21,6 +21,7 @@ const Layout = ({
     insideFooter,
     scripts,
     children,
+    bodyClassName,
     ...rest
 }: ReactLayoutProps) => {
     const hasSidebar = leftSidebar || rightSidebar
@@ -36,7 +37,7 @@ const Layout = ({
             <head>
                 <SEO {...seo} />
             </head>
-            <body {...rest}>
+            <body {...rest} className={bodyClassName}>
                 {menu && (
                     <Menu {...menu}>
                         {insideMenu || <span />}

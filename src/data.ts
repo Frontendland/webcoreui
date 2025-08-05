@@ -26,7 +26,8 @@ import rocketIcon from '@blocks/Icon/icons/rocket.svg?raw'
 import terminalIcon from '@blocks/Icon/icons/terminal.svg?raw'
 
 import type { TilesProps } from '@blocks/Tiles/tiles'
-import type { PaginationProps } from 'webcoreui/astro'
+import type { AuthenticationProps } from '@templates/Authentication/authentication'
+import type { PaginationProps, TabsProps } from 'webcoreui/astro'
 
 export const accordionItems = [{
     title: 'Do you offer support?',
@@ -779,6 +780,61 @@ export const getBlogTemplateData = (theme = 'success') => ({
                 'https://twitter.com'
             ]
         }
+    }
+})
+
+export const getAuthenticationTemplateData = () => ({
+    layout: {
+        seo: {
+            title: 'Authentication Template - Webcore',
+            url: 'https://webcoreui.dev/',
+            description: 'A customizable and easy to use template for products.',
+            faviconUrl: '/logo.svg'
+        },
+        menu: {
+            logo: {
+                html: logo
+            },
+            items: [
+                { name: '<- Back to templates', href: '/templates' }
+            ]
+        },
+        footer: {
+            logo: {
+                html: logo
+            },
+            columns: [
+                {
+                    title: 'Sitemap',
+                    items: [
+                        { href: '/', name: 'Home' },
+                        { href: '/templates', name: 'All templates' }
+                    ]
+                }
+            ],
+            subText: `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
+        }
+    },
+    banner: {
+        src: '/img/placeholder-hd3.png',
+        alt: 'Banner',
+        width: 500,
+        height: 1000
+    },
+    type: 'login' as AuthenticationProps['type'],
+    tabs: {
+        theme: 'outline' as TabsProps['theme'],
+        even: true,
+        items: [
+            {
+                label: 'Login',
+                value: 'login',
+                active: true
+            }, {
+                label: 'Sign Up',
+                value: 'signup'
+            }
+        ]
     }
 })
 

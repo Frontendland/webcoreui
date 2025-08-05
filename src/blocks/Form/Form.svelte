@@ -21,7 +21,7 @@
     }: FormProps = $props()
 
     const classes = classNames([
-        'grid',
+        'flex column',
         gap || 'md',
         className
     ])

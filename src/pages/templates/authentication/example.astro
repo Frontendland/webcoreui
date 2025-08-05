@@ -1,0 +1,80 @@
+---
+import { Icon , type TabsProps } from 'webcoreui/astro'
+
+import logo from '@img/logo.svg?raw'
+
+import Authentication from '@templates/Authentication/Authentication.astro'
+
+// Your layout, including menu and footer
+const layout = {
+    seo: {
+        title: 'Authentication Template - Webcore',
+        url: 'https://webcoreui.dev/',
+        description: 'A customizable and easy to use template for products.',
+        faviconUrl: '/logo.svg'
+    },
+    menu: {
+        logo: {
+            html: logo
+        },
+        items: [
+            { name: 'Home', href: '/' }
+        ]
+    },
+    footer: {
+        logo: {
+            html: logo
+        },
+        columns: [
+            {
+                title: 'Sitemap',
+                items: [
+                    { href: '/', name: 'Home' },
+                    { href: 'https://webcoreui.dev/templates', name: 'Templates' }
+                ]
+            }
+        ],
+        subText: `© ${new Date().getFullYear()} Webcore. All Rights Reserved.`
+    }
+}
+
+// Your banner image
+const banner = {
+    src: '/img/placeholder-hd3.png',
+    alt: 'Banner',
+    width: 500,
+    height: 1000
+}
+
+// Tabs if you need both login and sign up forms
+const tabs = {
+    theme: 'outline' as TabsProps['theme'],
+    even: true,
+    items: [
+        {
+            label: 'Login',
+            value: 'login',
+            active: true
+        }, {
+            label: 'Sign Up',
+            value: 'signup'
+        }
+    ]
+}
+---
+
+<Authentication
+    type="login"
+    layout={layout}
+    banner={banner}
+    tabs={tabs}
+>
+    <a
+        slot="menu"
+        href="https://github.com/Frontendland/webcoreui"
+        target="_blank"
+        rel="noreferrer"
+    >
+        <Icon type="github" size={18} />
+    </a>
+</Authentication>

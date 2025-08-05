@@ -1,0 +1,18 @@
+---
+import { Icon } from 'webcoreui/astro'
+
+import { getAuthenticationTemplateData } from '@data'
+
+import Authentication from '@templates/Authentication/Authentication.astro'
+---
+
+<Authentication {...getAuthenticationTemplateData()}>
+    <a
+        slot="menu"
+        href="https://github.com/Frontendland/webcoreui"
+        target="_blank"
+        rel="noreferrer"
+    >
+        <Icon type="github" size={18} />
+    </a>
+</Authentication>

@@ -20,7 +20,7 @@ const Form = ({
     ...rest
 }: FormProps) => {
     const classes = classNames([
-        'grid',
+        'flex column',
         gap || 'md',
         className
     ])
@@ -57,7 +57,11 @@ const Form = ({
                     )
                 }
 
-                return renderField(field)
+                return (
+                    <React.Fragment key={index}>
+                        {renderField(field)}
+                    </React.Fragment>
+                )
             })}
         </form>
     )

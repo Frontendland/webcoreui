@@ -1,0 +1,37 @@
+@use 'webcoreui/config' as *;
+
+.body {
+    @include layout(grid);
+    @include size(h100vh);
+
+    grid-template-rows:  auto 1fr auto;
+}
+
+.layout {
+    @include size('w100%', 'h100%');
+    @include spacing(none-auto);
+    @include layout(h-center);
+
+    form, section {
+        @include layout(flex, column, h-center);
+        flex: 2;
+        max-width: 600px;
+    }
+
+    img {
+        @include size('h100%');
+        @include visibility(none);
+
+        flex: 3;
+    }
+}
+
+.tabs > div > div {
+    width: auto !important;
+}
+
+@include media(md) {
+    .layout img {
+        @include visibility(block);
+    }
+}

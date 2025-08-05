@@ -309,6 +309,7 @@ import { Accordion } from 'webcoreui/react'
 
 ## Templates
 
+- [Authentication](https://github.com/Frontendland/webcoreui/tree/main/src/templates/Authentication)
 - [Blog](https://github.com/Frontendland/webcoreui/tree/main/src/templates/Blog)
 - [Portfolio](https://github.com/Frontendland/webcoreui/tree/main/src/templates/Portfolio)
 - [ProductPage](https://github.com/Frontendland/webcoreui/tree/main/src/templates/ProductPage)
