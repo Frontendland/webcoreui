@@ -788,7 +788,7 @@ export const getAuthenticationTemplateData = () => ({
         seo: {
             title: 'Authentication Template - Webcore',
             url: 'https://webcoreui.dev/',
-            description: 'A customizable and easy to use template for products.',
+            description: 'A customizable and easy to use template for login and sign up forms.',
             faviconUrl: '/logo.svg'
         },
         menu: {
