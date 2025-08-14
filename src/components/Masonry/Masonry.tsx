@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type JSX } from 'react'
 import type { ReactMasonryProps } from './masonry'
 
 import { classNames } from '../../utils/classNames'

@@ -132,7 +132,7 @@ const Carousel = ({
         const usedInAstro = carousel.current?.children[0].nodeName === 'ASTRO-SLOT'
 
         carouselItems.current = usedInAstro
-            ? carousel.current.querySelectorAll('li')
+            ? carousel.current?.querySelectorAll('li')
             : carousel.current?.children
 
         carouselContainer.current?.addEventListener('scroll', scroll)

@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { type JSX } from 'react'
 import { classNames } from 'webcoreui'
 import { Accordion } from 'webcoreui/react'
 
