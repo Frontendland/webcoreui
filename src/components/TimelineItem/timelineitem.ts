@@ -1,3 +1,4 @@
+import type { JSX } from 'react'
 import type { Snippet } from 'svelte'
 
 import type { IconProps } from '../Icon/icon'

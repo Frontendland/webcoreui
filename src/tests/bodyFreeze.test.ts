@@ -20,6 +20,7 @@ describe('bodyFreeze', () => {
             get: vi.fn(() => 1000)
         })
 
+        // @ts-expect-error missing property
         globalThis.setTimeout = vi.fn((fn, _) => fn())
     })
 
