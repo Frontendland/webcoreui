@@ -1,4 +1,5 @@
 import { getAdditionalTypeExports, getAdditionalTypeImports } from './additionalTypes.js'
+import { integrationTypes } from './integrationTypes.js'
 import { utilityTypes } from './utilityTypes.js'
 
 import fs from 'fs'
@@ -113,6 +114,10 @@ const buildTypes = type => {
 
     if (type === 'utils') {
         return utilityTypes
+    }
+
+    if (type === 'integration') {
+        return integrationTypes
     }
 }
 

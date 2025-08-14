@@ -8,7 +8,6 @@
         "dev": "astro dev",
         "build": "astro check && astro build",
         "build:package": "node scripts/build.js",
-        "build:local": "node scripts/build.js --local",
         "compile": "node scripts/sass.js",
         "test": "vitest run && npm run test:sass",
         "test:dev": "vitest",
@@ -51,8 +50,9 @@
         "./astro": "./astro.js",
         "./svelte": "./svelte.js",
         "./react": "./react.js",
-        "./styles": "./scss/index.scss",
         "./icons": "./icons.js",
+        "./integration": "./integration.js",
+        "./styles": "./scss/index.scss",
         "./config": "./scss/config.scss"
     },
     "files": [
@@ -70,6 +70,8 @@
         "react.js",
         "index.js",
         "index.d.ts",
+        "integration.js",
+        "integration.d.ts",
         "README.md",
         "LICENSE"
     ],

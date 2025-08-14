@@ -1,4 +1,4 @@
-import { buildIconImports,buildImports, buildUtilImports } from './buildImports.js'
+import { buildIconImports, buildImports, buildUtilImports } from './buildImports.js'
 import buildTypes from './buildTypes.js'
 
 import fs from 'fs'
@@ -13,18 +13,9 @@ const folders = {
 const files = {
     'README.md': 'dist/README.md',
     'LICENSE': 'dist/LICENSE',
-    'package.json': 'dist/package.json'
+    'package.json': 'dist/package.json',
+    'src/integration.js': 'dist/integration.js'
 }
-
-const sassConfigEntry = 'dist/scss/config.scss'
-const sassConfigs = [
-    'dist/scss/config/color-palette.scss',
-    'dist/scss/config/css-values.scss',
-    'dist/scss/config/layout.scss',
-    'dist/scss/config/mixins.scss',
-    'dist/scss/config/typography.scss',
-    'dist/scss/config/variables.scss'
-]
 
 console.log('🚀 Preparing package build')
 
@@ -36,24 +27,6 @@ Object.keys(folders).forEach(key => {
     fs.cp(key, folders[key], { recursive: true }, error => {
         if (error) {
             console.error('🚨 error copying directory', error)
-        }
-
-        if (key.includes('scss') && !process.argv[2]) {
-            const configFile = fs.readFileSync(sassConfigEntry, 'utf-8')
-
-            fs.writeFileSync(
-                sassConfigEntry,
-                configFile.replace('webcore.config', '../../../webcore.config')
-            )
-
-            sassConfigs.forEach(config => {
-                const file = fs.readFileSync(config, 'utf-8')
-
-                fs.writeFileSync(
-                    config,
-                    file.replace('webcore.config', '../../../../webcore.config')
-                )
-            })
         }
     })
 })
@@ -89,5 +62,6 @@ fs.writeFileSync('dist/svelte.d.ts', buildTypes('svelte'))
 fs.writeFileSync('dist/react.d.ts', buildTypes('react'))
 fs.writeFileSync('dist/icons.d.ts', buildTypes('icons'))
 fs.writeFileSync('dist/index.d.ts', buildTypes('utils'))
+fs.writeFileSync('dist/integration.d.ts', buildTypes('integration'))
 
 console.log('✅ Package built')

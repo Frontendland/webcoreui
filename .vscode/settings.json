@@ -1,6 +1,11 @@
 {
     "svelte.plugin.svelte.compilerWarnings": {},
     "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "astro",
         "svelte"
     ],
     "search.exclude": {

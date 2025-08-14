@@ -8,6 +8,7 @@ import eslintPluginAstro from 'eslint-plugin-astro'
 import eslintPluginReact from 'eslint-plugin-react'
 import eslintPluginSimpleImportSort from 'eslint-plugin-simple-import-sort'
 import eslintPluginSvelte from 'eslint-plugin-svelte'
+import globals from 'globals'
 import eslintPluginTypeScript from 'typescript-eslint'
 
 export default [
@@ -17,6 +18,12 @@ export default [
     ...eslintPluginAstro.configs.recommended,
     ...eslintPluginTypeScript.configs.recommended,
     {
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                ...globals.node
+            }
+        },
         plugins: {
             'simple-import-sort': eslintPluginSimpleImportSort
         },
