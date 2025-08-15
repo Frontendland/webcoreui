@@ -9,6 +9,7 @@ import Card from '@components/Card/Card.tsx'
 import Carousel from '@components/Carousel/Carousel.tsx'
 import Checkbox from '@components/Checkbox/Checkbox.tsx'
 import Collapsible from '@components/Collapsible/Collapsible.tsx'
+import ContextMenu from '@components/ContextMenu/ContextMenu.tsx'
 import Copy from '@components/Copy/Copy.tsx'
 import DataTable from '@components/DataTable/DataTable.tsx'
 import Icon from '@components/Icon/Icon.tsx'
@@ -29,6 +30,7 @@ import ThemeSwitcher from '@components/ThemeSwitcher/ThemeSwitcher.tsx'
 import Toast from '@components/Toast/Toast.tsx'
 import Box from '@static/Box.tsx'
 
+import { closeContext } from '@utils/context'
 import { toast } from '@utils/toast'
 
 import styles from './playground.module.scss'
@@ -119,6 +121,26 @@ const ReactPlayground = () => {
                 >
                     <span>This paragraph can be toggled on and off.</span>
                 </Collapsible>
+            </Card>
+
+            <Card title="ContextMenu">
+                <ContextMenu
+                    className="ctx"
+                    context={
+                        <List
+                            itemGroups={listWithStates}
+                            showSearchBar={true}
+                            showSearchBarIcon={true}
+                            searchBarPlaceholder="Search the app..."
+                            noResultsLabel="Nothing found..."
+                            wrapperClassName="react-ctx"
+                            onSelect={() => closeContext('.react-ctx')}
+                        />
+                    }
+                >
+                    <span className="muted">Right-click here</span>
+                    <span className="muted">Click &quot;Sign out&quot; to close context.</span>
+                </ContextMenu>
             </Card>
 
             <Card title="Copy">

@@ -224,4 +224,14 @@ const externalLinks = [
     .relative {
         @include position(relative);
     }
+
+    .ctx {
+        @include size('w100%', h150px);
+        @include border(primary-40);
+        @include border-radius();
+        @include background(primary-60);
+        @include layout(flex, column, center);
+
+        border-style: dashed;
+    }
 </style>

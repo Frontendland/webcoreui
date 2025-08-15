@@ -1,0 +1,24 @@
+@use '../../scss/config.scss' as *;
+
+.ctx {
+    @include position(relative);
+}
+
+.content {
+    @include position(absolute);
+    @include background(primary-70);
+    @include size(wmax-content);
+    @include layer(modal);
+    @include transition(.2s);
+    @include visibility(0);
+
+    transform: scale(.95);
+    pointer-events: none;
+
+    &[data-show="true"] {
+        @include visibility(1);
+
+        transform: scale(1);
+        pointer-events: all;
+    }
+}

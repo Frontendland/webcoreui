@@ -7,6 +7,7 @@
     import Carousel from '@components/Carousel/Carousel.svelte'
     import Checkbox from '@components/Checkbox/Checkbox.svelte'
     import Collapsible from '@components/Collapsible/Collapsible.svelte'
+    import ContextMenu from '@components/ContextMenu/ContextMenu.svelte'
     import Copy from '@components/Copy/Copy.svelte'
     import DataTable from '@components/DataTable/DataTable.svelte'
     import Icon from '@components/Icon/Icon.svelte'
@@ -27,6 +28,7 @@
     import Toast from '@components/Toast/Toast.svelte'
     import Box from '@static/Box.svelte'
 
+    import { closeContext } from '@utils/context'
     import { toast } from '@utils/toast'
 
     import styles from './playground.module.scss'
@@ -114,12 +116,31 @@
         <Collapsible maxHeight="50px">
             <span>This paragraph can be toggled on and off.</span>
             {#snippet on()}
-                <Button >Show</Button>
+                <Button>Show</Button>
             {/snippet}
             {#snippet off()}
-                <Button >Hide</Button>
+                <Button>Hide</Button>
             {/snippet}
         </Collapsible>
+    </Card>
+
+    <Card title="ContextMenu">
+        <ContextMenu className="ctx">
+            <span class="muted">Right-click here</span>
+            <span class="muted">Click &quot;Sign out&quot; to close context.</span>
+
+            {#snippet context()}
+                <List
+                    itemGroups={listWithStates}
+                    showSearchBar={true}
+                    showSearchBarIcon={true}
+                    searchBarPlaceholder="Search the app..."
+                    noResultsLabel="Nothing found..."
+                    wrapperClassName="svelte-ctx"
+                    onSelect={() => closeContext('.svelte-ctx')}
+                />
+            {/snippet}
+        </ContextMenu>
     </Card>
 
     <Card title="Copy">

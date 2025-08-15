@@ -1,0 +1,90 @@
+---
+import type { ContextMenuProps } from './contextmenu'
+
+import { classNames } from '../../utils/classNames'
+
+import styles from './contextmenu.module.scss'
+
+interface Props extends ContextMenuProps {}
+
+const {
+    element = 'div',
+    className,
+    ...rest
+} = Astro.props
+
+const Component = element
+
+const classes = classNames([
+    styles.ctx,
+    className
+])
+
+const props = {
+    class: classes
+}
+
+if (!Astro.slots.has('context')) {
+    // eslint-disable-next-line no-console, max-len
+    console.error('Missing "context" slot. Attach slot="context" to one of the children of your <ContextMenu> component.')
+}
+---
+
+<Component {...rest} {...props} data-id="w-ctx">
+    <slot />
+    <div class={styles.content} data-id="w-ctx-content">
+        <slot name="context" />
+    </div>
+</Component>
+
+<script>
+    import { get, on } from '../../utils/DOMUtils'
+
+    const addEventListeners = () => {
+        const ctxs = get('[data-id="w-ctx"]', true) as NodeListOf<HTMLElement>
+        const contents: HTMLDivElement[] = []
+
+        const hideContent = (content: HTMLDivElement, event: MouseEvent) => {
+            if (content.contains(event.target as Node)) {
+                return
+            }
+
+            content.dataset.show = 'false'
+
+            setTimeout(() => {
+                content.style.top = ''
+                content.style.left = ''
+            }, 200)
+        }
+
+        [...ctxs].forEach((ctx, i) => {
+            on(ctx, 'contextmenu', (event: MouseEvent) => {
+                event.preventDefault()
+
+                if (!contents[i]) {
+                    const target = event.currentTarget as HTMLElement
+                    contents[i] = target.lastElementChild as HTMLDivElement
+                }
+
+                if (contents.length > 1) {
+                    contents.forEach((content, y) => {
+                        if (i !== y) {
+                            hideContent(content, event)
+                        }
+                    })
+                }
+
+                contents[i].style.top = `${event.offsetY}px`
+                contents[i].style.left = `${event.offsetX}px`
+                contents[i].dataset.show = 'true'
+            })
+        })
+
+        on(document, 'click', (event: MouseEvent) => {
+            contents.forEach(content => hideContent(content, event))
+        })
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
+</script>

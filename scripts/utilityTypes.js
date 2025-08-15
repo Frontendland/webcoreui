@@ -126,6 +126,7 @@ export type Toast = {
 declare module 'webcoreui' {
     export const bodyFreeze: (freeze: boolean) => void
     export const classNames: (classes: any[]) => string
+    export const closeContext: (ctx: string | HTMLElement) => void
 
     export const setCookie: (name: string, value: string, days: number) => void
     export const getCookie: (name: string) => string | null

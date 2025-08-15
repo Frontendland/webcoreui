@@ -1,0 +1,72 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroContextMenu from '@components/ContextMenu/ContextMenu.astro'
+import SvelteContextMenu from '@components/ContextMenu/ContextMenu.svelte'
+import List from '@components/List/List.astro'
+
+import { listWithGroups } from '@data'
+---
+
+<Layout>
+    <h1>ContextMenu</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroContextMenu className="ctx">
+                <span class="muted">Right-click here</span>
+                <span class="muted">Click "Sign out" to close context.</span>
+
+                <List
+                    itemGroups={listWithGroups}
+                    showSearchBar={true}
+                    showSearchBarIcon={true}
+                    searchBarPlaceholder="Search the app..."
+                    noResultsLabel="Nothing found..."
+                    slot="context"
+                    wrapperClassName="ctx-content"
+                />
+            </AstroContextMenu>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteContextMenu className="ctx s" client:visible>
+                <span class="muted">Right-click here</span>
+                <span class="muted">Click "Sign out" to close context.</span>
+
+                <List
+                    itemGroups={listWithGroups}
+                    showSearchBar={true}
+                    showSearchBarIcon={true}
+                    searchBarPlaceholder="Search the app..."
+                    noResultsLabel="Nothing found..."
+                    slot="context"
+                    wrapperClassName="ctx-content"
+                />
+            </SvelteContextMenu>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <div class="ctx">
+                <a href="/react" class="muted">See in React playground {'->'}</a>
+            </div>
+        </ComponentWrapper>
+    </div>
+</Layout>
+
+<style lang="scss" is:global>
+    @use '../../scss/config.scss' as *;
+
+    // If you need to trigger ctx when clicking on elements
+    // Inside the context area
+    .ctx span {
+        pointer-events: none;
+    }
+</style>
+
+<script>
+    import { closeContext } from '@utils/context'
+    import { on } from '@utils/DOMUtils'
+
+    on('[data-value="sign-out"]', 'click', () => closeContext('.ctx-content'), true)
+</script>
