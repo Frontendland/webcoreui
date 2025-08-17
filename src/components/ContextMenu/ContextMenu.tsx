@@ -24,8 +24,13 @@ const ContextMenu = ({
         event.preventDefault()
 
         if (content.current) {
-            content.current.style.top = `${event.offsetY}px`
-            content.current.style.left = `${event.offsetX}px`
+            const target = event.currentTarget as HTMLElement
+            const rect = target.getBoundingClientRect()
+            const x = event.clientX - rect.left
+            const y = event.clientY - rect.top
+
+            content.current.style.top = `${y}px`
+            content.current.style.left = `${x}px`
             content.current.dataset.show = 'true'
         }
     }

@@ -54,16 +54,6 @@ import { listWithGroups } from '@data'
     </div>
 </Layout>
 
-<style lang="scss" is:global>
-    @use '../../scss/config.scss' as *;
-
-    // If you need to trigger ctx when clicking on elements
-    // Inside the context area
-    .ctx span {
-        pointer-events: none;
-    }
-</style>
-
 <script>
     import { closeContext } from '@utils/context'
     import { on } from '@utils/DOMUtils'

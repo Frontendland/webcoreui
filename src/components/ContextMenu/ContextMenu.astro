@@ -61,8 +61,9 @@ if (!Astro.slots.has('context')) {
             on(ctx, 'contextmenu', (event: MouseEvent) => {
                 event.preventDefault()
 
+                const target = event.currentTarget as HTMLElement
+
                 if (!contents[i]) {
-                    const target = event.currentTarget as HTMLElement
                     contents[i] = target.lastElementChild as HTMLDivElement
                 }
 
@@ -74,8 +75,12 @@ if (!Astro.slots.has('context')) {
                     })
                 }
 
-                contents[i].style.top = `${event.offsetY}px`
-                contents[i].style.left = `${event.offsetX}px`
+                const rect = target.getBoundingClientRect()
+                const x = event.clientX - rect.left
+                const y = event.clientY - rect.top
+
+                contents[i].style.top = `${y}px`
+                contents[i].style.left = `${x}px`
                 contents[i].dataset.show = 'true'
             })
         })

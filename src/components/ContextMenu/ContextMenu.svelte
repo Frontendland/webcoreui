@@ -24,8 +24,13 @@
         event.preventDefault()
 
         if (content) {
-            content.style.top = `${event.offsetY}px`
-            content.style.left = `${event.offsetX}px`
+            const target = event.currentTarget as HTMLElement
+            const rect = target.getBoundingClientRect()
+            const x = event.clientX - rect.left
+            const y = event.clientY - rect.top
+
+            content.style.top = `${y}px`
+            content.style.left = `${x}px`
             content.dataset.show = 'true'
         }
     }
