@@ -40,14 +40,18 @@
 - [Documentation](#documentation)
 - [Getting started](#getting-started)
     - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
+    - [Installation with CLI](#installation-with-cli)
+    - [Manual Installation](#manual-installation)
     - [Setup](#setup)
     - [Using Components](#using-components)
 - [Components](#components)
+- [Blocks](#blocks)
+- [Templates](#templates)
 
 ## Documentation
 
-Full documentation available on [webcoreui.dev](https://webcoreui.dev).
+- Full documentation available on [webcoreui.dev](https://webcoreui.dev).
+- For installation steps, visit our [setup docs](https://webcoreui.dev/docs/setup).
 
 ## Getting Started
 
@@ -73,7 +77,28 @@ Depending on your project setup, you'll also need the following packages:
     - [React](https://www.npmjs.com/package/react) - `v19.0`
     - [React DOM](https://www.npmjs.com/package/react-dom) -`v19.0`
 
-### Installation
+## Installation with CLI
+
+You can use our CLI tool to create a new Webcore project, or integrate it into an existing project more easily:
+
+```bash
+# Create a new Webcore project
+npm create webcore@latest
+
+# Update configuration files for an existing Astro project
+npm create webcore config
+
+# Create a new Webcore project with a specific template
+npm create webcore@latest template [TemplateName] [destination]
+
+# Use the "Portfolio" template on the current directory
+npm create webcore@latest template Portfolio
+
+# Create the "Portfolio" template in the "portfolio" directory
+npm create webcore@latest template Portfolio ./portfolio
+```
+
+### Manual Installation
 
 Install Webcore as a dependency by running one of the following command:
 
