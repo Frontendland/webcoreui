@@ -86,7 +86,7 @@ You can use our CLI tool to create a new Webcore project, or integrate it into a
 npm create webcore@latest
 
 # Update configuration files for an existing Astro project
-npm create webcore@lates config
+npm create webcore@latest config
 
 # Create a new Webcore project with a specific template
 npm create webcore@latest template [TemplateName] [destination]
