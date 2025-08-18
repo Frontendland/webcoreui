@@ -87,7 +87,7 @@ yarn add webcoreui
 
 ### Setup
 
-Add the following integration to your Astro configuration file at the root of your project directory:
+Add the following integration to your Astro configuration file (`astro.config.mjs`) at the root of your project directory:
 
 ```js
 import { webcore } from 'webcoreui/integration'
