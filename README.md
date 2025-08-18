@@ -77,7 +77,7 @@ Depending on your project setup, you'll also need the following packages:
     - [React](https://www.npmjs.com/package/react) - `v19.0`
     - [React DOM](https://www.npmjs.com/package/react-dom) -`v19.0`
 
-## Installation with CLI
+### Installation with CLI
 
 You can use our CLI tool to create a new Webcore project, or integrate it into an existing project more easily:
 
@@ -86,7 +86,7 @@ You can use our CLI tool to create a new Webcore project, or integrate it into a
 npm create webcore@latest
 
 # Update configuration files for an existing Astro project
-npm create webcore config
+npm create webcore@lates config
 
 # Create a new Webcore project with a specific template
 npm create webcore@latest template [TemplateName] [destination]
