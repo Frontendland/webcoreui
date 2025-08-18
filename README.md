@@ -87,6 +87,16 @@ yarn add webcoreui
 
 ### Setup
 
+Add the following integration to your Astro configuration file at the root of your project directory:
+
+```js
+import { webcore } from 'webcoreui/integration'
+
+export default defineConfig({
+    integrations: [webcore()]
+})
+```
+
 Create an empty [`webcore.config.scss`](https://webcoreui.dev/docs/css-configuration#webcoreconfigscss) file at the root of your project to setup CSS configurations. Setup default styles and fonts by calling the following in your global SCSS file:
 
 ```scss
@@ -101,7 +111,7 @@ Create an empty [`webcore.config.scss`](https://webcoreui.dev/docs/css-configura
 > [!TIP]
 > You can download the fonts Webcore uses from the [`public/fonts`](https://github.com/Frontendland/webcoreui/tree/main/public/fonts) directory.
 
-The `Setup` mixin can also accept the following options:
+The `setup` mixin can also accept the following options:
 
 
 | Property  | Default value | Purpose |
