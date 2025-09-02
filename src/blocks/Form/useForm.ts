@@ -8,7 +8,7 @@ export type FormActions = {
     getInput: (field: string) => HTMLInputElement | null
     getInputValue: (field: string) => string | null
     getInputValues: () => Record<string, string>
-    update: (field: string, value: string) => FormActions
+    update: (field: string, value: string | boolean) => FormActions
     setValidations: (validationRules: Record<string, boolean>) => FormActions
     isValidForm: () => boolean,
     onChange: (callback: (formValues: Record<string, string>) => void) => FormActions
@@ -66,7 +66,11 @@ export const useForm = (selector: string): FormActions | null => {
         update(field, value) {
             const input = form.querySelector(`[name=${field}]`) as HTMLInputElement
 
-            if (input) {
+            if (typeof value === 'boolean') {
+                input.checked = value
+            }
+
+            if (typeof value === 'string') {
                 input.value = value
             }
 
