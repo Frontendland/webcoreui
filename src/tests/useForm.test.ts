@@ -1,6 +1,5 @@
-
 import { useForm } from '@blocks/Form/useForm'
-import { beforeEach,describe, expect, it, type Mock, vi } from 'vitest'
+import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest'
 import { get } from 'webcoreui'
 
 vi.mock('webcoreui', () => {
