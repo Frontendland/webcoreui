@@ -1,12 +1,8 @@
 @use 'webcoreui/config' as *;
 
 .hero {
-    &.flex {
-        @include layout(flex, h-between, column, default);
-
-        div, img {
-            flex: 1;
-        }
+    .wrapper, img {
+        flex: 1;
     }
 
     h1 {
@@ -31,23 +27,7 @@
         @include spacing(mb-xs);
     }
 
-    .cta {
+    .cta, .avatar {
         @include spacing(mt-md);
-    }
-}
-
-@include media(sm) {
-    .hero {
-        &:not(.reverse) {
-            @include layout(v-center);
-        }
-
-        &.flex {
-            @include layout(row);
-        }
-
-        &.reverse {
-            @include layout(row-reverse);
-        }
     }
 }
