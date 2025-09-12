@@ -321,6 +321,7 @@ import { Accordion } from 'webcoreui/react'
 ## Blocks
 
 - [Author](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Author)
+- [AvatarWithRating](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/AvatarWithRating)
 - [BlogCard](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/BlogCard)
 - [ComponentMap](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/ComponentMap)
 - [DeviceMockup](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/DeviceMockup)

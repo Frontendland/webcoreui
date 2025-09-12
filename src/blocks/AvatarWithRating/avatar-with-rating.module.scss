@@ -1,0 +1,11 @@
+@use 'webcoreui/config' as *;
+
+.avatar {
+    b {
+        @include typography(primary);
+    }
+
+    .rating span:last-of-type {
+        @include typography(md);
+    }
+}

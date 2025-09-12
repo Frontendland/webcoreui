@@ -5,6 +5,7 @@ import Layout from '@static/Layout.astro'
 import Link from '@static/Link.astro'
 
 import Author from '@blocks/Author/Author.astro'
+import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.astro'
 import BlogCard from '@blocks/BlogCard/BlogCard.astro'
 import ComponentMap from '@blocks/ComponentMap/ComponentMap.astro'
 import DeviceMockup from '@blocks/DeviceMockup/DeviceMockup.astro'
@@ -25,7 +26,7 @@ import Team from '@blocks/Team/Team.astro'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
 
-import { gridWithIconsItems, members } from '@data'
+import { avatarGroup, gridWithIconsItems, members } from '@data'
 ---
 
 <Layout docs="/blocks/introduction">
@@ -112,6 +113,15 @@ import { gridWithIconsItems, members } from '@data'
                 />
                 <Link href="/blocks/team" />
             </div>
+
+            <Card title="Avatar with Rating">
+                <AvatarWithRating
+                    avatar={{ img: avatarGroup.slice(0, 3) }}
+                    rating={{ score: 5, color: 'var(--w-color-warning)' }}
+                    text="<b>123 students</b> already enrolled"
+                />
+                <Link href="/blocks/avatar-with-rating" />
+            </Card>
         </div>
         <div class="block-column flex column">
             <Card title="User with Rating">

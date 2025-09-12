@@ -1,0 +1,32 @@
+---
+import { Avatar, Rating } from 'webcoreui/astro'
+
+import type { AvatarWithRatingProps } from './avatarWithRating'
+import styles from './avatar-with-rating.module.scss'
+
+interface Props extends AvatarWithRatingProps {}
+
+const {
+    avatar,
+    rating,
+    text,
+    reverse,
+    className
+} = Astro.props
+
+const classes = [
+    'flex sm items-center',
+    styles.avatar,
+    className
+]
+---
+
+<div class:list={classes}>
+    <Avatar {...avatar} />
+    <div class:list={['flex xxs', reverse ? 'column-reverse' : 'column']}>
+        <Rating {...rating} className={styles.rating} />
+        {text && (
+            <span class="muted" set:html={text} />
+        )}
+    </div>
+</div>

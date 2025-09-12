@@ -2,8 +2,6 @@
 import ComponentWrapper from '@static/ComponentWrapper.astro'
 import Layout from '@static/Layout.astro'
 
-import Card from '@components/Card/Card.astro'
-
 import AstroExpandableTable from '@blocks/ExpandableTable/ExpandableTable.astro'
 import SvelteExpandableTable from '@blocks/ExpandableTable/ExpandableTable.svelte'
 import ReactExpandableTable from '@blocks/ExpandableTable/ExpandableTable.tsx'
@@ -68,22 +66,22 @@ const data = [
         <br />
         <h2>{section.title}</h2>
         <div class="grid xs-2 sm-3">
-            <Card title="Default">
+            <ComponentWrapper title="Default">
                 <section.component
                     headings={headings}
                     data={data}
                 />
-            </Card>
+            </ComponentWrapper>
 
-            <Card title="Custom number of visible rows">
+            <ComponentWrapper title="Custom number of visible rows">
                 <section.component
                     numberOfVisibleRows={3}
                     headings={headings}
                     data={data}
                 />
-            </Card>
+            </ComponentWrapper>
 
-            <Card title="Custom buttons">
+            <ComponentWrapper title="Custom buttons">
                 <section.component
                     numberOfVisibleRows={3}
                     expandButtonLabel="Toggle More"
@@ -92,7 +90,7 @@ const data = [
                     headings={headings}
                     data={data}
                 />
-            </Card>
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>

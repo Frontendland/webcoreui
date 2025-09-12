@@ -1,0 +1,108 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroAvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.astro'
+import SvelteAvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.svelte'
+import ReactAvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.tsx'
+
+import { getSections } from '@helpers'
+import { avatarGroup } from '@data'
+
+const sections = getSections({
+    title: 'examples',
+    components: [
+        AstroAvatarWithRating,
+        SvelteAvatarWithRating,
+        ReactAvatarWithRating
+    ]
+})
+---
+
+<Layout>
+    <h1>Avatar with Rating</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <div class="grid xs-2 sm-3">
+        <ComponentWrapper type="Astro">
+            <AstroAvatarWithRating
+                avatar={{ img: avatarGroup }}
+                rating={{ score: 5, color: 'var(--w-color-success)' }}
+                text="<b>123 students</b> enrolled"
+            />
+        </ComponentWrapper>
+        <ComponentWrapper type="Svelte">
+            <SvelteAvatarWithRating
+                avatar={{ img: avatarGroup }}
+                rating={{ score: 5, color: 'var(--w-color-warning)' }}
+                text="<b>123 students</b> enrolled"
+            />
+        </ComponentWrapper>
+        <ComponentWrapper type="React">
+            <ReactAvatarWithRating
+                avatar={{ img: avatarGroup }}
+                rating={{ score: 5, color: 'var(--w-color-info)' }}
+                text="<b>123 students</b> enrolled"
+            />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map((section: any) => (
+        <br />
+        <h2>{section.title}</h2>
+        <div class="grid xs-2 sm-3">
+            <ComponentWrapper title="Default with minimal setup">
+                <section.component
+                    avatar={{ img: avatarGroup }}
+                    rating={{ score: 5 }}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With text">
+                <section.component
+                    avatar={{ img: avatarGroup }}
+                    rating={{ score: 5, color: 'var(--w-color-warning)' }}
+                    text="<b>123 students</b> enrolled"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Reverse order">
+                <section.component
+                    avatar={{ img: avatarGroup }}
+                    rating={{ score: 5, color: 'var(--w-color-warning)' }}
+                    text="<b>123 students</b> enrolled"
+                    reverse={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Increasing avatars">
+                <section.component
+                    avatar={{ img: avatarGroup.slice(0, 4), size: [20, 30, 40, 50] }}
+                    rating={{ score: 5, color: 'var(--w-color-warning)' }}
+                    text="<b>123 students</b> enrolled"
+                    reverse={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rating text">
+                <section.component
+                    avatar={{ img: avatarGroup.slice(0, 3) }}
+                    text="<b>123 students</b> enrolled"
+                    reverse={true}
+                    rating={{
+                        score: 4.4,
+                        color: 'var(--w-color-warning)',
+                        showText: true,
+                        emptyColor: '#555',
+                        outline: false,
+                        text: 'Rated {0}/{1}'
+                    }}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
