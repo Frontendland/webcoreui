@@ -48,7 +48,7 @@ const Authentication = ({
     }
 
     const layoutClasses = classNames([
-        'flex',
+        'container flex',
         styles.layout,
         reverse && 'row-reverse',
         className
@@ -78,7 +78,12 @@ const Authentication = ({
     }, [])
 
     return (
-        <Layout {...layout} {...rest} bodyClassName={styles.body} className={layoutClasses}>
+        <Layout
+            {...layout}
+            {...rest}
+            bodyClassName={styles.body}
+            containerClassName={layoutClasses}
+        >
             <ConditionalWrapper
                 condition={useTabs}
                 wrapper={children => useTabs && (

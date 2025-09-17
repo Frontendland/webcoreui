@@ -41,7 +41,7 @@ const Blog = ({
         <Layout
             {...layout}
             {...rest}
-            className="flex column"
+            containerClassName="container flex column"
             atf={ATF()}
         >
             {!!tiles?.items?.length && (

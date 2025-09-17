@@ -50,7 +50,7 @@
     }
 
     const layoutClasses = classNames([
-        'flex',
+        'container flex',
         styles.layout,
         reverse && 'row-reverse',
         className
@@ -102,7 +102,12 @@
     </ConditionalWrapper>
 {/snippet}
 
-<Layout {...layout} {...rest} class={styles.body} className={layoutClasses}>
+<Layout
+    {...layout}
+    {...rest}
+    class={styles.body}
+    containerClassName={layoutClasses}
+>
     {#if useTabs}
         <Tabs {...tabs} className={styles.tabs}>
             {@render forms()}

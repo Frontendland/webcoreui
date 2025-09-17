@@ -26,7 +26,7 @@ const Portfolio = ({
     servicesCta,
     ...rest
 }: PortfolioProps) => (
-    <Layout {...layout} {...rest} className="flex column">
+    <Layout {...layout} {...rest} containerClassName="container flex column">
         {hero && <Hero {...hero} />}
 
         <section>

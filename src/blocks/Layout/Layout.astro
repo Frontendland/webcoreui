@@ -14,6 +14,7 @@ const {
     menu,
     footer,
     className,
+    containerClassName,
     ...rest
 } = Astro.props
 
@@ -22,9 +23,8 @@ const hasRightSidebar = Astro.slots.has('right-sidebar')
 const hasSidebar = hasLeftSidebar || hasRightSidebar
 
 const containerClasses = [
-    'container',
-    hasSidebar && 'flex column sm-row',
-    !hasSidebar && className
+    containerClassName || 'container',
+    hasSidebar && 'flex column sm-row'
 ]
 ---
 

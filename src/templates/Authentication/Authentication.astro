@@ -50,7 +50,7 @@ const signUpProps = {
 }
 
 const layoutClasses = classNames([
-    'flex',
+    'container flex',
     styles.layout,
     reverse && 'row-reverse',
     className
@@ -59,7 +59,12 @@ const layoutClasses = classNames([
 const useTabs = !!tabs?.items?.length
 ---
 
-<Layout {...layout} {...rest} class={styles.body} className={layoutClasses}>
+<Layout
+    {...layout}
+    {...rest}
+    class={styles.body}
+    containerClassName={layoutClasses}
+>
     {Astro.slots.has('menu') && (
         <div slot="menu">
             <slot name="menu" />

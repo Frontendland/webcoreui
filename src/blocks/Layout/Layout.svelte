@@ -14,6 +14,7 @@
         menu,
         footer,
         className,
+        containerClassName,
         insideMenu,
         atf,
         leftSidebar,
@@ -28,9 +29,8 @@
     const hasSidebar = leftSidebar || rightSidebar
 
     const containerClasses = classNames([
-        'container',
-        hasSidebar && 'flex column sm-row',
-        !hasSidebar && className
+        containerClassName || 'container',
+        hasSidebar && 'flex column sm-row'
     ])
 </script>
 

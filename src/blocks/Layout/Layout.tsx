@@ -9,10 +9,12 @@ import './layout.scss'
 
 const Layout = ({
     seo,
-    lang = 'lang',
+    lang = 'en',
     menu,
     footer,
     className,
+    containerClassName,
+    bodyClassName,
     insideMenu,
     atf,
     leftSidebar,
@@ -21,15 +23,13 @@ const Layout = ({
     insideFooter,
     scripts,
     children,
-    bodyClassName,
     ...rest
 }: ReactLayoutProps) => {
     const hasSidebar = leftSidebar || rightSidebar
 
     const containerClasses = classNames([
-        'container',
-        hasSidebar && 'flex column sm-row',
-        !hasSidebar && className
+        containerClassName || 'container',
+        hasSidebar && 'flex column sm-row'
     ])
 
     return (

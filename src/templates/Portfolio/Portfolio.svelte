@@ -27,7 +27,7 @@
     }: PortfolioProps = $props()
 </script>
 
-<Layout {...layout} {...rest} className="flex column">
+<Layout {...layout} {...rest} containerClassName="container flex column">
     {#if hero}
         <Hero {...hero} />
     {/if}

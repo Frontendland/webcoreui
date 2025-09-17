@@ -9,6 +9,7 @@ export type LayoutProps = {
     menu?: MenuProps
     footer?: FooterProps
     className?: string
+    containerClassName?: string
     [key: string]: any
 }
 

@@ -27,7 +27,7 @@
     }: SvelteBlogProps = $props()
 </script>
 
-<Layout {...layout} {...rest} className="flex column">
+<Layout {...layout} {...rest} containerClassName="container flex column">
     {#snippet atf()}
         {#if hero}
             <div class={styles.hero}>

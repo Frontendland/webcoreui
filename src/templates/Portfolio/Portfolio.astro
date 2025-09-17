@@ -29,7 +29,7 @@ const {
 
 ---
 
-<Layout {...layout} {...rest} className="flex column">
+<Layout {...layout} {...rest} containerClassName="container flex column">
     {Astro.slots.has('menu') && (
         <div slot="menu">
             <slot name="menu" />
