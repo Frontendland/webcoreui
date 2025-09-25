@@ -1,5 +1,5 @@
 ---
-import { Button, Card, Icon, type IconProps } from 'webcoreui/astro'
+import { Button, Card, Icon } from 'webcoreui/astro'
 
 import type { TilesProps } from './tiles'
 import styles from './tiles.module.scss'
@@ -25,7 +25,7 @@ const {
                     <Fragment>
                         {item.icon.startsWith('<svg')
                             ? <Fragment set:html={item.icon} />
-                            : <Icon type={item.icon as IconProps['type']} />
+                            : <Icon type={item.icon} />
                         }
                     </Fragment>
                 )}

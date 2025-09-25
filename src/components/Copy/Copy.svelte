@@ -41,7 +41,7 @@
         copiedButton!.style.opacity = '1'
         tooltip = ''
 
-        navigator.clipboard.writeText(text as string)
+        navigator.clipboard.writeText(text || '')
     }
 </script>
 

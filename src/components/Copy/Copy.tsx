@@ -42,7 +42,7 @@ const Copy = ({
 
         setTooltipText('')
 
-        navigator.clipboard.writeText(text as string)
+        navigator.clipboard.writeText(text || '')
     }
 
     return (

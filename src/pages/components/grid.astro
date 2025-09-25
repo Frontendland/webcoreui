@@ -16,13 +16,13 @@ const sections = getSections({
     components: [AstroGrid, SvelteGrid, ReactGrid]
 })
 
-const gap = {
+const gap: Responsive<Gap> = {
     default: 'xxs',
     xs: 'xs',
     sm: 'sm',
     md: 'md',
     lg: 'default'
-} as Responsive<Gap>
+}
 ---
 
 <Layout>

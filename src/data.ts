@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable max-lines */
 import type { ButtonProps } from '@components/Button/button'
+import type { SidebarProps } from '@components/Sidebar/sidebar'
 
 import Alert from '@components/Alert/Alert.astro'
 import Box from '@static/Box.astro'
@@ -25,9 +26,10 @@ import fileIcon from '@blocks/Icon/icons/file.svg?raw'
 import rocketIcon from '@blocks/Icon/icons/rocket.svg?raw'
 import terminalIcon from '@blocks/Icon/icons/terminal.svg?raw'
 
-import type { TilesProps } from '@blocks/Tiles/tiles'
 import type { AuthenticationProps } from '@templates/Authentication/authentication'
-import type { PaginationProps, TabsProps } from 'webcoreui/astro'
+import type { BlogProps } from '@templates/Blog/blog'
+import type { PortfolioProps } from '@templates/Portfolio/portfolio'
+import type { ProductPageProps } from '@templates/ProductPage/productPage'
 
 export const accordionItems = [{
     title: 'Do you offer support?',
@@ -328,12 +330,12 @@ export const itemGroupsWithTitle = [
     }
 ]
 
-export const itemGroupsWithBadges = [
+export const itemGroupsWithBadges: SidebarProps['groups'] = [
     {
         title: 'SITEMAP',
         items: [
             { name: 'Home', href: '#' },
-            { name: 'Docs', href: '#', badge: 'updated', badgeTheme: 'info' as ButtonProps['theme'] },
+            { name: 'Docs', href: '#', badge: 'updated', badgeTheme: 'info' },
             { name: 'Component', href: '#', badge: 'new components' }
         ]
     },
@@ -343,12 +345,12 @@ export const itemGroupsWithBadges = [
     }
 ]
 
-export const itemGroupsWithIcons = [
+export const itemGroupsWithIcons: SidebarProps['groups'] = [
     {
         title: 'SITEMAP',
         items: [
-            { name: 'Home', href: '#', icon: gitHubIcon, target: '_blank' as any },
-            { name: 'Docs', href: '#', badge: 'updated', badgeTheme: 'info' as ButtonProps['theme'], icon: fileIcon },
+            { name: 'Home', href: '#', icon: gitHubIcon, target: '_blank' },
+            { name: 'Docs', href: '#', badge: 'updated', badgeTheme: 'info', icon: fileIcon },
             { name: 'Component', href: '#', badge: 'new components', icon: componentsIcon, active: true }
         ]
     },
@@ -460,7 +462,7 @@ export const bottomNavigationItems = [
     }
 ]
 
-export const getProductPageTemplateData = (theme = 'success') => ({
+export const getProductPageTemplateData = (theme: ButtonProps['theme'] = 'success'): ProductPageProps => ({
     layout: {
         seo: {
             title: 'Product Page Template - Webcore',
@@ -502,7 +504,7 @@ export const getProductPageTemplateData = (theme = 'success') => ({
         })),
     carousel: {
         pagination: {
-            type: 'dots' as PaginationProps['type']
+            type: 'dots'
         }
     },
     recommended: {
@@ -521,8 +523,8 @@ export const getProductPageTemplateData = (theme = 'success') => ({
             }))
     },
     buttons: [
-        { text: 'Get Started ->', theme: theme as ButtonProps['theme'] },
-        { text: 'Demo', theme: 'secondary' as ButtonProps['theme'] }
+        { text: 'Get Started ->', theme },
+        { text: 'Demo', theme: 'secondary' }
     ],
     features: [
         'Easily configure your menu and footer',
@@ -538,7 +540,7 @@ export const getProductPageTemplateData = (theme = 'success') => ({
     }))
 })
 
-export const getPortfolioTemplateData = (theme = 'success') => ({
+export const getPortfolioTemplateData = (theme: ButtonProps['theme'] = 'success'): PortfolioProps => ({
     layout: {
         seo: {
             title: 'Portfolio Template - Webcore',
@@ -573,12 +575,12 @@ export const getPortfolioTemplateData = (theme = 'success') => ({
         heading: 'Hey, I\'m Josh 👋',
         subHeading: 'Senior React Developer based in Oregon',
         buttons: [
-            { text: 'Call Me', theme: theme as ButtonProps['theme'] },
-            { text: 'Send an Email', theme: 'outline' as ButtonProps['theme'] }
+            { text: 'Call Me', theme },
+            { text: 'Send an Email', theme: 'outline' }
         ],
         badge: {
             rounded: true,
-            theme: 'outline' as ButtonProps['theme'],
+            theme: 'outline',
             text: '⭐ Top rated developer'
         },
         image: {
@@ -630,7 +632,7 @@ export const getPortfolioTemplateData = (theme = 'success') => ({
             feedback: '"Thank you for your work! It turned out very nice!"'
         }
     ],
-    ratingCta: { text: 'More reviews', theme: 'secondary' as ButtonProps['theme'] },
+    ratingCta: { text: 'More reviews', theme: 'secondary' },
     myWork: {
         title: 'My Most Recent Work',
         items: Array
@@ -647,7 +649,7 @@ export const getPortfolioTemplateData = (theme = 'success') => ({
                 text: 'You can also pass <b>HTML</b> tags to your cards.'
             }))
     },
-    servicesCta: { text: 'Call Me', theme: theme as ButtonProps['theme'] },
+    servicesCta: { text: 'Call Me', theme },
     services: {
         secondary: true,
         items: [
@@ -668,7 +670,7 @@ export const getPortfolioTemplateData = (theme = 'success') => ({
     }
 })
 
-export const getBlogTemplateData = (theme = 'success') => ({
+export const getBlogTemplateData = (theme: ButtonProps['theme'] = 'success'): BlogProps => ({
     layout: {
         seo: {
             title: 'Blog Template - Webcore',
@@ -715,7 +717,7 @@ export const getBlogTemplateData = (theme = 'success') => ({
         buttons: [{ text: 'Read More' }],
         badge: {
             rounded: true,
-            theme: theme as ButtonProps['theme'],
+            theme,
             text: 'in JavaScript'
         },
         image: {
@@ -726,7 +728,7 @@ export const getBlogTemplateData = (theme = 'success') => ({
         }
     },
     tiles: {
-        columns: 3 as TilesProps['columns'],
+        columns: 3,
         items: [
             { icon: astroIcon, label: 'Roadmaps', href: '#' },
             { icon: copyIcon, label: 'Categories', href: '#' },
@@ -783,7 +785,7 @@ export const getBlogTemplateData = (theme = 'success') => ({
     }
 })
 
-export const getAuthenticationTemplateData = () => ({
+export const getAuthenticationTemplateData = (): AuthenticationProps => ({
     layout: {
         seo: {
             title: 'Authentication Template - Webcore',
@@ -821,9 +823,9 @@ export const getAuthenticationTemplateData = () => ({
         width: 500,
         height: 1000
     },
-    type: 'login' as AuthenticationProps['type'],
+    type: 'login',
     tabs: {
-        theme: 'outline' as TabsProps['theme'],
+        theme: 'outline',
         even: true,
         items: [
             {

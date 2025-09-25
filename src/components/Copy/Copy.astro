@@ -8,8 +8,6 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './copy.module.scss'
 
-import type { IconProps } from '../Icon/icon'
-
 interface Props extends CopyProps {}
 
 const {
@@ -42,13 +40,13 @@ const classes = classNames([
         >
             {copyIcon?.startsWith('<svg')
                 ? <Fragment set:html={copyIcon} />
-                : <Icon type={copyIcon as IconProps['type']} />
+                : <Icon type={copyIcon} />
             }
         </button>
         <span class={styles.copied}>
             {copiedIcon?.startsWith('<svg')
                 ? <Fragment set:html={copiedIcon} />
-                : <Icon type={copiedIcon as IconProps['type']} />
+                : <Icon type={copiedIcon} />
             }
         </span>
     </div>
@@ -71,7 +69,7 @@ const classes = classNames([
             copied.style.opacity = '1'
             badge.removeAttribute('data-tooltip')
 
-            navigator.clipboard.writeText(text as string)
+            navigator.clipboard.writeText(text || '')
         }, true)
     }
 

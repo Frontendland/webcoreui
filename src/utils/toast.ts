@@ -23,7 +23,7 @@ export const toast = (config: Toast | string) => {
         title,
         content,
         position
-    } = (typeof config === 'string' ? {} : config) as Toast
+    } = (typeof config === 'string' ? {} : config)
 
     const htmlElement = document.querySelector(element) as HTMLElement
 

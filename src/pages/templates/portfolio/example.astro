@@ -1,12 +1,11 @@
 ---
-import type { ButtonProps } from 'webcoreui/astro'
-
 import logo from '@img/logo.svg?raw'
 
+import type { PortfolioProps } from '@templates/Portfolio/portfolio'
 import Portfolio from '@templates/Portfolio/Portfolio.astro'
 
 // Your layout, including menu and footer
-const layout = {
+const layout: PortfolioProps['layout'] = {
     seo: {
         title: 'Portfolio Template - Webcore',
         url: 'https://webcoreui.dev/',
@@ -35,16 +34,16 @@ const layout = {
 }
 
 // Your hero section
-const hero = {
+const hero: PortfolioProps['hero'] = {
     heading: 'Hey, I\'m Josh 👋',
     subHeading: 'Senior React Developer based in Oregon',
     buttons: [
-        { text: 'Call Me', theme: 'success' as ButtonProps['theme'] },
-        { text: 'Send an Email', theme: 'outline' as ButtonProps['theme'] }
+        { text: 'Call Me', theme: 'success' },
+        { text: 'Send an Email', theme: 'outline' }
     ],
     badge: {
         rounded: true,
-        theme: 'outline' as ButtonProps['theme'],
+        theme: 'outline',
         text: '⭐ Top rated developer'
     },
     image: {
@@ -56,7 +55,7 @@ const hero = {
 }
 
 // Your "About Me" section
-const aboutMe = {
+const aboutMe: PortfolioProps['aboutMe'] = {
     title: 'More About Me',
     text: 'Description about the person, including previous work experiences, studies, and relevant projects. Anything that can establish credibility, experience, and expertise should be listed here to instill trustworthiness in the visitor. This field can also handle <code>HTML</code> tags for further formatting.',
     img: {
@@ -80,7 +79,7 @@ const aboutMe = {
 }
 
 // Ratings under "About Me"
-const ratings = [
+const ratings: PortfolioProps['ratings'] = [
     {
         score: 5,
         showText: true,
@@ -102,13 +101,13 @@ const ratings = [
 ]
 
 // CTA below your ratings
-const ratingCta = {
+const ratingCta: PortfolioProps['ratingCta'] = {
     text: 'More reviews',
-    theme: 'secondary' as ButtonProps['theme']
+    theme: 'secondary'
 }
 
 // Your work in a grid layout
-const myWork = {
+const myWork: PortfolioProps['myWork'] = {
     title: 'My Most Recent Work',
     items: Array
         .from({ length: 3 }, (_, i) => i + 3)
@@ -126,7 +125,7 @@ const myWork = {
 }
 
 // Your list of services
-const services = {
+const services: PortfolioProps['services'] = {
     secondary: true,
     items: [
         {
@@ -146,9 +145,9 @@ const services = {
 }
 
 // Last CTA at the end of the portfolio
-const servicesCta = {
+const servicesCta: PortfolioProps['servicesCta'] = {
     text: 'Call Me',
-    theme: 'success' as ButtonProps['theme']
+    theme: 'success'
 }
 ---
 

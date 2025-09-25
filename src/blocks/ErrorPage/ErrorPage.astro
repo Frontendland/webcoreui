@@ -1,8 +1,7 @@
 ---
 import {
     Button,
-    Icon,
-    type IconProps
+    Icon
 } from 'webcoreui/astro'
 
 import type { ErrorPageProps } from './errorPage'
@@ -36,7 +35,7 @@ const typeStyle = typeColor
                         <Fragment>
                             {button.icon.startsWith('<svg')
                                 ? <Fragment set:html={button.icon} />
-                                : <Icon type={button.icon as IconProps['type']} />
+                                : <Icon type={button.icon} />
                             }
                         </Fragment>
                     )}

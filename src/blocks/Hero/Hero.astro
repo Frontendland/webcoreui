@@ -3,8 +3,7 @@ import {
     Badge,
     Button,
     ConditionalWrapper,
-    Icon,
-    type IconProps
+    Icon
 } from 'webcoreui/astro'
 
 import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.astro'
@@ -52,7 +51,7 @@ const classes = [
                             <Fragment>
                                 {button.icon.startsWith('<svg')
                                     ? <Fragment set:html={button.icon} />
-                                    : <Icon type={button.icon as IconProps['type']} />
+                                    : <Icon type={button.icon} />
                                 }
                             </Fragment>
                         )}

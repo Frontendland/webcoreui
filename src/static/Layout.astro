@@ -2,7 +2,6 @@
 import Footer from '@components/Footer/Footer.astro'
 import Menu from '@components/Menu/Menu.astro'
 
-import type { CustomIconProps } from '@blocks/Icon/icon'
 import Icon from '@blocks/Icon/Icon.astro'
 
 import logo from '../assets/img/logo.svg?raw'
@@ -20,7 +19,7 @@ const menuClasses = classNames([
     nonStickyMenu && 'fixed'
 ])
 
-const theme = (Astro.cookies.get('w-theme')?.value || 'dark') as string
+const theme = (Astro.cookies.get('w-theme')?.value || 'dark')
 const isPath = (path: string) => Astro.url.pathname === `/${path}`
 
 const menu = {
@@ -126,7 +125,7 @@ const externalLinks = [
             <div class="flex sm">
                 {externalLinks.map(link => (
                     <a href={link.url} target="_blank" rel="noreferrer">
-                        <Icon type={link.icon as CustomIconProps['type']} size={18} />
+                        <Icon type={link.icon} size={18} />
                     </a>
                 ))}
             </div>

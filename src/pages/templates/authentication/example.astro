@@ -1,12 +1,13 @@
 ---
-import { Icon, type TabsProps } from 'webcoreui/astro'
+import { Icon } from 'webcoreui/astro'
 
 import logo from '@img/logo.svg?raw'
 
+import type { AuthenticationProps } from '@templates/Authentication/authentication'
 import Authentication from '@templates/Authentication/Authentication.astro'
 
 // Your layout, including menu and footer
-const layout = {
+const layout: AuthenticationProps['layout'] = {
     seo: {
         title: 'Authentication Template - Webcore',
         url: 'https://webcoreui.dev/',
@@ -39,7 +40,7 @@ const layout = {
 }
 
 // Your banner image
-const banner = {
+const banner: AuthenticationProps['banner'] = {
     src: '/img/placeholder-hd3.png',
     alt: 'Banner',
     width: 500,
@@ -47,8 +48,8 @@ const banner = {
 }
 
 // Tabs if you need both login and sign up forms
-const tabs = {
-    theme: 'outline' as TabsProps['theme'],
+const tabs: AuthenticationProps['tabs'] = {
+    theme: 'outline',
     even: true,
     items: [
         {

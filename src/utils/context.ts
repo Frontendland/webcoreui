@@ -1,9 +1,9 @@
 export const closeContext = (ctx: string | HTMLElement) => {
     const element = typeof ctx === 'string'
-        ? document.querySelector(ctx) as HTMLElement
+        ? document.querySelector(ctx)
         : ctx
 
-    const parent = element?.parentElement as HTMLElement
+    const parent = element?.parentElement
 
     if (!parent) {
         // eslint-disable-next-line no-console

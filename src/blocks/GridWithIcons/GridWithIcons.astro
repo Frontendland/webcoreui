@@ -6,8 +6,7 @@ interface Props extends GridWithIconsProps {}
 
 import {
     ConditionalWrapper,
-    Icon,
-    type IconProps
+    Icon
 } from 'webcoreui/astro'
 
 const {
@@ -47,7 +46,7 @@ const wrapperClasses = [
                     <Fragment>
                         {item.icon.startsWith('<svg')
                             ? <Fragment set:html={item.icon} />
-                            : <Icon type={item.icon as IconProps['type']} />
+                            : <Icon type={item.icon} />
                         }
                     </Fragment>
                 )}

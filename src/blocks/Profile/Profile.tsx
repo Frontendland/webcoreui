@@ -2,6 +2,7 @@ import React from 'react'
 import {
     Avatar,
     Badge,
+    type BadgeProps,
     Card,
     Table,
     Tabs
@@ -18,8 +19,8 @@ const tabItems = [{
     value: 'contact'
 }]
 
-const tasks = [
-    { theme: null, label: 'IP', ticket: 'W4567 - Home redesign' },
+const tasks: BadgeProps[] = [
+    { theme: undefined, label: 'IP', ticket: 'W4567 - Home redesign' },
     { theme: 'alert', label: 'P1', ticket: 'W2345 - Payment gateway warnings' },
     { theme: 'warning', label: 'P3', ticket: 'W6789 - Investigate user auth issues' },
     { theme: 'info', label: 'TODO', ticket: 'W1357 - Mobile redesign' }
@@ -47,7 +48,7 @@ const Profile = () => {
                     <div className="flex column xs">
                         {tasks.map((task, index) => (
                             <div key={index} className="flex xs items-center">
-                                <Badge theme={task.theme as any}>
+                                <Badge theme={task.theme}>
                                     {task.label}
                                 </Badge>
                                 <a href="#" className={['muted', styles.task].join(' ')}>

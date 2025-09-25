@@ -4,10 +4,7 @@ import styles from './icon-list.module.scss'
 
 interface Props extends IconListProps {}
 
-import {
-    Icon,
-    type IconProps
-} from 'webcoreui/astro'
+import { Icon } from 'webcoreui/astro'
 
 const {
     items,
@@ -38,7 +35,7 @@ const styleVariables = [
         <li style={getColor(item.color)}>
             {item.icon.startsWith('<svg')
                 ? <Fragment set:html={item.icon} />
-                : <Icon type={item.icon as IconProps['type']} />
+                : <Icon type={item.icon} />
             }
             <div set:html={item.text} />
         </li>

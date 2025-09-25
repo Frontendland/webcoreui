@@ -1,8 +1,6 @@
 ---
-import { type ButtonProps, Icon } from 'webcoreui/astro'
+import { Icon } from 'webcoreui/astro'
 import { copy, github } from 'webcoreui/icons'
-
-import type { TilesProps } from '@blocks/Tiles/tiles'
 
 import astroIcon from '@blocks/Icon/icons/astro.svg?raw'
 import discordIcon from '@blocks/Icon/icons/discord.svg?raw'
@@ -10,10 +8,11 @@ import rocketIcon from '@blocks/Icon/icons/rocket.svg?raw'
 import terminalIcon from '@blocks/Icon/icons/terminal.svg?raw'
 import logo from '@img/logo.svg?raw'
 
+import type { BlogProps } from '@templates/Blog/blog'
 import Blog from '@templates/Blog/Blog.astro'
 
 // Your layout, including menu and footer
-const layout = {
+const layout: BlogProps['layout'] = {
     seo: {
         title: 'Blog Template - Webcore',
         url: 'https://webcoreui.dev/',
@@ -55,13 +54,13 @@ const layout = {
 }
 
 // Your hero section
-const hero = {
+const hero: BlogProps['hero'] = {
     heading: 'Brand New Array Methods',
     subHeading: 'What\'s new in the latest version of JavaScript',
     buttons: [{ text: 'Read More' }],
     badge: {
         rounded: true,
-        theme: 'success' as ButtonProps['theme'],
+        theme: 'success',
         text: 'in JavaScript'
     },
     image: {
@@ -73,8 +72,8 @@ const hero = {
 }
 
 // Category tiles
-const tiles = {
-    columns: 3 as TilesProps['columns'],
+const tiles: BlogProps['tiles'] = {
+    columns: 3,
     items: [
         { icon: astroIcon, label: 'Roadmaps', href: '#' },
         { icon: copy, label: 'Categories', href: '#' },
@@ -86,7 +85,7 @@ const tiles = {
 }
 
 // Latest articles
-const posts = Array
+const posts: BlogProps['posts'] = Array
     .from({ length: 6 }, (_, i) => i + 2)
     .map(i => ({
         href: '#',
@@ -101,7 +100,7 @@ const posts = Array
     }))
 
 // Recommended posts
-const recommended = Array
+const recommended: BlogProps['recommended'] = Array
     .from({ length: 3 }, (_, i) => i + 9)
     .map(i => ({
         href: '#',
@@ -117,7 +116,7 @@ const recommended = Array
     }))
 
 // Author bio
-const author = {
+const author: BlogProps['author'] = {
     img: {
         src: '/img/avatar1.png',
         alt: 'Jake Brown',

@@ -5,8 +5,6 @@ import Icon from '../Icon/Icon.astro'
 
 import styles from './bottomnavigation.module.scss'
 
-import type { IconProps } from '../Icon/icon'
-
 interface Props extends BottomNavigationProps {}
 
 const {
@@ -39,7 +37,7 @@ const styleVariable = maxWidth
                         <Fragment>
                             {item.icon?.startsWith('<svg')
                                 ? <Fragment set:html={item.icon} />
-                                : <Icon type={item.icon as IconProps['type']} />
+                                : <Icon type={item.icon} />
                             }
                         </Fragment>
                     )}

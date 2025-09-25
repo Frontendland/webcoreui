@@ -8,8 +8,8 @@ export const on = (
     callback: any,
     all?: boolean
 ) => {
-    if (all) {
-        const elements = document.querySelectorAll(selector as string)
+    if (all && typeof selector === 'string') {
+        const elements = document.querySelectorAll(selector)
 
         elements?.forEach(element => {
             element.addEventListener(event, callback)

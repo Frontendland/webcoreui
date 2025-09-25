@@ -3,8 +3,7 @@ import { classNames } from 'webcoreui'
 import {
     Badge,
     Button as WebcoreButton,
-    Icon,
-    type IconProps
+    Icon
 } from 'webcoreui/astro'
 
 import type { ButtonProps } from './button'
@@ -28,7 +27,7 @@ const Component = badge ? Badge : WebcoreButton
         <Fragment>
             {icon.startsWith('<svg')
                 ? <Fragment set:html={icon} />
-                : <Icon type={icon as IconProps['type']} />
+                : <Icon type={icon} />
             }
         </Fragment>
     )}

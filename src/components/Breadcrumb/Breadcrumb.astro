@@ -6,8 +6,6 @@ import Icon from '../Icon/Icon.astro'
 
 import styles from './breadcrumb.module.scss'
 
-import type { IconProps } from '../Icon/icon'
-
 interface Props extends BreadcrumbProps {}
 
 const {
@@ -33,7 +31,7 @@ const classes = [
                     <Fragment>
                         {item.icon.startsWith('<svg')
                             ? <Fragment set:html={item.icon} />
-                            : <Icon type={item.icon as IconProps['type']} />
+                            : <Icon type={item.icon} />
                         }
                     </Fragment>
                 )}
