@@ -7,6 +7,7 @@ import Progress from '../Progress/Progress.tsx'
 
 import { classNames } from '../../utils/classNames'
 import { debounce as debounceScroll } from '../../utils/debounce'
+import { getBreakpoint } from '../../utils/getBreakpoint'
 
 import styles from './carousel.module.scss'
 
@@ -27,14 +28,30 @@ const Carousel = ({
     onScroll,
     children
 }: ReactCarouselProps) => {
+    const getItemsPerSlide = () => {
+        if (carousel.current) {
+            return typeof itemsPerSlide === 'number'
+                ? itemsPerSlide
+                : itemsPerSlide[getBreakpoint()] || itemsPerSlide.default || 1
+        }
+
+        return typeof itemsPerSlide === 'number'
+            ? itemsPerSlide
+            : itemsPerSlide.default || 1
+    }
+
     const carouselContainer = useRef<HTMLDivElement>(null)
     const carousel = useRef<HTMLUListElement>(null)
     const carouselItems = useRef<any>(null)
     const paginated = useRef(false)
     const currentPage = useRef(1)
+    const totalPages = useRef(Math.ceil(items / getItemsPerSlide()))
 
     const [progressValue, setProgressValue] = useState(0)
     const [updatedSubText, setUpdatedSubText] = useState(subText)
+    const [style, setStyle] = useState(getItemsPerSlide() > 1
+        ? { '--w-slide-width': `calc(${100 / getItemsPerSlide()}% - 5px)` } as React.CSSProperties
+        : undefined)
 
     const classes = classNames([
         styles.carousel,
@@ -49,7 +66,7 @@ const Carousel = ({
     const wrapperClasses = classNames([
         styles.wrapper,
         effect && styles[effect],
-        itemsPerSlide! > 1 && styles['no-snap'],
+        getItemsPerSlide() > 1 && styles['no-snap'],
         wrapperClassName
     ])
 
@@ -63,11 +80,7 @@ const Carousel = ({
         !subText && paginationClassName
     ])
 
-    const totalPages = Math.ceil(items / itemsPerSlide!)
     const subTextValue = subText?.match(/\{0\}|\{1\}/g) ? subText : undefined
-    const style = itemsPerSlide > 1
-        ? { '--w-slide-width': `calc(${100 / itemsPerSlide!}% - 5px);` } as React.CSSProperties
-        : undefined
 
     const updateValues = (page: number) => {
         const activeElement = carouselItems.current[page - 1]
@@ -79,12 +92,12 @@ const Carousel = ({
             setUpdatedSubText(
                 subTextValue
                     .replace('{0}', String(page))
-                    .replace('{1}', String(totalPages))
+                    .replace('{1}', String(totalPages.current))
             )
         }
 
         if (progress) {
-            const percentage = (100 / (totalPages - 1))
+            const percentage = (100 / (totalPages.current - 1))
 
             setProgressValue(percentage * (page - 1))
         }
@@ -106,8 +119,8 @@ const Carousel = ({
     }, debounce)
 
     const paginate = (event: PaginationEventType) => {
-        const indexes = Array.from({ length: Math.ceil(items / itemsPerSlide!) }, (_, i) => {
-            return Array.from({ length: itemsPerSlide! }, (_, j) => (i * itemsPerSlide!) + j)
+        const indexes = Array.from({ length: Math.ceil(items / getItemsPerSlide()) }, (_, i) => {
+            return Array.from({ length: getItemsPerSlide() }, (_, j) => (i * getItemsPerSlide()) + j)
                 .filter(index => index < items)
         })
 
@@ -128,14 +141,36 @@ const Carousel = ({
         }, 300)
     }
 
+    const updateOnResize = () => {
+        currentPage.current = 1
+        setProgressValue(0)
+        totalPages.current = Math.ceil(items / getItemsPerSlide())
+        setStyle(prevStyle => ({
+            ...prevStyle,
+            '--w-slide-width': `calc(${100 / getItemsPerSlide()}% - 5px)`
+        }) as React.CSSProperties)
+
+        if (subTextValue) {
+            setUpdatedSubText(subTextValue
+                .replace('{0}', '1')
+                .replace('{1}', String(totalPages.current))
+            )
+        }
+    }
+
     useEffect(() => {
         const usedInAstro = carousel.current?.children[0].nodeName === 'ASTRO-SLOT'
+        const observer = new ResizeObserver(updateOnResize)
 
         carouselItems.current = usedInAstro
             ? carousel.current?.querySelectorAll('li')
             : carousel.current?.children
 
         carouselContainer.current?.addEventListener('scroll', scroll)
+
+        if (typeof itemsPerSlide !== 'number') {
+            observer.observe(carouselContainer.current!)
+        }
 
         return () => {
             carouselContainer.current?.removeEventListener('scroll', scroll)
@@ -162,7 +197,7 @@ const Carousel = ({
                     type="arrows"
                     {...pagination}
                     currentPage={currentPage.current}
-                    totalPages={totalPages}
+                    totalPages={totalPages.current}
                     className={paginationClasses}
                     onChange={paginate}
                 />
@@ -170,7 +205,7 @@ const Carousel = ({
                     <span className={styles.subtext}>
                         {updatedSubText
                             .replace('{0}', '1')
-                            .replace('{1}', String(totalPages))
+                            .replace('{1}', String(totalPages.current))
                         }
                     </span>
                 )}

@@ -1,10 +1,12 @@
 import type { Snippet } from 'svelte'
 
+import type { Responsive } from '../../utils/getLayoutClasses'
+
 import type { PaginationProps } from '../Pagination/pagination'
 
 export type CarouselProps = {
     items: number
-    itemsPerSlide?: number
+    itemsPerSlide?: number | Responsive<number>
     subText?: string
     autoplay?: boolean
     vertical?: boolean

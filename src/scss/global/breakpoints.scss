@@ -1,0 +1,15 @@
+@use '../config' as *;
+
+@mixin breakpoints() {
+    :root {
+        --w-breakpoint: xs;
+    }
+
+    @each $key, $value in $breakpoints {
+        @include media($key) {
+            :root {
+                --w-breakpoint: #{$key};
+            }
+        }
+    }
+}

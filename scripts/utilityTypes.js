@@ -1,4 +1,9 @@
 export const utilityTypes = `
+export type Breakpoint = 'xs'
+    | 'sm'
+    | 'md'
+    | 'lg'
+
 export type Gap = 'none'
     | 'xxs'
     | 'xs'
@@ -153,6 +158,8 @@ declare module 'webcoreui' {
         remove: () => void
     }
 
+    export const getBreakpoint: () => string
+
     export const getLayoutClasses: (config: getLayoutClassesConfig) => string
 
     export const clamp: (num: number, min: number, max: number) => number
@@ -163,6 +170,8 @@ declare module 'webcoreui' {
         input: [start: number, end: number],
         output: [start: number, end: number]
     ) => number
+
+    export const isOneOf: <T extends string>(values: readonly T[]) => (value: string) => value is T
 
     export const modal: (config: Modal | string) => {
         open: () => void

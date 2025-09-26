@@ -139,20 +139,20 @@ const generatedPages = pages?.length
 
         Array.from(paginations).forEach(element => {
             const pagination = element as HTMLUListElement
-            const totalPages = Number(pagination.dataset.totalPages)
             let currentPage = Number(pagination.dataset.currentPage)
 
             element.addEventListener('click', event => {
                 const target = event.target as HTMLButtonElement
                 const navigated = target.nodeName === 'BUTTON'
-                    && !target.dataset.active
+                    && target.dataset.active !== 'true'
                     && !target.disabled
 
                 if (navigated) {
                     const prevPageButton = element.querySelector('[data-page="prev"]') as HTMLButtonElement
                     const nextPageButton = element.querySelector('[data-page="next"]') as HTMLButtonElement
-                    const currentPageButton = element.querySelector('[data-active]') as HTMLButtonElement
+                    const currentPageButton = element.querySelector('[data-active="true"]') as HTMLButtonElement
                     const previousPage = currentPage
+                    const totalPages = Number(pagination.dataset.totalPages)
 
                     const pageElements = Array
                         .from(pagination.children)

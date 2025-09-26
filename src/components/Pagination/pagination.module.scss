@@ -6,7 +6,7 @@
 
     list-style-type: none;
 
-    &.primary [data-active] {
+    &.primary [data-active="true"] {
         @include typography(primary-70);
         @include background(primary-20);
     }
@@ -21,7 +21,7 @@
 
         cursor: pointer;
 
-        &[data-active] {
+        &[data-active="true"] {
             @include background(primary);
             @include size(w20px);
             @include border-radius(lg);
@@ -41,7 +41,7 @@
         }
     }
 
-    [data-active] {
+    [data-active="true"] {
         @include typography(primary);
         box-shadow: inset 0px 0px 0px 1px var(--w-color-primary);
     }

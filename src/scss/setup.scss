@@ -1,6 +1,7 @@
 @use 'sass:map';
 
 @use './resets.scss' as *;
+@use './global/breakpoints.scss' as *;
 @use './global/scrollbar.scss' as *;
 @use './global/theme.scss' as *;
 @use './global/tooltip.scss' as *;
@@ -10,7 +11,8 @@ $config: (
     includeResets: true,
     includeUtilities: true,
     includeTooltip: true,
-    includeScrollbarStyles: true
+    includeScrollbarStyles: true,
+    includeBreakpoints: true
 );
 
 body {
@@ -41,6 +43,10 @@ body {
 
     @if (config('includeTooltip')) {
         @include tooltip();
+    }
+
+    @if (config('includeBreakpoints')) {
+        @include breakpoints();
     }
 
     @if (config('theme')) {

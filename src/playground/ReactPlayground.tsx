@@ -88,11 +88,17 @@ const ReactPlayground = () => {
 
             <Card title="Carousel">
                 <Carousel
-                    items={3}
+                    items={6}
+                    itemsPerSlide={{
+                        default: 3,
+                        xs: 1,
+                        sm: 2,
+                        md: 3,
+                        lg: 3
+                    }}
                     subText="Slide {0} of {1}"
                     progress={true}
                     pagination={{ type: 'dots' }}
-                    effect="opacity"
                     onScroll={page => {
                         // eslint-disable-next-line no-console
                         console.log(`scrolled to ${page}`)
@@ -101,6 +107,9 @@ const ReactPlayground = () => {
                     <li data-active="true"><Box fullWidth={true}>1</Box></li>
                     <li><Box fullWidth={true}>2</Box></li>
                     <li><Box fullWidth={true}>3</Box></li>
+                    <li><Box fullWidth={true}>4</Box></li>
+                    <li><Box fullWidth={true}>5</Box></li>
+                    <li><Box fullWidth={true}>6</Box></li>
                 </Carousel>
             </Card>
 

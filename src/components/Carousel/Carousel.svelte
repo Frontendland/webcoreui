@@ -8,6 +8,7 @@
 
     import { classNames } from '../../utils/classNames'
     import { debounce as debounceScroll } from '../../utils/debounce'
+    import { getBreakpoint } from '../../utils/getBreakpoint'
 
     import styles from './carousel.module.scss'
 
@@ -29,12 +30,28 @@
         onScroll
     }: SvelteCarouselProps = $props()
 
+    const getItemsPerSlide = () => {
+        if (carousel) {
+            return typeof itemsPerSlide === 'number'
+                ? itemsPerSlide
+                : itemsPerSlide[getBreakpoint()] || itemsPerSlide.default || 1
+        }
+
+        return typeof itemsPerSlide === 'number'
+            ? itemsPerSlide
+            : itemsPerSlide.default || 1
+    }
+
     let carouselContainer: HTMLDivElement
     let carousel: HTMLUListElement
     let carouselItems: HTMLCollection | NodeListOf<HTMLLIElement>
     let progressValue = $state(0)
     let paginated = false
     let currentPage = $state(1)
+    let totalPages = $state(Math.ceil(items / getItemsPerSlide()))
+    let style = $state(getItemsPerSlide() > 1
+        ? `--w-slide-width: calc(${100 / getItemsPerSlide()}% - 5px);`
+        : null)
 
     const classes = classNames([
         styles.carousel,
@@ -49,7 +66,7 @@
     const wrapperClasses = classNames([
         styles.wrapper,
         effect && styles[effect],
-        itemsPerSlide! > 1 && styles['no-snap'],
+        getItemsPerSlide() > 1 && styles['no-snap'],
         wrapperClassName
     ])
 
@@ -63,11 +80,7 @@
         !subText && paginationClassName
     ])
 
-    const totalPages = Math.ceil(items / itemsPerSlide!)
     const subTextValue = subText?.match(/\{0\}|\{1\}/g) ? subText : undefined
-    const style = itemsPerSlide! > 1
-        ? `--w-slide-width: calc(${100 / itemsPerSlide!}% - 5px);`
-        : null
 
     const updateValues = () => {
         const activeElement = carouselItems[currentPage - 1] as HTMLLIElement
@@ -104,8 +117,8 @@
     }, debounce)
 
     const paginate = (event: PaginationEventType) => {
-        const indexes = Array.from({ length: Math.ceil(items / itemsPerSlide!) }, (_, i) => {
-            return Array.from({ length: itemsPerSlide! }, (_, j) => (i * itemsPerSlide!) + j)
+        const indexes = Array.from({ length: Math.ceil(items / getItemsPerSlide()) }, (_, i) => {
+            return Array.from({ length: getItemsPerSlide() }, (_, j) => (i * getItemsPerSlide()) + j)
                 .filter(index => index < items)
         })
 
@@ -126,14 +139,32 @@
         }, 300)
     }
 
+    const updateOnResize = () => {
+        currentPage = 1
+        progressValue = 0
+        totalPages = Math.ceil(items / getItemsPerSlide())
+        style = `--w-slide-width: calc(${100 / getItemsPerSlide()}% - 5px);`
+
+        if (subTextValue) {
+            subText = subTextValue
+                .replace('{0}', '1')
+                .replace('{1}', String(totalPages))
+        }
+    }
+
     onMount(() => {
         const usedInAstro = carousel.children[0].nodeName === 'ASTRO-SLOT'
-
-        carouselContainer.addEventListener('scroll', scroll)
+        const observer = new ResizeObserver(updateOnResize)
 
         carouselItems = usedInAstro
             ? carousel.querySelectorAll('li')
             : carousel.children
+
+        carouselContainer.addEventListener('scroll', scroll)
+
+        if (typeof itemsPerSlide !== 'number') {
+            observer.observe(carouselContainer)
+        }
 
         return () => {
             carouselContainer.removeEventListener('scroll', scroll)

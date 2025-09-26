@@ -35,16 +35,16 @@
         className
     ])
 
-    const calculatedTotalPages = totalPages
+    const calculatedTotalPages = $derived(totalPages
         || pages?.length
-        || 0
+        || 0)
 
-    const generatedPages = pages?.length
+    const generatedPages = $derived(pages?.length
         ? pages
         : Array(totalPages || 0).fill(0).map((_, index) => ({
             ...(index === 0 && { active: true }),
             label: index + 1
-        }))
+        })))
 
     const paginate = (to: string | number) => {
         const previousPage = calculatedCurrentPage

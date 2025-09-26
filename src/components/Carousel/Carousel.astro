@@ -35,10 +35,14 @@ const containerClasses = [
     scrollSnap && styles.snap
 ]
 
+const getItemsPerSlide = () => typeof itemsPerSlide === 'number'
+    ? itemsPerSlide
+    : itemsPerSlide.default || 1
+
 const wrapperClasses = [
     styles.wrapper,
     effect && styles[effect],
-    itemsPerSlide > 1 && styles['no-snap'],
+    getItemsPerSlide() > 1 && styles['no-snap'],
     wrapperClassName
 ]
 
@@ -52,10 +56,10 @@ const paginationClasses = classNames([
     !subText && paginationClassName
 ])
 
-const totalPages = Math.ceil(items / itemsPerSlide)
+const totalPages = Math.ceil(items / getItemsPerSlide())
 const subTextValue = subText?.match(/\{0\}|\{1\}/g) ? subText : undefined
-const style = itemsPerSlide > 1
-    ? `--w-slide-width: calc(${100 / itemsPerSlide}% - 5px);`
+const style = getItemsPerSlide() > 1
+    ? `--w-slide-width: calc(${100 / getItemsPerSlide()}% - 5px);`
     : null
 ---
 
@@ -68,7 +72,8 @@ const style = itemsPerSlide > 1
         <ul
             class:list={wrapperClasses}
             style={style}
-            data-visible-items={itemsPerSlide > 1 ? itemsPerSlide : null}
+            data-visible-items={getItemsPerSlide() > 1 ? getItemsPerSlide() : null}
+            data-breakpoint-items={typeof itemsPerSlide !== 'number' ? JSON.stringify(itemsPerSlide) : null}
         >
             <slot />
         </ul>
@@ -101,6 +106,7 @@ const style = itemsPerSlide > 1
 <script>
     import { debounce } from '../../utils/debounce'
     import { listen } from '../../utils/event'
+    import { getBreakpoint } from '../../utils/getBreakpoint'
 
     const addEventListeners = () => {
         const carousels = Array.from(document.querySelectorAll('[data-id="w-carousel"]'))
@@ -127,7 +133,7 @@ const style = itemsPerSlide > 1
                 }
 
                 for (let i = 0; i < diff; i++) {
-                    triggerButton.click()
+                    triggerButton?.click()
                 }
 
                 Array.from(carouselElement.children).forEach(li => {
@@ -140,11 +146,71 @@ const style = itemsPerSlide > 1
             }
         }
 
+        const updateOnResize = (entries: ResizeObserverEntry[]) => {
+            const target = entries[0].target
+            const carousel = target.querySelector<HTMLUListElement>('ul')
+            const pagination = target.parentElement?.querySelector<HTMLUListElement>('[data-id="w-pagination"]')
+            const breakpoint = getBreakpoint()
+
+            if (!target || !carousel || !pagination) {
+                return
+            }
+
+            if (carousel.dataset.currentBreakpoint === breakpoint) {
+                return
+            }
+
+            const progress = target.parentElement?.querySelector<HTMLDivElement>('.w-carousel-progress')
+            const prevPageButton = pagination.querySelector<HTMLButtonElement>('[data-page="prev"]')
+            const nextPageButton = pagination.querySelector<HTMLButtonElement>('[data-page="next"]')
+            const subText = pagination.nextElementSibling
+            const breakpoints = JSON.parse(carousel.dataset.breakpointItems || '')
+            const itemsPerSlide = breakpoints[breakpoint] || breakpoints.default
+            const totalItems = carousel.children.length
+            const totalPages = Math.ceil(totalItems / itemsPerSlide)
+
+            carousel.dataset.currentBreakpoint = breakpoint
+            carousel.dataset.visibleItems = itemsPerSlide
+            carousel.children[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+            carousel.style.setProperty('--w-slide-width', `calc(${100 / itemsPerSlide}% - 5px)`)
+
+            pagination.dataset.totalPages = String(totalPages)
+
+            if (!(prevPageButton && nextPageButton)) {
+                pagination.innerHTML = Array.from({ length: totalPages }, (_, i) => i + 1)
+                    .map(i => `
+                        <li>
+                            <button
+                                data-active="${i - 1 === 0}"
+                                data-page="${i}"
+                                aria-label="${`page ${i}`}"
+                            ></button>
+                        </li>
+                    `).join('')
+            }
+
+            if (progress && progress.children[0] instanceof HTMLDivElement) {
+                progress.children[0].style.setProperty('--w-progress-width', '0%')
+            }
+
+            if (subText instanceof HTMLSpanElement && subText?.dataset.text) {
+                subText.innerText = subText.dataset.text
+                    .replace('{0}', '1')
+                    .replace('{1}', String(totalPages))
+            }
+        }
+
         carousels.forEach(carousel => {
             const carouselElement = carousel as HTMLDivElement
+            const carouselList = carousel.querySelector<HTMLUListElement>('ul')
+            const observer = new ResizeObserver(updateOnResize)
             const debounceAmount = carouselElement.dataset.debounce
                 ? Number(carouselElement.dataset.debounce)
                 : 20
+
+            if (carouselList?.dataset.breakpointItems) {
+                observer.observe(carouselElement)
+            }
 
             carousel.addEventListener('scroll', debounce((event: Event) => {
                 scroll(event)
@@ -168,6 +234,10 @@ const style = itemsPerSlide > 1
             return Array.from({ length: itemsPerSlide }, (_, j) => (i * itemsPerSlide) + j)
                 .filter(index => index < totalItems)
         })
+
+        if (indexes.length < event.page) {
+            return
+        }
 
         const pageIndex = event.direction === 'prev'
             ? indexes[event.page - 1][0]
@@ -194,15 +264,15 @@ const style = itemsPerSlide > 1
         }
 
         if (event.trusted) {
-            const carouselContaienr = target.closest('section').querySelector('[data-id="w-carousel"]')
+            const carouselContainer = target.closest('section').querySelector('[data-id="w-carousel"]')
 
             liElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
             liElement.dataset.active = 'true'
 
-            carouselContaienr.dataset.paginated = 'true'
+            carouselContainer.dataset.paginated = 'true'
 
             setTimeout(() => {
-                carouselContaienr.removeAttribute('data-paginated')
+                carouselContainer.removeAttribute('data-paginated')
             }, 300)
         }
     })

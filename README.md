@@ -145,6 +145,7 @@ The `setup` mixin can also accept the following options:
 | `includeUtilities` | `true` | Adds utility classes for CSS. Read more about the available utility classes [here](https://webcoreui.dev/docs/layout). |
 | `includeTooltip` | `true` | Adds styles for using tooltips.
 | `includeScrollbarStyles` | `true` | Adds styles for scrollbars.
+| `includeBreakpoints` | `true` | Exposes breakpoint variables in CSS for JS. Used by components for responsiveness.
 
 Default component styles can be changed by overriding the following CSS variables:
 
