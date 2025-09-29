@@ -30,7 +30,7 @@
 
     const containerClasses = classNames([
         containerClassName || 'container',
-        hasSidebar && 'flex column sm-row'
+        hasSidebar && 'flex column md-row'
     ])
 </script>
 
