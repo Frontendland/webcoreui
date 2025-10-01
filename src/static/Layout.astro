@@ -100,7 +100,7 @@ const externalLinks = [
         <title>Webcore</title>
         <ClientRouter />
     </head>
-    <body class={theme}>
+    <body class:list={[theme, 'flex column none']}>
         <Menu
             logo={menu.logo}
             items={menu.items}
@@ -156,6 +156,7 @@ const externalLinks = [
         flex-direction: column;
         min-height: calc(100vh - 53px);
         @include spacing('mb-5xl');
+        min-height: calc(100vh - 53px);
     }
 
     h1:not(.reset) {
@@ -213,6 +214,11 @@ const externalLinks = [
                 }
             }
         }
+    }
+
+    .container {
+        @include size('w100%');
+        flex: 1;
     }
 
     .my {
