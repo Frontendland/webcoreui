@@ -15,6 +15,7 @@
         "test:run": "vitest run",
         "test:sass": "vitest run src/tests/unit/scss.test.js --config astro.config.mjs",
         "test:e2e": "playwright test",
+        "test:e2e:update": "playwright test --update-snapshots",
         "test:e2e:ui": "playwright test --ui",
         "create-component": "node scripts/createComponent.js",
         "lint": "eslint src/**/*"
