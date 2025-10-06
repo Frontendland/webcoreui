@@ -37,8 +37,16 @@ jobs:
 
       - name: Run Tests
         shell: bash
-        run: "npm run test"
+        run: npm run test
 
       - name: Build Project
         shell: bash
-        run: "npm run build"
+        run: npm run build
+
+      - name: Install Playwright Browsers
+        shell: bash
+        run: npx playwright install --with-deps
+
+      - name: Run E2E tests
+        shell: bash
+        run: npm run test:e2e

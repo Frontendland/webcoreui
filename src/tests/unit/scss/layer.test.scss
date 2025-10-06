@@ -1,0 +1,39 @@
+@use 'true' as *;
+@use '../../../scss/config.scss' as *;
+
+@include describe('layer') {
+    @include it('Should apply the correct layer rule') {
+        @include assert {
+            @include output {
+                // Default
+                @include layer();
+
+                // Values
+                @include layer(bg);
+                @include layer(default);
+                @include layer(fg);
+                @include layer(overlay);
+                @include layer(popup);
+                @include layer(top);
+                @include layer(header);
+                @include layer(modal);
+            }
+            
+            @include expect {
+                // Default
+                z-index: 0;
+
+                // Values
+                z-index: -1;
+                z-index: 0;
+                z-index: 1;
+                z-index: 2;
+                z-index: 3;
+                z-index: 98;
+                z-index: 99;
+                z-index: 100;
+            }
+        }
+    }
+}
+

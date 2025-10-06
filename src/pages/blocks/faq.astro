@@ -6,6 +6,8 @@ import SvelteFAQ from '@blocks/FAQ/FAQ.svelte'
 import ReactFAQ from '@blocks/FAQ/FAQ.tsx'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 
+import fileIcon from '@blocks/Icon/icons/file.svg?raw'
+
 import { accordionItems } from '@data'
 ---
 
@@ -42,7 +44,7 @@ import { accordionItems } from '@data'
         <Tiles items={[
             { icon: 'home', label: 'Home', href: '' },
             { icon: 'github', label: 'GitHub', href: '' },
-            { icon: 'file', label: 'Documentation', href: '' }
+            { icon: fileIcon, label: 'Documentation', href: '' }
         ]} columns={1} />
     </ReactFAQ>
 </Layout>

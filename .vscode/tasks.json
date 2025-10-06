@@ -33,6 +33,14 @@
             "command": "npm run test:run ${relativeFile}"
         },
         {
+            "label": "✅🎭 Run Playwright",
+            "command": "npm run test:e2e"
+        },
+        {
+            "label": "✅🎭 Run Playwright UI",
+            "command": "npm run test:e2e:ui"
+        },
+        {
             "label": "✔️ Check TypeScript Errors",
             "command": "tsc",
         },
@@ -45,5 +53,4 @@
             "command": "npm run lint",
         }
     ]
-  }
-  
+}

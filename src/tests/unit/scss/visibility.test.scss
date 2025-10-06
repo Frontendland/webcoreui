@@ -1,0 +1,88 @@
+@use 'true' as *;
+@use '../../../scss/config.scss' as *;
+
+@include describe('visibility') {
+    @include it('Should apply the correct visibility rule') {
+        @include assert {
+            @include output {
+                // Display
+                @include visibility(inline);
+                @include visibility(block);
+                @include visibility(contents);
+                @include visibility(flex);
+                @include visibility(flow);
+                @include visibility(flow-root);
+                @include visibility(grid);
+                @include visibility(inline-block);
+                @include visibility(inline-flex);
+                @include visibility(inline-grid);
+                @include visibility(inline-table);
+                @include visibility(list-item);
+                @include visibility(run-in);
+                @include visibility(table);
+                @include visibility(table-caption);
+                @include visibility(table-column-group);
+                @include visibility(table-header-group);
+                @include visibility(table-footer-group);
+                @include visibility(table-row-group);
+                @include visibility(table-cell);
+                @include visibility(table-column);
+                @include visibility(table-row);
+                @include visibility(none);
+
+                // Overflow
+                @include visibility(auto);
+                @include visibility(hidden);
+                @include visibility(overlay);
+                @include visibility(scroll);
+                @include visibility(visible);
+
+                // Opacity
+                @include visibility(0);
+                @include visibility(0.2);
+                @include visibility(.5);
+                @include visibility(1);
+            }
+            
+            @include expect {
+                // Display
+                display: inline;
+                display: block;
+                display: contents;
+                display: flex;
+                display: flow;
+                display: flow-root;
+                display: grid;
+                display: inline-block;
+                display: inline-flex;
+                display: inline-grid;
+                display: inline-table;
+                display: list-item;
+                display: run-in;
+                display: table;
+                display: table-caption;
+                display: table-column-group;
+                display: table-header-group;
+                display: table-footer-group;
+                display: table-row-group;
+                display: table-cell;
+                display: table-column;
+                display: table-row;
+                display: none;
+
+                // Overflow
+                overflow: auto;
+                overflow: hidden;
+                overflow: overlay;
+                overflow: scroll;
+                overflow: visible;
+
+                // Opacity
+                opacity: 0;
+                opacity: 0.2;
+                opacity: 0.5;
+                opacity: 1;
+            }
+        }
+    }
+}

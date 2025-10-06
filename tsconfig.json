@@ -12,7 +12,8 @@
             "@playground/*": ["src/playground/*"],
             "@utils/*": ["src/utils/*"],
             "@data": ["src/data.ts"],
-            "@helpers": ["src/helpers.js"]
+            "@helpers": ["src/helpers.js"],
+            "@e2e": ["src/tests/e2e/Playwright.ts"]
         }
     },
     "include": ["./src/**/*"]

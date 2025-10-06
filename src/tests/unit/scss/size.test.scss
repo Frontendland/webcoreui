@@ -1,0 +1,64 @@
+@use 'true' as *;
+@use '../../../scss/config.scss' as *;
+
+@include describe('layer') {
+    @include it('Should apply the correct size rule') {
+        @include assert {
+            @include output {
+                // Both
+                @include size(0);
+                @include size(100%);
+                @include size(10px);
+                @include size(auto);
+                
+                // Single
+                @include size(w0);
+                @include size(w10px);
+                @include size(wauto);
+                @include size('w100%');
+
+                @include size(h0);
+                @include size(h10px);
+                @include size(hauto);
+                @include size('h100%');
+                
+                // Combined
+                @include size(w50px, h25px);
+                @include size(wauto, 'h100%');
+            }
+            
+            @include expect {
+                // Both
+                width: 0;
+                height: 0;
+
+                width: 100%;
+                height: 100%;
+
+                width: 10px;
+                height: 10px;
+
+                width: auto;
+                height: auto;
+
+                // Single
+                width: 0;
+                width: 10px;
+                width: auto;
+                width: 100%;
+
+                height: 0;
+                height: 10px;
+                height: auto;
+                height: 100%;
+
+                // Combined
+                width: 50px;
+                height: 25px;
+
+                width: auto;
+                height: 100%;
+            }
+        }
+    }
+}
