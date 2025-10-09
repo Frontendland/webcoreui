@@ -1,5 +1,5 @@
 export const bodyFreeze = (freeze = true) => {
-    const scrollbarWidth = window.innerWidth - document.body.clientWidth
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
 
     if (freeze) {
         document.body.style.paddingRight = `${scrollbarWidth}px`

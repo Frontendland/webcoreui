@@ -15,7 +15,7 @@ describe('bodyFreeze', () => {
         document.body.style.overflow = ''
 
         vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(1024)
-        Object.defineProperty(document.body, 'clientWidth', {
+        Object.defineProperty(document.documentElement, 'clientWidth', {
             configurable: true,
             get: vi.fn(() => 1000)
         })
