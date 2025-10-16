@@ -18,7 +18,7 @@
         "test:e2e:update": "playwright test --update-snapshots",
         "test:e2e:ui": "playwright test --ui",
         "create-component": "node scripts/createComponent.js",
-        "lint": "eslint src/**/*"
+        "lint": "eslint src/**/* --fix"
     },
     "devDependencies": {
         "@astrojs/check": "0.9.4",

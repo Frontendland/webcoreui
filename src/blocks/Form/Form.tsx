@@ -52,7 +52,11 @@ const Form = ({
                             key={index}
                             className={classNames(['grid', gap || 'md', `col-${field.fields.length}`])}
                         >
-                            {field.fields.map(field => renderField(field))}
+                            {field.fields.map((field, fieldIndex) => (
+                                <React.Fragment key={fieldIndex}>
+                                    {renderField(field)}
+                                </React.Fragment>
+                            ))}
                         </div>
                     )
                 }
