@@ -39,7 +39,7 @@ export type InputProps = {
     pattern?: string
     required?: boolean
     autofocus?: boolean
-    autocomplete?: 'on' | 'off'
+    autocomplete?: 'on' | 'off' | 'one-time-code'
     className?: string
     labelClassName?: string
     [key: string]: any

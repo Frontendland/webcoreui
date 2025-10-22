@@ -10,60 +10,34 @@
 
     .input-wrapper {
         @include position(relative);
+        @include layout(flex);
 
         input {
-            @include visibility(0);
-            @include position(absolute, t0, l0);
-            @include size(h40px);
-        }
-    }
-
-    .placeholders {
-        @include layout(flex);
-    }
-
-    .placeholder {
-        @include layout(flex, center);
-        @include border(top, primary-50);
-        @include border(bottom, primary-50);
-        @include border(right, primary-50);
-        @include size(40px);
-
-        &:first-child {
-            @include border(primary-50);
-            @include border-radius(left);
-        }
-
-        &:last-child {
-            @include border(primary-50);
-            @include border(left, 0);
-            @include border-radius(right);
-        }
-
-        &[data-active="true"] {
-            @include border(primary);
-
-            &::before {
-                @include size(w1px, h15px);
-                @include background(primary);
-
-                content: '';
-                animation: flash 1s infinite forwards;
+            @include border-radius(none);
+            @include size(40px);
+            @include typography(center, default);
+            
+            &:not(:first-child) {
+                @include border(left, 0);
             }
+
+            &:first-child {
+                @include border-radius(left);
+            }
+
+            &:last-child {
+                @include border-radius(right);
+            }
+        }
+
+        .separator + input {
+            @include border(left, primary-50);
         }
     }
 
     .separator {
         @include size(40px);
         @include layout(flex, center);
-
-        + .placeholder {
-            @include border(left, primary-50);
-
-            &[data-active="true"] {
-                @include border(left, primary);
-            }
-        }
     }
 
     .subtext {

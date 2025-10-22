@@ -8,7 +8,7 @@ import styles from './otpinput.module.scss'
 interface Props extends OTPInputProps {}
 
 const {
-    name,
+    name = 'otp',
     disabled,
     length = 6,
     groupLength = 0,
@@ -24,7 +24,7 @@ const classes = [
     className
 ]
 
-const inputPlaceholders = Array.from({ length }, (_, i) => i + 1)
+const inputs = Array.from({ length }, (_, i) => i + 1)
     .reduce<(number | string)[]>((acc, num, i) =>
         groupLength > 0 && i % groupLength === 0 && i !== 0
             ? [...acc, separator, num]
@@ -35,59 +35,157 @@ const inputPlaceholders = Array.from({ length }, (_, i) => i + 1)
 <div class:list={classes}>
     {label && (
         <label
-            for={name}
+            for={`${name}-0`}
             class={styles.label}
             set:html={label}
         />
     )}
 
-    <div class={styles['input-wrapper']}>
-        <Input
-            name={name || 'otp'}
-            data-id="w-input-otp"
-            disabled={disabled}
-            maxlength={length}
-            required={true}
-            {...rest}
-        />
-
-        <div class={styles.placeholders}>
-            {inputPlaceholders.map((placeholder, index) => (
-                <div
-                    class={typeof placeholder === 'string' ? styles.separator : styles.placeholder}
-                    data-active={index === 0 ? true : undefined}
-                    data-separator={typeof placeholder === 'string' ? true : undefined}
-                >
-                    {typeof placeholder === 'string' ? placeholder : ''}
-                </div>
-            ))}
-        </div>
+    <div class={styles['input-wrapper']} data-length={length}>
+        {inputs.map((input, index) =>
+            typeof input === 'string' ? (
+                <div class={styles.separator}>{input}</div>
+            ) : (
+                <Input
+                    id={`${name}-${index}`}
+                    class={styles.input}
+                    type="text"
+                    maxlength="1"
+                    disabled={disabled}
+                    inputmode="numeric"
+                    autocomplete="one-time-code"
+                    data-id="w-input-otp"
+                    data-index={input}
+                    aria-label={`OTP digit ${input + 1}`}
+                    {...rest}
+                />
+            )
+        )}
     </div>
 
-    {subText && (
-        <div class={styles.subtext} set:html={subText} />
-    )}
+    {subText && <div class={styles.subtext}>{subText}</div>}
 </div>
 
 <script>
     import { on } from '../../utils/DOMUtils'
+    import { dispatch } from '../../utils/event'
+
+    const focus = (direction: 'next' | 'prev', wrapper: HTMLElement | null, clear?: boolean) => {
+        const index = Number(wrapper?.dataset.active)
+        const nextIndex = direction === 'next' ? index + 1 : index - 1
+
+        const input = wrapper?.querySelector(`[data-index="${nextIndex}"]`)
+
+        if (input instanceof HTMLInputElement) {
+            input.focus()
+
+            if (clear) {
+                input.value = ''
+            }
+        }
+    }
 
     const addEventListeners = () => {
-        on('[data-id="w-input-otp"]', 'input', (event: Event) => {
+        on('[data-id="w-input-otp"]', 'keydown', (event: KeyboardEvent) => {
             const target = event.target as HTMLInputElement
-            const value = target.value
-            const placeholders = Array.from(target.nextElementSibling!.children)
-                .filter(child => !(child as HTMLDivElement).dataset.separator)
 
+            if (event.key === 'Backspace' || event.key === 'Delete') {
+                if (!target.value) {
+                    focus('prev', target.parentElement, true)
+                }
+            }
 
-            placeholders.forEach((placeholder, index) => {
-                const placeholderElement = placeholder as HTMLDivElement
+            if (event.key === 'ArrowLeft') {
+                focus('prev', target.parentElement)
+            }
 
-                placeholderElement.innerText = value[index] || ''
-                placeholderElement.dataset.active = value.length === index
-                    ? 'true'
-                    : 'false'
-            })
+            if (event.key === 'ArrowRight') {
+                focus('next', target.parentElement)
+            }
+        }, true)
+
+        on('[data-id="w-input-otp"]', 'input', (event: Event) => {
+            const target = event.target
+
+            if (!(target instanceof HTMLInputElement)) {
+                return
+            }
+
+            const index = Number(target.dataset.index)
+            const emptyIndex = Array.from(target.parentElement?.querySelectorAll('input') || [])
+                .findIndex(element => !element.value) + 1
+
+            if (emptyIndex !== 0 && emptyIndex < index) {
+                const emptyElement = target.parentElement?.querySelector(`[data-index="${emptyIndex}"]`)
+                const nextFocusElement = target.parentElement?.querySelector(`[data-index="${emptyIndex + 1}"]`)
+
+                if (emptyElement instanceof HTMLInputElement) {
+                    emptyElement.value = target.value
+                }
+
+                if (nextFocusElement instanceof HTMLInputElement) {
+                    nextFocusElement.focus()
+                }
+
+                target.value = ''
+
+                return
+            }
+
+            if (target.value) {
+                focus('next', target.parentElement)
+            }
+        }, true)
+
+        on('[data-id="w-input-otp"]', 'keyup', (event: Event) => {
+            const target = event.target
+            const container = target instanceof HTMLInputElement ? target.parentElement : null
+
+            if (container) {
+                const value = Array.from(container.querySelectorAll('input') || [])
+                    .map(input => input.value)
+                    .join('')
+
+                dispatch('otpOnChange', value)
+            }
+        }, true)
+
+        on('[data-id="w-input-otp"]', 'paste', (event: ClipboardEvent) => {
+            event.preventDefault()
+
+            const target = event.target
+            const container = target instanceof HTMLInputElement ? target.parentElement : null
+
+            if (container) {
+                const inputLength = Number(container.dataset.length)
+                const paste = event.clipboardData?.getData('text') ?? ''
+                const nextIndex = Math.min(paste.length + 1, inputLength)
+                const focusInput = container.querySelector(`[data-index="${nextIndex}"]`)
+
+                if (focusInput instanceof HTMLInputElement) {
+                    focusInput.focus()
+                }
+
+                paste.split('').slice(0, inputLength).forEach((char, i) => {
+                    const input = container.querySelector(`[data-index="${i + 1}"]`)
+
+                    if (input instanceof HTMLInputElement) {
+                        input.value = char
+                    }
+                })
+            }
+        }, true)
+
+        on('[data-id="w-input-otp"]', 'focus', (event: Event) => {
+            const target = event.target
+
+            if (target instanceof HTMLInputElement) {
+                if (target.parentElement) {
+                    target.parentElement.dataset.active = target.dataset.index
+                }
+
+                setTimeout(() => target.select(), 0)
+            }
         }, true)
     }
 

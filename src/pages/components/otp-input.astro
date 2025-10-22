@@ -20,6 +20,8 @@ const sections = getSections({
     <div class="grid md-2 lg-3">
         <ComponentWrapper type="Astro">
             <AstroOTPInput />
+            <br />
+            <span class="muted" data-id="otp-value">Value:</span>
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
@@ -67,12 +69,19 @@ const sections = getSections({
     ))}
 </Layout>
 
+<script>
+    import { get } from '@utils/DOMUtils'
+    import { listen } from '@utils/event'
 
-name?: string
-disabled?: boolean
-length?: number
-groupLength?: number
-separator?: string
-label?: string
-subText?: string
-className?: string
+    const v = get('[data-id="otp-value"]')
+
+    listen('otpOnChange', event => {
+        // eslint-disable-next-line no-console
+        console.log(event)
+
+        if (v instanceof HTMLSpanElement) {
+            v.innerText = `Value: ${event}`
+        }
+    })
+</script>
+

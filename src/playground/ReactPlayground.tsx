@@ -207,8 +207,8 @@ const ReactPlayground = () => {
             </Card>
 
             <Card title="OTP Input" bodyClassName="flex column">
-                <OTPInput onInput={(event: any) => setOtpInput(event.target.value)} />
-                <OTPInput onInput={(event: any) => setOtpInput(event.target.value)} groupLength={2} />
+                <OTPInput onChange={(value: string) => setOtpInput(value)} />
+                <OTPInput onChange={(value: string) => setOtpInput(value)} groupLength={2} />
 
                 <span className={styles.span}>{otpInput}</span>
             </Card>
