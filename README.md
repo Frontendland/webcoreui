@@ -179,6 +179,11 @@ html body {
     // Radio component
     --w-radio-color: var(--w-color-primary);
 
+    // RangeSlider component
+    --w-range-slider-background: var(--w-color-primary-50);
+    --w-range-slider-color: var(--w-color-primary);
+    --w-range-slider-thumb: var(--w-color-primary-50);
+
     // Rating component
     --w-rating-color: var(--w-color-primary);
     --w-rating-empty-color: var(--w-color-primary);
@@ -299,6 +304,7 @@ import { Accordion } from 'webcoreui/react'
 - [Popover](https://github.com/Frontendland/webcoreui/tree/main/src/components/Popover)
 - [Progress](https://github.com/Frontendland/webcoreui/tree/main/src/components/Progress)
 - [Radio](https://github.com/Frontendland/webcoreui/tree/main/src/components/Radio)
+- [RangeSlider](https://github.com/Frontendland/webcoreui/tree/main/src/components/RangeSlider)
 - [Rating](https://github.com/Frontendland/webcoreui/tree/main/src/components/Rating)
 - [Ribbon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Ribbon)
 - [Select](https://github.com/Frontendland/webcoreui/tree/main/src/components/Select)

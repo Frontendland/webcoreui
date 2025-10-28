@@ -5,6 +5,7 @@ const additionalTypes = {
     ],
     List: ['ListEventType'],
     Pagination: ['PaginationEventType'],
+    RangeSlider: ['RangeSliderEventType'],
     Select: ['SelectEventType']
 }
 

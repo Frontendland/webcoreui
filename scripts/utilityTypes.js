@@ -152,6 +152,12 @@ declare module 'webcoreui' {
         callback: any,
         all?: boolean
     ) => void
+    export const off = (
+        selector: string | HTMLElement | Document,
+        event: string,
+        fn: any,
+        all?: boolean
+    ) => void
 
     export const dispatch: (event: string, detail: unknown) => void
     export const listen: (event: string, callback: (e: any) => unknown) => {

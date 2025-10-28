@@ -1,0 +1,169 @@
+---
+import { chevronLeft, chevronRight } from 'webcoreui/icons'
+
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroRangeSlider from '@components/RangeSlider/RangeSlider.astro'
+import SvelteRangeSlider from '@components/RangeSlider/RangeSlider.svelte'
+import ReactRangeSlider from '@components/RangeSlider/RangeSlider.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'range sliders',
+    showSubTitle: true,
+    components: [AstroRangeSlider, SvelteRangeSlider, ReactRangeSlider]
+})
+---
+
+<Layout>
+    <h1>RangeSlider</h1>
+
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroRangeSlider />
+            <br />
+            <span class="muted" data-id="range-value">Value:</span>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteRangeSlider client:idle />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactRangeSlider client:idle />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom min-max values">
+                <section.component
+                    min={-100}
+                    max={200}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Selected values">
+                <section.component
+                    selectedMin={20}
+                    selectedMax={80}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Step set to 10">
+                <section.component step={10} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Min gap set to 20">
+                <section.component minGap={20} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled">
+                <section.component
+                    selectedMin={20}
+                    selectedMax={40}
+                    disabled={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom colors">
+                <section.component
+                    color="var(--w-color-success)"
+                    background="var(--w-color-alert)"
+                    thumb="#000"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Labelled">
+                <section.component label="Filter for price" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Label + subtext">
+                <section.component
+                    label="Filter for price"
+                    subText="Updated filter is saved to preferences"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Min and max labels">
+                <section.component
+                    label="Filter for price"
+                    subText="Updated filter is saved to preferences"
+                    minLabel="$0"
+                    maxLabel="$100"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Min and max icons">
+                <section.component
+                    label="Filter for price"
+                    subText="Updated filter is saved to preferences"
+                    minIcon={chevronLeft}
+                    maxIcon={chevronRight}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Min and max icons with labels">
+                <section.component
+                    label="Filter for price"
+                    subText="Updated filter is saved to preferences"
+                    minLabel="$0"
+                    maxLabel="$100"
+                    minIcon={chevronLeft}
+                    maxIcon={chevronRight}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Interactive labels">
+                <section.component
+                    label="Filter for price"
+                    subText="Updated filter is saved to preferences"
+                    minLabel="$0"
+                    maxLabel="$100"
+                    minIcon={chevronLeft}
+                    maxIcon={chevronRight}
+                    interactiveLabels={true}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Update labels on change">
+                <section.component
+                    label="Filter for price"
+                    subText="Updated filter is saved to preferences"
+                    minLabel="$0"
+                    maxLabel="$100"
+                    minIcon={chevronLeft}
+                    maxIcon={chevronRight}
+                    interactiveLabels={true}
+                    updateLabels={true}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<script>
+    import { get } from '@utils/DOMUtils'
+    import { listen } from '@utils/event'
+
+    const v = get('[data-id="range-value"]')
+
+    listen('rangeSliderOnChange', event => {
+        // eslint-disable-next-line no-console
+        console.log(event)
+
+        if (v instanceof HTMLSpanElement) {
+            v.innerText = `Value: ${event.min} - ${event.max}`
+        }
+    })
+</script>

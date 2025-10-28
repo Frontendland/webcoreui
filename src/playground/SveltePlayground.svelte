@@ -17,6 +17,7 @@
     import Pagination from '@components/Pagination/Pagination.svelte'
     import Progress from '@components/Progress/Progress.svelte'
     import Radio from '@components/Radio/Radio.svelte'
+    import RangeSlider from '@components/RangeSlider/RangeSlider.svelte'
     import Select from '@components/Select/Select.svelte'
     import Slider from '@components/Slider/Slider.svelte'
     import SpeedDial from '@components/SpeedDial/SpeedDial.svelte'
@@ -47,6 +48,7 @@
     let progress = $state(33)
     let checkbox = $state(false)
     let radio = $state('')
+    let range = $state('')
     let toggle = $state(false)
     let input = $state('')
     let inputBinding = $state('')
@@ -133,7 +135,7 @@
         </Collapsible>
     </Card>
 
-    <Card title="ContextMenu">
+    <Card title="Context Menu">
         <ContextMenu className="ctx">
             <span class="muted">Right-click here</span>
             <span class="muted">Click &quot;Sign out&quot; to close context.</span>
@@ -156,7 +158,7 @@
         <Copy>Click to copy text</Copy>
     </Card>
 
-    <Card title="DataTable">
+    <Card title="Data Table">
         <DataTable
             headings={headings}
             data={dataTableEntries}
@@ -252,6 +254,19 @@
         <span class={styles.span}>{radio}</span>
     </Card>
 
+    <Card title="Range Slider">
+        <RangeSlider
+            minLabel="$0"
+            maxLabel="$100"
+            interactiveLabels={true}
+            updateLabels={true}
+            className={styles.mt}
+            onChange={event => range = `${event.min}-${event.max}`}
+        />
+
+        <span class={styles.span}>{range}</span>
+    </Card>
+
     <Card title="Select">
         <Select
             name="select"
@@ -281,7 +296,7 @@
         <span class={styles.span}>{slider}</span>
     </Card>
 
-    <Card title="SpeedDial">
+    <Card title="Speed Dial">
         <SpeedDial
             items={speedDialItems}
             triggerOnClick={true}
@@ -329,11 +344,11 @@
         <span class="muted">{wordCount} words</span>
     </Card>
 
-    <Card title="ThemeSwitcher">
+    <Card title="Theme Switcher">
         <ThemeSwitcher themes={themes} />
     </Card>
 
-    <Card title="ThemeSwitcher - toggle with icons">
+    <Card title="Theme Switcher - toggle with icons">
         <ThemeSwitcher themes={themes} toggle={true}>
             {#snippet primaryIcon()}
                 <Icon type="moon" />

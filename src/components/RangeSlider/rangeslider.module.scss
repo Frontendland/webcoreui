@@ -1,0 +1,97 @@
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-range-slider-background: var(--w-color-primary-50);
+    --w-range-slider-color: var(--w-color-primary);
+    --w-range-slider-thumb: var(--w-color-primary-50);
+}
+
+.label {
+    @include layout(flex, column, xs);
+
+    cursor: pointer;
+}
+
+.container {
+    @include layout(flex, v-center, xs);
+
+    svg {
+        @include size(14px);
+    }
+
+    button {
+        @include layout(flex, v-center, xs);
+        @include background(transparent);
+        @include typography(primary, default);
+        @include border(0);
+
+        cursor: pointer;
+    }
+}
+
+.slider {
+    @include position(relative);
+    @include border-radius(xl);
+    @include size(h10px);
+    @include background(var(--w-range-slider-background));
+
+    flex: 1;
+}
+
+.range {
+    @include position(absolute);
+    @include background(var(--w-range-slider-color));
+    @include size('h100%');
+    @include border-radius(xl);
+
+    &[data-disabled] {
+        @include background(primary-30);
+        cursor: no-drop;
+    }
+}
+
+.input {
+    @include size('w100%', h10px);
+    @include background(none);
+    @include spacing(m0);
+    @include position(absolute, t0);
+
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: none;
+
+    &[disabled]::-webkit-slider-thumb {
+        @include background(primary-50);
+        @include border(primary-30);
+        cursor: no-drop;
+    }
+
+    &[disabled]::-moz-range-thumb {
+        @include background(primary-50);
+        @include border(primary-30);
+        cursor: no-drop;
+    }
+}
+
+.input::-webkit-slider-thumb {
+    @include background(var(--w-range-slider-thumb));
+    @include size(10px);
+    @include border-radius(max);
+    @include border(var(--w-range-slider-color));
+
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.input::-moz-range-thumb {
+    @include background(var(--w-range-slider-thumb));
+    @include size(9px);
+    @include border-radius(max);
+    @include border(var(--w-range-slider-color));
+
+    pointer-events: auto;
+    appearance: none;
+    cursor: pointer;
+}

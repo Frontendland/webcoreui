@@ -32,6 +32,7 @@ import OTPInput from '@components/OTPInput/OTPInput.astro'
 import Pagination from '@components/Pagination/Pagination.astro'
 import Progress from '@components/Progress/Progress.astro'
 import Radio from '@components/Radio/Radio.astro'
+import RangeSlider from '@components/RangeSlider/RangeSlider.astro'
 import Rating from '@components/Rating/Rating.astro'
 import Ribbon from '@components/Ribbon/Ribbon.astro'
 import Select from '@components/Select/Select.astro'
@@ -165,7 +166,7 @@ import {
                 <Badge slot="on">Expand</Badge>
             </Collapsible>
         </CardWrapper>
-        <CardWrapper title="ContextMenu" href="/components/context-menu" bodyClassName="card-sm">
+        <CardWrapper title="Context Menu" href="/components/context-menu" bodyClassName="card-sm">
             <div class="ctx">
                 <span class="muted">Right-click here</span>
             </div>
@@ -173,7 +174,7 @@ import {
         <CardWrapper title="Copy" href="/components/copy">
             <Copy>Click to copy</Copy>
         </CardWrapper>
-        <CardWrapper title="DataTable" href="/components/data-table">
+        <CardWrapper title="Data Table" href="/components/data-table">
             <DataTable
                 headings={[
                     { name: 'ID', filterable: true, toggleable: true },
@@ -276,6 +277,9 @@ import {
                 name="radio"
             />
         </CardWrapper>
+        <CardWrapper title="Range Slider" href="/components/range-slider">
+            <RangeSlider className="range-slider-example" />
+        </CardWrapper>
         <CardWrapper title="Rating" href="/components/rating">
             <Rating score={4} />
         </CardWrapper>
@@ -305,7 +309,7 @@ import {
         <CardWrapper title="Slider" href="/components/slider">
             <Slider min={0} max={100} value={50} />
         </CardWrapper>
-        <CardWrapper title="SpeedDial" href="/components/speed-dial">
+        <CardWrapper title="Speed Dial" href="/components/speed-dial">
             <SpeedDial
                 items={[{ icon: 'github', href: '' }]}
                 className="absolute speed-dial-example"
@@ -335,7 +339,7 @@ import {
         <CardWrapper title="Textarea" href="/components/textarea">
             <Textarea placeholder="Get in touch with us" />
         </CardWrapper>
-        <CardWrapper title="ThemeSwitcher" href="/components/theme-switcher">
+        <CardWrapper title="Theme Switcher" href="/components/theme-switcher">
             <ThemeSwitcher themes={themes} />
         </CardWrapper>
         <CardWrapper title="Timeline" href="/components/timeline">
@@ -385,6 +389,10 @@ import {
 
     .carousel-example {
         @include spacing(p-sm);
+        @include size('w100%');
+    }
+
+    .range-slider-example {
         @include size('w100%');
     }
 

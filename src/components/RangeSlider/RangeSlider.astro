@@ -1,0 +1,264 @@
+---
+import type { RangeSliderProps } from './rangeslider'
+
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+import Icon from '../Icon/Icon.astro'
+
+import { classNames } from '../../utils/classNames'
+import { interpolate } from '../../utils/interpolate'
+
+import styles from './rangeslider.module.scss'
+
+interface Props extends RangeSliderProps {}
+
+const {
+    min = 0,
+    max = 100,
+    selectedMin,
+    selectedMax,
+    step = 1,
+    minGap = 5,
+    disabled,
+    color,
+    background,
+    thumb,
+    label,
+    subText,
+    minLabel,
+    maxLabel,
+    minIcon,
+    maxIcon,
+    interactiveLabels,
+    updateLabels,
+    className
+} = Astro.props
+
+const styleVariables = classNames([
+    color && `--w-range-slider-color: ${color};`,
+    background && `--w-range-slider-background: ${background};`,
+    thumb && `--w-range-slider-thumb: ${thumb};`
+])
+
+const minLabelWidth = `${String(max).length}ch`
+const labelStyle = updateLabels ? `min-width:${minLabelWidth};` : null
+---
+
+<ConditionalWrapper condition={!!(label || subText)}>
+    <label slot="wrapper" class:list={[styles.label, className]}>children</label>
+
+    {label && <span>{label}</span>}
+
+    <div
+        class:list={[styles.container, !(label && subText) && className]}
+        data-id="w-range-slider"
+        data-gap={minGap}
+        data-interactive={interactiveLabels}
+        data-update-labels={updateLabels}
+        style={styleVariables}
+    >
+        <ConditionalWrapper condition={!!interactiveLabels}>
+            <button slot="wrapper" data-dir="left">children</button>
+
+            {minIcon && (
+                <Fragment>
+                    {minIcon.startsWith('<svg')
+                        ? <Fragment set:html={minIcon} />
+                        : <Icon type={minIcon} size={18} />
+                    }
+                </Fragment>
+            )}
+            {minLabel && (
+                <span data-id="w-min-label" style={labelStyle}>{minLabel}</span>
+            )}
+        </ConditionalWrapper>
+
+        <div class={styles.slider}>
+            <div
+                data-id="w-range"
+                data-disabled={disabled ? 'true' : undefined}
+                class={styles.range}
+                style={`
+                    left: ${interpolate(selectedMin || min, [min, max], [0, 100])}%;
+                    right: ${interpolate(selectedMax || max, [min, max], [100, 0])}%;
+                `}
+            />
+            <input
+                type="range"
+                class:list={[styles.input, styles.min]}
+                min={min}
+                max={max}
+                value={selectedMin || min}
+                step={step}
+                disabled={disabled}
+                data-min="true"
+            />
+            <input
+                type="range"
+                min={min}
+                max={max}
+                class={styles.input}
+                value={selectedMax || max}
+                step={step}
+                disabled={disabled}
+                data-max="true"
+            />
+        </div>
+
+        <ConditionalWrapper condition={!!interactiveLabels}>
+            <button slot="wrapper" data-dir="right">children</button>
+
+            {maxLabel && (
+                <span data-id="w-max-label" style={labelStyle}>{maxLabel}</span>
+            )}
+            {maxIcon && (
+                <Fragment>
+                    {maxIcon.startsWith('<svg')
+                        ? <Fragment set:html={maxIcon} />
+                        : <Icon type={maxIcon} size={14} />
+                    }
+                </Fragment>
+            )}
+        </ConditionalWrapper>
+    </div>
+
+    {subText && <span class="muted">{subText}</span>}
+</ConditionalWrapper>
+
+<script>
+    import { off, on } from '../../utils/DOMUtils'
+    import { dispatch } from '../../utils/event'
+    import { interpolate } from '../../utils/interpolate'
+
+    type RangeParams = {
+        range: HTMLDivElement
+        minValue: number
+        maxValue: number
+        min: number
+        max: number
+    }
+
+    const updateRange = ({ range, minValue, maxValue, min, max }: RangeParams) => {
+        range.style.left = `${interpolate(minValue, [min, max], [0, 100])}%`
+        range.style.right = `${interpolate(maxValue, [min, max], [100, 0])}%`
+    }
+
+    const updateLabels = (wrapper: HTMLDivElement, minValue: number, maxValue: number) => {
+        const minLabel = wrapper.querySelector('[data-id="w-min-label"]')
+        const maxLabel = wrapper.querySelector('[data-id="w-max-label"]')
+
+        if (minLabel instanceof HTMLElement && maxLabel instanceof HTMLElement) {
+            minLabel.innerText = minLabel.innerText.replace(/\d+(\.\d+)?/, String(minValue))
+            maxLabel.innerText = maxLabel.innerText.replace(/\d+(\.\d+)?/, String(maxValue))
+        }
+    }
+
+    const addEventListeners = () => {
+        on('[data-id="w-range-slider"] input', 'input', (event: Event) => {
+            const target = event.target
+
+            if (!(target instanceof HTMLInputElement)) {
+                return
+            }
+
+            const range = target.parentElement?.querySelector('[data-id="w-range"]')
+            const wrapper = target.parentElement?.parentElement
+            const prevInput = target.previousElementSibling
+            const nextInput = target.nextElementSibling
+
+            if (!(wrapper instanceof HTMLDivElement) || !(range instanceof HTMLDivElement)) {
+                return
+            }
+
+            const value = Number(target.value)
+            const min = Number(target.min)
+            const max = Number(target.max)
+            const gap = Number(wrapper.dataset.gap)
+            const shouldUpdateLabels = !!wrapper.dataset.updateLabels
+            const prevInputValue = prevInput instanceof HTMLInputElement ? prevInput.value : 0
+            const nextInputValue = nextInput instanceof HTMLInputElement ? nextInput.value : 0
+            const minValue = target.dataset.min ? value : Number(prevInputValue)
+            const maxValue = target.dataset.max ? value : Number(nextInputValue)
+
+            if (maxValue - minValue >= gap) {
+                updateRange({
+                    range,
+                    minValue,
+                    maxValue,
+                    min,
+                    max
+                })
+
+                if (shouldUpdateLabels) {
+                    updateLabels(wrapper, minValue, maxValue)
+                }
+
+                dispatch('rangeSliderOnChange', {
+                    min: minValue,
+                    max: maxValue
+                })
+            } else if (target.dataset.min) {
+                target.value = String(maxValue - gap)
+            } else {
+                target.value = String(minValue + gap)
+            }
+        }, true)
+
+        on('[data-id="w-range-slider"] button', 'click', (event: Event) => {
+            const target = event.currentTarget
+
+            if (!(target instanceof HTMLButtonElement)) {
+                return
+            }
+
+            const wrapper = target.parentElement
+            const range = wrapper?.querySelector('[data-id="w-range"]')
+            const minInput = wrapper?.querySelector('[data-min]')
+            const maxInput = wrapper?.querySelector('[data-max]')
+
+            if (!(wrapper instanceof HTMLDivElement)
+                || !(range instanceof HTMLDivElement)
+                || !(minInput instanceof HTMLInputElement)
+                || !(maxInput instanceof HTMLInputElement)
+            ) {
+                return
+            }
+
+            const dir = target.dataset.dir === 'left' ? -1 : 1
+            const step = Number(minInput.step)
+            const min = Number(minInput.min)
+            const max = Number(minInput.max)
+            const minValue = Number(minInput.value) + (dir * step)
+            const maxValue = Number(maxInput.value) + (dir * step)
+            const shouldUpdateLabels = !!wrapper.dataset.updateLabels
+
+            if (minValue < min || maxValue > max) {
+                return
+            }
+
+            minInput.value = String(minValue)
+            maxInput.value = String(maxValue)
+
+            updateRange({
+                range,
+                minValue,
+                maxValue,
+                min,
+                max
+            })
+
+            if (shouldUpdateLabels) {
+                updateLabels(wrapper, minValue, maxValue)
+            }
+
+            dispatch('rangeSliderOnChange', {
+                min: minValue,
+                max: maxValue
+            })
+        }, true)
+    }
+
+    off(document, 'astro:after-swap', addEventListeners)
+    on(document, 'astro:after-swap', addEventListeners)
+
+    addEventListeners()
+</script>

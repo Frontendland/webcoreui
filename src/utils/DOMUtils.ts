@@ -26,3 +26,28 @@ export const on = (
 
     selector?.addEventListener(event, callback)
 }
+
+export const off = (
+    selector: string | HTMLElement | Document,
+    event: string,
+    fn: any,
+    all?: boolean
+) => {
+    if (all && typeof selector === 'string') {
+        const elements = document.querySelectorAll(selector)
+
+        elements?.forEach(element => {
+            element.removeEventListener(event, fn)
+        })
+
+        return
+    }
+
+    if (typeof selector === 'string') {
+        (get(selector) as HTMLElement)?.removeEventListener(event, fn)
+
+        return
+    }
+
+    selector?.removeEventListener(event, fn)
+}

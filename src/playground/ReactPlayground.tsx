@@ -19,6 +19,7 @@ import OTPInput from '@components/OTPInput/OTPInput.tsx'
 import Pagination from '@components/Pagination/Pagination.tsx'
 import Progress from '@components/Progress/Progress.tsx'
 import Radio from '@components/Radio/Radio.tsx'
+import RangeSlider from '@components/RangeSlider/RangeSlider.tsx'
 import Select from '@components/Select/Select.tsx'
 import Slider from '@components/Slider/Slider.tsx'
 import SpeedDial from '@components/SpeedDial/SpeedDial.tsx'
@@ -50,6 +51,7 @@ const ReactPlayground = () => {
     const [progress, setProgress] = useState(33)
     const [checkbox, setCheckbox] = useState(false)
     const [radio, setRadio] = useState('')
+    const [range, setRange] = useState('')
     const [toggle, setToggle] = useState(false)
     const [input, setInput] = useState('')
     const [otpInput, setOtpInput] = useState('')
@@ -132,7 +134,7 @@ const ReactPlayground = () => {
                 </Collapsible>
             </Card>
 
-            <Card title="ContextMenu">
+            <Card title="Context Menu">
                 <ContextMenu
                     className="ctx"
                     context={
@@ -156,7 +158,7 @@ const ReactPlayground = () => {
                 <Copy>Click to copy text</Copy>
             </Card>
 
-            <Card title="DataTable">
+            <Card title="Data Table">
                 <DataTable
                     headings={headings}
                     data={dataTableEntries}
@@ -250,6 +252,19 @@ const ReactPlayground = () => {
                 <span className={styles.span}>{radio}</span>
             </Card>
 
+            <Card title="Range Slider">
+                <RangeSlider
+                    minLabel="$0"
+                    maxLabel="$100"
+                    interactiveLabels={true}
+                    updateLabels={true}
+                    className={styles.mt}
+                    onChange={event => setRange(`${event.min}-${event.max}`)}
+                />
+
+                <span className={styles.span}>{range}</span>
+            </Card>
+
             <Card title="Select">
                 <Select
                     name="select"
@@ -279,7 +294,7 @@ const ReactPlayground = () => {
                 <span className={styles.span}>{slider}</span>
             </Card>
 
-            <Card title="SpeedDial">
+            <Card title="Speed Dial">
                 <SpeedDial
                     items={speedDialItems}
                     triggerOnClick={true}
@@ -328,11 +343,11 @@ const ReactPlayground = () => {
                 <span className="muted">{wordCount} words</span>
             </Card>
 
-            <Card title="ThemeSwitcher">
+            <Card title="Theme Switcher">
                 <ThemeSwitcher themes={themes} />
             </Card>
 
-            <Card title="ThemeSwitcher - toggle with icons">
+            <Card title="Theme Switcher - toggle with icons">
                 <ThemeSwitcher
                     themes={themes}
                     toggle={true}
