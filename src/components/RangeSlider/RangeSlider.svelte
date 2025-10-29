@@ -45,8 +45,10 @@
     let dynamicMinLabel = $state(minLabel)
     let dynamicMaxLabel = $state(maxLabel)
 
-    const rangeLeftPercent = $derived(interpolate(minValue || min, [min, max], [0, 100]))
-    const rangeRightPercent = $derived(interpolate(maxValue || max, [min, max], [100, 0]))
+    const minAdjust = $derived(minValue > (max / 2) ? -1 : 1)
+    const maxAdjust = $derived(maxValue < (max / 2) ? 1 : -1)
+    const rangeLeftPercent = $derived(interpolate((minValue || min) + minAdjust, [min, max], [0, 100]))
+    const rangeRightPercent = $derived(interpolate((maxValue || max) + maxAdjust, [min, max], [100, 0]))
 
     const updateDynamicLabels = (minValue: number, maxValue: number) => {
         if (dynamicMinLabel && dynamicMaxLabel) {
@@ -72,9 +74,11 @@
                 max: maxValue
             })
         } else if (target.dataset.min) {
-            target.value = String(maxValue - minGap)
+            minValue = maxValue - Math.max(step, minGap)
+            target.value = String(minValue)
         } else {
-            target.value = String(minValue + minGap)
+            maxValue = minValue + Math.max(step, minGap)
+            target.value = String(maxValue)
         }
     }
 

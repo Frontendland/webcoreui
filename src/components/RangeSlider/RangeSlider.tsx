@@ -63,25 +63,28 @@ const RangeSlider = ({
 
         const value = Number(target.value)
 
-        if (target.dataset.min) {
-            if (value <= maxValue - minGap) {
-                setMinValue(value)
+        let currentMin = target.dataset.min ? value : minValue
+        let currentMax = target.dataset.max ? value : maxValue
+
+        if (currentMax - currentMin >= minGap) {
+            if (updateLabels) {
+                updateDynamicLabels(currentMin, currentMax)
             }
-        } else if (value >= minValue + minGap) {
-            setMaxValue(value)
+
+            onChange?.({
+                min: currentMin,
+                max: currentMax
+            })
+        } else if (target.dataset.min) {
+            currentMin = currentMax - Math.max(step, minGap)
+            target.value = String(currentMin)
+        } else {
+            currentMax = currentMin + Math.max(step, minGap)
+            target.value = String(currentMax)
         }
 
-        const newMin = target.dataset.min ? value : minValue
-        const newMax = target.dataset.max ? value : maxValue
-
-        if (updateLabels) {
-            updateDynamicLabels(newMin, newMax)
-        }
-
-        onChange?.({
-            min: newMin,
-            max: newMax
-        })
+        setMinValue(currentMin)
+        setMaxValue(currentMax)
     }
 
     const handleClick = (event: React.MouseEvent, direction: 'left' | 'right') => {
@@ -113,8 +116,11 @@ const RangeSlider = ({
     }
 
     useEffect(() => {
-        rangeLeftPercent.current = interpolate(minValue || min, [min, max], [0, 100])
-        rangeRightPercent.current = interpolate(maxValue || max, [min, max], [100, 0])
+        const minAdjust = minValue > (max / 2) ? -1 : 1
+        const maxAdjust = maxValue < (max / 2) ? 1 : -1
+
+        rangeLeftPercent.current = interpolate((minValue || min) + minAdjust, [min, max], [0, 100])
+        rangeRightPercent.current = interpolate((maxValue || max) + maxAdjust, [min, max], [100, 0])
     }, [minValue, maxValue])
 
     return (

@@ -138,8 +138,11 @@ const labelStyle = updateLabels ? `min-width:${minLabelWidth};` : null
     }
 
     const updateRange = ({ range, minValue, maxValue, min, max }: RangeParams) => {
-        range.style.left = `${interpolate(minValue, [min, max], [0, 100])}%`
-        range.style.right = `${interpolate(maxValue, [min, max], [100, 0])}%`
+        const minAdjust = minValue > (max / 2) ? -1 : 1
+        const maxAdjust = maxValue < (max / 2) ? 1 : -1
+
+        range.style.left = `${interpolate(minValue + minAdjust, [min, max], [0, 100])}%`
+        range.style.right = `${interpolate(maxValue + maxAdjust, [min, max], [100, 0])}%`
     }
 
     const updateLabels = (wrapper: HTMLDivElement, minValue: number, maxValue: number) => {
@@ -172,6 +175,7 @@ const labelStyle = updateLabels ? `min-width:${minLabelWidth};` : null
             const value = Number(target.value)
             const min = Number(target.min)
             const max = Number(target.max)
+            const step = Number(target.step)
             const gap = Number(wrapper.dataset.gap)
             const shouldUpdateLabels = !!wrapper.dataset.updateLabels
             const prevInputValue = prevInput instanceof HTMLInputElement ? prevInput.value : 0
@@ -179,15 +183,10 @@ const labelStyle = updateLabels ? `min-width:${minLabelWidth};` : null
             const minValue = target.dataset.min ? value : Number(prevInputValue)
             const maxValue = target.dataset.max ? value : Number(nextInputValue)
 
-            if (maxValue - minValue >= gap) {
-                updateRange({
-                    range,
-                    minValue,
-                    maxValue,
-                    min,
-                    max
-                })
+            let currentMin = minValue
+            let currentMax = maxValue
 
+            if (maxValue - minValue >= gap) {
                 if (shouldUpdateLabels) {
                     updateLabels(wrapper, minValue, maxValue)
                 }
@@ -197,10 +196,20 @@ const labelStyle = updateLabels ? `min-width:${minLabelWidth};` : null
                     max: maxValue
                 })
             } else if (target.dataset.min) {
-                target.value = String(maxValue - gap)
+                currentMin = maxValue - Math.max(step, gap)
+                target.value = String(currentMin)
             } else {
-                target.value = String(minValue + gap)
+                currentMax = minValue + Math.max(step, gap)
+                target.value = String(currentMax)
             }
+
+            updateRange({
+                range,
+                minValue: currentMin,
+                maxValue: currentMax,
+                min,
+                max
+            })
         }, true)
 
         on('[data-id="w-range-slider"] button', 'click', (event: Event) => {

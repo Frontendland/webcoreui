@@ -34,6 +34,7 @@ body {
     @include border-radius(xl);
     @include size(h10px);
     @include background(var(--w-range-slider-background));
+    @include visibility(hidden);
 
     flex: 1;
 }
@@ -42,7 +43,6 @@ body {
     @include position(absolute);
     @include background(var(--w-range-slider-color));
     @include size('h100%');
-    @include border-radius(xl);
 
     &[data-disabled] {
         @include background(primary-30);
