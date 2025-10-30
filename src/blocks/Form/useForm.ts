@@ -11,6 +11,7 @@ export type FormActions = {
     update: (field: string, value: string | boolean) => FormActions
     setValidations: (validationRules: Record<string, boolean>) => FormActions
     isValidForm: () => boolean,
+    useSmartFill: (options?: { patterns?: Record<string, RegExp>, inputs?: Record<string, string> }) => FormActions
     onChange: (callback: (formValues: Record<string, string>) => void) => FormActions
     onSubmit: (callback: (formValues: Record<string, string>) => void) => FormActions
     onError: (callback: (invalidFields: string[]) => void) => FormActions
@@ -83,6 +84,113 @@ export const useForm = (selector: string): FormActions | null => {
         },
         isValidForm() {
             return Object.values(this.validationRules).every(key => key)
+        },
+        useSmartFill({ patterns, inputs } = {}) {
+            const textPatterns = {
+                email: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/gm,
+                phone: /\b(?:\+?\d{1,3}[\s-]?)?(?:\(?\d{2,4}\)?[\s-]?)?\d{3,4}[\s-]?\d{3,4}\b/gm,
+                postal: /^[0-9]{4,5}(?:-[0-9]{4})?$/gm,
+                date: /\b\d{1,4}[-/.]\d{1,2}[-/.]\d{1,4}\b/gm,
+                url: /\bhttps?:\/\/[^\s/$.?#].[^\s]*\b/gm,
+                ...(patterns || {})
+            }
+
+            const fieldHints: Record<string, string[]> = {
+                email: ['mail', 'email', 'eaddress'],
+                phone: ['phone', 'mobile', 'tel', 'cell'],
+                postal: ['zip', 'postal', 'postcode'],
+                date: ['date', 'dob', 'birth', 'day'],
+                url: ['url', 'website', 'link']
+            }
+
+            const typeMap = {
+                email: 'email',
+                url: 'url',
+                date: 'date',
+                tel: 'phone'
+            } as const
+
+            const parseText = (text: string) => {
+                const extracted: Record<string, string> = {}
+
+                for (const [key, regex] of Object.entries(textPatterns)) {
+                    const match = text.trim().match(regex)
+
+                    if (match) {
+                        extracted[key] = match[0].trim()
+                    }
+                }
+
+                return extracted
+            }
+
+            const inferFieldType = (name: string, type: string) => {
+                const lowered = name.toLowerCase().replace(/[_\-\d]/g, '')
+
+                for (const [key, mappedName] of Object.entries(inputs || {})) {
+                    if (mappedName.toLowerCase() === name.toLowerCase()) {
+                        return key
+                    }
+                }
+
+                if (type in typeMap) {
+                    return typeMap[type as keyof typeof typeMap]
+                }
+
+                for (const [key, hints] of Object.entries(fieldHints)) {
+                    if (hints.some(hint => lowered.includes(hint))) {
+                        return key
+                    }
+                }
+
+                return null
+            }
+
+            form.addEventListener('paste', (event: ClipboardEvent) => {
+                const target = event.target
+
+                if (!(target instanceof HTMLInputElement)) {
+                    return
+                }
+
+                const pastedText = event.clipboardData?.getData('text') || ''
+
+                if (pastedText?.length < 5) {
+                    return
+                }
+
+                const extracted = parseText(pastedText)
+
+                if (!Object.keys(extracted).length) {
+                    return
+                }
+
+                let autoFilled = false
+
+                Array.from(form.elements).forEach(element => {
+                    if (element instanceof HTMLInputElement
+                        || element instanceof HTMLSelectElement
+                        || element instanceof HTMLTextAreaElement
+                    ) {
+                        const inferred = inferFieldType(element.name, element.type)
+
+                        if (inferred && extracted[inferred]) {
+                            const inputEvent = new Event('input', { bubbles: true })
+
+                            element.value = extracted[inferred]
+                            element.dispatchEvent(inputEvent)
+
+                            autoFilled = true
+                        }
+                    }
+                })
+
+                if (autoFilled) {
+                    event.preventDefault()
+                }
+            })
+
+            return this
         },
         onChange(callback) {
             form.addEventListener('input', () => {

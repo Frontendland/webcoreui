@@ -27,6 +27,16 @@ const getThemedContactForm = (theme: ButtonProps['theme']): FormProps['fields'] 
     { type: 'textarea', label: 'Message', name: 'message' },
     { type: 'button', label: 'Send', theme }
 ]
+
+const getUserForm = (): FormProps['fields'] => [
+    { type: 'email', label: 'E-mail', name: 'email' },
+    { type: 'tel', label: 'Phone', name: 'phone' },
+    { type: 'url', label: 'Site', name: 'site' },
+    { type: 'number', label: 'Zip', name: 'zip' },
+    { type: 'date', label: 'DOB', name: 'dob' },
+    { type: 'textarea', label: 'Message', name: 'message' },
+    { type: 'button', label: 'Send' }
+]
 ---
 
 <Layout>
@@ -165,9 +175,21 @@ const getThemedContactForm = (theme: ButtonProps['theme']): FormProps['fields'] 
 
             <Card title="Form with useForm hook">
                 <section.component
-                    fields={getThemedContactForm(undefined)}
+                    fields={getUserForm()}
                     id="form"
                 />
+            </Card>
+
+            <Card>
+                <span class="muted">Copy the following text and paste it in the form next to it to test smart fill with the <code>useForm</code> hook.</span>
+
+                <ul>
+                    <li>jane@doe.com</li>
+                    <li>+1 555-123-4567</li>
+                    <li>2025-01-01</li>
+                    <li>https://jane@example.com</li>
+                    <li>90210</li>
+                </ul>
             </Card>
         </div>
     ))}
@@ -184,6 +206,7 @@ const getThemedContactForm = (theme: ButtonProps['theme']): FormProps['fields'] 
 
     if (form) {
         form.preventDefault()
+            .useSmartFill()
             .update('email', 'john@doe.com')
             .update('message', 'You can update values dynamically')
             .onChange(formValues => {
