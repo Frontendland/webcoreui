@@ -1,5 +1,12 @@
 import { bodyFreeze } from './bodyFreeze'
 
+export type ModalInstance = {
+    open: (freeze?: boolean) => void
+    close: () => void
+    replaceWith: (modal: ModalInstance) => void
+    remove: () => void
+}
+
 export type ModalCallback = {
     trigger: Element | null
     modal: HTMLElement
@@ -12,7 +19,7 @@ export type Modal = {
     onClose?: (args: ModalCallback) => unknown
 }
 
-export const modal = (config: Modal | string) => {
+export const modal = (config: Modal | string): ModalInstance | undefined => {
     const {
         trigger,
         modal,
@@ -23,44 +30,51 @@ export const modal = (config: Modal | string) => {
     const modalSelector = typeof config === 'string' ? config : modal
 
     const triggerDOM = document.querySelector(trigger)
-    const modalDOM = document.querySelector(modalSelector) as HTMLElement
+    const modalDOM = document.querySelector(modalSelector)
 
-    if (modalDOM) {
+    if (modalDOM instanceof HTMLElement) {
         const closeOptions = modalDOM.dataset.close?.split(',')
 
-        const handleClose = {
+        const handleOpen = (_e?: Event, freeze = true) => {
+            modalDOM.dataset.show = 'true'
+
+            if (freeze) {
+                bodyFreeze()
+            }
+
+            onOpen?.({
+                trigger: triggerDOM,
+                modal: modalDOM
+            })
+        }
+
+        const handleClose = (_e?: Event, unfreeze = true) => {
+            modalDOM.dataset.show = ''
+
+            if (unfreeze) {
+                bodyFreeze(false)
+            }
+
+            onClose?.({
+                trigger: triggerDOM,
+                modal: modalDOM
+            })
+        }
+
+        const closeHandlers = {
             icon() {
                 const close = modalDOM.querySelector('[data-id="close"]')
 
-                const listener = () => {
-                    modalDOM.dataset.show = ''
-
-                    bodyFreeze(false)
-
-                    onClose?.({
-                        trigger: triggerDOM,
-                        modal: modalDOM
-                    })
-                }
-
                 return {
-                    add: () => close?.addEventListener('click', listener),
-                    remove: () => close?.removeEventListener('click', listener)
+                    add: () => close?.addEventListener('click', handleClose),
+                    remove: () => close?.removeEventListener('click', handleClose)
                 }
             },
 
             esc() {
                 const listener = (event: KeyboardEvent) => {
                     if (modalDOM.dataset.show && event.key === 'Escape') {
-                        modalDOM.dataset.show = ''
-
-                        bodyFreeze(false)
-
-                        onClose?.({
-                            trigger: triggerDOM,
-                            modal: modalDOM
-                        })
-
+                        handleClose()
                     }
                 }
 
@@ -73,50 +87,35 @@ export const modal = (config: Modal | string) => {
             overlay() {
                 const close = modalDOM.nextElementSibling
 
-                const listener = () => {
-                    modalDOM.dataset.show = ''
-
-                    bodyFreeze(false)
-
-                    onClose?.({
-                        trigger: triggerDOM,
-                        modal: modalDOM
-                    })
-                }
-
                 return {
-                    add: () => close?.addEventListener('click', listener),
-                    remove: () => close?.removeEventListener('click', listener)
+                    add: () => close?.addEventListener('click', handleClose),
+                    remove: () => close?.removeEventListener('click', handleClose)
                 }
             }
-        }
-
-        const handleOpen = () => {
-            modalDOM.dataset.show = 'true'
-
-            bodyFreeze()
-
-            onOpen?.({
-                trigger: triggerDOM,
-                modal: modalDOM
-            })
         }
 
         triggerDOM?.addEventListener('click', handleOpen)
 
         closeOptions?.forEach(option => {
-            handleClose[option as keyof typeof handleClose]().add()
+            closeHandlers[option as keyof typeof closeHandlers]().add()
         })
 
         return {
-            open() {
-                handleOpen()
+            open(freeze?: boolean) {
+                handleOpen(undefined, freeze)
+            },
+            close() {
+                handleClose()
+            },
+            replaceWith(modal: ModalInstance) {
+                modal.open(false)
+                handleClose(undefined, false)
             },
             remove() {
                 triggerDOM?.removeEventListener('click', handleOpen)
 
                 closeOptions?.forEach(option => {
-                    handleClose[option as keyof typeof handleClose]().remove()
+                    closeHandlers[option as keyof typeof closeHandlers]().remove()
                 })
             }
         }
@@ -124,9 +123,9 @@ export const modal = (config: Modal | string) => {
 }
 
 export const closeModal = (modal: string) => {
-    const modalDOM = document.querySelector(modal) as HTMLElement
+    const modalDOM = document.querySelector(modal)
 
-    if (modalDOM) {
+    if (modalDOM instanceof HTMLElement) {
         modalDOM.dataset.show = ''
 
         bodyFreeze(false)

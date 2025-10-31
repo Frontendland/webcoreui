@@ -73,6 +73,13 @@ export type getLayoutClassesConfig = {
     wrap?: Responsive<Wrap>
 }
 
+export type ModalInstance = {
+    open: (freeze?: boolean) => void
+    close: () => void
+    replaceWith: (modal: ModalInstance) => void
+    remove: () => void
+}
+
 export type ModalCallback = {
     trigger: Element | null
     modal: HTMLElement
@@ -179,10 +186,7 @@ declare module 'webcoreui' {
 
     export const isOneOf: <T extends string>(values: readonly T[]) => (value: string) => value is T
 
-    export const modal: (config: Modal | string) => {
-        open: () => void
-        remove: () => void
-    } | void
+    export const modal: (config: Modal | string) => ModalInstance | undefined 
     export const closeModal: (modal: string) => void
 
     export const popover: (config: Popover) => {

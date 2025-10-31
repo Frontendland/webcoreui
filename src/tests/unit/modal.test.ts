@@ -39,7 +39,20 @@ describe('modal', () => {
         })
 
         triggerElement.click()
+
         expect(modalElement.dataset.show).toBe('true')
+    })
+
+    it('should open modal when .open is called and close it on .close', () => {
+        const modalInstance = modal('#modal')
+
+        modalInstance?.open()
+
+        expect(modalElement.dataset.show).toBe('true')
+
+        modalInstance?.close()
+
+        expect(modalElement.dataset.show).toBe('')
     })
 
     it('should close modal when close icon is clicked', () => {

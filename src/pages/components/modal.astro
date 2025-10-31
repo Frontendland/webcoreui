@@ -232,6 +232,26 @@ const sections = getSections({
                     />
                 </section.component>
             </ComponentWrapper>
+
+            <ComponentWrapper title="Multimodal">
+                <Button theme="secondary" id={`multimodal-btn-${section.type}`}>
+                    Trigger
+                </Button>
+                <section.component title="Modal #1" id={`multimodal-${section.type}`}>
+                    <p>Click the button to navigate to the next modal.</p>
+
+                    <Button id={`next-modal-${section.type}`}>
+                        Next Modal {'->'}
+                    </Button>
+                </section.component>
+                <section.component title="Modal #2" id={`multimodal-1-${section.type}`}>
+                    <p>Click the button to navigate to the previous modal.</p>
+
+                    <Button id={`prev-modal-${section.type}`} theme="secondary">
+                        {'<-'} Previous Modal
+                    </Button>
+                </section.component>
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>
@@ -247,7 +267,7 @@ const sections = getSections({
             'react'
         ]
 
-        const ids = Array(10).fill(10).map((x, index) => x * (index + 1))
+        const ids = Array(11).fill(10).map((x, index) => x * (index + 1))
         const variants = [
             '00',
             '01',
@@ -264,6 +284,27 @@ const sections = getSections({
             })
 
             on(`#modal-close-btn-${selector}`, 'click', () => closeModal(`#modal-${selector}`))
+        })
+
+        selectors.forEach(selector => {
+            const modal1 = modal({
+                trigger: `#multimodal-btn-${selector}`,
+                modal: `#multimodal-${selector}`
+            })
+
+            const modal2 = modal(`#multimodal-1-${selector}`)
+
+            on(`#next-modal-${selector}`, 'click', () => {
+                if (modal1 && modal2) {
+                    modal1.replaceWith(modal2)
+                }
+            })
+
+            on(`#prev-modal-${selector}`, 'click', () => {
+                if (modal1 && modal2) {
+                    modal2.replaceWith(modal1)
+                }
+            })
         })
 
         variants.forEach(variant => {
