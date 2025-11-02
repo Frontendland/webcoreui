@@ -199,6 +199,26 @@ const sections = getSections({
                     This sheet was created using the bottom position
                 </section.component>
             </ComponentWrapper>
+
+            <ComponentWrapper title="Switch between sheets">
+                <Button theme="secondary" id={`multisheet-btn-${section.type}`}>
+                    Trigger
+                </Button>
+                <section.component title="Sheet #1" id={`multisheet-${section.type}`}>
+                    <p>Click the button to navigate to the next sheet.</p>
+
+                    <Button id={`next-sheet-${section.type}`}>
+                        Next Sheet {'->'}
+                    </Button>
+                </section.component>
+                <section.component title="Sheet #2" id={`multisheet-1-${section.type}`}>
+                    <p>Click the button to navigate to the previous sheet.</p>
+
+                    <Button id={`prev-sheet-${section.type}`} theme="secondary">
+                        {'<-'} Previous Sheet
+                    </Button>
+                </section.component>
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>
@@ -214,7 +234,7 @@ const sections = getSections({
             'react'
         ]
 
-        const ids = Array(9).fill(10).map((x, index) => x * (index + 1))
+        const ids = Array(10).fill(10).map((x, index) => x * (index + 1))
         const variants = [
             '00',
             '01',
@@ -231,6 +251,27 @@ const sections = getSections({
             })
 
             on(`#sheet-close-btn-${selector}`, 'click', () => closeModal(`#sheet-${selector}`))
+        })
+
+        selectors.forEach(selector => {
+            const sheet1 = modal({
+                trigger: `#multisheet-btn-${selector}`,
+                modal: `#multisheet-${selector}`
+            })
+
+            const sheet2 = modal(`#multisheet-1-${selector}`)
+
+            on(`#next-sheet-${selector}`, 'click', () => {
+                if (sheet1 && sheet2) {
+                    sheet1.replaceWith(sheet2)
+                }
+            })
+
+            on(`#prev-sheet-${selector}`, 'click', () => {
+                if (sheet1 && sheet2) {
+                    sheet2.replaceWith(sheet1)
+                }
+            })
         })
 
         variants.forEach(variant => {
