@@ -159,7 +159,7 @@ declare module 'webcoreui' {
         callback: any,
         all?: boolean
     ) => void
-    export const off = (
+    export const off: (
         selector: string | HTMLElement | Document,
         event: string,
         fn: any,
