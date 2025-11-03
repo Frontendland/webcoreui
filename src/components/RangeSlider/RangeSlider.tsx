@@ -116,11 +116,8 @@ const RangeSlider = ({
     }
 
     useEffect(() => {
-        const minAdjust = minValue > (max / 2) ? -1 : 1
-        const maxAdjust = maxValue < (max / 2) ? 1 : -1
-
-        rangeLeftPercent.current = interpolate((minValue || min) + minAdjust, [min, max], [0, 100])
-        rangeRightPercent.current = interpolate((maxValue || max) + maxAdjust, [min, max], [100, 0])
+        rangeLeftPercent.current = interpolate((minValue || min), [min, max], [0, 100])
+        rangeRightPercent.current = interpolate((maxValue || max), [min, max], [100, 0])
     }, [minValue, maxValue])
 
     return (

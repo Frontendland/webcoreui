@@ -138,11 +138,8 @@ const labelStyle = updateLabels ? `min-width:${minLabelWidth};` : null
     }
 
     const updateRange = ({ range, minValue, maxValue, min, max }: RangeParams) => {
-        const minAdjust = minValue > (max / 2) ? -1 : 1
-        const maxAdjust = maxValue < (max / 2) ? 1 : -1
-
-        range.style.left = `${interpolate(minValue + minAdjust, [min, max], [0, 100])}%`
-        range.style.right = `${interpolate(maxValue + maxAdjust, [min, max], [100, 0])}%`
+        range.style.left = `${interpolate(minValue, [min, max], [0, 100])}%`
+        range.style.right = `${interpolate(maxValue, [min, max], [100, 0])}%`
     }
 
     const updateLabels = (wrapper: HTMLDivElement, minValue: number, maxValue: number) => {

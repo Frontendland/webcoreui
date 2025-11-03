@@ -43,6 +43,7 @@ body {
     @include position(absolute);
     @include background(var(--w-range-slider-color));
     @include size('h100%');
+    @include border-radius();
 
     &[data-disabled] {
         @include background(primary-30);
@@ -60,6 +61,18 @@ body {
     appearance: none;
     pointer-events: none;
 
+    &:focus-visible {
+        outline: none;
+
+        &::-webkit-slider-thumb {
+            @include border(info);
+        }
+
+        &::-moz-range-thumb {
+            @include border(info);
+        }
+    }
+
     &[disabled]::-webkit-slider-thumb {
         @include background(primary-50);
         @include border(primary-30);
@@ -70,6 +83,39 @@ body {
         @include background(primary-50);
         @include border(primary-30);
         cursor: no-drop;
+    }
+
+    &[data-min]::-webkit-slider-thumb  {
+        box-shadow: 3px 0 0 3px var(--w-range-slider-color);
+    }
+
+    &[data-max]::-webkit-slider-thumb  {
+        box-shadow: -3px 0 0 3px var(--w-range-slider-color);
+    }
+
+    &[data-min]::-moz-range-thumb   {
+        box-shadow: 3px 0 0 3px var(--w-range-slider-color);
+    }
+
+    &[data-max]::-moz-range-thumb   {
+        box-shadow: -3px 0 0 3px var(--w-range-slider-color);
+    }
+
+    
+    &[disabled][data-min]::-webkit-slider-thumb  {
+        box-shadow: 3px 0 0 3px var(--w-color-primary-30);
+    }
+
+    &[disabled][data-max]::-webkit-slider-thumb  {
+        box-shadow: -3px 0 0 3px var(--w-color-primary-30);
+    }
+
+    &[disabled][data-min]::-moz-range-thumb   {
+        box-shadow: 3px 0 0 3px var(--w-color-primary-30);
+    }
+
+    &[disabled][data-max]::-moz-range-thumb   {
+        box-shadow: -3px 0 0 3px var(--w-color-primary-30);
     }
 }
 
