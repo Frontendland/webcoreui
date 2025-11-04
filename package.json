@@ -85,16 +85,18 @@
     "description": "UI component and template library for Astro, Svelte, and React apps styled with Sass.",
     "keywords": [
         "webcore",
-        "component",
         "components",
         "ui components",
+        "ui library",
         "component library",
+        "withastro",
+        "astro",
+        "astro ui",
+        "astro ui library",
+        "astro-component",
         "astro components",
         "svelte components",
-        "react components",
-        "frontend",
-        "library",
-        "sass"
+        "react components"
     ],
     "homepage": "https://webcoreui.dev",
     "repository": {
