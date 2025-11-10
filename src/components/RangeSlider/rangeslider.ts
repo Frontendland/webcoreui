@@ -16,6 +16,7 @@ export type RangeSliderProps = {
     color?: string
     background?: string
     thumb?: string
+    name?: string
     label?: string
     subText?: string
     minLabel?: string
