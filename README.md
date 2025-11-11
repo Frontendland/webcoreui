@@ -167,6 +167,9 @@ html body {
     --w-collapsible-initial-height: 0;
     --w-collapsible-max-height: 100%;
 
+    // Counter component
+    --w-counter-width: 10ch;
+
     // Masonry component
     --w-masonry-gap: 5px;
 
@@ -287,6 +290,7 @@ import { Accordion } from 'webcoreui/react'
 - [ConditionalWrapper](https://github.com/Frontendland/webcoreui/tree/main/src/components/ConditionalWrapper)
 - [ContextMenu](https://github.com/Frontendland/webcoreui/tree/main/src/components/ContextMenu)
 - [Copy](https://github.com/Frontendland/webcoreui/tree/main/src/components/Copy)
+- [Counter](https://github.com/Frontendland/webcoreui/tree/main/src/components/Counter)
 - [DataTable](https://github.com/Frontendland/webcoreui/tree/main/src/components/DataTable)
 - [Flex](https://github.com/Frontendland/webcoreui/tree/main/src/components/Flex)
 - [Footer](https://github.com/Frontendland/webcoreui/tree/main/src/components/Footer)

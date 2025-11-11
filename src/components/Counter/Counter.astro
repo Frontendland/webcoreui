@@ -1,0 +1,164 @@
+---
+import type { CounterProps } from './counter'
+
+import Icon from '../Icon/Icon.astro'
+
+import minusIcon from '../../icons/minus.svg?raw'
+import plusIcon from '../../icons/plus.svg?raw'
+
+import styles from './counter.module.scss'
+
+interface Props extends CounterProps {}
+
+const {
+    type = 'compact',
+    theme,
+    rounded,
+    minIcon,
+    maxIcon,
+    className,
+    width,
+    value = 0,
+    disabled,
+    ...rest
+} = Astro.props
+
+const classes = [
+    styles.counter,
+    styles[type],
+    theme && styles[theme],
+    rounded && styles.rounded,
+    className
+]
+
+const subtractIcon = minIcon || minusIcon
+const addIcon = maxIcon || plusIcon
+
+const styleVariable = width
+    ? `--w-counter-width: ${width};`
+    : null
+---
+
+<div class:list={classes} data-id="w-counter" style={styleVariable}>
+    <button data-id="w-counter-min" disabled={disabled}>
+        <Fragment>
+            {subtractIcon.startsWith('<svg')
+                ? <Fragment set:html={subtractIcon} />
+                : <Icon type={subtractIcon} />
+            }
+        </Fragment>
+    </button>
+    <input
+        type="number"
+        value={value}
+        disabled={disabled}
+        {...rest}
+    />
+    <button data-id="w-counter-max" disabled={disabled}>
+        <Fragment>
+            {addIcon.startsWith('<svg')
+                ? <Fragment set:html={addIcon} />
+                : <Icon type={addIcon} />
+            }
+        </Fragment>
+    </button>
+</div>
+
+<script>
+    import { off, on } from '../../utils/DOMUtils'
+    import { dispatch } from '../../utils/event'
+
+    const addEventListeners = () => {
+        const buttonSelector = '[data-id="w-counter"] button'
+        const inputSelector = '[data-id="w-counter"] input'
+        const eventName = 'counterOnChange'
+
+        let intervalId: ReturnType<typeof setTimeout>
+        let timeoutId: ReturnType<typeof setTimeout>
+        let longPressDelay = 500
+        let isKeyDown = false
+
+        const updateValue = (input: HTMLInputElement, min?: boolean) => {
+            const step = input.step ? Number(input.step) : 1
+            const direction = min ? -1 : 1
+            const newValue = Number(input.value) + (direction * step)
+
+            if ((input.min && newValue < Number(input.min)) || (input.max && newValue > Number(input.max))) {
+                return
+            }
+
+            input.value = String(newValue)
+
+            dispatch(eventName, {
+                name: input.name,
+                value: newValue
+            })
+        }
+
+        const startHold = (event: Event) => {
+            const target = event.currentTarget
+
+            if (target instanceof HTMLButtonElement && target.parentElement) {
+                const input = target.parentElement.querySelector('input') as HTMLInputElement
+                const min = target.dataset.id === 'w-counter-min'
+
+                updateValue(input, min)
+
+                timeoutId = setTimeout(function repeat() {
+                    updateValue(input, min)
+
+                    longPressDelay = Math.max(50, longPressDelay * 0.8)
+
+                    intervalId = setTimeout(repeat, longPressDelay)
+                }, 500)
+            }
+        }
+
+        const stopHold = () => {
+            clearTimeout(timeoutId)
+            clearTimeout(intervalId)
+
+            isKeyDown = false
+            longPressDelay = 500
+        }
+
+        on(buttonSelector, 'mousedown', startHold, true)
+        on(buttonSelector, 'touchstart', startHold, true)
+
+        on(buttonSelector, 'mouseup', stopHold, true)
+        on(buttonSelector, 'mouseleave', stopHold, true)
+        on(buttonSelector, 'touchend', stopHold, true)
+        on(buttonSelector, 'touchcancel', stopHold, true)
+
+        on(buttonSelector, 'keydown', (event: KeyboardEvent) => {
+            if (event.key === 'Enter' && !isKeyDown) {
+                event.preventDefault()
+                startHold(event)
+
+                isKeyDown = true
+            }
+        }, true)
+
+        on(buttonSelector, 'keyup', (event: KeyboardEvent) => {
+            if (event.key === 'Enter') {
+                stopHold()
+            }
+        }, true)
+
+        on(inputSelector, 'input', (event: Event) => {
+            const target = event.target
+
+            if (target instanceof HTMLInputElement) {
+                dispatch(eventName, {
+                    name: target.name,
+                    value: Number(target.value)
+                })
+            }
+        }, true)
+    }
+
+    off(document, 'astro:after-swap', addEventListeners)
+    on(document, 'astro:after-swap', addEventListeners)
+
+    addEventListeners()
+</script>

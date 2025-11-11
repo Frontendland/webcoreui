@@ -9,6 +9,7 @@
     import Collapsible from '@components/Collapsible/Collapsible.svelte'
     import ContextMenu from '@components/ContextMenu/ContextMenu.svelte'
     import Copy from '@components/Copy/Copy.svelte'
+    import Counter from '@components/Counter/Counter.svelte'
     import DataTable from '@components/DataTable/DataTable.svelte'
     import Icon from '@components/Icon/Icon.svelte'
     import Input from '@components/Input/Input.svelte'
@@ -47,6 +48,7 @@
 
     let progress = $state(33)
     let checkbox = $state(false)
+    let counter = $state(0)
     let radio = $state('')
     let range = $state('')
     let toggle = $state(false)
@@ -156,6 +158,20 @@
 
     <Card title="Copy">
         <Copy>Click to copy text</Copy>
+    </Card>
+
+    <Card title="Counter">
+        <Counter
+            min={-100}
+            max={100}
+            bind:value={counter}
+            onChange={event => {
+                // eslint-disable-next-line no-console
+                console.log(event)
+            }}
+        />
+
+        <span class={styles.span}>Binding: {counter}</span>
     </Card>
 
     <Card title="Data Table">

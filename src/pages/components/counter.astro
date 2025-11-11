@@ -1,0 +1,114 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroCounter from '@components/Counter/Counter.astro'
+import SvelteCounter from '@components/Counter/Counter.svelte'
+import ReactCounter from '@components/Counter/Counter.tsx'
+
+import chevronDownIcon from '../../icons/chevron-down.svg?raw'
+import chevronUpIcon from '../../icons/chevron-up.svg?raw'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'counters',
+    components: [AstroCounter, SvelteCounter, ReactCounter],
+    showSubTitle: true
+})
+---
+
+<Layout>
+    <h1>Counter</h1>
+
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroCounter name="astro-counter" />
+            <hr />
+            <span class="muted" data-id="counter-value">Value: 0</span>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteCounter client:idle />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactCounter client:idle />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default (with min/max)">
+                <section.component min={0} max={10} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Buttons type">
+                <section.component type="buttons" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Separated type">
+                <section.component type="separated" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Info theme">
+                <section.component theme="info" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Theme + buttons type">
+                <section.component theme="success" type="buttons" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Theme + separated type">
+                <section.component theme="warning" type="separated" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rounded">
+                <section.component rounded={true} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom icons">
+                <section.component
+                    minIcon={chevronDownIcon}
+                    maxIcon={chevronUpIcon}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Default value">
+                <section.component value={10} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Step">
+                <section.component step={10} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Custom width">
+                <section.component width="5ch" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Disabled">
+                <section.component disabled={true} />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<script>
+    import { get } from '@utils/DOMUtils'
+    import { listen } from '@utils/event'
+
+    const v = get('[data-id="counter-value"]')
+
+    listen('counterOnChange', event => {
+        // eslint-disable-next-line no-console
+        console.log(event)
+
+        if (v instanceof HTMLSpanElement) {
+            v.innerText = `Value: ${event.value}`
+        }
+    })
+</script>

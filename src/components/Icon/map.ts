@@ -11,6 +11,7 @@ import Copy from '../../icons/copy.svg?raw'
 import Github from '../../icons/github.svg?raw'
 import Home from '../../icons/home.svg?raw'
 import Info from '../../icons/info.svg?raw'
+import Minus from '../../icons/minus.svg?raw'
 import Moon from '../../icons/moon.svg?raw'
 import Order from '../../icons/order.svg?raw'
 import Plus from '../../icons/plus.svg?raw'
@@ -32,6 +33,7 @@ const iconMap = {
     'github': Github,
     'home': Home,
     'info': Info,
+    'minus': Minus,
     'moon': Moon,
     'order': Order,
     'plus': Plus,

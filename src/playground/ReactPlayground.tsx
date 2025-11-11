@@ -11,6 +11,7 @@ import Checkbox from '@components/Checkbox/Checkbox.tsx'
 import Collapsible from '@components/Collapsible/Collapsible.tsx'
 import ContextMenu from '@components/ContextMenu/ContextMenu.tsx'
 import Copy from '@components/Copy/Copy.tsx'
+import Counter from '@components/Counter/Counter.tsx'
 import DataTable from '@components/DataTable/DataTable.tsx'
 import Icon from '@components/Icon/Icon.tsx'
 import Input from '@components/Input/Input.tsx'
@@ -50,6 +51,7 @@ import {
 const ReactPlayground = () => {
     const [progress, setProgress] = useState(33)
     const [checkbox, setCheckbox] = useState(false)
+    const [counter, setCounter] = useState(0)
     const [radio, setRadio] = useState('')
     const [range, setRange] = useState('')
     const [toggle, setToggle] = useState(false)
@@ -156,6 +158,22 @@ const ReactPlayground = () => {
 
             <Card title="Copy">
                 <Copy>Click to copy text</Copy>
+            </Card>
+
+            <Card title="Counter">
+                <Counter
+                    min={-100}
+                    max={100}
+                    value={counter}
+                    onChange={event => {
+                        // eslint-disable-next-line no-console
+                        console.log(event)
+
+                        setCounter(event)
+                    }}
+                />
+
+                <span className={styles.span}>Value: {counter}</span>
             </Card>
 
             <Card title="Data Table">

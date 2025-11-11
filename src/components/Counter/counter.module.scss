@@ -1,0 +1,155 @@
+@use '../../scss/config.scss' as *;
+
+body {
+    --w-counter-width: 10ch;
+}
+
+.counter {
+    @include layout(inline-flex);
+    @include border(primary-50);
+    @include border-radius();
+
+    &.rounded {
+        @include border-radius(xl);
+    }
+
+    &.compact button {
+        @include border(0);
+    }
+
+    &.buttons {
+        button {
+            @include border(0);
+
+            &:first-child {
+                @include border(right, primary-50);
+            }
+    
+            &:last-child {
+                @include border(left, primary-50);
+            }
+        }
+
+        &.info button {
+            border-color: var(--w-color-info);
+        }
+
+        &.success button {
+            border-color: var(--w-color-success);
+        }
+
+        &.warning button {
+            border-color: var(--w-color-warning);
+        }
+
+        &.alert button {
+            border-color: var(--w-color-alert);
+        }
+    }
+
+    &:not(.buttons) button {
+        @include border-radius();
+    }
+
+    &.separated {
+        @include layout(xs);
+        @include border(0);
+
+        input {
+            @include border(primary-50);
+        }
+
+        &.info input,
+        &.info button {
+            border-color: var(--w-color-info);
+        }
+
+        &.success input,
+        &.success button {
+            border-color: var(--w-color-success);
+        }
+
+        &.warning input,
+        &.warning button {
+            border-color: var(--w-color-warning);
+        }
+
+        &.alert input,
+        &.alert button {
+            border-color: var(--w-color-alert);
+        }
+    }
+
+    &.info:not(.separated) {
+        border-color: var(--w-color-info);
+    }
+
+    &.success:not(.separated) {
+        border-color: var(--w-color-success);
+    }
+
+    &.warning:not(.separated) {
+        border-color: var(--w-color-warning);
+    }
+
+    &.alert:not(.separated) {
+        border-color: var(--w-color-alert);
+    }
+
+    &.info button svg {
+        @include typography(info);
+    }
+
+    &.success button svg {
+        @include typography(success);
+    }
+
+    &.warning button svg {
+        @include typography(warning);
+    }
+
+    &.alert button svg {
+        @include typography(alert);
+    }
+
+    button {
+        @include background(transparent);
+        @include border(primary-50);
+        @include typography(primary);
+        @include spacing(p-xs);
+
+        cursor: pointer;
+
+        &[disabled] {
+            @include typography(primary-50);
+
+            cursor: default;
+        }
+
+        svg {
+            @include size(w18px, 'h100%');
+        }
+    }
+
+    input {
+        @include background(transparent);
+        @include border(0);
+        @include border-radius();
+        @include typography(primary, center);
+        @include spacing(p-xs);
+
+        flex: 1;
+        width: var(--w-counter-width);
+        appearance: none;
+        -moz-appearance: textfield;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            appearance: none;
+        }
+
+        &[disabled] {
+            @include typography(primary-50);
+        }
+    }
+}
