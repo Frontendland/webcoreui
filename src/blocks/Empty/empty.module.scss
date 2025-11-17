@@ -1,14 +1,14 @@
-@use '../../scss/config.scss' as *;
+@use 'webcoreui/config' as *;
 
 .empty {
-    &.icon-bg svg {
+    &.icon-bg > svg {
         @include background(primary-50);
         @include border-radius(xl);
         @include size(56px);
         @include spacing(p-md);
     }
 
-    svg {
+    > svg  {
         @include size(28px);
         @include spacing(mb-sm);
     }
