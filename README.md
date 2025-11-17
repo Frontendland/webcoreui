@@ -336,6 +336,7 @@ import { Accordion } from 'webcoreui/react'
 - [BlogCard](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/BlogCard)
 - [ComponentMap](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/ComponentMap)
 - [DeviceMockup](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/DeviceMockup)
+- [Empty](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Empty)
 - [ErrorPage](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/ErrorPage)
 - [ExpandableTable](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/ExpandableTable)
 - [FAQ](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/FAQ)

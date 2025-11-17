@@ -911,3 +911,12 @@ export const members = [
         description: 'Fiona manages the deployment pipelines and cloud infrastructure, making sure our applications are scalable, secure, and run smoothly.'
     }
 ]
+
+export const emptyProps = {
+    icon: fileIcon,
+    title: 'No documents found',
+    text: 'You haven\'t created any documents yet. <br /> Get started by creating your first one.',
+    buttons: [
+        { text: 'Create New' }
+    ]
+}

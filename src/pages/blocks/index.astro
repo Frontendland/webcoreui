@@ -9,6 +9,7 @@ import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.astro'
 import BlogCard from '@blocks/BlogCard/BlogCard.astro'
 import ComponentMap from '@blocks/ComponentMap/ComponentMap.astro'
 import DeviceMockup from '@blocks/DeviceMockup/DeviceMockup.astro'
+import Empty from '@blocks/Empty/Empty.astro'
 import ErrorPage from '@blocks/ErrorPage/ErrorPage.astro'
 import ExpandableTable from '@blocks/ExpandableTable/ExpandableTable.astro'
 import FAQ from '@blocks/FAQ/FAQ.astro'
@@ -26,7 +27,7 @@ import Team from '@blocks/Team/Team.astro'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
 
-import { avatarGroup, gridWithIconsItems, members } from '@data'
+import { avatarGroup, emptyProps, gridWithIconsItems, members } from '@data'
 ---
 
 <Layout docs="/blocks/introduction">
@@ -187,6 +188,11 @@ import { avatarGroup, gridWithIconsItems, members } from '@data'
                     <a href="/blocks/device-mockup">See examples {'->'}</a>
                 </div>
             </DeviceMockup>
+
+            <Card title="Empty">
+                <Empty {...emptyProps} />
+                <Link href="/blocks/empty" />
+            </Card>
 
             <Card title="Expandable table" secondary={true}>
                 <ExpandableTable

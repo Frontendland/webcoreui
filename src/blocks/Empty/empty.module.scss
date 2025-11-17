@@ -1,0 +1,19 @@
+@use '../../scss/config.scss' as *;
+
+.empty {
+    &.icon-bg svg {
+        @include background(primary-50);
+        @include border-radius(xl);
+        @include size(56px);
+        @include spacing(p-md);
+    }
+
+    svg {
+        @include size(28px);
+        @include spacing(mb-sm);
+    }
+}
+
+.text {
+    @include spacing(my-sm);
+}

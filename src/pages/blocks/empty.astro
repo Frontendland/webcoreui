@@ -1,0 +1,71 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroEmpty from '@blocks/Empty/Empty.astro'
+import SvelteEmpty from '@blocks/Empty/Empty.svelte'
+import ReactEmpty from '@blocks/Empty/Empty.tsx'
+
+import { getSections } from '@helpers'
+import { emptyProps } from '@data'
+
+const sections = getSections({
+    title: 'empty',
+    components: [AstroEmpty, SvelteEmpty, ReactEmpty]
+})
+---
+
+<Layout>
+    <h1>Empty</h1>
+    <h2>
+        <a href="/blocks">
+            {'<-'} Back to all blocks
+        </a>
+    </h2>
+
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroEmpty {...emptyProps} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteEmpty {...emptyProps} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactEmpty {...emptyProps} />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Required props only">
+                <section.component
+                    title={emptyProps.title}
+                    text={emptyProps.text}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With icon">
+                <section.component
+                    icon={emptyProps.icon}
+                    title={emptyProps.title}
+                    text={emptyProps.text}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Icon with background">
+                <section.component
+                    icon={emptyProps.icon}
+                    iconWithBackground={true}
+                    title={emptyProps.title}
+                    text={emptyProps.text}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>

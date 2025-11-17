@@ -1,0 +1,49 @@
+---
+import { Icon } from 'webcoreui/astro'
+
+import Button from '@blocks/Button/Button.astro'
+
+import type { EmptyProps } from './empty'
+import styles from './empty.module.scss'
+
+interface Props extends EmptyProps {}
+
+const {
+    icon,
+    iconWithBackground,
+    title,
+    text,
+    buttons,
+    className
+} = Astro.props
+
+const classes = [
+    'flex column center xs',
+    iconWithBackground && styles['icon-bg'],
+    styles.empty,
+    className
+]
+---
+
+<section class:list={classes}>
+    {icon && (
+        <Fragment>
+            {icon.startsWith('<svg')
+                ? <Fragment set:html={icon} />
+                : <Icon type={icon} size={28} />
+            }
+        </Fragment>
+    )}
+
+    <b class={styles.title}>{title}</b>
+
+    <div class:list={[styles.text, 'muted']} set:html={text} />
+
+    {!!buttons?.length && (
+        <div class="flex xs wrap justify-center">
+            {buttons?.map(button => (
+                <Button {...button} />
+            ))}
+        </div>
+    )}
+</section>
