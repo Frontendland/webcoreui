@@ -91,4 +91,30 @@
     &.round {
         @include border-radius(lg);
     }
+
+    &.transparent {
+        @include background(transparent);
+        @include typography(primary);
+        @include spacing(p0);
+
+        &.secondary {
+            @include typography(primary-20);
+        }
+
+        &.info {
+            @include typography(info);
+        }
+
+        &.success {
+            @include typography(success);
+        }
+
+        &.warning {
+            @include typography(warning);
+        }
+
+        &.alert {
+            @include typography(alert);
+        }
+    }
 }

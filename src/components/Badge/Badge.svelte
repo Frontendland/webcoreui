@@ -10,6 +10,7 @@
         hover,
         small,
         rounded,
+        transparent,
         className,
         onClick,
         children,
@@ -22,6 +23,7 @@
         (onClick || hover) && styles.hover,
         small && styles.small,
         rounded && styles.round,
+        transparent && styles.transparent,
         className
     ])
 </script>

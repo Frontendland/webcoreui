@@ -12,6 +12,7 @@ export type BadgeProps = {
     hover?: boolean
     small?: boolean
     rounded?: boolean
+    transparent?: boolean
     className?: string
     [key: string]: any
 }

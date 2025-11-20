@@ -10,6 +10,7 @@ const {
     hover,
     small,
     rounded,
+    transparent,
     className,
     ...rest
 } = Astro.props
@@ -20,6 +21,7 @@ const classes = [
     hover && styles.hover,
     small && styles.small,
     rounded && styles.round,
+    transparent && styles.transparent,
     className
 ]
 ---

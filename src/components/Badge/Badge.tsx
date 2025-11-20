@@ -11,6 +11,7 @@ const Badge = ({
     hover,
     small,
     rounded,
+    transparent,
     className,
     children,
     ...rest
@@ -21,6 +22,7 @@ const Badge = ({
         (onClick || hover) && styles.hover,
         small && styles.small,
         rounded && styles.round,
+        transparent && styles.transparent,
         className
     ])
 
