@@ -17,6 +17,7 @@ const {
     striped,
     stripeLight,
     stripeDark,
+    indeterminate,
     className
 } = Astro.props
 
@@ -25,6 +26,7 @@ const classes = [
     size && styles[size],
     striped && styles.striped,
     square && styles.square,
+    indeterminate && styles.indeterminate,
     className
 ]
 
@@ -34,10 +36,12 @@ const styleVariables = classNames([
     stripeLight && `--w-progress-stripe-light: ${stripeLight};`,
     stripeDark && `--w-progress-stripe-dark: ${stripeDark};`
 ])
+
+const currentValue = indeterminate && !value ? 20 : value
 ---
 
 <div class:list={classes} style={styleVariables}>
-    <div class={styles.progress} style={`--w-progress-width: ${value}%;`}>
-        {label && `${value}%`}
+    <div class={styles.progress} style={`--w-progress-width: ${currentValue}%;`}>
+        {label && `${currentValue}%`}
     </div>
 </div>

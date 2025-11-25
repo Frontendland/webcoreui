@@ -15,6 +15,7 @@ const Progress = ({
     striped,
     stripeLight,
     stripeDark,
+    indeterminate,
     className
 }: ProgressProps) => {
     const classes = classNames([
@@ -22,6 +23,7 @@ const Progress = ({
         size && styles[size],
         striped && styles.striped,
         square && styles.square,
+        indeterminate && styles.indeterminate,
         className
     ])
 
@@ -32,14 +34,16 @@ const Progress = ({
         ...(stripeDark && { '--w-progress-stripe-dark': stripeDark })
     } as React.CSSProperties
 
+    const currentValue = indeterminate && !value ? 20 : value
+
     const percent = {
-        '--w-progress-width': `${value}%`
+        '--w-progress-width': `${currentValue}%`
     } as React.CSSProperties
 
     return (
         <div className={classes} style={styleVariables}>
             <div className={styles.progress} style={percent}>
-                {label && `${value}%`}
+                {label && `${currentValue}%`}
             </div>
         </div>
     )

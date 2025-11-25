@@ -8,5 +8,6 @@ export type ProgressProps = {
     striped?: boolean
     stripeLight?: string
     stripeDark?: string
+    indeterminate?: boolean
     className?: string
 }

@@ -58,6 +58,12 @@ body {
         }
     }
 
+    &.indeterminate .progress {
+        @include position(relative);
+
+        animation: load 1s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+    }
+
     .progress {
         @include transition(width);
         @include size('h100%');
@@ -66,5 +72,14 @@ body {
         @include background(var(--w-progress-color));
 
         width: var(--w-progress-width);
+    }
+}
+
+@keyframes load {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 100%;
     }
 }

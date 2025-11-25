@@ -15,6 +15,7 @@
         striped,
         stripeLight,
         stripeDark,
+        indeterminate,
         className
     }: ProgressProps = $props()
 
@@ -23,6 +24,7 @@
         size && styles[size],
         striped && styles.striped,
         square && styles.square,
+        indeterminate && styles.indeterminate,
         className
     ])
 
@@ -32,12 +34,14 @@
         stripeLight && `--w-progress-stripe-light: ${stripeLight};`,
         stripeDark && `--w-progress-stripe-dark: ${stripeDark};`
     ])
+
+    const currentValue = indeterminate && !value ? 20 : value
 </script>
 
 <div class={classes} style={styleVariables || null}>
-    <div class={styles.progress} style={`--w-progress-width: ${value}%;`}>
+    <div class={styles.progress} style={`--w-progress-width: ${currentValue}%;`}>
         {#if label}
-            {`${value}%`}
+            {`${currentValue}%`}
         {/if}
     </div>
 </div>

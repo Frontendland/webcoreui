@@ -148,6 +148,14 @@ const sections = getSections({
                 </p>
                 <section.component value={33} />
             </ComponentWrapper>
+
+            <ComponentWrapper title="Indeterminate">
+                <section.component indeterminate={true} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Indeterminate with value">
+                <section.component indeterminate={true} value={50} />
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>
