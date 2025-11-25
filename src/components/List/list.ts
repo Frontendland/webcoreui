@@ -15,6 +15,7 @@ export type ListProps = {
     id?: string
     className?: string
     wrapperClassName?: string
+    secondary?: boolean
     itemGroups: {
         title?: string
         items: {

@@ -64,49 +64,50 @@ const sections = getSections({
             {section.subTitle && <h2 set:html={section.subTitle} />}
         </Fragment>
         <div class="grid md-2 lg-3">
-            <ComponentWrapper title="Default">
+            <ComponentWrapper title="Default" secondary={true}>
                 <section.component itemGroups={list} />
             </ComponentWrapper>
 
-            <ComponentWrapper title="Item with icons">
-                <section.component itemGroups={listWithIcons} />
+            <ComponentWrapper title="Item with icons (secondary)">
+                <section.component itemGroups={listWithIcons} secondary={true} />
             </ComponentWrapper>
 
-            <ComponentWrapper title="Item with icons & subText">
+            <ComponentWrapper title="Item with icons & subText" secondary={true}>
                 <section.component itemGroups={listWithSubText} />
             </ComponentWrapper>
 
-            <ComponentWrapper title="Grouped item">
+            <ComponentWrapper title="Grouped item" secondary={true}>
                 <section.component itemGroups={listWithGroups} />
             </ComponentWrapper>
 
-            <ComponentWrapper title="Disabled & selected items">
+            <ComponentWrapper title="Disabled & selected items" secondary={true}>
                 <section.component itemGroups={listWithStates} />
             </ComponentWrapper>
 
-            <ComponentWrapper title="List with scroll">
+            <ComponentWrapper title="List with scroll" secondary={true}>
                 <section.component
                     itemGroups={listWithGroups}
                     maxHeight="160px"
                 />
             </ComponentWrapper>
 
-            <ComponentWrapper title="List with search bar">
+            <ComponentWrapper title="List with search bar" secondary={true}>
                 <section.component
                     itemGroups={listWithGroups}
                     showSearchBar={true}
                 />
             </ComponentWrapper>
 
-            <ComponentWrapper title="Search bar with placeholder">
+            <ComponentWrapper title="Search bar with placeholder (secondary)">
                 <section.component
                     itemGroups={listWithGroups}
                     showSearchBar={true}
                     searchBarPlaceholder="Search the app..."
+                    secondary={true}
                 />
             </ComponentWrapper>
 
-            <ComponentWrapper title="Search bar with icon & placeholder">
+            <ComponentWrapper title="Search bar with icon & placeholder" secondary={true}>
                 <section.component
                     itemGroups={listWithGroups}
                     showSearchBar={true}

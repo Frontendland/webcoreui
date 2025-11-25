@@ -19,6 +19,7 @@
         id,
         className,
         wrapperClassName,
+        secondary,
         itemGroups = $bindable([]),
         onSelect
     }: SvelteListProps = $props()
@@ -28,12 +29,14 @@
 
     const classes = classNames([
         styles.list,
+        (secondary && !showSearchBar) && styles.secondary,
         !showSearchBar && styles.container,
         className
     ])
 
     const wrapperClasses = classNames([
         styles.container,
+        secondary && styles.secondary,
         wrapperClassName
     ])
 

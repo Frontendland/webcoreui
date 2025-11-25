@@ -85,6 +85,11 @@
 .container {
     @include border-radius(md);
     @include border(primary-50);
+    @include background(primary-70);
+
+    &.secondary {
+        @include background(primary-60);
+    }
 
     input {
         @include border(top, 0);

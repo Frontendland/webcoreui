@@ -19,17 +19,20 @@ const {
     id,
     className,
     wrapperClassName,
+    secondary,
     itemGroups
 } = Astro.props
 
 const classes = [
     styles.list,
+    (secondary && !showSearchBar) && styles.secondary,
     !showSearchBar && styles.container,
     className
 ]
 
 const wrapperClasses = [
     styles.container,
+    secondary && styles.secondary,
     wrapperClassName
 ]
 ---
