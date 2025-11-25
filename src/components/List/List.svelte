@@ -81,15 +81,15 @@
     class={wrapperClasses}
 >
     {#if showSearchBar}
-        <Input
-            type="search"
-            placeholder={searchBarPlaceholder}
-            onInput={search}
-        >
-            {#if showSearchBarIcon}
-                {@html searchIcon}
-            {/if}
-        </Input>
+        {#if showSearchBarIcon}
+            <Input type="search" placeholder={searchBarPlaceholder} onInput={search}>
+                {#if showSearchBarIcon}
+                    {@html searchIcon}
+                {/if}
+            </Input>
+        {:else}
+            <Input type="search" placeholder={searchBarPlaceholder} onInput={search} />
+        {/if}
     {/if}
     <ul
         class={classes}
