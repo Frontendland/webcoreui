@@ -5,6 +5,7 @@
     @include spacing(0);
 
     list-style-type: none;
+    user-select: none;
 
     &.primary [data-active="true"] {
         @include typography(primary-70);
