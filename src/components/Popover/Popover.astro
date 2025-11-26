@@ -8,11 +8,13 @@ interface Props extends PopoverProps {}
 const {
     id,
     className,
+    transparent,
     ...rest
 } = Astro.props
 
 const classes = [
     styles.popover,
+    transparent && styles.transparent,
     className
 ]
 ---

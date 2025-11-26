@@ -14,6 +14,12 @@
     transform: translateY(-5px);
     pointer-events: none;
 
+    &.transparent {
+        @include spacing(p0);
+        @include background(transparent);
+        @include border(0);
+    }
+
     &[data-show] {
         @include transition();
     }

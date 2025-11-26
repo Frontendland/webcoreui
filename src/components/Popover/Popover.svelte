@@ -8,12 +8,14 @@
     const {
         id,
         className,
+        transparent,
         children,
         ...rest
     }: SveltePopoverProps = $props()
 
     const classes = classNames([
         styles.popover,
+        transparent && styles.transparent,
         className
     ])
 </script>

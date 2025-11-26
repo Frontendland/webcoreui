@@ -3,11 +3,15 @@ import ComponentWrapper from '@static/ComponentWrapper.astro'
 import Layout from '@static/Layout.astro'
 
 import Button from '@components/Button/Button.astro'
+import List from '@components/List/List.astro'
 import AstroPopover from '@components/Popover/Popover.astro'
 import SveltePopover from '@components/Popover/Popover.svelte'
 import ReactPopover from '@components/Popover/Popover.tsx'
 
+import User from '@blocks/User/User.astro'
+
 import { getSections } from '@helpers'
+import { listWithGroups } from '@data'
 
 const sections = getSections({
     title: 'popovers',
@@ -64,7 +68,14 @@ const sections = getSections({
                     Open Popover
                 </Button>
                 <section.component id={`popover-1${index}`}>
-                    popover with component
+                    <User
+                        avatar="../img/avatar0.png"
+                        name="Marcus"
+                        role="Top rated seller"
+                        roleTooltip="In Art & Collectibles"
+                        rating={4.8}
+                        showText={true}
+                    />
                 </section.component>
             </ComponentWrapper>
 
@@ -202,13 +213,28 @@ const sections = getSections({
                     <div class="muted">With rich content</div>
                 </section.component>
             </ComponentWrapper>
+
+            <ComponentWrapper title="Transparent popover">
+                <Button theme="secondary" id={`popover-btn-15${index}`} data-pos="right">
+                    Open Popover
+                </Button>
+                <section.component id={`popover-15${index}`} transparent={true}>
+                    <List
+                        itemGroups={listWithGroups}
+                        showSearchBar={true}
+                        showSearchBarIcon={true}
+                        searchBarPlaceholder="Search the app..."
+                        noResultsLabel="Nothing found..."
+                    />
+                </section.component>
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>
 
 <script>
     import { on } from '@utils/DOMUtils'
-    import { closePopover, popover } from '@utils/popover'
+    import { closePopover, popover, type PopoverPosition } from '@utils/popover'
 
     on(document, 'astro:page-load', () => {
         const selectors = [
@@ -217,7 +243,7 @@ const sections = getSections({
             'react'
         ]
 
-        const ids = Array(14).fill(10).map((x, index) => x * (index + 1))
+        const ids = Array(15).fill(10).map((x, index) => x * (index + 1))
         const variants = [
             '00',
             '01',
@@ -246,7 +272,7 @@ const sections = getSections({
             const popoverInstance = popover({
                 trigger: `#popover-btn-${variant}`,
                 popover: `#popover-${variant}`,
-                position: button?.dataset.pos as any || 'bottom',
+                position: button?.dataset.pos as PopoverPosition || 'bottom',
                 closeOnBlur: !button?.dataset.noClose,
                 closeOnEsc: !button?.dataset.noClose
             })

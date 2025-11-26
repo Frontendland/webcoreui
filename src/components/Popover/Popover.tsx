@@ -9,6 +9,7 @@ import styles from './popover.module.scss'
 const Popover = ({
     id,
     className,
+    transparent,
     isInteractive = false,
     children,
     ...rest
@@ -17,6 +18,7 @@ const Popover = ({
 
     const classes = classNames([
         styles.popover,
+        transparent && styles.transparent,
         className
     ])
 
