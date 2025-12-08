@@ -64,18 +64,18 @@ Webcore can be used as a standalone project, or it can be integrated into your e
 
 Webcore components use Sass for styling. To use the component library, you must have the following packages installed:
 
-- [Sass](https://www.npmjs.com/package/sass) - `v1.9`
-- [TypeScript](https://www.npmjs.com/package/typescript) - `v5.8`
+- [Sass](https://www.npmjs.com/package/sass) - `v1.94`
+- [TypeScript](https://www.npmjs.com/package/typescript) - `v5.9`
 
 Depending on your project setup, you'll also need the following packages:
 
 - **For Astro projects**
-    - [Astro](https://www.npmjs.com/package/astro) - `v5.13`
+    - [Astro](https://www.npmjs.com/package/astro) - `v5.16`
 - **For Svelte projects**
-    - [Svelte](https://www.npmjs.com/package/svelte) - `v5.38`
+    - [Svelte](https://www.npmjs.com/package/svelte) - `v5.45`
 - **For React projects**
-    - [React](https://www.npmjs.com/package/react) - `v19.0`
-    - [React DOM](https://www.npmjs.com/package/react-dom) -`v19.0`
+    - [React](https://www.npmjs.com/package/react) - `v19.2`
+    - [React DOM](https://www.npmjs.com/package/react-dom) -`v19.2`
 
 ### Installation with CLI
 

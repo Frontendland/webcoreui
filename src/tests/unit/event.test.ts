@@ -6,7 +6,7 @@ describe('event', () => {
     const eventName = 'test-event'
     const eventDetail = { message: 'Hello' }
 
-    let mockCallback: ReturnType<typeof vi.fn>
+    let mockCallback: (e: any) => void
 
     beforeEach(() => {
         mockCallback = vi.fn()

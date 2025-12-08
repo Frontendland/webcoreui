@@ -10,7 +10,6 @@ import ChevronRight from '../../icons/chevron-right.svg?raw'
 
 import styles from './pagination.module.scss'
 
-// eslint-disable-next-line complexity
 const Pagination = ({
     type,
     showChevrons,
@@ -27,6 +26,7 @@ const Pagination = ({
     currentPage,
     onChange,
     className
+// eslint-disable-next-line complexity
 }: ReactPaginationProps) => {
     const [calculatedCurrentPage, setCalculatedCurrentPage] = useState(
         currentPage

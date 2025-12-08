@@ -18,7 +18,6 @@ import styles from './datatable.module.scss'
 
 import type { ListEventType } from '../List/list'
 
-// eslint-disable-next-line complexity
 const DataTable = ({
     headings,
     filterPlaceholder = 'Filter entries',
@@ -38,6 +37,7 @@ const DataTable = ({
     id,
     onFilter,
     children
+// eslint-disable-next-line complexity
 }: ReactDataTableProps) => {
     const [filteredData, setFilteredData] = useState<any>(data)
     const [toggledData, setToggledData] = useState(filteredData)

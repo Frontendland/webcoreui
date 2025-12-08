@@ -7,7 +7,6 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './menu.module.scss'
 
-// eslint-disable-next-line complexity
 const Menu = ({
     items,
     logo,
@@ -15,6 +14,7 @@ const Menu = ({
     className,
     wrapperClassName,
     children
+// eslint-disable-next-line complexity
 }: ReactMenuProps) => {
     const [active, setActive] = useState(false)
 
