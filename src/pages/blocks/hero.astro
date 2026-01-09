@@ -102,9 +102,17 @@ import { avatarGroup } from '@data'
 <style lang="scss" is:global>
     @use 'webcoreui/config' as *;
 
-    h2:not(.heading),
+    section h2:not(.heading),
     section h1:not(.reset) {
         @include typography(left);
+    }
+
+    section h1:not(.reset) {
+        @include spacing(m0);
+    }
+
+    section h2:not(.heading) {
+        @include spacing(mt-xxs);
     }
 
     hr {

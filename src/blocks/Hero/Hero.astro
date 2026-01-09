@@ -1,12 +1,8 @@
 ---
-import {
-    Badge,
-    Button,
-    ConditionalWrapper,
-    Icon
-} from 'webcoreui/astro'
+import { ConditionalWrapper } from 'webcoreui/astro'
 
 import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.astro'
+import Button from '@blocks/Button/Button.astro'
 
 import type { HeroProps } from './hero'
 import styles from './hero.module.scss'
@@ -36,28 +32,14 @@ const classes = [
     <ConditionalWrapper condition={!!image?.src}>
         <div slot="wrapper" class={styles.wrapper}>children</div>
         {badge && (
-            <Badge {...badge} className={styles.badge}>
-                {badge.text}
-            </Badge>
+            <Button {...badge} badge={true} className={styles.badge} />
         )}
         <h1>{heading}</h1>
         {subHeading && <h2>{subHeading}</h2>}
 
         {!!buttons?.length && (
             <div class:list={[styles.cta, 'flex xs wrap']}>
-                {buttons?.map(button => (
-                    <Button {...button} icon={null}>
-                        {button.icon && (
-                            <Fragment>
-                                {button.icon.startsWith('<svg')
-                                    ? <Fragment set:html={button.icon} />
-                                    : <Icon type={button.icon} />
-                                }
-                            </Fragment>
-                        )}
-                        {button.text}
-                    </Button>
-                ))}
+                {buttons?.map(button => <Button {...button} />)}
             </div>
         )}
 
@@ -68,6 +50,7 @@ const classes = [
             />
         )}
     </ConditionalWrapper>
+
     {image?.src && (
         <img
             src={image.src}

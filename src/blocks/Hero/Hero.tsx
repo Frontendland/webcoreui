@@ -1,12 +1,9 @@
 import React from 'react'
 import { classNames } from 'webcoreui'
-import {
-    Badge,
-    Button,
-    ConditionalWrapper
-} from 'webcoreui/react'
+import { ConditionalWrapper } from 'webcoreui/react'
 
 import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.tsx'
+import Button from '@blocks/Button/Button.tsx'
 
 import type { HeroProps } from './hero'
 import styles from './hero.module.scss'
@@ -35,9 +32,7 @@ const Hero = ({
                 wrapper={children => <div className={styles.wrapper}>{children}</div>}
             >
                 {badge && (
-                    <Badge {...badge} className={styles.badge}>
-                        {badge.text}
-                    </Badge>
+                    <Button {...badge} badge={true} className={styles.badge} />
                 )}
                 <h1>{heading}</h1>
                 {subHeading && <h2>{subHeading}</h2>}
@@ -45,15 +40,7 @@ const Hero = ({
                 {!!buttons?.length && (
                     <div className={classNames([styles.cta, 'flex xs wrap'])}>
                         {buttons?.map((button, index) => (
-                            <Button
-                                {...button}
-                                key={index}
-                                icon={null}
-                                dangerouslySetInnerHTML={{ __html: button.icon
-                                    ? `${button.icon} ${button.text}`
-                                    : button.text
-                                }}
-                            />
+                            <Button {...button} key={index} />
                         ))}
                     </div>
                 )}
@@ -65,6 +52,7 @@ const Hero = ({
                     />
                 )}
             </ConditionalWrapper>
+
             {image?.src && (
                 <img
                     src={image.src}

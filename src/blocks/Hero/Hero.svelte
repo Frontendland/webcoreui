@@ -1,12 +1,9 @@
 <script lang="ts">
     import { classNames } from 'webcoreui'
-    import {
-        Badge,
-        Button,
-        ConditionalWrapper
-    } from 'webcoreui/svelte'
+    import { ConditionalWrapper } from 'webcoreui/svelte'
 
     import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.svelte'
+    import Button from '@blocks/Button/Button.svelte'
 
     import type { HeroProps } from './hero'
     import styles from './hero.module.scss'
@@ -33,9 +30,7 @@
 <section class={classes}>
     <ConditionalWrapper condition={!!image?.src} class={styles.wrapper}>
         {#if badge}
-            <Badge {...badge} className={styles.badge}>
-                {badge.text}
-            </Badge>
+            <Button {...badge} badge={true} className={styles.badge} />
         {/if}
         <h1>{heading}</h1>
         {#if subHeading}
@@ -45,12 +40,7 @@
         {#if buttons?.length}
             <div class={classNames([styles.cta, 'flex xs wrap'])}>
                 {#each buttons as button}
-                    <Button {...button} icon={null}>
-                        {#if button.icon}
-                            {@html button.icon}
-                        {/if}
-                        {button.text}
-                    </Button>
+                    <Button {...button} />
                 {/each}
             </div>
         {/if}
@@ -62,6 +52,7 @@
             />
         {/if}
     </ConditionalWrapper>
+
     {#if image?.src}
         <img
             src={image.src}
