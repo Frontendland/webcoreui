@@ -1,5 +1,7 @@
 ---
-import { Button, Card, Icon } from 'webcoreui/astro'
+import { Button, Card, ConditionalWrapper, Icon } from 'webcoreui/astro'
+
+import ButtonBlock from '@blocks/Button/Button.astro'
 
 import type { TilesProps } from './tiles'
 import styles from './tiles.module.scss'
@@ -15,11 +17,20 @@ const {
 <div class:list={[
     'grid sm',
     columns && `xs-${columns}`,
-    (items.length > 1 && items.length !== 3 && !columns) && 'xs-2',
-    (items.length === 3 && !columns) && 'xs-3'
+    (items?.length > 1 && items?.length !== 3 && !columns) && 'xs-2',
+    (items?.length === 3 && !columns) && 'xs-3'
 ]}>
-    {items.map(item => (
-        <Button theme="flat" className={styles.btn} href={item.href} target={item.target}>
+    {items?.map(item => (
+        <ConditionalWrapper condition={!!item.href}>
+            <Button
+                slot="wrapper"
+                theme="flat"
+                className={styles.btn}
+                href={item.href}
+                target={item.target}
+            >
+                children
+            </Button>
             <Card secondary={true} className={styles.card}>
                 {item.icon && (
                     <Fragment>
@@ -29,8 +40,22 @@ const {
                         }
                     </Fragment>
                 )}
-                {item.label}
+
+                <ConditionalWrapper condition={!!item.subText}>
+                    <div slot="wrapper" class:list={[styles.wrapper, 'flex column none']}>children</div>
+
+                    <ConditionalWrapper condition={!!item.badge?.text}>
+                        <div slot="wrapper" class="flex justify-between">children</div>
+
+                        {item.label}
+                        {item.badge && (
+                            <ButtonBlock badge={true} {...item.badge} />
+                        )}
+                    </ConditionalWrapper>
+
+                    {item.subText && <span class="muted">{item.subText}</span>}
+                </ConditionalWrapper>
             </Card>
-        </Button>
+        </ConditionalWrapper>
     ))}
 </div>

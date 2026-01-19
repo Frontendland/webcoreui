@@ -1,13 +1,23 @@
 ---
-import { circleCheck, info } from 'webcoreui/icons'
+import { github, home, info, sun } from 'webcoreui/icons'
 
+import ComponentWrapper from '@static/ComponentWrapper.astro'
 import Layout from '@static/Layout.astro'
-
-import Card from '@components/Card/Card.astro'
 
 import AstroTiles from '@blocks/Tiles/Tiles.astro'
 import SvelteTiles from '@blocks/Tiles/Tiles.svelte'
 import ReactTiles from '@blocks/Tiles/Tiles.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'examples',
+    components: [
+        AstroTiles,
+        SvelteTiles,
+        ReactTiles
+    ]
+})
 ---
 
 <Layout docs="/blocks/tiles">
@@ -18,27 +28,116 @@ import ReactTiles from '@blocks/Tiles/Tiles.tsx'
         </a>
     </h2>
 
-    <div class="grid xs-2 sm-3">
-        <Card>
-            <AstroTiles items={[
-                { icon: 'home', label: 'Astro', href: '' },
-                { icon: 'github', label: 'Tiles', href: '' },
-                { icon: 'info', label: 'Single Column', href: '' }
-            ]} columns={1} />
-        </Card>
-        <Card>
-            <SvelteTiles items={[
-                { icon: info, label: 'Svelte', href: '' },
-                { icon: circleCheck, label: 'Tiles', href: '' },
-                { label: 'Four Tiles', href: '' },
-                { label: 'Without icon', href: '' }
-            ]} />
-        </Card>
-        <Card>
-            <ReactTiles items={[
-                { icon: info, label: 'React', href: '' },
-                { icon: circleCheck, label: 'Tiles', href: '' }
-            ]} />
-        </Card>
-    </div>
+    {sections.map((section: any) => (
+        <br />
+        <h2>{section.title}</h2>
+        <div class="grid">
+            <ComponentWrapper title="Single tile" type={section.type}>
+                <section.component items={[{ label: 'Tile without icon' }]} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="2 Tiles">
+                <section.component items={[
+                    { icon: home, label: 'Home' },
+                    { icon: github, label: 'GitHub' }
+                ]} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="3 Tiles">
+                <section.component items={[
+                    { icon: home, label: 'Home' },
+                    { icon: github, label: 'GitHub' },
+                    { icon: info, label: 'Info' }
+                ]} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="4 Tiles">
+                <section.component items={[
+                    { icon: home, label: 'Home' },
+                    { icon: github, label: 'GitHub' },
+                    { icon: info, label: 'Info' },
+                    { icon: sun, label: 'Themes' }
+                ]} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="4 Tiles with explicit column (1)">
+                <section.component items={[
+                    { icon: home, label: 'Home' },
+                    { icon: github, label: 'GitHub' },
+                    { icon: info, label: 'Info' },
+                    { icon: sun, label: 'Themes' }
+                ]} columns={1} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Linked tiles">
+                <section.component items={[
+                    { icon: home, label: 'Home', href: '#' },
+                    { icon: github, label: 'GitHub', href: '#' },
+                    { icon: info, label: 'Info', href: '#' },
+                    { icon: sun, label: 'Themes', href: '#' }
+                ]} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Tiles with sub text">
+                <section.component items={[
+                    { label: 'Home', subText: 'Explore latest', href: '#' },
+                    { label: 'GitHub', subText: 'Star us on GitHub', href: '#' },
+                    { label: 'Info', subText: 'Learn more', href: '#' },
+                    { label: 'Themes', subText: 'Change theme', href: '#' }
+                ]} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Tiles with sub text and icon">
+                <section.component items={[
+                    { icon: home, label: 'Home', subText: 'Explore latest', href: '#' },
+                    { icon: github, label: 'GitHub', subText: 'Star us on GitHub', href: '#' },
+                    { icon: info, label: 'Info', subText: 'Learn more', href: '#' },
+                    { icon: sun, label: 'Themes', subText: 'Change theme', href: '#' }
+                ]} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Tiles with badge">
+                <section.component items={[
+                    {
+                        icon: home,
+                        label: 'Home',
+                        subText: 'Explore latest',
+                        href: '#',
+                        badge: {
+                            text: 'New articles',
+                            transparent: true
+                        }
+                    },
+                    {
+                        icon: github,
+                        label: 'GitHub',
+                        subText: 'Star us on GitHub',
+                        href: '#',
+                        badge: {
+                            text: '123 stars',
+                            theme: 'warning',
+                            transparent: true
+                        }
+                    },
+                    {
+                        icon: info,
+                        label: 'Info',
+                        subText: 'Learn more',
+                        href: '#',
+                        badge: {
+                            text: 'Recently updated',
+                            theme: 'info',
+                            transparent: true
+                        }
+                    },
+                    {
+                        icon: sun,
+                        label: 'Themes',
+                        subText: 'Change theme',
+                        href: '#'
+                    }
+                ]} />
+            </ComponentWrapper>
+        </div>
+    ))}
 </Layout>
