@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-import React from 'react'
+import React, { useState } from 'react'
 import type { PortfolioProps } from './portfolio'
 
 import BlogCard from '@blocks/BlogCard/BlogCard.tsx'
@@ -19,86 +19,110 @@ const Portfolio = ({
     hero,
     aboutMe,
     ratings,
-    ratingCta,
+    ratingsOnCta,
+    ratingsOffCta,
+    hideRatingsAfter = 3,
     myWork,
     servicesTitle,
     services,
     servicesCta,
     ...rest
-}: PortfolioProps) => (
-    <Layout {...layout} {...rest} containerClassName="container flex column">
-        {hero && <Hero {...hero} />}
+}: PortfolioProps) => {
+    const [toggled, setToggled] = useState(false)
 
-        <section>
-            <h2 className={styles.title}>{aboutMe.title || 'About Me'}</h2>
-            <ConditionalWrapper
-                condition={!!(aboutMe.img?.src || aboutMe.services?.length)}
-                wrapper={children => <div className="flex column md-row">{children}</div>}
-            >
-                {aboutMe.img?.src && (
-                    <img
-                        src={aboutMe.img.src}
-                        alt={aboutMe.img.alt}
-                        width={aboutMe.img.width}
-                        height={aboutMe.img.height}
-                        className={styles.img}
-                    />
-                )}
+    return (
+        <Layout {...layout} {...rest} containerClassName="container flex column">
+            {hero && <Hero {...hero} />}
+
+            <section className={styles.me}>
+                <h2 className={styles.title}>{aboutMe.title || 'About Me'}</h2>
                 <ConditionalWrapper
-                    condition={!!(aboutMe.text && aboutMe.services?.length)}
-                    wrapper={children => <div className="flex column">{children}</div>}
+                    condition={!!(aboutMe.img?.src || aboutMe.services?.length)}
+                    wrapper={children => <div className="flex column md-row">{children}</div>}
                 >
-                    <div
-                        className={styles.about}
-                        dangerouslySetInnerHTML={{ __html: aboutMe.text }}
-                    />
-                    {aboutMe.services?.length && (
-                        <IconList items={aboutMe.services} columns={2} />
+                    {aboutMe.img?.src && (
+                        <img
+                            src={aboutMe.img.src}
+                            alt={aboutMe.img.alt}
+                            width={aboutMe.img.width}
+                            height={aboutMe.img.height}
+                            className={styles.img}
+                        />
                     )}
+                    <ConditionalWrapper
+                        condition={!!(aboutMe.text && aboutMe.services?.length)}
+                        wrapper={children => <div className="flex column">{children}</div>}
+                    >
+                        <div
+                            className={styles.about}
+                            dangerouslySetInnerHTML={{ __html: aboutMe.text }}
+                        />
+                        {aboutMe.services?.length && (
+                            <IconList items={aboutMe.services} columns={2} />
+                        )}
+                    </ConditionalWrapper>
                 </ConditionalWrapper>
-            </ConditionalWrapper>
 
-            {ratings?.length && (
-                <ul className={classNames([styles.ratings, 'grid sm-3 items-start'])}>
-                    {ratings.map((rating, index) => (
-                        <li className="grid xs" key={index}>
-                            <Rating {...(({ feedback, ...rest }) => rest)(rating)} />
-                            <span
-                                className="muted"
-                                dangerouslySetInnerHTML={{ __html: rating.feedback }}
-                            />
-                        </li>
-                    ))}
-                </ul>
+                {ratings?.length && (
+                    <React.Fragment>
+                        <ul className={classNames([styles.ratings, 'grid sm-3 items-start'])}>
+                            {ratings.map((rating, index) => (
+                                <li
+                                    key={index}
+                                    className="grid xs"
+                                    data-hidden={(index >= hideRatingsAfter && !toggled) ? 'true' : null}
+                                >
+                                    <Rating {...(({ feedback, ...rest }) => rest)(rating)} />
+                                    <span className="muted" dangerouslySetInnerHTML={{ __html: rating.feedback }} />
+                                </li>
+                            ))}
+                        </ul>
+
+                        {ratings.length > hideRatingsAfter && (
+                            <React.Fragment>
+                                <Button
+                                    text="More reviews"
+                                    {...ratingsOnCta}
+                                    className={styles.cta}
+                                    onClick={() => setToggled(true)}
+                                    data-hidden={toggled}
+                                />
+                                <Button
+                                    text="Less reviews"
+                                    {...ratingsOffCta}
+                                    className={styles.cta}
+                                    onClick={() => setToggled(false)}
+                                    data-hidden={!toggled}
+                                />
+                            </React.Fragment>
+                        )}
+                    </React.Fragment>
+                )}
+            </section>
+
+            {myWork?.items?.length && (
+                <section>
+                    <h2 className={styles.title}>{myWork.title || 'My Work'}</h2>
+                    <div className="grid sm-2 md-3">
+                        {myWork.items.map((item, index) => (
+                            <BlogCard {...item} key={index} />
+                        ))}
+                    </div>
+                </section>
             )}
-        </section>
 
-        {ratingCta?.text && (
-            <Button {...ratingCta} className={styles.cta} />
-        )}
+            {services?.items?.length && (
+                <section>
+                    <h2 className={styles.title}>{servicesTitle || 'Services'}</h2>
+                    <GridWithIcons {...services} />
+                </section>
+            )}
 
-        {myWork?.items?.length && (
-            <section>
-                <h2 className={styles.title}>{myWork.title || 'My Work'}</h2>
-                <div className="grid sm-2 md-3">
-                    {myWork.items.map((item, index) => (
-                        <BlogCard {...item} key={index} />
-                    ))}
-                </div>
-            </section>
-        )}
-
-        {services?.items?.length && (
-            <section>
-                <h2 className={styles.title}>{servicesTitle || 'Services'}</h2>
-                <GridWithIcons {...services} />
-            </section>
-        )}
-
-        {servicesCta?.text && (
-            <Button {...servicesCta} className={styles.cta} />
-        )}
-    </Layout>
-)
+            {servicesCta?.text && (
+                <Button {...servicesCta} className={styles.cta} />
+            )}
+        </Layout>
+    )
+}
 
 export default Portfolio

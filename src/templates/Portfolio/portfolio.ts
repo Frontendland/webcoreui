@@ -5,6 +5,11 @@ import type { IconListProps } from '@blocks/IconList/iconList'
 import type { LayoutProps } from '@blocks/Layout/layout'
 import type { ButtonProps, IconProps, RatingProps } from 'webcoreui/astro'
 
+export type PortfolioRatingsCta = {
+    text?: string
+    icon?: IconProps['type'] | string
+} & ButtonProps
+
 export type PortfolioProps = {
     layout: LayoutProps
     hero?: HeroProps
@@ -22,10 +27,9 @@ export type PortfolioProps = {
     ratings?: ({
         feedback: string
     } & RatingProps)[]
-    ratingCta?: {
-        text: string
-        icon?: IconProps['type'] | string
-    } & ButtonProps
+    ratingsOnCta?: PortfolioRatingsCta
+    ratingsOffCta?: PortfolioRatingsCta
+    hideRatingsAfter?: number
     myWork?: {
         title?: string
         items: BlogCardProps[]

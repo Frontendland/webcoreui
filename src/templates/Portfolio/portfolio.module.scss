@@ -3,6 +3,7 @@
 .cta {
     @include visibility(block);
     @include spacing(auto-none);
+    @include size(wfit-content);
 }
 
 .title {
@@ -12,6 +13,12 @@
 .img {
     @include spacing(auto-none);
     @include size('w100%');
+}
+
+.me {
+    [data-hidden="true"] {
+        @include visibility(none);
+    }
 }
 
 .about {

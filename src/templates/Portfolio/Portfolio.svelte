@@ -18,13 +18,17 @@
         hero,
         aboutMe,
         ratings,
-        ratingCta,
+        ratingsOnCta,
+        ratingsOffCta,
+        hideRatingsAfter = 3,
         myWork,
         servicesTitle,
         services,
         servicesCta,
         ...rest
     }: PortfolioProps = $props()
+
+    let toggled = $state(false)
 </script>
 
 <Layout {...layout} {...rest} containerClassName="container flex column">
@@ -32,7 +36,7 @@
         <Hero {...hero} />
     {/if}
 
-    <section>
+    <section class={styles.me}>
         <h2 class={styles.title}>{aboutMe.title || 'About Me'}</h2>
         <ConditionalWrapper
             condition={!!(aboutMe.img?.src || aboutMe.services?.length)}
@@ -62,8 +66,8 @@
 
         {#if ratings?.length}
             <ul class={classNames([styles.ratings, 'grid sm-3 items-start'])}>
-                {#each ratings as rating}
-                    <li class="grid xs">
+                {#each ratings as rating, index}
+                    <li class="grid xs" data-hidden={(index >= hideRatingsAfter && !toggled) ? 'true' : null}>
                         <Rating {...(({ feedback, ...rest }) => rest)(rating)} />
                         <span class="muted">
                             {@html rating.feedback}
@@ -71,12 +75,25 @@
                     </li>
                 {/each}
             </ul>
+
+            {#if ratings.length > hideRatingsAfter}
+                <Button
+                    text="More reviews"
+                    {...ratingsOnCta}
+                    className={styles.cta}
+                    onClick={() => toggled = true}
+                    data-hidden={toggled}
+                />
+                <Button
+                    text="Less reviews"
+                    {...ratingsOffCta}
+                    className={styles.cta}
+                    onClick={() => toggled = false}
+                    data-hidden={!toggled}
+                />
+            {/if}
         {/if}
     </section>
-
-    {#if ratingCta?.text}
-        <Button {...ratingCta} className={styles.cta} />
-    {/if}
 
     {#if myWork?.items?.length}
         <section>

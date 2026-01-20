@@ -19,7 +19,9 @@ const {
     hero,
     aboutMe,
     ratings,
-    ratingCta,
+    ratingsOnCta,
+    ratingsOffCta,
+    hideRatingsAfter = 3,
     myWork,
     servicesTitle,
     services,
@@ -38,7 +40,7 @@ const {
 
     {hero && <Hero {...hero} />}
 
-    <section>
+    <section class={styles.me}>
         <h2 class={styles.title}>{aboutMe.title || 'About Me'}</h2>
         <ConditionalWrapper condition={!!(aboutMe.img?.src || aboutMe.services?.length)}>
             <div slot="wrapper" class="flex column md-row">children</div>
@@ -63,22 +65,36 @@ const {
         </ConditionalWrapper>
 
         {ratings?.length && (
-            <ul class:list={[styles.ratings, 'grid sm-3 items-start']}>
-                {ratings.map(rating => (
-                    <li class="grid xs">
-                        <Rating {...(({ feedback, ...rest }) => rest)(rating)} />
-                        <span class="muted">
-                            <Fragment set:html={rating.feedback} />
-                        </span>
-                    </li>
-                ))}
-            </ul>
+            <Fragment>
+                <ul class:list={[styles.ratings, 'grid sm-3 items-start']} data-id="w-portfolio-ratings">
+                    {ratings.map((rating, index) => (
+                        <li class="grid xs" data-hidden={index >= hideRatingsAfter ? 'true' : null}>
+                            <Rating {...(({ feedback, ...rest }) => rest)(rating)} />
+                            <span class="muted">
+                                <Fragment set:html={rating.feedback} />
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+
+                {ratings.length > hideRatingsAfter && (
+                    <Button
+                        text="More reviews"
+                        {...ratingsOnCta}
+                        className={styles.cta}
+                        data-id="w-portfolio-ratings-on"
+                    />
+                    <Button
+                        text="Less reviews"
+                        {...ratingsOffCta}
+                        className={styles.cta}
+                        data-id="w-portfolio-ratings-off"
+                        data-hidden="true"
+                    />
+                )}
+            </Fragment>
         )}
     </section>
-
-    {ratingCta?.text && (
-        <Button {...ratingCta} className={styles.cta} />
-    )}
 
     {myWork?.items?.length && (
         <section>
@@ -102,3 +118,42 @@ const {
         <Button {...servicesCta} className={styles.cta} />
     )}
 </Layout>
+
+<script>
+    import { get, on } from 'webcoreui'
+
+    const addEventListeners = () => {
+        const toggleOn = get('[data-id="w-portfolio-ratings-on"]')
+        const toggleOff = get('[data-id="w-portfolio-ratings-off"]')
+        const ratings = get('[data-id="w-portfolio-ratings"] li', true) as NodeListOf<HTMLElement>
+
+        const toggleRatings = () => {
+            if (ratings) {
+                Array.from(ratings).forEach((rating) => {
+                    if (rating.dataset.hidden) {
+                        rating.dataset.hidden = rating.dataset.hidden === 'true' ? 'false' : 'true'
+                    }
+                })
+            }
+        }
+
+        if (toggleOn instanceof HTMLButtonElement && toggleOff instanceof HTMLButtonElement) {
+            on(toggleOn, 'click', () => {
+                toggleOn.dataset.hidden = 'true'
+                toggleOff.dataset.hidden = 'false'
+
+                toggleRatings()
+            })
+
+            on(toggleOff, 'click', () => {
+                toggleOff.dataset.hidden = 'true'
+                toggleOn.dataset.hidden = 'false'
+
+                toggleRatings()
+            })
+        }
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
+</script>

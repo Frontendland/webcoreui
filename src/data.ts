@@ -579,8 +579,8 @@ export const getPortfolioTemplateData = (theme: ButtonProps['theme'] = 'success'
             { text: 'Send an Email', theme: 'outline' }
         ],
         badge: {
-            rounded: true,
-            theme: 'outline',
+            transparent: true,
+            theme: 'warning',
             text: '⭐ Top rated developer'
         },
         image: {
@@ -630,9 +630,28 @@ export const getPortfolioTemplateData = (theme: ButtonProps['theme'] = 'success'
             showText: true,
             text: 'Rated for communication',
             feedback: '"Thank you for your work! It turned out very nice!"'
+        },
+        {
+            score: 5,
+            showText: true,
+            text: 'Rated for communication',
+            feedback: '"Very professional throughout the entire project and always delivered on time."'
+        },
+        {
+            score: 5,
+            showText: true,
+            text: 'Rated for design',
+            feedback: '"Quick to respond and always available to answer questions or make adjustments."'
+        },
+        {
+            score: 5,
+            showText: true,
+            text: 'Rated for result',
+            feedback: '"Clearly knowledgeable in his field and provided valuable insights beyond expectations."'
         }
     ],
-    ratingCta: { text: 'More reviews', theme: 'secondary' },
+    ratingsOnCta: { theme: 'secondary' },
+    ratingsOffCta: { text: 'Show less', theme: 'secondary' },
     myWork: {
         title: 'My Most Recent Work',
         items: Array

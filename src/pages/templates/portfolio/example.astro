@@ -42,8 +42,8 @@ const hero: PortfolioProps['hero'] = {
         { text: 'Send an Email', theme: 'outline' }
     ],
     badge: {
-        rounded: true,
-        theme: 'outline',
+        transparent: true,
+        theme: 'warning',
         text: '⭐ Top rated developer'
     },
     image: {
@@ -97,14 +97,32 @@ const ratings: PortfolioProps['ratings'] = [
         showText: true,
         text: 'Rated for communication',
         feedback: '"Thank you for your work! It turned out very nice!"'
+    },
+    {
+        score: 5,
+        showText: true,
+        text: 'Rated for communication',
+        feedback: '"Very professional throughout the entire project and always delivered on time."'
+    },
+    {
+        score: 5,
+        showText: true,
+        text: 'Rated for design',
+        feedback: '"Quick to respond and always available to answer questions or make adjustments."'
+    },
+    {
+        score: 5,
+        showText: true,
+        text: 'Rated for result',
+        feedback: '"Clearly knowledgeable in his field and provided valuable insights beyond expectations."'
     }
 ]
 
-// CTA below your ratings
-const ratingCta: PortfolioProps['ratingCta'] = {
-    text: 'More reviews',
-    theme: 'secondary'
-}
+// Toggle on button for ratings
+const ratingsOnCta: PortfolioProps['ratingsOnCta'] = { theme: 'secondary' }
+
+// Toggle off button for ratings
+const ratingsOffCta: PortfolioProps['ratingsOffCta'] = { text: 'Show less', theme: 'secondary' }
 
 // Your work in a grid layout
 const myWork: PortfolioProps['myWork'] = {
@@ -156,7 +174,8 @@ const servicesCta: PortfolioProps['servicesCta'] = {
     hero={hero}
     aboutMe={aboutMe}
     ratings={ratings}
-    ratingCta={ratingCta}
+    ratingsOnCta={ratingsOnCta}
+    ratingsOffCta={ratingsOffCta}
     myWork={myWork}
     services={services}
     servicesCta={servicesCta}
