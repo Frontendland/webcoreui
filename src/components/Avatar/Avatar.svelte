@@ -1,6 +1,8 @@
 <script lang="ts">
     import type { AvatarProps } from './avatar'
 
+    import Image from '../Image/Image.svelte'
+
     import { classNames } from '../../utils/classNames'
 
     import styles from './avatar.module.scss'
@@ -35,24 +37,24 @@
         style={borderColor ? `--w-avatar-border: ${borderColor};` : null}
     >
         {#each img as img, index}
-            <img
+            <Image
                 src={img}
                 alt={Array.isArray(alt) ? alt[index] : alt}
                 width={Array.isArray(size) ? size[index] : size}
                 height={Array.isArray(size) ? size[index] : size}
                 loading={lazy ? 'lazy' : null}
-                class={classes}
+                className={classes}
                 style={Array.isArray(size) ? `--w-avatar-index: ${size[index]}` : null}
             />
         {/each}
     </div>
 {:else}
-    <img
+    <Image
         src={img}
         alt={Array.isArray(alt) ? alt[0] : alt}
         width={Array.isArray(size) ? size[0] : size}
         height={Array.isArray(size) ? size[0] : size}
-        class={classes}
+        className={classes}
         loading={lazy ? 'lazy' : null}
         style={borderColor ? `--w-avatar-border: ${borderColor};` : null}
     />

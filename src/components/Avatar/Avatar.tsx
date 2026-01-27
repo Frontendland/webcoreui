@@ -1,6 +1,8 @@
 import React from 'react'
 import type { AvatarProps } from './avatar'
 
+import Image from '../Image/Image.tsx'
+
 import { classNames } from '../../utils/classNames'
 
 import styles from './avatar.module.scss'
@@ -37,7 +39,7 @@ const Avatar = ({
             style={borderColorStyle}
         >
             {img.map((img, index) => (
-                <img
+                <Image
                     key={index}
                     src={img}
                     alt={Array.isArray(alt) ? alt[index] : alt}
@@ -53,7 +55,7 @@ const Avatar = ({
             ))}
         </div>
     ) : (
-        <img
+        <Image
             src={img}
             alt={Array.isArray(alt) ? alt[0] : alt}
             width={Array.isArray(size) ? size[0] : size}

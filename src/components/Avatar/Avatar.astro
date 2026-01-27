@@ -1,6 +1,8 @@
 ---
 import type { AvatarProps } from './avatar'
 
+import Image from '../Image/Image.astro'
+
 import styles from './avatar.module.scss'
 
 interface Props extends AvatarProps {}
@@ -35,7 +37,7 @@ const groupClasses = [
         style={borderColor ? `--w-avatar-border: ${borderColor};` : null}
     >
         {img.map((img, index) => (
-            <img
+            <Image
                 src={img}
                 alt={Array.isArray(alt) ? alt[index] : alt}
                 width={Array.isArray(size) ? size[index] : size}
@@ -47,7 +49,7 @@ const groupClasses = [
         ))}
     </div>
 ) : (
-    <img
+    <Image
         src={img}
         alt={Array.isArray(alt) ? alt[0] : alt}
         width={Array.isArray(size) ? size[0] : size}

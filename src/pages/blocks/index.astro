@@ -4,6 +4,8 @@ import { AspectRatio, Card, Switch } from 'webcoreui/astro'
 import Layout from '@static/Layout.astro'
 import Link from '@static/Link.astro'
 
+import Image from '@components/Image/Image.astro'
+
 import Author from '@blocks/Author/Author.astro'
 import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.astro'
 import BlogCard from '@blocks/BlogCard/BlogCard.astro'
@@ -178,8 +180,9 @@ import { avatarGroup, emptyProps, gridWithIconsItems, members } from '@data'
             <DeviceMockup className="device-mockup-example">
                 <div class="grid xs">
                     <AspectRatio ratio="1">
-                        <img
+                        <Image
                             src="/img/placeholder1.png"
+                            alt="Mockup"
                             width="380"
                             height="380"
                         />

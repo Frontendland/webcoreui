@@ -24,6 +24,7 @@ import Footer from '@components/Footer/Footer.astro'
 import Grid from '@components/Grid/Grid.astro'
 import Group from '@components/Group/Group.astro'
 import Icon from '@components/Icon/Icon.astro'
+import Image from '@components/Image/Image.astro'
 import Input from '@components/Input/Input.astro'
 import Kbd from '@components/Kbd/Kbd.astro'
 import List from '@components/List/List.astro'
@@ -236,6 +237,14 @@ import {
                 type="github"
                 size={30}
                 color="#f2c262"
+            />
+        </CardWrapper>
+        <CardWrapper title="Image" href="/components/image">
+            <Image
+                src="/img/placeholder1.png"
+                alt="Image"
+                width={300}
+                height={30}
             />
         </CardWrapper>
         <CardWrapper title="Input" href="/components/input">

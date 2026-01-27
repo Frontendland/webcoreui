@@ -1,0 +1,45 @@
+---
+import type { ImageProps } from './image'
+
+import AspectRatio from '../AspectRatio/AspectRatio.astro'
+import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
+
+import styles from './image.module.scss'
+
+interface Props extends ImageProps {}
+
+const {
+    src,
+    alt,
+    width,
+    height,
+    lazy,
+    ratio,
+    center,
+    full,
+    rounded,
+    className,
+    ...rest
+} = Astro.props
+
+const classes = [
+    styles.img,
+    center && styles.center,
+    full && styles[full],
+    rounded && styles[rounded],
+    className
+]
+---
+
+<ConditionalWrapper condition={!!ratio}>
+    <AspectRatio slot="wrapper" ratio={ratio || ''}>children</AspectRatio>
+    <img
+        {...rest}
+        src={src}
+        alt={alt || ''}
+        width={width}
+        height={height}
+        loading={lazy ? 'lazy' : null}
+        class:list={classes}
+    />
+</ConditionalWrapper>

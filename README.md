@@ -297,6 +297,7 @@ import { Accordion } from 'webcoreui/react'
 - [Grid](https://github.com/Frontendland/webcoreui/tree/main/src/components/Grid)
 - [Group](https://github.com/Frontendland/webcoreui/tree/main/src/components/Group)
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
+- [Image](https://github.com/Frontendland/webcoreui/tree/main/src/components/Image)
 - [Input](https://github.com/Frontendland/webcoreui/tree/main/src/components/Input)
 - [Kbd](https://github.com/Frontendland/webcoreui/tree/main/src/components/Kbd)
 - [List](https://github.com/Frontendland/webcoreui/tree/main/src/components/List)

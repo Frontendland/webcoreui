@@ -1,6 +1,6 @@
 @use 'webcoreui/config' as *;
 
-.cta {
+button.cta {
     @include visibility(block);
     @include spacing(auto-none);
     @include size(wfit-content);

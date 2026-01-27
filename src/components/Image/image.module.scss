@@ -1,0 +1,47 @@
+@use '../../scss/config.scss' as *;
+
+.img {
+    &.center {
+        @include spacing(auto-none);
+    }
+
+    &.width {
+        @include size('w100%');
+    }
+
+    &.height {
+        @include size('h100%');
+    }
+
+    &.both {
+        @include size(100%);
+    }
+
+    &.top {
+        @include border-radius(top);
+    }
+
+    &.bottom {
+        @include border-radius(bottom);
+    }
+
+    &.left {
+        @include border-radius(left);
+    }
+
+    &.right {
+        @include border-radius(right);
+    }
+
+    &.diagonal {
+        @include border-radius(diagonal);
+    }
+
+    &.reverse-diagonal {
+        @include border-radius(reverse-diagonal);
+    }
+
+    &.none {
+        @include border-radius(none);
+    }
+}

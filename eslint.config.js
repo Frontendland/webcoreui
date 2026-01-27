@@ -1,9 +1,9 @@
+import astroParser from 'astro-eslint-parser'
 import svelteParser from 'svelte-eslint-parser'
 import svelteConfig from './svelte.config.js'
 
 import js from '@eslint/js'
 import tsParser from '@typescript-eslint/parser'
-import astroParser from 'astro-eslint-parser'
 import eslintPluginAstro from 'eslint-plugin-astro'
 import eslintPluginReact from 'eslint-plugin-react'
 import eslintPluginSimpleImportSort from 'eslint-plugin-simple-import-sort'
@@ -109,6 +109,7 @@ export default [
             'simple-import-sort/imports': ['error', {
                 groups: [
                     [
+                        '^astro',
                         '^react',
                         '^svelte',
                         '^\\./'

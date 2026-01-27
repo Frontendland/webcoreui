@@ -72,7 +72,9 @@
     }
 
     img {
+        @include visibility(block);
         @include border-radius();
+
         object-fit: cover;
     }
 

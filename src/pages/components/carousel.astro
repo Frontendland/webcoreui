@@ -8,6 +8,7 @@ import Button from '@components/Button/Button.astro'
 import AstroCarousel from '@components/Carousel/Carousel.astro'
 import SvelteCarousel from '@components/Carousel/Carousel.svelte'
 import ReactCarousel from '@components/Carousel/Carousel.tsx'
+import Image from '@components/Image/Image.astro'
 
 import { getSections } from '@helpers'
 
@@ -164,15 +165,15 @@ const sections = getSections({
                     pagination={{ type: 'dots' }}
                 >
                     <li data-active="true" class="img-li">
-                        <img src="../img/placeholder1.png" />
+                        <Image src="../img/placeholder1.png" alt="" width="300" height="150" />
                         <span>Astro</span>
                     </li>
                     <li class="img-li">
-                        <img src="../img/placeholder2.png" />
+                        <Image src="../img/placeholder2.png" alt="" width="300" height="150" />
                         <span>Svelte</span>
                     </li>
                     <li class="img-li">
-                        <img src="../img/placeholder3.png" />
+                        <Image src="../img/placeholder3.png" alt="" width="300" height="150" />
                         <span>React</span>
                     </li>
                 </section.component>

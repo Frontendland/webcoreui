@@ -1,0 +1,103 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroImage from '@components/Image/Image.astro'
+import SvelteImage from '@components/Image/Image.svelte'
+import ReactImage from '@components/Image/Image.tsx'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'images',
+    components: [AstroImage, SvelteImage, ReactImage]
+})
+
+const commonProps = {
+    src: '/img/placeholder5.png',
+    alt: 'Placeholder image',
+    width: 250,
+    height: 250
+}
+---
+
+<Layout>
+    <h1>Image</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroImage {...commonProps} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteImage {...commonProps} />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactImage {...commonProps} />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2 lg-3">
+            <ComponentWrapper title="Default">
+                <section.component {...commonProps} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Aspect ratio set to 16/9">
+                <section.component {...commonProps} ratio="16/9" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Alternate syntax (16:9)">
+                <section.component {...commonProps} ratio="16:9" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Full width">
+                <section.component {...commonProps} full="width" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Full height">
+                <section.component {...commonProps} full="height" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Full both">
+                <section.component {...commonProps} full="both" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rounded (top)">
+                <section.component {...commonProps} rounded="top" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rounded (bottom)">
+                <section.component {...commonProps} rounded="bottom" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rounded (left)">
+                <section.component {...commonProps} rounded="left" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rounded (right)">
+                <section.component {...commonProps} rounded="right" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rounded (diagonal)">
+                <section.component {...commonProps} rounded="diagonal" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rounded (reverse diagonal)">
+                <section.component {...commonProps} rounded="reverse-diagonal" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Rounded (none)">
+                <section.component {...commonProps} rounded="none" />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Centered">
+                <section.component {...commonProps} center={true} />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
