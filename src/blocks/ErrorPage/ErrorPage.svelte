@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Button } from 'webcoreui/svelte'
+    import Button from '@blocks/Button/Button.svelte'
 
     import type { ErrorPageProps } from './errorPage'
     import styles from './error-page.module.scss'
@@ -28,12 +28,7 @@
     {#if buttons?.length}
         <div class="flex xs wrap justify-center">
             {#each buttons as button}
-                <Button {...button} icon={null}>
-                    {#if button.icon}
-                        {@html button.icon}
-                    {/if}
-                    {button.text}
-                </Button>
+                <Button {...button} />
             {/each}
         </div>
     {/if}

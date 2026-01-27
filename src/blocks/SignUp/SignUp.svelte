@@ -1,9 +1,10 @@
 <script lang="ts">
     import {
-        Button,
         Card,
         Input
     } from 'webcoreui/svelte'
+
+    import Button from '@blocks/Button/Button.svelte'
 
     import type { SvelteSignUpProps } from './signup'
 
@@ -41,14 +42,18 @@
         />
         <div class="flex xs wrap">
             {#if primaryButtonLabel}
-                <Button theme={primaryButtonTheme} onClick={primaryOnClick}>
-                    {primaryButtonLabel}
-                </Button>
+                <Button
+                    theme={primaryButtonTheme}
+                    onClick={primaryOnClick}
+                    text={primaryButtonLabel}
+                />
             {/if}
             {#if secondaryButtonLabel}
-                <Button theme={secondaryButtonTheme} onClick={secondaryOnClick}>
-                    {secondaryButtonLabel}
-                </Button>
+                <Button
+                    theme={secondaryButtonTheme}
+                    onClick={secondaryOnClick}
+                    text={secondaryButtonLabel}
+                />
             {/if}
         </div>
     </form>

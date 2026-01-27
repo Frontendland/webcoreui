@@ -3,10 +3,11 @@
     import { closeModal, modal } from 'webcoreui'
     import {
         Alert,
-        Button,
         Icon,
         Modal
     } from 'webcoreui/svelte'
+
+    import Button from '@blocks/Button/Button.astro'
 
     import styles from './deployments.module.scss'
 
@@ -26,11 +27,11 @@
     {/snippet}
     <span>Connect your project to GitHub to start running automatic deployments.</span>
     <br />
-    <Button className={styles.connect} onClick={connect}>Connect</Button>
+    <Button className={styles.connect} onClick={connect} text="Connect" />
 </Alert>
 
 <Modal title="Are you sure?" subTitle="Confirm update" className="modal">
     <p>Automatic deployments will be enabled for your project.</p>
-    <Button className="close-modal" onClick={close}>Confirm</Button>
-    <Button theme="secondary" className="close-modal" onClick={close}>Cancel</Button>
+    <Button className="close-modal" onClick={close} text="Confirm" />
+    <Button theme="secondary" className="close-modal" onClick={close} text="Cancel" />
 </Modal>

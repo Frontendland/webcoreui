@@ -1,21 +1,11 @@
-import type {
-    BadgeProps,
-    ButtonProps,
-    IconProps
-} from 'webcoreui/astro'
-
 import type { AvatarWithRatingProps } from '@blocks/AvatarWithRating/avatarWithRating'
+import type { BadgeBlockProps, ButtonBlockProps } from '@blocks/Button/button'
 
 export type HeroProps = {
-    badge?: {
-        text: string
-    } & BadgeProps | null
+    badge?: BadgeBlockProps
     heading: string
     subHeading?: string
-    buttons?: ({
-        text: string
-        icon?: IconProps['type'] | string
-    } & ButtonProps)[]
+    buttons?: ButtonBlockProps[]
     avatarWithRating?: AvatarWithRatingProps
     image?: {
         src: string

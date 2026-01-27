@@ -1,8 +1,5 @@
 ---
-import {
-    Button,
-    Icon
-} from 'webcoreui/astro'
+import Button from '@blocks/Button/Button.astro'
 
 import type { ErrorPageProps } from './errorPage'
 import styles from './error-page.module.scss'
@@ -29,19 +26,7 @@ const typeStyle = typeColor
     {subTitle && <h2 class={styles['sub-title']}>{subTitle}</h2>}
     {!!buttons?.length && (
         <div class="flex xs wrap justify-center">
-            {buttons?.map(button => (
-                <Button {...button} icon={null}>
-                    {button.icon && (
-                        <Fragment>
-                            {button.icon.startsWith('<svg')
-                                ? <Fragment set:html={button.icon} />
-                                : <Icon type={button.icon} />
-                            }
-                        </Fragment>
-                    )}
-                    {button.text}
-                </Button>
-            ))}
+            {buttons?.map(button => <Button {...button} />)}
         </div>
     )}
 </section>

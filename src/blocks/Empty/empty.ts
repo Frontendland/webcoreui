@@ -1,16 +1,12 @@
-import type {
-    ButtonProps,
-    IconProps
-} from 'webcoreui/astro'
+import type { IconProps } from 'webcoreui/astro'
+
+import type { ButtonBlockProps } from '@blocks/Button/button'
 
 export type EmptyProps = {
     icon?: IconProps['type'] | string
     iconWithBackground?: boolean
     title: string
     text: string
-    buttons?: ({
-        text: string
-        icon?: IconProps['type'] | string
-    } & ButtonProps)[]
+    buttons?: ButtonBlockProps[]
     className?: string
 }

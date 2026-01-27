@@ -1,9 +1,10 @@
 ---
 import {
-    Button,
     Card,
     Input
 } from 'webcoreui/astro'
+
+import Button from '@blocks/Button/Button.astro'
 
 import type { SignUpProps } from './signup'
 
@@ -46,14 +47,18 @@ const {
         />
         <div class="flex xs wrap">
             {primaryButtonLabel && (
-                <Button theme={primaryButtonTheme} className={primaryButtonSelector}>
-                    {primaryButtonLabel}
-                </Button>
+                <Button
+                    theme={primaryButtonTheme}
+                    className={primaryButtonSelector}
+                    text={primaryButtonLabel}
+                />
             )}
             {secondaryButtonLabel && (
-                <Button theme={secondaryButtonTheme} className={secondaryButtonSelector}>
-                    {secondaryButtonLabel}
-                </Button>
+                <Button
+                    theme={secondaryButtonTheme}
+                    className={secondaryButtonSelector}
+                    text={secondaryButtonLabel}
+                />
             )}
         </div>
     </form>

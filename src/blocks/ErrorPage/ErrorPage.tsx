@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button } from 'webcoreui/react'
+
+import Button from '@blocks/Button/Button.tsx'
 
 import type { ErrorPageProps } from './errorPage'
 import styles from './error-page.module.scss'
@@ -24,15 +25,7 @@ const ErrorPage = ({
             {!!buttons?.length && (
                 <div className="flex xs wrap justify-center">
                     {buttons?.map((button, index) => (
-                        <Button
-                            {...button}
-                            key={index}
-                            icon={null}
-                            dangerouslySetInnerHTML={{ __html: button.icon
-                                ? `${button.icon} ${button.text}`
-                                : button.text
-                            }}
-                        />
+                        <Button {...button} key={index} />
                     ))}
                 </div>
             )}

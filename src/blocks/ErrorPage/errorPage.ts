@@ -1,13 +1,10 @@
-import type { ButtonProps, IconProps } from 'webcoreui/astro'
+import type { ButtonBlockProps } from '@blocks/Button/button'
 
 export type ErrorPageProps = {
     type: number
     typeColor?: string
     title: string
     subTitle?: string
-    buttons?: ({
-        text: string
-        icon?: IconProps['type'] | string
-    } & ButtonProps)[]
+    buttons?: ButtonBlockProps[]
     [key: string]: any
 }

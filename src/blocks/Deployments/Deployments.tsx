@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { closeModal,modal } from 'webcoreui'
 import {
     Alert,
-    Button,
     Icon,
     Modal
 } from 'webcoreui/react'
+
+import Button from '@blocks/Button/Button.astro'
 
 import styles from './deployments.module.scss'
 
@@ -28,13 +29,13 @@ const Deployments = () => {
         <Alert title="Deployments" icon={<Icon type="github" />}>
             <span>Connect your project to GitHub to start running automatic deployments.</span>
             <br />
-            <Button className={styles.connect} onClick={connect}>Connect</Button>
+            <Button className={styles.connect} onClick={connect} text="Connect" />
 
             <Modal title="Are you sure?" subTitle="Confirm update" className="modal">
                 <p>Automatic deployments will be enabled for your project.</p>
                 <div className="flex xs">
-                    <Button className="close-modal" onClick={close}>Confirm</Button>
-                    <Button theme="secondary" className="close-modal" onClick={close}>Cancel</Button>
+                    <Button className="close-modal" onClick={close} text="Confirm" />
+                    <Button theme="secondary" className="close-modal" onClick={close} text="Cancel" />
                 </div>
             </Modal>
         </Alert>

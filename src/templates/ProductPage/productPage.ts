@@ -1,9 +1,10 @@
 import type { Snippet } from 'svelte'
 
 import type { BlogCardProps } from '@blocks/BlogCard/blogCard'
+import type { ButtonBlockProps } from '@blocks/Button/button'
 import type { IconListProps } from '@blocks/IconList/iconList'
 import type { LayoutProps } from '@blocks/Layout/layout'
-import type { ButtonProps, CarouselProps, IconProps } from 'webcoreui/astro'
+import type { CarouselProps } from 'webcoreui/astro'
 
 export type ProductPageProps = {
     layout: LayoutProps
@@ -15,10 +16,7 @@ export type ProductPageProps = {
         lazy?: boolean
     }[]
     carousel?: Omit<CarouselProps, 'items'>
-    buttons?: ({
-        text: string
-        icon?: IconProps['type'] | string
-    } & ButtonProps)[]
+    buttons?: ButtonBlockProps[]
     features?: IconListProps['items']
     recommended?: {
         title?: string

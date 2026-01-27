@@ -1,12 +1,17 @@
 import type {
     BadgeProps,
-    ButtonProps as WebcoreButtonProps,
+    ButtonProps as WButtonProps,
     IconProps
 } from 'webcoreui/astro'
 
-export type ButtonProps = {
-    icon?: IconProps['type'] | string
+type BaseProps = {
     text?: string
+    icon?: IconProps['type'] | string
+}
+
+export type ButtonProps = {
     badge?: boolean
-    className?: string
-} & WebcoreButtonProps & BadgeProps
+} & BaseProps & WButtonProps & BadgeProps
+
+export type ButtonBlockProps = BaseProps & WButtonProps
+export type BadgeBlockProps = BaseProps & BadgeProps

@@ -1,9 +1,10 @@
 import React from 'react'
 import {
-    Button,
     Card,
     Input
 } from 'webcoreui/react'
+
+import Button from '@blocks/Button/Button.tsx'
 
 import type { ReactSignUpProps } from './signup'
 
@@ -41,14 +42,18 @@ const SignUp = ({
                 />
                 <div className="flex xs wrap">
                     {primaryButtonLabel && (
-                        <Button theme={primaryButtonTheme} onClick={primaryOnClick}>
-                            {primaryButtonLabel}
-                        </Button>
+                        <Button
+                            theme={primaryButtonTheme}
+                            onClick={primaryOnClick}
+                            text={primaryButtonLabel}
+                        />
                     )}
                     {secondaryButtonLabel && (
-                        <Button theme={secondaryButtonTheme} onClick={secondaryOnClick}>
-                            {secondaryButtonLabel}
-                        </Button>
+                        <Button
+                            theme={secondaryButtonTheme}
+                            onClick={secondaryOnClick}
+                            text={secondaryButtonLabel}
+                        />
                     )}
                 </div>
             </form>

@@ -1,14 +1,10 @@
 import type { BlogCardProps } from '@blocks/BlogCard/blogCard'
+import type { ButtonBlockProps } from '@blocks/Button/button'
 import type { GridWithIconsProps } from '@blocks/GridWithIcons/gridWithIcons'
 import type { HeroProps } from '@blocks/Hero/hero'
 import type { IconListProps } from '@blocks/IconList/iconList'
 import type { LayoutProps } from '@blocks/Layout/layout'
-import type { ButtonProps, IconProps, RatingProps } from 'webcoreui/astro'
-
-export type PortfolioRatingsCta = {
-    text?: string
-    icon?: IconProps['type'] | string
-} & ButtonProps
+import type { RatingProps } from 'webcoreui/astro'
 
 export type PortfolioProps = {
     layout: LayoutProps
@@ -27,8 +23,8 @@ export type PortfolioProps = {
     ratings?: ({
         feedback: string
     } & RatingProps)[]
-    ratingsOnCta?: PortfolioRatingsCta
-    ratingsOffCta?: PortfolioRatingsCta
+    ratingsOnCta?: ButtonBlockProps
+    ratingsOffCta?: ButtonBlockProps
     hideRatingsAfter?: number
     myWork?: {
         title?: string
@@ -36,9 +32,6 @@ export type PortfolioProps = {
     }
     servicesTitle?: string
     services?: GridWithIconsProps
-    servicesCta?: {
-        text: string
-        icon?: IconProps['type'] | string
-    } & ButtonProps
+    servicesCta?: ButtonBlockProps
     [key: string]: any
 }
