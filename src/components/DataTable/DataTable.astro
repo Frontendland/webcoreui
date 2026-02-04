@@ -149,7 +149,7 @@ const hasPagination = data?.length && itemsPerPage
             {!!columnFilterItems?.length && (
                 <tfoot data-hidden="true">
                     <tr>
-                        <td colspan={data?.[0].length} class={styles['no-results']}>{noResultsLabel}</td>
+                        <td colspan={headings?.length} class={styles['no-results']}>{noResultsLabel}</td>
                     </tr>
                 </tfoot>
             )}

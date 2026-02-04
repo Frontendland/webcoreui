@@ -255,7 +255,7 @@ const DataTable = ({
                         <tfoot>
                             <tr>
                                 <td
-                                    colSpan={data?.[0].length}
+                                    colSpan={headings?.length}
                                     className={styles['no-results']}
                                 >
                                     {noResultsLabel}

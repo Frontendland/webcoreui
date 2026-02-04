@@ -250,7 +250,7 @@
             {#if columnFilterIndexes?.length && !filteredData.length}
                 <tfoot>
                     <tr>
-                        <td colspan={data?.[0].length} class={styles['no-results']}>
+                        <td colspan={headings?.length} class={styles['no-results']}>
                             {noResultsLabel}
                         </td>
                     </tr>
