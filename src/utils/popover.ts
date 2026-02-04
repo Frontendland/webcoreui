@@ -231,6 +231,7 @@ export const popover = ({
 
         return {
             remove() {
+                popoverDOM.remove()
                 triggerDOM.removeEventListener('click', handleOpen)
                 observer.disconnect()
 
