@@ -14,7 +14,7 @@ const Accordion = ({
     reverse,
     className
 }: AccordionProps) => {
-    const [state, setState] = useState(Array(items.length).fill(false))
+    const [state, setState] = useState(items.map(item => item.expanded ?? false))
 
     const toggle = (index: number) => {
         setState(state.map((_, i) => index === i

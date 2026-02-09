@@ -15,7 +15,7 @@
         className
     }: AccordionProps = $props()
 
-    let toggleState = $state(Array(items.length).fill(false))
+    let toggleState = $state(items.map(item => item.expanded ?? false))
 
     const toggle = (index: number) => {
         toggleState = toggleState.map((_, i) => index === i

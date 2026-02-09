@@ -29,6 +29,7 @@ const classes = [
             <button
                 class:list={[styles.title, item.reverse && styles.reverse]}
                 data-toggle="true"
+                data-open={item.expanded}
             >
                 {item.title}
                 {icon !== 'none' && (

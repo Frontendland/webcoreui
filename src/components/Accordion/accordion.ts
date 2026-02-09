@@ -3,6 +3,7 @@ export type AccordionProps = {
         title: string
         content: string
         reverse?: boolean
+        expanded?: boolean
     }[]
     icon?: 'plus' | 'none' | undefined | null
     reverse?: boolean
