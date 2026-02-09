@@ -38,6 +38,7 @@ body {
     width: var(--w-theme-switcher-size);
     height: var(--w-theme-switcher-size);
     cursor: pointer;
+    user-select: none;
 
     &.icons {
         @include transition(opacity);

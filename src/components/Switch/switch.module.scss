@@ -8,6 +8,7 @@ body {
 .switch {
     @include layout(inline-flex, v-center, sm);
     cursor: pointer;
+    user-select: none;
 
     &.reverse {
         @include layout(row-reverse);
