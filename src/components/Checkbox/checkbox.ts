@@ -1,4 +1,4 @@
-import type { MouseEventHandler } from 'svelte/elements'
+import type { ChangeEventHandler, MouseEventHandler } from 'svelte/elements'
 
 export type CheckboxProps = {
     checked?: boolean
@@ -11,9 +11,11 @@ export type CheckboxProps = {
 }
 
 export type SvelteCheckboxProps = {
+    onChange?: ChangeEventHandler<HTMLInputElement>
     onClick?: MouseEventHandler<HTMLInputElement>
 } & CheckboxProps
 
 export type ReactCheckboxProps = {
+    onChange?: React.ChangeEventHandler<HTMLInputElement>
     onClick?: React.MouseEventHandler<HTMLInputElement>
 } & CheckboxProps

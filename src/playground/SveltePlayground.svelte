@@ -116,10 +116,14 @@
         </Carousel>
     </Card>
 
-    <Card title="Checkbox">
+    <Card title="Checkbox" bodyClassName="flex column">
         <Checkbox
-            label="Accept"
+            label="onClick"
             onClick={e => checkbox = e.currentTarget.checked}
+        />
+        <Checkbox
+            label="onChange"
+            onChange={e => checkbox = e.currentTarget.checked}
         />
 
         <span class={styles.span}>{checkbox}</span>
@@ -324,9 +328,14 @@
         <Spoiler>This text will be revealed upon click</Spoiler>
     </Card>
 
-    <Card title="Switch">
+    <Card title="Switch" bodyClassName="flex column">
         <Switch
+            label="onClick"
             onClick={e => toggle = e.currentTarget.checked}
+        />
+        <Switch
+            label="onChange"
+            onChange={e => toggle = e.currentTarget.checked}
         />
 
         <span class={styles.span}>{toggle}</span>

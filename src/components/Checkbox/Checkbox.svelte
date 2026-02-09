@@ -17,6 +17,7 @@
         color,
         className,
         onClick,
+        onChange,
         ...rest
     }: SvelteCheckboxProps = $props()
 
@@ -42,6 +43,7 @@
             checked={checked}
             disabled={disabled}
             onclick={onClick}
+            onchange={onChange}
             {...rest}
         />
         <span class={styles.check}>

@@ -117,10 +117,14 @@ const ReactPlayground = () => {
                 </Carousel>
             </Card>
 
-            <Card title="Checkbox">
+            <Card title="Checkbox" bodyClassName="flex column">
                 <Checkbox
-                    label="Accept"
+                    label="onClick"
                     onClick={e => setCheckbox(e.currentTarget.checked)}
+                />
+                <Checkbox
+                    label="onChange"
+                    onChange={e => setCheckbox(e.currentTarget.checked)}
                 />
 
                 <span className={styles.span}>{`${checkbox}`}</span>
@@ -324,9 +328,14 @@ const ReactPlayground = () => {
                 <Spoiler>This text will be revealed upon click</Spoiler>
             </Card>
 
-            <Card title="Switch">
+            <Card title="Switch" bodyClassName="flex column">
                 <Switch
+                    label="onClick"
                     onClick={e => setToggle(e.currentTarget.checked)}
+                />
+                <Switch
+                    label="onChange"
+                    onChange={e => setToggle(e.currentTarget.checked)}
                 />
 
                 <span className={styles.span}>{`${toggle}`}</span>

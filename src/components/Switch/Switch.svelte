@@ -16,6 +16,7 @@
         disabled,
         className,
         onClick,
+        onChange,
         ...rest
     }: SvelteSwitchProps = $props()
 
@@ -40,6 +41,7 @@
         checked={toggled}
         disabled={disabled}
         onclick={onClick}
+        onchange={onChange}
         {...rest}
     />
     <span class={styles.toggle}></span>

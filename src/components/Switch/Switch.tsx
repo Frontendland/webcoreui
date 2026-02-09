@@ -15,7 +15,6 @@ const Switch = ({
     square,
     disabled,
     className,
-    onClick,
     ...rest
 }: ReactSwitchProps) => {
     const classes = classNames([
@@ -38,7 +37,6 @@ const Switch = ({
                 type="checkbox"
                 defaultChecked={toggled}
                 disabled={disabled}
-                onClick={onClick}
                 {...rest}
             />
             <span className={styles.toggle}></span>
