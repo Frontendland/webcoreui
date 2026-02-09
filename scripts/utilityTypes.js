@@ -86,7 +86,7 @@ export type ModalCallback = {
 }
 
 export type Modal = {
-    trigger: string
+    trigger?: string
     modal: string
     onOpen?: (args: ModalCallback) => unknown
     onClose?: (args: ModalCallback) => unknown

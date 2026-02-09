@@ -13,7 +13,7 @@ export type ModalCallback = {
 }
 
 export type Modal = {
-    trigger: string
+    trigger?: string
     modal: string
     onOpen?: (args: ModalCallback) => unknown
     onClose?: (args: ModalCallback) => unknown
@@ -29,7 +29,7 @@ export const modal = (config: Modal | string): ModalInstance | undefined => {
 
     const modalSelector = typeof config === 'string' ? config : modal
 
-    const triggerDOM = document.querySelector(trigger)
+    const triggerDOM = trigger ? document.querySelector(trigger) : null
     const modalDOM = document.querySelector(modalSelector)
 
     if (modalDOM instanceof HTMLElement) {
