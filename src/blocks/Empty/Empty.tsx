@@ -1,11 +1,10 @@
 import React from 'react'
+import { classNames } from 'webcoreui'
 
 import Button from '@blocks/Button/Button.tsx'
 
 import type { EmptyProps } from './empty'
 import styles from './empty.module.scss'
-
-import { classNames } from '../../utils/classNames'
 
 const Empty = ({
     icon,

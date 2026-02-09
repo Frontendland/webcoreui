@@ -1,10 +1,10 @@
 <script lang="ts">
+    import { classNames } from 'webcoreui'
+
     import Button from '@blocks/Button/Button.svelte'
 
     import type { EmptyProps } from './empty'
     import styles from './empty.module.scss'
-
-    import { classNames } from '../../utils/classNames'
 
     const {
         icon,
