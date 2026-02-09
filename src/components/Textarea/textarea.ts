@@ -1,5 +1,4 @@
-type Target = {
-    target: HTMLTextAreaElement
+export type TextareaTarget = {
     currentTarget: HTMLTextAreaElement
 }
 
@@ -14,11 +13,13 @@ export type TextareaProps = {
 }
 
 export type SvelteTextareaProps = {
-    onChange?: (event: Event & Target) => void
-    onKeyUp?: (event: KeyboardEvent & Target) => void
+    onInput?: (event: Event & TextareaTarget) => void
+    onChange?: (event: Event & TextareaTarget) => void
+    onKeyUp?: (event: KeyboardEvent & TextareaTarget) => void
 } & TextareaProps
 
 export type ReactTextareaProps = {
-    onChange?: (event: React.ChangeEvent<HTMLTextAreaElement> & Target) => void
-    onKeyUp?: (event: React.KeyboardEvent<HTMLTextAreaElement> & Target) => void
+    onInput?: (event: React.FormEvent<HTMLTextAreaElement>) => void
+    onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
+    onKeyUp?: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void
 } & TextareaProps

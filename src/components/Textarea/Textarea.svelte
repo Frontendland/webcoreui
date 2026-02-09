@@ -16,6 +16,7 @@
         className,
         onChange,
         onKeyUp,
+        onInput,
         ...rest
     }: SvelteTextareaProps = $props()
 
@@ -39,6 +40,7 @@
         placeholder={placeholder}
         disabled={disabled}
         class={classes}
+        oninput={onInput}
         onchange={onChange}
         onkeyup={onKeyUp}
         {...rest}

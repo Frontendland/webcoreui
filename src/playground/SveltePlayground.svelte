@@ -351,9 +351,9 @@
     <Card title="Textarea">
         <Textarea
             placeholder="Type here to see the word count updated"
-            onKeyUp={e => {
-                wordCount = e.target.value
-                    ? e.target.value.trim().split(/\s+/).length
+            onInput={(e: Event & { currentTarget: HTMLTextAreaElement }) => {
+                wordCount = e.currentTarget?.value
+                    ? e.currentTarget.value.trim().split(/\s+/).length
                     : 0
             }}
         />

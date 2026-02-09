@@ -48,7 +48,7 @@ export type InputProps = {
 export type SvelteInputProps = {
     onChange?: (event: Event & InputTarget) => void
     onKeyUp?: (event: KeyboardEvent & InputTarget) => void
-    onInput?: (event: any) => void
+    onInput?: (event: Event & InputTarget) => void
     onClick?: (event: MouseEvent & InputTarget) => void
     children?: Snippet
 } & InputProps
