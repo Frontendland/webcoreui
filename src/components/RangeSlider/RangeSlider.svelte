@@ -173,11 +173,11 @@
             condition={!!interactiveLabels}
             onclick={(e: Event) => handleClick(e, 'right')}
         >
-            {#if maxIcon}
-                {@html maxIcon}
-            {/if}
             {#if dynamicMaxLabel}
                 <span style={labelStyle}>{dynamicMaxLabel}</span>
+            {/if}
+            {#if maxIcon}
+                {@html maxIcon}
             {/if}
         </ConditionalWrapper>
     </div>

@@ -187,13 +187,13 @@ const RangeSlider = ({
                         <button onClick={(e: React.MouseEvent) => handleClick(e, 'right')}>{children}</button>
                     )}
                 >
+                    {dynamicMaxLabel && <span style={labelStyle}>{dynamicMaxLabel}</span>}
                     {maxIcon && (
                         <span
                             dangerouslySetInnerHTML={{ __html: maxIcon }}
                             style={{ height: 18 }}
                         />
                     )}
-                    {dynamicMaxLabel && <span style={labelStyle}>{dynamicMaxLabel}</span>}
                 </ConditionalWrapper>
             </div>
 
