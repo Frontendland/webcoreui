@@ -105,6 +105,11 @@ export type PopoverPosition = 'top'
     | 'bottom-start'
     | 'bottom-end'
 
+export type PopoverInstance = {
+    close: () => void
+    remove: () => void
+}
+
 export type PopoverCallback = {
     trigger: HTMLElement
     popover: HTMLElement

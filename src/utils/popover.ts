@@ -14,6 +14,11 @@ export type PopoverPosition = 'top'
     | 'bottom-start'
     | 'bottom-end'
 
+export type PopoverInstance = {
+    close: () => void
+    remove: () => void
+}
+
 export type PopoverCallback = {
     trigger: HTMLElement
     popover: HTMLElement
@@ -40,9 +45,10 @@ export const popover = ({
     closeOnEsc = true,
     onOpen,
     onClose
-}: Popover) => {
+}: Popover): PopoverInstance | undefined => {
     const triggerDOM = document.querySelector(trigger) as HTMLElement
     const popoverDOM = document.querySelector(popover) as HTMLElement
+    const TRANSITION_DURATION = 300
 
     if (triggerDOM && popoverDOM) {
         document.body.appendChild(popoverDOM)
@@ -154,13 +160,33 @@ export const popover = ({
                 if (!popoverDOM.dataset.show) {
                     popoverDOM.removeAttribute('data-show')
                 }
-            }, 300)
+            }, TRANSITION_DURATION)
 
             onOpen?.({
                 trigger: triggerDOM,
                 popover: popoverDOM,
                 position
             })
+        }
+
+        const closePopover = () => {
+            if (!popoverDOM.dataset.show) {
+                return
+            }
+
+            popoverDOM.dataset.show = ''
+
+            onClose?.({
+                trigger: triggerDOM,
+                popover: popoverDOM,
+                position
+            })
+
+            setTimeout(() => {
+                if (!popoverDOM.dataset.show) {
+                    popoverDOM.removeAttribute('data-show')
+                }
+            }, TRANSITION_DURATION)
         }
 
         const handleClose = (event: MouseEvent) => {
@@ -170,46 +196,18 @@ export const popover = ({
                 && popoverDOM.dataset.show
 
             if (hidePopover) {
-                popoverDOM.dataset.show = ''
-
-                onClose?.({
-                    trigger: triggerDOM,
-                    popover: popoverDOM,
-                    position
-                })
+                closePopover()
             }
-
-            setTimeout(() => {
-                if (!popoverDOM.dataset.show) {
-                    popoverDOM.removeAttribute('data-show')
-                }
-            }, 300)
         }
 
         const handleCloseOnEsc = (event: KeyboardEvent) => {
             if (event.key === 'Escape' && popoverDOM.dataset.show) {
-                popoverDOM.dataset.show = ''
-
-                onClose?.({
-                    trigger: triggerDOM,
-                    popover: popoverDOM,
-                    position
-                })
-
-                setTimeout(() => {
-                    popoverDOM.removeAttribute('data-show')
-                }, 300)
+                closePopover()
             }
         }
 
         const removeOnResize = debounce(() => {
-            popoverDOM.dataset.show = ''
-
-            setTimeout(() => {
-                if (!popoverDOM.dataset.show) {
-                    popoverDOM.removeAttribute('data-show')
-                }
-            }, 300)
+            closePopover()
         })
 
         const observer = new ResizeObserver(() => {
@@ -230,6 +228,9 @@ export const popover = ({
         }
 
         return {
+            close() {
+                closePopover()
+            },
             remove() {
                 popoverDOM.remove()
                 triggerDOM.removeEventListener('click', handleOpen)

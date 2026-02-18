@@ -79,7 +79,7 @@ const sections = getSections({
                 </section.component>
             </ComponentWrapper>
 
-            <ComponentWrapper title="Close popover with JS">
+            <ComponentWrapper title="Remove popover instance">
                 <Button theme="secondary" id={`popover-btn-2${index}`} data-no-close="true">
                     Open Popover
                 </Button>
@@ -88,7 +88,7 @@ const sections = getSections({
                         This popover cannot be closed by clicking outside.
                         Using the button below will close the popover and remove the event listener, so the popover cannot be opened again.
                     </p>
-                    <Button theme="secondary">
+                    <Button theme="secondary" className="remove">
                         Remove
                     </Button>
                 </section.component>
@@ -228,12 +228,40 @@ const sections = getSections({
                     />
                 </section.component>
             </ComponentWrapper>
+
+            <ComponentWrapper title="Close popover via instance">
+                <Button theme="secondary" id={`popover-btn-16${index}`}>
+                    Open Popover
+                </Button>
+                <section.component id={`popover-16${index}`}>
+                    <p>
+                        The button below calls popoverInstance.close() to close this popover.
+                    </p>
+                    <Button theme="secondary" className="close">
+                        Close
+                    </Button>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Close popover via closePopover fn">
+                <Button theme="secondary" id={`popover-btn-17${index}`}>
+                    Open Popover
+                </Button>
+                <section.component id={`popover-17${index}`}>
+                    <p>
+                        The button below calls the closePopover fn to close this popover.
+                    </p>
+                    <Button theme="secondary" className="closePopover">
+                        Close
+                    </Button>
+                </section.component>
+            </ComponentWrapper>
         </div>
     ))}
 </Layout>
 
 <script>
-    import { on } from '@utils/DOMUtils'
+    import { get, on } from '@utils/DOMUtils'
     import { closePopover, popover, type PopoverPosition } from '@utils/popover'
 
     on(document, 'astro:page-load', () => {
@@ -243,7 +271,7 @@ const sections = getSections({
             'react'
         ]
 
-        const ids = Array(15).fill(10).map((x, index) => x * (index + 1))
+        const ids = Array(17).fill(10).map((x, index) => x * (index + 1))
         const variants = [
             '00',
             '01',
@@ -254,20 +282,17 @@ const sections = getSections({
         ]
 
         selectors.forEach(selector => {
-            const event = popover({
+            popover({
                 trigger: `#popover-btn-${selector}`,
                 popover: `#popover-${selector}`
-            })
-
-            document.querySelector('#popover-remove')?.addEventListener('click', () => {
-                closePopover(`#popover-${selector}`)
-                event?.remove()
             })
         })
 
         variants.forEach(variant => {
-            const button = document.querySelector(`#popover-btn-${variant}`) as HTMLButtonElement
-            const removeButton = document.querySelector(`#popover-${variant} button`)
+            const button = get(`#popover-btn-${variant}`) as HTMLButtonElement
+            const removeButton = get(`#popover-${variant} .remove`) as HTMLButtonElement
+            const closeButton = get(`#popover-${variant} .close`) as HTMLButtonElement
+            const closePopoverButton = get(`#popover-${variant} .closePopover`) as HTMLButtonElement
 
             const popoverInstance = popover({
                 trigger: `#popover-btn-${variant}`,
@@ -277,16 +302,16 @@ const sections = getSections({
                 closeOnEsc: !button?.dataset.noClose
             })
 
-            if (removeButton) {
-                removeButton.addEventListener('click', () => {
-                    closePopover(`#popover-${variant}`)
-                    popoverInstance?.remove()
+            on(removeButton, 'click', () => {
+                popoverInstance?.remove()
 
-                    button.disabled = true
-                    button.classList.remove(button.classList.item(1) as string)
-                    button.innerText = 'Popover disabled'
-                })
-            }
+                button.disabled = true
+                button.classList.remove(button.classList.item(1) as string)
+                button.innerText = 'Popover disabled'
+            })
+
+            on(closeButton, 'click', () => popoverInstance?.close())
+            on(closePopoverButton, 'click', () => closePopover(`#popover-${variant}`))
         })
     })
 </script>
