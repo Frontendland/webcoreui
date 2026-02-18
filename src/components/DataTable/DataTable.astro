@@ -251,9 +251,9 @@ const hasPagination = data?.length && itemsPerPage
                 const sortedTableRows = Array.from(
                     table?.querySelectorAll('tbody tr') as NodeListOf<HTMLTableRowElement>
                 ).sort((a, b) => {
-                    let aValue: string | number = (a.querySelector(`[data-name=${sortBy}]`) as HTMLElement)
+                    let aValue: string | number = (a.querySelector(`[data-name="${sortBy}"]`) as HTMLElement)
                         ?.innerText.replace(/\s/g, '')
-                    let bValue: string | number = (b.querySelector(`[data-name=${sortBy}]`) as HTMLElement)
+                    let bValue: string | number = (b.querySelector(`[data-name="${sortBy}"]`) as HTMLElement)
                         ?.innerText.replace(/\s/g, '')
 
                     if (!isNaN(aValue as any)) {
@@ -298,7 +298,7 @@ const hasPagination = data?.length && itemsPerPage
             return
         }
 
-        const affectedTableCells = Array.from(table.querySelectorAll(`[data-name=${eventName}]`)) as HTMLElement[]
+        const affectedTableCells = Array.from(table.querySelectorAll(`[data-name="${eventName}"]`)) as HTMLElement[]
 
         const columnToggleListElement = Array.from(event.list.children)
             .find(child => (child as HTMLLIElement).dataset.name === event.name) as HTMLLIElement
