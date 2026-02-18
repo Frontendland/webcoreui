@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { closeModal,modal } from 'webcoreui'
+import { closeModal, modal, type ModalInstance } from 'webcoreui'
 import {
     Alert,
     Icon,
@@ -9,11 +9,6 @@ import {
 import Button from '@blocks/Button/Button.astro'
 
 import styles from './deployments.module.scss'
-
-type ModalInstance = {
-    open: () => void
-    remove: () => void
-} | void
 
 const Deployments = () => {
     const [modalInstance, setModalInstance] = useState<ModalInstance>()
