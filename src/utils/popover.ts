@@ -48,7 +48,6 @@ export const popover = ({
 }: Popover): PopoverInstance | undefined => {
     const triggerDOM = document.querySelector(trigger) as HTMLElement
     const popoverDOM = document.querySelector(popover) as HTMLElement
-    const TRANSITION_DURATION = 300
 
     if (triggerDOM && popoverDOM) {
         document.body.appendChild(popoverDOM)
@@ -181,46 +180,48 @@ export const popover = ({
         const handleOpen = () => {
             const { top, left } = getPosition()
 
+            popoverDOM.dataset.noTransition = 'true'
             popoverDOM.style.top = `${top}px`
             popoverDOM.style.left = `${left}px`
 
-            setTimeout(() => {
-                popoverDOM.dataset.show = popoverDOM.dataset.show === 'true'
-                    ? ''
-                    : 'true'
-            }, 0)
+            popoverDOM.getBoundingClientRect()
+            popoverDOM.removeAttribute('data-no-transition')
 
-            setTimeout(() => {
-                if (!popoverDOM.dataset.show) {
-                    popoverDOM.removeAttribute('data-show')
-                }
-            }, TRANSITION_DURATION)
+            if (popoverDOM.dataset.show) {
+                popoverDOM.removeAttribute('data-show')
+            } else {
+                popoverDOM.dataset.show = 'true'
+            }
 
             onOpen?.({
                 trigger: triggerDOM,
                 popover: popoverDOM,
-                position
+                position: popoverDOM.dataset.position as PopoverPosition
             })
         }
 
         const closePopover = () => {
-            if (!popoverDOM.dataset.show) {
+            if (popoverDOM.dataset.show !== 'true') {
                 return
             }
 
-            popoverDOM.dataset.show = ''
+            popoverDOM.removeAttribute('data-show')
 
-            onClose?.({
-                trigger: triggerDOM,
-                popover: popoverDOM,
-                position
-            })
-
-            setTimeout(() => {
-                if (!popoverDOM.dataset.show) {
-                    popoverDOM.removeAttribute('data-show')
+            const handleTransitionEnd = (e: TransitionEvent) => {
+                if (e.target !== popoverDOM) {
+                    return
                 }
-            }, TRANSITION_DURATION)
+
+                popoverDOM.removeEventListener('transitionend', handleTransitionEnd)
+
+                onClose?.({
+                    trigger: triggerDOM,
+                    popover: popoverDOM,
+                    position: popoverDOM.dataset.position as PopoverPosition
+                })
+            }
+
+            popoverDOM.addEventListener('transitionend', handleTransitionEnd)
         }
 
         const handleClose = (event: MouseEvent) => {

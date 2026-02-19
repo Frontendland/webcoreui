@@ -194,9 +194,7 @@ declare module 'webcoreui' {
     export const modal: (config: Modal | string) => ModalInstance | undefined 
     export const closeModal: (modal: string) => void
 
-    export const popover: (config: Popover) => {
-        remove: () => void
-    } | void
+    export const popover: (config: Popover) => PopoverInstance | undefined
     export const closePopover: (selector: string) => void
 
     export const setDefaultTimeout: (time: number) => number

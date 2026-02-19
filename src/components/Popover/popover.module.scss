@@ -10,9 +10,11 @@
     @include border-radius(md);
     @include size(w300px);
     @include position('t-100%');
+    @include transition();
 
     transform: translateY(-5px);
     pointer-events: none;
+    will-change: transform, opacity;
 
     &.transparent {
         @include spacing(p0);
@@ -20,8 +22,8 @@
         @include border(0);
     }
 
-    &[data-show] {
-        @include transition();
+    &[data-no-transition] {
+        @include transition(none);
     }
 
     &[data-show="true"] {
