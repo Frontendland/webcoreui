@@ -20,9 +20,9 @@ const Maintenance = ({
 
     return (
         <section className={classes}>
-            {img?.url ? (
+            {img?.src ? (
                 <img
-                    src={img.url}
+                    src={img.src}
                     alt={img.alt || title}
                     width={img.width}
                     height={img.height}

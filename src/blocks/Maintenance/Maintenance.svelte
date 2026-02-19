@@ -21,9 +21,9 @@
 </script>
 
 <section class={classes}>
-    {#if img?.url}
+    {#if img?.src}
         <img
-            src={img.url}
+            src={img.src}
             alt={img.alt || title}
             width={img.width}
             height={img.height}

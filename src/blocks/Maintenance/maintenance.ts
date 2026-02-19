@@ -1,6 +1,6 @@
 export type MaintenanceProps = {
     img?: {
-        url: string
+        src: string
         alt: string
         width: number
         height: number
