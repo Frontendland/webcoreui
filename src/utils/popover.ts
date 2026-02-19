@@ -57,7 +57,7 @@ export const popover = ({
             popoverDOM.dataset.position = position.split('-')[0]
         }
 
-        const handleOpen = () => {
+        const getPosition = () => {
             const triggerPosition = triggerDOM.getBoundingClientRect()
             const popoverPosition = popoverDOM.getBoundingClientRect()
 
@@ -145,7 +145,41 @@ export const popover = ({
                 }
             }
 
-            const { top, left } = positions[position as keyof typeof positions] || positions.bottom
+            let finalPosition = position || 'bottom'
+            let { top, left } = positions[finalPosition]
+
+            const viewportTop = window.scrollY
+            const viewportBottom = window.scrollY + window.innerHeight
+            const viewportLeft = 0
+            const viewportRight = window.innerWidth
+
+            const overflowsTop = top < viewportTop
+            const overflowsBottom = top + popoverPosition.height > viewportBottom
+            const overflowsLeft = left < viewportLeft
+            const overflowsRight = left + popoverPosition.width > viewportRight
+
+            if (finalPosition.startsWith('bottom') && overflowsBottom) {
+                finalPosition = finalPosition.replace('bottom', 'top') as PopoverPosition
+            } else if (finalPosition.startsWith('top') && overflowsTop) {
+                finalPosition = finalPosition.replace('top', 'bottom') as PopoverPosition
+            } else if (finalPosition.startsWith('right') && overflowsRight) {
+                finalPosition = finalPosition.replace('right', 'left') as PopoverPosition
+            } else if (finalPosition.startsWith('left') && overflowsLeft) {
+                finalPosition = finalPosition.replace('left', 'right') as PopoverPosition
+            }
+
+            ({ top, left } = positions[finalPosition])
+
+            top = Math.max(viewportTop, Math.min(top, viewportBottom - popoverPosition.height))
+            left = Math.max(viewportLeft, Math.min(left, viewportRight - popoverPosition.width))
+
+            popoverDOM.dataset.position = finalPosition.split('-')[0]
+
+            return { top, left }
+        }
+
+        const handleOpen = () => {
+            const { top, left } = getPosition()
 
             popoverDOM.style.top = `${top}px`
             popoverDOM.style.left = `${left}px`
