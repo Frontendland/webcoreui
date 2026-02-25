@@ -56,7 +56,7 @@ export type SvelteInputProps = {
 export type ReactInputProps = {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
     onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void
-    onInput?: (event: React.FormEvent<HTMLInputElement>) => void
+    onInput?: (event: React.InputEvent<HTMLInputElement>) => void
     onClick?: (event: React.MouseEvent<HTMLInputElement>) => void
     children?: React.ReactNode
 } & InputProps

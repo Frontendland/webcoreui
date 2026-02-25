@@ -17,6 +17,6 @@ export type SvelteCollapsibleProps = {
 export type ReactCollapsibleProps = {
     on: React.ReactNode
     off: React.ReactNode
-    children?: React.ReactNode
+    children: React.ReactNode
 } & CollapsibleProps
 

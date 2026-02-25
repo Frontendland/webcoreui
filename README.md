@@ -52,6 +52,7 @@
 
 - Full documentation available on [webcoreui.dev](https://webcoreui.dev).
 - For installation steps, visit our [setup docs](https://webcoreui.dev/docs/setup).
+- To build and test components visually, visit our [builder](https://webcoreui.dev/build).
 
 ## Getting Started
 
@@ -64,15 +65,15 @@ Webcore can be used as a standalone project, or it can be integrated into your e
 
 Webcore components use Sass for styling. To use the component library, you must have the following packages installed:
 
-- [Sass](https://www.npmjs.com/package/sass) - `v1.94`
+- [Sass](https://www.npmjs.com/package/sass) - `v1.97`
 - [TypeScript](https://www.npmjs.com/package/typescript) - `v5.9`
 
 Depending on your project setup, you'll also need the following packages:
 
 - **For Astro projects**
-    - [Astro](https://www.npmjs.com/package/astro) - `v5.16`
+    - [Astro](https://www.npmjs.com/package/astro) - `v5.17`
 - **For Svelte projects**
-    - [Svelte](https://www.npmjs.com/package/svelte) - `v5.45`
+    - [Svelte](https://www.npmjs.com/package/svelte) - `v5.53`
 - **For React projects**
     - [React](https://www.npmjs.com/package/react) - `v19.2`
     - [React DOM](https://www.npmjs.com/package/react-dom) -`v19.2`

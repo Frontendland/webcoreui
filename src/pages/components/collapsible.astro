@@ -30,7 +30,12 @@ const sections = getSections({
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
-            <SvelteCollapsible maxHeight="330px" client:idle>
+            <SvelteCollapsible
+                on={}
+                off={}
+                maxHeight="330px"
+                client:idle
+            >
                 <CollapsibleTable />
 
                 <Button slot="on">Expand</Button>

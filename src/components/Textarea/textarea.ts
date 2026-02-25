@@ -19,7 +19,7 @@ export type SvelteTextareaProps = {
 } & TextareaProps
 
 export type ReactTextareaProps = {
-    onInput?: (event: React.FormEvent<HTMLTextAreaElement>) => void
+    onInput?: (event: React.InputEvent<HTMLTextAreaElement>) => void
     onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
     onKeyUp?: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void
 } & TextareaProps

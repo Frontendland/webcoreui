@@ -360,7 +360,7 @@ const ReactPlayground = () => {
             <Card title="Textarea">
                 <Textarea
                     placeholder="Type here to see the word count updated"
-                    onInput={(e: React.FormEvent<HTMLTextAreaElement> & { currentTarget: HTMLTextAreaElement }) => {
+                    onInput={e => {
                         setWordCount(e.currentTarget?.value
                             ? e.currentTarget?.value.trim().split(/\s+/).length
                             : 0

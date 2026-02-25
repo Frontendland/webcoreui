@@ -12,6 +12,7 @@ export type ThemeSwitcherProps = {
 export type SvelteThemeSwitcherProps = {
     primaryIcon?: Snippet
     secondaryIcon?: Snippet
+    children?: Snippet
 } & ThemeSwitcherProps
 
 export type ReactThemeSwitcherProps = {
