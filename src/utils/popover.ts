@@ -16,6 +16,7 @@ export type PopoverPosition = 'top'
 
 export type PopoverInstance = {
     close: () => void
+    destroy: () => void
     remove: () => void
 }
 
@@ -266,8 +267,7 @@ export const popover = ({
             close() {
                 closePopover()
             },
-            remove() {
-                popoverDOM.remove()
+            destroy() {
                 triggerDOM.removeEventListener('click', handleOpen)
                 observer.disconnect()
 
@@ -278,6 +278,10 @@ export const popover = ({
                 if (closeOnEsc) {
                     document.removeEventListener('keydown', handleCloseOnEsc)
                 }
+            },
+            remove() {
+                popoverDOM.remove()
+                this.destroy()
             }
         }
     }

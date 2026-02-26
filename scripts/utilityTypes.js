@@ -107,6 +107,7 @@ export type PopoverPosition = 'top'
 
 export type PopoverInstance = {
     close: () => void
+    destroy: () => void
     remove: () => void
 }
 
