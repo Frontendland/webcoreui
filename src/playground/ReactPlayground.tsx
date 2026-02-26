@@ -14,6 +14,7 @@ import Copy from '@components/Copy/Copy.tsx'
 import Counter from '@components/Counter/Counter.tsx'
 import DataTable from '@components/DataTable/DataTable.tsx'
 import Icon from '@components/Icon/Icon.tsx'
+import ImageLoader from '@components/ImageLoader/ImageLoader.tsx'
 import Input from '@components/Input/Input.tsx'
 import List from '@components/List/List.tsx'
 import OTPInput from '@components/OTPInput/OTPInput.tsx'
@@ -198,6 +199,16 @@ const ReactPlayground = () => {
 
                         setDataTableResults(event.numberOfResults)
                     }}
+                />
+            </Card>
+
+            <Card title="Image Loader">
+                <ImageLoader
+                    src="/img/placeholder5.png"
+                    alt="Placeholder image"
+                    width={250}
+                    height={250}
+                    lazy={true}
                 />
             </Card>
 

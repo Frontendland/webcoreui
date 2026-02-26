@@ -1,0 +1,82 @@
+---
+import type { ImageLoaderProps } from './imageloader'
+
+import Image from '../Image/Image.astro'
+import Skeleton from '../Skeleton/Skeleton.astro'
+
+import { classNames } from '../../utils/classNames'
+
+import styles from './imageloader.module.scss'
+
+interface Props extends ImageLoaderProps {}
+
+const {
+    fallback,
+    animate,
+    type,
+    width,
+    height,
+    color,
+    waveColor,
+    className,
+    ...rest
+} = Astro.props
+
+const styleVariables = classNames([
+    `width: ${width}px;`,
+    `height: ${height}px;`
+])
+---
+
+<div data-id="w-image-loader" class={styles.loader} style={styleVariables}>
+    <Skeleton
+        animate={animate}
+        type={type}
+        width={Number(width)}
+        height={Number(height)}
+        color={color}
+        waveColor={waveColor}
+        className={className}
+    />
+    <Image
+        width={width}
+        height={height}
+        className={className}
+        data-fallback={fallback}
+        {...rest}
+    />
+</div>
+
+<script>
+    import { get, on } from '../../utils/DOMUtils'
+
+    const addEventListeners = () => {
+        const images = get<HTMLImageElement>('[data-id="w-image-loader"] img', true)
+
+        if (!images || !(images instanceof NodeList)) {
+            return
+        }
+
+        images.forEach(img => {
+            const container = img.parentElement as HTMLDivElement
+            const skeleton = container.firstElementChild as HTMLDivElement
+
+            const handleError = () => {
+                img.src = img.dataset.fallback || img.src
+                skeleton?.remove()
+            }
+
+            if (img.complete) {
+                img.naturalWidth === 0 ? handleError() : skeleton?.remove()
+
+                return
+            }
+
+            img.addEventListener('load', () => skeleton?.remove(), { once: true })
+            img.addEventListener('error', () => handleError(), { once: true })
+        })
+    }
+
+    on(document, 'astro:after-swap', addEventListeners)
+    addEventListeners()
+</script>

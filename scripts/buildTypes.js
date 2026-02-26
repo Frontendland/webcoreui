@@ -12,6 +12,7 @@ const getTypeName = (component, framework) => {
         'Breadcrumb',
         'Icon',
         'Image',
+        'ImageLoader',
         'OTPInput',
         'Rating',
         'Skeleton',

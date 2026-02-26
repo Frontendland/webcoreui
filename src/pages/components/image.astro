@@ -5,6 +5,7 @@ import Layout from '@static/Layout.astro'
 import AstroImage from '@components/Image/Image.astro'
 import SvelteImage from '@components/Image/Image.svelte'
 import ReactImage from '@components/Image/Image.tsx'
+import ImageLoader from '@components/ImageLoader/ImageLoader.astro'
 
 import { getSections } from '@helpers'
 
@@ -17,7 +18,8 @@ const commonProps = {
     src: '/img/placeholder5.png',
     alt: 'Placeholder image',
     width: 250,
-    height: 250
+    height: 250,
+    lazy: true
 }
 ---
 
@@ -97,6 +99,18 @@ const commonProps = {
 
             <ComponentWrapper title="Centered">
                 <section.component {...commonProps} center={true} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Using image loader">
+                <ImageLoader {...commonProps} />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Using fallback image on error">
+                <ImageLoader
+                    {...commonProps}
+                    src="/img/invalid-placeholder.png"
+                    fallback="/img/placeholder5.png"
+                />
             </ComponentWrapper>
         </div>
     ))}

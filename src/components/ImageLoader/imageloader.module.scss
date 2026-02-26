@@ -1,0 +1,13 @@
+@use '../../scss/config.scss' as *;
+
+.loader {
+    @include position(relative);
+
+    div + img {
+        @include visibility(0);
+    }
+
+    img {
+        @include position(absolute, t0, l0);
+    }
+}

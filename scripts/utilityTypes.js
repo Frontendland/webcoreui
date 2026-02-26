@@ -157,7 +157,10 @@ declare module 'webcoreui' {
         cancel: () => void
     }
 
-    export const get: (selector: string, all?: boolean) => Element | NodeListOf<Element> | null
+    export const get: <T extends Element = Element>(
+        selector: string,
+        all?: boolean
+    ) => T | NodeListOf<T> | null
     export const on: (
         selector: string | HTMLElement | Document,
         event: string,

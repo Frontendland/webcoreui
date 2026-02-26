@@ -12,6 +12,7 @@
     import Counter from '@components/Counter/Counter.svelte'
     import DataTable from '@components/DataTable/DataTable.svelte'
     import Icon from '@components/Icon/Icon.svelte'
+    import ImageLoader from '@components/ImageLoader/ImageLoader.svelte'
     import Input from '@components/Input/Input.svelte'
     import List from '@components/List/List.svelte'
     import OTPInput from '@components/OTPInput/OTPInput.svelte'
@@ -195,6 +196,16 @@
 
                 dataTableResults = event.numberOfResults
             }}
+        />
+    </Card>
+
+    <Card title="Image Loader">
+        <ImageLoader
+            src="/img/placeholder5.png"
+            alt="Placeholder image"
+            width={250}
+            height={250}
+            lazy={true}
         />
     </Card>
 

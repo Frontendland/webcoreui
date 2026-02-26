@@ -299,6 +299,7 @@ import { Accordion } from 'webcoreui/react'
 - [Group](https://github.com/Frontendland/webcoreui/tree/main/src/components/Group)
 - [Icon](https://github.com/Frontendland/webcoreui/tree/main/src/components/Icon)
 - [Image](https://github.com/Frontendland/webcoreui/tree/main/src/components/Image)
+- [ImageLoader](https://github.com/Frontendland/webcoreui/tree/main/src/components/ImageLoader)
 - [Input](https://github.com/Frontendland/webcoreui/tree/main/src/components/Input)
 - [Kbd](https://github.com/Frontendland/webcoreui/tree/main/src/components/Kbd)
 - [List](https://github.com/Frontendland/webcoreui/tree/main/src/components/List)
