@@ -1,5 +1,5 @@
 ---
-import { ConditionalWrapper } from 'webcoreui/astro'
+import { ConditionalWrapper, Image } from 'webcoreui/astro'
 
 import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.astro'
 import Button from '@blocks/Button/Button.astro'
@@ -15,21 +15,21 @@ const {
     subHeading,
     buttons,
     avatarWithRating,
-    image,
+    img,
     reverse,
     className
 } = Astro.props
 
 const classes = [
     styles.hero,
-    image?.src && 'flex column justify-between sm-row sm-items-center',
+    img?.src && 'flex column justify-between sm-row sm-items-center',
     reverse && 'sm-row-reverse',
     className
 ]
 ---
 
 <section class:list={classes}>
-    <ConditionalWrapper condition={!!image?.src}>
+    <ConditionalWrapper condition={!!img?.src}>
         <div slot="wrapper" class={styles.wrapper}>children</div>
         {badge && (
             <Button {...badge} badge={true} className={styles.badge} />
@@ -51,12 +51,7 @@ const classes = [
         )}
     </ConditionalWrapper>
 
-    {image?.src && (
-        <img
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
-        />
+    {img?.src && (
+        <Image {...img} />
     )}
 </section>

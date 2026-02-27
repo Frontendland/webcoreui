@@ -583,7 +583,7 @@ export const getPortfolioTemplateData = (theme: ButtonProps['theme'] = 'success'
             theme: 'warning',
             text: '⭐ Top rated developer'
         },
-        image: {
+        img: {
             src: '/img/placeholder-hd1.png',
             alt: 'Banner',
             width: 500,
@@ -739,7 +739,7 @@ export const getBlogTemplateData = (theme: ButtonProps['theme'] = 'success'): Bl
             theme,
             text: 'in JavaScript'
         },
-        image: {
+        img: {
             src: '/img/placeholder-hd1.png',
             alt: 'Banner',
             width: 500,

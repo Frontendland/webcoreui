@@ -1,15 +1,9 @@
-import type { ButtonProps, CardProps } from 'webcoreui/astro'
+import type { ButtonProps, CardProps, ImageProps } from 'webcoreui/astro'
 
 export type BlogCardProps = {
     href: string
     target?: ButtonProps['target']
-    img: {
-        src: string
-        alt: string
-        width: number
-        height: number
-        lazy?: boolean
-    }
+    img: Omit<ImageProps, 'full' | 'center'>
     title?: string
     text?: string
     secondary?: boolean

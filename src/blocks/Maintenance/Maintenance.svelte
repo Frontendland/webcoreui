@@ -1,5 +1,6 @@
 <script lang="ts">
     import { classNames } from 'webcoreui'
+    import { Image } from 'webcoreui/svelte'
 
     import type { MaintenanceProps } from './maintenance'
     import cog from './cog.svg?raw'
@@ -22,12 +23,7 @@
 
 <section class={classes}>
     {#if img?.src}
-        <img
-            src={img.src}
-            alt={img.alt || title}
-            width={img.width}
-            height={img.height}
-        />
+        <Image {...img} />
     {:else}
         {@html cog}
     {/if}

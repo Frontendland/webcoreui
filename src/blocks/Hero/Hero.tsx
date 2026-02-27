@@ -1,6 +1,6 @@
 import React from 'react'
 import { classNames } from 'webcoreui'
-import { ConditionalWrapper } from 'webcoreui/react'
+import { ConditionalWrapper, Image } from 'webcoreui/react'
 
 import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.tsx'
 import Button from '@blocks/Button/Button.tsx'
@@ -14,13 +14,13 @@ const Hero = ({
     subHeading,
     buttons,
     avatarWithRating,
-    image,
+    img,
     reverse,
     className
 }: HeroProps) => {
     const classes = classNames([
         styles.hero,
-        image?.src && 'flex column justify-between sm-row sm-items-center',
+        img?.src && 'flex column justify-between sm-row sm-items-center',
         reverse && 'sm-row-reverse',
         className
     ])
@@ -28,7 +28,7 @@ const Hero = ({
     return (
         <section className={classes}>
             <ConditionalWrapper
-                condition={!!image?.src}
+                condition={!!img?.src}
                 wrapper={children => <div className={styles.wrapper}>{children}</div>}
             >
                 {badge && (
@@ -53,13 +53,8 @@ const Hero = ({
                 )}
             </ConditionalWrapper>
 
-            {image?.src && (
-                <img
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width}
-                    height={image.height}
-                />
+            {img?.src && (
+                <Image {...img} />
             )}
         </section>
     )

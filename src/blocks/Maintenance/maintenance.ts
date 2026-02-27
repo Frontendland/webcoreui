@@ -1,10 +1,7 @@
+import type { ImageProps } from 'webcoreui/astro'
+
 export type MaintenanceProps = {
-    img?: {
-        src: string
-        alt: string
-        width: number
-        height: number
-    }
+    img?: ImageProps
     animated?: boolean
     title?: string
     subTitle?: string

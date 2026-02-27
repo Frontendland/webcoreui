@@ -1,5 +1,6 @@
 import React from 'react'
 import { classNames } from 'webcoreui'
+import { Image } from 'webcoreui/react'
 
 import type { MaintenanceProps } from './maintenance'
 import cog from './cog.svg?raw'
@@ -20,14 +21,10 @@ const Maintenance = ({
 
     return (
         <section className={classes}>
-            {img?.src ? (
-                <img
-                    src={img.src}
-                    alt={img.alt || title}
-                    width={img.width}
-                    height={img.height}
-                />
-            ) : <span dangerouslySetInnerHTML={{ __html: cog }} />}
+            {img?.src
+                ? <Image {...img} />
+                : <span dangerouslySetInnerHTML={{ __html: cog }} />
+            }
             <h1 className={styles.title}>{title}</h1>
             {subTitle && (
                 <span

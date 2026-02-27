@@ -1,6 +1,6 @@
 <script lang="ts">
     import { classNames } from 'webcoreui'
-    import { ConditionalWrapper } from 'webcoreui/svelte'
+    import { ConditionalWrapper, Image } from 'webcoreui/svelte'
 
     import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.svelte'
     import Button from '@blocks/Button/Button.svelte'
@@ -14,21 +14,21 @@
         subHeading,
         buttons,
         avatarWithRating,
-        image,
+        img,
         reverse,
         className
     }: HeroProps = $props()
 
     const classes = classNames([
         styles.hero,
-        image?.src && 'flex column justify-between sm-row sm-items-center',
+        img?.src && 'flex column justify-between sm-row sm-items-center',
         reverse && 'sm-row-reverse',
         className
     ])
 </script>
 
 <section class={classes}>
-    <ConditionalWrapper condition={!!image?.src} class={styles.wrapper}>
+    <ConditionalWrapper condition={!!img?.src} class={styles.wrapper}>
         {#if badge}
             <Button {...badge} badge={true} className={styles.badge} />
         {/if}
@@ -53,12 +53,7 @@
         {/if}
     </ConditionalWrapper>
 
-    {#if image?.src}
-        <img
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
-        />
+    {#if img?.src}
+        <Image {...img} />
     {/if}
 </section>

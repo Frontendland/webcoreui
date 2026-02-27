@@ -1,4 +1,6 @@
 ---
+import { Image } from 'webcoreui/astro'
+
 import type { MaintenanceProps } from './maintenance'
 import cog from './cog.svg?raw'
 import styles from './maintenance.module.scss'
@@ -21,14 +23,10 @@ const classes = [
 ---
 
 <section class:list={classes}>
-    {img?.src ? (
-        <img
-            src={img.src}
-            alt={img.alt || title}
-            width={img.width}
-            height={img.height}
-        />
-    ) : <Fragment set:html={cog} />}
+    {img?.src
+        ? <Image {...img} />
+        : <Fragment set:html={cog} />
+    }
     <h1 class={styles.title}>{title}</h1>
     {subTitle && (
         <span class="muted" set:html={subTitle} />

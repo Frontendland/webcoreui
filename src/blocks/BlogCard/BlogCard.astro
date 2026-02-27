@@ -2,7 +2,9 @@
 import { classNames } from 'webcoreui'
 import {
     Card,
-    ConditionalWrapper
+    ConditionalWrapper,
+    Image,
+    type ImageProps
 } from 'webcoreui/astro'
 
 import type { BlogCardProps } from './blogCard'
@@ -29,13 +31,7 @@ const {
         bodyClassName={classNames([styles.body, secondary && styles.secondary])}
         secondary={true}
     >
-        <img
-            src={img.src}
-            alt={img.alt}
-            width={img.width}
-            height={img.height}
-            loading={img.lazy ? 'lazy' : undefined}
-        />
+        <Image {...img as ImageProps} />
         <ConditionalWrapper condition={!!text}>
             <div slot="wrapper">children</div>
             {title && <strong>{title}</strong>}

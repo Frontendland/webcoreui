@@ -1,3 +1,5 @@
+import type { ImageProps } from 'webcoreui/astro'
+
 import type { AvatarWithRatingProps } from '@blocks/AvatarWithRating/avatarWithRating'
 import type { BadgeBlockProps, ButtonBlockProps } from '@blocks/Button/button'
 
@@ -7,12 +9,7 @@ export type HeroProps = {
     subHeading?: string
     buttons?: ButtonBlockProps[]
     avatarWithRating?: AvatarWithRatingProps
-    image?: {
-        src: string
-        alt: string
-        width: number
-        height: number
-    } | null
+    img?: ImageProps
     reverse?: boolean
     className?: string
 }

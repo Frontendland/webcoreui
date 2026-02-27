@@ -2,7 +2,9 @@ import React from 'react'
 import { classNames } from 'webcoreui'
 import {
     Card,
-    ConditionalWrapper
+    ConditionalWrapper,
+    Image,
+    type ImageProps
 } from 'webcoreui/react'
 
 import type { BlogCardProps } from './blogCard'
@@ -26,13 +28,7 @@ const BlogCard = ({
                 bodyClassName={classNames([styles.body, secondary && styles.secondary])}
                 secondary={true}
             >
-                <img
-                    src={img.src}
-                    alt={img.alt}
-                    width={img.width}
-                    height={img.height}
-                    loading={img.lazy ? 'lazy' : undefined}
-                />
+                <Image {...img as ImageProps} />
                 <ConditionalWrapper
                     condition={!!text}
                     wrapper={children => <div>{children}</div>}

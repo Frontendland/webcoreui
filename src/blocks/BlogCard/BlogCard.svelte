@@ -2,7 +2,9 @@
     import { classNames } from 'webcoreui'
     import {
         Card,
-        ConditionalWrapper
+        ConditionalWrapper,
+        Image,
+        type ImageProps
     } from 'webcoreui/svelte'
 
     import type { BlogCardProps } from './blogCard'
@@ -27,13 +29,7 @@
         bodyClassName={classNames([styles.body, secondary && styles.secondary])}
         secondary={true}
     >
-        <img
-            src={img.src}
-            alt={img.alt}
-            width={img.width}
-            height={img.height}
-            loading={img.lazy ? 'lazy' : undefined}
-        />
+        <Image {...img as ImageProps} />
         <ConditionalWrapper condition={!!text}>
             {#if title}
                 <strong>{title}</strong>

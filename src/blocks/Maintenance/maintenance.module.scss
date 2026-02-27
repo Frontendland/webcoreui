@@ -8,8 +8,7 @@
         animation: 15s rotate infinite linear;
     }
 
-    svg,
-    img {
+    svg {
         @include spacing(m-auto);
     }
 
