@@ -1,7 +1,7 @@
 {
     "name": "webcore",
     "type": "module",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "scripts": {
         "prepare": "husky",
         "pre-commit": "lint-staged",
@@ -49,7 +49,7 @@
         "typescript-eslint": "8.56.1",
         "vite-tsconfig-paths": "6.1.1",
         "vitest": "4.0.18",
-        "webcoreui": "1.3.0"
+        "webcoreui": "1.4.0"
     },
     "exports": {
         ".": "./index.js",
