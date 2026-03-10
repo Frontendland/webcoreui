@@ -1,10 +1,8 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-checkbox-color: var(--w-color-primary);
-}
-
 .checkbox {
+    --color: var(--w-checkbox-color, var(--w-color-primary));
+
     @include layout(inline-flex, sm);
     @include typography(hmd);
 
@@ -22,7 +20,7 @@ body {
         display: none;
 
         &:checked + span {
-            @include background(var(--w-checkbox-color));
+            @include background(var(--color));
 
             svg {
                 @include position(absolute, center);
@@ -48,7 +46,7 @@ body {
 
         display: inline-block;
         min-width: 15px;
-        border: 1px solid var(--w-checkbox-color);
+        border: 1px solid var(--color);
 
         svg {
             @include visibility(none);

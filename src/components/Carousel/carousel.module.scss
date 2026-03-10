@@ -1,10 +1,8 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-slide-width: 100%;
-}
-
 .carousel {
+    --width: 100%;
+
     @include layout(flex, sm, column);
 }
 
@@ -43,7 +41,7 @@ body {
         @include spacing(m0);
         @include layout(flex, h-center);
 
-        min-width: var(--w-slide-width);
+        min-width: var(--width);
     }
 }
 

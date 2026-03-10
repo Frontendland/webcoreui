@@ -1,10 +1,8 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-speed-dial-size: 40px;
-}
-
 .dial {
+    --size: var(--w-speed-dial-size, 40px);
+
     @include layout(flex, column-reverse, center, xs);
     @include position(fixed, b20px, r20px);
 
@@ -54,7 +52,7 @@ body {
 .trigger {
     @include layout(flex, column);
     @include typography(bold);
-    @include size(var(--w-speed-dial-size));
+    @include size(var(--size));
 
     user-select: none;
 
@@ -85,7 +83,7 @@ body {
 
     .button {
         @include layout(flex, column, xs);
-        @include size(var(--w-speed-dial-size));
+        @include size(var(--size));
     
         svg {
             @include size(16px);

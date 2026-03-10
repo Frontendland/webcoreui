@@ -1,12 +1,10 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-slider-background: var(--w-color-primary-50);
-    --w-slider-color: var(--w-color-primary);
-    --w-slider-thumb: var(--w-color-primary-50);
-}
-
 .slider {
+    --bg: var(--w-slider-background, var(--w-color-primary-50));
+    --color: var(--w-slider-color, var(--w-color-primary));
+    --thumb: var(--w-slider-thumb, var(--w-color-primary-50));
+
     @include border-radius(xl);
     @include size('w100%');
     @include visibility(hidden);
@@ -43,30 +41,30 @@ body {
 }
 
 .slider::-webkit-slider-runnable-track {
-    @include background(var(--w-slider-background));
+    @include background(var(--bg));
 }
 
 .slider::-moz-range-track {
-    @include background(var(--w-slider-background));
+    @include background(var(--bg));
     @include size(h10px);
 }
 
 .slider::-webkit-slider-thumb {
-    @include background(var(--w-slider-thumb));
+    @include background(var(--thumb));
     @include size(10px);
     @include border-radius(max);
-    @include border(var(--w-slider-color));
+    @include border(var(--color));
 
     -webkit-appearance: none;
     appearance: none;
-    box-shadow: -995px 0 0 990px var(--w-slider-color);
+    box-shadow: -995px 0 0 990px var(--color);
 }
 
 .slider::-moz-range-thumb {
-    @include background(var(--w-slider-thumb));
+    @include background(var(--thumb));
     @include size(9px);
     @include border-radius(max);
-    @include border(var(--w-slider-color));
+    @include border(var(--color));
 
-    box-shadow: -995px 0 0 990px var(--w-slider-color);
+    box-shadow: -995px 0 0 990px var(--color);
 }

@@ -14,7 +14,7 @@
     }: ErrorPageProps = $props()
 
     const typeStyle = typeColor
-        ? `--w-type-color: ${typeColor};`
+        ? `--w-error-page-type-color: ${typeColor};`
         : null
 </script>
 

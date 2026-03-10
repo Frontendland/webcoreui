@@ -50,7 +50,7 @@
     let currentPage = $state(1)
     let totalPages = $state(Math.ceil(items / getItemsPerSlide()))
     let style = $state(getItemsPerSlide() > 1
-        ? `--w-slide-width: calc(${100 / getItemsPerSlide()}% - 5px);`
+        ? `--width: calc(${100 / getItemsPerSlide()}% - 5px);`
         : null)
 
     const classes = classNames([
@@ -143,7 +143,7 @@
         currentPage = 1
         progressValue = 0
         totalPages = Math.ceil(items / getItemsPerSlide())
-        style = `--w-slide-width: calc(${100 / getItemsPerSlide()}% - 5px);`
+        style = `--width: calc(${100 / getItemsPerSlide()}% - 5px);`
 
         if (subTextValue) {
             subText = subTextValue

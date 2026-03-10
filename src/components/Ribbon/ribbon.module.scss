@@ -1,18 +1,16 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-ribbon-offset: 20px;
-    --w-ribbon-folded-offset: 10px;
-}
-
 .ribbon {
+    --offset: var(--w-ribbon-offset, 20px);
+    --folded-offset: var(--w-ribbon-folded-offset, 10px);
+
     @include position(absolute);
     @include typography(sm, primary-70);
     @include background(primary);
     @include spacing('px-5xl');
 
-    top: var(--w-ribbon-offset);
-    left: var(--w-ribbon-offset);
+    top: var(--offset);
+    left: var(--offset);
 
     transform: rotate(-45deg) translate(-50%, -50%);
     transform-origin: top left;
@@ -23,7 +21,7 @@ body {
         @include spacing(px-sm);
 
         transform: none;
-        left: calc(var(--w-ribbon-folded-offset) * -1);
+        left: calc(var(--folded-offset) * -1);
 
         &::before {
             @include position(absolute, t15px, l0);
@@ -31,9 +29,9 @@ body {
 
             content: '';
             transform: translateY(-50%);
-            border-right: var(--w-ribbon-folded-offset) solid var(--w-color-primary-20);
-            border-top: var(--w-ribbon-folded-offset) solid transparent;
-            border-bottom: var(--w-ribbon-folded-offset) solid transparent;
+            border-right: var(--folded-offset) solid var(--w-color-primary-20);
+            border-top: var(--folded-offset) solid transparent;
+            border-bottom: var(--folded-offset) solid transparent;
         }
     }
 

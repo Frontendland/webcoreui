@@ -1,10 +1,8 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-radio-color: var(--w-color-primary);
-}
-
 .radio {
+    --color: var(--w-radio-color, var(--w-color-primary));
+
     @include layout(flex, column, sm);
 
     &.inline {
@@ -37,7 +35,7 @@ body {
             @include position(absolute, 't50%', 'l50%');
             @include size(8px);
             @include border-radius(max);
-            @include background(var(--w-radio-color));
+            @include background(var(--color));
 
             content: '';
             transform: translate(-50%, -50%) scale(0);
@@ -65,7 +63,7 @@ body {
 
         display: inline-block;
         min-width: 16px;
-        border: 1px solid var(--w-radio-color);
+        border: 1px solid var(--color);
     }
 
     .subtext {

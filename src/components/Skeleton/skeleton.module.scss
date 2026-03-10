@@ -1,12 +1,10 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-skeleton-color: var(--w-color-primary-60);
-    --w-skeleton-wave-color: var(--w-color-primary-50);
-}
-
 .skeleton {
-    @include background(var(--w-skeleton-color));
+    --color: var(--w-skeleton-color, var(--w-color-primary-60));
+    --wave-color: var(--w-skeleton-wave-color, var(--w-color-primary-50));
+
+    @include background(var(--color));
     @include size(100%);
 
     text-indent: -9999px;
@@ -26,7 +24,7 @@ body {
             background: linear-gradient(
                 to right,
                 transparent 0%,
-                var(--w-skeleton-wave-color) 50%,
+                var(--wave-color) 50%,
                 transparent 100%
             );
         }
@@ -49,11 +47,10 @@ body {
     from {
         left: -200px;
     }
-    to   {
+    to {
         left: 100%;
     }
 }
-
 
 @keyframes pulse {
     0% {

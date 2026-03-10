@@ -50,7 +50,7 @@ const Carousel = ({
     const [progressValue, setProgressValue] = useState(0)
     const [updatedSubText, setUpdatedSubText] = useState(subText)
     const [style, setStyle] = useState(getItemsPerSlide() > 1
-        ? { '--w-slide-width': `calc(${100 / getItemsPerSlide()}% - 5px)` } as React.CSSProperties
+        ? { '--width': `calc(${100 / getItemsPerSlide()}% - 5px)` } as React.CSSProperties
         : undefined)
 
     const classes = classNames([
@@ -147,7 +147,7 @@ const Carousel = ({
         totalPages.current = Math.ceil(items / getItemsPerSlide())
         setStyle(prevStyle => ({
             ...prevStyle,
-            '--w-slide-width': `calc(${100 / getItemsPerSlide()}% - 5px)`
+            '--width': `calc(${100 / getItemsPerSlide()}% - 5px)`
         }) as React.CSSProperties)
 
         if (subTextValue) {

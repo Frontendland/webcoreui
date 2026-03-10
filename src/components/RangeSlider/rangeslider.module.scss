@@ -1,11 +1,5 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-range-slider-background: var(--w-color-primary-50);
-    --w-range-slider-color: var(--w-color-primary);
-    --w-range-slider-thumb: var(--w-color-primary-50);
-}
-
 .label {
     @include layout(flex, column, xs);
 
@@ -13,6 +7,10 @@ body {
 }
 
 .container {
+    --bg: var(--w-range-slider-background, var(--w-color-primary-50));
+    --color: var(--w-range-slider-color, var(--w-color-primary));
+    --thumb: var(--w-range-slider-thumb, var(--w-color-primary-50));
+
     @include layout(flex, v-center, xs);
 
     svg {
@@ -33,7 +31,7 @@ body {
     @include position(relative);
     @include border-radius(xl);
     @include size(h10px);
-    @include background(var(--w-range-slider-background));
+    @include background(var(--bg));
     @include visibility(hidden);
 
     flex: 1;
@@ -41,7 +39,7 @@ body {
 
 .range {
     @include position(absolute);
-    @include background(var(--w-range-slider-color));
+    @include background(var(--color));
     @include size('h100%');
     @include border-radius();
 
@@ -86,19 +84,19 @@ body {
     }
 
     &[data-min]::-webkit-slider-thumb  {
-        box-shadow: 3px 0 0 3px var(--w-range-slider-color);
+        box-shadow: 3px 0 0 3px var(--color);
     }
 
     &[data-max]::-webkit-slider-thumb  {
-        box-shadow: -3px 0 0 3px var(--w-range-slider-color);
+        box-shadow: -3px 0 0 3px var(--color);
     }
 
     &[data-min]::-moz-range-thumb   {
-        box-shadow: 3px 0 0 3px var(--w-range-slider-color);
+        box-shadow: 3px 0 0 3px var(--color);
     }
 
     &[data-max]::-moz-range-thumb   {
-        box-shadow: -3px 0 0 3px var(--w-range-slider-color);
+        box-shadow: -3px 0 0 3px var(--color);
     }
 
     
@@ -120,10 +118,10 @@ body {
 }
 
 .input::-webkit-slider-thumb {
-    @include background(var(--w-range-slider-thumb));
+    @include background(var(--thumb));
     @include size(10px);
     @include border-radius(max);
-    @include border(var(--w-range-slider-color));
+    @include border(var(--color));
 
     -webkit-appearance: none;
     appearance: none;
@@ -132,10 +130,10 @@ body {
 }
 
 .input::-moz-range-thumb {
-    @include background(var(--w-range-slider-thumb));
+    @include background(var(--thumb));
     @include size(9px);
     @include border-radius(max);
-    @include border(var(--w-range-slider-color));
+    @include border(var(--color));
 
     pointer-events: auto;
     appearance: none;

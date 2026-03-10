@@ -1,10 +1,8 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-bottom-navigation-max-width: auto;
-}
-
 .nav {
+    --width: var(--w-bottom-navigation-max-width, auto);
+
     @include background(primary-60);
     @include position(fixed, b0, l0, r0);
     @include layer(header);
@@ -39,7 +37,7 @@ body {
         @include spacing(none-auto, p0);
         @include layout(flex, h-center);
 
-        max-width: var(--w-bottom-navigation-max-width);
+        max-width: var(--width);
         list-style-type: none;
 
         li {

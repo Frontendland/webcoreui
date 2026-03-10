@@ -1,32 +1,30 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-rating-color: var(--w-color-primary);
-    --w-rating-empty-color: var(--w-color-primary);
-    --w-rating-empty-background: var(--w-color-primary-70);
-    --w-rating-size: 18px;
-}
-
 .rating {
+    --color: var(--w-rating-color, var(--w-color-primary));
+    --empty-color: var(--w-rating-empty-color, var(--w-color-primary));
+    --empty-background: var(--w-rating-empty-background, var(--w-color-primary-70));
+    --size: var(--w-rating-size, 18px);
+
     @include layout(inline-flex, v-center);
 
-    color: var(--w-rating-color);
-    font-size: var(--w-rating-size);
+    color: var(--color);
+    font-size: var(--size);
 
     &.outline .empty {
         transform: scale(.9);
         transform-origin: left;
-        color: var(--w-rating-empty-background);
+        color: var(--empty-background);
         letter-spacing: 2px;
         text-shadow:
-            -1px 0 var(--w-rating-empty-color),
-            0 1px var(--w-rating-empty-color),
-            1px 0 var(--w-rating-empty-color),
-            0 -1px var(--w-rating-empty-color);
+            -1px 0 var(--empty-color),
+            0 1px var(--empty-color),
+            1px 0 var(--empty-color),
+            0 -1px var(--empty-color);
     }
 
     .empty {
-        color: var(--w-rating-empty-color);
+        color: var(--empty-color);
     }
 
     a:hover .text {

@@ -1,28 +1,26 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-spinner-color: var(--w-color-primary);
-    --w-spinner-width: 2px;
-    --w-spinner-speed: 2s;
-    --w-spinner-size: 30px;
-    --w-spinner-dash: 8;
-}
-
 .spinner {
+    --color: var(--w-spinner-color, var(--w-color-primary));
+    --width: var(--w-spinner-width, 2px);
+    --speed: var(--w-spinner-speed, 2s);
+    --size: var(--w-spinner-size, 30px);
+    --dash: var(--w-spinner-dash, 8);
+
     @include spacing(auto-none);
 
-    width: var(--w-spinner-size);
-    height: var(--w-spinner-size);
-    animation: rotate var(--w-spinner-speed) linear infinite;
+    width: var(--size);
+    height: var(--size);
+    animation: rotate var(--speed) linear infinite;
 
     &.dashed .path {
-        stroke-dasharray: var(--w-spinner-dash);
+        stroke-dasharray: var(--dash);
         animation: none;
     }
 
     .path {
-        stroke: var(--w-spinner-color);
-        stroke-width: var(--w-spinner-width);
+        stroke: var(--color);
+        stroke-width: var(--width);
         animation: dash 1.5s ease-in-out infinite;
         stroke-linecap: round;
     }
@@ -48,3 +46,4 @@ body {
         stroke-dashoffset: -124;
     }
 }
+

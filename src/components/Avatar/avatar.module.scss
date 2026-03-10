@@ -1,16 +1,14 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-avatar-border: var(--w-color-primary-70);
-}
-
 .avatar {
+    --border: var(--w-avatar-border, var(--w-color-primary-70));
+
     @include border-radius(max);
 
     object-fit: cover;
 
     &:not(.borderless) {
-        border: 3px solid var(--w-avatar-border);
+        border: 3px solid var(--border);
     }
 }
 

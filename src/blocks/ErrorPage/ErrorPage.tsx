@@ -14,7 +14,7 @@ const ErrorPage = ({
     ...rest
 }: ErrorPageProps) => {
     const typeStyle = typeColor
-        ? { '--w-type-color': typeColor } as React.CSSProperties
+        ? { '--w-error-page-type-color': typeColor } as React.CSSProperties
         : undefined
 
     return (

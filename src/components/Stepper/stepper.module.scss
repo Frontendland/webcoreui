@@ -1,14 +1,12 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-stepper-color-border: var(--w-color-primary-50);
-    --w-stepper-color-active: var(--w-color-info);
-    --w-stepper-color-complete: var(--w-color-success);
-}
-
 $size: 20px;
 
 .stepper {
+    --border: var(--w-stepper-color-border, var(--w-color-primary-50));
+    --active: var(--w-stepper-color-active, var(--w-color-info));
+    --complete: var(--w-stepper-color-complete, var(--w-color-success));
+
     @include layout(flex, default, column);
     @include spacing(0);
     @include size('w100%');
@@ -16,7 +14,7 @@ $size: 20px;
     list-style-type: none;
 
     &:not(.borderless) .number {
-        border: 2px solid var(--w-stepper-color-border);
+        border: 2px solid var(--border);
     }
 
     li {
@@ -31,7 +29,7 @@ $size: 20px;
 
             &::before {
                 @include position(absolute, l16px);
-                @include background(var(--w-stepper-color-border));
+                @include background(var(--border));
                 @include size(w2px);
 
                 top: -50%;
@@ -42,18 +40,18 @@ $size: 20px;
 
             &.completed::before,
             &.active::before {
-                @include background(var(--w-stepper-color-complete));
+                @include background(var(--complete));
             }
         }
 
         &.active .number {
-            border-color: var(--w-stepper-color-active);
-            color: var(--w-stepper-color-active);
+            border-color: var(--active);
+            color: var(--active);
         }
 
         &.completed .number {
-            border-color: var(--w-stepper-color-complete);
-            color: var(--w-stepper-color-complete);
+            border-color: var(--complete);
+            color: var(--complete);
         }
 
         .number {

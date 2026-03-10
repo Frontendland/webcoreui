@@ -1,14 +1,10 @@
 @use 'webcoreui/config' as *;
 
-body {
-    --w-type-color: var(--w-color-info);
-}
-
 .error {
     @include typography(center);
 
     .type {
-        color: var(--w-type-color);
+        color: var(--w-error-page-type-color, var(--w-color-info));
         font-size: 100px;
     }
 

@@ -1,8 +1,8 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-collapsible-initial-height: 0;
-    --w-collapsible-max-height: 100%;
+.wrapper {
+    --initial-height: var(--w-collapsible-initial-height, 0);
+    --max-height: var(--w-collapsible-max-height, 100%);
 }
 
 .collapsible {
@@ -14,7 +14,7 @@ body {
     }
 
     &[data-toggled="true"] .wrapper {
-        max-height: var(--w-collapsible-max-height);
+        max-height: var(--max-height);
     }
 
     &.animated .wrapper {
@@ -24,6 +24,6 @@ body {
     .wrapper {
         @include visibility(hidden);
 
-        max-height: var(--w-collapsible-initial-height);
+        max-height: var(--initial-height);
     }
 }

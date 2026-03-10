@@ -4,13 +4,11 @@
 $leftOffset: calc(((25px + 4px) / 2) - 1px);
 $rightOffset: calc((((25px + 4px) / 2) - 1px) * -1);
 
-body {
-    --w-timeline-color: var(--w-color-primary-50);
-    --w-timeline-text-color: var(--w-color-primary);
-    --w-timeline-counter: decimal;
-}
-
 .timeline {
+    --color: var(--w-timeline-color, var(--w-color-primary-50));
+    --text-color: var(--w-timeline-text-color, var(--w-color-primary));
+    --counter: var(--w-timeline-counter, decimal);
+
     @include layout(flex, default, column);
     @include spacing(pl-3xl, m0);
     @include position(relative);
@@ -22,7 +20,7 @@ body {
     &::before {
         @include position(absolute);
         @include size(w2px, 'h100%');
-        @include background(var(--w-timeline-color));
+        @include background(var(--color));
 
         content: '';
         left: $leftOffset
@@ -34,7 +32,7 @@ body {
 
     &.stroke > li::before {
         @include background(primary-70);
-        border: 2px solid var(--w-timeline-color);
+        border: 2px solid var(--color);
     }
 }
 

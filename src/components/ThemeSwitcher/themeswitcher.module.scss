@@ -1,16 +1,14 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-theme-switcher-size: 20px;
-}
-
 .switcher {
+    --size: var(--w-theme-switcher-size, 20px);
+
     @include layout(flex, sm);
 
     &.toggle {
         @include position(relative);
-        width: var(--w-theme-switcher-size);
-        height: var(--w-theme-switcher-size);
+        width: var(--size);
+        height: var(--size);
 
         .switch {
             position: absolute;
@@ -35,8 +33,8 @@ body {
     @include border-radius(max);
     @include position(relative);
 
-    width: var(--w-theme-switcher-size);
-    height: var(--w-theme-switcher-size);
+    width: var(--size);
+    height: var(--size);
     cursor: pointer;
     user-select: none;
 
@@ -53,8 +51,8 @@ body {
 
         svg, img {
             pointer-events: none;
-            width: var(--w-theme-switcher-size);
-            height: var(--w-theme-switcher-size);
+            width: var(--size);
+            height: var(--size);
         }
     }
 
@@ -71,7 +69,7 @@ body {
 
     &[data-active="true"]::after {
         @include layer(default);
-        width: calc(var(--w-theme-switcher-size) + 5px);
-        height: calc(var(--w-theme-switcher-size) + 5px);
+        width: calc(var(--size) + 5px);
+        height: calc(var(--size) + 5px);
     }
 }

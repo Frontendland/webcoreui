@@ -8,14 +8,14 @@
         @include position(absolute, t-5px);
         @include size(25px);
         @include border-radius(max);
-        @include background(var(--w-timeline-color));
+        @include background(var(--color));
         @include typography(md);
         @include layout(inline-flex, center);
         @include border(2px, primary-70);
 
-        content: counter(item, var(--w-timeline-counter));
+        content: counter(item, var(--counter));
         counter-increment: item;
-        color: var(--w-timeline-text-color);
+        color: var(--text-color);
         margin-left: -40px;
     }
 
@@ -25,7 +25,7 @@
         @include border(6px, primary-70);
         @include layout(flex);
         
-        color: var(--w-timeline-text-color);
+        color: var(--text-color);
         margin-left: -40px;
         margin-top: -4px;
         

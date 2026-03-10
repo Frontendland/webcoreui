@@ -59,7 +59,7 @@ const paginationClasses = classNames([
 const totalPages = Math.ceil(items / getItemsPerSlide())
 const subTextValue = subText?.match(/\{0\}|\{1\}/g) ? subText : undefined
 const style = getItemsPerSlide() > 1
-    ? `--w-slide-width: calc(${100 / getItemsPerSlide()}% - 5px);`
+    ? `--width: calc(${100 / getItemsPerSlide()}% - 5px);`
     : null
 ---
 
@@ -172,7 +172,7 @@ const style = getItemsPerSlide() > 1
             carousel.dataset.currentBreakpoint = breakpoint
             carousel.dataset.visibleItems = itemsPerSlide
             carousel.children[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-            carousel.style.setProperty('--w-slide-width', `calc(${100 / itemsPerSlide}% - 5px)`)
+            carousel.style.setProperty('--width', `calc(${100 / itemsPerSlide}% - 5px)`)
 
             pagination.dataset.totalPages = String(totalPages)
 

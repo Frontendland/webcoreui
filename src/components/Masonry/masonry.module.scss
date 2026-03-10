@@ -1,18 +1,16 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-masonry-gap: 5px;
-}
-
 .masonry {
+    --gap: var(--w-masonry-gap, 5px);
+
     @include layout(flex);
 
-    gap: var(--w-masonry-gap);
+    gap: var(--gap);
     overflow-x: auto;
 
     .column {
         @include layout(flex, column);
 
-        gap: var(--w-masonry-gap);
+        gap: var(--gap);
     }
 }

@@ -123,6 +123,9 @@ export default defineConfig({
 })
 ```
 
+> [!TIP]
+> We also recommend adding [`astro-purgecss`](https://www.npmjs.com/package/astro-purgecss) to improve your CSS bundle size.
+
 Create an empty [`webcore.config.scss`](https://webcoreui.dev/docs/css-configuration#webcoreconfigscss) file at the root of your project to setup CSS configurations. Setup default styles and fonts by calling the following in your global SCSS file:
 
 ```scss
@@ -250,6 +253,15 @@ html body {
     --w-md-radius: 5px;
     --w-lg-radius: 10px;
     --w-xl-radius: 15px;
+}
+```
+
+Depending on your installed blocks, you can also use the following variables to override default block styles:
+
+```scss
+:root {
+    // Error page
+    --w-error-page-type-color: var(--w-color-info);
 }
 ```
 

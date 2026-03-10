@@ -45,15 +45,3 @@
         @include spacing(mt-xs);
     }
 }
-
-@keyframes flash {
-    0% {
-        @include visibility(0);
-    }
-    50% {
-        @include visibility(1);
-    }
-    100% {
-        @include visibility(0);
-    }
-}

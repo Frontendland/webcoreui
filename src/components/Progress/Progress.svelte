@@ -35,7 +35,7 @@
         stripeDark && `--w-progress-stripe-dark: ${stripeDark};`
     ])
 
-    const currentValue = indeterminate && !value ? 20 : value
+    const currentValue = $derived(indeterminate && !value ? 20 : value)
 </script>
 
 <div class={classes} style={styleVariables || null}>

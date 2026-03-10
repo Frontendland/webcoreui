@@ -1,20 +1,18 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-progress-color: var(--w-color-primary);
-    --w-progress-background: var(--w-color-primary-50);
-    --w-progress-stripe-light: var(--w-color-primary);
-    --w-progress-stripe-dark: var(--w-color-primary-10);
-}
-
 .w-progress {
+    --color: var(--w-progress-color, var(--w-color-primary));
+    --bg: var(--w-progress-background, var(--w-color-primary-50));
+    --stripe-light: var(--w-progress-stripe-light, var(--w-color-primary));
+    --stripe-dark: var(--w-progress-stripe-dark, var(--w-color-primary-10));
+
     @include size('w100%', h10px);
     @include border-radius(xl);
     @include visibility(hidden);
     @include typography(bold, xs);
-    @include background(var(--w-progress-background));
+    @include background(var(--bg));
 
-    color: var(--w-progress-background);
+    color: var(--bg);
     
     &.medium {
         @include size(h15px);
@@ -39,13 +37,13 @@ body {
             background-size: 10px 10px;
             background-image: linear-gradient(
                 -45deg,
-                var(--w-progress-stripe-light) 25%,
-                var(--w-progress-stripe-dark) 25%,
-                var(--w-progress-stripe-dark) 50%,
-                var(--w-progress-stripe-light) 50%,
-                var(--w-progress-stripe-light) 75%,
-                var(--w-progress-stripe-dark) 75%,
-                var(--w-progress-stripe-dark)
+                var(--stripe-light) 25%,
+                var(--stripe-dark) 25%,
+                var(--stripe-dark) 50%,
+                var(--stripe-light) 50%,
+                var(--stripe-light) 75%,
+                var(--stripe-dark) 75%,
+                var(--stripe-dark)
             );
         }
 
@@ -69,7 +67,7 @@ body {
         @include size('h100%');
         @include border-radius(xl);
         @include layout(flex, center);
-        @include background(var(--w-progress-color));
+        @include background(var(--color));
 
         width: var(--w-progress-width);
     }

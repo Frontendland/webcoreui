@@ -1,11 +1,9 @@
 @use '../../scss/config.scss' as *;
 
-body {
-    --w-switch-off-color: var(--w-color-primary-50);
-    --w-switch-on-color: var(--w-color-primary);
-}
-
 .switch {
+    --off-color: var(--w-switch-off-color, var(--w-color-primary-50));
+    --on-color: var(--w-switch-on-color, var(--w-color-primary));
+
     @include layout(inline-flex, v-center, sm);
     cursor: pointer;
     user-select: none;
@@ -53,7 +51,7 @@ body {
         @include visibility(none);
 
         &:checked + span {
-            @include background(var(--w-switch-on-color));
+            @include background(var(--on-color));
     
             &::before {
                 transform: translateX(30px);
@@ -66,7 +64,7 @@ body {
         @include position(relative);
         @include size(w60px, h30px);
         @include border-radius(xl);
-        @include background(var(--w-switch-off-color));
+        @include background(var(--off-color));
 
         &::before {
             @include transition(transform);
