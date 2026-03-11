@@ -15,10 +15,10 @@
         children
     }: SvelteDeviceMockupProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.mockup,
         className
-    ])
+    ]))
 
     const getColor = (color: string | undefined) => color
         ? `background:${color};`

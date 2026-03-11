@@ -14,11 +14,11 @@
         ...rest
     }: SvelteSheetProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.sheet,
         position && styles[position],
         className
-    ])
+    ]))
 </script>
 
 <Modal

@@ -259,7 +259,7 @@ html body {
 Depending on your installed blocks, you can also use the following variables to override default block styles:
 
 ```scss
-:root {
+html body {
     // Error page
     --w-error-page-type-color: var(--w-color-info);
 }

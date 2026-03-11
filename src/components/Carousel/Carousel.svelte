@@ -48,39 +48,39 @@
     let progressValue = $state(0)
     let paginated = false
     let currentPage = $state(1)
-    let totalPages = $state(Math.ceil(items / getItemsPerSlide()))
+    let totalPages = $derived(Math.ceil(items / getItemsPerSlide()))
     let style = $state(getItemsPerSlide() > 1
         ? `--width: calc(${100 / getItemsPerSlide()}% - 5px);`
         : null)
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.carousel,
         className
-    ])
+    ]))
 
-    const containerClasses = classNames([
+    const containerClasses = $derived(classNames([
         styles.container,
         scrollSnap && styles.snap
-    ])
+    ]))
 
-    const wrapperClasses = classNames([
+    const wrapperClasses = $derived(classNames([
         styles.wrapper,
         effect && styles[effect],
         getItemsPerSlide() > 1 && styles['no-snap'],
         wrapperClassName
-    ])
+    ]))
 
-    const paginationWrapperClasses = classNames([
+    const paginationWrapperClasses = $derived(classNames([
         styles['pagination-wrapper'],
         paginationClassName
-    ])
+    ]))
 
-    const paginationClasses = classNames([
+    const paginationClasses = $derived(classNames([
         styles.pagination,
         !subText && paginationClassName
-    ])
+    ]))
 
-    const subTextValue = subText?.match(/\{0\}|\{1\}/g) ? subText : undefined
+    const subTextValue = $derived(subText?.match(/\{0\}|\{1\}/g) ? subText : undefined)
 
     const updateValues = () => {
         const activeElement = carouselItems[currentPage - 1] as HTMLLIElement
@@ -103,7 +103,7 @@
         onScroll?.(currentPage)
     }
 
-    const scroll = debounceScroll((event: Event) => {
+    const scroll = $derived(debounceScroll((event: Event) => {
         if (!paginated) {
             const target = event.target as HTMLDivElement
             const scrollLeft = target.scrollLeft
@@ -114,7 +114,7 @@
 
             updateValues()
         }
-    }, debounce)
+    }, debounce))
 
     const paginate = (event: PaginationEventType) => {
         const indexes = Array.from({ length: Math.ceil(items / getItemsPerSlide()) }, (_, i) => {

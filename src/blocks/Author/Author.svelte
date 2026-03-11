@@ -17,10 +17,10 @@
         ...rest
     }: AuthorProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         'flex sm column sm-row',
         bodyClassName
-    ])
+    ]))
 </script>
 
 <Card bodyClassName={classes} {...rest}>

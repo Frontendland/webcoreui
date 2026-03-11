@@ -11,11 +11,11 @@
         children
     }: SvelteGroupProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.group,
         withSeparator && styles.separator,
         className
-    ])
+    ]))
 </script>
 
 <div class={classes}>

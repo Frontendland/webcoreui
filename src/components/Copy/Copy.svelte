@@ -20,10 +20,10 @@
         ...rest
     }: SvelteCopyProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.copy,
         className
-    ])
+    ]))
 
     let copyButton: HTMLButtonElement | undefined = $state()
     let copiedButton: HTMLSpanElement | undefined = $state()

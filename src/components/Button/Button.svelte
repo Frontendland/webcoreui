@@ -14,11 +14,11 @@
         ...rest
     }: SvelteButtonProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.button,
         theme && styles[theme],
         className
-    ])
+    ]))
 </script>
 
 

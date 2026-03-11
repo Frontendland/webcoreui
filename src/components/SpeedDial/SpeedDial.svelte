@@ -22,13 +22,13 @@
 
     let show = $state(false)
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.dial,
         position && styles[position],
         horizontal && styles.horizontal,
         circular && styles.circular,
         className
-    ])
+    ]))
 
     const getTooltipPosition = () => {
         const positionMap = {

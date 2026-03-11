@@ -14,20 +14,20 @@
         className
     }: GridWithIconsProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         `grid sm-${columns || 3}`,
         styles.list,
         alignment && styles[alignment],
         iconWithBackground && styles['icon-bg'],
         secondary && styles.secondary,
         className
-    ])
+    ]))
 
-    const wrapperClasses = classNames([
+    const wrapperClasses = $derived(classNames([
         'flex sm items-center',
         alignment === 'center' && 'justify-center',
         alignment === 'right' && 'justify-end'
-    ])
+    ]))
 </script>
 
 <ul class={classes}>

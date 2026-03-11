@@ -12,10 +12,10 @@
         children
     }: SvelteKbdProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.kbd,
         className
-    ])
+    ]))
 </script>
 
 <kbd class={classes}>{keys?.map(key => keyMap[key]).join('')}{@render children?.()}</kbd>

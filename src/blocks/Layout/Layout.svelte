@@ -26,12 +26,12 @@
         ...rest
     }: SvelteLayoutProps = $props()
 
-    const hasSidebar = leftSidebar || rightSidebar
+    const hasSidebar = $derived(leftSidebar || rightSidebar)
 
-    const containerClasses = classNames([
+    const containerClasses = $derived(classNames([
         containerClassName || 'container',
         hasSidebar && 'flex column md-row'
-    ])
+    ]))
 </script>
 
 <html lang={lang}>

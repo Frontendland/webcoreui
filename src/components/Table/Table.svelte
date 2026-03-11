@@ -17,7 +17,7 @@
         className
     }: TableProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.table,
         hover && styles.hover,
         striped && styles[`striped-${striped}s`],
@@ -25,7 +25,7 @@
         compact && styles.compact,
         maxHeight && styles.scroll,
         className
-    ])
+    ]))
 </script>
 
 <div class={classes} style={maxHeight ? `max-height:${maxHeight}` : null}>

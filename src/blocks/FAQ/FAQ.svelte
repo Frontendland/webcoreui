@@ -15,10 +15,10 @@
         ...rest
     }: SvelteFAQProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.faq,
         className
-    ])
+    ]))
 </script>
 
 <svelte:element this={element} class={classes}>

@@ -28,12 +28,12 @@
         className
     }: SveltePaginationProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.pagination,
         theme !== 'outline' && (theme === null || theme === undefined ? styles.primary : styles[theme]),
         type === 'dots' && styles.dots,
         className
-    ])
+    ]))
 
     const calculatedTotalPages = $derived(totalPages
         || pages?.length

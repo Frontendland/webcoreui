@@ -15,12 +15,12 @@
         className
     }: EmptyProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         'flex column center xs',
         iconWithBackground && styles['icon-bg'],
         styles.empty,
         className
-    ])
+    ]))
 </script>
 
 <section class={classes}>

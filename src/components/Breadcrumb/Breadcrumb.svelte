@@ -15,10 +15,10 @@
         className
     }: BreadcrumbProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.breadcrumb,
         className
-    ])
+    ]))
 </script>
 
 <ul class={classes}>

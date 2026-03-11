@@ -17,20 +17,20 @@
         children
     }: SvelteFooterProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.footer,
         className
-    ])
+    ]))
 
-    const containerClasses = classNames([
+    const containerClasses = $derived(classNames([
         styles.container,
         wrapperClassName
-    ])
+    ]))
 
-    const subTextClasses = classNames([
+    const subTextClasses = $derived(classNames([
         styles.subtext,
         subTextClassName
-    ])
+    ]))
 </script>
 
 <footer class={classes}>

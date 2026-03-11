@@ -31,29 +31,21 @@
         onChange
     }: SvelteRangeSliderProps = $props()
 
-    const styleVariables = classNames([
+    const styleVariables = $derived(classNames([
         color && `--w-range-slider-color: ${color};`,
         background && `--w-range-slider-background: ${background};`,
         thumb && `--w-range-slider-thumb: ${thumb};`
-    ])
+    ]))
 
-    const minLabelWidth = `${String(max).length}ch`
-    const labelStyle = updateLabels ? `min-width:${minLabelWidth};` : null
+    let minValue = $derived(selectedMin ?? min)
+    let maxValue = $derived(selectedMax ?? max)
 
-    let minValue = $state(selectedMin || min)
-    let maxValue = $state(selectedMax || max)
-    let dynamicMinLabel = $state(minLabel)
-    let dynamicMaxLabel = $state(maxLabel)
+    const labelStyle = $derived(updateLabels ? `min-width:${String(max).length}ch;` : null)
+    const dynamicMinLabel = $derived(minLabel?.replace(/\d+(\.\d+)?/, String(minValue)))
+    const dynamicMaxLabel = $derived(maxLabel?.replace(/\d+(\.\d+)?/, String(maxValue)))
 
     const rangeLeftPercent = $derived(interpolate((minValue || min), [min, max], [0, 100]))
     const rangeRightPercent = $derived(interpolate((maxValue || max), [min, max], [100, 0]))
-
-    const updateDynamicLabels = (minValue: number, maxValue: number) => {
-        if (dynamicMinLabel && dynamicMaxLabel) {
-            dynamicMinLabel = dynamicMinLabel.replace(/\d+(\.\d+)?/, String(minValue))
-            dynamicMaxLabel = dynamicMaxLabel.replace(/\d+(\.\d+)?/, String(maxValue))
-        }
-    }
 
     const handleInput = (event: Event) => {
         const target = event.target
@@ -63,10 +55,6 @@
         }
 
         if (maxValue - minValue >= minGap) {
-            if (updateLabels) {
-                updateDynamicLabels(minValue, maxValue)
-            }
-
             onChange?.({
                 min: minValue,
                 max: maxValue
@@ -80,13 +68,7 @@
         }
     }
 
-    const handleClick = (event: Event, direction: 'left' | 'right') => {
-        const target = event.currentTarget
-
-        if (!(target instanceof HTMLButtonElement)) {
-            return
-        }
-
+    const handleClick = (direction: 'left' | 'right') => {
         const dir = direction === 'left' ? -1 : 1
         const updatedMinValue = Number(minValue) + (dir * step)
         const updatedMaxValue = Number(maxValue) + (dir * step)
@@ -97,10 +79,6 @@
 
         minValue = updatedMinValue
         maxValue = updatedMaxValue
-
-        if (updateLabels) {
-            updateDynamicLabels(minValue, maxValue)
-        }
 
         onChange?.({
             min: minValue,
@@ -125,7 +103,7 @@
         <ConditionalWrapper
             element="button"
             condition={!!interactiveLabels}
-            onclick={(e: Event) => handleClick(e, 'left')}
+            onclick={() => handleClick('left')}
         >
             {#if minIcon}
                 {@html minIcon}
@@ -171,7 +149,7 @@
         <ConditionalWrapper
             element="button"
             condition={!!interactiveLabels}
-            onclick={(e: Event) => handleClick(e, 'right')}
+            onclick={() => handleClick('right')}
         >
             {#if dynamicMaxLabel}
                 <span style={labelStyle}>{dynamicMaxLabel}</span>

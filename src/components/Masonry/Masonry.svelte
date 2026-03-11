@@ -14,22 +14,22 @@
         className
     }: SvelteMasonryProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.masonry,
         className
-    ])
+    ]))
 
-    const componentProps = {
+    const componentProps = $derived({
         class: classes,
         style: gap ? `--w-masonry-gap: ${gap};` : null
-    }
+    })
 
-    const chunkSize = Math.ceil(items.length / columns!)
-    const columnGroups = Array.from({ length: columns! }, (_, i) => {
+    const chunkSize = $derived(Math.ceil(items.length / columns!))
+    const columnGroups = $derived(Array.from({ length: columns! }, (_, i) => {
         return sequential
             ? items.slice(i * chunkSize, (i + 1) * chunkSize)
             : items.filter((_, index) => index % columns! === i)
-    })
+    }))
 </script>
 
 

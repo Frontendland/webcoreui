@@ -15,12 +15,12 @@
         ...rest
     }: SvelteToastProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.toast,
         className
-    ])
+    ]))
 
-    const additionalProps = {
+    const additionalProps = $derived({
         ...(position && { 'data-position': position }),
         titleProps: {
             'data-id': 'title'
@@ -28,7 +28,7 @@
         bodyProps: {
             'data-id': 'body'
         }
-    }
+    })
 
     const iconRender = $derived(icon)
 </script>

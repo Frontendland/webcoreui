@@ -20,11 +20,11 @@
         ...rest
     }: FormProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         'flex column',
         gap || 'md',
         className
-    ])
+    ]))
 </script>
 
 {#snippet input(field: FormField)}

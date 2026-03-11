@@ -25,20 +25,21 @@
         ...rest
     }: SvelteCounterProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.counter,
         styles[type],
         theme && styles[theme],
         rounded && styles.rounded,
         className
-    ])
+    ]))
 
-    const subtractIcon = minIcon || minusIcon
-    const addIcon = maxIcon || plusIcon
+    const subtractIcon = $derived(minIcon || minusIcon)
+    const addIcon = $derived(maxIcon || plusIcon)
 
-    const styleVariable = width
+    const styleVariable = $derived(width
         ? `--w-counter-width: ${width};`
         : null
+    )
 
     let intervalId: ReturnType<typeof setTimeout>
     let timeoutId: ReturnType<typeof setTimeout>

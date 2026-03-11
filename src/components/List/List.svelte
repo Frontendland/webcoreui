@@ -27,18 +27,18 @@
     let searchValue = $state('')
     let numberOfResults = $state(1)
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.list,
         (secondary && !showSearchBar) && styles.secondary,
         !showSearchBar && styles.container,
         className
-    ])
+    ]))
 
-    const wrapperClasses = classNames([
+    const wrapperClasses = $derived(classNames([
         styles.container,
         secondary && styles.secondary,
         wrapperClassName
-    ])
+    ]))
 
     const search = (event: InputEvent) => {
         searchValue = (event.target as HTMLInputElement).value.toLowerCase()

@@ -19,17 +19,17 @@
         groupClassName
     }: AvatarProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.avatar,
         borderless && styles.borderless,
         className
-    ])
+    ]))
 
-    const groupStyles = classNames([
+    const groupStyles = $derived(classNames([
         styles.group,
         reverse && styles.reverse,
         groupClassName
-    ])
+    ]))
 </script>
 
 {#if Array.isArray(img)}

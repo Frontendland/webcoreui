@@ -16,16 +16,16 @@
         on
     }: SvelteCollapsibleProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.collapsible,
         maxHeight && styles.animated,
         className
-    ])
+    ]))
 
-    const styleVariables = classNames([
+    const styleVariables = $derived(classNames([
         initialHeight && `--w-collapsible-initial-height: ${initialHeight};`,
         maxHeight && `--w-collapsible-max-height: ${maxHeight};`
-    ])
+    ]))
 </script>
 
 <div

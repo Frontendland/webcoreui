@@ -20,17 +20,17 @@
         ...rest
     }: OTPInputProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.wrapper,
         className
-    ])
+    ]))
 
-    const inputs = Array.from({ length }, (_, i) => i + 1)
+    const inputs = $derived(Array.from({ length }, (_, i) => i + 1)
         .reduce<(number | string)[]>((acc, num, i) =>
             groupLength > 0 && i % groupLength === 0 && i !== 0
                 ? [...acc, separator, num]
                 : [...acc, num]
-        , [])
+        , []))
 
     const focus = (direction: 'next' | 'prev', wrapper: HTMLElement | null, clear?: boolean) => {
         const index = Number(wrapper?.dataset.active)

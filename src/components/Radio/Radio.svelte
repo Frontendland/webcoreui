@@ -17,15 +17,16 @@
         ...rest
     }: SvelteRadioProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.radio,
         inline && styles.inline,
         className
-    ])
+    ]))
 
-    const style = color
+    const style = $derived(color
         ? `--w-radio-color: ${color};`
         : null
+    )
 </script>
 
 <div class={classes} style={style}>

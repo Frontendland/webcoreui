@@ -13,11 +13,11 @@
         ...rest
     }: SveltePopoverProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.popover,
         transparent && styles.transparent,
         className
-    ])
+    ]))
 </script>
 
 <dialog

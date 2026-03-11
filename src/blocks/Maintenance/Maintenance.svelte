@@ -14,11 +14,11 @@
         className
     }: MaintenanceProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.maintenance,
         animated && styles.animated,
         className
-    ])
+    ]))
 </script>
 
 <section class={classes}>

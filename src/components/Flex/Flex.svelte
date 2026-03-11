@@ -15,15 +15,15 @@
         ...rest
     }: SvelteFlexProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         'flex',
         getLayoutClasses({ gap, alignment, direction, wrap }),
         className
-    ])
+    ]))
 
-    const componentProps = {
+    const componentProps = $derived({
         class: classes
-    }
+    })
 </script>
 
 <svelte:element this={element} {...componentProps} {...rest}>

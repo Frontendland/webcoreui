@@ -15,7 +15,7 @@
         className
     }: AccordionProps = $props()
 
-    let toggleState = $state(items.map(item => item.expanded ?? false))
+    let toggleState = $derived(items.map(item => item.expanded ?? false))
 
     const toggle = (index: number) => {
         toggleState = toggleState.map((_, i) => index === i
@@ -24,12 +24,12 @@
         )
     }
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.accordion,
         reverse && styles.reverse,
         icon === 'plus' && styles.plus,
         className
-    ])
+    ]))
 </script>
 
 <ul class={classes}>

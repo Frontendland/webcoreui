@@ -11,10 +11,10 @@
         children
     }: SvelteAspectRatioProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.ratio,
         className
-    ])
+    ]))
 </script>
 
 <div class={classes} style={`aspect-ratio: ${ratio.replace(':', '/')};`}>

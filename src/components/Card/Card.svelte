@@ -17,17 +17,17 @@
         ...rest
     }: SvelteCardProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.card,
         secondary && styles.secondary,
         className
-    ])
+    ]))
 
-    const bodyClasses = classNames([
+    const bodyClasses = $derived(classNames([
         styles.body,
         compact && styles.compact,
         bodyClassName
-    ])
+    ]))
 </script>
 
 <svelte:element this={element} class={classes} {...rest}>

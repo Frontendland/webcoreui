@@ -13,11 +13,11 @@
         className
     }: AvatarWithRatingProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         'flex sm items-center',
         styles.avatar,
         className
-    ])
+    ]))
 </script>
 
 <div class={classes}>

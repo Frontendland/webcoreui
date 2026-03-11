@@ -16,19 +16,19 @@
         children
     }: SvelteTimelineProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.timeline,
         theme && theme.split(' ').map(style => styles[style]),
         alternate && styles.alternate,
         centered && styles.centered,
         className
-    ])
+    ]))
 
-    const styleVariables = classNames([
+    const styleVariables = $derived(classNames([
         color && `--w-timeline-color: ${color};`,
         textColor && `--w-timeline-text-color: ${textColor};`,
         counter && `--w-timeline-counter: ${counter};`
-    ])
+    ]))
 </script>
 
 <ul class={classes} style={styleVariables || null}>

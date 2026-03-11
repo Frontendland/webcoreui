@@ -17,7 +17,7 @@
         ...rest
     }: SvelteBadgeProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.badge,
         theme && styles[theme],
         (onClick || hover) && styles.hover,
@@ -25,7 +25,7 @@
         rounded && styles.round,
         transparent && styles.transparent,
         className
-    ])
+    ]))
 </script>
 
 {#if onClick}

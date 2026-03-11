@@ -19,17 +19,18 @@
         children
     }: SvelteBannerProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.banner,
         bottom && styles.bottom,
         padded && styles.padded,
         !sticky && styles.relative,
         className
-    ])
+    ]))
 
-    const style = top
+    const style = $derived(top
         ? `--w-banner-top: ${top}px;`
         : null
+    )
 
     let visible = $state(true)
 </script>

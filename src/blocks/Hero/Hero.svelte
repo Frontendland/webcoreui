@@ -19,12 +19,12 @@
         className
     }: HeroProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.hero,
         img?.src && 'flex column justify-between sm-row sm-items-center',
         reverse && 'sm-row-reverse',
         className
-    ])
+    ]))
 </script>
 
 <section class={classes}>

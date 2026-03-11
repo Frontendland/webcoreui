@@ -13,10 +13,10 @@
         className
     }: SvelteSidebarProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.sidebar,
         className
-    ])
+    ]))
 </script>
 
 <aside class={classes}>

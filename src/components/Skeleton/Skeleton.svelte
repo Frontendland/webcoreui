@@ -15,19 +15,19 @@
         className
     }: SkeletonProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         animate && styles[animate],
         styles[type!],
         styles.skeleton,
         className
-    ])
+    ]))
 
-    const styleVariables = classNames([
+    const styleVariables = $derived(classNames([
         width && `max-width: ${width}px;`,
         height && `max-height: ${height}px;`,
         color && `--w-skeleton-color: ${color};`,
         waveColor && `--w-skeleton-wave-color: ${waveColor};`
-    ])
+    ]))
 </script>
 
 <div class={classes} style={styleVariables}>&nbsp;</div>

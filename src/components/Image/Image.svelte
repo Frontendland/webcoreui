@@ -21,13 +21,13 @@
         ...rest
     }: ImageProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.img,
         center && styles.center,
         full && styles[full],
         rounded && styles[rounded],
         className
-    ])
+    ]))
 </script>
 
 {#snippet img()}

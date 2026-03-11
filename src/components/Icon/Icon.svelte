@@ -10,23 +10,28 @@
         iconSet
     }: IconProps = $props()
 
-    const icons = {
+    const icons = $derived({
         ...iconMap,
         ...(iconSet || {})
-    }
+    })
 
-    const svg = icons[type as keyof typeof iconMap]
+    const svg = $derived.by(() => {
+        const icon = icons[type as keyof typeof iconMap]
 
-    if (!svg) {
-        // eslint-disable-next-line no-console
-        console.error('Cannot find icon type:', type)
-    }
+        if (!icon) {
+            // eslint-disable-next-line no-console
+            console.error('Cannot find icon type:', type)
+        }
 
-    const icon = svg
+        return icon
+    })
+
+    const icon = $derived(svg
         ?.replace('width="24"', `width=${size}`)
         ?.replace('height="24"', color || theme
             ? `height=${size} color=${color || `var(--w-color-${theme})`}`
             : `height=${size}`)
+    )
 </script>
 
 {@html icon}

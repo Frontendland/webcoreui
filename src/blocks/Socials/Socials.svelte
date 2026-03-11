@@ -14,11 +14,6 @@
         className
     }: SocialsProps = $props()
 
-    const classes = classNames([
-        styles.socials,
-        className
-    ])
-
     const getDomain = (str: string) => new URL(str).hostname
         .replace('www.', '')
         .replace('twitter', 'x')
@@ -26,7 +21,7 @@
 </script>
 
 {#if links?.length}
-    <ul class={classes}>
+    <ul class={classNames([styles.socials, className])}>
         {#each links as link}
             <li>
                 <a href={link} target="_blank" rel="noreferrer">

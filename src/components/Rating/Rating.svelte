@@ -24,23 +24,24 @@
         className
     }: RatingProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.rating,
         outline && styles.outline,
         className
-    ])
+    ]))
 
-    const styleVariables = classNames([
+    const styleVariables = $derived(classNames([
         color && `--w-rating-color: ${color};`,
         size && `--w-rating-size: ${size}px;`,
         emptyColor && `--w-rating-empty-color: ${emptyColor};`
-    ])
+    ]))
 
-    const translatedText = text!
+    const translatedText = $derived(text!
         .replace('{0}', `${score}`)
         .replace('{1}', `${total}`)
+    )
 
-    const translatedReviewText = reviewText?.replace('{0}', `${reviewCount}`)
+    const translatedReviewText = $derived(reviewText?.replace('{0}', `${reviewCount}`))
 </script>
 
 

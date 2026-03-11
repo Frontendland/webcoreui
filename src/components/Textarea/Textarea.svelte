@@ -20,12 +20,12 @@
         ...rest
     }: SvelteTextareaProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.textarea,
         className
-    ])
+    ]))
 
-    const useLabel = !!(label || subText)
+    const useLabel = $derived(!!(label || subText))
 </script>
 
 <ConditionalWrapper

@@ -34,18 +34,18 @@
         alert
     }
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.modal,
         transparent && styles.transparent,
         theme && styles[theme],
         className
-    ])
+    ]))
 
-    const close = [
+    const close = $derived([
         showCloseIcon && 'icon',
         closeOnEsc && 'esc',
         closeOnOverlay && 'overlay'
-    ].filter(Boolean).join(',')
+    ].filter(Boolean).join(','))
 </script>
 
 <dialog

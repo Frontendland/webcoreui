@@ -17,18 +17,18 @@
         className
     }: StepperProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.stepper,
         borderless && styles.borderless,
         vertical && styles.vertical,
         className
-    ])
+    ]))
 
-    const styleVariables = [
+    const styleVariables = $derived([
         color && `--w-stepper-color-border: ${color}`,
         completedColor && `--w-stepper-color-complete: ${completedColor}`,
         activeColor && `--w-stepper-color-active: ${activeColor}`
-    ].filter(Boolean).join(';')
+    ].filter(Boolean).join(';'))
 </script>
 
 <ol class={classes} style={styleVariables || null}>

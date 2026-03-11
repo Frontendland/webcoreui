@@ -13,12 +13,12 @@
         children
     }: SvelteRibbonProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.ribbon,
         theme && styles[theme],
         type && styles[type],
         className
-    ])
+    ]))
 </script>
 
 <span

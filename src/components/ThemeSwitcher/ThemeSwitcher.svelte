@@ -20,15 +20,15 @@
     let currentTheme = $state('')
     let toggled = false
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.switcher,
         toggle && styles.toggle,
         className
-    ])
+    ]))
 
-    const primaryTheme = themes[Object.keys(themes)[0]]
-    const secondaryTheme = themes[Object.keys(themes)[1]]
-    const useIcons = primaryIcon && secondaryIcon
+    const primaryTheme = $derived(themes[Object.keys(themes)[0]])
+    const secondaryTheme = $derived(themes[Object.keys(themes)[1]])
+    const useIcons = $derived(primaryIcon && secondaryIcon)
 
     const setTheme = (theme: string | number) => {
         if (typeof theme === 'number') {

@@ -13,17 +13,18 @@
         className
     }: BottomNavigationProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.nav,
         separated && styles.separated,
         maxWidth && styles.bordered,
         floating && styles.floating,
         className
-    ])
+    ]))
 
-    const styleVariable = maxWidth
+    const styleVariable = $derived(maxWidth
         ? `--w-bottom-navigation-max-width: ${maxWidth};`
         : null
+    )
 </script>
 
 <nav class={classes} style={styleVariable}>

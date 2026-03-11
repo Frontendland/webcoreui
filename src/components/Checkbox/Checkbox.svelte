@@ -21,15 +21,16 @@
         ...rest
     }: SvelteCheckboxProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.checkbox,
         label && subText && styles.col,
         className
-    ])
+    ]))
 
-    const style = color
+    const style = $derived(color
         ? `--w-checkbox-color: ${color};`
         : null
+    )
 </script>
 
 <label class={classes} style={style}>

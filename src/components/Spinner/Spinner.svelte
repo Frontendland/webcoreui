@@ -13,18 +13,18 @@
         dashArray
     }: SpinnerProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.spinner,
         dashArray && styles.dashed
-    ])
+    ]))
 
-    const styleVariables = classNames([
+    const styleVariables = $derived(classNames([
         color && `--w-spinner-color: ${color};`,
         width && `--w-spinner-width: ${width}px;`,
         speed && `--w-spinner-speed: ${speed}s;`,
         size && `--w-spinner-size: ${size}px;`,
         dashArray && `--w-spinner-dash: ${dashArray}`
-    ])
+    ]))
 </script>
 
 <svg

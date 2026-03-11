@@ -23,18 +23,18 @@
         ...rest
     }: SvelteInputProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.input,
         theme && styles[theme],
         className
-    ])
+    ]))
 
-    const labelClasses = classNames([
+    const labelClasses = $derived(classNames([
         styles['input-label'],
         labelClassName
-    ])
+    ]))
 
-    const useLabel = !!(label || subText || children)
+    const useLabel = $derived(!!(label || subText || children))
 </script>
 
 <ConditionalWrapper

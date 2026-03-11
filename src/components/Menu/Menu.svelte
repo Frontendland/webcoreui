@@ -16,19 +16,20 @@
         children
     }: SvelteMenuProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.menu,
         className
-    ])
+    ]))
 
-    const containerClasses = classNames([
+    const containerClasses = $derived(classNames([
         styles.container,
         wrapperClassName
-    ])
+    ]))
 
-    const wrapMenu = (logo?.url || logo?.html)
+    const wrapMenu = $derived((logo?.url || logo?.html)
         && items?.length
         && children
+    )
 
     let active = $state(false)
 

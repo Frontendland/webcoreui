@@ -13,9 +13,10 @@
         ...rest
     }: ErrorPageProps = $props()
 
-    const typeStyle = typeColor
+    const typeStyle = $derived(typeColor
         ? `--w-error-page-type-color: ${typeColor};`
         : null
+    )
 </script>
 
 <section class={styles.error} {...rest}>

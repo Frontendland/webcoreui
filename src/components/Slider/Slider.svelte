@@ -19,16 +19,16 @@
         onChange
     }: SvelteSliderProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.slider,
         className
-    ])
+    ]))
 
-    const styleVariables = classNames([
+    const styleVariables = $derived(classNames([
         color && `--w-slider-color: ${color};`,
         background && `--w-slider-background: ${background};`,
         thumb && `--w-slider-thumb: ${thumb};`
-    ])
+    ]))
 </script>
 
 <input

@@ -30,14 +30,14 @@
         alert
     }
 
-    const hasCustomIcon = icon
+    const hasCustomIcon = $derived(icon)
 
-    const classes = [
+    const classes = $derived([
         styles['w-alert'],
         (!hasCustomIcon && !theme) && styles.col,
         theme && styles[theme],
         className
-    ].filter(Boolean).join(' ')
+    ].filter(Boolean).join(' '))
 </script>
 
 <svelte:element this={element} class={classes} {...rest}>

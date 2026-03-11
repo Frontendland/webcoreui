@@ -13,11 +13,11 @@
         children
     }: SvelteTimelineItemProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.item,
         icon && styles['with-icon'],
         className
-    ])
+    ]))
 </script>
 
 <li class={classes}>

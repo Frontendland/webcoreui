@@ -23,10 +23,10 @@
 
     let container: HTMLDivElement
 
-    const styleVariables = classNames([
+    const styleVariables = $derived(classNames([
         `width: ${width}px;`,
         `height: ${height}px;`
-    ])
+    ]))
 
     onMount(() => {
         const img = container.querySelector<HTMLImageElement>('img')

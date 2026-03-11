@@ -15,10 +15,10 @@
         ...rest
     }: SvelteContextMenuProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.ctx,
         className
-    ])
+    ]))
 
     const showContext = (event: MouseEvent) => {
         event.preventDefault()

@@ -13,15 +13,15 @@
         ...rest
     }: SvelteGridProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         'grid',
         getLayoutClasses({ gap, column }),
         className
-    ])
+    ]))
 
-    const componentProps = {
+    const componentProps = $derived({
         class: classes
-    }
+    })
 </script>
 
 <svelte:element this={element} {...componentProps} {...rest}>

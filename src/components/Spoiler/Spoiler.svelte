@@ -14,15 +14,16 @@
         children
     }: SvelteSpoilerProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.spoiler,
         animated && styles.anim,
         block && styles.block
-    ])
+    ]))
 
-    const style = color
+    const style = $derived(color
         ? `--w-spoiler-color: ${color};`
         : null
+    )
 
     const toggle = (event: MouseEvent | KeyboardEvent) => {
         const target = event.currentTarget as HTMLSpanElement

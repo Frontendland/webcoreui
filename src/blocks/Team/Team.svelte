@@ -17,12 +17,12 @@
         className
     }: TeamProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         'grid',
         columns > 1 && 'sm-2',
         columns > 2 && `md-${columns}`,
         className
-    ])
+    ]))
 </script>
 
 {#if members?.length}

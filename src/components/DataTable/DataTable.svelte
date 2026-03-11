@@ -38,32 +38,32 @@
         children
     }: SvelteDataTableProps = $props()
 
-    let filteredData: any = $state(data)
-    let toggledData: any = $state(data)
-    let filteredHeadings: any = $state(headings)
+    let filteredData: any = $derived(data)
+    let toggledData: any = $derived(data)
+    let filteredHeadings: any = $derived(headings)
     let page: number = $state(1)
     let hasActiveFilter: boolean = $state(false)
     let sortOrder = 1
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.table,
         hover && styles.hover,
         striped && styles[`striped-${striped}s`],
         offsetStripe && styles.offset,
         compact && styles.compact,
         maxHeight && styles.scroll
-    ])
+    ]))
 
-    const footerClasses = classNames([
+    const footerClasses = $derived(classNames([
         styles.footer,
         subText && styles.between
-    ])
+    ]))
 
-    const showColumnToggle = headings?.some(heading => {
+    const showColumnToggle = $derived(headings?.some(heading => {
         return typeof heading === 'string' ? false : heading.toggleable
-    })
+    }))
 
-    const columnToggleItems = [{
+    const columnToggleItems = $derived([{
         items: headings?.length ? headings
             .filter(heading => typeof heading !== 'string' && heading.toggleable)
             .map(heading => ({
@@ -73,15 +73,17 @@
                     return (h as HeadingObject).name === (heading as HeadingObject).name
                 }))
             })) : []
-    }]
+    }])
 
-    const columnFilterIndexes = headings?.map(heading => (heading as HeadingObject).filterable)
+    const columnFilterIndexes = $derived(headings?.map(heading => (heading as HeadingObject).filterable)
         .map((heading, index) => heading ? index : null)
         .filter(heading => heading !== null) || []
+    )
 
-    const hasPagination = data?.length && itemsPerPage
+    const hasPagination = $derived(data?.length && itemsPerPage
         ? data.length > itemsPerPage
         : false
+    )
 
     const filter = debounce((event: Event) => {
         const target = event.target as HTMLInputElement

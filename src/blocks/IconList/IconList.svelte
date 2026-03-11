@@ -11,10 +11,10 @@
         className
     }: IconListProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.list,
         className
-    ])
+    ]))
 
     const getColor = (color: string | undefined) => {
         return color
@@ -22,10 +22,10 @@
             : null
     }
 
-    const styleVariables = [
+    const styleVariables = $derived([
         getColor(color),
         columns && `--w-icon-list-columns: ${columns};`
-    ].filter(Boolean).join('')
+    ].filter(Boolean).join(''))
 </script>
 
 <ul class={classes} style={styleVariables || null}>

@@ -20,19 +20,19 @@
         ...rest
     }: SvelteSwitchProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.switch,
         reverse && styles.reverse,
         small && styles.small,
         square && styles.square,
         disabled && styles.disabled,
         className
-    ])
+    ]))
 
-    const styleVariables = classNames([
+    const styleVariables = $derived(classNames([
         offColor && `--w-switch-off-color: ${offColor};`,
         onColor && `--w-switch-on-color: ${onColor};`
-    ])
+    ]))
 </script>
 
 <label class={classes} style={styleVariables || null}>

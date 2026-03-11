@@ -17,13 +17,13 @@
     let active = $state('')
     let tabContainer: HTMLDivElement | undefined = $state()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.tabs,
         theme && styles[theme],
         vertical && styles.vertical,
         even && styles.even,
         className
-    ])
+    ]))
 
     const setTab = (tab: string) => {
         const tabs = tabContainer!.querySelectorAll('[data-tab]')

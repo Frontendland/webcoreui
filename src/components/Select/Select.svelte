@@ -35,29 +35,30 @@
     }: SvelteSelectProps = $props()
 
     let popoverInstance: any
-    let val: string | undefined = $state('')
     let focusByTab = false
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles.select,
         disabled && styles.disabled,
         className
-    ])
+    ]))
 
-    const popoverClasses = classNames([
+    const popoverClasses = $derived(classNames([
         `w-options-${name}`,
         styles.popover
-    ])
+    ]))
 
-    const inferredValue = rest.itemGroups
+    const inferredValue = $derived(rest.itemGroups
         .map((group: ListProps['itemGroups'][0]) => group.items)
         .flat()
-        .find((item: ListProps['itemGroups'][0]['items'][0]) => item.value === value)?.name
+        .find((item: ListProps['itemGroups'][0]['items'][0]) => item.value === value)?.name)
 
-    val = (value && inferredValue) ? inferredValue : value
+    let val = $derived((value && inferredValue) ? inferredValue : value)
 
-    const inputRestProps = Object.fromEntries(
-        Object.entries(rest).filter(([key]) => key.includes('data'))
+    const inputRestProps = $derived(
+        Object.fromEntries(
+            Object.entries(rest).filter(([key]) => key.includes('data'))
+        )
     )
 
     const select = (event: ListEventType) => {

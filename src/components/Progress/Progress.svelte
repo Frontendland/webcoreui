@@ -19,21 +19,21 @@
         className
     }: ProgressProps = $props()
 
-    const classes = classNames([
+    const classes = $derived(classNames([
         styles['w-progress'],
         size && styles[size],
         striped && styles.striped,
         square && styles.square,
         indeterminate && styles.indeterminate,
         className
-    ])
+    ]))
 
-    const styleVariables = classNames([
+    const styleVariables = $derived(classNames([
         color && `--w-progress-color: ${color};`,
         background && `--w-progress-background: ${background};`,
         stripeLight && `--w-progress-stripe-light: ${stripeLight};`,
         stripeDark && `--w-progress-stripe-dark: ${stripeDark};`
-    ])
+    ]))
 
     const currentValue = $derived(indeterminate && !value ? 20 : value)
 </script>
