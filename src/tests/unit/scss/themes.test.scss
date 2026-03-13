@@ -1,0 +1,117 @@
+@use 'true' as *;
+@use '../../../scss/config.scss' as *;
+@use '../../../scss/global/theme.scss' as *;
+
+@include describe('themes') {
+    @include it('Should have AA contrast ratio') {
+        @include assert {
+            @include output {
+                /* Dark */
+                @include validate-theme($themes, 'dark', AA, true);
+
+                /* Light */
+                @include validate-theme($themes, 'light', AA, true);
+
+                /* Midnight */
+                @include validate-theme($themes, 'midnight', AA, true);
+
+                /* Amber */
+                @include validate-theme($themes, 'amber', AA, true);
+
+                /* Nordic */
+                @include validate-theme($themes, 'nordic', AA, true);
+
+                /* Vintage */
+                @include validate-theme($themes, 'vintage', AA, true);
+
+                /* Synthwave */
+                @include validate-theme($themes, 'synthwave', AA, true);
+
+                /* Forest */
+                @include validate-theme($themes, 'forest', AA, true);
+            }
+
+            @include expect {
+                /* Dark */
+                contrast: '[dark primary] - PASSED';
+                contrast: '[dark secondary] - PASSED';
+                contrast: '[dark muted] - PASSED';
+                contrast: '[dark disabled] - PASSED';
+                contrast: '[dark info] - PASSED';
+                contrast: '[dark success] - PASSED';
+                contrast: '[dark warning] - PASSED';
+                contrast: '[dark alert] - PASSED';
+
+                /* Light */
+                contrast: '[light primary] - PASSED';
+                contrast: '[light secondary] - PASSED';
+                contrast: '[light muted] - PASSED';
+                contrast: '[light disabled] - PASSED';
+                contrast: '[light info] - PASSED';
+                contrast: '[light success] - PASSED';
+                contrast: '[light warning] - PASSED';
+                contrast: '[light alert] - PASSED';
+
+                /* Midnight */
+                contrast: '[midnight primary] - PASSED';
+                contrast: '[midnight secondary] - PASSED';
+                contrast: '[midnight muted] - PASSED';
+                contrast: '[midnight disabled] - PASSED';
+                contrast: '[midnight info] - PASSED';
+                contrast: '[midnight success] - PASSED';
+                contrast: '[midnight warning] - PASSED';
+                contrast: '[midnight alert] - PASSED';
+
+                /* Amber */
+                contrast: '[amber primary] - PASSED';
+                contrast: '[amber secondary] - PASSED';
+                contrast: '[amber muted] - PASSED';
+                contrast: '[amber disabled] - PASSED';
+                contrast: '[amber info] - PASSED';
+                contrast: '[amber success] - PASSED';
+                contrast: '[amber warning] - PASSED';
+                contrast: '[amber alert] - PASSED';
+
+                /* Nordic */
+                contrast: '[nordic primary] - PASSED';
+                contrast: '[nordic secondary] - PASSED';
+                contrast: '[nordic muted] - PASSED';
+                contrast: '[nordic disabled] - PASSED';
+                contrast: '[nordic info] - PASSED';
+                contrast: '[nordic success] - PASSED';
+                contrast: '[nordic warning] - PASSED';
+                contrast: '[nordic alert] - PASSED';
+
+                /* Vintage */
+                contrast: '[vintage primary] - PASSED';
+                contrast: '[vintage secondary] - PASSED';
+                contrast: '[vintage muted] - PASSED';
+                contrast: '[vintage disabled] - PASSED';
+                contrast: '[vintage info] - PASSED';
+                contrast: '[vintage success] - PASSED';
+                contrast: '[vintage warning] - PASSED';
+                contrast: '[vintage alert] - PASSED';
+
+                /* Synthwave */
+                contrast: '[synthwave primary] - PASSED';
+                contrast: '[synthwave secondary] - PASSED';
+                contrast: '[synthwave muted] - PASSED';
+                contrast: '[synthwave disabled] - PASSED';
+                contrast: '[synthwave info] - PASSED';
+                contrast: '[synthwave success] - PASSED';
+                contrast: '[synthwave warning] - PASSED';
+                contrast: '[synthwave alert] - PASSED';
+
+                /* Forest */
+                contrast: '[forest primary] - PASSED';
+                contrast: '[forest secondary] - PASSED';
+                contrast: '[forest muted] - PASSED';
+                contrast: '[forest disabled] - PASSED';
+                contrast: '[forest info] - PASSED';
+                contrast: '[forest success] - PASSED';
+                contrast: '[forest warning] - PASSED';
+                contrast: '[forest alert] - PASSED';
+            }
+        }
+    }
+}

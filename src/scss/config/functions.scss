@@ -1,0 +1,41 @@
+@use 'sass:math';
+@use 'sass:color';
+
+@function _linear-channel($c) {
+    $c: math.div($c, 255);
+
+    @if $c <= 0.04045 {
+        @return math.div($c, 12.92);
+    }
+
+    @return math.pow(math.div($c + 0.055, 1.055), 2.4);
+}
+
+@function luminance($color) {
+    $r: _linear-channel(color.channel($color, 'red', $space: rgb));
+    $g: _linear-channel(color.channel($color, 'green', $space: rgb));
+    $b: _linear-channel(color.channel($color, 'blue', $space: rgb));
+
+    @return 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+}
+
+@function contrast($c1, $c2) {
+    $l1: luminance($c1);
+    $l2: luminance($c2);
+
+    @if $l1 < $l2 {
+        $tmp: $l1;
+        $l1: $l2;
+        $l2: $tmp;
+    }
+
+    @return math.div($l1 + 0.05, $l2 + 0.05);
+}
+
+@function wcag-required($level) {
+    @if $level == AAA {
+        @return 7;
+    }
+
+    @return 4.5;
+}

@@ -28,6 +28,7 @@ body {
 
 @mixin setup($customConfig: ()) {
     $config: map.merge($config, $customConfig) !global;
+    $wcagLevel: config('wcagLevel') or AA;
 
     @if (config('includeResets')) {
         @include resets(config('fontRegular'), config('fontBold'));
@@ -50,14 +51,16 @@ body {
     }
 
     @if (config('theme')) {
-        @include theme(config('theme'));
+        @include theme(config('theme'), ':root', $wcagLevel);
     }
 
     @if (config('themes')) {
+        $customThemes: config('customThemes') or ();
+
         @each $theme, $selector in config('themes') {
-            @include theme($theme, $selector);
+            @include theme($theme, $selector, $wcagLevel, $customThemes);
         }
     } @else if (not config('theme')) {
-        @include theme('dark');
+        @include theme('dark', ':root', $wcagLevel);
     }
 }

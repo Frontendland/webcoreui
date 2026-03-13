@@ -6,6 +6,7 @@
 @use 'webcore.config.scss' as *;
 @use './color-palette.scss' as *;
 @use './css-values.scss' as *;
+@use './functions.scss' as *;
 @use './layout.scss' as *;
 @use './typography.scss' as *;
 @use './variables.scss' as *;
@@ -405,4 +406,69 @@
             opacity: $arg;
         }
     }
+}
+
+@mixin validate-contrast($themeName, $tokens, $level, $print) {
+    $required: wcag-required($level);
+    $pairs: (
+        primary: (bg: primary-70, fg: primary),
+        secondary: (bg: primary-70, fg: primary-10),
+        muted: (bg: primary-70, fg: primary-20),
+        disabled: (bg: primary-70, fg: primary-30),
+        info: (bg: info, fg: info-fg),
+        success: (bg: success, fg: success-fg),
+        warning: (bg: warning, fg: warning-fg),
+        alert: (bg: alert, fg: alert-fg)
+    );
+
+    @each $name, $pair in $pairs {
+        $bg: map.get($tokens, map.get($pair, bg));
+        $fg: map.get($tokens, map.get($pair, fg));
+
+        $ratio: contrast($fg, $bg);
+
+        $logName: '#{$themeName} #{$name}';
+
+        @if not $print {
+            $logName: '#{map.get($pair, fg)} against #{map.get($pair, bg)} in theme "#{$themeName}"';
+        }
+
+        @if $ratio < $required {
+            @if $print {
+                contrast: '[#{$logName}] - FAILED: actual: #{$ratio}, required: #{$required} (fg: #{$fg}, bg: #{$bg})';
+            } @else {
+                @warn '#{$logName} is below WCAG #{$level} (actual: #{$ratio}, required: #{$required})';
+            }
+        } @else {
+            @if $print {
+                contrast: '[#{$logName}] - PASSED';
+            }
+        }
+    }
+}
+
+@mixin validate-tokens($referenceMap, $themeName, $tokens) {
+    $referenceKeys: map.keys($referenceMap);
+    $themeKeys: map.keys($tokens);
+
+    @each $key in $referenceKeys {
+        @if not list.index($themeKeys, $key) {
+            @warn 'Theme `#{$themeName}` is missing key `#{$key}`.';
+        }
+    }
+
+    @each $key in $themeKeys {
+        @if not list.index($referenceKeys, $key) {
+            @warn 'Theme `#{$themeName}` has unknown key `#{$key}`.';
+        }
+    }
+}
+
+@mixin validate-theme($themes, $selectedTheme, $level, $print: false) {
+    $referenceName: list.nth(map.keys($themes), 1);
+    $referenceMap: map.get($themes, $referenceName);
+    $tokens: map.get($themes, $selectedTheme);
+
+    @include validate-contrast($selectedTheme, $tokens, $level, $print);
+    @include validate-tokens($referenceMap, $selectedTheme, $tokens);
 }

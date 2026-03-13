@@ -1,201 +1,216 @@
+@use 'sass:map';
 @use '../config' as *;
 
-@mixin theme($theme: 'dark', $selector: ':root') {
-    @if $theme == 'dark' {
-        #{$selector} {
-            --w-color-scheme: dark;
-            --w-color-primary: #FFF;
-            --w-color-primary-10: #DDD;
-            --w-color-primary-20: #BBB;
-            --w-color-primary-30: #757575;
-            --w-color-primary-40: #333;
-            --w-color-primary-50: #252525;
-            --w-color-primary-60: #111;
-            --w-color-primary-70: #000;
+$themes: (
+    dark: (
+        scheme: dark,
+        primary: hsl(0,0%,97%),
+        primary-10: hsl(0,0%,82%),
+        primary-20: hsl(0,0%,69%),
+        primary-30: hsl(0,0%,48%),
+        primary-40: hsl(0,0%,28%),
+        primary-50: hsl(0,0%,18%),
+        primary-60: hsl(0,0%,8%),
+        primary-70: hsl(0,0%,4%),
+        info: hsl(192,80%,50%),
+        info-accent: hsl(192,100%,60%),
+        info-fg: hsl(0,0%,0%),
+        success: hsl(162,60%,42%),
+        success-accent: hsl(162,62%,48%),
+        success-fg: hsl(0,0%,0%),
+        warning: hsl(30,100%,63%),
+        warning-accent: hsl(32,100%,68%),
+        warning-fg: hsl(0,0%,0%),
+        alert: hsl(0,68%,52%),
+        alert-accent: hsl(0,80%,62%),
+        alert-fg: hsl(0,0%,100%),
+        overlay: hsla(0,0%,0%,0.62)
+    ),
+    light: (
+        scheme: light,
+        primary: hsl(0,0%,5%),
+        primary-10: hsl(0,0%,12%),
+        primary-20: hsl(0,0%,25%),
+        primary-30: hsl(0,0%,44%),
+        primary-40: hsl(0,0%,68%),
+        primary-50: hsl(0,0%,80%),
+        primary-60: hsl(0,0%,92%),
+        primary-70: hsl(0,0%,97%),
+        info: hsl(200,100%,34%),
+        info-accent: hsl(200,100%,42%),
+        info-fg: hsl(0,0%,100%),
+        success: hsl(155,80%,26%),
+        success-accent: hsl(155,72%,36%),
+        success-fg: hsl(0,0%,100%),
+        warning: hsl(32,100%,35%),
+        warning-accent: hsl(32,100%,50%),
+        warning-fg: hsl(0,0%,100%),
+        alert: hsl(0,76%,36%),
+        alert-accent: hsl(0,72%,46%),
+        alert-fg: hsl(0,0%,100%),
+        overlay: hsla(0,0%,0%,0.62)
+    ),
+    midnight: (
+        scheme: dark,
+        primary: hsl(213,60%,95%),
+        primary-10: hsl(213,40%,82%),
+        primary-20: hsl(213,30%,68%),
+        primary-30: hsl(213,25%,50%),
+        primary-40: hsl(213,35%,28%),
+        primary-50: hsl(213,42%,22%),
+        primary-60: hsl(213,55%,10%),
+        primary-70: hsl(213,68%,5%),
+        info: hsl(214,100%,67%),
+        info-accent: hsl(214,100%,78%),
+        info-fg: hsl(0,0%,0%),
+        success: hsl(171,83%,38%),
+        success-accent: hsl(162,62%,48%),
+        success-fg: hsl(0,0%,0%),
+        warning: hsl(31,100%,55%),
+        warning-accent: hsl(31,100%,65%),
+        warning-fg: hsl(0,0%,0%),
+        alert: hsl(0,77%,50%),
+        alert-accent: hsl(0,90%,68%),
+        alert-fg: hsl(0,0%,100%),
+        overlay: hsla(213,100%,7%,0.62)
+    ),
+    amber: (
+        scheme: dark,
+        primary: hsl(40,20%,95%),
+        primary-10: hsl(40,15%,82%),
+        primary-20: hsl(40,20%,70%),
+        primary-30: hsl(40,10%,48%),
+        primary-40: hsl(40,10%,22%),
+        primary-50: hsl(40,8%,17%),
+        primary-60: hsl(40,5%,10%),
+        primary-70: hsl(40,5%,5%),
+        info: hsl(180,58%,52%),
+        info-accent: hsl(192,95%,58%),
+        info-fg: hsl(0,0%,0%),
+        success: hsl(88,62%,52%),
+        success-accent: hsl(88,72%,62%),
+        success-fg: hsl(0,0%,0%),
+        warning: hsl(42,98%,52%),
+        warning-accent: hsl(38,98%,64%),
+        warning-fg: hsl(0,0%,0%),
+        alert: hsl(340,100%,69%),
+        alert-accent: hsl(340,90%,72%),
+        alert-fg: hsl(0,0%,0%),
+        overlay: hsla(0,0%,0%,0.62)
+    ),
+    nordic: (
+        scheme: light,
+        primary: hsl(200,25%,7%),
+        primary-10: hsl(200,22%,15%),
+        primary-20: hsl(200,18%,27%),
+        primary-30: hsl(200,14%,43%),
+        primary-40: hsl(200,16%,68%),
+        primary-50: hsl(200,18%,82%),
+        primary-60: hsl(200,22%,92%),
+        primary-70: hsl(200,28%,97%),
+        info: hsl(205,82%,32%),
+        info-accent: hsl(205,88%,42%),
+        info-fg: hsl(0,0%,100%),
+        success: hsl(162,65%,26%),
+        success-accent: hsl(162,68%,36%),
+        success-fg: hsl(0,0%,100%),
+        warning: hsl(36,95%,34%),
+        warning-accent: hsl(36,95%,46%),
+        warning-fg: hsl(0,0%,100%),
+        alert: hsl(356,68%,38%),
+        alert-accent: hsl(356,72%,50%),
+        alert-fg: hsl(0,0%,100%),
+        overlay: hsla(200,30%,8%,0.58)
+    ),
+    vintage: (
+        scheme: light,
+        primary: hsl(25,55%,8%),
+        primary-10: hsl(25,45%,16%),
+        primary-20: hsl(25,38%,30%),
+        primary-30: hsl(25,28%,42%),
+        primary-40: hsl(25,30%,66%),
+        primary-50: hsl(25,32%,78%),
+        primary-60: hsl(25,38%,89%),
+        primary-70: hsl(25,62%,95%),
+        info: hsl(211,62%,45%),
+        info-accent: hsl(211,62%,55%),
+        info-fg: hsl(0,0%,100%),
+        success: hsl(166,52%,30%),
+        success-accent: hsl(166,52%,42%),
+        success-fg: hsl(0,0%,100%),
+        warning: hsl(28,80%,52%),
+        warning-accent: hsl(28,80%,60%),
+        warning-fg: hsl(0,0%,0%),
+        alert: hsl(350,52%,38%),
+        alert-accent: hsl(350,60%,50%),
+        alert-fg: hsl(0,0%,100%),
+        overlay: hsla(25,30%,16%,0.62)
+    ),
+    synthwave: (
+        scheme: dark,
+        primary: hsl(242,20%,96%),
+        primary-10: hsl(242,20%,88%),
+        primary-20: hsl(286,62%,84%),
+        primary-30: hsl(286,55%,60%),
+        primary-40: hsl(272,68%,38%),
+        primary-50: hsl(265,68%,30%),
+        primary-60: hsl(228,62%,12%),
+        primary-70: hsl(228,72%,6%),
+        info: hsl(205,100%,56%),
+        info-accent: hsl(192,100%,70%),
+        info-fg: hsl(0,0%,0%),
+        success: hsl(86,100%,43%),
+        success-accent: hsl(90,100%,62%),
+        success-fg: hsl(0,0%,0%),
+        warning: hsl(28,100%,58%),
+        warning-accent: hsl(28,100%,68%),
+        warning-fg: hsl(0,0%,0%),
+        alert: hsl(0,80%,50%),
+        alert-accent: hsl(0,80%,66%),
+        alert-fg: hsl(0,0%,100%),
+        overlay: hsla(258,80%,8%,0.76)
+    ),
+    forest: (
+        scheme: dark,
+        primary: hsl(150,18%,95%),
+        primary-10: hsl(150,14%,82%),
+        primary-20: hsl(150,12%,68%),
+        primary-30: hsl(150,10%,48%),
+        primary-40: hsl(150,18%,28%),
+        primary-50: hsl(150,22%,18%),
+        primary-60: hsl(150,30%,10%),
+        primary-70: hsl(150,38%,4%),
+        info: hsl(178,55%,38%),
+        info-accent: hsl(178,62%,50%),
+        info-fg: hsl(0,0%,0%),
+        success: hsl(122,45%,42%),
+        success-accent: hsl(122,50%,55%),
+        success-fg: hsl(0,0%,0%),
+        warning: hsl(38,95%,52%),
+        warning-accent: hsl(38,100%,62%),
+        warning-fg: hsl(0,0%,0%),
+        alert: hsl(4,72%,50%),
+        alert-accent: hsl(4,80%,62%),
+        alert-fg: hsl(0,0%,100%),
+        overlay: hsla(150,40%,3%,0.68)
+    )
+);
 
-            --w-color-info: #0ABDE3;
-            --w-color-info-accent: #48DBFB;
-            --w-color-info-fg: #000;
-            --w-color-success: #10AC84;
-            --w-color-success-accent: #1DD1A1;
-            --w-color-success-fg: #000;
-            --w-color-warning: #FF9F43;
-            --w-color-warning-accent: #f7AA61;
-            --w-color-warning-fg: #000;
-            --w-color-alert: #de3233;
-            --w-color-alert-accent: #EE5253;
-            --w-color-alert-fg: #FFF;
-            --w-color-overlay: #0000009e;
-        }
+@mixin theme($theme: 'dark', $selector: ':root', $level: AA, $customThemes: ()) {
+    $allThemes: map.merge($themes, $customThemes);
+    $selectedTheme: map.get($allThemes, $theme);
+
+    @include validate-theme($allThemes, $theme, $level);
+
+    @if ($selectedTheme == null) {
+        @warn "Unknown theme `#{$theme}`. Defaulting to `dark`. Available themes: #{map.keys($allThemes)}.";
+
+        $selectedTheme: map.get($allThemes, 'dark');
     }
 
-    @if $theme == 'light' {
-        #{$selector} {
-            --w-color-scheme: light;
-            --w-color-primary: #000;
-            --w-color-primary-10: #111;
-            --w-color-primary-20: #252525;
-            --w-color-primary-30: #757575;
-            --w-color-primary-40: #BBB;
-            --w-color-primary-50: #DDD;
-            --w-color-primary-60: #EEE;
-            --w-color-primary-70: #FFF;
-
-            --w-color-info: #0073A8;
-            --w-color-info-accent: #009FCC;
-            --w-color-info-fg: #FFF;
-            --w-color-success: #0A754D;
-            --w-color-success-accent: #16A062;
-            --w-color-success-fg: #FFF;
-            --w-color-warning: #C76D00;
-            --w-color-warning-accent: #E3861D;
-            --w-color-warning-fg: #FFF;
-            --w-color-alert: #A51415;
-            --w-color-alert-accent: #C62828;
-            --w-color-alert-fg: #FFF;
-            --w-color-overlay: #0000009e;
-        }
-    }
-
-    @if $theme == 'midnight' {
-        #{$selector} {
-            --w-color-scheme: dark;
-            --w-color-primary: #FFF;
-            --w-color-primary-10: #EEE;
-            --w-color-primary-20: #a5b7cf;
-            --w-color-primary-30: #667f9e;
-            --w-color-primary-40: #2d4463;
-            --w-color-primary-50: #20344e;
-            --w-color-primary-60: #101a2d;
-            --w-color-primary-70: #061321;
-
-            --w-color-info: #57a0ff;
-            --w-color-info-accent: #71afff;
-            --w-color-info-fg: #000;
-            --w-color-success: #10b59c;
-            --w-color-success-accent: #1DD1A1;
-            --w-color-success-fg: #000;
-            --w-color-warning: #FF9F43;
-            --w-color-warning-accent: #feb570;
-            --w-color-warning-fg: #000;
-            --w-color-alert: #ed3b3c;
-            --w-color-alert-accent: #fb6161;
-            --w-color-alert-fg: #FFF;
-            --w-color-overlay: #0017239e;
-        }
-    }
-
-    @if $theme == 'vintage' {
-        #{$selector} {
-            --w-color-scheme: light;
-            --w-color-primary: #1A110D;
-            --w-color-primary-10: #2C1F18; 
-            --w-color-primary-20: #8B5A3C; 
-            --w-color-primary-30: #c09d82;
-            --w-color-primary-40: #B89678;
-            --w-color-primary-50: #D8BFA5;
-            --w-color-primary-60: #F0DCC4;
-            --w-color-primary-70: #F6E8DA;
-
-            --w-color-info: #3F73B7;
-            --w-color-info-accent: #4992f0; 
-            --w-color-info-fg: #FFF;
-            --w-color-success: #33907f;
-            --w-color-success-accent: #1BB890;
-            --w-color-success-fg: #FFF;
-            --w-color-warning: #e08447;
-            --w-color-warning-accent: #f1985c;
-            --w-color-warning-fg: #000;
-            --w-color-alert: #923B46;
-            --w-color-alert-accent: #C33F50;
-            --w-color-alert-fg: #FFF;
-            --w-color-overlay: #33211B9E;
-        }
-    }
-
-    @if $theme == 'amber' {
-        #{$selector} {
-            --w-color-scheme: dark;
-            --w-color-primary: #FFF;
-            --w-color-primary-10: #DDD;
-            --w-color-primary-20: #FFF3DB;
-            --w-color-primary-30: #757575;
-            --w-color-primary-40: #232323;
-            --w-color-primary-50: #312e31;
-            --w-color-primary-60: #1b1b1b;
-            --w-color-primary-70: #111;
-
-            --w-color-info: #78dcdc;
-            --w-color-info-accent: #48DBFB;
-            --w-color-info-fg: #000;
-            --w-color-success: #a9dc62;
-            --w-color-success-accent: #97da3b;
-            --w-color-success-fg: #000;
-            --w-color-warning: #FCBA28;
-            --w-color-warning-accent: #f7AA61;
-            --w-color-warning-fg: #000;
-            --w-color-alert: #ff6188;
-            --w-color-alert-accent: #EE5253;
-            --w-color-alert-fg: #000;
-            --w-color-overlay: #0000009e;
-        }
-    }
-
-    @if $theme == 'synthwave' {
-        #{$selector} {
-            --w-color-scheme: dark;
-            --w-color-primary: #FFF;
-            --w-color-primary-10: #F0F0F0;
-            --w-color-primary-20: #F6C8A9;
-            --w-color-primary-30: #E5B1FF;
-            --w-color-primary-40: #761EAA;
-            --w-color-primary-50: #912BCE;
-            --w-color-primary-60: #0f1b33;
-            --w-color-primary-70: #060E21;
-
-            --w-color-info: #1c98ff;
-            --w-color-info-accent: #6be4ff;
-            --w-color-info-fg: #000;
-            --w-color-success: #7ADA00;
-            --w-color-success-accent: #A8FF4D;
-            --w-color-success-fg: #000;
-            --w-color-warning: #FF912F;
-            --w-color-warning-accent: #FFA95A;
-            --w-color-warning-fg: #000;
-            --w-color-alert: #F63131;
-            --w-color-alert-accent: #E84647;
-            --w-color-alert-fg: #FFF;
-            --w-color-overlay: #13002cc2;
-        }
-    }
-
-    @if $theme == 'velvet' {
-        #{$selector} {
-            --w-color-scheme: dark;
-            --w-color-primary: #EDE0E0;
-            --w-color-primary-10: #D6C1C1;
-            --w-color-primary-20: #fab6b6;
-            --w-color-primary-30: #c47272;
-            --w-color-primary-40: #661B1B;
-            --w-color-primary-50: #520F0F;
-            --w-color-primary-60: #2E0B0B;
-            --w-color-primary-70: #180505;
-
-            --w-color-info: #36587A;
-            --w-color-info-accent: #4F7BAF;
-            --w-color-info-fg: #FFF;
-            --w-color-success: #f2b900;
-            --w-color-success-accent: #ffd341;
-            --w-color-success-fg: #000;
-            --w-color-warning: #e5601e;
-            --w-color-warning-accent: #E4783D;
-            --w-color-warning-fg: #000;
-            --w-color-alert: #B8001F;
-            --w-color-alert-accent: #E00028;
-            --w-color-alert-fg: #FFF;
-            --w-color-overlay: #13050599;
+    #{$selector} {
+        @each $token, $value in $selectedTheme {
+            --w-color-#{$token}: #{$value};
         }
     }
 }
-
-
