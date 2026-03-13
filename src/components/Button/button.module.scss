@@ -12,14 +12,16 @@
     cursor: pointer;
 
     &[disabled] {
-        cursor: no-drop;
-        @include background(primary-20);
+        @include visibility(.5);
+
+        pointer-events: none;
+        cursor: not-allowed;
     }
 
     &:hover {
         @include background(primary-20);
     }
-    
+
     &.secondary {
         @include typography(primary);
         @include background(primary-50);
@@ -30,18 +32,13 @@
     }
 
     &.outline {
-        @include typography(primary-20);
+        @include typography(primary);
         @include background(transparent);
-        box-shadow: inset 0px 0px 0px 1px var(--w-color-primary-20);
-        
-        &:hover {
-            @include typography(primary);
-            box-shadow: inset 0px 0px 0px 1px var(--w-color-primary);
-        }
+        box-shadow: inset 0px 0px 0px 1px var(--w-color-primary-40);
 
-        &[disabled] {
-            @include typography(primary-30);
-            box-shadow: inset 0px 0px 0px 1px var(--w-color-primary-30);
+        &:hover {
+            @include background(primary-60);
+            box-shadow: inset 0px 0px 0px 1px var(--w-color-primary);
         }
     }
 

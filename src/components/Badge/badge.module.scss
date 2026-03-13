@@ -21,8 +21,7 @@
         }
 
         &.outline:hover {
-            @include typography(primary);
-            @include background(transparent);
+            @include background(primary-60);
             box-shadow: inset 0px 0px 0px 1px var(--w-color-primary);
         }
 
@@ -54,14 +53,14 @@
     }
 
     &.outline {
-        @include typography(primary-20);
-        @include background(primary-70);
-        box-shadow: inset 0px 0px 0px 1px var(--w-color-primary-20);
+        @include typography(primary);
+        @include background(transparent);
+        box-shadow: inset 0px 0px 0px 1px var(--w-color-primary-40);
     }
 
     &.flat {
         @include typography(primary);
-        @include background(primary-70);
+        @include background(transparent);
     }
 
     &.info {
