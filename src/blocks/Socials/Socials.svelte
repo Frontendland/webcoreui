@@ -14,10 +14,16 @@
         className
     }: SocialsProps = $props()
 
-    const getDomain = (str: string) => new URL(str).hostname
-        .replace('www.', '')
-        .replace('twitter', 'x')
-        .split('.')[0]
+    const getDomain = (str: string) => {
+        try {
+            return new URL(str).hostname
+                .replace('www.', '')
+                .replace('twitter', 'x')
+                .split('.')[0]
+        } catch {
+            return 'website'
+        }
+    }
 </script>
 
 {#if links?.length}

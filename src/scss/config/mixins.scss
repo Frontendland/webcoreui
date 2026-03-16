@@ -426,7 +426,6 @@
         $fg: map.get($tokens, map.get($pair, fg));
 
         $ratio: contrast($fg, $bg);
-
         $logName: '#{$themeName} #{$name}';
 
         @if not $print {
