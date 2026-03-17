@@ -55,7 +55,7 @@ const List = ({
                 .filter(item => {
                     return item.value?.toLowerCase().includes(value)
                         || item.subText?.toLowerCase().includes(value)
-                        || item.name.toLowerCase().includes(value)
+                        || item.name?.toLowerCase().includes(value)
                 }).length
         )
     }
@@ -127,7 +127,7 @@ const List = ({
                                 data-hidden={(
                                     !item.value?.toLowerCase().includes(searchValue)
                                     && !item.subText?.toLowerCase().includes(searchValue)
-                                    && !item.name.toLowerCase().includes(searchValue)
+                                    && !item.name?.toLowerCase().includes(searchValue)
                                 ) ? true : null}
                                 onClick={item.disabled ? undefined : select}
                                 onKeyUp={item.disabled ? undefined : selectByKey}

@@ -40,7 +40,7 @@
         wrapperClassName
     ]))
 
-    const search = (event: InputEvent) => {
+    const search = (event: Event) => {
         searchValue = (event.target as HTMLInputElement).value.toLowerCase()
 
         numberOfResults = itemGroups
@@ -49,7 +49,7 @@
             .filter(item => {
                 return item.value?.toLowerCase().includes(searchValue)
                     || item.subText?.toLowerCase().includes(searchValue)
-                    || item.name.toLowerCase().includes(searchValue)
+                    || item.name?.toLowerCase().includes(searchValue)
             }).length
     }
 
@@ -118,7 +118,7 @@
                     data-hidden={(
                         !item.value?.toLowerCase().includes(searchValue)
                         && !item.subText?.toLowerCase().includes(searchValue)
-                        && !item.name.toLowerCase().includes(searchValue)
+                        && !item.name?.toLowerCase().includes(searchValue)
                     ) ? true : null}
                     onclick={item.disabled ? null : select}
                     onkeyup={item.disabled ? null : selectByKey}
