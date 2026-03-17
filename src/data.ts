@@ -1,7 +1,20 @@
 /* eslint-disable max-len */
 /* eslint-disable max-lines */
+import type { AccordionProps } from '@components/Accordion/accordion'
+import type { AvatarProps } from '@components/Avatar/avatar'
+import type { BottomNavigationProps } from '@components/BottomNavigation/bottomnavigation'
+import type { BreadcrumbProps } from '@components/Breadcrumb/breadcrumb'
 import type { ButtonProps } from '@components/Button/button'
+import type { DataTableProps } from '@components/DataTable/datatable'
+import type { ListProps } from '@components/List/list'
+import type { MasonryProps } from '@components/Masonry/masonry'
+import type { MenuProps } from '@components/Menu/menu'
+import type { PaginationProps } from '@components/Pagination/pagination'
 import type { SidebarProps } from '@components/Sidebar/sidebar'
+import type { SpeedDialProps } from '@components/SpeedDial/speeddial'
+import type { StepperProps } from '@components/Stepper/stepper'
+import type { TabsProps } from '@components/Tabs/tabs'
+import type { ThemeSwitcherProps } from '@components/ThemeSwitcher/themeswitcher'
 
 import Alert from '@components/Alert/Alert.astro'
 import Box from '@static/Box.astro'
@@ -26,12 +39,15 @@ import fileIcon from '@blocks/Icon/icons/file.svg?raw'
 import rocketIcon from '@blocks/Icon/icons/rocket.svg?raw'
 import terminalIcon from '@blocks/Icon/icons/terminal.svg?raw'
 
+import type { EmptyProps } from '@blocks/Empty/empty'
+import type { GridWithIconsProps } from '@blocks/GridWithIcons/gridWithIcons'
+import type { TeamProps } from '@blocks/Team/team'
 import type { AuthenticationProps } from '@templates/Authentication/authentication'
 import type { BlogProps } from '@templates/Blog/blog'
 import type { PortfolioProps } from '@templates/Portfolio/portfolio'
 import type { ProductPageProps } from '@templates/ProductPage/productPage'
 
-export const accordionItems = [{
+export const accordionItems: AccordionProps['items'] = [{
     title: 'Do you offer support?',
     content: 'We provide 30 days of support.'
 }, {
@@ -42,7 +58,7 @@ export const accordionItems = [{
     content: 'Hopefully.'
 }]
 
-export const avatarGroup = [
+export const avatarGroup: AvatarProps['img'] = [
     '/img/avatar0.png',
     '/img/avatar1.png',
     '/img/avatar2.png',
@@ -50,7 +66,7 @@ export const avatarGroup = [
     '/img/avatar4.png'
 ]
 
-export const avatarGroupAlt1 = [
+export const avatarGroupAlt1: AvatarProps['alt'] = [
     'avatar0',
     'avatar1',
     'avatar2',
@@ -58,7 +74,7 @@ export const avatarGroupAlt1 = [
     'avatar4'
 ]
 
-export const avatarGroupAlt2 = [
+export const avatarGroupAlt2: AvatarProps['alt'] = [
     'Marcus',
     'Giuseppe',
     'Emily',
@@ -66,7 +82,7 @@ export const avatarGroupAlt2 = [
     'Jonathan'
 ]
 
-export const tabItemsExample = [{
+export const tabItemsExample: TabsProps['items'] = [{
     label: `${infoIcon} Intro`,
     value: 'intro',
     active: true
@@ -75,7 +91,7 @@ export const tabItemsExample = [{
     value: 'setup'
 }]
 
-export const tabItems = [{
+export const tabItems: TabsProps['items'] = [{
     label: 'Introduction',
     value: 'intro',
     active: true
@@ -87,19 +103,19 @@ export const tabItems = [{
     value: 'conclusion'
 }]
 
-export const tabsWithIcons = [
+export const tabsWithIcons: TabsProps['items'] = [
     { ...tabItems[0], label: `${infoIcon} Introduction` },
     { ...tabItems[1], label: `${gitHubIcon} Setup` },
     { ...tabItems[2], label: `${successIcon} Conclusion`, disabled: true }
 ]
-export const inactiveTabs = tabItems.map(item => ({ ...item, active: false }))
-export const disabledTabs = [
+export const inactiveTabs: TabsProps['items'] = tabItems.map(item => ({ ...item, active: false }))
+export const disabledTabs: TabsProps['items'] = [
     { ...tabItems[0] },
     { ...tabItems[1] },
     { ...tabItems[2], disabled: true }
 ]
 
-export const overflowTabs = Array(10).fill({
+export const overflowTabs: TabsProps['items'] = Array(10).fill({
     label: '',
     value: 0
 }).map((_, index) => ({
@@ -107,18 +123,18 @@ export const overflowTabs = Array(10).fill({
     value: `tab-${index + 1}`
 }))
 
-export const menu = [
+export const menu: MenuProps['items'] = [
     { name: 'Home', href: '/' },
     { name: 'Docs', href: '/docs' }
 ]
 
-export const menuLogo = {
+export const menuLogo: MenuProps['logo'] = {
     url: '/img/logo.png',
     width: 25,
     height: 25
 }
 
-export const themes = {
+export const themes: ThemeSwitcherProps['themes'] = {
     '#252525': 'dark',
     '#DDD': 'light',
     '#415A77': 'midnight',
@@ -129,18 +145,18 @@ export const themes = {
     '#3B9B3E': 'forest'
 }
 
-export const toggleThemes = {
+export const toggleThemes: ThemeSwitcherProps['themes'] = {
     '#252525': 'dark',
     '#FFF': 'light'
 }
 
-export const listPreview = [{
+export const listPreview: ListProps['itemGroups'] = [{
     items: [
         { name: 'Switch theme', value: 'theme', icon: moonIcon }
     ]
 }]
 
-export const list = [{
+export const list: ListProps['itemGroups'] = [{
     items: [
         { name: 'Create issue', value: 'new' },
         { name: 'Knowledge base', href: '#' },
@@ -148,7 +164,7 @@ export const list = [{
     ]
 }]
 
-export const listWithIcons = [{
+export const listWithIcons: ListProps['itemGroups'] = [{
     items: [
         { name: 'Create issue', value: 'new', icon: gitHubIcon },
         { name: 'Knowledge base', href: '#', icon: infoIcon },
@@ -156,7 +172,7 @@ export const listWithIcons = [{
     ]
 }]
 
-export const listWithSubText = [{
+export const listWithSubText: ListProps['itemGroups'] = [{
     items: [
         {
             name: 'Create issue',
@@ -174,7 +190,7 @@ export const listWithSubText = [{
     ]
 }]
 
-export const listWithGroups = [
+export const listWithGroups: ListProps['itemGroups'] = [
     {
         title: 'Suggestions',
         items: [
@@ -203,7 +219,7 @@ export const listWithGroups = [
     }
 ]
 
-export const listWithStates = [
+export const listWithStates: ListProps['itemGroups'] = [
     {
         title: listWithGroups[0].title,
         items: [
@@ -222,13 +238,13 @@ export const listWithStates = [
     listWithGroups[1]
 ]
 
-export const pages = [
+export const pages: PaginationProps['pages'] = [
     { label: 1 },
     { label: 2, active: true },
     { label: 3 }
 ]
 
-export const manyPages = [
+export const manyPages: PaginationProps['pages'] = [
     { label: 1 },
     { label: 2, active: true },
     { label: 3 },
@@ -237,30 +253,30 @@ export const manyPages = [
     { label: 6 }
 ]
 
-export const pagesWithCustomLabels = [
+export const pagesWithCustomLabels: PaginationProps['pages'] = [
     { label: 'Latest' },
     { label: 'Trending', active: true }
 ]
 
-export const headings = [
+export const headings: DataTableProps['headings'] = [
     { name: 'User ID', toggleable: true, sortable: true, filterable: true },
     { name: 'Score', toggleable: true, sortable: true, filterable: true },
     'Status'
 ]
 
-export const toggleableHeadings = [
+export const toggleableHeadings: DataTableProps['headings'] = [
     { name: 'User ID', toggleable: true },
     { name: 'Score', toggleable: true },
     'Status'
 ]
 
-export const filterableHeadings = [
+export const filterableHeadings: DataTableProps['headings'] = [
     { name: 'User ID', toggleable: true, filterable: true },
     { name: 'Score', toggleable: true, filterable: true },
     'Status'
 ]
 
-export const dataTableEntries = [
+export const dataTableEntries: DataTableProps['data'] = [
     ['#1', '47', 'suspended'],
     ['#2', '195', 'inactive'],
     ['#3', '177', 'inactive'],
@@ -275,31 +291,31 @@ export const dataTableEntries = [
     ['#12', '160', 'inactive']
 ]
 
-export const breadcrumbs = [
+export const breadcrumbs: BreadcrumbProps['items'] = [
     { label: 'Home', href: '/' },
     { label: 'Docs', href: '/docs' },
     { label: 'Components', href: '/docs/components' }
 ]
 
-export const breadcrumbsWithIcon = [
+export const breadcrumbsWithIcon: BreadcrumbProps['items'] = [
     { icon: homeIcon, href: '/' },
     { label: 'Docs', href: '/docs' },
     { label: 'Components', href: '/docs/components' }
 ]
 
-export const breadcrumbsWithIcons = [
+export const breadcrumbsWithIcons: BreadcrumbProps['items'] = [
     { icon: homeIcon, label: 'Home', href: '/' },
     { icon: fileIcon, label: 'Docs', href: '/docs' },
     { icon: componentsIcon, label: 'Components', href: '/docs/components' }
 ]
 
-export const breadcrumbsWithIconsOnly = [
+export const breadcrumbsWithIconsOnly: BreadcrumbProps['items'] = [
     { icon: homeIcon, href: '/' },
     { icon: fileIcon, href: '/docs' },
     { icon: componentsIcon, href: '/docs/components' }
 ]
 
-export const itemGroup1 = [{
+export const itemGroup1: SidebarProps['groups'] = [{
     items: [
         { name: 'Home', href: '#' },
         { name: 'Docs', href: '#' },
@@ -307,7 +323,7 @@ export const itemGroup1 = [{
     ]
 }]
 
-export const itemGroup2 = [{
+export const itemGroup2: SidebarProps['groups'] = [{
     items: [
         { name: 'CSS Config', href: '#' },
         { name: 'Styles', href: '#' },
@@ -315,12 +331,12 @@ export const itemGroup2 = [{
     ]
 }]
 
-export const itemGroups = [
+export const itemGroups: SidebarProps['groups'] = [
     { items: itemGroup1[0].items },
     { items: itemGroup2[0].items }
 ]
 
-export const itemGroupsWithTitle = [
+export const itemGroupsWithTitle: SidebarProps['groups'] = [
     {
         title: 'SITEMAP',
         items: itemGroup1[0].items
@@ -361,7 +377,7 @@ export const itemGroupsWithIcons: SidebarProps['groups'] = [
     }
 ]
 
-export const masonryItems = [
+export const masonryItems: MasonryProps['items'] = [
     { component: Box, props: { height: 100 }, children: 1 },
     { component: Box, props: { height: 50 }, children: 2 },
     { component: Box, props: { height: 70 }, children: 3 },
@@ -370,7 +386,7 @@ export const masonryItems = [
     { component: Box, props: { height: 120 }, children: 6 }
 ]
 
-export const masonryComponentItems = [
+export const masonryComponentItems: MasonryProps['items'] = [
     { component: Alert, children: 1 },
     { component: Alert, props: { theme: 'info' }, children: 2 },
     { component: Alert, children: 3 },
@@ -399,37 +415,37 @@ export const reactMasonryComponentItems = masonryComponentItems.map(item => ({
     component: ReactAlert
 }))
 
-export const stepper = [
+export const stepper: StepperProps['items'] = [
     { title: 'Setup' },
     { title: 'Configure' },
     { title: 'Finish' }
 ]
 
-export const stepperWithSubTitle = [
+export const stepperWithSubTitle: StepperProps['items'] = [
     { title: 'Setup', subTitle: 'Get ready' },
     { title: 'Configure', subTitle: 'Preferences' },
     { title: 'Finish', subTitle: 'Final steps' }
 ]
 
-export const completedStepper = [
+export const completedStepper: StepperProps['items'] = [
     { title: 'Setup', subTitle: 'Get ready', completed: true },
     { title: 'Configure', subTitle: 'Preferences' },
     { title: 'Finish', subTitle: 'Final steps' }
 ]
 
-export const activeStepper = [
+export const activeStepper: StepperProps['items'] = [
     { title: 'Setup', subTitle: 'Get ready', completed: true },
     { title: 'Configure', subTitle: 'Preferences', active: true },
     { title: 'Finish', subTitle: 'Final steps' }
 ]
 
-export const stepperWithIcons = [
+export const stepperWithIcons: StepperProps['items'] = [
     { title: 'Setup', subTitle: 'Get ready', completed: true, icon: successIcon },
     { title: 'Configure', subTitle: 'Preferences', active: true, icon: gitHubIcon },
     { title: 'Finish', subTitle: 'Final steps' }
 ]
 
-export const gridWithIconsItems = [{
+export const gridWithIconsItems: GridWithIconsProps['items'] = [{
     icon: componentsIcon,
     title: 'Grid with Icons',
     text: 'Use the <code>GridWithIcons</code> block to organize your list into a grid with icons to enhance clarity and visual appeal.'
@@ -448,7 +464,7 @@ export const gridWithIconsItems = [{
     text: 'This last item is created without an icon or title, meaning you can also use this block to create simple text in a grid layout.'
 }]
 
-export const bottomNavigationItems = [
+export const bottomNavigationItems: BottomNavigationProps['items'] = [
     {
         icon: homeIcon,
         name: 'Home'
@@ -860,7 +876,7 @@ export const getAuthenticationTemplateData = (): AuthenticationProps => ({
     }
 })
 
-export const speedDialItems = [
+export const speedDialItems: SpeedDialProps['items'] = [
     {
         icon: gitHubIcon,
         href: ''
@@ -875,7 +891,7 @@ export const speedDialItems = [
     }
 ]
 
-export const speedDialItemsWithTooltip = [
+export const speedDialItemsWithTooltip: SpeedDialProps['items'] = [
     {
         icon: gitHubIcon,
         tooltip: 'GitHub',
@@ -893,7 +909,7 @@ export const speedDialItemsWithTooltip = [
     }
 ]
 
-export const members = [
+export const members: TeamProps['members'] = [
     {
         img: '/img/avatar2.png',
         name: 'Alice Johnson',
@@ -932,7 +948,7 @@ export const members = [
     }
 ]
 
-export const emptyProps = {
+export const emptyProps: EmptyProps = {
     icon: fileIcon,
     title: 'No documents found',
     text: 'You haven\'t created any documents yet. <br /> Get started by creating your first one.',
