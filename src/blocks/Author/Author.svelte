@@ -8,7 +8,7 @@
     import styles from './author.module.scss'
 
     const {
-        img,
+        avatar,
         name,
         role,
         description,
@@ -25,7 +25,7 @@
 
 <Card bodyClassName={classes} {...rest}>
     <div class={styles.meta}>
-        <Avatar img={img.src} {...img} />
+        <Avatar {...avatar} />
         <div class="flex column xxs">
             <strong>{name}</strong>
             <span class="muted">{role}</span>

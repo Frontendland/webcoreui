@@ -7,7 +7,5 @@ export type AuthorProps = {
     role: string
     description: string
     socials?: SocialsProps
-    img: {
-        src: string
-    } & Omit<AvatarProps, 'img'>
+    avatar: AvatarProps
 } & CardProps

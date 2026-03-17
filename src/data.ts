@@ -802,8 +802,8 @@ export const getBlogTemplateData = (theme: ButtonProps['theme'] = 'success'): Bl
             secondary: true
         })),
     author: {
-        img: {
-            src: '/img/avatar1.png',
+        avatar: {
+            img: '/img/avatar1.png',
             alt: 'avatar',
             size: 50
         },

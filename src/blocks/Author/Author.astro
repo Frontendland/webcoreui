@@ -10,7 +10,7 @@ import styles from './author.module.scss'
 interface Props extends AuthorProps {}
 
 const {
-    img,
+    avatar,
     name,
     role,
     description,
@@ -27,7 +27,7 @@ const classes = classNames([
 
 <Card bodyClassName={classes} {...rest}>
     <div class={styles.meta}>
-        <Avatar img={img.src} {...img} />
+        <Avatar {...avatar} />
         <div class="flex column xxs">
             <strong>{name}</strong>
             <span class="muted">{role}</span>

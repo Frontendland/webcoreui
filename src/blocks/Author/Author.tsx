@@ -8,7 +8,7 @@ import type { AuthorProps } from './author'
 import styles from './author.module.scss'
 
 const Author = ({
-    img,
+    avatar,
     name,
     role,
     description,
@@ -24,7 +24,7 @@ const Author = ({
     return (
         <Card bodyClassName={classes} {...rest}>
             <div className={styles.meta}>
-                <Avatar img={img.src} {...img} />
+                <Avatar {...avatar} />
                 <div className="flex column xxs">
                     <strong>{name}</strong>
                     <span className="muted">{role}</span>
