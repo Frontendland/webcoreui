@@ -51,7 +51,7 @@ const SpeedDial = ({
         const speedDial = get('[data-id="w-speed-dial"] button') as HTMLButtonElement
 
         const eventListener = (event: Event) => {
-            if (!speedDial.contains((event.target || event.currentTarget) as HTMLElement)) {
+            if (!speedDial?.contains((event.target || event.currentTarget) as HTMLElement)) {
                 setShow(false)
             }
         }
