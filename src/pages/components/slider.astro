@@ -19,15 +19,15 @@ const sections = getSections({
     <h1>Slider</h1>
     <div class="grid md-2 lg-3">
         <ComponentWrapper type="Astro">
-            <AstroSlider min={0} max={100} value={50} />
+            <AstroSlider value={50} />
         </ComponentWrapper>
 
         <ComponentWrapper type="Svelte">
-            <SvelteSlider min={0} max={100} value={50} />
+            <SvelteSlider value={50} />
         </ComponentWrapper>
 
         <ComponentWrapper type="React">
-            <ReactSlider min={0} max={100} value={50} />
+            <ReactSlider value={50} />
         </ComponentWrapper>
     </div>
 
@@ -38,17 +38,15 @@ const sections = getSections({
         </Fragment>
         <div class="grid md-2 lg-3">
             <ComponentWrapper title="Default with no value">
-                <section.component min={0} max={100} />
+                <section.component />
             </ComponentWrapper>
 
             <ComponentWrapper title="With default value">
-                <section.component min={0} max={100} value={33} />
+                <section.component value={33} />
             </ComponentWrapper>
 
             <ComponentWrapper title="With steps">
                 <section.component
-                    min={0}
-                    max={100}
                     step={20}
                     value={20}
                 />
@@ -56,8 +54,6 @@ const sections = getSections({
 
             <ComponentWrapper title="With custom colors">
                 <section.component
-                    min={0}
-                    max={100}
                     value={50}
                     color="var(--w-color-success)"
                     background="var(--w-color-primary-60)"
@@ -68,8 +64,6 @@ const sections = getSections({
             <ComponentWrapper title="With label">
                 <div class="flex items-center xs">
                     <section.component
-                        min={0}
-                        max={100}
                         value={20}
                         className="labelled"
                     />
@@ -80,8 +74,6 @@ const sections = getSections({
             <ComponentWrapper title="With label on top">
                 <span class="muted">40</span>
                 <section.component
-                    min={0}
-                    max={100}
                     value={40}
                     className="labelled1"
                 />
@@ -89,11 +81,21 @@ const sections = getSections({
 
             <ComponentWrapper title="Disabled">
                 <section.component
-                    min={0}
-                    max={100}
                     value={40}
                     disabled={true}
                 />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With custom min/max">
+                <div class="flex items-center xs">
+                    <section.component
+                        min={-100}
+                        max={500}
+                        value={-50}
+                        className="labelled2"
+                    />
+                    <span class="muted">-50</span>
+                </div>
             </ComponentWrapper>
         </div>
     ))}
@@ -105,6 +107,7 @@ const sections = getSections({
     on(document, 'astro:page-load', () => {
         const slider1 = document.querySelector('.labelled')
         const slider2 = document.querySelector('.labelled1')
+        const slider3 = document.querySelector('.labelled2')
 
         slider1?.addEventListener('change', (e: any) => {
             e.target.nextElementSibling.innerText = e.target.value
@@ -112,6 +115,10 @@ const sections = getSections({
 
         slider2?.addEventListener('change', (e: any) => {
             e.target.previousElementSibling.innerText = e.target.value
+        })
+
+        slider3?.addEventListener('change', (e: any) => {
+            e.target.nextElementSibling.innerText = e.target.value
         })
     })
 </script>

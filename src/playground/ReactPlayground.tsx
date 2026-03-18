@@ -318,8 +318,6 @@ const ReactPlayground = () => {
 
             <Card title="Slider">
                 <Slider
-                    min={0}
-                    max={100}
                     value={slider}
                     onChange={e => setSlider(Number(e.target.value))}
                     className={styles.mt}

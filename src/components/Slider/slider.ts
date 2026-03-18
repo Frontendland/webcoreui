@@ -1,8 +1,8 @@
 import type { InputTarget } from '../Input/input'
 
 export type SliderProps = {
-    min: number
-    max: number
+    min?: number
+    max?: number
     value?: number
     step?: number
     disabled?: boolean

@@ -6,9 +6,9 @@
     import styles from './slider.module.scss'
 
     const {
-        min,
-        max,
-        value,
+        min = 0,
+        max = 100,
+        value = 0,
         step,
         disabled,
         color,

@@ -318,8 +318,6 @@
 
     <Card title="Slider">
         <Slider
-            min={0}
-            max={100}
             value={slider}
             onChange={e => slider = Number(e.currentTarget.value)}
             className={styles.mt}
