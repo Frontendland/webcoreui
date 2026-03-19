@@ -5,6 +5,7 @@
     @include border-radius(md);
     @include layout(flex, column);
     @include background(primary-70);
+    @include visibility(hidden);
 
     &.secondary {
         @include background(primary-60);
@@ -17,7 +18,7 @@
     .title {
         @include spacing(p-default);
         @include border(primary-50, bottom);
-        display: block;
+        @include visibility(block);
     }
 
     .body {
