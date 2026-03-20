@@ -36,7 +36,7 @@
     }
 
     &.info {
-        @include border(info);
+        @include border(3px, top, info-accent);
 
         .title {
             @include typography(info);
@@ -44,7 +44,7 @@
     }
 
     &.success {
-        @include border(success);
+        @include border(3px, top, success-accent);
 
         .title {
             @include typography(success);
@@ -52,7 +52,7 @@
     }
 
     &.warning {
-        @include border(warning);
+        @include border(3px, top, warning-accent);
 
         .title {
             @include typography(warning);
@@ -60,7 +60,7 @@
     }
 
     &.alert {
-        @include border(alert);
+        @include border(3px, top, alert-accent);
 
         .title {
             @include typography(alert);
