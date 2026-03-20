@@ -87,7 +87,7 @@
     }
 
     .subTitle {
-        @include typography(primary-20);
+        @include typography(primary-20, hmd);
         @include spacing(mb-xs);
     }
 }
