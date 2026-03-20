@@ -9,6 +9,8 @@ export type FormActions = {
     getInputValue: (field: string) => string | null
     getInputValues: () => Record<string, string>
     update: (field: string, value: string | boolean) => FormActions
+    reset: () => FormActions
+    clear: () => FormActions
     setValidations: (validationRules: Record<string, boolean>) => FormActions
     isValidForm: () => boolean,
     useSmartFill: (options?: { patterns?: Record<string, RegExp>, inputs?: Record<string, string> }) => FormActions
@@ -17,8 +19,10 @@ export type FormActions = {
     onError: (callback: (invalidFields: string[]) => void) => FormActions
 }
 
-export const useForm = (selector: string): FormActions | null => {
-    const form = get(selector) as HTMLFormElement
+export const useForm = (selector: string | HTMLFormElement | null | undefined): FormActions | null => {
+    const form = typeof selector === 'string'
+        ? get(selector) as HTMLFormElement | null
+        : selector
 
     if (!form) {
         return null
@@ -74,6 +78,28 @@ export const useForm = (selector: string): FormActions | null => {
             if (typeof value === 'string') {
                 input.value = value
             }
+
+            return this
+        },
+        reset() {
+            form.reset()
+
+            return this
+        },
+        clear() {
+            Array.from(form.elements).forEach(element => {
+                if (element instanceof HTMLInputElement) {
+                    if (element.type === 'checkbox' || element.type === 'radio') {
+                        element.checked = false
+                    } else {
+                        element.value = ''
+                    }
+                } else if (element instanceof HTMLSelectElement) {
+                    element.selectedIndex = 0
+                } else if (element instanceof HTMLTextAreaElement) {
+                    element.value = ''
+                }
+            })
 
             return this
         },

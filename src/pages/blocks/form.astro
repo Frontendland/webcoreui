@@ -184,7 +184,7 @@ const getUserForm = (): FormProps['fields'] => [
                 <span class="muted">Copy the following text and paste it in the form next to it to test smart fill with the <code>useForm</code> hook.</span>
 
                 <ul>
-                    <li>jane@doe.com</li>
+                    <li>john@doe.com</li>
                     <li>+1 555-123-4567</li>
                     <li>2025-01-01</li>
                     <li>https://jane@example.com</li>
@@ -217,14 +217,16 @@ const getUserForm = (): FormProps['fields'] => [
 
                 form.setValidations(validationRules)
             })
-            .onSubmit(form => {
+            .onSubmit(formValues => {
                 toast({
                     element: '#toast',
-                    content: `Submitting form with values: ${JSON.stringify(form)}`
+                    content: `Submitting form with values: ${JSON.stringify(formValues)}`
                 })
 
                 // eslint-disable-next-line no-console
-                console.log('Submitting form with values:', form)
+                console.log('Submitting form with values:', formValues)
+
+                form.reset()
             })
             .onError(form => {
                 toast({
