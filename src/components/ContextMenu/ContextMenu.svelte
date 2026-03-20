@@ -67,10 +67,12 @@
         }
     })
 
-    if (!context) {
-        // eslint-disable-next-line no-console, max-len
-        console.error('Missing "context" slot. Attach slot="context" to one of the children of your <ContextMenu> component.')
-    }
+    $effect(() => {
+        if (!context) {
+            // eslint-disable-next-line no-console, max-len
+            console.error('Missing "context" slot. Attach slot="context" to one of the children of your <ContextMenu> component.')
+        }
+    })
 </script>
 
 <svelte:element {...rest} this={element} class={classes} bind:this={ctx}>

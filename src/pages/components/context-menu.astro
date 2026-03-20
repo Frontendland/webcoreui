@@ -12,7 +12,7 @@ import { listWithGroups } from '@data'
 <Layout>
     <h1>ContextMenu</h1>
     <div class="grid md-2 lg-3">
-        <ComponentWrapper type="Astro">
+        <ComponentWrapper type="Astro" className="card">
             <AstroContextMenu className="ctx">
                 <span class="muted">Right-click here</span>
                 <span class="muted">Click "Sign out" to close context.</span>
@@ -29,7 +29,7 @@ import { listWithGroups } from '@data'
             </AstroContextMenu>
         </ComponentWrapper>
 
-        <ComponentWrapper type="Svelte">
+        <ComponentWrapper type="Svelte" className="card">
             <!-- @ts-ignore -->
             <SvelteContextMenu className="ctx s" client:visible>
                 <span class="muted">Right-click here</span>
@@ -47,13 +47,21 @@ import { listWithGroups } from '@data'
             </SvelteContextMenu>
         </ComponentWrapper>
 
-        <ComponentWrapper type="React">
+        <ComponentWrapper type="React" className="card">
             <div class="ctx">
                 <a href="/react" class="muted">See in React playground {'->'}</a>
             </div>
         </ComponentWrapper>
     </div>
 </Layout>
+
+<style is:global lang="scss">
+    @use '../../scss/config.scss' as *;
+
+    .card {
+        @include visibility(visible);
+    }
+</style>
 
 <script>
     import { closeContext } from '@utils/context'

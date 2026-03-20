@@ -8,6 +8,7 @@ const {
     secondary,
     compact,
     type,
+    className,
     bodyClassName
 } = Astro.props
 ---
@@ -20,6 +21,7 @@ const {
     bodyClassName={bodyClassName}
     className={classNames([
         type && type.slice(0, 1).toLocaleLowerCase(),
+        className,
         'default'
     ])}
 >
