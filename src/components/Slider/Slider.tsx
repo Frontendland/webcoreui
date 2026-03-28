@@ -16,7 +16,8 @@ const Slider = ({
     thumb,
     id,
     className,
-    onChange
+    onChange,
+    ...rest
 }: ReactSliderProps) => {
     const classes = classNames([
         styles.slider,
@@ -41,6 +42,7 @@ const Slider = ({
             id={id}
             style={styleVariables}
             onChange={onChange}
+            {...rest}
         />
 
     )

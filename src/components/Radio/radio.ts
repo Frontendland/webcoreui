@@ -7,6 +7,7 @@ export type RadioProps = {
         subText?: string
         selected?: boolean
         disabled?: boolean
+        required?: boolean
     }[]
     name: string
     color?: string

@@ -14,6 +14,7 @@ export type SelectProps = {
     label?: string
     subText?: string
     disabled?: boolean
+    required?: boolean
     updateValue?: boolean
     position?: PopoverPosition | 'modal'
 } & ListProps

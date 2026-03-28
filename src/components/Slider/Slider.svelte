@@ -16,7 +16,8 @@
         thumb,
         id,
         className,
-        onChange
+        onChange,
+        ...rest
     }: SvelteSliderProps = $props()
 
     const classes = $derived(classNames([
@@ -42,4 +43,5 @@
     id={id}
     style={styleVariables || null}
     onchange={onChange}
+    {...rest}
 />

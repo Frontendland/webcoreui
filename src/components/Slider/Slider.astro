@@ -17,7 +17,8 @@ const {
     background,
     thumb,
     id,
-    className
+    className,
+    ...rest
 } = Astro.props
 
 const classes = [
@@ -42,4 +43,5 @@ const styleVariables = classNames([
     class:list={classes}
     id={id}
     style={styleVariables}
+    {...rest}
 />

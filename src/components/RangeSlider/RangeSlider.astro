@@ -31,7 +31,8 @@ const {
     maxIcon,
     interactiveLabels,
     updateLabels,
-    className
+    className,
+    ...rest
 } = Astro.props
 
 const styleVariables = classNames([
@@ -93,6 +94,7 @@ const labelStyle = updateLabels ? `min-width:${minLabelWidth};` : null
                 step={step}
                 disabled={disabled}
                 data-min="true"
+                {...rest}
             />
             <input
                 type="range"
@@ -104,6 +106,7 @@ const labelStyle = updateLabels ? `min-width:${minLabelWidth};` : null
                 step={step}
                 disabled={disabled}
                 data-max="true"
+                {...rest}
             />
         </div>
 

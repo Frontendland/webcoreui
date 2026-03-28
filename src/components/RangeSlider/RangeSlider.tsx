@@ -29,7 +29,8 @@ const RangeSlider = ({
     interactiveLabels,
     updateLabels,
     className,
-    onChange
+    onChange,
+    ...rest
 }: ReactRangeSliderProps) => {
     const [minValue, setMinValue] = useState(selectedMin || min)
     const [maxValue, setMaxValue] = useState(selectedMax || max)
@@ -167,6 +168,7 @@ const RangeSlider = ({
                         disabled={disabled}
                         onInput={handleInput}
                         data-min="true"
+                        {...rest}
                     />
                     <input
                         type="range"
@@ -178,6 +180,7 @@ const RangeSlider = ({
                         disabled={disabled}
                         onInput={handleInput}
                         data-max="true"
+                        {...rest}
                     />
                 </div>
 

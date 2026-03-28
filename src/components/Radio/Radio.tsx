@@ -47,6 +47,7 @@ const Radio = ({
                             value={item.value}
                             defaultChecked={item.selected}
                             disabled={item.disabled}
+                            required={item.required}
                             onChange={onChange}
                             {...rest}
                         />

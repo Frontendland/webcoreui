@@ -28,7 +28,8 @@
         interactiveLabels,
         updateLabels,
         className,
-        onChange
+        onChange,
+        ...rest
     }: SvelteRangeSliderProps = $props()
 
     const styleVariables = $derived(classNames([
@@ -132,6 +133,7 @@
                 disabled={disabled}
                 oninput={handleInput}
                 data-min="true"
+                {...rest}
             />
             <input
                 type="range"
@@ -143,6 +145,7 @@
                 disabled={disabled}
                 oninput={handleInput}
                 data-max="true"
+                {...rest}
             />
         </div>
 

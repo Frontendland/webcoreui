@@ -13,6 +13,7 @@ export type RangeSliderProps = {
     step?: number
     minGap?: number
     disabled?: boolean
+    required?: boolean
     color?: string
     background?: string
     thumb?: string

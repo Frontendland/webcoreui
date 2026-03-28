@@ -21,6 +21,7 @@ const {
     label,
     subText,
     disabled,
+    required,
     position,
     updateValue = true,
     className,
@@ -47,6 +48,7 @@ const inputRestProps = Object.fromEntries(
     value={(value && inferredValue) ? inferredValue : value}
     readonly={true}
     disabled={disabled}
+    required={required}
     placeholder={placeholder}
     label={label}
     subText={subText}

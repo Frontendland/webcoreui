@@ -25,6 +25,7 @@ const Select = ({
     label,
     subText,
     disabled,
+    required,
     updateValue = true,
     position = 'bottom',
     className,
@@ -147,6 +148,7 @@ const Select = ({
                 value={val}
                 readOnly={true}
                 disabled={disabled}
+                required={required}
                 placeholder={placeholder}
                 label={label}
                 subText={subText}

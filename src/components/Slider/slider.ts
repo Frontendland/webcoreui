@@ -6,6 +6,7 @@ export type SliderProps = {
     value?: number
     step?: number
     disabled?: boolean
+    required?: boolean
     color?: string
     background?: string
     thumb?: string

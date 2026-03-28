@@ -26,6 +26,7 @@
         label,
         subText,
         disabled,
+        required,
         updateValue = true,
         position = 'bottom',
         className,
@@ -150,6 +151,7 @@
     value={val}
     readonly={true}
     disabled={disabled}
+    required={required}
     placeholder={placeholder}
     label={label}
     subText={subText}
