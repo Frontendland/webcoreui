@@ -1,7 +1,11 @@
+/* eslint-disable max-lines */
 import { get } from 'webcoreui'
+
+export type ValidationFactory = (formValues: Record<string, string>) => Record<string, boolean>
 
 export type FormActions = {
     validationRules: Record<string, boolean>
+    validationFactory: ValidationFactory | null
     isPreventDefault: boolean
     onErrorCallback: ((invalidFields: string[]) => void) | null
     preventDefault: () => FormActions
@@ -11,10 +15,11 @@ export type FormActions = {
     update: (field: string, value: string | boolean) => FormActions
     reset: () => FormActions
     clear: () => FormActions
-    setValidations: (validationRules: Record<string, boolean>) => FormActions
-    isValidForm: () => boolean,
+    destroy: () => void
+    validate: (callback: ValidationFactory) => FormActions
+    isValid: () => boolean,
     useSmartFill: (options?: { patterns?: Record<string, RegExp>, inputs?: Record<string, string> }) => FormActions
-    onChange: (callback: (formValues: Record<string, string>) => void) => FormActions
+    onChange: (callback?: (formValues: Record<string, string>) => void) => FormActions
     onSubmit: (callback: (formValues: Record<string, string>) => void) => FormActions
     onError: (callback: (invalidFields: string[]) => void) => FormActions
 }
@@ -43,8 +48,23 @@ export const useForm = (selector: string | HTMLFormElement | null | undefined): 
         ].join(' '))
     }
 
+    const controller = new AbortController()
+    const { signal } = controller
+
+    const getSubmitButton = (): HTMLButtonElement | null =>
+        form.querySelector('button[type="submit"], button:not([type])')
+
+    const updateSubmitButton = (actions: FormActions) => {
+        const button = getSubmitButton()
+
+        if (button && button.hasAttribute('data-form-managed')) {
+            button.disabled = !actions.isValid()
+        }
+    }
+
     return {
         validationRules: {},
+        validationFactory: null,
         isPreventDefault: false,
         onErrorCallback: null,
         preventDefault() {
@@ -56,7 +76,9 @@ export const useForm = (selector: string | HTMLFormElement | null | undefined): 
             return form.querySelector(`[name=${field}]`)
         },
         getInputValue(field) {
-            return String(new FormData(form).get(field))
+            const value = new FormData(form).get(field)
+
+            return value !== null ? String(value) : null
         },
         getInputValues() {
             const formData = new FormData(form)
@@ -71,6 +93,13 @@ export const useForm = (selector: string | HTMLFormElement | null | undefined): 
         update(field, value) {
             const input = form.querySelector(`[name=${field}]`) as HTMLInputElement
 
+            if (!input) {
+                // eslint-disable-next-line no-console
+                console.warn(`useForm: no field found with name "${field}"`)
+
+                return this
+            }
+
             if (typeof value === 'boolean') {
                 input.checked = value
             }
@@ -83,6 +112,12 @@ export const useForm = (selector: string | HTMLFormElement | null | undefined): 
         },
         reset() {
             form.reset()
+
+            if (this.validationFactory) {
+                this.validationRules = this.validationFactory(this.getInputValues())
+            }
+
+            updateSubmitButton(this)
 
             return this
         },
@@ -101,15 +136,35 @@ export const useForm = (selector: string | HTMLFormElement | null | undefined): 
                 }
             })
 
-            return this
-        },
-        setValidations(validationRules) {
-            this.validationRules = validationRules
+            if (this.validationFactory) {
+                this.validationRules = this.validationFactory(this.getInputValues())
+            }
+
+            updateSubmitButton(this)
 
             return this
         },
-        isValidForm() {
-            return Object.values(this.validationRules).every(key => key)
+        validate(validationFactory: ValidationFactory) {
+            const submitButton = getSubmitButton()
+
+            if (submitButton && !submitButton.hasAttribute('disabled')) {
+                submitButton.setAttribute('data-form-managed', '')
+            }
+
+            this.validationFactory = validationFactory
+            this.validationRules = validationFactory(this.getInputValues())
+
+            updateSubmitButton(this)
+
+            return this
+        },
+        isValid() {
+            if (!this.validationFactory) {
+                return true
+            }
+
+            return Object.keys(this.validationRules).length > 0
+                && Object.values(this.validationRules).every(key => key)
         },
         useSmartFill({ patterns, inputs } = {}) {
             const textPatterns = {
@@ -214,14 +269,21 @@ export const useForm = (selector: string | HTMLFormElement | null | undefined): 
                 if (autoFilled) {
                     event.preventDefault()
                 }
-            })
+            }, { signal })
 
             return this
         },
-        onChange(callback) {
+        onChange(callback?) {
             form.addEventListener('input', () => {
-                callback?.(this.getInputValues())
-            })
+                const formValues = this.getInputValues()
+
+                if (this.validationFactory) {
+                    this.validationRules = this.validationFactory(formValues)
+                }
+
+                updateSubmitButton(this)
+                callback?.(formValues)
+            }, { signal })
 
             return this
         },
@@ -231,18 +293,20 @@ export const useForm = (selector: string | HTMLFormElement | null | undefined): 
                     event.preventDefault()
                 }
 
-                if (this.isValidForm()) {
+                const valid = this.isValid()
+
+                if (valid) {
                     callback?.(this.getInputValues())
                 }
 
-                if (!this.isValidForm() && this.onErrorCallback) {
+                if (!valid && this.onErrorCallback) {
                     const invalidFields = Object
                         .keys(this.validationRules)
                         .filter(key => !this.validationRules[key])
 
                     this.onErrorCallback(invalidFields)
                 }
-            })
+            }, { signal })
 
             return this
         },
@@ -250,6 +314,9 @@ export const useForm = (selector: string | HTMLFormElement | null | undefined): 
             this.onErrorCallback = callback
 
             return this
+        },
+        destroy() {
+            controller.abort()
         }
     }
 }

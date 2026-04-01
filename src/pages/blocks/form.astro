@@ -209,13 +209,13 @@ const getUserForm = (): FormProps['fields'] => [
             .useSmartFill()
             .update('email', 'john@doe.com')
             .update('message', 'You can update values dynamically')
+            .validate(formValues => ({
+                email: !!formValues.email.includes('john'),
+                message: !!(formValues.message?.length > 10)
+            }))
             .onChange(formValues => {
-                const validationRules = {
-                    email: !!formValues.email.includes('john'),
-                    message: !!(formValues.message?.length > 10)
-                }
-
-                form.setValidations(validationRules)
+                // eslint-disable-next-line no-console
+                console.log('Form values changed to:', formValues)
             })
             .onSubmit(formValues => {
                 toast({
