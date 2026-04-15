@@ -10,7 +10,7 @@ import styles from './button.module.scss'
 
 const Button = ({
     icon,
-    text,
+    text = '',
     badge,
     className,
     ...rest
