@@ -60,6 +60,42 @@ import ReactSettingCard from '@blocks/SettingCard/SettingCard.tsx'
                 <Button className="toggle" theme="secondary">Toggle on</Button>
             </ReactSettingCard>
         </Card>
+
+        <Card title="Astro - with additional content" bodyClassName="flex column sm">
+            <AstroSettingCard
+                title="Security emails"
+                subTitle="Get security alerts for logins."
+            >
+                <Switch toggled={true} />
+                <div slot="additional-content" class="flex column xs">
+                    <Checkbox label="Server alerts" />
+                    <Checkbox label="Client alerts" />
+                </div>
+            </AstroSettingCard>
+        </Card>
+
+        <Card title="Svelte - with additional content" bodyClassName="flex column sm">
+            <SvelteSettingCard
+                title="Security emails"
+                subTitle="Get security alerts for logins."
+            >
+                <Checkbox checked={true} />
+                <div slot="additionalContent" class="flex column xs">
+                    <Checkbox label="Server alerts" />
+                    <Checkbox label="Client alerts" />
+                </div>
+            </SvelteSettingCard>
+        </Card>
+
+        <Card title="React - with additional content" bodyClassName="flex column sm">
+            <ReactSettingCard title="Security emails">
+                <Button className="toggle">Toggle off</Button>
+                <div slot="additionalContent" class="flex column xs">
+                    <Checkbox label="Server alerts" />
+                    <Checkbox label="Client alerts" />
+                </div>
+            </ReactSettingCard>
+        </Card>
     </div>
 </Layout>
 

@@ -7,20 +7,26 @@ import styles from './setting-card.module.scss'
 const SettingCard = ({
     title,
     subTitle,
-    children
+    children,
+    additionalContent,
+    ...rest
 }: ReactSettingCardProps) => {
 
     return (
         <Card
             secondary={true}
             className={styles.card}
-            bodyClassName={styles.body}
+            bodyClassName="flex column sm"
+            {...rest}
         >
-            <div className={styles.titles}>
-                <div>{title}</div>
-                {subTitle && <div className="muted">{subTitle}</div>}
+            <div className="flex justify-between items-center xs">
+                <div className="flex column xxs">
+                    <div>{title}</div>
+                    {subTitle && <div className="muted">{subTitle}</div>}
+                </div>
+                {children}
             </div>
-            {children}
+            {additionalContent}
         </Card>
     )
 }

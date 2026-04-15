@@ -8,14 +8,23 @@ interface Props extends SettingCardProps {}
 
 const {
     title,
-    subTitle
+    subTitle,
+    ...rest
 } = Astro.props
 ---
 
-<Card secondary={true} className={styles.card} bodyClassName={styles.body}>
-    <div class={styles.titles}>
-        <div>{title}</div>
-        {subTitle && <div class="muted">{subTitle}</div>}
+<Card
+    secondary={true}
+    className={styles.card}
+    bodyClassName="flex column sm"
+    {...rest}
+>
+    <div class="flex justify-between items-center xs">
+        <div class="flex column xxs">
+            <div>{title}</div>
+            {subTitle && <div class="muted">{subTitle}</div>}
+        </div>
+        <slot />
     </div>
-    <slot />
+    <slot name="additional-content" />
 </Card>

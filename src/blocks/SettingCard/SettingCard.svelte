@@ -7,16 +7,26 @@
     const {
         title,
         subTitle,
-        children
+        children,
+        additionalContent,
+        ...rest
     }: SvelteSettingCardProps = $props()
 </script>
 
-<Card secondary={true} className={styles.card} bodyClassName={styles.body}>
-    <div class={styles.titles}>
-        <div>{title}</div>
-        {#if subTitle}
-            <div class="muted">{subTitle}</div>
-        {/if}
+<Card
+    secondary={true}
+    className={styles.card}
+    bodyClassName="flex column sm"
+    {...rest}
+>
+    <div class="flex justify-between items-center xs">
+        <div class="flex column xxs">
+            <div>{title}</div>
+            {#if subTitle}
+                <div class="muted">{subTitle}</div>
+            {/if}
+        </div>
+        {@render children?.()}
     </div>
-    {@render children?.()}
+    {@render additionalContent?.()}
 </Card>
