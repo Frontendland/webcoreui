@@ -2,6 +2,7 @@
 import { get } from 'webcoreui'
 
 export type ValidationFactory = (formValues: Record<string, string>) => Record<string, boolean>
+export type FormField = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | HTMLButtonElement
 
 export type FormActions = {
     validationRules: Record<string, boolean>
@@ -9,7 +10,7 @@ export type FormActions = {
     isPreventDefault: boolean
     onErrorCallback: ((invalidFields: string[]) => void) | null
     preventDefault: () => FormActions
-    getInput: (field: string) => HTMLInputElement | null
+    getInput: (field: string) => FormField | null
     getInputValue: (field: string) => string | null
     getInputValues: () => Record<string, string>
     update: (field: string, value: string | boolean) => FormActions
@@ -73,7 +74,7 @@ export const useForm = (selector: string | HTMLFormElement | null | undefined): 
             return this
         },
         getInput(field) {
-            return form.querySelector(`[name=${field}]`)
+            return form.querySelector<FormField>(`[name=${field}]`)
         },
         getInputValue(field) {
             const value = new FormData(form).get(field)
@@ -91,7 +92,7 @@ export const useForm = (selector: string | HTMLFormElement | null | undefined): 
             return formValues
         },
         update(field, value) {
-            const input = form.querySelector(`[name=${field}]`) as HTMLInputElement
+            const input = form.querySelector<FormField>(`[name=${field}]`)
 
             if (!input) {
                 // eslint-disable-next-line no-console
@@ -100,12 +101,16 @@ export const useForm = (selector: string | HTMLFormElement | null | undefined): 
                 return this
             }
 
-            if (typeof value === 'boolean') {
+            if ('checked' in input && typeof value === 'boolean') {
                 input.checked = value
             }
 
             if (typeof value === 'string') {
-                input.value = value
+                if (input instanceof HTMLButtonElement) {
+                    input.textContent = value
+                } else {
+                    input.value = value
+                }
             }
 
             return this
