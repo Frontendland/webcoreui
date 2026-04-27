@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { classNames } from 'webcoreui'
+import { ConditionalWrapper } from 'webcoreui/react'
 
 import Button from '@blocks/Button/Button.tsx'
 
@@ -43,7 +44,10 @@ const ExpandableTable = ({
     }
 
     return (
-        <React.Fragment>
+        <ConditionalWrapper
+            condition={data.length > numberOfVisibleRows}
+            wrapper={children => <div>{children}</div>}
+        >
             <div className={classes} style={styleVariables}>
                 <table>
                     {headings?.length && (
@@ -80,7 +84,7 @@ const ExpandableTable = ({
                     {...expandButton}
                 />
             )}
-        </React.Fragment>
+        </ConditionalWrapper>
     )
 }
 

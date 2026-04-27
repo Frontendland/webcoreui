@@ -1,4 +1,6 @@
 ---
+import { ConditionalWrapper } from 'webcoreui/astro'
+
 import Button from '@blocks/Button/Button.astro'
 
 import type { ExpandableTableProps } from './expandableTable'
@@ -32,45 +34,49 @@ const classes = [
 ]
 ---
 
-<div
-    class:list={classes}
-    style={maxHeight ? `max-height:${maxHeight}` : undefined}
->
-    <table>
-        {headings?.length && (
-            <thead>
-                <tr>
-                    {headings.map(heading => (
-                        <th>{heading}</th>
-                    ))}
-                </tr>
-            </thead>
-        )}
-        <tbody>
-            {data.map((row, index) => (
-                <tr
-                    data-hidden={numberOfVisibleRows < index + 1 ? 'true' : undefined}
-                >
-                    {row.map(column => (
-                        <td>
-                            <Fragment set:html={column} />
-                        </td>
-                    ))}
-                </tr>
-            ))}
-        </tbody>
-    </table>
-</div>
+<ConditionalWrapper condition={data.length > numberOfVisibleRows}>
+    <div slot="wrapper">children</div>
 
-{data.length > numberOfVisibleRows && (
-    <Button
-        data-id="w-expander"
-        data-expand-label={expandButtonLabel}
-        data-collapse-label={collapseButtonLabel}
-        text={expandButtonLabel}
-        {...expandButton}
-    />
-)}
+    <div
+        class:list={classes}
+        style={maxHeight ? `max-height:${maxHeight}` : undefined}
+    >
+        <table>
+            {headings?.length && (
+                <thead>
+                    <tr>
+                        {headings.map(heading => (
+                            <th>{heading}</th>
+                        ))}
+                    </tr>
+                </thead>
+            )}
+            <tbody>
+                {data.map((row, index) => (
+                    <tr
+                        data-hidden={numberOfVisibleRows < index + 1 ? 'true' : undefined}
+                    >
+                        {row.map(column => (
+                            <td>
+                                <Fragment set:html={column} />
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    </div>
+
+    {data.length > numberOfVisibleRows && (
+        <Button
+            data-id="w-expander"
+            data-expand-label={expandButtonLabel}
+            data-collapse-label={collapseButtonLabel}
+            text={expandButtonLabel}
+            {...expandButton}
+        />
+    )}
+</ConditionalWrapper>
 
 <script>
     import { on } from 'webcoreui'
