@@ -1,6 +1,7 @@
 <script lang="ts">
     import {
         Avatar,
+        ConditionalWrapper,
         Rating
     } from 'webcoreui/svelte'
 
@@ -17,21 +18,23 @@
     }: UserProps = $props()
 </script>
 
-<div class="flex sm items-center">
-    <Avatar
-        img={avatar}
-        size={avatarSize}
-    />
-    <div class="flex column xs">
-        <span>{name}</span>
-        {#if role}
-            <span class="muted" data-tooltip={roleTooltip}>
-                {role}
-            </span>
-        {/if}
+<ConditionalWrapper condition={!!rating}>
+    <div class="flex sm items-center">
+        <Avatar
+            img={avatar}
+            size={avatarSize}
+        />
+        <div class="flex column xs">
+            <span>{name}</span>
+            {#if role}
+                <span class="muted" data-tooltip={roleTooltip}>
+                    {role}
+                </span>
+            {/if}
+        </div>
     </div>
-</div>
-{#if rating}
-    <hr />
-    <Rating {...rest} score={rating} />
-{/if}
+    {#if rating}
+        <hr />
+        <Rating {...rest} score={rating} />
+    {/if}
+</ConditionalWrapper>

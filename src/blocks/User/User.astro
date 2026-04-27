@@ -1,6 +1,7 @@
 ---
 import {
     Avatar,
+    ConditionalWrapper,
     Rating
 } from 'webcoreui/astro'
 
@@ -19,21 +20,26 @@ const {
 } = Astro.props
 ---
 
-<div class="flex sm items-center">
-    <Avatar
-        img={avatar}
-        size={avatarSize}
-    />
-    <div class="flex column xs">
-        <span>{name}</span>
-        {role && (
-            <span class="muted" data-tooltip={roleTooltip}>
-                {role}
-            </span>
-        )}
+<ConditionalWrapper condition={!!rating}>
+    <div slot="wrapper">children</div>
+
+    <div class="flex sm items-center">
+        <Avatar
+            img={avatar}
+            size={avatarSize}
+        />
+        <div class="flex column xs">
+            <span>{name}</span>
+            {role && (
+                <span class="muted" data-tooltip={roleTooltip}>
+                    {role}
+                </span>
+            )}
+        </div>
     </div>
-</div>
-{rating && (
-    <hr />
-    <Rating {...rest} score={rating} />
-)}
+    {rating && (
+        <hr />
+        <Rating {...rest} score={rating} />
+    )}
+</ConditionalWrapper>
+

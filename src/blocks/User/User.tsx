@@ -1,6 +1,7 @@
 import React from 'react'
 import {
     Avatar,
+    ConditionalWrapper,
     Rating
 } from 'webcoreui/react'
 
@@ -17,7 +18,10 @@ const User = ({
 }: UserProps) => {
 
     return (
-        <React.Fragment>
+        <ConditionalWrapper
+            condition={!!rating}
+            wrapper={children => <div>{children}</div>}
+        >
             <div className="flex sm items-center">
                 <Avatar
                     img={avatar}
@@ -38,7 +42,7 @@ const User = ({
                     <Rating {...rest} score={rating} />
                 </React.Fragment>
             )}
-        </React.Fragment>
+        </ConditionalWrapper>
     )
 }
 
