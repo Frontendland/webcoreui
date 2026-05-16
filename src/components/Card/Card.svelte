@@ -41,7 +41,7 @@
 <svelte:element this={element} class={classes} {...rest}>
     {#if title}
         <svelte:element this={titleTag} class={titleClasses}>
-            {title}
+            {@html title}
         </svelte:element>
     {/if}
     <div class={bodyClasses}>

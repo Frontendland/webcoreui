@@ -41,7 +41,7 @@ const Title = titleTag
 
 <Component class:list={classes} {...rest}>
     {title && (
-        <Title class:list={titleClasses}>{title}</Title>
+        <Title class:list={titleClasses} set:html={title} />
     )}
     <div class:list={bodyClasses}>
         <slot />

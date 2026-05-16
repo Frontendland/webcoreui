@@ -39,7 +39,10 @@ const Card = ({
     return (
         <Element className={classes} {...rest}>
             {title && (
-                <TitleTag className={titleClasses}>{title}</TitleTag>
+                <TitleTag
+                    className={titleClasses}
+                    dangerouslySetInnerHTML={{ __html: title }}
+                />
             )}
             <div className={bodyClasses}>
                 {children}
