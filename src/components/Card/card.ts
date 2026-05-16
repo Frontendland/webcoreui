@@ -9,6 +9,7 @@ export type CardProps = {
     className?: string
     bodyClassName?: string
     secondary?: boolean
+    flat?: boolean
     [key: string]: any
 }
 

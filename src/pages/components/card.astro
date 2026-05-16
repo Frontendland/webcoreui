@@ -60,6 +60,22 @@ const sections = getSections({
             <section.component compact={true}>
                 Compact card without title
             </section.component>
+
+            <section.component compact={true} secondary={true}>
+                Compact + secondary card
+            </section.component>
+
+            <section.component flat={true} title="Flat card title">
+                Flat card without <code>compact</code> or <code>secondary</code> still gets a border to prevent it from becoming invisible against the background.
+            </section.component>
+
+            <section.component flat={true} compact={true} title="Flat + Compact">
+                Flat + compact card with a title
+            </section.component>
+
+            <section.component flat={true} secondary={true} title="Flat + Secondary">
+                Flat + secondary card with a title
+            </section.component>
         </div>
     ))}
 </Layout>

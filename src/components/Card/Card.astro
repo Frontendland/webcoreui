@@ -13,12 +13,14 @@ const {
     className,
     bodyClassName,
     secondary,
+    flat,
     ...rest
 } = Astro.props
 
 const classes = [
     styles.card,
     secondary && styles.secondary,
+    (flat && (compact || secondary)) && styles.flat,
     className
 ]
 
@@ -28,13 +30,18 @@ const bodyClasses = [
     bodyClassName
 ]
 
+const titleClasses = [
+    styles.title,
+    flat && styles.flat
+]
+
 const Component = element
 const Title = titleTag
 ---
 
 <Component class:list={classes} {...rest}>
     {title && (
-        <Title class:list={styles.title}>{title}</Title>
+        <Title class:list={titleClasses}>{title}</Title>
     )}
     <div class:list={bodyClasses}>
         <slot />

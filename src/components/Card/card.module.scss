@@ -1,20 +1,27 @@
 @use '../../scss/config.scss' as *;
 
 .card {
-    @include border(primary-50);
     @include border-radius(md);
     @include layout(flex, column);
     @include background(primary-70);
     @include visibility(hidden);
+    
+    &:not(.flat) {
+        @include border(primary-50);
+    }
 
-    &.secondary .body {
+    &.secondary .body,
+    &.flat .title {
         @include background(primary-60);
     }
 
     .title {
-        @include spacing(p-default);
-        @include border(primary-50, bottom);
         @include visibility(block);
+        @include spacing(p-default);
+
+        &:not(.flat) {
+            @include border(primary-50, bottom);
+        }
     }
 
     .body {

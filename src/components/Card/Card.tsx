@@ -13,13 +13,15 @@ const Card = ({
     className,
     bodyClassName,
     secondary,
+    flat,
     children,
     ...rest
 }: ReactCardProps) => {
     const classes = classNames([
         styles.card,
-        className,
-        secondary && styles.secondary
+        secondary && styles.secondary,
+        (flat && (compact || secondary)) && styles.flat,
+        className
     ])
 
     const bodyClasses = classNames([
@@ -28,10 +30,16 @@ const Card = ({
         bodyClassName
     ])
 
+    const titleClasses = classNames([
+        styles.title,
+        flat && styles.flat,
+        (flat && compact) && styles.compact
+    ])
+
     return (
         <Element className={classes} {...rest}>
             {title && (
-                <TitleTag className={styles.title}>{title}</TitleTag>
+                <TitleTag className={titleClasses}>{title}</TitleTag>
             )}
             <div className={bodyClasses}>
                 {children}

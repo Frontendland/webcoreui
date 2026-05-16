@@ -13,6 +13,7 @@
         className,
         bodyClassName,
         secondary,
+        flat,
         children,
         ...rest
     }: SvelteCardProps = $props()
@@ -20,6 +21,7 @@
     const classes = $derived(classNames([
         styles.card,
         secondary && styles.secondary,
+        (flat && (compact || secondary)) && styles.flat,
         className
     ]))
 
@@ -28,11 +30,17 @@
         compact && styles.compact,
         bodyClassName
     ]))
+
+    const titleClasses = $derived(classNames([
+        styles.title,
+        flat && styles.flat,
+        (flat && compact) && styles.compact
+    ]))
 </script>
 
 <svelte:element this={element} class={classes} {...rest}>
     {#if title}
-        <svelte:element this={titleTag} class={styles.title}>
+        <svelte:element this={titleTag} class={titleClasses}>
             {title}
         </svelte:element>
     {/if}
