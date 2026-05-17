@@ -1,0 +1,14 @@
+---
+import type { CarouselItemProps } from './carouselItem'
+
+interface Props extends CarouselItemProps {}
+
+const {
+    active,
+    className
+} = Astro.props
+---
+
+<li class={className} data-active={active}>
+    <slot />
+</li>
