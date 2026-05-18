@@ -1,4 +1,3 @@
-import React from 'react'
 import type { ToastProps } from './toast'
 
 import Alert, { type ReactAlertProps } from '../Alert/Alert.tsx'

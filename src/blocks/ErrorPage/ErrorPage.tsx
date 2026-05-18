@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Button from '@blocks/Button/Button.tsx'
 
 import type { ErrorPageProps } from './errorPage'

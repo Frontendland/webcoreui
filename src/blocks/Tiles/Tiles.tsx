@@ -1,4 +1,3 @@
-import React from 'react'
 import { classNames } from 'webcoreui'
 import { Button, Card, ConditionalWrapper } from 'webcoreui/react'
 

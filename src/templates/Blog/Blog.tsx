@@ -1,4 +1,3 @@
-import React from 'react'
 import type { ReactBlogProps } from './blog'
 
 import Author from '@blocks/Author/Author.tsx'

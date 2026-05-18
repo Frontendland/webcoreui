@@ -1,4 +1,3 @@
-import React from 'react'
 import { classNames } from 'webcoreui'
 
 import type { ReactDeviceMockupProps } from './deviceMockup'

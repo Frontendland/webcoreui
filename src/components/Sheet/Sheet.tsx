@@ -1,4 +1,3 @@
-import React from 'react'
 import type { SheetProps } from './sheet'
 
 import Modal, { type ReactModalProps } from '../Modal/Modal.tsx'

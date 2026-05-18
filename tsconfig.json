@@ -1,19 +1,19 @@
 {
     "extends": "astro/tsconfigs/strict",
     "compilerOptions": {
-        "baseUrl": ".",
         "types": ["vite/client"],
+        "jsx": "react-jsx",
         "paths": {
-            "@components/*": ["src/components/*"],
-            "@templates/*": ["src/templates/*"],
-            "@blocks/*": ["src/blocks/*"],
-            "@static/*": ["src/static/*"],
-            "@img/*": ["public/img/*"],
-            "@playground/*": ["src/playground/*"],
-            "@utils/*": ["src/utils/*"],
-            "@data": ["src/data.ts"],
-            "@helpers": ["src/helpers.js"],
-            "@e2e": ["src/tests/e2e/Playwright.ts"]
+            "@components/*": ["./src/components/*"],
+            "@templates/*": ["./src/templates/*"],
+            "@blocks/*": ["./src/blocks/*"],
+            "@static/*": ["./src/static/*"],
+            "@img/*": ["./public/img/*"],
+            "@playground/*": ["./src/playground/*"],
+            "@utils/*": ["./src/utils/*"],
+            "@data": ["./src/data.ts"],
+            "@helpers": ["./src/helpers.js"],
+            "@e2e": ["./src/tests/e2e/Playwright.ts"]
         }
     },
     "include": ["./src/**/*"]

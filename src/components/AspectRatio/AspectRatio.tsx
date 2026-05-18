@@ -1,4 +1,3 @@
-import React from 'react'
 import type { AspectRatioProps } from './aspectratio'
 
 import { classNames } from '../../utils/classNames'

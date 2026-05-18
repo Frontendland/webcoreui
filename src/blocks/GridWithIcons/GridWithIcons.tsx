@@ -1,4 +1,3 @@
-import React from 'react'
 import { classNames } from 'webcoreui'
 import { ConditionalWrapper } from 'webcoreui/react'
 

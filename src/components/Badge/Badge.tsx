@@ -1,4 +1,3 @@
-import React from 'react'
 import type { BadgeProps } from './badge'
 
 import { classNames } from '../../utils/classNames'

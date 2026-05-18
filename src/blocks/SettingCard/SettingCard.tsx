@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card } from 'webcoreui/react'
 
 import type { ReactSettingCardProps } from './settingCard'

@@ -99,6 +99,7 @@ export default [
             'quote-props': ['error', 'consistent'],
             'react/jsx-curly-brace-presence': ['error', 'never'],
             'react/jsx-fragments': ['error', 'element'],
+            'react/react-in-jsx-scope': 'off',
             'react/jsx-no-useless-fragment': ['error', {
                 allowExpressions: true
             }],

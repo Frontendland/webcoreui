@@ -1,4 +1,3 @@
-import React from 'react'
 import type { AvatarProps } from './avatar'
 
 import Image from '../Image/Image.tsx'

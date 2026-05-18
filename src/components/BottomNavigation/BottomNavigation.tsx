@@ -1,4 +1,3 @@
-import React from 'react'
 import type { BottomNavigationProps } from './bottomnavigation'
 
 import { classNames } from '../../utils/classNames'

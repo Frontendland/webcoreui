@@ -1,4 +1,3 @@
-import React from 'react'
 import type { IconProps } from './icon'
 import iconMap from './map'
 

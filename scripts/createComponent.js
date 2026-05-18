@@ -58,7 +58,6 @@ const templates = {
         </script>
     `,
     react: `
-        import React from 'react'
         import type { ${component}Props } from './${lowerCaseComponent}'
 
         import { classNames } from '../../utils/classNames'

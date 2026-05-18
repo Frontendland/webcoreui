@@ -1,4 +1,3 @@
-import React from 'react'
 import { Icon as IconComponent } from 'webcoreui/react'
 
 import type { CustomIconProps } from './icon'
