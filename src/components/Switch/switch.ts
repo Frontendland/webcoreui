@@ -1,5 +1,3 @@
-import type { ChangeEventHandler, MouseEventHandler } from 'svelte/elements'
-
 export type SwitchProps = {
     label?: string
     reverse?: boolean
@@ -12,13 +10,3 @@ export type SwitchProps = {
     className?: string
     [key: string]: any
 }
-
-export type SvelteSwitchProps = {
-    onChange?: ChangeEventHandler<HTMLInputElement>
-    onClick?: MouseEventHandler<HTMLInputElement>
-} & SwitchProps
-
-export type ReactSwitchProps = {
-    onChange?: React.ChangeEventHandler<HTMLInputElement>
-    onClick?: React.MouseEventHandler<HTMLInputElement>
-} & SwitchProps

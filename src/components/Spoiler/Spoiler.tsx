@@ -1,9 +1,13 @@
 import React from 'react'
-import type { ReactSpoilerProps } from './spoiler'
+import type { SpoilerProps } from './spoiler'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './spoiler.module.scss'
+
+export type ReactSpoilerProps = {
+    children: React.ReactNode
+} & SpoilerProps
 
 const Spoiler = ({
     color,

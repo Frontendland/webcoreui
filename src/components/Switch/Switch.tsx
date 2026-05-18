@@ -1,9 +1,14 @@
 import React from 'react'
-import type { ReactSwitchProps } from './switch'
+import type { SwitchProps } from './switch'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './switch.module.scss'
+
+export type ReactSwitchProps = {
+    onChange?: React.ChangeEventHandler<HTMLInputElement>
+    onClick?: React.MouseEventHandler<HTMLInputElement>
+} & SwitchProps
 
 const Switch = ({
     label,

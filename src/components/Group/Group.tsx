@@ -1,9 +1,13 @@
 import React from 'react'
-import type { ReactGroupProps } from './group'
+import type { GroupProps } from './group'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './group.module.scss'
+
+export type ReactGroupProps = {
+    children: React.ReactNode
+} & GroupProps
 
 const Group = ({
     withSeparator,

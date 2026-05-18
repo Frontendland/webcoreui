@@ -1,9 +1,14 @@
 <script lang="ts">
-    import type { SvelteTimelineItemProps } from './timelineitem'
+    import type { Snippet } from 'svelte'
+    import type { TimelineItemProps } from './timelineitem'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './timelineitem.module.scss'
+
+    export type SvelteTimelineItemProps = {
+        children: Snippet
+    } & TimelineItemProps
 
     const {
         title,

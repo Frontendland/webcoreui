@@ -1,10 +1,14 @@
 import React from 'react'
-import type { ReactKbdProps } from './kbd'
+import type { KbdProps } from './kbd'
 import { keyMap } from './keyMap'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './kbd.module.scss'
+
+export type ReactKbdProps = {
+    children?: React.ReactNode
+} & KbdProps
 
 const Kbd = ({
     keys,

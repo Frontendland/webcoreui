@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte'
-
 export type InputTarget = {
     currentTarget: HTMLInputElement
 }
@@ -44,19 +42,3 @@ export type InputProps = {
     labelClassName?: string
     [key: string]: any
 }
-
-export type SvelteInputProps = {
-    onChange?: (event: Event & InputTarget) => void
-    onKeyUp?: (event: KeyboardEvent & InputTarget) => void
-    onInput?: (event: Event & InputTarget) => void
-    onClick?: (event: MouseEvent & InputTarget) => void
-    children?: Snippet
-} & InputProps
-
-export type ReactInputProps = {
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-    onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void
-    onInput?: (event: React.InputEvent<HTMLInputElement>) => void
-    onClick?: (event: React.MouseEvent<HTMLInputElement>) => void
-    children?: React.ReactNode
-} & InputProps

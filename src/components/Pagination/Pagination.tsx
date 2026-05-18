@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import type { ReactPaginationProps } from './pagination'
+import type { PaginationEventType, PaginationProps } from './pagination'
 
 import Button from '../Button/Button.tsx'
 
@@ -9,6 +9,10 @@ import ChevronLeft from '../../icons/chevron-left.svg?raw'
 import ChevronRight from '../../icons/chevron-right.svg?raw'
 
 import styles from './pagination.module.scss'
+
+export type ReactPaginationProps = {
+    onChange?: (event: PaginationEventType) => void
+} & PaginationProps
 
 const Pagination = ({
     type,

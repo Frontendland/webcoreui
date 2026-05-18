@@ -1,11 +1,16 @@
 <script lang="ts">
-    import { onMount } from 'svelte'
-    import type { SvelteContextMenuProps } from './contextmenu'
+    import { onMount, type Snippet } from 'svelte'
+    import type { ContextMenuProps } from './contextmenu'
 
     import { classNames } from '../../utils/classNames'
     import { on } from '../../utils/DOMUtils'
 
     import styles from './contextmenu.module.scss'
+
+    export type SvelteContextMenuProps = {
+        children: Snippet
+        context: Snippet
+    } & ContextMenuProps
 
     const {
         element = 'div',

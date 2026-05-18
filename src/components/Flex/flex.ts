@@ -1,6 +1,3 @@
-import type { JSX } from 'react'
-import type { Snippet } from 'svelte'
-
 import type {
     Alignment,
     Direction,
@@ -18,12 +15,3 @@ export type FlexProps = {
     className?: string
     [key: string]: any
 }
-
-export type SvelteFlexProps = {
-    children: Snippet
-} & FlexProps
-
-export type ReactFlexProps = {
-    Element?: keyof JSX.IntrinsicElements
-    children: React.ReactNode
-} & Omit<FlexProps, 'element'>

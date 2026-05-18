@@ -1,11 +1,17 @@
 <script lang="ts">
-    import type { SvelteTextareaProps } from './textarea'
+    import type { TextareaProps, TextareaTarget } from './textarea'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './textarea.module.scss'
+
+    export type SvelteTextareaProps = {
+        onInput?: (event: Event & TextareaTarget) => void
+        onChange?: (event: Event & TextareaTarget) => void
+        onKeyUp?: (event: KeyboardEvent & TextareaTarget) => void
+    } & TextareaProps
 
     const {
         label,

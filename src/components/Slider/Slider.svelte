@@ -1,9 +1,15 @@
 <script lang="ts">
-    import type { SvelteSliderProps } from './slider'
+    import type { SliderProps } from './slider'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './slider.module.scss'
+
+    import type { InputTarget } from '../Input/input'
+
+    export type SvelteSliderProps = {
+        onChange?: (event: Event & InputTarget) => void
+    } & SliderProps
 
     const {
         min = 0,

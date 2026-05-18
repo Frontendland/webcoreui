@@ -1,11 +1,13 @@
 <script lang="ts">
-    import type { SvelteSheetProps } from './sheet'
+    import type { SheetProps } from './sheet'
 
-    import Modal from '../Modal/Modal.svelte'
+    import Modal, { type SvelteModalProps } from '../Modal/Modal.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './sheet.module.scss'
+
+    export type SvelteSheetProps = SheetProps & SvelteModalProps
 
     const {
         position,

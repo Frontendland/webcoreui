@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import type { HeadingObject, ReactDataTableProps } from './datatable'
+import type { DataTableEventType, DataTableProps, HeadingObject } from './datatable'
 
 import Button from '../Button/Button.tsx'
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
@@ -17,6 +17,11 @@ import searchIcon from '../../icons/search.svg?raw'
 import styles from './datatable.module.scss'
 
 import type { ListEventType } from '../List/list'
+
+export type ReactDataTableProps = {
+    onFilter?: (event: DataTableEventType) => void
+    children?: React.ReactNode
+} & DataTableProps
 
 const DataTable = ({
     headings,

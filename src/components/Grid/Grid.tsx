@@ -1,8 +1,13 @@
-import React from 'react'
-import type { ReactGridProps } from './grid'
+import React, { type JSX } from 'react'
+import type { GridProps } from './grid'
 
 import { classNames } from '../../utils/classNames'
 import { getLayoutClasses } from '../../utils/getLayoutClasses'
+
+export type ReactGridProps = {
+    Element?: keyof JSX.IntrinsicElements
+    children: React.ReactNode
+} & Omit<GridProps, 'element'>
 
 const Grid = ({
     Element = 'div',

@@ -1,9 +1,13 @@
 import React from 'react'
-import type { ReactTimelineProps } from './timeline'
+import type { TimelineProps } from './timeline'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './timeline.module.scss'
+
+export type ReactTimelineProps = {
+    children: React.ReactNode
+} & TimelineProps
 
 const Timeline = ({
     theme,

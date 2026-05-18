@@ -1,8 +1,13 @@
 <script lang="ts">
-    import type { SvelteGridProps } from './grid'
+    import type { Snippet } from 'svelte'
+    import type { GridProps } from './grid'
 
     import { classNames } from '../../utils/classNames'
     import { getLayoutClasses } from '../../utils/getLayoutClasses'
+
+    export type SvelteGridProps = {
+        children: Snippet
+    } & GridProps
 
     const {
         element = 'div',

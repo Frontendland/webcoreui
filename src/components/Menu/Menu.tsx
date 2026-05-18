@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import type { ReactMenuProps } from './menu'
+import type { MenuProps } from './menu'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './menu.module.scss'
+
+export type ReactMenuProps = {
+    children?: React.ReactNode
+} & MenuProps
 
 const Menu = ({
     items,

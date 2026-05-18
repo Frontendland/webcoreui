@@ -1,5 +1,6 @@
 <script lang="ts">
-    import type { SvelteCopyProps } from './copy'
+    import type { Snippet } from 'svelte'
+    import type { CopyProps } from './copy'
 
     import Badge from '../Badge/Badge.svelte'
 
@@ -9,6 +10,10 @@
     import copy from '../../icons/copy.svg?raw'
 
     import styles from './copy.module.scss'
+
+    export type SvelteCopyProps = {
+        children: Snippet
+    } & CopyProps
 
     let {
         tooltip = $bindable(''),

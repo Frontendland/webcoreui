@@ -1,11 +1,16 @@
 <script lang="ts">
-    import type { SvelteFooterProps } from './footer'
+    import type { Snippet } from 'svelte'
+    import type { FooterProps } from './footer'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './footer.module.scss'
+
+    export type SvelteFooterProps = {
+        children?: Snippet
+    } & FooterProps
 
     const {
         logo,

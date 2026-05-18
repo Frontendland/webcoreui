@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte'
-
 export type TabsProps = {
     items: {
         label: string
@@ -12,11 +10,3 @@ export type TabsProps = {
     even?: boolean
     className?: string
 }
-
-export type SvelteTabsProps = {
-    children: Snippet
-} & TabsProps
-
-export type ReactTabsProps = {
-    children: React.ReactNode
-} & TabsProps

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { SvelteRangeSliderProps } from './rangeslider'
+    import type { RangeSliderEventType, RangeSliderProps } from './rangeslider'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
@@ -7,6 +7,10 @@
     import { interpolate } from '../../utils/interpolate'
 
     import styles from './rangeslider.module.scss'
+
+    export type SvelteRangeSliderProps = {
+        onChange?: (event: RangeSliderEventType) => void
+    } & RangeSliderProps
 
     const {
         min = 0,

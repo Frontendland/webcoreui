@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { ListEventType,SvelteListProps } from './list'
+    import type { ListEventType, ListProps } from './list'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
     import Input from '../Input/Input.svelte'
@@ -9,6 +9,10 @@
     import searchIcon from '../../icons/search.svg?raw'
 
     import styles from './list.module.scss'
+
+    export type SvelteListProps = {
+        onSelect?: (event: ListEventType) => void
+    } & ListProps
 
     let {
         showSearchBar,

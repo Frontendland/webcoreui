@@ -1,11 +1,16 @@
 <script lang="ts">
-    import type { SvelteMenuProps } from './menu'
+    import type { Snippet } from 'svelte'
+    import type { MenuProps } from './menu'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './menu.module.scss'
+
+    export type SvelteMenuProps = {
+        children?: Snippet
+    } & MenuProps
 
     const {
         items,

@@ -1,11 +1,13 @@
 import React from 'react'
-import type { ReactToastProps } from './toast'
+import type { ToastProps } from './toast'
 
-import Alert from '../Alert/Alert.tsx'
+import Alert, { type ReactAlertProps } from '../Alert/Alert.tsx'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './toast.module.scss'
+
+export type ReactToastProps = ToastProps & ReactAlertProps
 
 const Toast = ({
     icon,

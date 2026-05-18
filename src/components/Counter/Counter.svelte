@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { SvelteCounterProps } from './counter'
+    import type { CounterProps } from './counter'
 
     import { classNames } from '../../utils/classNames'
 
@@ -7,6 +7,10 @@
     import plusIcon from '../../icons/plus.svg?raw'
 
     import styles from './counter.module.scss'
+
+    export type SvelteCounterProps = {
+        onChange?: (value: number) => void
+    } & CounterProps
 
     let {
         type = 'compact',

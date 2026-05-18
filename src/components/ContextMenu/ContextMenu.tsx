@@ -1,10 +1,16 @@
 import React, { useEffect, useRef } from 'react'
-import type { ReactContextMenuProps } from './contextmenu'
+import type { ContextMenuProps } from './contextmenu'
 
 import { classNames } from '../../utils/classNames'
 import { on } from '../../utils/DOMUtils'
 
 import styles from './contextmenu.module.scss'
+
+export type ReactContextMenuProps = {
+    Element?: React.ElementType
+    children: React.ReactNode
+    context: React.ReactNode
+} & Omit<ContextMenuProps, 'element'>
 
 const ContextMenu = ({
     Element = 'div',

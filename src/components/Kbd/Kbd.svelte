@@ -1,10 +1,15 @@
 <script lang="ts">
-    import type { SvelteKbdProps } from './kbd'
+    import type { Snippet } from 'svelte'
+    import type { KbdProps } from './kbd'
     import { keyMap } from './keyMap'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './kbd.module.scss'
+
+    export type SvelteKbdProps = {
+        children?: Snippet
+    } & KbdProps
 
     const {
         keys,

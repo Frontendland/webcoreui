@@ -1,5 +1,10 @@
 <script lang="ts">
-    import type { SvelteConditionalWrapperProps } from './conditionalwrapper'
+    import type { Snippet } from 'svelte'
+    import type { ConditionalWrapperProps } from './conditionalwrapper'
+
+    export type SvelteConditionalWrapperProps = {
+        children: Snippet
+    } & ConditionalWrapperProps
 
     const {
         condition,

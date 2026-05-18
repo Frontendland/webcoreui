@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte'
-
 import type { ButtonProps } from '../Button/button'
 
 export type SidebarProps = {
@@ -17,11 +15,3 @@ export type SidebarProps = {
     }[]
     className?: string
 }
-
-export type SvelteSidebarProps = {
-    children?: Snippet
-} & SidebarProps
-
-export type ReactSidebarProps = {
-    children?: React.ReactNode
-} & SidebarProps

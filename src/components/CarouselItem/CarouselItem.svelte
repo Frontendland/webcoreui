@@ -1,5 +1,10 @@
 <script lang="ts">
-    import type { SvelteCarouselItemProps } from './carouselItem'
+    import type { Snippet } from 'svelte'
+    import type { CarouselItemProps } from './carouselItem'
+
+    export type SvelteCarouselItemProps = {
+        children: Snippet
+    } & CarouselItemProps
 
     const {
         active,

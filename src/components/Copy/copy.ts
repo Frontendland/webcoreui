@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte'
-
 import type { BadgeProps } from '../Badge/badge'
 import type { IconProps } from '../Icon/icon'
 
@@ -10,11 +8,3 @@ export type CopyProps = {
     copiedIcon?: IconProps['type'] | string
     className?: string
 } & BadgeProps
-
-export type SvelteCopyProps = {
-    children: Snippet
-} & CopyProps
-
-export type ReactCopyProps = {
-    children: React.ReactNode
-} & CopyProps

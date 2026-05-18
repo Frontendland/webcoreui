@@ -1,11 +1,15 @@
 import React from 'react'
-import type { ReactFooterProps } from './footer'
+import type { FooterProps } from './footer'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './footer.module.scss'
+
+export type ReactFooterProps = {
+    children?: React.ReactNode
+} & FooterProps
 
 const Footer = ({
     logo,

@@ -1,9 +1,14 @@
 <script lang="ts">
-    import type { SvelteSpoilerProps } from './spoiler'
+    import type { Snippet } from 'svelte'
+    import type { SpoilerProps } from './spoiler'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './spoiler.module.scss'
+
+    export type SvelteSpoilerProps = {
+        children: Snippet
+    } & SpoilerProps
 
     const {
         color,

@@ -1,11 +1,16 @@
 <script lang="ts">
-    import type { SvelteSidebarProps } from './sidebar'
+    import type { Snippet } from 'svelte'
+    import type { SidebarProps } from './sidebar'
 
     import Badge from '../Badge/Badge.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './sidebar.module.scss'
+
+    export type SvelteSidebarProps = {
+        children?: Snippet
+    } & SidebarProps
 
     const {
         groups,

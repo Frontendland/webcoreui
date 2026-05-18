@@ -1,5 +1,5 @@
 import React from 'react'
-import type { ReactCheckboxProps } from './checkbox'
+import type { CheckboxProps } from './checkbox'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
@@ -8,6 +8,11 @@ import { classNames } from '../../utils/classNames'
 import check from '../../icons/check.svg?raw'
 
 import styles from './checkbox.module.scss'
+
+export type ReactCheckboxProps = {
+    onChange?: React.ChangeEventHandler<HTMLInputElement>
+    onClick?: React.MouseEventHandler<HTMLInputElement>
+} & CheckboxProps
 
 const Checkbox = ({
     checked,

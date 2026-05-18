@@ -1,11 +1,13 @@
 import React from 'react'
-import type { ReactSheetProps } from './sheet'
+import type { SheetProps } from './sheet'
 
-import Modal from '../Modal/Modal.tsx'
+import Modal, { type ReactModalProps } from '../Modal/Modal.tsx'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './sheet.module.scss'
+
+export type ReactSheetProps = SheetProps & ReactModalProps
 
 const Sheet = ({
     position,

@@ -1,5 +1,6 @@
 <script lang="ts">
-    import type { SvelteAlertProps } from './alert'
+    import type { Snippet } from 'svelte'
+    import type { AlertProps } from './alert'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
@@ -9,6 +10,11 @@
     import warning from '../../icons/warning.svg?raw'
 
     import styles from './alert.module.scss'
+
+    export type SvelteAlertProps = {
+        icon?: Snippet
+        children: Snippet
+    } & AlertProps
 
     const {
         element = 'section',

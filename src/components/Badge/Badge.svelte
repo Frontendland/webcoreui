@@ -1,9 +1,16 @@
 <script lang="ts">
-    import type { SvelteBadgeProps } from './badge'
+    import type { Snippet } from 'svelte'
+    import type { MouseEventHandler } from 'svelte/elements'
+    import type { BadgeProps } from './badge'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './badge.module.scss'
+
+    export type SvelteBadgeProps = {
+        onClick?: MouseEventHandler<HTMLButtonElement> | null
+        children?: Snippet
+    } & BadgeProps
 
     const {
         theme,

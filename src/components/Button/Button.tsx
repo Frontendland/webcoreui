@@ -1,9 +1,14 @@
 import React from 'react'
-import type { ReactButtonProps } from './button'
+import type { ButtonProps } from './button'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './button.module.scss'
+
+export type ReactButtonProps = {
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
+    children?: React.ReactNode
+} & ButtonProps
 
 const Button = ({
     theme,

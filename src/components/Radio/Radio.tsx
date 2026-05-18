@@ -1,11 +1,15 @@
 import React from 'react'
-import type { ReactRadioProps } from './radio'
+import type { RadioProps } from './radio'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './radio.module.scss'
+
+export type ReactRadioProps = {
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+} & RadioProps
 
 const Radio = ({
     name,

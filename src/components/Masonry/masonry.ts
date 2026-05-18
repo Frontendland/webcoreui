@@ -1,7 +1,4 @@
-import type { FC } from 'react'
-import type { SvelteComponent } from 'svelte'
-
-type ChildrenProps<ComponentType> = {
+export type ChildrenProps<ComponentType> = {
     component: ComponentType
     children?: string | number
     props?: {
@@ -9,7 +6,7 @@ type ChildrenProps<ComponentType> = {
     }
 } | string | number
 
-type Items<ComponentType> = {
+export type Items<ComponentType> = {
     component?: ComponentType;
     children?: ChildrenProps<ComponentType>
     html?: string
@@ -26,11 +23,3 @@ export type MasonryProps = {
     sequential?: boolean
     className?: string
 }
-
-export type SvelteMasonryProps = {
-    items: Items<typeof SvelteComponent<any>>[]
-} & Omit<MasonryProps, 'items'>
-
-export type ReactMasonryProps = {
-    items: Items<FC<any>>[]
-} & Omit<MasonryProps, 'items'>

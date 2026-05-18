@@ -1,9 +1,13 @@
-import React, { type JSX } from 'react'
-import type { ReactMasonryProps } from './masonry'
+import React, { type FC, type JSX } from 'react'
+import type { Items,MasonryProps } from './masonry'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './masonry.module.scss'
+
+export type ReactMasonryProps = {
+    items: Items<FC<any>>[]
+} & Omit<MasonryProps, 'items'>
 
 const Masonry = ({
     items,

@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
-import type { ReactCollapsibleProps } from './collapsible'
+import type { CollapsibleProps } from './collapsible'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './collapsible.module.scss'
+
+export type ReactCollapsibleProps = {
+    on: React.ReactNode
+    off: React.ReactNode
+    children: React.ReactNode
+} & CollapsibleProps
 
 const Collapsible = ({
     initialHeight,

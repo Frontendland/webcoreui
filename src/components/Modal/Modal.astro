@@ -1,4 +1,5 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { ModalProps } from './modal'
 
 import Button from '../Button/Button.astro'
@@ -11,7 +12,7 @@ import warning from '../../icons/warning.svg?raw'
 
 import styles from './modal.module.scss'
 
-interface Props extends ModalProps {}
+export type Props = ModalProps<HTMLAttributes<'dialog'>>
 
 const iconMap = {
     info,
@@ -28,7 +29,6 @@ const {
     closeOnOverlay = true,
     transparent,
     theme,
-    id,
     className,
     ...rest
 } = Astro.props
@@ -49,7 +49,6 @@ const classes = [
 
 <dialog
     class:list={classes}
-    id={id}
     data-close={close.length ? close : undefined}
     {...rest}
 >

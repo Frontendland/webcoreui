@@ -1,5 +1,5 @@
-import React from 'react'
-import type { ReactAlertProps } from './alert'
+import React, { type JSX } from 'react'
+import type { AlertProps } from './alert'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
@@ -9,6 +9,13 @@ import info from '../../icons/info.svg?raw'
 import warning from '../../icons/warning.svg?raw'
 
 import styles from './alert.module.scss'
+
+export type ReactAlertProps = {
+    Element?: keyof JSX.IntrinsicElements
+    TitleTag?: keyof JSX.IntrinsicElements
+    icon?: React.ReactNode
+    children: React.ReactNode
+} & Omit<AlertProps, 'titleTag' | 'element'>
 
 const iconMap = {
     info,

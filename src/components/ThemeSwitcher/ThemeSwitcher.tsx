@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import type { ReactThemeSwitcherProps } from './themeswitcher'
+import type { ThemeSwitcherProps } from './themeswitcher'
 
 import { classNames } from '../../utils/classNames'
 import { getCookie, setCookie } from '../../utils/cookies'
 import { dispatch, listen } from '../../utils/event'
 
 import styles from './themeswitcher.module.scss'
+
+export type ReactThemeSwitcherProps = {
+    primaryIcon?: React.ReactNode
+    secondaryIcon?: React.ReactNode
+} & ThemeSwitcherProps
 
 const ThemeSwitcher = ({
     themes,

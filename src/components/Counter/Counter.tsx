@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import type { ReactCounterProps } from './counter'
+import type { CounterProps } from './counter'
 
 import { classNames } from '../../utils/classNames'
 
@@ -7,6 +7,10 @@ import minusIcon from '../../icons/minus.svg?raw'
 import plusIcon from '../../icons/plus.svg?raw'
 
 import styles from './counter.module.scss'
+
+export type ReactCounterProps = {
+    onChange?: (value: number) => void
+} & CounterProps
 
 const Counter = ({
     type = 'compact',

@@ -30,11 +30,3 @@ export type ListProps = {
         }[]
     }[]
 }
-
-export type SvelteListProps = {
-    onSelect?: (event: ListEventType) => void
-} & ListProps
-
-export type ReactListProps = {
-    onSelect?: (event: ListEventType) => void
-} & ListProps

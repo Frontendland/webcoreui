@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import type { ReactBannerProps } from './banner'
+import type { BannerProps } from './banner'
 
 import Button from '../Button/Button.tsx'
 
@@ -8,6 +8,10 @@ import { classNames } from '../../utils/classNames'
 import closeIcon from '../../icons/close.svg?raw'
 
 import styles from './banner.module.scss'
+
+export type ReactBannerProps = {
+    children: React.ReactNode
+} & BannerProps
 
 const Banner = ({
     top,

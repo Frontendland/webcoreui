@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { HTMLAttributes } from 'svelte/elements'
     import type { ImageProps } from './image'
 
     import AspectRatio from '../AspectRatio/AspectRatio.svelte'
@@ -6,6 +7,8 @@
     import { classNames } from '../../utils/classNames'
 
     import styles from './image.module.scss'
+
+    export type SvelteImageProps = ImageProps<HTMLAttributes<HTMLImageElement>>
 
     const {
         src,
@@ -19,7 +22,7 @@
         rounded,
         className,
         ...rest
-    }: ImageProps = $props()
+    }: SvelteImageProps = $props()
 
     const classes = $derived(classNames([
         styles.img,

@@ -1,9 +1,13 @@
 import React from 'react'
-import type { ReactRibbonProps } from './ribbon'
+import type { RibbonProps } from './ribbon'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './ribbon.module.scss'
+
+export type ReactRibbonProps = {
+    children: React.ReactNode
+} & RibbonProps
 
 const Ribbon = ({
     offset,

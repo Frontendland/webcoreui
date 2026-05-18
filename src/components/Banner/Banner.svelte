@@ -1,5 +1,6 @@
 <script lang="ts">
-    import type { SvelteBannerProps } from './banner'
+    import type { Snippet } from 'svelte'
+    import type { BannerProps } from './banner'
 
     import Button from '../Button/Button.svelte'
 
@@ -8,6 +9,10 @@
     import closeIcon from '../../icons/close.svg?raw'
 
     import styles from './banner.module.scss'
+
+    export type SvelteBannerProps = {
+        children: Snippet
+    } & BannerProps
 
     const {
         top,

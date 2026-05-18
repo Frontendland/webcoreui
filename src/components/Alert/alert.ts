@@ -1,6 +1,3 @@
-import type { JSX } from 'react'
-import type { Snippet } from 'svelte'
-
 export type AlertProps = {
     element?: string
     title?: string
@@ -14,15 +11,3 @@ export type AlertProps = {
         | 'alert'
     [key: string]: any
 }
-
-export type SvelteAlertProps = {
-    icon?: Snippet
-    children: Snippet
-} & AlertProps
-
-export type ReactAlertProps = {
-    Element?: keyof JSX.IntrinsicElements
-    TitleTag?: keyof JSX.IntrinsicElements
-    icon?: React.ReactNode
-    children: React.ReactNode
-} & Omit<AlertProps, 'titleTag' | 'element'>

@@ -1,9 +1,16 @@
 <script lang="ts">
-    import type { SvelteCollapsibleProps } from './collapsible'
+    import type { Snippet } from 'svelte'
+    import type { CollapsibleProps } from './collapsible'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './collapsible.module.scss'
+
+    export type SvelteCollapsibleProps = {
+        on: Snippet
+        off: Snippet
+        children: Snippet
+    } & CollapsibleProps
 
     let {
         initialHeight,

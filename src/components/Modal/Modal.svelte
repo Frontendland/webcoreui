@@ -1,5 +1,7 @@
 <script lang="ts">
-    import type { SvelteModalProps } from './modal'
+    import type { Snippet } from 'svelte'
+    import type { HTMLAttributes } from 'svelte/elements'
+    import type { ModalProps } from './modal'
 
     import Button from '../Button/Button.svelte'
 
@@ -13,6 +15,10 @@
 
     import styles from './modal.module.scss'
 
+    export type SvelteModalProps = {
+        children?: Snippet
+    } & ModalProps<HTMLAttributes<HTMLDialogElement>>
+
     const {
         title,
         subTitle,
@@ -21,7 +27,6 @@
         closeOnOverlay = true,
         transparent,
         theme,
-        id,
         className,
         children,
         ...rest
@@ -50,7 +55,6 @@
 
 <dialog
     class={classes}
-    id={id}
     data-close={close.length ? close : undefined}
     {...rest}
 >

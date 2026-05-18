@@ -1,9 +1,14 @@
 <script lang="ts">
-    import type { SvelteCardProps } from './card'
+    import type { Snippet } from 'svelte'
+    import type { CardProps } from './card'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './card.module.scss'
+
+    export type SvelteCardProps = {
+        children: Snippet
+    } & CardProps
 
     const {
         element = 'section',

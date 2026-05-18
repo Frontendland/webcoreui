@@ -1,9 +1,13 @@
 import React from 'react'
-import type { ReactAspectRatioProps } from './aspectratio'
+import type { AspectRatioProps } from './aspectratio'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './aspect-ratio.module.scss'
+
+export type ReactAspectRatioProps = {
+    children: React.ReactNode
+} & AspectRatioProps
 
 const AspectRatio = ({
     ratio,

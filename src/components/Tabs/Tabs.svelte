@@ -1,9 +1,14 @@
 <script lang="ts">
-    import type { SvelteTabsProps } from './tabs'
+    import type { Snippet } from 'svelte'
+    import type { TabsProps } from './tabs'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './tabs.module.scss'
+
+    export type SvelteTabsProps = {
+        children: Snippet
+    } & TabsProps
 
     const {
         items,

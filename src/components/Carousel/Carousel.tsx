@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import type { ReactCarouselProps } from './carousel'
+import type { CarouselProps } from './carousel'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 import Pagination from '../Pagination/Pagination.tsx'
@@ -12,6 +12,11 @@ import { getBreakpoint } from '../../utils/getBreakpoint'
 import styles from './carousel.module.scss'
 
 import type { PaginationEventType } from '../Pagination/pagination'
+
+export type ReactCarouselProps = {
+    onScroll?: (event: number) => void
+    children?: React.ReactNode
+} & CarouselProps
 
 const Carousel = ({
     items,

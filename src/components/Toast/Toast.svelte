@@ -1,11 +1,13 @@
 <script lang="ts">
-    import type { SvelteToastProps } from './toast'
+    import type { ToastProps } from './toast'
 
-    import Alert from '../Alert/Alert.svelte'
+    import Alert, { type SvelteAlertProps } from '../Alert/Alert.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './toast.module.scss'
+
+    export type SvelteToastProps = ToastProps & SvelteAlertProps
 
     const {
         position,

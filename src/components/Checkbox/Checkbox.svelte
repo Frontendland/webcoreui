@@ -1,5 +1,6 @@
 <script lang="ts">
-    import type { SvelteCheckboxProps } from './checkbox'
+    import type { ChangeEventHandler, MouseEventHandler } from 'svelte/elements'
+    import type { CheckboxProps } from './checkbox'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
@@ -8,6 +9,11 @@
     import check from '../../icons/check.svg?raw'
 
     import styles from './checkbox.module.scss'
+
+    export type SvelteCheckboxProps = {
+        onChange?: ChangeEventHandler<HTMLInputElement>
+        onClick?: MouseEventHandler<HTMLInputElement>
+    } & CheckboxProps
 
     const {
         checked,

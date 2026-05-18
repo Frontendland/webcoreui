@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { SveltePaginationProps } from './pagination'
+    import type { PaginationEventType, PaginationProps } from './pagination'
 
     import Button from '../Button/Button.svelte'
 
@@ -9,6 +9,10 @@
     import ChevronRight from '../../icons/chevron-right.svg?raw'
 
     import styles from './pagination.module.scss'
+
+    export type SveltePaginationProps = {
+        onChange?: (event: PaginationEventType) => void
+    } & PaginationProps
 
     const {
         type,

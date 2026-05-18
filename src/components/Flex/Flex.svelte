@@ -1,8 +1,13 @@
 <script lang="ts">
-    import type { SvelteFlexProps } from './flex'
+    import type { Snippet } from 'svelte'
+    import type { FlexProps } from './flex'
 
     import { classNames } from '../../utils/classNames'
     import { getLayoutClasses } from '../../utils/getLayoutClasses'
+
+    export type SvelteFlexProps = {
+        children: Snippet
+    } & FlexProps
 
     const {
         element = 'div',

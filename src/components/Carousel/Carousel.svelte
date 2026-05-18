@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { onMount } from 'svelte'
-    import type { SvelteCarouselProps } from './carousel'
+    import { onMount, type Snippet } from 'svelte'
+    import type { CarouselProps } from './carousel'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
     import Pagination from '../Pagination/Pagination.svelte'
@@ -13,6 +13,11 @@
     import styles from './carousel.module.scss'
 
     import type { PaginationEventType } from '../Pagination/pagination'
+
+    export type SvelteCarouselProps = {
+        onScroll?: (event: number) => void
+        children: Snippet
+    } & CarouselProps
 
     let {
         items = 0,

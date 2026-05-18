@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import type { ListEventType, ReactListProps } from './list'
+import type { ListEventType, ListProps } from './list'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 import Input from '../Input/Input.tsx'
@@ -9,6 +9,10 @@ import { classNames } from '../../utils/classNames'
 import searchIcon from '../../icons/search.svg?raw'
 
 import styles from './list.module.scss'
+
+export type ReactListProps = {
+    onSelect?: (event: ListEventType) => void
+} & ListProps
 
 const List = ({
     showSearchBar,

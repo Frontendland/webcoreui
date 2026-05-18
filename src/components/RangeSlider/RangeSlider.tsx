@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 import React, { useEffect, useRef, useState } from 'react'
-import type { ReactRangeSliderProps } from './rangeslider'
+import type { RangeSliderEventType, RangeSliderProps } from './rangeslider'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
@@ -8,6 +8,10 @@ import { classNames } from '../../utils/classNames'
 import { interpolate } from '../../utils/interpolate'
 
 import styles from './rangeslider.module.scss'
+
+export type ReactRangeSliderProps = {
+    onChange?: (event: RangeSliderEventType) => void
+} & RangeSliderProps
 
 const RangeSlider = ({
     min = 0,

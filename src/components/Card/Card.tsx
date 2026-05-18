@@ -1,9 +1,15 @@
-import React from 'react'
-import type { ReactCardProps } from './card'
+import React, { type JSX } from 'react'
+import type { CardProps } from './card'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './card.module.scss'
+
+export type ReactCardProps = {
+    Element?: keyof JSX.IntrinsicElements
+    TitleTag?: keyof JSX.IntrinsicElements
+    children: React.ReactNode
+} & Omit<CardProps, 'titleTag' | 'element'>
 
 const Card = ({
     Element = 'section',

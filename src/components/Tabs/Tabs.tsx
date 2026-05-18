@@ -1,9 +1,13 @@
 import React, { useRef,useState } from 'react'
-import type { ReactTabsProps } from './tabs'
+import type { TabsProps } from './tabs'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './tabs.module.scss'
+
+export type ReactTabsProps = {
+    children: React.ReactNode
+} & TabsProps
 
 const Tabs = ({
     items,

@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte'
-
 import type { PaginationProps } from '../Pagination/pagination'
 
 export type DataTableEventType = {
@@ -32,13 +30,3 @@ export type DataTableProps = {
     className?: string
     id?: string
 }
-
-export type SvelteDataTableProps = {
-    onFilter?: (event: DataTableEventType) => void
-    children?: Snippet
-} & DataTableProps
-
-export type ReactDataTableProps = {
-    onFilter?: (event: DataTableEventType) => void
-    children?: React.ReactNode
-} & DataTableProps

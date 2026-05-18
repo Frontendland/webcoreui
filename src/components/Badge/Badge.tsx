@@ -1,9 +1,14 @@
 import React from 'react'
-import type { ReactBadgeProps } from './badge'
+import type { BadgeProps } from './badge'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './badge.module.scss'
+
+export type ReactBadgeProps = {
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
+    children?: React.ReactNode
+} & BadgeProps
 
 const Badge = ({
     theme,

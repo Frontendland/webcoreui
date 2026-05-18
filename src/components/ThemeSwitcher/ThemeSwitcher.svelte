@@ -1,12 +1,18 @@
 <script lang="ts">
-    import { onMount } from 'svelte'
-    import type { SvelteThemeSwitcherProps } from './themeswitcher'
+    import { onMount, type Snippet } from 'svelte'
+    import type { ThemeSwitcherProps } from './themeswitcher'
 
     import { classNames } from '../../utils/classNames'
     import { getCookie, setCookie } from '../../utils/cookies'
     import { dispatch, listen } from '../../utils/event'
 
     import styles from './themeswitcher.module.scss'
+
+    export type SvelteThemeSwitcherProps = {
+        primaryIcon?: Snippet
+        secondaryIcon?: Snippet
+        children?: Snippet
+    } & ThemeSwitcherProps
 
     const {
         themes,

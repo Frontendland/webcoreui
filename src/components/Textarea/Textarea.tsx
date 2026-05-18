@@ -1,11 +1,17 @@
 import React from 'react'
-import type { ReactTextareaProps } from './textarea'
+import type { TextareaProps } from './textarea'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.tsx'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './textarea.module.scss'
+
+export type ReactTextareaProps = {
+    onInput?: (event: React.InputEvent<HTMLTextAreaElement>) => void
+    onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
+    onKeyUp?: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void
+} & TextareaProps
 
 const Textarea = ({
     label,

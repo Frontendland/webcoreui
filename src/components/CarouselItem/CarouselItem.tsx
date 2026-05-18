@@ -1,5 +1,9 @@
 import React from 'react'
-import type { ReactCarouselItemProps } from './carouselItem'
+import type { CarouselItemProps } from './carouselItem'
+
+export type ReactCarouselItemProps = {
+    children: React.ReactNode
+} & CarouselItemProps
 
 const CarouselItem = ({
     active,

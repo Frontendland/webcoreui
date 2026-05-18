@@ -1,9 +1,14 @@
 <script lang="ts">
-    import type { SvelteAspectRatioProps } from './aspectratio'
+    import type { Snippet } from 'svelte'
+    import type { AspectRatioProps } from './aspectratio'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './aspect-ratio.module.scss'
+
+    export type SvelteAspectRatioProps = {
+        children: Snippet
+    } & AspectRatioProps
 
     const {
         ratio,

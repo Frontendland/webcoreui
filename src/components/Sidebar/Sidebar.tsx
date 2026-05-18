@@ -1,11 +1,15 @@
 import React from 'react'
-import type { ReactSidebarProps } from './sidebar'
+import type { SidebarProps } from './sidebar'
 
 import Badge from '../Badge/Badge.tsx'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './sidebar.module.scss'
+
+export type ReactSidebarProps = {
+    children?: React.ReactNode
+} & SidebarProps
 
 const Sidebar = ({
     groups,

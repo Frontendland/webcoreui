@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import type { ReactCopyProps } from './copy'
+import type { CopyProps } from './copy'
 
 import Badge from '../Badge/Badge.tsx'
 
@@ -9,6 +9,10 @@ import circleCheck from '../../icons/circle-check.svg?raw'
 import copy from '../../icons/copy.svg?raw'
 
 import styles from './copy.module.scss'
+
+export type ReactCopyProps = {
+    children: React.ReactNode
+} & CopyProps
 
 const Copy = ({
     tooltip,

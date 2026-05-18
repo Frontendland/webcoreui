@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-    import type { SvelteSelectProps } from './select'
+    import type { SelectEventType, SelectProps } from './select'
 
     import Input from '../Input/Input.svelte'
     import List from '../List/List.svelte'
@@ -10,14 +10,19 @@
     import { classNames } from '../../utils/classNames'
     import { debounce } from '../../utils/debounce'
     import { on } from '../../utils/DOMUtils'
-    import { modal } from '../../utils/modal'
-    import { closePopover, popover, type PopoverPosition } from '../../utils/popover'
+    import { modal, type ModalCallback } from '../../utils/modal'
+    import { closePopover, popover, type PopoverCallback, type PopoverPosition } from '../../utils/popover'
 
     import ChevronDown from '../../icons/chevron-down.svg?raw'
 
     import styles from './select.module.scss'
 
     import type { ListEventType, ListProps } from '../List/list'
+
+    export type SvelteSelectProps = {
+        onChange?: (event: SelectEventType) => void
+        onClose?: (event: ModalCallback | PopoverCallback) => void
+    } & SelectProps
 
     const {
         name,

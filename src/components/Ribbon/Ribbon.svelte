@@ -1,9 +1,14 @@
 <script lang="ts">
-    import type { SvelteRibbonProps } from './ribbon'
+    import type { Snippet } from 'svelte'
+    import type { RibbonProps } from './ribbon'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './ribbon.module.scss'
+
+    export type SvelteRibbonProps = {
+        children: Snippet
+    } & RibbonProps
 
     const {
         offset,

@@ -1,5 +1,6 @@
 <script lang="ts">
-    import type { HeadingObject, SvelteDataTableProps } from './datatable'
+    import type { Snippet } from 'svelte'
+    import type { DataTableEventType, DataTableProps, HeadingObject } from './datatable'
 
     import Button from '../Button/Button.svelte'
     import Input from '../Input/Input.svelte'
@@ -16,6 +17,11 @@
     import styles from './datatable.module.scss'
 
     import type { ListEventType } from '../List/list'
+
+    export type SvelteDataTableProps = {
+        onFilter?: (event: DataTableEventType) => void
+        children?: Snippet
+    } & DataTableProps
 
     const {
         headings,

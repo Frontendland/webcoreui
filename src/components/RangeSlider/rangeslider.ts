@@ -28,12 +28,3 @@ export type RangeSliderProps = {
     updateLabels?: boolean
     className?: string
 }
-
-export type SvelteRangeSliderProps = {
-    onChange?: (event: RangeSliderEventType) => void
-} & RangeSliderProps
-
-export type ReactRangeSliderProps = {
-    onChange?: (event: RangeSliderEventType) => void
-} & RangeSliderProps
-

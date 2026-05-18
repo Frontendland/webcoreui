@@ -1,5 +1,5 @@
 import React from 'react'
-import type { ReactModalProps } from './modal'
+import type { ModalProps } from './modal'
 
 import Button from '../Button/Button.tsx'
 
@@ -12,6 +12,10 @@ import info from '../../icons/info.svg?raw'
 import warning from '../../icons/warning.svg?raw'
 
 import styles from './modal.module.scss'
+
+export type ReactModalProps = {
+    children?: React.ReactNode
+} & ModalProps<React.DialogHTMLAttributes<HTMLDialogElement>>
 
 const iconMap = {
     info,
@@ -28,7 +32,6 @@ const Modal = ({
     closeOnOverlay = true,
     transparent,
     theme,
-    id,
     className,
     children,
     ...rest
@@ -50,7 +53,6 @@ const Modal = ({
         <React.Fragment>
             <dialog
                 className={classes}
-                id={id}
                 data-close={close.length ? close : undefined}
                 {...rest}
             >

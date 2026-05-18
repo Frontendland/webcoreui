@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte'
-
 export type KbdProps = {
     keys?: ('cmd'
         | 'shift'
@@ -22,11 +20,3 @@ export type KbdProps = {
         | 'space')[]
     className?: string
 }
-
-export type SvelteKbdProps = {
-    children?: Snippet
-} & KbdProps
-
-export type ReactKbdProps = {
-    children?: React.ReactNode
-} & KbdProps

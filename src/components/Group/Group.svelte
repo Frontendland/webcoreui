@@ -1,9 +1,14 @@
 <script lang="ts">
-    import type { SvelteGroupProps } from './group'
+    import type { Snippet } from 'svelte'
+    import type { GroupProps } from './group'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './group.module.scss'
+
+    export type SvelteGroupProps = {
+        children: Snippet
+    } & GroupProps
 
     const {
         withSeparator,

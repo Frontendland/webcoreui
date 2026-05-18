@@ -1,11 +1,20 @@
 <script lang="ts">
-    import type { SvelteInputProps } from './input'
+    import type { Snippet } from 'svelte'
+    import type { InputProps, InputTarget } from './input'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './input.module.scss'
+
+    export type SvelteInputProps = {
+        onChange?: (event: Event & InputTarget) => void
+        onKeyUp?: (event: KeyboardEvent & InputTarget) => void
+        onInput?: (event: Event & InputTarget) => void
+        onClick?: (event: MouseEvent & InputTarget) => void
+        children?: Snippet
+    } & InputProps
 
     let {
         type = 'text',

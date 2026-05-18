@@ -26,11 +26,3 @@ export type PaginationProps = {
         link?: string
     }[]
 }
-
-export type SveltePaginationProps = {
-    onChange?: (event: PaginationEventType) => void
-} & PaginationProps
-
-export type ReactPaginationProps = {
-    onChange?: (event: PaginationEventType) => void
-} & PaginationProps

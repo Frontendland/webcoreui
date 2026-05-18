@@ -1,11 +1,17 @@
 <script lang="ts">
-    import type { SvelteRadioProps } from './radio'
+    import type { RadioProps } from './radio'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './radio.module.scss'
+
+    import type { InputTarget } from '../Input/input'
+
+    export type SvelteRadioProps = {
+        onChange?: (event: Event & InputTarget) => void
+    } & RadioProps
 
     const {
         name,

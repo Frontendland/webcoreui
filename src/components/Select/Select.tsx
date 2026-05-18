@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react'
-import type { ReactSelectProps } from './select'
+import type { SelectEventType, SelectProps } from './select'
 
 import Input from '../Input/Input.tsx'
 import List from '../List/List.tsx'
@@ -9,14 +9,19 @@ import Popover from '../Popover/Popover.tsx'
 import { classNames } from '../../utils/classNames'
 import { debounce } from '../../utils/debounce'
 import { on } from '../../utils/DOMUtils'
-import { modal } from '../../utils/modal'
-import { closePopover, popover, type PopoverPosition } from '../../utils/popover'
+import { modal, type ModalCallback } from '../../utils/modal'
+import { closePopover, popover, type PopoverCallback, type PopoverPosition } from '../../utils/popover'
 
 import ChevronDown from '../../icons/chevron-down.svg?raw'
 
 import styles from './select.module.scss'
 
 import type { ListEventType } from '../List/list'
+
+export type ReactSelectProps = {
+    onChange?: (event: SelectEventType) => void
+    onClose?: (event: ModalCallback | PopoverCallback) => void
+} & SelectProps
 
 const Select = ({
     name,

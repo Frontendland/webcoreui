@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte'
-
 import type { ButtonProps } from '../Button/button'
 
 export type FooterProps = {
@@ -25,11 +23,3 @@ export type FooterProps = {
     wrapperClassName?: string
     subTextClassName?: string
 }
-
-export type SvelteFooterProps = {
-    children?: Snippet
-} & FooterProps
-
-export type ReactFooterProps = {
-    children?: React.ReactNode
-} & FooterProps

@@ -1,9 +1,14 @@
 <script lang="ts">
-    import type { SveltePopoverProps } from './popover'
+    import type { Snippet } from 'svelte'
+    import type { PopoverProps } from './popover'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './popover.module.scss'
+
+    export type SveltePopoverProps = {
+        children: Snippet
+    } & PopoverProps
 
     const {
         id,

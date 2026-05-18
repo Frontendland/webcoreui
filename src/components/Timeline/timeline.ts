@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte'
-
 export type TimelineProps = {
     theme?: 'fill' | 'stroke' | 'stroke fill' | 'icons'
     alternate?: boolean
@@ -56,11 +54,3 @@ export type TimelineProps = {
     | 'upper-armenian'
     | 'upper-roman'
 }
-
-export type SvelteTimelineProps = {
-    children: Snippet
-} & TimelineProps
-
-export type ReactTimelineProps = {
-    children: React.ReactNode
-} & TimelineProps

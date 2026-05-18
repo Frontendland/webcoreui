@@ -1,9 +1,15 @@
 <script lang="ts">
-    import type { SvelteSwitchProps } from './switch'
+    import type { ChangeEventHandler, MouseEventHandler } from 'svelte/elements'
+    import type { SwitchProps } from './switch'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './switch.module.scss'
+
+    export type SvelteSwitchProps = {
+        onChange?: ChangeEventHandler<HTMLInputElement>
+        onClick?: MouseEventHandler<HTMLInputElement>
+    } & SwitchProps
 
     const {
         label,

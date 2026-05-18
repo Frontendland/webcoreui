@@ -11,11 +11,3 @@ export type CounterProps = {
     className?: string
     [key: string]: any
 }
-
-export type SvelteCounterProps = {
-    onChange?: (value: number) => void
-} & CounterProps
-
-export type ReactCounterProps = {
-    onChange?: (value: number) => void
-} & CounterProps

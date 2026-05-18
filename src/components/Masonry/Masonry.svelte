@@ -1,9 +1,14 @@
 <script lang="ts">
-    import type { SvelteMasonryProps } from './masonry'
+    import type { SvelteComponent } from 'svelte'
+    import type { Items, MasonryProps } from './masonry'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './masonry.module.scss'
+
+    export type SvelteMasonryProps = {
+        items: Items<typeof SvelteComponent<any>>[]
+    } & Omit<MasonryProps, 'items'>
 
     const {
         items,
