@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { HTMLInputAttributes } from 'svelte/elements'
     import type { RadioProps } from './radio'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
@@ -11,10 +12,9 @@
 
     export type SvelteRadioProps = {
         onChange?: (event: Event & InputTarget) => void
-    } & RadioProps
+    } & RadioProps<HTMLInputAttributes>
 
     const {
-        name,
         items,
         color,
         inline,
@@ -48,14 +48,13 @@
                 class={styles.wrapper}
             >
                 <input
+                    {...rest}
                     type="radio"
-                    name={name}
                     value={item.value}
                     checked={item.selected}
                     disabled={item.disabled}
                     required={item.required}
                     onchange={onChange}
-                    {...rest}
                 />
                 <span class={styles.icon}></span>
                 <span class={styles.label}>

@@ -9,7 +9,7 @@ export type ReactCardProps = {
     Element?: keyof JSX.IntrinsicElements
     TitleTag?: keyof JSX.IntrinsicElements
     children: React.ReactNode
-} & Omit<CardProps, 'titleTag' | 'element'>
+} & Omit<CardProps<any>, 'titleTag' | 'element'>
 
 const Card = ({
     Element = 'section',

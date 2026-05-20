@@ -1,15 +1,14 @@
 ---
 import type { OTPInputProps } from './otpinput'
 
-import Input from '../Input/Input.astro'
+import Input, { type Props as InputProps } from '../Input/Input.astro'
 
 import styles from './otpinput.module.scss'
 
-interface Props extends OTPInputProps {}
+export type Props = OTPInputProps<InputProps>
 
 const {
     name = 'otp',
-    disabled,
     length = 6,
     groupLength = 0,
     separator = '•',
@@ -47,17 +46,16 @@ const inputs = Array.from({ length }, (_, i) => i + 1)
                 <div class={styles.separator}>{input}</div>
             ) : (
                 <Input
+                    {...rest}
                     id={`${name}-${index}`}
                     class={styles.input}
                     type="text"
                     maxlength="1"
-                    disabled={disabled}
                     inputmode="numeric"
                     autocomplete="one-time-code"
                     data-id="w-input-otp"
                     data-index={input}
                     aria-label={`OTP digit ${input + 1}`}
-                    {...rest}
                 />
             )
         )}

@@ -4,6 +4,7 @@
 
     export type SvelteConditionalWrapperProps = {
         children: Snippet
+        element?: string
     } & ConditionalWrapperProps
 
     const {

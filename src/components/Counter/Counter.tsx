@@ -10,7 +10,7 @@ import styles from './counter.module.scss'
 
 export type ReactCounterProps = {
     onChange?: (value: number) => void
-} & CounterProps
+} & CounterProps<Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>>
 
 const Counter = ({
     type = 'compact',
@@ -28,7 +28,7 @@ const Counter = ({
     max,
     ...rest
 }: ReactCounterProps) => {
-    const [inputValue, setInputValue] = useState(value)
+    const [inputValue, setInputValue] = useState<number>(Number(value))
     const intervalId = useRef<ReturnType<typeof setTimeout> | null>(null)
     const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null)
     const longPressDelay = useRef(500)
@@ -52,9 +52,9 @@ const Counter = ({
     const updateValue = (isMin?: boolean) => {
         setInputValue((prevValue: number) => {
             const direction = isMin ? -1 : 1
-            const newValue = prevValue + (direction * step)
+            const newValue = prevValue + (direction * Number(step))
 
-            if ((min !== undefined && newValue < min) || (max !== undefined && newValue > max)) {
+            if ((min !== undefined && newValue < Number(min)) || (max !== undefined && newValue > Number(max))) {
                 return prevValue
             }
 
@@ -135,6 +135,7 @@ const Counter = ({
                 dangerouslySetInnerHTML={{ __html: subtractIcon }}
             />
             <input
+                {...rest}
                 value={inputValue}
                 type="number"
                 disabled={disabled}
@@ -142,7 +143,6 @@ const Counter = ({
                 min={min}
                 max={max}
                 onInput={handleInput}
-                {...rest}
             />
             <button
                 data-id="w-counter-max"

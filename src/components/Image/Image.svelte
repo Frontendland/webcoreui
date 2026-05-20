@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { HTMLAttributes } from 'svelte/elements'
+    import type { HTMLImgAttributes } from 'svelte/elements'
     import type { ImageProps } from './image'
 
     import AspectRatio from '../AspectRatio/AspectRatio.svelte'
@@ -8,7 +8,7 @@
 
     import styles from './image.module.scss'
 
-    export type SvelteImageProps = ImageProps<HTMLAttributes<HTMLImageElement>>
+    export type SvelteImageProps = ImageProps<HTMLImgAttributes>
 
     const {
         src,

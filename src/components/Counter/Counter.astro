@@ -1,4 +1,5 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { CounterProps } from './counter'
 
 import Icon from '../Icon/Icon.astro'
@@ -8,7 +9,7 @@ import plusIcon from '../../icons/plus.svg?raw'
 
 import styles from './counter.module.scss'
 
-interface Props extends CounterProps {}
+export type Props = CounterProps<HTMLAttributes<'input'>>
 
 const {
     type = 'compact',
@@ -49,10 +50,10 @@ const styleVariable = width
         </Fragment>
     </button>
     <input
+        {...rest}
         type="number"
         value={value}
         disabled={disabled}
-        {...rest}
     />
     <button data-id="w-counter-max" disabled={disabled}>
         <Fragment>

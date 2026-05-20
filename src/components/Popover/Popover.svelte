@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Snippet } from 'svelte'
+    import type { HTMLDialogAttributes } from 'svelte/elements'
     import type { PopoverProps } from './popover'
 
     import { classNames } from '../../utils/classNames'
@@ -8,10 +9,9 @@
 
     export type SveltePopoverProps = {
         children: Snippet
-    } & PopoverProps
+    } & PopoverProps<HTMLDialogAttributes>
 
     const {
-        id,
         className,
         transparent,
         children,
@@ -25,10 +25,6 @@
     ]))
 </script>
 
-<dialog
-    class={classes}
-    id={id}
-    {...rest}
->
+<dialog {...rest} class={classes}>
     {@render children?.()}
 </dialog>

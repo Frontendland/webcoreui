@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Snippet } from 'svelte'
+    import type { HTMLInputAttributes } from 'svelte/elements'
     import type { InputProps, InputTarget } from './input'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
@@ -14,7 +15,7 @@
         onInput?: (event: Event & InputTarget) => void
         onClick?: (event: MouseEvent & InputTarget) => void
         children?: Snippet
-    } & InputProps
+    } & InputProps<HTMLInputAttributes>
 
     let {
         type = 'text',
@@ -61,14 +62,14 @@
     >
         {@render children?.()}
         <input
+            {...rest}
+            {...{ type }}
             bind:value
             class={classes}
             onchange={onChange}
             onkeyup={onKeyUp}
             oninput={onInput}
             onclick={onClick}
-            {...{ type }}
-            {...rest}
         />
     </ConditionalWrapper>
     {#if subText}

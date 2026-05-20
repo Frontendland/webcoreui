@@ -1,9 +1,10 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { ButtonProps } from './button'
 
 import styles from './button.module.scss'
 
-interface Props extends ButtonProps {}
+export type Props = ButtonProps<HTMLAttributes<'button'>>
 
 const {
     theme,

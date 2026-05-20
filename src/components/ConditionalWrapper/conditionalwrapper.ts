@@ -1,4 +1,3 @@
-export type ConditionalWrapperProps = {
+export type ConditionalWrapperProps<T extends object = Record<string, unknown>> = {
     condition: boolean
-    [key: string]: any
-}
+} & T

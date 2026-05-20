@@ -1,5 +1,9 @@
 <script lang="ts">
-    import type { ChangeEventHandler, MouseEventHandler } from 'svelte/elements'
+    import type {
+        ChangeEventHandler,
+        HTMLInputAttributes,
+        MouseEventHandler
+    } from 'svelte/elements'
     import type { SwitchProps } from './switch'
 
     import { classNames } from '../../utils/classNames'
@@ -9,7 +13,7 @@
     export type SvelteSwitchProps = {
         onChange?: ChangeEventHandler<HTMLInputElement>
         onClick?: MouseEventHandler<HTMLInputElement>
-    } & SwitchProps
+    } & SwitchProps<HTMLInputAttributes>
 
     const {
         label,
@@ -43,12 +47,11 @@
 
 <label class={classes} style={styleVariables || null}>
     <input
+        {...rest}
         type="checkbox"
         checked={toggled}
-        disabled={disabled}
         onclick={onClick}
         onchange={onChange}
-        {...rest}
     />
     <span class={styles.toggle}></span>
     {#if label}

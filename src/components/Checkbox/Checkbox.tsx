@@ -12,13 +12,12 @@ import styles from './checkbox.module.scss'
 export type ReactCheckboxProps = {
     onChange?: React.ChangeEventHandler<HTMLInputElement>
     onClick?: React.MouseEventHandler<HTMLInputElement>
-} & CheckboxProps
+} & CheckboxProps<React.InputHTMLAttributes<HTMLInputElement>>
 
 const Checkbox = ({
     checked,
     label,
     subText,
-    disabled,
     color,
     className,
     ...rest
@@ -44,10 +43,9 @@ const Checkbox = ({
                 )}
             >
                 <input
+                    {...rest}
                     type="checkbox"
                     defaultChecked={checked}
-                    disabled={disabled}
-                    {...rest}
                 />
                 <span
                     className={styles.check}

@@ -13,7 +13,7 @@ export type ReactInputProps = {
     onInput?: (event: React.InputEvent<HTMLInputElement>) => void
     onClick?: (event: React.MouseEvent<HTMLInputElement>) => void
     children?: React.ReactNode
-} & InputProps
+} & InputProps<React.InputHTMLAttributes<HTMLInputElement>>
 
 const Input = ({
     type = 'text',
@@ -58,10 +58,10 @@ const Input = ({
             )}>
                 {children}
                 <input
+                    {...rest}
                     type={type}
                     className={classes}
                     defaultValue={value}
-                    {...rest}
                 />
             </ConditionalWrapper>
             {subText && (

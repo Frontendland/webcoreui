@@ -1,12 +1,12 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { PopoverProps } from './popover'
 
 import styles from './popover.module.scss'
 
-interface Props extends PopoverProps {}
+export type Props = PopoverProps<HTMLAttributes<'dialog'>>
 
 const {
-    id,
     className,
     transparent,
     ...rest
@@ -19,10 +19,6 @@ const classes = [
 ]
 ---
 
-<dialog
-    class:list={classes}
-    id={id}
-    {...rest}
->
+<dialog {...rest} class:list={classes}>
     <slot />
 </dialog>

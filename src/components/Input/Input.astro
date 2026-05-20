@@ -1,11 +1,12 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { InputProps } from './input'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
 
 import styles from './input.module.scss'
 
-interface Props extends InputProps {}
+export type Props = InputProps<HTMLAttributes<'input'>>
 
 const {
     type = 'text',
@@ -50,8 +51,8 @@ const useLabel = !!(label || subText || Astro.slots.has('default'))
         )}
     </label>
     <input
+        {...rest}
         type={type}
         class:list={classes}
-        {...rest}
     />
 </ConditionalWrapper>

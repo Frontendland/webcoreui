@@ -1,18 +1,17 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { TextareaProps } from './textarea'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
 
 import styles from './textarea.module.scss'
 
-interface Props extends TextareaProps {}
+export type Props = TextareaProps<HTMLAttributes<'textarea'>>
 
 const {
     label,
-    placeholder,
     subText,
     value = '',
-    disabled,
     className,
     ...rest
 } = Astro.props
@@ -39,9 +38,7 @@ const useLabel = !!(label || subText)
     </label>
 
     <textarea
-        placeholder={placeholder}
-        disabled={disabled}
-        class:list={classes}
         {...rest}
+        class:list={classes}
     >{value}</textarea>
 </ConditionalWrapper>

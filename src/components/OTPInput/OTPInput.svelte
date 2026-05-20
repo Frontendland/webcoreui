@@ -1,15 +1,16 @@
 <script lang="ts">
     import type { OTPInputProps } from './otpinput'
 
-    import Input from '../Input/Input.svelte'
+    import Input, { type SvelteInputProps } from '../Input/Input.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './otpinput.module.scss'
 
+    export type SvelteOTPInputProps = OTPInputProps<SvelteInputProps>
+
     let {
         name = 'otp',
-        disabled,
         length = 6,
         groupLength = 0,
         separator = '•',
@@ -18,7 +19,7 @@
         className,
         value = $bindable(''),
         ...rest
-    }: OTPInputProps = $props()
+    }: SvelteOTPInputProps = $props()
 
     const classes = $derived(classNames([
         styles.wrapper,
@@ -160,11 +161,11 @@
                 <div class={styles.separator}>{input}</div>
             {:else}
                 <Input
+                    {...rest}
                     id={`${name}-${index}`}
                     className={styles.input}
                     type="text"
-                    maxlength="1"
-                    disabled={disabled}
+                    maxlength={1}
                     inputmode="numeric"
                     autocomplete="one-time-code"
                     data-index={input}
@@ -174,7 +175,6 @@
                     onfocus={handleFocus}
                     onInput={handleInput}
                     onpaste={handlePaste}
-                    {...rest}
                 />
             {/if}
         {/each}

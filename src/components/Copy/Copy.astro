@@ -1,14 +1,14 @@
 ---
 import type { CopyProps } from './copy'
 
-import Badge from '../Badge/Badge.astro'
+import Badge, { type Props as BadgeProps } from '../Badge/Badge.astro'
 import Icon from '../Icon/Icon.astro'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './copy.module.scss'
 
-interface Props extends CopyProps {}
+export type Props = CopyProps<BadgeProps>
 
 const {
     tooltip,

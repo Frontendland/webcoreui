@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { HTMLInputAttributes } from 'svelte/elements'
     import type { CounterProps } from './counter'
 
     import { classNames } from '../../utils/classNames'
@@ -10,7 +11,7 @@
 
     export type SvelteCounterProps = {
         onChange?: (value: number) => void
-    } & CounterProps
+    } & CounterProps<HTMLInputAttributes>
 
     let {
         type = 'compact',
@@ -52,9 +53,9 @@
 
     const updateValue = (isMin?: boolean) => {
         const direction = isMin ? -1 : 1
-        const newValue = value + (direction * step)
+        const newValue = value + (direction * Number(step))
 
-        if ((min !== undefined && newValue < min) || (max !== undefined && newValue > max)) {
+        if ((min !== undefined && newValue < Number(min)) || (max !== undefined && newValue > Number(max))) {
             return
         }
 
@@ -120,6 +121,7 @@
         {@html subtractIcon}
     </button>
     <input
+        {...rest}
         bind:value={value}
         type="number"
         disabled={disabled}
@@ -127,7 +129,6 @@
         min={min}
         max={max}
         oninput={() => onChange?.(value)}
-        {...rest}
     />
     <button
         data-id="w-counter-max"

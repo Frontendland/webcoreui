@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount, type Snippet } from 'svelte'
+    import type { HTMLAttributes } from 'svelte/elements'
     import type { ContextMenuProps } from './contextmenu'
 
     import { classNames } from '../../utils/classNames'
@@ -10,7 +11,7 @@
     export type SvelteContextMenuProps = {
         children: Snippet
         context: Snippet
-    } & ContextMenuProps
+    } & ContextMenuProps<HTMLAttributes<HTMLElement>>
 
     const {
         element = 'div',

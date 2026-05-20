@@ -8,7 +8,7 @@ import styles from './switch.module.scss'
 export type ReactSwitchProps = {
     onChange?: React.ChangeEventHandler<HTMLInputElement>
     onClick?: React.MouseEventHandler<HTMLInputElement>
-} & SwitchProps
+} & SwitchProps<React.InputHTMLAttributes<HTMLInputElement>>
 
 const Switch = ({
     label,
@@ -39,10 +39,9 @@ const Switch = ({
     return (
         <label className={classes} style={styleVariables || null}>
             <input
+                {...rest}
                 type="checkbox"
                 defaultChecked={toggled}
-                disabled={disabled}
-                {...rest}
             />
             <span className={styles.toggle}></span>
             {label && (

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { HTMLTextareaAttributes } from 'svelte/elements'
     import type { TextareaProps, TextareaTarget } from './textarea'
 
     import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.svelte'
@@ -11,14 +12,12 @@
         onInput?: (event: Event & TextareaTarget) => void
         onChange?: (event: Event & TextareaTarget) => void
         onKeyUp?: (event: KeyboardEvent & TextareaTarget) => void
-    } & TextareaProps
+    } & TextareaProps<HTMLTextareaAttributes>
 
     const {
         label,
-        placeholder,
         subText,
         value = '',
-        disabled,
         className,
         onChange,
         onKeyUp,
@@ -43,13 +42,11 @@
         <div class={styles.label}>{label}</div>
     {/if}
     <textarea
-        placeholder={placeholder}
-        disabled={disabled}
+        {...rest}
         class={classes}
         oninput={onInput}
         onchange={onChange}
         onkeyup={onKeyUp}
-        {...rest}
     >{value}</textarea>
     {#if subText}
         <div class={styles.subtext}>

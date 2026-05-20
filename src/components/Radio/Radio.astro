@@ -1,14 +1,14 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { RadioProps } from './radio'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
 
 import styles from './radio.module.scss'
 
-interface Props extends RadioProps {}
+export type Props = RadioProps<HTMLAttributes<'input'>>
 
 const {
-    name,
     items,
     color,
     inline,
@@ -38,13 +38,12 @@ const style = color
                     children
                 </div>
                 <input
+                    {...rest}
                     type="radio"
-                    name={name}
                     value={item.value}
                     checked={item.selected}
                     disabled={item.disabled}
                     required={item.required}
-                    {...rest}
                 />
                 <span class={styles.icon} />
                 <span class={styles.label}>

@@ -6,12 +6,11 @@ import type {
     Wrap
 } from '../../utils/getLayoutClasses'
 
-export type FlexProps = {
+export type FlexProps<T extends object = object> = {
     element?: string
     gap?: Responsive<Gap>
     alignment?: Responsive<Alignment>
     direction?: Responsive<Direction>
     wrap?: Responsive<Wrap>
     className?: string
-    [key: string]: any
-}
+} & T

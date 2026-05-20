@@ -9,7 +9,7 @@ import styles from './popover.module.scss'
 export type ReactPopoverProps = {
     isInteractive?: boolean
     children?: React.ReactNode
-} & PopoverProps
+} & PopoverProps<React.DialogHTMLAttributes<HTMLDialogElement>>
 
 const Popover = ({
     id,
@@ -37,11 +37,7 @@ const Popover = ({
 
     if (isInteractive) {
         return createPortal(
-            <dialog
-                className={classes}
-                id={id}
-                {...rest}
-            >
+            <dialog {...rest} className={classes}>
                 {children}
             </dialog>,
             document.body
@@ -49,11 +45,7 @@ const Popover = ({
     }
 
     return (
-        <dialog
-            className={classes}
-            id={id}
-            {...rest}
-        >
+        <dialog {...rest} className={classes}>
             {children}
         </dialog>
     )

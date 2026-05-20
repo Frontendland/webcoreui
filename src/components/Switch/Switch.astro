@@ -1,11 +1,12 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { SwitchProps } from './switch'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './switch.module.scss'
 
-interface Props extends SwitchProps {}
+export type Props = SwitchProps<HTMLAttributes<'textarea'>>
 
 const {
     label,
@@ -36,7 +37,11 @@ const styleVariables = classNames([
 ---
 
 <label class:list={classes} style={styleVariables}>
-    <input type="checkbox" checked={toggled} disabled={disabled} {...rest} />
+    <input
+        {...rest}
+        type="checkbox"
+        checked={toggled}
+    />
     <span class={styles.toggle}></span>
     {label && <span class={styles.label} set:html={label} />}
 </label>

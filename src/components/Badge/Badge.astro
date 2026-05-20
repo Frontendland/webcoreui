@@ -1,9 +1,10 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { BadgeProps } from './badge'
 
 import styles from './badge.module.scss'
 
-interface Props extends BadgeProps {}
+export type Props = BadgeProps<HTMLAttributes<'span'>>
 
 const {
     theme,

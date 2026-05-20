@@ -1,6 +1,4 @@
-export type PopoverProps = {
-    id?: string
+export type PopoverProps<T extends object = object> = {
     className?: string
     transparent?: boolean
-    [key: string]: any
-}
+} & T

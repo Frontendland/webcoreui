@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Snippet } from 'svelte'
-    import type { HTMLAttributes } from 'svelte/elements'
+    import type { HTMLDialogAttributes } from 'svelte/elements'
     import type { ModalProps } from './modal'
 
     import Button from '../Button/Button.svelte'
@@ -17,7 +17,7 @@
 
     export type SvelteModalProps = {
         children?: Snippet
-    } & ModalProps<HTMLAttributes<HTMLDialogElement>>
+    } & ModalProps<HTMLDialogAttributes>
 
     const {
         title,

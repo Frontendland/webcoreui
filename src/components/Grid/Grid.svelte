@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Snippet } from 'svelte'
+    import type { HTMLAttributes } from 'svelte/elements'
     import type { GridProps } from './grid'
 
     import { classNames } from '../../utils/classNames'
@@ -7,7 +8,7 @@
 
     export type SvelteGridProps = {
         children: Snippet
-    } & GridProps
+    } & GridProps<HTMLAttributes<HTMLElement>>
 
     const {
         element = 'div',

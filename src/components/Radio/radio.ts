@@ -1,4 +1,4 @@
-export type RadioProps = {
+export type RadioProps<T extends object = object> = {
     items: {
         label: string
         value: string
@@ -7,9 +7,7 @@ export type RadioProps = {
         disabled?: boolean
         required?: boolean
     }[]
-    name: string
     color?: string
     inline?: boolean
     className?: string
-    [key: string]: any
-}
+} & T

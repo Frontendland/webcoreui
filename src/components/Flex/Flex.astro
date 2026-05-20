@@ -1,10 +1,11 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { FlexProps } from './flex'
 
 import { classNames } from '../../utils/classNames'
 import { getLayoutClasses } from '../../utils/getLayoutClasses'
 
-interface Props extends FlexProps {}
+export type Props = FlexProps<HTMLAttributes<'div'>>
 
 const {
     element = 'div',

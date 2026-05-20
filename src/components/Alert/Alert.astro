@@ -1,4 +1,5 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { AlertProps } from './alert'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
@@ -10,7 +11,7 @@ import warning from '../../icons/warning.svg?raw'
 
 import styles from './alert.module.scss'
 
-interface Props extends AlertProps {}
+export type Props = AlertProps<HTMLAttributes<'section'>>
 
 const iconMap = {
     info,

@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Snippet } from 'svelte'
+    import type { HTMLAttributes } from 'svelte/elements'
     import type { FlexProps } from './flex'
 
     import { classNames } from '../../utils/classNames'
@@ -7,7 +8,7 @@
 
     export type SvelteFlexProps = {
         children: Snippet
-    } & FlexProps
+    } & FlexProps<HTMLAttributes<HTMLElement>>
 
     const {
         element = 'div',

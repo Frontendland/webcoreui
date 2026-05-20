@@ -7,7 +7,7 @@
 
     import styles from './toast.module.scss'
 
-    export type SvelteToastProps = ToastProps & SvelteAlertProps
+    export type SvelteToastProps = ToastProps<SvelteAlertProps>
 
     const {
         position,

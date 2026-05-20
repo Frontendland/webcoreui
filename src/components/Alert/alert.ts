@@ -1,4 +1,4 @@
-export type AlertProps = {
+export type AlertProps<T extends object = object> = {
     element?: string
     title?: string
     titleTag?: string
@@ -9,5 +9,4 @@ export type AlertProps = {
         | 'success'
         | 'warning'
         | 'alert'
-    [key: string]: any
-}
+} & T

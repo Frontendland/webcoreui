@@ -6,7 +6,7 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './toast.module.scss'
 
-export type ReactToastProps = ToastProps & ReactAlertProps
+export type ReactToastProps = ToastProps<React.HTMLAttributes<HTMLElement>> & ReactAlertProps
 
 const Toast = ({
     icon,

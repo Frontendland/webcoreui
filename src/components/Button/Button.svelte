@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Snippet } from 'svelte'
-    import type { MouseEventHandler } from 'svelte/elements'
+    import type { HTMLAttributes, MouseEventHandler } from 'svelte/elements'
     import type { ButtonProps } from './button'
 
     import { classNames } from '../../utils/classNames'
@@ -10,7 +10,7 @@
     export type SvelteButtonProps = {
         onClick?: MouseEventHandler<HTMLButtonElement>
         children: Snippet
-    } & ButtonProps
+    } & ButtonProps<HTMLAttributes<HTMLElement>>
 
     const {
         theme,

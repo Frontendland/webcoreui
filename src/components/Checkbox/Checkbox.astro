@@ -1,4 +1,5 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { CheckboxProps } from './checkbox'
 
 import ConditionalWrapper from '../ConditionalWrapper/ConditionalWrapper.astro'
@@ -7,13 +8,11 @@ import check from '../../icons/check.svg?raw'
 
 import styles from './checkbox.module.scss'
 
-interface Props extends CheckboxProps {}
+export type Props = CheckboxProps<HTMLAttributes<'input'>>
 
 const {
-    checked,
     label,
     subText,
-    disabled,
     color,
     className,
     ...rest
@@ -36,10 +35,8 @@ const style = color
             children
         </div>
         <input
-            type="checkbox"
-            checked={checked}
-            disabled={disabled}
             {...rest}
+            type="checkbox"
         />
         <span class={styles.check}>
             <Fragment set:html={check} />

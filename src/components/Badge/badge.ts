@@ -1,4 +1,4 @@
-export type BadgeProps = {
+type BadgeBase = {
     theme?: 'secondary'
         | 'outline'
         | 'flat'
@@ -11,5 +11,16 @@ export type BadgeProps = {
     rounded?: boolean
     transparent?: boolean
     className?: string
-    [key: string]: any
 }
+
+type AsSpan<T extends object = object> = BadgeBase & {
+    onClick?: never
+} & T
+
+type AsButton<T extends object = object> = BadgeBase & {
+    onClick: any
+} & T
+
+export type BadgeProps<T extends object = object> =
+    | AsSpan<T>
+    | AsButton<T>

@@ -1,9 +1,6 @@
-export type CheckboxProps = {
-    checked?: boolean
+export type CheckboxProps<T extends object = object> = {
     label?: string
     subText?: string
-    disabled?: boolean
     color?: string
     className?: string
-    [key: string]: any
-}
+} & T

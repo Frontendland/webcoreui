@@ -1,5 +1,4 @@
-export type ContextMenuProps = {
+export type ContextMenuProps<T extends object = object> = {
     element?: string
     className?: string
-    [key: string]: any
-}
+} & T

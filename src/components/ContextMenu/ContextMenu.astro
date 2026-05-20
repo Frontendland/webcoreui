@@ -1,11 +1,12 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import type { ContextMenuProps } from './contextmenu'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './contextmenu.module.scss'
 
-interface Props extends ContextMenuProps {}
+export type Props = ContextMenuProps<HTMLAttributes<'div'>>
 
 const {
     element = 'div',

@@ -1,15 +1,18 @@
 import React from 'react'
 import type { OTPInputProps } from './otpinput'
 
-import Input from '../Input/Input.tsx'
+import Input, { type ReactInputProps } from '../Input/Input.tsx'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './otpinput.module.scss'
 
+export type ReactOTPInputProps = {
+    onChange?: (value: string) => void
+} & OTPInputProps<Omit<ReactInputProps, 'onChange'>>
+
 const OTPInput = ({
     name = 'otp',
-    disabled,
     length = 6,
     groupLength = 0,
     separator = '•',
@@ -18,7 +21,7 @@ const OTPInput = ({
     className,
     onChange,
     ...rest
-}: OTPInputProps) => {
+}: ReactOTPInputProps) => {
     const classes = classNames([
         styles.wrapper,
         className
@@ -97,7 +100,7 @@ const OTPInput = ({
         }
     }
 
-    const handlePaste = (event: ClipboardEvent) => {
+    const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
         event.preventDefault()
 
         const target = event.target
@@ -122,7 +125,7 @@ const OTPInput = ({
         }
     }
 
-    const handleFocus = (event: Event) => {
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
         const target = event.target
 
         if (target instanceof HTMLInputElement) {
@@ -163,12 +166,12 @@ const OTPInput = ({
                         <div className={styles.separator} key={index}>{input}</div>
                     ) : (
                         <Input
+                            {...rest}
                             key={index}
                             id={`${name}-${index}`}
                             className={styles.input}
                             type="text"
                             maxLength={1}
-                            disabled={disabled}
                             inputMode="numeric"
                             autoComplete="one-time-code"
                             data-index={input}
@@ -178,7 +181,6 @@ const OTPInput = ({
                             onFocus={handleFocus}
                             onInput={handleInput}
                             onPaste={handlePaste}
-                            {...rest}
                         />
                     )
                 )}

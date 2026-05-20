@@ -1,4 +1,4 @@
-export type CardProps = {
+export type CardProps<T extends object = Record<string, unknown>> = {
     element?: string
     title?: string
     titleTag?: string
@@ -7,5 +7,4 @@ export type CardProps = {
     bodyClassName?: string
     secondary?: boolean
     flat?: boolean
-    [key: string]: any
-}
+} & T

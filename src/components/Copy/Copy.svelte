@@ -2,7 +2,7 @@
     import type { Snippet } from 'svelte'
     import type { CopyProps } from './copy'
 
-    import Badge from '../Badge/Badge.svelte'
+    import Badge, { type SvelteBadgeProps } from '../Badge/Badge.svelte'
 
     import { classNames } from '../../utils/classNames'
 
@@ -13,7 +13,7 @@
 
     export type SvelteCopyProps = {
         children: Snippet
-    } & CopyProps
+    } & CopyProps<SvelteBadgeProps>
 
     let {
         tooltip = $bindable(''),

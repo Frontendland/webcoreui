@@ -11,14 +11,12 @@ export type ReactTextareaProps = {
     onInput?: (event: React.InputEvent<HTMLTextAreaElement>) => void
     onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
     onKeyUp?: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void
-} & TextareaProps
+} & TextareaProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>>
 
 const Textarea = ({
     label,
-    placeholder,
     subText,
     value = '',
-    disabled,
     className,
     ...rest
 }: ReactTextareaProps) => {
@@ -45,11 +43,9 @@ const Textarea = ({
             </label>
         )}>
             <textarea
-                placeholder={placeholder}
-                disabled={disabled}
+                {...rest}
                 className={classes}
                 defaultValue={value}
-                {...rest}
             />
         </ConditionalWrapper>
     )

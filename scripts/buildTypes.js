@@ -5,8 +5,26 @@ import { utilityTypes } from './utilityTypes.js'
 import fs from 'fs'
 
 const componentsWithGenericTypes = [
+    'Alert',
+    'Badge',
+    'Button',
+    'Card',
+    'Checkbox',
+    'ConditionalWrapper',
+    'ContextMenu',
+    'Copy',
+    'Counter',
+    'Flex',
+    'Grid',
     'Image',
-    'Modal'
+    'Input',
+    'Modal',
+    'OTPInput',
+    'Popover',
+    'Radio',
+    'Switch',
+    'Textarea',
+    'Toast'
 ]
 
 const componentsWithoutFrameworkSpecificTypes = [

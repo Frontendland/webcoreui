@@ -9,10 +9,9 @@ import styles from './radio.module.scss'
 
 export type ReactRadioProps = {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-} & RadioProps
+} & RadioProps<React.InputHTMLAttributes<HTMLInputElement>>
 
 const Radio = ({
-    name,
     items,
     color,
     inline,
@@ -46,14 +45,13 @@ const Radio = ({
                         )}
                     >
                         <input
+                            {...rest}
                             type="radio"
-                            name={name}
                             value={item.value}
                             defaultChecked={item.selected}
                             disabled={item.disabled}
                             required={item.required}
                             onChange={onChange}
-                            {...rest}
                         />
                         <span className={styles.icon} />
                         <span

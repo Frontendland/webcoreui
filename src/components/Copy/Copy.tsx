@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import type { CopyProps } from './copy'
 
-import Badge from '../Badge/Badge.tsx'
+import Badge, { type ReactBadgeProps } from '../Badge/Badge.tsx'
 
 import { classNames } from '../../utils/classNames'
 
@@ -12,7 +12,7 @@ import styles from './copy.module.scss'
 
 export type ReactCopyProps = {
     children: React.ReactNode
-} & CopyProps
+} & CopyProps<ReactBadgeProps>
 
 const Copy = ({
     tooltip,
