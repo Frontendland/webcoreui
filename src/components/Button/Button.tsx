@@ -8,7 +8,7 @@ import styles from './button.module.scss'
 export type ReactButtonProps = {
     onClick?: React.MouseEventHandler<HTMLButtonElement>
     children?: React.ReactNode
-} & ButtonProps<React.HTMLAttributes<HTMLElement>>
+} & ButtonProps<Record<string, unknown>>
 
 const Button = ({
     theme,

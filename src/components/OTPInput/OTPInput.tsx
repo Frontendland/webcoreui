@@ -67,7 +67,7 @@ const OTPInput = ({
         }
     }
 
-    const handleInput = (event: React.FormEvent<HTMLInputElement>) => {
+    const handleInput = (event: React.InputEvent<HTMLInputElement>) => {
         const target = event.target
 
         if (!(target instanceof HTMLInputElement)) {

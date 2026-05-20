@@ -108,7 +108,7 @@ const Counter = ({
         }
     }
 
-    const handleInput = (event: React.FormEvent) => {
+    const handleInput = (event: React.InputEvent<HTMLInputElement>) => {
         const target = event.target
 
         if (target instanceof HTMLInputElement) {

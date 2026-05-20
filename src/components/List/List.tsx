@@ -48,7 +48,7 @@ const List = ({
         ? { maxHeight } as React.CSSProperties
         : undefined
 
-    const search = (event: React.FormEvent<HTMLInputElement>) => {
+    const search = (event: React.InputEvent<HTMLInputElement>) => {
         const value = (event.target as HTMLInputElement).value.toLowerCase()
 
         setSearchValue(value)
