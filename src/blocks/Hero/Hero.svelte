@@ -8,6 +8,8 @@
     import type { HeroProps } from './hero'
     import styles from './hero.module.scss'
 
+    export type Props = HeroProps
+
     const {
         badge,
         heading,
@@ -17,7 +19,7 @@
         img,
         reverse,
         className
-    }: HeroProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.hero,

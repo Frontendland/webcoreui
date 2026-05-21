@@ -18,10 +18,10 @@ import styles from './select.module.scss'
 
 import type { ListEventType } from '../List/list'
 
-export type ReactSelectProps = {
+export type Props = SelectProps & {
     onChange?: (event: SelectEventType) => void
     onClose?: (event: ModalCallback | PopoverCallback) => void
-} & SelectProps
+}
 
 const Select = ({
     name,
@@ -37,7 +37,7 @@ const Select = ({
     onChange,
     onClose,
     ...rest
-}: ReactSelectProps) => {
+}: Props) => {
     const inferredValue = rest.itemGroups.map(group => group.items)
         .flat()
         .find(item => item.value === value)?.name

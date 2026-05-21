@@ -1,13 +1,15 @@
 import type { IconProps } from './icon'
 import iconMap from './map'
 
+export type Props = IconProps
+
 const Icon = ({
     type,
     size = 24,
     color,
     theme,
     iconSet
-}: IconProps) => {
+}: Props) => {
     const icons = {
         ...iconMap,
         ...(iconSet || {})

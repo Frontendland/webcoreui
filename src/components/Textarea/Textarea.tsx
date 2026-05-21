@@ -7,11 +7,11 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './textarea.module.scss'
 
-export type ReactTextareaProps = {
+export type Props = TextareaProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>> & {
     onInput?: (event: React.InputEvent<HTMLTextAreaElement>) => void
     onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
     onKeyUp?: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void
-} & TextareaProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>>
+}
 
 const Textarea = ({
     label,
@@ -19,7 +19,7 @@ const Textarea = ({
     value = '',
     className,
     ...rest
-}: ReactTextareaProps) => {
+}: Props) => {
     const classes = classNames([
         styles.textarea,
         className

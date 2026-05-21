@@ -6,9 +6,9 @@
     import { classNames } from '../../utils/classNames'
     import { getLayoutClasses } from '../../utils/getLayoutClasses'
 
-    export type SvelteFlexProps = {
+    export type Props = FlexProps<HTMLAttributes<HTMLElement>> & {
         children: Snippet
-    } & FlexProps<HTMLAttributes<HTMLElement>>
+    }
 
     const {
         element = 'div',
@@ -19,7 +19,7 @@
         className,
         children,
         ...rest
-    }: SvelteFlexProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         'flex',

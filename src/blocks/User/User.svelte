@@ -7,6 +7,8 @@
 
     import type { UserProps } from './user'
 
+    export type Props = UserProps
+
     const {
         avatar,
         avatarSize = 50,
@@ -15,7 +17,7 @@
         roleTooltip,
         rating,
         ...rest
-    }: UserProps = $props()
+    }: Props = $props()
 </script>
 
 <ConditionalWrapper condition={!!rating}>

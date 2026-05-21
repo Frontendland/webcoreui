@@ -7,6 +7,8 @@ import {
 
 import type { UserProps } from './user'
 
+export type Props = UserProps
+
 const User = ({
     avatar,
     avatarSize = 50,
@@ -15,7 +17,7 @@ const User = ({
     roleTooltip,
     rating,
     ...rest
-}: UserProps) => {
+}: Props) => {
 
     return (
         <ConditionalWrapper

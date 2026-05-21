@@ -10,9 +10,9 @@ import searchIcon from '../../icons/search.svg?raw'
 
 import styles from './list.module.scss'
 
-export type ReactListProps = {
+export type Props = ListProps & {
     onSelect?: (event: ListEventType) => void
-} & ListProps
+}
 
 const List = ({
     showSearchBar,
@@ -26,7 +26,7 @@ const List = ({
     secondary,
     itemGroups,
     onSelect
-}: ReactListProps) => {
+}: Props) => {
     const [searchValue, setSearchValue] = useState('')
     const [numberOfResults, setNumberOfResults] = useState(1)
     const [itemGroupsWithActive, setItemGroups] = useState(itemGroups)
@@ -111,7 +111,7 @@ const List = ({
             </div>
         )}>
             <ul className={classes} id={id} style={style}>
-                {itemGroupsWithActive.map((group: ReactListProps['itemGroups'][0], index) => (
+                {itemGroupsWithActive.map((group: Props['itemGroups'][0], index) => (
                     <React.Fragment key={index}>
                         {group.title && (
                             <li className={styles.title}

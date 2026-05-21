@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte'
-
 export type DeviceMockupProps = {
     type?: 'desktop'
     url?: string
@@ -10,10 +8,3 @@ export type DeviceMockupProps = {
     className?: string
 }
 
-export type SvelteDeviceMockupProps = {
-    children: Snippet
-} & DeviceMockupProps
-
-export type ReactDeviceMockupProps = {
-    children: React.ReactNode
-} & DeviceMockupProps

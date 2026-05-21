@@ -7,6 +7,8 @@
 
     import styles from './rating.module.scss'
 
+    export type Props = RatingProps
+
     const {
         score,
         total = 5,
@@ -22,7 +24,7 @@
         emptyColor,
         size,
         className
-    }: RatingProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.rating,

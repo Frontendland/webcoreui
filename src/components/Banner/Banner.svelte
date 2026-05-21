@@ -10,9 +10,9 @@
 
     import styles from './banner.module.scss'
 
-    export type SvelteBannerProps = {
+    export type Props = BannerProps & {
         children: Snippet
-    } & BannerProps
+    }
 
     const {
         top,
@@ -22,7 +22,7 @@
         sticky = true,
         className,
         children
-    }: SvelteBannerProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.banner,

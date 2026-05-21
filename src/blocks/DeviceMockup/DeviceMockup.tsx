@@ -1,7 +1,12 @@
+import React from 'react'
 import { classNames } from 'webcoreui'
 
-import type { ReactDeviceMockupProps } from './deviceMockup'
+import type { DeviceMockupProps } from './deviceMockup'
 import styles from './device-mockup.module.scss'
+
+export type Props = DeviceMockupProps & {
+    children: React.ReactNode
+}
 
 const DeviceMockup = ({
     type,
@@ -12,7 +17,7 @@ const DeviceMockup = ({
     minimizeButtonColor,
     className,
     children
-}: ReactDeviceMockupProps) => {
+}: Props) => {
     const classes = classNames([
         styles.mockup,
         className

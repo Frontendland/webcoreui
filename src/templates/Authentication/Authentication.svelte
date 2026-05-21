@@ -12,6 +12,8 @@
     import { classNames } from 'webcoreui'
     import { ConditionalWrapper, Tabs } from 'webcoreui/svelte'
 
+    export type Props = AuthenticationProps
+
     const {
         layout,
         banner,
@@ -22,7 +24,7 @@
         reverse,
         className,
         ...rest
-    }: AuthenticationProps = $props()
+    }: Props = $props()
 
     const defaultLoginFormFields: FormField[] = [
         { type: 'email', label: 'Email', name: 'email' },

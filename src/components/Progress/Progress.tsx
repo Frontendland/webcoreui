@@ -5,6 +5,8 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './progress.module.scss'
 
+export type Props = ProgressProps
+
 const Progress = ({
     value,
     size,
@@ -17,7 +19,7 @@ const Progress = ({
     stripeDark,
     indeterminate,
     className
-}: ProgressProps) => {
+}: Props) => {
     const classes = classNames([
         styles['w-progress'],
         size && styles[size],

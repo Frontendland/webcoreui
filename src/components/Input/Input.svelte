@@ -9,13 +9,13 @@
 
     import styles from './input.module.scss'
 
-    export type SvelteInputProps = {
+    export type Props = InputProps<HTMLInputAttributes> & {
         onChange?: (event: Event & InputTarget) => void
         onKeyUp?: (event: KeyboardEvent & InputTarget) => void
         onInput?: (event: Event & InputTarget) => void
         onClick?: (event: MouseEvent & InputTarget) => void
         children?: Snippet
-    } & InputProps<HTMLInputAttributes>
+    }
 
     let {
         type = 'text',
@@ -31,7 +31,7 @@
         onClick,
         children,
         ...rest
-    }: SvelteInputProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.input,

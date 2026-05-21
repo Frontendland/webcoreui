@@ -6,6 +6,8 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './avatar.module.scss'
 
+export type Props = AvatarProps
+
 const Avatar = ({
     img,
     alt = 'Avatar',
@@ -16,7 +18,7 @@ const Avatar = ({
     reverse,
     className,
     groupClassName
-}: AvatarProps) => {
+}: Props) => {
     const classes = classNames([
         styles.avatar,
         borderless && styles.borderless,

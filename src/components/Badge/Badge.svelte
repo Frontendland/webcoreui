@@ -7,10 +7,10 @@
 
     import styles from './badge.module.scss'
 
-    export type SvelteBadgeProps = {
+    export type Props = BadgeProps<HTMLAttributes<HTMLElement>> & {
         onClick?: MouseEventHandler<HTMLButtonElement> | null
         children?: Snippet
-    } & BadgeProps<HTMLAttributes<HTMLElement>>
+    }
 
     const {
         theme,
@@ -22,7 +22,7 @@
         onClick,
         children,
         ...rest
-    }: SvelteBadgeProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.badge,

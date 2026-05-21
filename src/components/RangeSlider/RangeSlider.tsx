@@ -9,9 +9,9 @@ import { interpolate } from '../../utils/interpolate'
 
 import styles from './rangeslider.module.scss'
 
-export type ReactRangeSliderProps = {
+export type Props = RangeSliderProps & {
     onChange?: (event: RangeSliderEventType) => void
-} & RangeSliderProps
+}
 
 const RangeSlider = ({
     min = 0,
@@ -35,7 +35,7 @@ const RangeSlider = ({
     className,
     onChange,
     ...rest
-}: ReactRangeSliderProps) => {
+}: Props) => {
     const [minValue, setMinValue] = useState(selectedMin || min)
     const [maxValue, setMaxValue] = useState(selectedMax || max)
     const [dynamicMinLabel, setDynamicMinLabel] = useState(minLabel)

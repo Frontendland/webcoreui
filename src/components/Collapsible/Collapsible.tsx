@@ -5,11 +5,11 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './collapsible.module.scss'
 
-export type ReactCollapsibleProps = {
+export type Props = CollapsibleProps & {
     on: React.ReactNode
     off: React.ReactNode
     children: React.ReactNode
-} & CollapsibleProps
+}
 
 const Collapsible = ({
     initialHeight,
@@ -20,7 +20,7 @@ const Collapsible = ({
     children,
     className,
     togglesClassName
-}: ReactCollapsibleProps) => {
+}: Props) => {
     const [toggle, setToggled] = useState(toggled)
 
     const classes = classNames([

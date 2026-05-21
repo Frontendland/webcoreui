@@ -8,9 +8,9 @@ import plusIcon from '../../icons/plus.svg?raw'
 
 import styles from './counter.module.scss'
 
-export type ReactCounterProps = {
+export type Props = CounterProps<Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>> & {
     onChange?: (value: number) => void
-} & CounterProps<Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>>
+}
 
 const Counter = ({
     type = 'compact',
@@ -27,7 +27,7 @@ const Counter = ({
     min,
     max,
     ...rest
-}: ReactCounterProps) => {
+}: Props) => {
     const [inputValue, setInputValue] = useState<number>(Number(value))
     const intervalId = useRef<ReturnType<typeof setTimeout> | null>(null)
     const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null)

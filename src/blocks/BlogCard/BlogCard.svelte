@@ -10,6 +10,8 @@
     import type { BlogCardProps } from './blogCard'
     import styles from './blog-card.module.scss'
 
+    export type Props = BlogCardProps
+
     const {
         href,
         target,
@@ -19,7 +21,7 @@
         secondary,
         className,
         ...rest
-    }: BlogCardProps = $props()
+    }: Props = $props()
 </script>
 
 <a href={href} target={target} class={classNames([styles.link, className])}>

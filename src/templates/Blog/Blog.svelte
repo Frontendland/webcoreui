@@ -1,5 +1,6 @@
 <script lang="ts">
-    import type { SvelteBlogProps } from './blog'
+    import type { Snippet } from 'svelte'
+    import type { BlogProps } from './blog'
 
     import Author from '@blocks/Author/Author.svelte'
     import BlogCard from '@blocks/BlogCard/BlogCard.svelte'
@@ -10,6 +11,10 @@
     import styles from './blog.module.scss'
 
     import { ConditionalWrapper } from 'webcoreui/svelte'
+
+    export type Props = BlogProps & {
+        children?: Snippet
+    }
 
     const {
         layout,
@@ -24,7 +29,7 @@
         author,
         children,
         ...rest
-    }: SvelteBlogProps = $props()
+    }: Props = $props()
 </script>
 
 <Layout {...layout} {...rest} containerClassName="container flex column">

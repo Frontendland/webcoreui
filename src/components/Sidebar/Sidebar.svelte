@@ -8,15 +8,15 @@
 
     import styles from './sidebar.module.scss'
 
-    export type SvelteSidebarProps = {
+    export type Props = SidebarProps & {
         children?: Snippet
-    } & SidebarProps
+    }
 
     const {
         groups,
         children,
         className
-    }: SvelteSidebarProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.sidebar,

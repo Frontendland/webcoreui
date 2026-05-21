@@ -4,6 +4,8 @@
     import type { ErrorPageProps } from './errorPage'
     import styles from './error-page.module.scss'
 
+    export type Props = ErrorPageProps
+
     const {
         type = 404,
         typeColor,
@@ -11,7 +13,7 @@
         subTitle,
         buttons,
         ...rest
-    }: ErrorPageProps = $props()
+    }: Props = $props()
 
     const typeStyle = $derived(typeColor
         ? `--w-error-page-type-color: ${typeColor};`

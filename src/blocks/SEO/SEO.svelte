@@ -2,6 +2,8 @@
     import { getStructuredContent } from './getStructuredContent'
     import type { SEOProps } from './SEO'
 
+    export type Props = SEOProps
+
     const {
         title,
         url,
@@ -14,7 +16,7 @@
         meta,
         links,
         structuredContents
-    }: SEOProps = $props()
+    }: Props = $props()
 </script>
 
 <title>{title}</title>

@@ -7,13 +7,15 @@ import {
 import type { ButtonProps } from './button'
 import styles from './button.module.scss'
 
+export type Props = ButtonProps
+
 const Button = ({
     icon,
     text = '',
     badge,
     className,
     ...rest
-}: ButtonProps) => {
+}: Props) => {
     const Component = badge ? Badge : WebcoreButton
 
     return (

@@ -5,6 +5,8 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './table.module.scss'
 
+export type Props = TableProps
+
 const Table = ({
     headings,
     footer,
@@ -15,7 +17,7 @@ const Table = ({
     compact,
     maxHeight,
     className
-}: TableProps) => {
+}: Props) => {
     const classes = classNames([
         styles.table,
         hover && styles.hover,

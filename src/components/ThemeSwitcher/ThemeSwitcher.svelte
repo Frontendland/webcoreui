@@ -8,11 +8,11 @@
 
     import styles from './themeswitcher.module.scss'
 
-    export type SvelteThemeSwitcherProps = {
+    export type Props = ThemeSwitcherProps & {
         primaryIcon?: Snippet
         secondaryIcon?: Snippet
         children?: Snippet
-    } & ThemeSwitcherProps
+    }
 
     const {
         themes,
@@ -21,7 +21,7 @@
         primaryIcon,
         secondaryIcon,
         className
-    }: SvelteThemeSwitcherProps = $props()
+    }: Props = $props()
 
     let currentTheme = $state('')
     let toggled = false

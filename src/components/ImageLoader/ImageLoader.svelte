@@ -9,6 +9,8 @@
 
     import styles from './imageloader.module.scss'
 
+    export type Props = ImageLoaderProps
+
     const {
         fallback,
         animate,
@@ -19,7 +21,7 @@
         waveColor,
         className,
         ...rest
-    }: ImageLoaderProps = $props()
+    }: Props = $props()
 
     let container: HTMLDivElement
 

@@ -7,9 +7,9 @@
 
     import type { InputTarget } from '../Input/input'
 
-    export type SvelteSliderProps = {
+    export type Props = SliderProps & {
         onChange?: (event: Event & InputTarget) => void
-    } & SliderProps
+    }
 
     const {
         min = 0,
@@ -24,7 +24,7 @@
         className,
         onChange,
         ...rest
-    }: SvelteSliderProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.slider,

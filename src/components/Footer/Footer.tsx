@@ -7,9 +7,9 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './footer.module.scss'
 
-export type ReactFooterProps = {
+export type Props = FooterProps & {
     children?: React.ReactNode
-} & FooterProps
+}
 
 const Footer = ({
     logo,
@@ -19,7 +19,7 @@ const Footer = ({
     wrapperClassName,
     subTextClassName,
     children
-}: ReactFooterProps) => {
+}: Props) => {
     const classes = classNames([
         styles.footer,
         className

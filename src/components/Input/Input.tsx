@@ -7,13 +7,13 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './input.module.scss'
 
-export type ReactInputProps = {
+export type Props = InputProps<React.InputHTMLAttributes<HTMLInputElement>> & {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
     onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void
     onInput?: (event: React.InputEvent<HTMLInputElement>) => void
     onClick?: (event: React.MouseEvent<HTMLInputElement>) => void
     children?: React.ReactNode
-} & InputProps<React.InputHTMLAttributes<HTMLInputElement>>
+}
 
 const Input = ({
     type = 'text',
@@ -25,7 +25,7 @@ const Input = ({
     labelClassName,
     children,
     ...rest
-}: ReactInputProps) => {
+}: Props) => {
     const classes = classNames([
         styles.input,
         theme && styles[theme],

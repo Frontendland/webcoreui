@@ -62,6 +62,8 @@ import {
     User
 } from '@blocks/react'
 
+export type Props = ComponentMapProps
+
 const blockMap: Record<string, FC<any>> = {
     BlogCard,
     ErrorPage,
@@ -127,7 +129,7 @@ const ComponentMap = ({
     element = 'div',
     gap = 'default',
     components
-}: ComponentMapProps) => {
+}: Props) => {
     const Element = element as keyof JSX.IntrinsicElements
 
     return (

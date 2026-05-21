@@ -5,9 +5,9 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './ribbon.module.scss'
 
-export type ReactRibbonProps = {
+export type Props = RibbonProps & {
     children: React.ReactNode
-} & RibbonProps
+}
 
 const Ribbon = ({
     offset,
@@ -15,7 +15,7 @@ const Ribbon = ({
     theme,
     className,
     children
-}: ReactRibbonProps) => {
+}: Props) => {
     const classes = classNames([
         styles.ribbon,
         theme && styles[theme],

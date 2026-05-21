@@ -6,13 +6,15 @@
     import type { SocialsProps } from './socials'
     import styles from './socials.module.scss'
 
+    export type Props = SocialsProps
+
     const {
         links,
         size,
         color,
         theme,
         className
-    }: SocialsProps = $props()
+    }: Props = $props()
 
     const getDomain = (str: string) => {
         try {

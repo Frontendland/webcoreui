@@ -7,6 +7,8 @@
 
     import styles from './stepper.module.scss'
 
+    export type Props = StepperProps
+
     const {
         items,
         color,
@@ -15,7 +17,7 @@
         borderless,
         vertical,
         className
-    }: StepperProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.stepper,

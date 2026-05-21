@@ -63,11 +63,13 @@
         User
     } from '@blocks/svelte'
 
+    export type Props = ComponentMapProps
+
     const {
         element = 'div',
         gap = 'default',
         components = []
-    }: ComponentMapProps = $props()
+    }: Props = $props()
 
     const blockMap: Record<string, Component<any>> = {
         BlogCard,

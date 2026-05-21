@@ -7,15 +7,15 @@
 
     import styles from './kbd.module.scss'
 
-    export type SvelteKbdProps = {
+    export type Props = KbdProps & {
         children?: Snippet
-    } & KbdProps
+    }
 
     const {
         keys,
         className,
         children
-    }: SvelteKbdProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.kbd,

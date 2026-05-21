@@ -18,10 +18,10 @@
 
     import type { ListEventType } from '../List/list'
 
-    export type SvelteDataTableProps = {
+    export type Props = DataTableProps & {
         onFilter?: (event: DataTableEventType) => void
         children?: Snippet
-    } & DataTableProps
+    }
 
     const {
         headings,
@@ -42,7 +42,7 @@
         id,
         onFilter,
         children
-    }: SvelteDataTableProps = $props()
+    }: Props = $props()
 
     let filteredData: any = $derived(data)
     let toggledData: any = $derived(data)

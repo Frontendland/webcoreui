@@ -9,9 +9,9 @@ import closeIcon from '../../icons/close.svg?raw'
 
 import styles from './banner.module.scss'
 
-export type ReactBannerProps = {
+export type Props = BannerProps & {
     children: React.ReactNode
-} & BannerProps
+}
 
 const Banner = ({
     top,
@@ -21,7 +21,7 @@ const Banner = ({
     sticky = true,
     className,
     children
-}: ReactBannerProps) => {
+}: Props) => {
     const [visible, setVisible] = useState(true)
 
     const classes = classNames([

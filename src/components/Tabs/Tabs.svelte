@@ -6,9 +6,9 @@
 
     import styles from './tabs.module.scss'
 
-    export type SvelteTabsProps = {
+    export type Props = TabsProps & {
         children: Snippet
-    } & TabsProps
+    }
 
     const {
         items,
@@ -17,7 +17,7 @@
         even,
         className,
         children
-    }: SvelteTabsProps = $props()
+    }: Props = $props()
 
     let active = $state('')
     let tabContainer: HTMLDivElement | undefined = $state()

@@ -8,7 +8,7 @@ import Button from '@blocks/Button/Button.astro'
 
 import type { SignUpProps } from './signup'
 
-interface Props extends SignUpProps {
+export type Props = SignUpProps & {
     primaryButtonSelector?: string
     secondaryButtonSelector?: string
 }

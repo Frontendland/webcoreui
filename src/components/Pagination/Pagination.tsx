@@ -10,9 +10,9 @@ import ChevronRight from '../../icons/chevron-right.svg?raw'
 
 import styles from './pagination.module.scss'
 
-export type ReactPaginationProps = {
+export type Props = PaginationProps & {
     onChange?: (event: PaginationEventType) => void
-} & PaginationProps
+}
 
 const Pagination = ({
     type,
@@ -31,7 +31,7 @@ const Pagination = ({
     onChange,
     className
 // eslint-disable-next-line complexity
-}: ReactPaginationProps) => {
+}: Props) => {
     const [calculatedCurrentPage, setCalculatedCurrentPage] = useState(
         currentPage
             || (pages?.findIndex(page => page.active) || -1) + 1

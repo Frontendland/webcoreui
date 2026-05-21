@@ -5,13 +5,15 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './spinner.module.scss'
 
+export type Props = SpinnerProps
+
 const Spinner = ({
     color,
     width,
     speed,
     size,
     dashArray
-}: SpinnerProps) => {
+}: Props) => {
     const classes = classNames([
         styles.spinner,
         dashArray && styles.dashed

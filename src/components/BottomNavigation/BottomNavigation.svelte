@@ -5,13 +5,15 @@
 
     import styles from './bottomnavigation.module.scss'
 
+    export type Props = BottomNavigationProps
+
     const {
         items,
         separated,
         floating,
         maxWidth,
         className
-    }: BottomNavigationProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.nav,

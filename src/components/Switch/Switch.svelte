@@ -10,10 +10,10 @@
 
     import styles from './switch.module.scss'
 
-    export type SvelteSwitchProps = {
+    export type Props = SwitchProps<HTMLInputAttributes> & {
         onChange?: ChangeEventHandler<HTMLInputElement>
         onClick?: MouseEventHandler<HTMLInputElement>
-    } & SwitchProps<HTMLInputAttributes>
+    }
 
     const {
         label,
@@ -28,7 +28,7 @@
         onClick,
         onChange,
         ...rest
-    }: SvelteSwitchProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.switch,

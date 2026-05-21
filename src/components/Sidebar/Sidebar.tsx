@@ -7,15 +7,15 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './sidebar.module.scss'
 
-export type ReactSidebarProps = {
+export type Props = SidebarProps & {
     children?: React.ReactNode
-} & SidebarProps
+}
 
 const Sidebar = ({
     groups,
     children,
     className
-}: ReactSidebarProps) => {
+}: Props) => {
     const classes = classNames([
         styles.sidebar,
         className

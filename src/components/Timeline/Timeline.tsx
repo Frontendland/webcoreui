@@ -5,9 +5,9 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './timeline.module.scss'
 
-export type ReactTimelineProps = {
+export type Props = TimelineProps & {
     children: React.ReactNode
-} & TimelineProps
+}
 
 const Timeline = ({
     theme,
@@ -18,7 +18,7 @@ const Timeline = ({
     textColor,
     className,
     children
-}: ReactTimelineProps) => {
+}: Props) => {
     const classes = classNames([
         styles.timeline,
         theme && theme.split(' ').map(style => styles[style]),

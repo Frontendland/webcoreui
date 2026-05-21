@@ -7,10 +7,10 @@ import { dispatch, listen } from '../../utils/event'
 
 import styles from './themeswitcher.module.scss'
 
-export type ReactThemeSwitcherProps = {
+export type Props = ThemeSwitcherProps & {
     primaryIcon?: React.ReactNode
     secondaryIcon?: React.ReactNode
-} & ThemeSwitcherProps
+}
 
 const ThemeSwitcher = ({
     themes,
@@ -19,7 +19,7 @@ const ThemeSwitcher = ({
     primaryIcon,
     secondaryIcon,
     className
-}: ReactThemeSwitcherProps) => {
+}: Props) => {
     const [currentTheme, setCurrentTheme] = useState('')
     const [toggled, setToggled] = useState(false)
 

@@ -5,7 +5,12 @@ import {
 
 import Button from '@blocks/Button/Button.tsx'
 
-import type { ReactSignUpProps } from './signup'
+import type { SignUpProps } from './signup'
+
+export type Props = SignUpProps & {
+    primaryOnClick?: React.MouseEventHandler<HTMLButtonElement>
+    secondaryOnClick?: React.MouseEventHandler<HTMLButtonElement>
+}
 
 const SignUp = ({
     label = 'Sign up',
@@ -21,7 +26,7 @@ const SignUp = ({
     secondaryButtonLabel = 'Sign in',
     primaryOnClick,
     secondaryOnClick
-}: ReactSignUpProps) => {
+}: Props) => {
 
     return (
         <Card title={label}>

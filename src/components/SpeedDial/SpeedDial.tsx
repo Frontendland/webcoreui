@@ -8,6 +8,8 @@ import { get, on } from '../../utils/DOMUtils'
 
 import styles from './speeddial.module.scss'
 
+export type Props = SpeedDialProps
+
 const SpeedDial = ({
     items,
     position,
@@ -17,7 +19,7 @@ const SpeedDial = ({
     icon,
     triggerOnClick,
     className
-}: SpeedDialProps) => {
+}: Props) => {
     const [show, setShow] = useState(false)
 
     const classes = classNames([

@@ -13,12 +13,14 @@
 
     import type { FormField, FormProps } from './form'
 
+    export type Props = FormProps
+
     const {
         fields,
         gap,
         className,
         ...rest
-    }: FormProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         'flex column',

@@ -7,10 +7,10 @@
 
     import styles from './button.module.scss'
 
-    export type SvelteButtonProps = {
+    export type Props = ButtonProps<HTMLAttributes<HTMLElement>> & {
         onClick?: MouseEventHandler<HTMLButtonElement>
         children: Snippet
-    } & ButtonProps<HTMLAttributes<HTMLElement>>
+    }
 
     const {
         theme,
@@ -19,7 +19,7 @@
         onClick,
         children,
         ...rest
-    }: SvelteButtonProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.button,

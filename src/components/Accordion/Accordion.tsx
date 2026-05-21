@@ -8,12 +8,14 @@ import Plus from '../../icons/plus.svg?raw'
 
 import styles from './accordion.module.scss'
 
+export type Props = AccordionProps
+
 const Accordion = ({
     items,
     icon,
     reverse,
     className
-}: AccordionProps) => {
+}: Props) => {
     const [state, setState] = useState(items.map(item => item.expanded ?? false))
 
     const toggle = (index: number) => {

@@ -5,6 +5,8 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './skeleton.module.scss'
 
+export type Props = SkeletonProps
+
 const Skeleton = ({
     animate = 'wave',
     type = 'rounded',
@@ -13,7 +15,7 @@ const Skeleton = ({
     color,
     waveColor,
     className
-}: SkeletonProps) => {
+}: Props) => {
     const classes = classNames([
         animate && styles[animate],
         styles[type],

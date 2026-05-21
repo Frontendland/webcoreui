@@ -6,9 +6,9 @@
 
     import styles from './timelineitem.module.scss'
 
-    export type SvelteTimelineItemProps = {
+    export type Props = TimelineItemProps & {
         children: Snippet
-    } & TimelineItemProps
+    }
 
     const {
         title,
@@ -16,7 +16,7 @@
         icon,
         className,
         children
-    }: SvelteTimelineItemProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.item,

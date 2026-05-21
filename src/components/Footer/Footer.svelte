@@ -8,9 +8,9 @@
 
     import styles from './footer.module.scss'
 
-    export type SvelteFooterProps = {
+    export type Props = FooterProps & {
         children?: Snippet
-    } & FooterProps
+    }
 
     const {
         logo,
@@ -20,7 +20,7 @@
         wrapperClassName,
         subTextClassName,
         children
-    }: SvelteFooterProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.footer,

@@ -3,8 +3,12 @@ import React, { type JSX } from 'react'
 import { classNames } from 'webcoreui'
 import { Accordion } from 'webcoreui/react'
 
-import type { ReactFAQProps } from './faq'
+import type { FAQProps } from './faq'
 import styles from './faq.module.scss'
+
+export type Props = FAQProps & {
+    children?: React.ReactNode
+}
 
 const FAQ = ({
     element = 'section',
@@ -14,7 +18,7 @@ const FAQ = ({
     className,
     children,
     ...rest
-}: ReactFAQProps) => {
+}: Props) => {
     const Component = element as keyof JSX.IntrinsicElements
     const Title = titleTag as keyof JSX.IntrinsicElements
 

@@ -1,20 +1,20 @@
 <script lang="ts">
     import type { SheetProps } from './sheet'
 
-    import Modal, { type SvelteModalProps } from '../Modal/Modal.svelte'
+    import Modal, { type Props as ModalProps } from '../Modal/Modal.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './sheet.module.scss'
 
-    export type SvelteSheetProps = SheetProps & SvelteModalProps
+    export type Props = SheetProps & ModalProps
 
     const {
         position,
         className,
         children,
         ...rest
-    }: SvelteSheetProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.sheet,

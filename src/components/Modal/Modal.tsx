@@ -13,9 +13,9 @@ import warning from '../../icons/warning.svg?raw'
 
 import styles from './modal.module.scss'
 
-export type ReactModalProps = {
+export type Props = ModalProps<React.DialogHTMLAttributes<HTMLDialogElement>> & {
     children?: React.ReactNode
-} & ModalProps<React.DialogHTMLAttributes<HTMLDialogElement>>
+}
 
 const iconMap = {
     info,
@@ -35,7 +35,7 @@ const Modal = ({
     className,
     children,
     ...rest
-}: ReactModalProps) => {
+}: Props) => {
     const classes = classNames([
         styles.modal,
         theme && styles[theme],

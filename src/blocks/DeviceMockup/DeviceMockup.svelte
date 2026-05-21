@@ -1,8 +1,13 @@
 <script lang="ts">
+    import type { Snippet } from 'svelte'
     import { classNames } from 'webcoreui'
 
-    import type { SvelteDeviceMockupProps } from './deviceMockup'
+    import type { DeviceMockupProps } from './deviceMockup'
     import styles from './device-mockup.module.scss'
+
+    export type Props = DeviceMockupProps & {
+        children: Snippet
+    }
 
     const {
         type,
@@ -13,7 +18,7 @@
         minimizeButtonColor,
         className,
         children
-    }: SvelteDeviceMockupProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.mockup,

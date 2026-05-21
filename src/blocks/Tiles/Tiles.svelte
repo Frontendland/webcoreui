@@ -7,10 +7,12 @@
     import type { TilesProps } from './tiles'
     import styles from './tiles.module.scss'
 
+    export type Props = TilesProps
+
     const {
         columns,
         items
-    }: TilesProps = $props()
+    }: Props = $props()
 </script>
 
 {#snippet tile(item: TilesProps['items'][number])}

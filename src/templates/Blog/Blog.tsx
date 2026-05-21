@@ -1,4 +1,5 @@
-import type { ReactBlogProps } from './blog'
+import React from 'react'
+import type { BlogProps } from './blog'
 
 import Author from '@blocks/Author/Author.tsx'
 import BlogCard from '@blocks/BlogCard/BlogCard.tsx'
@@ -9,6 +10,10 @@ import Tiles from '@blocks/Tiles/Tiles.tsx'
 import styles from './blog.module.scss'
 
 import { ConditionalWrapper } from 'webcoreui/react'
+
+export type Props = BlogProps & {
+    children?: React.ReactNode
+}
 
 const Blog = ({
     layout,
@@ -23,7 +28,7 @@ const Blog = ({
     author,
     children,
     ...rest
-}: ReactBlogProps) => {
+}: Props) => {
     const ATF = () => {
         if (!hero) {
             return null

@@ -6,9 +6,9 @@
     import { classNames } from '../../utils/classNames'
     import { getLayoutClasses } from '../../utils/getLayoutClasses'
 
-    export type SvelteGridProps = {
+    export type Props = GridProps<HTMLAttributes<HTMLElement>> & {
         children: Snippet
-    } & GridProps<HTMLAttributes<HTMLElement>>
+    }
 
     const {
         element = 'div',
@@ -17,7 +17,7 @@
         className,
         children,
         ...rest
-    }: SvelteGridProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         'grid',

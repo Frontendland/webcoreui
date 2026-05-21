@@ -14,10 +14,10 @@
 
     import type { PaginationEventType } from '../Pagination/pagination'
 
-    export type SvelteCarouselProps = {
+    export type Props = CarouselProps & {
         onScroll?: (event: number) => void
         children: Snippet
-    } & CarouselProps
+    }
 
     let {
         items = 0,
@@ -33,7 +33,7 @@
         paginationClassName,
         children,
         onScroll
-    }: SvelteCarouselProps = $props()
+    }: Props = $props()
 
     const getItemsPerSlide = () => {
         if (carousel) {

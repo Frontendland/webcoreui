@@ -7,6 +7,8 @@
     import type { ExpandableTableProps } from './expandableTable'
     import styles from './expandable-table.module.scss'
 
+    export type Props = ExpandableTableProps
+
     const {
         headings,
         data,
@@ -20,7 +22,7 @@
         expandButtonLabel = 'Expand',
         collapseButtonLabel = 'Collapse',
         expandButton
-    }: ExpandableTableProps = $props()
+    }: Props = $props()
 
     let expanded = $state(false)
 

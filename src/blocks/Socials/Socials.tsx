@@ -5,6 +5,8 @@ import { iconMap } from './iconMap'
 import type { SocialsProps } from './socials'
 import styles from './socials.module.scss'
 
+export type Props = SocialsProps
+
 
 const Socials = ({
     links,
@@ -12,7 +14,7 @@ const Socials = ({
     color,
     theme,
     className
-}: SocialsProps) => {
+}: Props) => {
     const classes = classNames([
         styles.socials,
         className

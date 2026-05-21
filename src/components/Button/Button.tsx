@@ -5,10 +5,10 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './button.module.scss'
 
-export type ReactButtonProps = {
+export type Props = ButtonProps<Record<string, unknown>> & {
     onClick?: React.MouseEventHandler<HTMLButtonElement>
     children?: React.ReactNode
-} & ButtonProps<Record<string, unknown>>
+}
 
 const Button = ({
     theme,
@@ -17,7 +17,7 @@ const Button = ({
     onClick,
     children,
     ...rest
-}: ReactButtonProps) => {
+}: Props) => {
     const classes = classNames([
         styles.button,
         theme && styles[theme],

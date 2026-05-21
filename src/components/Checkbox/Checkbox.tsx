@@ -9,10 +9,10 @@ import check from '../../icons/check.svg?raw'
 
 import styles from './checkbox.module.scss'
 
-export type ReactCheckboxProps = {
+export type Props = CheckboxProps<React.InputHTMLAttributes<HTMLInputElement>> & {
     onChange?: React.ChangeEventHandler<HTMLInputElement>
     onClick?: React.MouseEventHandler<HTMLInputElement>
-} & CheckboxProps<React.InputHTMLAttributes<HTMLInputElement>>
+}
 
 const Checkbox = ({
     checked,
@@ -21,7 +21,7 @@ const Checkbox = ({
     color,
     className,
     ...rest
-}: ReactCheckboxProps) => {
+}: Props) => {
     const classes = classNames([
         styles.checkbox,
         label && subText && styles.col,

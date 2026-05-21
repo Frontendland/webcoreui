@@ -4,10 +4,10 @@ import type { GridProps } from './grid'
 import { classNames } from '../../utils/classNames'
 import { getLayoutClasses } from '../../utils/getLayoutClasses'
 
-export type ReactGridProps = {
+export type Props = Omit<GridProps, 'element'> & {
     Element?: keyof JSX.IntrinsicElements
     children: React.ReactNode
-} & Omit<GridProps, 'element'>
+}
 
 const Grid = ({
     Element = 'div',
@@ -16,7 +16,7 @@ const Grid = ({
     className,
     children,
     ...rest
-}: ReactGridProps) => {
+}: Props) => {
     const classes = classNames([
         'grid',
         getLayoutClasses({ gap, column }),

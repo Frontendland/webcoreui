@@ -2,6 +2,8 @@ import React from 'react'
 
 import type { SEOProps } from './SEO'
 
+export type Props = SEOProps
+
 const SEO = ({
     title,
     url,
@@ -14,7 +16,7 @@ const SEO = ({
     meta,
     links,
     structuredContents
-}: SEOProps) => {
+}: Props) => {
     return (
         <React.Fragment>
             <title>{title}</title>

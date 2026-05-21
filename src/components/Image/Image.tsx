@@ -8,7 +8,7 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './image.module.scss'
 
-export type ReactImageProps = ImageProps<React.ImgHTMLAttributes<HTMLImageElement>>
+export type Props = ImageProps<React.ImgHTMLAttributes<HTMLImageElement>>
 
 const Image = ({
     src,
@@ -22,7 +22,7 @@ const Image = ({
     rounded,
     className,
     ...rest
-}: ReactImageProps) => {
+}: Props) => {
     const classes = classNames([
         styles.img,
         center && styles.center,

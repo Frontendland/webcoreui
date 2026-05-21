@@ -10,9 +10,9 @@
 
     import type { InputTarget } from '../Input/input'
 
-    export type SvelteRadioProps = {
+    export type Props = RadioProps<HTMLInputAttributes> & {
         onChange?: (event: Event & InputTarget) => void
-    } & RadioProps<HTMLInputAttributes>
+    }
 
     const {
         items,
@@ -21,7 +21,7 @@
         className,
         onChange,
         ...rest
-    }: SvelteRadioProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.radio,

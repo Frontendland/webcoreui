@@ -1,5 +1,5 @@
 import React from 'react'
-import type { ReactProductPageProps } from './productPage'
+import type { ProductPageProps } from './productPage'
 
 import BlogCard from '@blocks/BlogCard/BlogCard.tsx'
 import Button from '@blocks/Button/Button.tsx'
@@ -10,6 +10,10 @@ import styles from './product-page.module.scss'
 
 import { Carousel } from 'webcoreui/react'
 
+export type Props = ProductPageProps & {
+    children?: React.ReactNode
+}
+
 const ProductPage = ({
     layout,
     images,
@@ -19,7 +23,7 @@ const ProductPage = ({
     recommended,
     children,
     ...rest
-}: ReactProductPageProps) => {
+}: Props) => {
     const ATF = () => {
         if (!images?.length) {
             return null

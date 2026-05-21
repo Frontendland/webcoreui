@@ -2,13 +2,15 @@
     import type { IconProps } from './icon'
     import iconMap from './map'
 
+    export type Props = IconProps
+
     const {
         type,
         size = 24,
         color,
         theme,
         iconSet
-    }: IconProps = $props()
+    }: Props = $props()
 
     const icons = $derived({
         ...iconMap,

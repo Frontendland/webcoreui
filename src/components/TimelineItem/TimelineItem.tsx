@@ -5,10 +5,10 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './timelineitem.module.scss'
 
-export type ReactTimelineItemProps = {
+export type Props = Omit<TimelineItemProps, 'titleTag'> & {
     TitleTag?: keyof JSX.IntrinsicElements
     children: React.ReactNode
-} & Omit<TimelineItemProps, 'titleTag'>
+}
 
 const TimelineItem = ({
     title,
@@ -16,7 +16,7 @@ const TimelineItem = ({
     icon,
     className,
     children
-}: ReactTimelineItemProps) => {
+}: Props) => {
     const classes = classNames([
         styles.item,
         icon && styles['with-icon'],

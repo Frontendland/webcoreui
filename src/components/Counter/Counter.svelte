@@ -9,9 +9,9 @@
 
     import styles from './counter.module.scss'
 
-    export type SvelteCounterProps = {
+    export type Props = CounterProps<HTMLInputAttributes> & {
         onChange?: (value: number) => void
-    } & CounterProps<HTMLInputAttributes>
+    }
 
     let {
         type = 'compact',
@@ -28,7 +28,7 @@
         min,
         max,
         ...rest
-    }: SvelteCounterProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.counter,

@@ -7,6 +7,8 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './rating.module.scss'
 
+export type Props = RatingProps
+
 const Rating = ({
     score,
     total = 5,
@@ -22,7 +24,7 @@ const Rating = ({
     emptyColor,
     size,
     className
-}: RatingProps) => {
+}: Props) => {
     const classes = classNames([
         styles.rating,
         outline && styles.outline,

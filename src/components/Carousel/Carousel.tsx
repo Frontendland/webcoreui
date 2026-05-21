@@ -13,10 +13,10 @@ import styles from './carousel.module.scss'
 
 import type { PaginationEventType } from '../Pagination/pagination'
 
-export type ReactCarouselProps = {
+export type Props = CarouselProps & {
     onScroll?: (event: number) => void
     children?: React.ReactNode
-} & CarouselProps
+}
 
 const Carousel = ({
     items,
@@ -32,7 +32,7 @@ const Carousel = ({
     paginationClassName,
     onScroll,
     children
-}: ReactCarouselProps) => {
+}: Props) => {
     const getItemsPerSlide = () => {
         if (carousel.current) {
             return typeof itemsPerSlide === 'number'

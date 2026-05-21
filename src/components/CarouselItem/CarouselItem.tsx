@@ -1,15 +1,15 @@
 import React from 'react'
 import type { CarouselItemProps } from './carouselItem'
 
-export type ReactCarouselItemProps = {
+export type Props = CarouselItemProps & {
     children: React.ReactNode
-} & CarouselItemProps
+}
 
 const CarouselItem = ({
     active,
     className,
     children
-}: ReactCarouselItemProps) => (
+}: Props) => (
     <li className={className} data-active={active}>
         {children}
     </li>

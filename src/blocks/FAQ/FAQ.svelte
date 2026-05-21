@@ -1,9 +1,14 @@
 <script lang="ts">
+    import type { Snippet } from 'svelte'
     import { classNames } from 'webcoreui'
     import { Accordion } from 'webcoreui/svelte'
 
-    import type { SvelteFAQProps } from './faq'
+    import type { FAQProps } from './faq'
     import styles from './faq.module.scss'
+
+    export type Props = FAQProps & {
+        children?: Snippet
+    }
 
     const {
         element = 'section',
@@ -13,7 +18,7 @@
         className,
         children,
         ...rest
-    }: SvelteFAQProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.faq,

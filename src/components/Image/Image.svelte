@@ -8,7 +8,7 @@
 
     import styles from './image.module.scss'
 
-    export type SvelteImageProps = ImageProps<HTMLImgAttributes>
+    export type Props = ImageProps<HTMLImgAttributes>
 
     const {
         src,
@@ -22,7 +22,7 @@
         rounded,
         className,
         ...rest
-    }: SvelteImageProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.img,

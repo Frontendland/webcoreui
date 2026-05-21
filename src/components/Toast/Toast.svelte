@@ -1,13 +1,13 @@
 <script lang="ts">
     import type { ToastProps } from './toast'
 
-    import Alert, { type SvelteAlertProps } from '../Alert/Alert.svelte'
+    import Alert, { type Props as AlertProps } from '../Alert/Alert.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './toast.module.scss'
 
-    export type SvelteToastProps = ToastProps<SvelteAlertProps>
+    export type Props = ToastProps<AlertProps>
 
     const {
         position,
@@ -15,7 +15,7 @@
         icon,
         children,
         ...rest
-    }: SvelteToastProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.toast,

@@ -4,7 +4,9 @@
     import type { CustomIconProps } from './icon'
     import iconSet from './iconSet'
 
-    const props: CustomIconProps = $props()
+    export type Props = CustomIconProps
+
+    const props: Props = $props()
 </script>
 
 <IconComponent iconSet={iconSet} {...props} />

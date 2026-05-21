@@ -4,6 +4,8 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './bottomnavigation.module.scss'
 
+export type Props = BottomNavigationProps
+
 type ElementType = BottomNavigationProps['items'][0] & {
     className: string
     dangerouslySetInnerHTML: {
@@ -17,7 +19,7 @@ const BottomNavigation = ({
     floating,
     maxWidth,
     className
-}: BottomNavigationProps) => {
+}: Props) => {
     const classes = classNames([
         styles.nav,
         separated && styles.separated,

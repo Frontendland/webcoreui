@@ -6,15 +6,15 @@
 
     import styles from './aspect-ratio.module.scss'
 
-    export type SvelteAspectRatioProps = {
+    export type Props = AspectRatioProps & {
         children: Snippet
-    } & AspectRatioProps
+    }
 
     const {
         ratio,
         className,
         children
-    }: SvelteAspectRatioProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.ratio,

@@ -1,15 +1,15 @@
 import React from 'react'
 import type { OTPInputProps } from './otpinput'
 
-import Input, { type ReactInputProps } from '../Input/Input.tsx'
+import Input, { type Props as InputProps } from '../Input/Input.tsx'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './otpinput.module.scss'
 
-export type ReactOTPInputProps = {
+export type Props = OTPInputProps<Omit<InputProps, 'onChange'>> & {
     onChange?: (value: string) => void
-} & OTPInputProps<Omit<ReactInputProps, 'onChange'>>
+}
 
 const OTPInput = ({
     name = 'otp',
@@ -21,7 +21,7 @@ const OTPInput = ({
     className,
     onChange,
     ...rest
-}: ReactOTPInputProps) => {
+}: Props) => {
     const classes = classNames([
         styles.wrapper,
         className

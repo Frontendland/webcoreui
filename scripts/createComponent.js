@@ -27,7 +27,7 @@ const templates = {
 
         import styles from './${lowerCaseComponent}.module.scss'
 
-        interface Props extends ${component}Props {}
+        export type Props = ${component}Props
 
         const {
             className
@@ -47,9 +47,11 @@ const templates = {
 
             import styles from './${lowerCaseComponent}.module.scss'
 
+            export type Props = ${component}Props
+
             const {
                 className
-            }: ${component}Props = $props()
+            }: Props = $props()
 
             const classes = classNames([
                 styles.${lowerCaseComponent},
@@ -63,10 +65,12 @@ const templates = {
         import { classNames } from '../../utils/classNames'
 
         import styles from './${lowerCaseComponent}.module.scss'
+
+        export type Props = ${component}Props
         
         const ${component} = ({
             className
-        }: ${component}Props) => {
+        }: Props) => {
             const classes = classNames([
                 styles.${lowerCaseComponent},
                 className

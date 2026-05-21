@@ -9,11 +9,13 @@
 
     import styles from './breadcrumb.module.scss'
 
+    export type Props = BreadcrumbProps
+
     const {
         items,
         separator,
         className
-    }: BreadcrumbProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.breadcrumb,

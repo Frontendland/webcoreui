@@ -11,6 +11,8 @@ import { useForm } from '@blocks/Form/useForm'
 import { classNames } from 'webcoreui'
 import { ConditionalWrapper, Tabs } from 'webcoreui/react'
 
+export type Props = AuthenticationProps
+
 const Authentication = ({
     layout,
     banner,
@@ -21,7 +23,7 @@ const Authentication = ({
     reverse,
     className,
     ...rest
-}: AuthenticationProps) => {
+}: Props) => {
     const defaultLoginFormFields: FormField[] = [
         { type: 'email', label: 'Email', name: 'email' },
         { type: 'password', label: 'Password', name: 'password', autoComplete: 'on' },

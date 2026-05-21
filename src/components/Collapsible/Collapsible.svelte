@@ -6,11 +6,11 @@
 
     import styles from './collapsible.module.scss'
 
-    export type SvelteCollapsibleProps = {
+    export type Props = CollapsibleProps & {
         on: Snippet
         off: Snippet
         children: Snippet
-    } & CollapsibleProps
+    }
 
     let {
         initialHeight,
@@ -21,7 +21,7 @@
         children,
         off,
         on
-    }: SvelteCollapsibleProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.collapsible,

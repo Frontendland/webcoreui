@@ -5,6 +5,8 @@
 
     import styles from './progress.module.scss'
 
+    export type Props = ProgressProps
+
     const {
         value,
         size,
@@ -17,7 +19,7 @@
         stripeDark,
         indeterminate,
         className
-    }: ProgressProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles['w-progress'],

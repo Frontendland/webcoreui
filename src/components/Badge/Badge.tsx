@@ -5,10 +5,10 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './badge.module.scss'
 
-export type ReactBadgeProps = {
+export type Props = BadgeProps<React.HTMLAttributes<HTMLElement>> & {
     onClick?: React.MouseEventHandler<HTMLButtonElement>
     children?: React.ReactNode
-} & BadgeProps<React.HTMLAttributes<HTMLElement>>
+}
 
 const Badge = ({
     theme,
@@ -20,7 +20,7 @@ const Badge = ({
     className,
     children,
     ...rest
-}: ReactBadgeProps) => {
+}: Props) => {
     const classes = classNames([
         styles.badge,
         theme && styles[theme],

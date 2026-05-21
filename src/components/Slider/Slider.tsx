@@ -5,9 +5,9 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './slider.module.scss'
 
-export type ReactSliderProps = {
+export type Props = SliderProps & {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-} & SliderProps
+}
 
 const Slider = ({
     min = 0,
@@ -22,7 +22,7 @@ const Slider = ({
     className,
     onChange,
     ...rest
-}: ReactSliderProps) => {
+}: Props) => {
     const classes = classNames([
         styles.slider,
         className

@@ -5,9 +5,9 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './tabs.module.scss'
 
-export type ReactTabsProps = {
+export type Props = TabsProps & {
     children: React.ReactNode
-} & TabsProps
+}
 
 const Tabs = ({
     items,
@@ -16,7 +16,7 @@ const Tabs = ({
     even,
     className,
     children
-}: ReactTabsProps) => {
+}: Props) => {
     const tabContainer = useRef<HTMLDivElement>(null)
     const [active, setActive] = useState('')
 
@@ -42,7 +42,7 @@ const Tabs = ({
         setActive(tab)
     }
 
-    const isActive = (item: ReactTabsProps['items'][0]) => {
+    const isActive = (item: Props['items'][0]) => {
         if (!active) {
             return item.active ? 'true' : undefined
         }

@@ -6,6 +6,8 @@ import Skeleton from '../Skeleton/Skeleton.tsx'
 
 import styles from './imageloader.module.scss'
 
+export type Props = ImageLoaderProps
+
 const ImageLoader = ({
     fallback,
     animate,
@@ -16,7 +18,7 @@ const ImageLoader = ({
     waveColor,
     className,
     ...rest
-}: ImageLoaderProps) => {
+}: Props) => {
     const containerRef = useRef<HTMLDivElement>(null)
     const styleVariables = {
         width,

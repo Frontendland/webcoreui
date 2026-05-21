@@ -1,4 +1,3 @@
-import type { MouseEventHandler } from 'svelte/elements'
 import type { ButtonProps } from 'webcoreui/astro'
 
 export type SignUpProps = {
@@ -15,12 +14,3 @@ export type SignUpProps = {
     secondaryButtonLabel?: string
 }
 
-export type SvelteSignUpProps = {
-    primaryOnClick?: MouseEventHandler<HTMLButtonElement>
-    secondaryOnClick?: MouseEventHandler<HTMLButtonElement>
-} & SignUpProps
-
-export type ReactSignUpProps = {
-    primaryOnClick?: React.MouseEventHandler<HTMLButtonElement>
-    secondaryOnClick?: React.MouseEventHandler<HTMLButtonElement>
-} & SignUpProps

@@ -7,6 +7,8 @@
     import type { AuthorProps } from './author'
     import styles from './author.module.scss'
 
+    export type Props = AuthorProps
+
     const {
         avatar,
         name,
@@ -15,7 +17,7 @@
         socials,
         bodyClassName,
         ...rest
-    }: AuthorProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         'flex sm column sm-row',

@@ -12,10 +12,10 @@
 
     import styles from './alert.module.scss'
 
-    export type SvelteAlertProps = {
+    export type Props = AlertProps<HTMLAttributes<HTMLElement>> & {
         icon?: Snippet
         children: Snippet
-    } & AlertProps<HTMLAttributes<HTMLElement>>
+    }
 
     const {
         element = 'section',
@@ -28,7 +28,7 @@
         icon,
         children,
         ...rest
-    }: SvelteAlertProps = $props()
+    }: Props = $props()
 
     const iconMap = {
         info,

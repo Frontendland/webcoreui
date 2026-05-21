@@ -13,12 +13,14 @@ import {
 
 import type { FormField, FormProps } from './form'
 
+export type Props = FormProps
+
 const Form = ({
     fields,
     gap,
     className,
     ...rest
-}: FormProps) => {
+}: Props) => {
     const classes = classNames([
         'flex column',
         gap || 'md',

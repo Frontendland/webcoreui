@@ -6,10 +6,10 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './popover.module.scss'
 
-export type ReactPopoverProps = {
+export type Props = PopoverProps<React.DialogHTMLAttributes<HTMLDialogElement>> & {
     isInteractive?: boolean
     children?: React.ReactNode
-} & PopoverProps<React.DialogHTMLAttributes<HTMLDialogElement>>
+}
 
 const Popover = ({
     id,
@@ -18,7 +18,7 @@ const Popover = ({
     isInteractive = false,
     children,
     ...rest
-}: ReactPopoverProps) => {
+}: Props) => {
     const [isMounted, setIsMounted] = useState(false)
 
     const classes = classNames([

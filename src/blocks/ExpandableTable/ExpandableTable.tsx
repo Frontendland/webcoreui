@@ -7,6 +7,8 @@ import Button from '@blocks/Button/Button.tsx'
 import type { ExpandableTableProps } from './expandableTable'
 import styles from './expandable-table.module.scss'
 
+export type Props = ExpandableTableProps
+
 const ExpandableTable = ({
     headings,
     data,
@@ -20,7 +22,7 @@ const ExpandableTable = ({
     expandButtonLabel = 'Expand',
     collapseButtonLabel = 'Collapse',
     expandButton
-}: ExpandableTableProps) => {
+}: Props) => {
     const classes = classNames([
         styles.table,
         hover && styles.hover,

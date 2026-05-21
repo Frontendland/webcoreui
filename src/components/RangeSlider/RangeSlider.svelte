@@ -8,9 +8,9 @@
 
     import styles from './rangeslider.module.scss'
 
-    export type SvelteRangeSliderProps = {
+    export type Props = RangeSliderProps & {
         onChange?: (event: RangeSliderEventType) => void
-    } & RangeSliderProps
+    }
 
     const {
         min = 0,
@@ -34,7 +34,7 @@
         className,
         onChange,
         ...rest
-    }: SvelteRangeSliderProps = $props()
+    }: Props = $props()
 
     const styleVariables = $derived(classNames([
         color && `--w-range-slider-color: ${color};`,

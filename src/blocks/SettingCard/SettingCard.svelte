@@ -1,8 +1,14 @@
 <script lang="ts">
+    import type { Snippet } from 'svelte'
     import { Card } from 'webcoreui/svelte'
 
-    import type { SvelteSettingCardProps } from './settingCard'
+    import type { SettingCardProps } from './settingCard'
     import styles from './setting-card.module.scss'
+
+    export type Props = SettingCardProps & {
+        children: Snippet
+        additionalContent?: Snippet
+    }
 
     const {
         title,
@@ -10,7 +16,7 @@
         children,
         additionalContent,
         ...rest
-    }: SvelteSettingCardProps = $props()
+    }: Props = $props()
 </script>
 
 <Card

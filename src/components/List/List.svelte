@@ -10,9 +10,9 @@
 
     import styles from './list.module.scss'
 
-    export type SvelteListProps = {
+    export type Props = ListProps & {
         onSelect?: (event: ListEventType) => void
-    } & ListProps
+    }
 
     let {
         showSearchBar,
@@ -26,7 +26,7 @@
         secondary,
         itemGroups = $bindable([]),
         onSelect
-    }: SvelteListProps = $props()
+    }: Props = $props()
 
     let searchValue = $state('')
     let numberOfResults = $state(1)

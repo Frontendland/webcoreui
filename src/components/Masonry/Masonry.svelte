@@ -6,9 +6,9 @@
 
     import styles from './masonry.module.scss'
 
-    export type SvelteMasonryProps = {
+    export type Props = Omit<MasonryProps, 'items'> & {
         items: Items<typeof SvelteComponent<any>>[]
-    } & Omit<MasonryProps, 'items'>
+    }
 
     const {
         items,
@@ -17,7 +17,7 @@
         columns = 3,
         sequential,
         className
-    }: SvelteMasonryProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.masonry,

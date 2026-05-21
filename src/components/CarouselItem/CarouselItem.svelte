@@ -2,15 +2,15 @@
     import type { Snippet } from 'svelte'
     import type { CarouselItemProps } from './carouselItem'
 
-    export type SvelteCarouselItemProps = {
+    export type Props = CarouselItemProps & {
         children: Snippet
-    } & CarouselItemProps
+    }
 
     const {
         active,
         className,
         children
-    }: SvelteCarouselItemProps = $props()
+    }: Props = $props()
 </script>
 
 <li class={className} data-active={active}>

@@ -6,15 +6,15 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './kbd.module.scss'
 
-export type ReactKbdProps = {
+export type Props = KbdProps & {
     children?: React.ReactNode
-} & KbdProps
+}
 
 const Kbd = ({
     keys,
     className,
     children
-}: ReactKbdProps) => {
+}: Props) => {
     const classes = classNames([
         styles.kbd,
         className

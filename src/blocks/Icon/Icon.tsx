@@ -3,6 +3,8 @@ import { Icon as IconComponent } from 'webcoreui/react'
 import type { CustomIconProps } from './icon'
 import iconSet from './iconSet'
 
-const Icon = (props: CustomIconProps) => <IconComponent iconSet={iconSet} {...props} />
+export type Props = CustomIconProps
+
+const Icon = (props: Props) => <IconComponent iconSet={iconSet} {...props} />
 
 export default Icon

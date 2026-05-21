@@ -6,9 +6,9 @@
 
     import styles from './card.module.scss'
 
-    export type SvelteCardProps = {
+    export type Props = CardProps & {
         children: Snippet
-    } & CardProps
+    }
 
     const {
         element = 'section',
@@ -21,7 +21,7 @@
         flat,
         children,
         ...rest
-    }: SvelteCardProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.card,

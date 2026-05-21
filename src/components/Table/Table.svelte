@@ -5,6 +5,8 @@
 
     import styles from './table.module.scss'
 
+    export type Props = TableProps
+
     const {
         headings,
         footer,
@@ -15,7 +17,7 @@
         compact,
         maxHeight,
         className
-    }: TableProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.table,

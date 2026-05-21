@@ -6,15 +6,15 @@
 
     import styles from './group.module.scss'
 
-    export type SvelteGroupProps = {
+    export type Props = GroupProps & {
         children: Snippet
-    } & GroupProps
+    }
 
     const {
         withSeparator,
         className,
         children
-    }: SvelteGroupProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.group,

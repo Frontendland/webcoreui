@@ -4,13 +4,15 @@ import { Avatar, Rating } from 'webcoreui/react'
 import type { AvatarWithRatingProps } from './avatarWithRating'
 import styles from './avatar-with-rating.module.scss'
 
+export type Props = AvatarWithRatingProps
+
 const AvatarWithRating = ({
     avatar,
     rating,
     text,
     reverse,
     className
-}: AvatarWithRatingProps) => {
+}: Props) => {
     const classes = classNames([
         'flex sm items-center',
         styles.avatar,

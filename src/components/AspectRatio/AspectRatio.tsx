@@ -4,15 +4,15 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './aspect-ratio.module.scss'
 
-export type ReactAspectRatioProps = {
+export type Props = AspectRatioProps & {
     children: React.ReactNode
-} & AspectRatioProps
+}
 
 const AspectRatio = ({
     ratio,
     children,
     className
-}: ReactAspectRatioProps) => {
+}: Props) => {
     const classes = classNames([
         styles.ratio,
         className

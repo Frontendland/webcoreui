@@ -7,6 +7,8 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './stepper.module.scss'
 
+export type Props = StepperProps
+
 const Stepper = ({
     items,
     color,
@@ -15,7 +17,7 @@ const Stepper = ({
     borderless,
     vertical,
     className
-}: StepperProps) => {
+}: Props) => {
     const classes = classNames([
         styles.stepper,
         borderless && styles.borderless,

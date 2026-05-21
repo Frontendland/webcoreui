@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte'
-
 import type { AuthorProps } from '@blocks/Author/author'
 import type { BlogCardProps } from '@blocks/BlogCard/blogCard'
 import type { HeroProps } from '@blocks/Hero/hero'
@@ -20,10 +18,3 @@ export type BlogProps = {
     [key: string]: any
 }
 
-export type SvelteBlogProps = {
-    children?: Snippet
-} & BlogProps
-
-export type ReactBlogProps = {
-    children?: React.ReactNode
-} & BlogProps

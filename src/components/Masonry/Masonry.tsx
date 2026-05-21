@@ -5,9 +5,9 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './masonry.module.scss'
 
-export type ReactMasonryProps = {
+export type Props = Omit<MasonryProps, 'items'> & {
     items: Items<FC<any>>[]
-} & Omit<MasonryProps, 'items'>
+}
 
 const Masonry = ({
     items,
@@ -16,7 +16,7 @@ const Masonry = ({
     columns = 3,
     sequential,
     className
-}: ReactMasonryProps) => {
+}: Props) => {
     const classes = classNames([
         styles.masonry,
         className

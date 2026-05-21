@@ -5,15 +5,15 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './group.module.scss'
 
-export type ReactGroupProps = {
+export type Props = GroupProps & {
     children: React.ReactNode
-} & GroupProps
+}
 
 const Group = ({
     withSeparator,
     className,
     children
-}: ReactGroupProps) => {
+}: Props) => {
     const classes = classNames([
         styles.group,
         withSeparator && styles.separator,

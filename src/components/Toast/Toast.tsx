@@ -1,12 +1,12 @@
 import type { ToastProps } from './toast'
 
-import Alert, { type ReactAlertProps } from '../Alert/Alert.tsx'
+import Alert, { type Props as AlertProps } from '../Alert/Alert.tsx'
 
 import { classNames } from '../../utils/classNames'
 
 import styles from './toast.module.scss'
 
-export type ReactToastProps = ToastProps<React.HTMLAttributes<HTMLElement>> & ReactAlertProps
+export type Props = ToastProps<React.HTMLAttributes<HTMLElement>> & AlertProps
 
 const Toast = ({
     icon,
@@ -14,7 +14,7 @@ const Toast = ({
     className,
     children,
     ...rest
-}: ReactToastProps) => {
+}: Props) => {
     const classes = classNames([
         styles.toast,
         className

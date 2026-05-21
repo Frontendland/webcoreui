@@ -8,6 +8,8 @@
     import user from './user.svg?raw'
     import styles from './team.module.scss'
 
+    export type Props = TeamProps
+
     const {
         members,
         avatar,
@@ -15,7 +17,7 @@
         compact,
         secondary,
         className
-    }: TeamProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         'grid',

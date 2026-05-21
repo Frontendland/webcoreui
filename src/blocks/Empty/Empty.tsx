@@ -5,6 +5,8 @@ import Button from '@blocks/Button/Button.tsx'
 import type { EmptyProps } from './empty'
 import styles from './empty.module.scss'
 
+export type Props = EmptyProps
+
 const Empty = ({
     icon,
     iconWithBackground,
@@ -12,7 +14,7 @@ const Empty = ({
     text,
     buttons,
     className
-}: EmptyProps) => {
+}: Props) => {
     const classes = classNames([
         'flex column center xs',
         iconWithBackground && styles['icon-bg'],

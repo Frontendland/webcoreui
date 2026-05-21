@@ -5,9 +5,9 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './spoiler.module.scss'
 
-export type ReactSpoilerProps = {
+export type Props = SpoilerProps & {
     children: React.ReactNode
-} & SpoilerProps
+}
 
 const Spoiler = ({
     color,
@@ -16,7 +16,7 @@ const Spoiler = ({
     tooltip,
     tooltipPosition,
     children
-}: ReactSpoilerProps) => {
+}: Props) => {
     const classes = classNames([
         styles.spoiler,
         animated && styles.anim,

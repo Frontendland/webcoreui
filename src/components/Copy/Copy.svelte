@@ -2,7 +2,7 @@
     import type { Snippet } from 'svelte'
     import type { CopyProps } from './copy'
 
-    import Badge, { type SvelteBadgeProps } from '../Badge/Badge.svelte'
+    import Badge, { type Props as BadgeProps } from '../Badge/Badge.svelte'
 
     import { classNames } from '../../utils/classNames'
 
@@ -11,9 +11,9 @@
 
     import styles from './copy.module.scss'
 
-    export type SvelteCopyProps = {
+    export type Props = CopyProps<BadgeProps> & {
         children: Snippet
-    } & CopyProps<SvelteBadgeProps>
+    }
 
     let {
         tooltip = $bindable(''),
@@ -23,7 +23,7 @@
         className,
         children,
         ...rest
-    }: SvelteCopyProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.copy,

@@ -7,6 +7,8 @@
 
     import styles from './avatar.module.scss'
 
+    export type Props = AvatarProps
+
     const {
         img,
         alt = 'Avatar',
@@ -17,7 +19,7 @@
         reverse,
         className,
         groupClassName
-    }: AvatarProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.avatar,

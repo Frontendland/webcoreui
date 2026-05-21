@@ -6,11 +6,13 @@ import ButtonBlock from '@blocks/Button/Button.tsx'
 import type { TilesProps } from './tiles'
 import styles from './tiles.module.scss'
 
+export type Props = TilesProps
+
 
 const Tiles = ({
     columns,
     items
-}: TilesProps) => {
+}: Props) => {
 
     if (!items?.length) {
         return <div /> // Return null in React - only needed for Astro

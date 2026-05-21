@@ -18,10 +18,10 @@ import styles from './datatable.module.scss'
 
 import type { ListEventType } from '../List/list'
 
-export type ReactDataTableProps = {
+export type Props = DataTableProps & {
     onFilter?: (event: DataTableEventType) => void
     children?: React.ReactNode
-} & DataTableProps
+}
 
 const DataTable = ({
     headings,
@@ -43,7 +43,7 @@ const DataTable = ({
     onFilter,
     children
 // eslint-disable-next-line complexity
-}: ReactDataTableProps) => {
+}: Props) => {
     const [filteredData, setFilteredData] = useState<any>(data)
     const [toggledData, setToggledData] = useState(filteredData)
     const [filteredHeadings, setFilteredHeadings] = useState<any>(headings)

@@ -7,6 +7,8 @@ import Button from '@blocks/Button/Button.tsx'
 import type { HeroProps } from './hero'
 import styles from './hero.module.scss'
 
+export type Props = HeroProps
+
 const Hero = ({
     badge,
     heading,
@@ -16,7 +18,7 @@ const Hero = ({
     img,
     reverse,
     className
-}: HeroProps) => {
+}: Props) => {
     const classes = classNames([
         styles.hero,
         img?.src && 'flex column justify-between sm-row sm-items-center',

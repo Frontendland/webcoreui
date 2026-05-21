@@ -9,11 +9,13 @@ import ChevronRight from '../../icons/chevron-right.svg?raw'
 
 import styles from './breadcrumb.module.scss'
 
+export type Props = BreadcrumbProps
+
 const Breadcrumb = ({
     items,
     separator,
     className
-}: BreadcrumbProps) => {
+}: Props) => {
     const classes = classNames([
         styles.breadcrumb,
         className

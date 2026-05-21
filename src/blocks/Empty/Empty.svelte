@@ -6,6 +6,8 @@
     import type { EmptyProps } from './empty'
     import styles from './empty.module.scss'
 
+    export type Props = EmptyProps
+
     const {
         icon,
         iconWithBackground,
@@ -13,7 +15,7 @@
         text,
         buttons,
         className
-    }: EmptyProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         'flex column center xs',

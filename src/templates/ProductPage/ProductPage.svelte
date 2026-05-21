@@ -1,5 +1,6 @@
 <script lang="ts">
-    import type { SvelteProductPageProps } from './productPage'
+    import type { Snippet } from 'svelte'
+    import type { ProductPageProps } from './productPage'
 
     import BlogCard from '@blocks/BlogCard/BlogCard.svelte'
     import Button from '@blocks/Button/Button.svelte'
@@ -10,6 +11,10 @@
 
     import { Carousel } from 'webcoreui/svelte'
 
+    export type Props = ProductPageProps & {
+        children?: Snippet
+    }
+
     const {
         layout,
         images,
@@ -19,7 +24,7 @@
         recommended,
         children,
         ...rest
-    }: SvelteProductPageProps = $props()
+    }: Props = $props()
 </script>
 
 <Layout {...layout} {...rest} className={styles.main}>

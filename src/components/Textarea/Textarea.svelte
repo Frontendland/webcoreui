@@ -8,11 +8,11 @@
 
     import styles from './textarea.module.scss'
 
-    export type SvelteTextareaProps = {
+    export type Props = TextareaProps<HTMLTextareaAttributes> & {
         onInput?: (event: Event & TextareaTarget) => void
         onChange?: (event: Event & TextareaTarget) => void
         onKeyUp?: (event: KeyboardEvent & TextareaTarget) => void
-    } & TextareaProps<HTMLTextareaAttributes>
+    }
 
     const {
         label,
@@ -23,7 +23,7 @@
         onKeyUp,
         onInput,
         ...rest
-    }: SvelteTextareaProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.textarea,

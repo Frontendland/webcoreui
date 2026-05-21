@@ -1,4 +1,3 @@
-import type { Snippet } from 'svelte'
 import type {
     AccordionProps
 } from 'webcoreui/astro'
@@ -13,10 +12,3 @@ export type FAQProps = {
     className?: string
 } & AccordionProps
 
-export type SvelteFAQProps = {
-    children?: Snippet
-} & FAQProps
-
-export type ReactFAQProps = {
-    children?: React.ReactNode
-} & FAQProps

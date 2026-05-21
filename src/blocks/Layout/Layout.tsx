@@ -4,8 +4,20 @@ import { ConditionalWrapper, Footer, Menu } from 'webcoreui/react'
 
 import SEO from '@blocks/SEO/SEO.tsx'
 
-import type { ReactLayoutProps } from './layout'
+import type { LayoutProps } from './layout'
 import './layout.scss'
+
+export type Props = LayoutProps & {
+    insideMenu?: React.ReactNode
+    atf?: React.ReactNode
+    leftSidebar?: React.ReactNode
+    rightSidebar?: React.ReactNode
+    aboveFooter?: React.ReactNode
+    insideFooter?: React.ReactNode
+    scripts?: React.ReactNode
+    children?: React.ReactNode
+    bodyClassName?: string
+}
 
 const Layout = ({
     seo,
@@ -24,7 +36,7 @@ const Layout = ({
     scripts,
     children,
     ...rest
-}: ReactLayoutProps) => {
+}: Props) => {
     const hasSidebar = leftSidebar || rightSidebar
 
     const containerClasses = classNames([

@@ -8,12 +8,14 @@
 
     import styles from './accordion.module.scss'
 
+    export type Props = AccordionProps
+
     const {
         items,
         icon,
         reverse,
         className
-    }: AccordionProps = $props()
+    }: Props = $props()
 
     let toggleState = $derived(items.map(item => item.expanded ?? false))
 

@@ -5,13 +5,15 @@
     import type { AvatarWithRatingProps } from './avatarWithRating'
     import styles from './avatar-with-rating.module.scss'
 
+    export type Props = AvatarWithRatingProps
+
     const {
         avatar,
         rating,
         text,
         reverse,
         className
-    }: AvatarWithRatingProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         'flex sm items-center',

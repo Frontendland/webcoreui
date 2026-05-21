@@ -6,9 +6,9 @@
 
     import styles from './ribbon.module.scss'
 
-    export type SvelteRibbonProps = {
+    export type Props = RibbonProps & {
         children: Snippet
-    } & RibbonProps
+    }
 
     const {
         offset,
@@ -16,7 +16,7 @@
         theme,
         className,
         children
-    }: SvelteRibbonProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.ribbon,

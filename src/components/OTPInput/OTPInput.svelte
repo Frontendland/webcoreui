@@ -1,13 +1,13 @@
 <script lang="ts">
     import type { OTPInputProps } from './otpinput'
 
-    import Input, { type SvelteInputProps } from '../Input/Input.svelte'
+    import Input, { type Props as InputProps } from '../Input/Input.svelte'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './otpinput.module.scss'
 
-    export type SvelteOTPInputProps = OTPInputProps<SvelteInputProps>
+    export type Props = OTPInputProps<InputProps>
 
     let {
         name = 'otp',
@@ -19,7 +19,7 @@
         className,
         value = $bindable(''),
         ...rest
-    }: SvelteOTPInputProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.wrapper,

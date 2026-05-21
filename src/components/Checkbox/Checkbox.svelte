@@ -10,10 +10,10 @@
 
     import styles from './checkbox.module.scss'
 
-    export type SvelteCheckboxProps = {
+    export type Props = CheckboxProps<HTMLInputAttributes> & {
         onChange?: ChangeEventHandler<HTMLInputElement>
         onClick?: MouseEventHandler<HTMLInputElement>
-    } & CheckboxProps<HTMLInputAttributes>
+    }
 
     const {
         label,
@@ -23,7 +23,7 @@
         onClick,
         onChange,
         ...rest
-    }: SvelteCheckboxProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.checkbox,

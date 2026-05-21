@@ -6,11 +6,11 @@ import { on } from '../../utils/DOMUtils'
 
 import styles from './contextmenu.module.scss'
 
-export type ReactContextMenuProps = {
+export type Props = Omit<ContextMenuProps, 'element'> & {
     Element?: React.ElementType
     children: React.ReactNode
     context: React.ReactNode
-} & Omit<ContextMenuProps, 'element'>
+}
 
 const ContextMenu = ({
     Element = 'div',
@@ -18,7 +18,7 @@ const ContextMenu = ({
     children,
     context,
     ...rest
-}: ReactContextMenuProps) => {
+}: Props) => {
     const ctx = useRef<HTMLElement>(null)
     const content = useRef<HTMLDivElement>(null)
     const classes = classNames([

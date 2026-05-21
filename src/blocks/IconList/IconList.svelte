@@ -4,12 +4,14 @@
     import type { IconListProps } from './iconList'
     import styles from './icon-list.module.scss'
 
+    export type Props = IconListProps
+
     const {
         items,
         color,
         columns,
         className
-    }: IconListProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.list,

@@ -10,9 +10,9 @@
 
     import styles from './pagination.module.scss'
 
-    export type SveltePaginationProps = {
+    export type Props = PaginationProps & {
         onChange?: (event: PaginationEventType) => void
-    } & PaginationProps
+    }
 
     const {
         type,
@@ -30,7 +30,7 @@
         currentPage,
         onChange,
         className
-    }: SveltePaginationProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.pagination,

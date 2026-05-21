@@ -5,6 +5,8 @@
     import type { GridWithIconsProps } from './gridWithIcons'
     import styles from './grid-with-icons.module.scss'
 
+    export type Props = GridWithIconsProps
+
     const {
         items = [],
         columns,
@@ -12,7 +14,7 @@
         iconWithBackground,
         secondary,
         className
-    }: GridWithIconsProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         `grid sm-${columns || 3}`,

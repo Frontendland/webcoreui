@@ -10,12 +10,12 @@ import warning from '../../icons/warning.svg?raw'
 
 import styles from './alert.module.scss'
 
-export type ReactAlertProps = {
+export type Props = Omit<AlertProps, 'titleTag' | 'element'> & {
     Element?: keyof JSX.IntrinsicElements
     TitleTag?: keyof JSX.IntrinsicElements
     icon?: React.ReactNode
     children: React.ReactNode
-} & Omit<AlertProps, 'titleTag' | 'element'>
+}
 
 const iconMap = {
     info,
@@ -35,7 +35,7 @@ const Alert = ({
     children,
     icon,
     ...rest
-}: ReactAlertProps) => {
+}: Props) => {
     const classes = [
         styles['w-alert'],
         (!icon && !theme) && styles.col,

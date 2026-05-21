@@ -5,10 +5,10 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './switch.module.scss'
 
-export type ReactSwitchProps = {
+export type Props = SwitchProps<React.InputHTMLAttributes<HTMLInputElement>> & {
     onChange?: React.ChangeEventHandler<HTMLInputElement>
     onClick?: React.MouseEventHandler<HTMLInputElement>
-} & SwitchProps<React.InputHTMLAttributes<HTMLInputElement>>
+}
 
 const Switch = ({
     label,
@@ -21,7 +21,7 @@ const Switch = ({
     disabled,
     className,
     ...rest
-}: ReactSwitchProps) => {
+}: Props) => {
     const classes = classNames([
         styles.switch,
         reverse && styles.reverse,

@@ -4,12 +4,14 @@ import { classNames } from 'webcoreui'
 import type { IconListProps } from './iconList'
 import styles from './icon-list.module.scss'
 
+export type Props = IconListProps
+
 const IconList = ({
     items,
     color,
     columns,
     className
-}: IconListProps) => {
+}: Props) => {
     const classes = classNames([
         styles.list,
         className

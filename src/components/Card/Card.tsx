@@ -5,11 +5,11 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './card.module.scss'
 
-export type ReactCardProps = {
+export type Props = Omit<CardProps<any>, 'titleTag' | 'element'> & {
     Element?: keyof JSX.IntrinsicElements
     TitleTag?: keyof JSX.IntrinsicElements
     children: React.ReactNode
-} & Omit<CardProps<any>, 'titleTag' | 'element'>
+}
 
 const Card = ({
     Element = 'section',
@@ -22,7 +22,7 @@ const Card = ({
     flat,
     children,
     ...rest
-}: ReactCardProps) => {
+}: Props) => {
     const classes = classNames([
         styles.card,
         secondary && styles.secondary,

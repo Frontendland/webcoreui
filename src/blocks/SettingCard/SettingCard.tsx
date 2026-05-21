@@ -1,7 +1,13 @@
+import React from 'react'
 import { Card } from 'webcoreui/react'
 
-import type { ReactSettingCardProps } from './settingCard'
+import type { SettingCardProps } from './settingCard'
 import styles from './setting-card.module.scss'
+
+export type Props = SettingCardProps & {
+    children: React.ReactNode
+    additionalContent?: React.ReactNode
+}
 
 const SettingCard = ({
     title,
@@ -9,7 +15,7 @@ const SettingCard = ({
     children,
     additionalContent,
     ...rest
-}: ReactSettingCardProps) => {
+}: Props) => {
 
     return (
         <Card

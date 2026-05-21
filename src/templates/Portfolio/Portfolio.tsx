@@ -14,6 +14,8 @@ import styles from './portfolio.module.scss'
 import { classNames } from 'webcoreui'
 import { ConditionalWrapper, Rating } from 'webcoreui/react'
 
+export type Props = PortfolioProps
+
 const Portfolio = ({
     layout,
     hero,
@@ -27,7 +29,7 @@ const Portfolio = ({
     services,
     servicesCta,
     ...rest
-}: PortfolioProps) => {
+}: Props) => {
     const [toggled, setToggled] = useState(false)
 
     return (

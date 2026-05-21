@@ -5,13 +5,15 @@ import type { MaintenanceProps } from './maintenance'
 import cog from './cog.svg?raw'
 import styles from './maintenance.module.scss'
 
+export type Props = MaintenanceProps
+
 const Maintenance = ({
     img,
     animated = true,
     title = 'Under Maintenance',
     subTitle = 'We are performing scheduled maintenance.',
     className
-}: MaintenanceProps) => {
+}: Props) => {
     const classes = classNames([
         styles.maintenance,
         animated && styles.animated,

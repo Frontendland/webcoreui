@@ -8,9 +8,9 @@
 
     import styles from './menu.module.scss'
 
-    export type SvelteMenuProps = {
+    export type Props = MenuProps & {
         children?: Snippet
-    } & MenuProps
+    }
 
     const {
         items,
@@ -19,7 +19,7 @@
         className,
         wrapperClassName,
         children
-    }: SvelteMenuProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.menu,

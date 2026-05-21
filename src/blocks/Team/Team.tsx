@@ -7,6 +7,8 @@ import type { TeamProps } from './team'
 import user from './user.svg?raw'
 import styles from './team.module.scss'
 
+export type Props = TeamProps
+
 const Team = ({
     members,
     avatar,
@@ -14,7 +16,7 @@ const Team = ({
     compact,
     secondary,
     className
-}: TeamProps) => {
+}: Props) => {
     const classes = classNames([
         'grid',
         columns > 1 && 'sm-2',

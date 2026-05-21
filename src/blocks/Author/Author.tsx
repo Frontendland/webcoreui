@@ -6,6 +6,8 @@ import Socials from '@blocks/Socials/Socials.tsx'
 import type { AuthorProps } from './author'
 import styles from './author.module.scss'
 
+export type Props = AuthorProps
+
 const Author = ({
     avatar,
     name,
@@ -14,7 +16,7 @@ const Author = ({
     socials,
     bodyClassName,
     ...rest
-}: AuthorProps) => {
+}: Props) => {
     const classes = classNames([
         'flex sm column sm-row',
         bodyClassName

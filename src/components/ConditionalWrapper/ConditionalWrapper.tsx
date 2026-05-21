@@ -1,11 +1,11 @@
 import type { ConditionalWrapperProps } from './conditionalwrapper'
 
-export type ReactConditionalWrapperProps = {
+export type Props = ConditionalWrapperProps & {
     wrapper: (_: React.ReactNode) => any
     children: React.ReactNode
-} & ConditionalWrapperProps
+}
 
-const ConditionalWrapper = ({ condition, wrapper, children }: ReactConditionalWrapperProps) =>
+const ConditionalWrapper = ({ condition, wrapper, children }: Props) =>
     condition ? wrapper(children) : children
 
 export default ConditionalWrapper

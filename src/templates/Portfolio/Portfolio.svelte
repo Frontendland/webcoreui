@@ -13,6 +13,8 @@
     import { classNames } from 'webcoreui'
     import { ConditionalWrapper, Rating } from 'webcoreui/svelte'
 
+    export type Props = PortfolioProps
+
     const {
         layout,
         hero,
@@ -26,7 +28,7 @@
         services,
         servicesCta,
         ...rest
-    }: PortfolioProps = $props()
+    }: Props = $props()
 
     let toggled = $state(false)
 </script>

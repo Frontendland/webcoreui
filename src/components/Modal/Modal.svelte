@@ -15,9 +15,9 @@
 
     import styles from './modal.module.scss'
 
-    export type SvelteModalProps = {
+    export type Props = ModalProps<HTMLDialogAttributes> & {
         children?: Snippet
-    } & ModalProps<HTMLDialogAttributes>
+    }
 
     const {
         title,
@@ -30,7 +30,7 @@
         className,
         children,
         ...rest
-    }: SvelteModalProps = $props()
+    }: Props = $props()
 
     const iconMap = {
         info,

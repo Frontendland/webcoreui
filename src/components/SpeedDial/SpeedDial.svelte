@@ -9,6 +9,8 @@
 
     import styles from './speeddial.module.scss'
 
+    export type Props = SpeedDialProps
+
     const {
         items,
         position,
@@ -18,7 +20,7 @@
         icon,
         triggerOnClick,
         className
-    }: SpeedDialProps = $props()
+    }: Props = $props()
 
     let show = $state(false)
 

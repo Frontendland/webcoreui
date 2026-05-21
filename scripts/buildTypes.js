@@ -4,70 +4,6 @@ import { utilityTypes } from './utilityTypes.js'
 
 import fs from 'fs'
 
-const componentsWithGenericTypes = [
-    'Alert',
-    'Badge',
-    'Button',
-    'Card',
-    'Checkbox',
-    'ConditionalWrapper',
-    'ContextMenu',
-    'Copy',
-    'Counter',
-    'Flex',
-    'Grid',
-    'Image',
-    'Input',
-    'Modal',
-    'OTPInput',
-    'Popover',
-    'Radio',
-    'Switch',
-    'Textarea',
-    'Toast'
-]
-
-const componentsWithoutFrameworkSpecificTypes = [
-    'Accordion',
-    'Avatar',
-    'BottomNavigation',
-    'Breadcrumb',
-    'Icon',
-    'Image',
-    'ImageLoader',
-    'OTPInput',
-    'Rating',
-    'Skeleton',
-    'Spinner',
-    'Stepper',
-    'Table',
-    'Progress',
-    'SpeedDial'
-]
-
-const getTypeName = (component, framework) => {
-    return componentsWithoutFrameworkSpecificTypes.includes(component) && !componentsWithGenericTypes.includes(component)
-        ? `${component}Props`
-        : `${framework}${component}Props`
-}
-
-const getImportFile = (component, framework) => {
-    const typeName = getTypeName(component, framework)
-    const isFrameworkSpecificType = typeName.includes(framework)
-    const isGeneric = componentsWithGenericTypes.includes(component)
-
-    const extension = {
-        Svelte: '.svelte',
-        React: '.tsx'
-    }
-
-    const importFile = (isFrameworkSpecificType || isGeneric)
-        ? `${component}${extension[framework]}`
-        : component.toLowerCase()
-
-    return importFile
-}
-
 const format = template => template.trim().replace(new RegExp('^[ \\t]{12}', 'gm'), '')
 
 const buildTypes = type => {
@@ -76,16 +12,7 @@ const buildTypes = type => {
     if (type === 'astro') {
         return format(`
             ${components.map(component => {
-                const isGeneric = componentsWithGenericTypes.includes(component)
-                const typeImport = isGeneric
-                    ? `Props as W${component}Props`
-                    : `${component}Props as W${component}Props`
-
-                const importFile = isGeneric
-                    ? `${component}.astro`
-                    : component.toLowerCase()
-
-                return `import type { ${typeImport} } from './components/${component}/${importFile}'`
+                return `import type { Props as W${component}Props } from './components/${component}/${component}.astro'`
             }).join('\n')}
 
             ${getAdditionalTypeImports()}
@@ -109,21 +36,18 @@ const buildTypes = type => {
             import type { Component } from 'svelte'
 
             ${components.map(component => {
-                const typeName = getTypeName(component, 'Svelte')
-                const importFile = getImportFile(component, 'Svelte')
-
-                return `import type { ${typeName} as W${typeName} } from './components/${component}/${importFile}'`
+                return `import type { Props as W${component}Props } from './components/${component}/${component}.svelte'`
             }).join('\n')}
 
             ${getAdditionalTypeImports()}
 
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
-                    return `export const ${component}: Component<W${getTypeName(component, 'Svelte')}>`
+                    return `export const ${component}: Component<W${component}Props>`
                 }).join('\n\t')}
 
                 ${components.map(component => {
-                    return `export type ${component}Props = W${getTypeName(component, 'Svelte')}`
+                    return `export type ${component}Props = W${component}Props`
                 }).join('\n\t')}
 
                 ${getAdditionalTypeExports()}
@@ -136,21 +60,18 @@ const buildTypes = type => {
             import { FC } from 'react'
 
             ${components.map(component => {
-                const typeName = getTypeName(component, 'React')
-                const importFile = getImportFile(component, 'React')
-
-                return `import type { ${typeName} as W${typeName} } from './components/${component}/${importFile}'`
+                return `import type { Props as W${component}Props } from './components/${component}/${component}.tsx'`
             }).join('\n')}
 
             ${getAdditionalTypeImports()}
 
             declare module 'webcoreui/${type}' {
                 ${components.map(component => {
-                    return `export const ${component}: FC<W${getTypeName(component, 'React')}>`
+                    return `export const ${component}: FC<W${component}Props>`
                 }).join('\n\t')}
 
                 ${components.map(component => {
-                    return `export type ${component}Props = W${getTypeName(component, 'React')}`
+                    return `export type ${component}Props = W${component}Props`
                 }).join('\n\t')}
 
                 ${getAdditionalTypeExports()}

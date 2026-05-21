@@ -7,16 +7,16 @@
 
     import styles from './popover.module.scss'
 
-    export type SveltePopoverProps = {
+    export type Props = PopoverProps<HTMLDialogAttributes> & {
         children: Snippet
-    } & PopoverProps<HTMLDialogAttributes>
+    }
 
     const {
         className,
         transparent,
         children,
         ...rest
-    }: SveltePopoverProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.popover,

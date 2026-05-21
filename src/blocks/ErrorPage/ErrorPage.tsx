@@ -3,6 +3,8 @@ import Button from '@blocks/Button/Button.tsx'
 import type { ErrorPageProps } from './errorPage'
 import styles from './error-page.module.scss'
 
+export type Props = ErrorPageProps
+
 const ErrorPage = ({
     type,
     typeColor,
@@ -10,7 +12,7 @@ const ErrorPage = ({
     subTitle,
     buttons,
     ...rest
-}: ErrorPageProps) => {
+}: Props) => {
     const typeStyle = typeColor
         ? { '--w-error-page-type-color': typeColor } as React.CSSProperties
         : undefined

@@ -19,10 +19,10 @@
 
     import type { ListEventType, ListProps } from '../List/list'
 
-    export type SvelteSelectProps = {
+    export type Props = SelectProps & {
         onChange?: (event: SelectEventType) => void
         onClose?: (event: ModalCallback | PopoverCallback) => void
-    } & SelectProps
+    }
 
     const {
         name,
@@ -38,7 +38,7 @@
         onChange,
         onClose,
         ...rest
-    }: SvelteSelectProps = $props()
+    }: Props = $props()
 
     let popoverInstance: any
     let focusByTab = false

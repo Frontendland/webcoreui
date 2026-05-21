@@ -8,10 +8,10 @@
 
     import styles from './contextmenu.module.scss'
 
-    export type SvelteContextMenuProps = {
+    export type Props = ContextMenuProps<HTMLAttributes<HTMLElement>> & {
         children: Snippet
         context: Snippet
-    } & ContextMenuProps<HTMLAttributes<HTMLElement>>
+    }
 
     const {
         element = 'div',
@@ -19,7 +19,7 @@
         children,
         context,
         ...rest
-    }: SvelteContextMenuProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.ctx,

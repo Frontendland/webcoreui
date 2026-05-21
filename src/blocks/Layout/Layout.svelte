@@ -1,12 +1,24 @@
 <script lang="ts">
     // Use svelte:head outside of Astro
+    import type { Snippet } from 'svelte'
     import { classNames } from 'webcoreui'
     import { ConditionalWrapper, Footer, Menu } from 'webcoreui/svelte'
 
     import SEO from '@blocks/SEO/SEO.svelte'
 
-    import type { SvelteLayoutProps } from './layout'
+    import type { LayoutProps } from './layout'
     import './layout.scss'
+
+    export type Props = LayoutProps & {
+        insideMenu?: Snippet
+        atf?: Snippet
+        leftSidebar?: Snippet
+        rightSidebar?: Snippet
+        aboveFooter?: Snippet
+        insideFooter?: Snippet
+        scripts?: Snippet
+        children?: Snippet
+    }
 
     const {
         seo,
@@ -24,7 +36,7 @@
         scripts,
         children,
         ...rest
-    }: SvelteLayoutProps = $props()
+    }: Props = $props()
 
     const hasSidebar = $derived(leftSidebar || rightSidebar)
 

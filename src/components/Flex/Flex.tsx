@@ -4,10 +4,10 @@ import type { FlexProps } from './flex'
 import { classNames } from '../../utils/classNames'
 import { getLayoutClasses } from '../../utils/getLayoutClasses'
 
-export type ReactFlexProps = {
+export type Props = Omit<FlexProps, 'element'> & {
     Element?: keyof JSX.IntrinsicElements
     children: React.ReactNode
-} & Omit<FlexProps, 'element'>
+}
 
 const Flex = ({
     Element = 'div',
@@ -18,7 +18,7 @@ const Flex = ({
     className,
     children,
     ...rest
-}: ReactFlexProps) => {
+}: Props) => {
     const classes = classNames([
         'flex',
         getLayoutClasses({ gap, alignment, direction, wrap }),

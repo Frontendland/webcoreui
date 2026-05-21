@@ -2,17 +2,17 @@
     import type { Snippet } from 'svelte'
     import type { ConditionalWrapperProps } from './conditionalwrapper'
 
-    export type SvelteConditionalWrapperProps = {
+    export type Props = ConditionalWrapperProps & {
         children: Snippet
         element?: string
-    } & ConditionalWrapperProps
+    }
 
     const {
         condition,
         element = 'div',
         children,
         ...rest
-    }: SvelteConditionalWrapperProps = $props()
+    }: Props = $props()
 </script>
 
 {#if condition}

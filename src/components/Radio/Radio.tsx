@@ -7,9 +7,9 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './radio.module.scss'
 
-export type ReactRadioProps = {
+export type Props = RadioProps<React.InputHTMLAttributes<HTMLInputElement>> & {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-} & RadioProps<React.InputHTMLAttributes<HTMLInputElement>>
+}
 
 const Radio = ({
     items,
@@ -18,7 +18,7 @@ const Radio = ({
     className,
     onChange,
     ...rest
-}: ReactRadioProps) => {
+}: Props) => {
     const classes = classNames([
         styles.radio,
         inline && styles.inline,

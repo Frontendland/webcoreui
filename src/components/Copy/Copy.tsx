@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import type { CopyProps } from './copy'
 
-import Badge, { type ReactBadgeProps } from '../Badge/Badge.tsx'
+import Badge, { type Props as BadgeProps } from '../Badge/Badge.tsx'
 
 import { classNames } from '../../utils/classNames'
 
@@ -10,9 +10,9 @@ import copy from '../../icons/copy.svg?raw'
 
 import styles from './copy.module.scss'
 
-export type ReactCopyProps = {
+export type Props = CopyProps<BadgeProps> & {
     children: React.ReactNode
-} & CopyProps<ReactBadgeProps>
+}
 
 const Copy = ({
     tooltip,
@@ -22,7 +22,7 @@ const Copy = ({
     className,
     children,
     ...rest
-}: ReactCopyProps) => {
+}: Props) => {
     const copyButton = useRef<HTMLButtonElement>(null)
     const copiedButton = useRef<HTMLSpanElement>(null)
     const [tooltipText, setTooltipText] = useState(tooltip)

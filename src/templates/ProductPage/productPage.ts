@@ -1,5 +1,3 @@
-import type { Snippet } from 'svelte'
-
 import type { BlogCardProps } from '@blocks/BlogCard/blogCard'
 import type { ButtonBlockProps } from '@blocks/Button/button'
 import type { IconListProps } from '@blocks/IconList/iconList'
@@ -25,10 +23,3 @@ export type ProductPageProps = {
     [key: string]: any
 }
 
-export type SvelteProductPageProps = {
-    children?: Snippet
-} & ProductPageProps
-
-export type ReactProductPageProps = {
-    children?: React.ReactNode
-} & ProductPageProps

@@ -7,9 +7,9 @@ import { classNames } from '../../utils/classNames'
 
 import styles from './menu.module.scss'
 
-export type ReactMenuProps = {
+export type Props = MenuProps & {
     children?: React.ReactNode
-} & MenuProps
+}
 
 const Menu = ({
     items,
@@ -19,7 +19,7 @@ const Menu = ({
     wrapperClassName,
     children
 // eslint-disable-next-line complexity
-}: ReactMenuProps) => {
+}: Props) => {
     const [active, setActive] = useState(false)
 
     const classes = classNames([

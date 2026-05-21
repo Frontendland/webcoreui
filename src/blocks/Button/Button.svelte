@@ -8,13 +8,15 @@
     import type { ButtonProps } from './button'
     import styles from './button.module.scss'
 
+    export type Props = ButtonProps
+
     const {
         icon,
         text,
         badge,
         className,
         ...rest
-    }: ButtonProps = $props()
+    }: Props = $props()
 
     const SvelteComponent = $derived(badge ? Badge : WebcoreButton)
 </script>

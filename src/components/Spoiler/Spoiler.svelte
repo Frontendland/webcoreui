@@ -6,9 +6,9 @@
 
     import styles from './spoiler.module.scss'
 
-    export type SvelteSpoilerProps = {
+    export type Props = SpoilerProps & {
         children: Snippet
-    } & SpoilerProps
+    }
 
     const {
         color,
@@ -17,7 +17,7 @@
         tooltip,
         tooltipPosition,
         children
-    }: SvelteSpoilerProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.spoiler,

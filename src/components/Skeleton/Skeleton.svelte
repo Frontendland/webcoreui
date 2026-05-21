@@ -5,6 +5,8 @@
 
     import styles from './skeleton.module.scss'
 
+    export type Props = SkeletonProps
+
     const {
         animate = 'wave',
         type = 'rounded',
@@ -13,7 +15,7 @@
         color,
         waveColor,
         className
-    }: SkeletonProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         animate && styles[animate],

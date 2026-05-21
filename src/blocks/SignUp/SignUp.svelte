@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { MouseEventHandler } from 'svelte/elements'
     import {
         Card,
         Input
@@ -6,7 +7,12 @@
 
     import Button from '@blocks/Button/Button.svelte'
 
-    import type { SvelteSignUpProps } from './signup'
+    import type { SignUpProps } from './signup'
+
+    export type Props = SignUpProps & {
+        primaryOnClick?: MouseEventHandler<HTMLButtonElement>
+        secondaryOnClick?: MouseEventHandler<HTMLButtonElement>
+    }
 
     const {
         label = 'Sign up',
@@ -22,7 +28,7 @@
         secondaryButtonLabel = 'Sign in',
         primaryOnClick,
         secondaryOnClick
-    }: SvelteSignUpProps = $props()
+    }: Props = $props()
 </script>
 
 <Card title={label}>

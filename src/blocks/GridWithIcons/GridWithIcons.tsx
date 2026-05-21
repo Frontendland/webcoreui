@@ -4,6 +4,8 @@ import { ConditionalWrapper } from 'webcoreui/react'
 import type { GridWithIconsProps } from './gridWithIcons'
 import styles from './grid-with-icons.module.scss'
 
+export type Props = GridWithIconsProps
+
 const GridWithIcons = ({
     items,
     columns,
@@ -11,7 +13,7 @@ const GridWithIcons = ({
     iconWithBackground,
     secondary,
     className
-}: GridWithIconsProps) => {
+}: Props) => {
     const classes = classNames([
         `grid sm-${columns || 3}`,
         styles.list,

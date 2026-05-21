@@ -5,13 +5,15 @@
 
     import styles from './spinner.module.scss'
 
+    export type Props = SpinnerProps
+
     const {
         color,
         width,
         speed,
         size,
         dashArray
-    }: SpinnerProps = $props()
+    }: Props = $props()
 
     const classes = $derived(classNames([
         styles.spinner,
