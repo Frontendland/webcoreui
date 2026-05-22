@@ -66,7 +66,9 @@
         if (!contentChildren.some(element => element.dataset.active === 'true')) {
             const index = itemsState.findIndex(item => item.active)
 
-            contentChildren[index].dataset.active = 'true'
+            if (contentChildren[index]) {
+                contentChildren[index].dataset.active = 'true'
+            }
         }
     })
 </script>

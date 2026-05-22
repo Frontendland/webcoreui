@@ -63,7 +63,9 @@ if (!hasActive) {
             if (!contentChildren.some(element => element.dataset.active === 'true')) {
                 const index = Number(tabContent.dataset.activeIndex)
 
-                contentChildren[index].dataset.active = 'true'
+                if (contentChildren[index]) {
+                    contentChildren[index].dataset.active = 'true'
+                }
             }
         })
     }
