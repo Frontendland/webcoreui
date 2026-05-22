@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Snippet } from 'svelte'
+    import { onMount, type Snippet } from 'svelte'
     import type { TabsProps } from './tabs'
 
     import { classNames } from '../../utils/classNames'
@@ -22,6 +22,16 @@
     let active = $state('')
     let tabContainer: HTMLDivElement | undefined = $state()
 
+    const usedInAstro = $derived(tabContainer?.children[0]?.nodeName === 'ASTRO-SLOT')
+    const hasActive = $derived(items.some(item => item.active))
+    const itemsState = $derived.by(() => {
+        if (!hasActive) {
+            items[0].active = true
+        }
+
+        return items
+    })
+
     const classes = $derived(classNames([
         styles.tabs,
         theme && styles[theme],
@@ -30,29 +40,45 @@
         className
     ]))
 
-    const setTab = (tab: string) => {
-        const tabs = tabContainer!.querySelectorAll('[data-tab]')
+    const setTab = (tab: string, index: number) => {
+        const contentChildren = usedInAstro
+            ? Array.from(tabContainer!.children[0].children) as HTMLElement[]
+            : Array.from(tabContainer!.children) as HTMLElement[]
 
-        active = tab
+        const hasExplicitTabs = contentChildren.some((el: HTMLElement) => el.dataset.tab)
 
-        Array.from(tabs).forEach((item: any) => {
-            item.dataset.active = false
-
-            if (item.dataset.tab === active) {
-                item.dataset.active = true
+        contentChildren.forEach((item: HTMLElement, i: number) => {
+            if (hasExplicitTabs) {
+                item.dataset.active = item.dataset.tab === tab ? 'true' : 'false'
+            } else {
+                item.dataset.active = i === index ? 'true' : 'false'
             }
         })
+
+        active = tab
     }
+
+    onMount(() => {
+        const contentChildren = usedInAstro
+            ? Array.from(tabContainer!.children[0].children) as HTMLElement[]
+            : Array.from(tabContainer!.children) as HTMLElement[]
+
+        if (!contentChildren.some(element => element.dataset.active === 'true')) {
+            const index = itemsState.findIndex(item => item.active)
+
+            contentChildren[index].dataset.active = 'true'
+        }
+    })
 </script>
 
 <section class={classes}>
     <div class={styles.wrapper}>
         <div class={styles.items}>
-            {#each items as item}
+            {#each itemsState as item, i}
                 <button
                     data-active={active ? active === item.value : item.active}
                     disabled={item.disabled}
-                    onclick={() => setTab(item.value)}
+                    onclick={() => setTab(item.value, i)}
                 >
                     {@html item.label}
                 </button>

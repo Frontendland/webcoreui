@@ -20,6 +20,12 @@ const classes = [
     even && styles.even,
     className
 ]
+
+const hasActive = items.some(item => item.active)
+
+if (!hasActive) {
+    items[0].active = true
+}
 ---
 
 <section class:list={classes} data-id="w-tabs">
@@ -36,45 +42,70 @@ const classes = [
             ))}
         </div>
     </div>
-    <div class={styles.content}>
+    <div
+        class={styles.content}
+        data-id="w-tabs-content"
+        data-active-index={items.findIndex(item => item.active)}
+    >
         <slot />
     </div>
 </section>
 
 <script>
-    import { on } from '../../utils/DOMUtils'
+    import { get, on } from '../../utils/DOMUtils'
+
+    const setActiveTab = () => {
+        const tabContents = get('[data-id="w-tabs-content"]', true) as NodeListOf<HTMLDivElement>
+
+        tabContents.forEach((tabContent) => {
+            const contentChildren = Array.from(tabContent.children) as HTMLElement[]
+
+            if (!contentChildren.some(element => element.dataset.active === 'true')) {
+                const index = Number(tabContent.dataset.activeIndex)
+
+                contentChildren[index].dataset.active = 'true'
+            }
+        })
+    }
 
     const addEventListeners = () => {
         on('[data-id="w-tabs"]', 'click', (event: Event) => {
-            const target = event.target as HTMLDivElement
+            const target = event.target as HTMLButtonElement
 
-            if (target.dataset.value) {
-                const tabContent = target.parentElement
-                    ?.parentElement
-                    ?.nextElementSibling as HTMLDivElement
-
-                Array.from(tabContent.children)
-                    .forEach((element: any) => {
-                        if (element.dataset.tab === target.dataset.value) {
-                            element.dataset.active = true
-                        } else {
-                            element.dataset.active = false
-                        }
-                    })
-
-                const tabs = target.parentElement?.querySelectorAll('button') as NodeListOf<HTMLButtonElement>
-
-                Array.from(tabs).forEach((tab: any) => {
-                    tab.dataset.active = 'false'
-
-                    if (tab.dataset.value === target.dataset.value) {
-                        tab.dataset.active = 'true'
-                    }
-                })
+            if (!target.dataset.value) {
+                return
             }
+
+            const tabContent = target.parentElement
+                ?.parentElement
+                ?.nextElementSibling as HTMLDivElement
+
+            const btns = Array.from(target.parentElement?.querySelectorAll('button') as NodeListOf<HTMLButtonElement>)
+            const clickedIndex = btns.indexOf(target)
+            const contentChildren = Array.from(tabContent.children) as HTMLElement[]
+            const hasExplicitTabs = contentChildren.some((element: HTMLElement) => element.dataset.tab)
+
+            btns.forEach((tab: HTMLElement, index: number) => {
+                tab.dataset.active = index === clickedIndex ? 'true' : 'false'
+
+                if (contentChildren[index]) {
+                    const content = contentChildren[index]
+
+                    if (hasExplicitTabs) {
+                        content.dataset.active = content.dataset.tab === target.dataset.value ? 'true' : 'false'
+                    } else {
+                        content.dataset.active = index === clickedIndex ? 'true' : 'false'
+                    }
+                }
+            })
         }, true)
     }
 
-    on(document, 'astro:after-swap', addEventListeners)
-    addEventListeners()
+    const initTabs = () => {
+        setActiveTab()
+        addEventListeners()
+    }
+
+    on(document, 'astro:after-swap', initTabs)
+    initTabs()
 </script>

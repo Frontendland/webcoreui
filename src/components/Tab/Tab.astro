@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import type { TabProps } from './tab'
+
+export type Props = TabProps<HTMLAttributes<'section'>>
+
+const {
+    element = 'div',
+    id,
+    active,
+    className,
+    ...rest
+} = Astro.props
+
+const Element = element
+
+const props = {
+    ...rest,
+    'class': className,
+    'data-tab': id,
+    'data-active': active
+}
+---
+
+<Element {...props}><slot /></Element>

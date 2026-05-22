@@ -53,10 +53,10 @@ const templates = {
                 className
             }: Props = $props()
 
-            const classes = classNames([
+            const classes = $derived(classNames([
                 styles.${lowerCaseComponent},
                 className
-            ])
+            ]))
         </script>
     `,
     react: `

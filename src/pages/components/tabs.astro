@@ -2,6 +2,7 @@
 import ComponentWrapper from '@static/ComponentWrapper.astro'
 import Layout from '@static/Layout.astro'
 
+import Tab from '@components/Tab/Tab.astro'
 import AstroTabs from '@components/Tabs/Tabs.astro'
 import SvelteTabs from '@components/Tabs/Tabs.svelte'
 import ReactTabs from '@components/Tabs/Tabs.tsx'
@@ -46,6 +47,56 @@ const sections = getSections({
                 <div data-tab="intro" data-active="true">Intro tab</div>
                 <div data-tab="setup">Setup tab</div>
                 <div data-tab="conclusion">Conclusion tab</div>
+            </ReactTabs>
+        </ComponentWrapper>
+
+        <!-- No active tab fallback -->
+        <ComponentWrapper type="Astro" title="No active tab">
+            <AstroTabs items={tabItems}>
+                <div data-tab="intro">Intro tab</div>
+                <div data-tab="setup">Setup tab</div>
+                <div data-tab="conclusion">Conclusion tab</div>
+            </AstroTabs>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte" title="No active tab">
+            <SvelteTabs items={tabItems} client:visible>
+                <div data-tab="intro">Intro tab</div>
+                <div data-tab="setup">Setup tab</div>
+                <div data-tab="conclusion">Conclusion tab</div>
+            </SvelteTabs>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React" title="No active tab">
+            <ReactTabs items={tabItems} client:visible>
+                <div data-tab="intro">Intro tab</div>
+                <div data-tab="setup">Setup tab</div>
+                <div data-tab="conclusion">Conclusion tab</div>
+            </ReactTabs>
+        </ComponentWrapper>
+
+        <!-- No data-tab fallback -->
+        <ComponentWrapper type="Astro" title="No data-tab">
+            <AstroTabs items={tabItems}>
+                <div>Intro tab</div>
+                <div>Setup tab</div>
+                <div>Conclusion tab</div>
+            </AstroTabs>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte" title="No data-tab">
+            <SvelteTabs items={tabItems} client:visible>
+                <div>Intro tab</div>
+                <div>Setup tab</div>
+                <div>Conclusion tab</div>
+            </SvelteTabs>
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React" title="No data-tab">
+            <ReactTabs items={tabItems} client:visible>
+                <div>Intro tab</div>
+                <div>Setup tab</div>
+                <div>Conclusion tab</div>
             </ReactTabs>
         </ComponentWrapper>
     </div>
@@ -149,6 +200,22 @@ const sections = getSections({
                     <div data-tab="tab-1" data-active="true">Intro tab</div>
                     <div data-tab="tab-2">Tab 2</div>
                     <div data-tab="tab-3">Tab 3</div>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With Tab">
+                <section.component items={tabItems}>
+                    <Tab active={true}>Intro tab</Tab>
+                    <Tab>Setup tab</Tab>
+                    <Tab>Conclusion tab</Tab>
+                </section.component>
+            </ComponentWrapper>
+
+            <ComponentWrapper title="With Tab attributes">
+                <section.component items={tabItems}>
+                    <Tab active={true} role="tab" className="tab-class">Intro tab</Tab>
+                    <Tab>Setup tab</Tab>
+                    <Tab>Conclusion tab</Tab>
                 </section.component>
             </ComponentWrapper>
         </div>

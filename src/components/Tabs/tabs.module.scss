@@ -110,13 +110,14 @@
 
     .content {
         @include spacing(mt-default);
-    }
 
-    [data-tab] {
-        @include visibility(none);
-
-        &[data-active="true"] {
-            @include visibility(block);
+        & > *:not(astro-slot),
+        & > astro-slot > * {
+            @include visibility(none);
+    
+            &[data-active="true"] {
+                @include visibility(block);
+            }
         }
     }
 }
