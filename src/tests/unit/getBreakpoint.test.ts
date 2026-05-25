@@ -28,11 +28,11 @@ describe('getBreakpoint', () => {
 
     it('should throw an error if the breakpoint is unexpected', () => {
         mockBreakpoint('xxl')
-        expect(() => getBreakpoint()).toThrowError(/Unexpected breakpoint: xxl/)
+        expect(() => getBreakpoint()).toThrow(/Unexpected breakpoint: xxl/)
     })
 
     it('should throw an error if breakpoint is empty string', () => {
         mockBreakpoint('   ')
-        expect(() => getBreakpoint()).toThrowError(/Unexpected breakpoint:/)
+        expect(() => getBreakpoint()).toThrow(/Unexpected breakpoint:/)
     })
 })
