@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import type { ImageLoaderProps } from './imageloader'
 
 import Image from '../Image/Image.tsx'
