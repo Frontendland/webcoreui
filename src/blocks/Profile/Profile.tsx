@@ -7,6 +7,7 @@ import {
     Tabs
 } from 'webcoreui/react'
 
+import type { Task } from './profile'
 import styles from './profile.module.scss'
 
 const tabItems = [{
@@ -18,7 +19,7 @@ const tabItems = [{
     value: 'contact'
 }]
 
-const tasks: BadgeProps[] = [
+const tasks: Task[] = [
     { theme: undefined, label: 'IP', ticket: 'W4567 - Home redesign' },
     { theme: 'alert', label: 'P1', ticket: 'W2345 - Payment gateway warnings' },
     { theme: 'warning', label: 'P3', ticket: 'W6789 - Investigate user auth issues' },
@@ -47,7 +48,7 @@ const Profile = () => {
                     <div className="flex column xs">
                         {tasks.map((task, index) => (
                             <div key={index} className="flex xs items-center">
-                                <Badge theme={task.theme}>
+                                <Badge theme={task.theme as BadgeProps['theme']}>
                                     {task.label}
                                 </Badge>
                                 <a href="#" className={['muted', styles.task].join(' ')}>

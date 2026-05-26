@@ -26,13 +26,13 @@ const Authentication = ({
 }: Props) => {
     const defaultLoginFormFields: FormField[] = [
         { type: 'email', label: 'Email', name: 'email' },
-        { type: 'password', label: 'Password', name: 'password', autoComplete: 'on' },
+        { type: 'password', label: 'Password', name: 'password', autocomplete: 'on' },
         { type: 'button', label: 'Login' }
     ]
 
     const defaultSignUpFormFields: FormField[] = [
         { type: 'email', label: 'Email', name: 'email' },
-        { type: 'password', label: 'Password', name: 'password', autoComplete: 'on' },
+        { type: 'password', label: 'Password', name: 'password', autocomplete: 'on' },
         { type: 'checkbox', label: 'I accept the <a href="#">terms and conditions</a>', name: 'terms' },
         { type: 'button', label: 'Sign Up' }
     ]

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import {
         Avatar,
         Badge,
@@ -7,6 +7,7 @@
         Tabs
     } from 'webcoreui/svelte'
 
+    import type { Task } from './profile'
     import styles from './profile.module.scss'
 
     const tabItems = [{
@@ -18,7 +19,7 @@
         value: 'contact'
     }]
 
-    const tasks = [
+    const tasks: Task[] = [
         { theme: null, label: 'IP', ticket: 'W4567 - Home redesign' },
         { theme: 'alert', label: 'P1', ticket: 'W2345 - Payment gateway warnings' },
         { theme: 'warning', label: 'P3', ticket: 'W6789 - Investigate user auth issues' },

@@ -2,12 +2,12 @@
 import {
     Avatar,
     Badge,
-    type BadgeProps,
     Card,
     Table,
     Tabs
 } from 'webcoreui/astro'
 
+import type { Task } from './profile'
 import styles from './profile.module.scss'
 
 const tabItems = [{
@@ -19,7 +19,7 @@ const tabItems = [{
     value: 'contact'
 }]
 
-const tasks: BadgeProps[] = [
+const tasks: Task[] = [
     { theme: undefined, label: 'IP', ticket: 'W4567 - Home redesign' },
     { theme: 'alert', label: 'P1', ticket: 'W2345 - Payment gateway warnings' },
     { theme: 'warning', label: 'P3', ticket: 'W6789 - Investigate user auth issues' },
