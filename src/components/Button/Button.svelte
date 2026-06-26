@@ -1,13 +1,13 @@
 <script lang="ts">
     import type { Snippet } from 'svelte'
-    import type { HTMLAttributes, MouseEventHandler } from 'svelte/elements'
+    import type { HTMLAnchorAttributes, HTMLButtonAttributes, MouseEventHandler } from 'svelte/elements'
     import type { ButtonProps } from './button'
 
     import { classNames } from '../../utils/classNames'
 
     import styles from './button.module.scss'
 
-    export type Props = ButtonProps<HTMLAttributes<HTMLElement>> & {
+    export type Props = ButtonProps<HTMLButtonAttributes & HTMLAnchorAttributes> & {
         onClick?: MouseEventHandler<HTMLButtonElement>
         children: Snippet
     }
