@@ -3,10 +3,10 @@ import { Icon } from 'webcoreui/astro'
 
 import { getAuthenticationTemplateData } from '@data'
 
-import Authentication from '@templates/Authentication/Authentication.tsx'
+import Authentication, { type Props as AuthenticationProps } from '@templates/Authentication/Authentication.tsx'
 ---
 
-<Authentication {...getAuthenticationTemplateData()}>
+<Authentication {...getAuthenticationTemplateData() as AuthenticationProps}>
     <a
         slot="insideMenu"
         href="https://github.com/Frontendland/webcoreui"

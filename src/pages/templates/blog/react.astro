@@ -3,10 +3,10 @@ import { Icon } from 'webcoreui/react'
 
 import { getBlogTemplateData } from '@data'
 
-import Blog from '@templates/Blog/Blog.tsx'
+import Blog, { type Props as BlogProps } from '@templates/Blog/Blog.tsx'
 ---
 
-<Blog {...getBlogTemplateData('info')}>
+<Blog {...getBlogTemplateData('info') as BlogProps}>
     <a
         slot="insideMenu"
         href="https://github.com/Frontendland/webcoreui"

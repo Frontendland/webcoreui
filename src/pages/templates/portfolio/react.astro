@@ -1,10 +1,10 @@
 ---
 import { getPortfolioTemplateData } from '@data'
 
-import Portfolio from '@templates/Portfolio/Portfolio.tsx'
+import Portfolio, { type Props as PortfolioProps } from '@templates/Portfolio/Portfolio.tsx'
 ---
 
-<Portfolio {...getPortfolioTemplateData('info')}>
+<Portfolio {...getPortfolioTemplateData('info') as PortfolioProps}>
     <div slot="insideMenu">
         <a href="tel:+1 234 5678">+1 234 5678</a>
         <span>•</span>
