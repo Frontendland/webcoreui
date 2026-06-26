@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react'
 import type { AuthenticationProps } from './authentication'
 
-import Form from '@blocks/Form/Form.tsx'
+import Form, { type Props as FormProps,type ReactFormField } from '@blocks/Form/Form.tsx'
 import Layout from '@blocks/Layout/Layout.tsx'
 
 import styles from './authentication.module.scss'
 
-import type { FormField } from '@blocks/Form/form'
 import { useForm } from '@blocks/Form/useForm'
 import { classNames } from 'webcoreui'
 import { ConditionalWrapper, Tabs } from 'webcoreui/react'
 
-export type Props = AuthenticationProps
+export type Props = Omit<AuthenticationProps, 'loginForm' | 'signUpForm'> & {
+    loginForm?: FormProps
+    signUpForm?: FormProps
+}
 
 const Authentication = ({
     layout,
@@ -24,15 +26,15 @@ const Authentication = ({
     className,
     ...rest
 }: Props) => {
-    const defaultLoginFormFields: FormField[] = [
+    const defaultLoginFormFields: ReactFormField[] = [
         { type: 'email', label: 'Email', name: 'email' },
-        { type: 'password', label: 'Password', name: 'password', autocomplete: 'on' },
+        { type: 'password', label: 'Password', name: 'password', autoComplete: 'on' },
         { type: 'button', label: 'Login' }
     ]
 
-    const defaultSignUpFormFields: FormField[] = [
+    const defaultSignUpFormFields: ReactFormField[] = [
         { type: 'email', label: 'Email', name: 'email' },
-        { type: 'password', label: 'Password', name: 'password', autocomplete: 'on' },
+        { type: 'password', label: 'Password', name: 'password', autoComplete: 'on' },
         { type: 'checkbox', label: 'I accept the <a href="#">terms and conditions</a>', name: 'terms' },
         { type: 'button', label: 'Sign Up' }
     ]

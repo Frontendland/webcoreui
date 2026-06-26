@@ -6,6 +6,10 @@ import type { IconListProps } from '@blocks/IconList/iconList'
 import type { LayoutProps } from '@blocks/Layout/layout'
 import type { RatingProps } from 'webcoreui/astro'
 
+export type PortfolioRating = {
+    feedback: string
+} & RatingProps
+
 export type PortfolioProps = {
     layout: LayoutProps
     hero?: HeroProps
@@ -20,9 +24,7 @@ export type PortfolioProps = {
             height: number
         }
     }
-    ratings?: ({
-        feedback: string
-    } & RatingProps)[]
+    ratings?: PortfolioRating[]
     ratingsOnCta?: ButtonBlockProps
     ratingsOffCta?: ButtonBlockProps
     hideRatingsAfter?: number

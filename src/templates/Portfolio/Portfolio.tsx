@@ -1,20 +1,23 @@
 /* eslint-disable complexity */
 import React, { useState } from 'react'
-import type { PortfolioProps } from './portfolio'
+import type { PortfolioProps, PortfolioRating } from './portfolio'
 
 import BlogCard from '@blocks/BlogCard/BlogCard.tsx'
 import Button from '@blocks/Button/Button.tsx'
 import GridWithIcons from '@blocks/GridWithIcons/GridWithIcons.tsx'
-import Hero from '@blocks/Hero/Hero.tsx'
+import Hero, { type Props as HeroProps } from '@blocks/Hero/Hero.tsx'
 import IconList from '@blocks/IconList/IconList.tsx'
 import Layout from '@blocks/Layout/Layout.tsx'
 
 import styles from './portfolio.module.scss'
 
+import type { BlogCardProps } from '@blocks/BlogCard/blogCard'
 import { classNames } from 'webcoreui'
 import { ConditionalWrapper, Rating } from 'webcoreui/react'
 
-export type Props = PortfolioProps
+export type Props = Omit<PortfolioProps, 'hero'> & {
+    hero?: HeroProps
+}
 
 const Portfolio = ({
     layout,
@@ -68,7 +71,7 @@ const Portfolio = ({
                 {ratings?.length && (
                     <React.Fragment>
                         <ul className={classNames([styles.ratings, 'grid sm-3 items-start'])}>
-                            {ratings.map((rating, index) => (
+                            {ratings.map((rating: PortfolioRating, index: number) => (
                                 <li
                                     key={index}
                                     className="grid xs"
@@ -106,7 +109,7 @@ const Portfolio = ({
                 <section>
                     <h2 className={styles.title}>{myWork.title || 'My Work'}</h2>
                     <div className="grid sm-2 md-3">
-                        {myWork.items.map((item, index) => (
+                        {myWork.items.map((item: BlogCardProps, index: number) => (
                             <BlogCard {...item} key={index} />
                         ))}
                     </div>

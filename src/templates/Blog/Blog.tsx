@@ -3,15 +3,17 @@ import type { BlogProps } from './blog'
 
 import Author from '@blocks/Author/Author.tsx'
 import BlogCard from '@blocks/BlogCard/BlogCard.tsx'
-import Hero from '@blocks/Hero/Hero.tsx'
+import Hero, { type Props as HeroProps } from '@blocks/Hero/Hero.tsx'
 import Layout from '@blocks/Layout/Layout.tsx'
 import Tiles from '@blocks/Tiles/Tiles.tsx'
 
 import styles from './blog.module.scss'
 
+import type { BlogCardProps } from '@blocks/BlogCard/blogCard'
 import { ConditionalWrapper } from 'webcoreui/react'
 
-export type Props = BlogProps & {
+export type Props = Omit<BlogProps, 'hero'> & {
+    hero?: HeroProps
     children?: React.ReactNode
 }
 
@@ -69,7 +71,7 @@ const Blog = ({
                         <h2>{postsTitle}</h2>
                     )}
                     <div className="grid sm-2 lg-3">
-                        {posts.map((post, index) => (
+                        {posts.map((post: BlogCardProps, index: number) => (
                             <BlogCard {...post} key={index} />
                         ))}
                     </div>
@@ -93,7 +95,7 @@ const Blog = ({
                     <section className={styles.recommended}>
                         <h2>{recommendedTitle}</h2>
                         <div className="grid">
-                            {recommended.map((post, index) => (
+                            {recommended.map((post: BlogCardProps, index: number) => (
                                 <BlogCard {...post} key={index} />
                             ))}
                         </div>
