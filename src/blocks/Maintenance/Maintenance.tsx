@@ -1,11 +1,13 @@
 import { classNames } from 'webcoreui'
-import { Image } from 'webcoreui/react'
+import { Image, type ImageProps } from 'webcoreui/react'
 
 import type { MaintenanceProps } from './maintenance'
 import cog from './cog.svg?raw'
 import styles from './maintenance.module.scss'
 
-export type Props = MaintenanceProps
+export type Props = Omit<MaintenanceProps, 'img'> & {
+    img?: ImageProps
+}
 
 const Maintenance = ({
     img,

@@ -2,18 +2,39 @@ import React from 'react'
 import { classNames } from 'webcoreui'
 import {
     Button,
+    type ButtonProps,
     Checkbox,
+    type CheckboxProps,
     Input,
+    type InputProps,
     Radio,
+    type RadioProps,
     Select,
+    type SelectProps,
     Slider,
+    type SliderProps,
     Switch,
-    Textarea
+    type SwitchProps,
+    Textarea,
+    type TextareaProps
 } from 'webcoreui/react'
 
-import type { FormField, FormProps } from './form'
+import type { FormProps } from './form'
 
-export type Props = FormProps
+export type ReactFormField =
+    | ({ type: 'group', fields: ReactFormField[] })
+    | ({ type: 'button', label: string } & ButtonProps)
+    | ({ type: 'checkbox' } & CheckboxProps)
+    | ({ type: 'radio' } & RadioProps)
+    | ({ type: 'select' } & SelectProps)
+    | ({ type: 'slider' } & SliderProps)
+    | ({ type: 'switch' } & SwitchProps)
+    | ({ type: 'textarea' } & TextareaProps)
+    | ({ type: NonNullable<InputProps['type']> } & Omit<InputProps, 'type'>)
+
+export type Props = Omit<FormProps, 'fields'> & {
+    fields: ReactFormField[]
+}
 
 const Form = ({
     fields,
@@ -27,7 +48,7 @@ const Form = ({
         className
     ])
 
-    const renderField = (field: FormField) => {
+    const renderField = (field: ReactFormField) => {
         switch (field.type) {
             case 'button': return (
                 <Button type="submit" {...(({ label, type, ...rest }) => rest)(field)}>

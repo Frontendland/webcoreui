@@ -1,5 +1,5 @@
 import { classNames } from 'webcoreui'
-import { ConditionalWrapper, Image } from 'webcoreui/react'
+import { ConditionalWrapper, Image, type ImageProps } from 'webcoreui/react'
 
 import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.tsx'
 import Button from '@blocks/Button/Button.tsx'
@@ -7,7 +7,9 @@ import Button from '@blocks/Button/Button.tsx'
 import type { HeroProps } from './hero'
 import styles from './hero.module.scss'
 
-export type Props = HeroProps
+export type Props = Omit<HeroProps, 'img'> & {
+    img?: ImageProps
+}
 
 const Hero = ({
     badge,

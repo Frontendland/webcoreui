@@ -9,6 +9,13 @@ import styles from './button.module.scss'
 
 export type Props = ButtonProps
 
+type CommonProps = {
+    className?: string
+    dangerouslySetInnerHTML?: { __html: string }
+    onClick?: React.MouseEventHandler<HTMLButtonElement>
+    [key: string]: unknown
+}
+
 const Button = ({
     icon,
     text = '',
@@ -16,7 +23,7 @@ const Button = ({
     className,
     ...rest
 }: Props) => {
-    const Component = badge ? Badge : WebcoreButton
+    const Component = (badge ? Badge : WebcoreButton) as React.ComponentType<CommonProps>
 
     return (
         <Component
