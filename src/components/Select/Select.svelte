@@ -155,6 +155,7 @@
     type="text"
     value={val}
     readonly={true}
+    name={name}
     disabled={disabled}
     required={required}
     placeholder={placeholder}

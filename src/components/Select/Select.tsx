@@ -152,6 +152,7 @@ const Select = ({
                 type="text"
                 value={val}
                 readOnly={true}
+                name={name}
                 disabled={disabled}
                 required={required}
                 placeholder={placeholder}
