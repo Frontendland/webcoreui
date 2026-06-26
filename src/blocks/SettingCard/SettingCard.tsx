@@ -2,7 +2,6 @@ import React from 'react'
 import { Card } from 'webcoreui/react'
 
 import type { SettingCardProps } from './settingCard'
-import styles from './setting-card.module.scss'
 
 export type Props = SettingCardProps & {
     children: React.ReactNode
@@ -20,7 +19,7 @@ const SettingCard = ({
     return (
         <Card
             secondary={true}
-            className={styles.card}
+            flat={true}
             bodyClassName="flex column sm"
             {...rest}
         >

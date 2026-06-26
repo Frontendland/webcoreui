@@ -1,4 +1,4 @@
-import astroParser from 'astro-eslint-parser'
+import * as astroParser from 'astro-eslint-parser'
 import svelteParser from 'svelte-eslint-parser'
 import svelteConfig from './svelte.config.js'
 

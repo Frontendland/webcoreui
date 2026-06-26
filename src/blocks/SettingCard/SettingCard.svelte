@@ -3,7 +3,6 @@
     import { Card } from 'webcoreui/svelte'
 
     import type { SettingCardProps } from './settingCard'
-    import styles from './setting-card.module.scss'
 
     export type Props = SettingCardProps & {
         children: Snippet
@@ -21,7 +20,7 @@
 
 <Card
     secondary={true}
-    className={styles.card}
+    flat={true}
     bodyClassName="flex column sm"
     {...rest}
 >
