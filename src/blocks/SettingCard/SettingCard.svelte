@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Snippet } from 'svelte'
-    import { Card } from 'webcoreui/svelte'
+    import { Card, ConditionalWrapper } from 'webcoreui/svelte'
 
     import type { SettingCardProps } from './settingCard'
 
@@ -10,6 +10,7 @@
     }
 
     const {
+        icon,
         title,
         subTitle,
         children,
@@ -25,12 +26,19 @@
     {...rest}
 >
     <div class="flex justify-between items-center xs">
-        <div class="flex column xxs">
-            <div>{title}</div>
-            {#if subTitle}
-                <div class="muted">{subTitle}</div>
+        <ConditionalWrapper condition={!!icon} class="flex center">
+            {#if icon}
+                {@html icon}
             {/if}
-        </div>
+
+            <div class="flex column xxs">
+                <div>{title}</div>
+                {#if subTitle}
+                    <div class="muted">{subTitle}</div>
+                {/if}
+            </div>
+        </ConditionalWrapper>
+
         {@render children?.()}
     </div>
     {@render additionalContent?.()}

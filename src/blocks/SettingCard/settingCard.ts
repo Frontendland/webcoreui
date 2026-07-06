@@ -1,6 +1,7 @@
-import type { CardProps } from 'webcoreui/astro'
+import type { CardProps, IconProps } from 'webcoreui/astro'
 
 export type SettingCardProps = {
+   icon?: IconProps['type'] | string
    title: string
    subTitle?: string
 } & CardProps

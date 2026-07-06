@@ -8,6 +8,15 @@ import Card from '@components/Card/Card.astro'
 import AstroSettingCard from '@blocks/SettingCard/SettingCard.astro'
 import SvelteSettingCard from '@blocks/SettingCard/SettingCard.svelte'
 import ReactSettingCard from '@blocks/SettingCard/SettingCard.tsx'
+
+import warning from '../../icons/warning.svg?raw'
+
+import { getSections } from '@helpers'
+
+const sections = getSections({
+    title: 'setting cards',
+    components: [AstroSettingCard, SvelteSettingCard, ReactSettingCard]
+})
 ---
 
 <Layout docs="/blocks/setting-card">
@@ -60,43 +69,43 @@ import ReactSettingCard from '@blocks/SettingCard/SettingCard.tsx'
                 <Button className="toggle" theme="secondary">Toggle on</Button>
             </ReactSettingCard>
         </Card>
-
-        <Card title="Astro - with additional content" bodyClassName="flex column sm">
-            <AstroSettingCard
-                title="Security emails"
-                subTitle="Get security alerts for logins."
-            >
-                <Switch toggled={true} />
-                <div slot="additional-content" class="flex column xs">
-                    <Checkbox label="Server alerts" />
-                    <Checkbox label="Client alerts" />
-                </div>
-            </AstroSettingCard>
-        </Card>
-
-        <Card title="Svelte - with additional content" bodyClassName="flex column sm">
-            <SvelteSettingCard
-                title="Security emails"
-                subTitle="Get security alerts for logins."
-            >
-                <Checkbox checked={true} />
-                <div slot="additionalContent" class="flex column xs">
-                    <Checkbox label="Server alerts" />
-                    <Checkbox label="Client alerts" />
-                </div>
-            </SvelteSettingCard>
-        </Card>
-
-        <Card title="React - with additional content" bodyClassName="flex column sm">
-            <ReactSettingCard title="Security emails">
-                <Button className="toggle">Toggle off</Button>
-                <div slot="additionalContent" class="flex column xs">
-                    <Checkbox label="Server alerts" />
-                    <Checkbox label="Client alerts" />
-                </div>
-            </ReactSettingCard>
-        </Card>
     </div>
+
+    {sections.map((section: any) => (
+        <br />
+        <h2>{section.title}</h2>
+        <div class="grid sm-2">
+            <Card title="With additional content">
+                <section.component
+                    title="Security emails"
+                    subTitle="Get security alerts for logins."
+                >
+                    <Switch toggled={true} />
+                    {section.type === 'svelte' ? (
+                        <div slot="additionalContent" class="flex column xs">
+                            <Checkbox label="Server alerts" />
+                            <Checkbox label="Client alerts" />
+                        </div>
+                    ) : (
+                        <div slot="additional-content" class="flex column xs">
+                            <Checkbox label="Server alerts" />
+                            <Checkbox label="Client alerts" />
+                        </div>
+                    )}
+                </section.component>
+            </Card>
+
+            <Card title="With icon">
+                <section.component
+                    title="Security emails"
+                    subTitle="Get security alerts for logins."
+                    icon={warning}
+                >
+                    <Switch toggled={true} />
+                </section.component>
+            </Card>
+        </div>
+    ))}
 </Layout>
 
 <style lang="scss">
