@@ -1,0 +1,97 @@
+---
+import ComponentWrapper from '@static/ComponentWrapper.astro'
+import Layout from '@static/Layout.astro'
+
+import AstroCheckboxGroup from '@blocks/CheckboxGroup/CheckboxGroup.astro'
+import SvelteCheckboxGroup from '@blocks/CheckboxGroup/CheckboxGroup.svelte'
+import ReactCheckboxGroup from '@blocks/CheckboxGroup/CheckboxGroup.tsx'
+
+import { getSections } from '@helpers'
+import { checkboxGroup } from '@data'
+
+const sections = getSections({
+    title: 'checkbox groups',
+    components: [AstroCheckboxGroup, SvelteCheckboxGroup, ReactCheckboxGroup]
+})
+---
+
+<Layout>
+    <h1>CheckboxGroup</h1>
+    <div class="grid md-2 lg-3">
+        <ComponentWrapper type="Astro">
+            <AstroCheckboxGroup items={checkboxGroup} name="astro-checkbox-group" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="Svelte">
+            <SvelteCheckboxGroup items={checkboxGroup} name="svelte-checkbox-group" />
+        </ComponentWrapper>
+
+        <ComponentWrapper type="React">
+            <ReactCheckboxGroup items={checkboxGroup} name="react-checkbox-group" />
+        </ComponentWrapper>
+    </div>
+
+    {sections.map(section => (
+        <h1>{section.title}</h1>
+        <Fragment>
+            {section.subTitle && <h2 set:html={section.subTitle} />}
+        </Fragment>
+        <div class="grid md-2">
+            <ComponentWrapper title="Default">
+                <section.component
+                    items={checkboxGroup}
+                    name="default"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="No icon">
+                <section.component
+                    items={checkboxGroup.map(item => ({ ...item, icon: '' }))}
+                    name="no-icon"
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Primary cards">
+                <section.component
+                    name="primary"
+                    items={checkboxGroup}
+                    secondary={false}
+                    flat={false}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Secondary cards">
+                <section.component
+                    name="secondary"
+                    items={checkboxGroup}
+                    flat={false}
+                />
+            </ComponentWrapper>
+
+            <ComponentWrapper title="Three column layout" className="full">
+                <section.component
+                    name="columns"
+                    items={checkboxGroup}
+                    columns={3}
+                />
+            </ComponentWrapper>
+        </div>
+    ))}
+</Layout>
+
+<style lang="scss" is:global>
+    @use 'webcoreui/config' as *;
+
+    .full {
+        grid-column: 1 / -1;
+    }
+</style>
+
+<script>
+    import { listen } from 'webcoreui'
+
+    listen('checkboxGroupOnChange', event => {
+        // eslint-disable-next-line no-console
+        console.log(event)
+    })
+</script>

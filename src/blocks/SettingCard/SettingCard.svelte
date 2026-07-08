@@ -1,8 +1,10 @@
 <script lang="ts">
     import type { Snippet } from 'svelte'
+    import { classNames } from 'webcoreui'
     import { Card, ConditionalWrapper } from 'webcoreui/svelte'
 
     import type { SettingCardProps } from './settingCard'
+    import styles from './setting-card.module.scss'
 
     export type Props = SettingCardProps & {
         children: Snippet
@@ -25,7 +27,10 @@
     bodyClassName="flex column sm"
     {...rest}
 >
-    <div class="flex justify-between items-center xs">
+    <div class={classNames([
+        styles.body,
+        'flex justify-between items-center xs'
+    ])}>
         <ConditionalWrapper condition={!!icon} class="flex center">
             {#if icon}
                 {@html icon}

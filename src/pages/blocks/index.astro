@@ -9,6 +9,7 @@ import Image from '@components/Image/Image.astro'
 import Author from '@blocks/Author/Author.astro'
 import AvatarWithRating from '@blocks/AvatarWithRating/AvatarWithRating.astro'
 import BlogCard from '@blocks/BlogCard/BlogCard.astro'
+import CheckboxGroup from '@blocks/CheckboxGroup/CheckboxGroup.astro'
 import ComponentMap from '@blocks/ComponentMap/ComponentMap.astro'
 import DeviceMockup from '@blocks/DeviceMockup/DeviceMockup.astro'
 import Empty from '@blocks/Empty/Empty.astro'
@@ -29,7 +30,13 @@ import Team from '@blocks/Team/Team.astro'
 import Tiles from '@blocks/Tiles/Tiles.astro'
 import User from '@blocks/User/User.astro'
 
-import { avatarGroup, emptyProps, gridWithIconsItems, members } from '@data'
+import {
+    avatarGroup,
+    checkboxGroup,
+    emptyProps,
+    gridWithIconsItems,
+    members
+} from '@data'
 ---
 
 <Layout docs="/blocks/introduction">
@@ -124,6 +131,14 @@ import { avatarGroup, emptyProps, gridWithIconsItems, members } from '@data'
                     text="<b>123 students</b> already enrolled"
                 />
                 <Link href="/blocks/avatar-with-rating" />
+            </Card>
+
+            <Card title="Checkbox Group">
+                <CheckboxGroup
+                    name="checkbox-group"
+                    items={checkboxGroup}
+                />
+                <Link href="/blocks/checkbox-group" />
             </Card>
         </div>
         <div class="block-column flex column">
@@ -290,6 +305,10 @@ import { avatarGroup, emptyProps, gridWithIconsItems, members } from '@data'
     .device-mockup-example {
         @include typography(center);
         @include background(primary-50);
+    }
+
+    section {
+        overflow: visible !important;
     }
 
     section .padded {

@@ -2,6 +2,7 @@
 import { Card, ConditionalWrapper, Icon } from 'webcoreui/astro'
 
 import type { SettingCardProps } from './settingCard'
+import styles from './setting-card.module.scss'
 
 export type Props = SettingCardProps
 
@@ -19,7 +20,10 @@ const {
     bodyClassName="flex column sm"
     {...rest}
 >
-    <div class="flex justify-between items-center xs">
+    <div class:list={[
+        styles.body,
+        'flex justify-between items-center xs'
+    ]}>
         <ConditionalWrapper condition={!!icon}>
             <div slot="wrapper" class="flex center">children</div>
 

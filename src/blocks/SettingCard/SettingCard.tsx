@@ -1,7 +1,9 @@
 import React from 'react'
+import { classNames } from 'webcoreui'
 import { Card, ConditionalWrapper } from 'webcoreui/react'
 
 import type { SettingCardProps } from './settingCard'
+import styles from './setting-card.module.scss'
 
 export type Props = SettingCardProps & {
     children: React.ReactNode
@@ -24,7 +26,10 @@ const SettingCard = ({
             bodyClassName="flex column sm"
             {...rest}
         >
-            <div className="flex justify-between items-center xs">
+            <div className={classNames([
+                styles.body,
+                'flex justify-between items-center xs'
+            ])}>
                 <ConditionalWrapper
                     condition={!!icon}
                     wrapper={children => <div className="flex center">{children}</div>}
@@ -32,7 +37,7 @@ const SettingCard = ({
                     {icon && (
                         <span
                             dangerouslySetInnerHTML={{ __html: icon }}
-                            style={{ height: '20px' }}
+                            style={{ height: '21px' }}
                         />
                     )}
 

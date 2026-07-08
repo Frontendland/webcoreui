@@ -32,6 +32,7 @@ import homeIcon from './icons/home.svg?raw'
 import infoIcon from './icons/info.svg?raw'
 import moonIcon from './icons/moon.svg?raw'
 import searchIcon from './icons/search.svg?raw'
+import warningIcon from './icons/warning.svg?raw'
 import astroIcon from '@blocks/Icon/icons/astro.svg?raw'
 import componentsIcon from '@blocks/Icon/icons/components.svg?raw'
 import discordIcon from '@blocks/Icon/icons/discord.svg?raw'
@@ -39,6 +40,7 @@ import fileIcon from '@blocks/Icon/icons/file.svg?raw'
 import rocketIcon from '@blocks/Icon/icons/rocket.svg?raw'
 import terminalIcon from '@blocks/Icon/icons/terminal.svg?raw'
 
+import type { CheckboxGroupProps } from '@blocks/CheckboxGroup/checkboxGroup'
 import type { EmptyProps } from '@blocks/Empty/empty'
 import type { GridWithIconsProps } from '@blocks/GridWithIcons/gridWithIcons'
 import type { TeamProps } from '@blocks/Team/team'
@@ -956,3 +958,25 @@ export const emptyProps: EmptyProps = {
         { text: 'Create New' }
     ]
 }
+
+export const checkboxGroup: CheckboxGroupProps['items'] = [
+    {
+        icon: infoIcon,
+        label: 'Updates',
+        subText: 'Get notified about updates',
+        value: 'info',
+        checked: true
+    },
+    {
+        icon: warningIcon,
+        label: 'Breaking Changes',
+        subText: 'Get notified about breaking changes',
+        value: 'warning'
+    },
+    {
+        icon: alertIcon,
+        label: 'Application errors',
+        subText: 'Get alerts about application errors',
+        value: 'alert'
+    }
+]

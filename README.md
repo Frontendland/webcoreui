@@ -351,6 +351,7 @@ import { Accordion } from 'webcoreui/react'
 - [Author](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Author)
 - [AvatarWithRating](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/AvatarWithRating)
 - [BlogCard](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/BlogCard)
+- [CheckboxGroup](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/CheckboxGroup)
 - [ComponentMap](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/ComponentMap)
 - [DeviceMockup](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/DeviceMockup)
 - [Empty](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Empty)

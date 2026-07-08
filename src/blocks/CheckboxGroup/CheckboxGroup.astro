@@ -1,0 +1,58 @@
+---
+import { Checkbox } from 'webcoreui/astro'
+
+import SettingCard from '@blocks/SettingCard/SettingCard.astro'
+
+import type { CheckboxGroupProps } from './checkboxGroup'
+
+export type Props = CheckboxGroupProps
+
+const {
+    items,
+    name,
+    columns,
+    className,
+    ...rest
+} = Astro.props
+---
+
+<div class:list={[
+    'grid sm',
+    columns && `xs-${columns}`,
+    className
+]} data-id="w-checkbox-group" data-name={name}>
+    {items?.map(item => (
+        <SettingCard
+            title={item.label}
+            subTitle={item.subText}
+            icon={item.icon}
+            {...rest}
+        >
+            <Checkbox
+                value={item.value}
+                checked={item.checked}
+                data-id="w-checkbox-group-input"
+                name={name}
+            />
+        </SettingCard>
+    ))}
+</div>
+
+<script>
+    import { dispatch, on } from 'webcoreui'
+
+    on('[data-id="w-checkbox-group-input"]', 'change', (event: Event) => {
+        const target = event.target as HTMLInputElement
+        const wrapper = target.closest('[data-id="w-checkbox-group"]')
+        const checkboxes = wrapper?.querySelectorAll('input')
+
+        const values = Array.from(checkboxes as NodeListOf<HTMLInputElement>)
+            .filter((checkbox: HTMLInputElement) => checkbox.checked)
+            .map((checkbox: HTMLInputElement) => checkbox.value)
+
+        dispatch('checkboxGroupOnChange', {
+            name: wrapper?.getAttribute('data-name'),
+            values
+        })
+    }, true)
+</script>
