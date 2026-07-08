@@ -977,6 +977,7 @@ export const checkboxGroup: CheckboxGroupProps['items'] = [
         icon: alertIcon,
         label: 'Application errors',
         subText: 'Get alerts about application errors',
-        value: 'alert'
+        value: 'alert',
+        disabled: true
     }
 ]

@@ -1,0 +1,49 @@
+@use 'webcoreui/config' as *;
+
+.group {
+    --color: var(--w-color-primary);
+
+    input {
+        @include visibility(none);
+    
+        + span::after {
+            @include transition(transform);
+            @include position(absolute, 't50%', 'l50%');
+            @include size(8px);
+            @include border-radius(max);
+            @include background(var(--color));
+    
+            content: '';
+            transform: translate(-50%, -50%) scale(0);
+        }
+    
+        &:checked + span::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    
+        &:disabled + span {
+            @include background(primary-40);
+            @include border(primary-40);
+
+            cursor: no-drop;
+
+            &::after {
+                @include background(primary-20);
+            }
+        }
+    }
+
+    .icon {
+        @include size(16px);
+        @include border-radius(max);
+        @include position(relative);
+        @include spacing(mt-xxs);
+        
+        cursor: pointer;
+        display: inline-block;
+        min-width: 16px;
+        border: 1px solid var(--color);
+    }
+}
+
+

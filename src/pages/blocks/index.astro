@@ -22,6 +22,7 @@ import Hero from '@blocks/Hero/Hero.astro'
 import Icon from '@blocks/Icon/Icon.astro'
 import IconList from '@blocks/IconList/IconList.astro'
 import Maintenance from '@blocks/Maintenance/Maintenance.astro'
+import RadioGroup from '@blocks/RadioGroup/RadioGroup.astro'
 import SettingCard from '@blocks/SettingCard/SettingCard.astro'
 import SignUp from '@blocks/SignUp/SignUp.astro'
 import SocialProof from '@blocks/SocialProof/SocialProof.astro'
@@ -228,6 +229,14 @@ import {
                 />
 
                 <Link href="/blocks/expandable-tables" />
+            </Card>
+
+            <Card title="Radio Group">
+                <RadioGroup
+                    name="radio-group"
+                    items={checkboxGroup}
+                />
+                <Link href="/blocks/radio-group" />
             </Card>
         </div>
         <div class="block-column flex column">

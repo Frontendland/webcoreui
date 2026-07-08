@@ -7,6 +7,7 @@ export type CheckboxGroupProps = {
         subText?: string
         value: string
         checked?: boolean
+        disabled?: boolean
     }[]
     name: string
     columns?: 1 | 2 | 3 | 4

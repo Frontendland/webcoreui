@@ -365,6 +365,7 @@ import { Accordion } from 'webcoreui/react'
 - [IconList](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/IconList)
 - [Layout](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Layout)
 - [Maintenance](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/Maintenance)
+- [RadioGroup](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/RadioGroup)
 - [SEO](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SEO)
 - [SettingCard](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SettingCard)
 - [SignUp](https://github.com/Frontendland/webcoreui/tree/main/src/blocks/SignUp)

@@ -1,0 +1,63 @@
+---
+import SettingCard from '@blocks/SettingCard/SettingCard.astro'
+
+import type { RadioGroupProps } from './radioGroup'
+import styles from './radio-group.module.scss'
+
+export type Props = RadioGroupProps
+
+const {
+    items,
+    name,
+    columns,
+    className,
+    ...rest
+} = Astro.props
+---
+
+<div class:list={[
+    'grid sm',
+    columns && `xs-${columns}`,
+    styles.group,
+    className
+]} data-id="w-radio-group" data-name={name}>
+    {items?.map(item => (
+        <SettingCard
+            title={item.label}
+            subTitle={item.subText}
+            icon={item.icon}
+            {...rest}
+        >
+            <label>
+                <input
+                    type="radio"
+                    value={item.value}
+                    checked={item.checked}
+                    disabled={item.disabled}
+                    data-id="w-radio-group-input"
+                    name={name}
+                />
+                <span class={styles.icon} />
+            </label>
+        </SettingCard>
+    ))}
+</div>
+
+<script>
+    import { dispatch, on } from 'webcoreui'
+
+    on('[data-id="w-radio-group-input"]', 'change', (event: Event) => {
+        const target = event.target as HTMLInputElement
+        const wrapper = target.closest('[data-id="w-radio-group"]')
+        const radios = wrapper?.querySelectorAll('input')
+
+        const value = Array.from(radios as NodeListOf<HTMLInputElement>)
+            .filter((radio: HTMLInputElement) => radio.checked)
+            .map((radio: HTMLInputElement) => radio.value)[0]
+
+        dispatch('radioGroupOnChange', {
+            name: wrapper?.getAttribute('data-name'),
+            value
+        })
+    }, true)
+</script>

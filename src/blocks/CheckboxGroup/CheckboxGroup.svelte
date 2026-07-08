@@ -58,6 +58,7 @@
             <Checkbox
                 value={item.value}
                 checked={item.checked}
+                disabled={item.disabled}
                 name={name}
                 onChange={handleOnChange}
             />
